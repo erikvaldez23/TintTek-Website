@@ -1,125 +1,182 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Box, Card, CardContent, Typography, Container, Rating, IconButton } from "@mui/material";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import arrow icons
+import { Box, Card, CardContent, Typography, Avatar, Rating, Container, CircularProgress, Button } from "@mui/material";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-// Testimonial Data
-const testimonials = [
-  {
-    id: 1,
-    name: "MYLES PARTNERS",
-    role: "Verified Customer",
-    review: "Recently had car windows tinted at Tint Tek!!  …and I couldn't be happier with the results! From the moment I walked in, the staff was incredibly professional and friendly. They took the time to explain the different tint options and helped me choose the perfect one for my car. The quality of the work is outstanding. Highly recommended!!",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "LUKE RUSSEL",
-    role: "Verified Customer",
-    review: "Ryan and his team always give exceptional service. I don’t ever like leaving my cars with anyone but I always know Ryan will take the best care of it like it’s his own. Great tint job and customer service.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "ARTHUR JOE",
-    role: "Verified Customer",
-    review: "Tint Tek Plus is amazing and I appreciate the work they did tinting my Infinity m37 sport the business is new I would highly recommend them for window tint or ceramic coatings or ppf thank you again Ryan and Tint Tek team.",
-    rating: 5,
-  },
-];
-
-// Custom Arrow Component
-const CustomPrevArrow = ({ onClick }) => (
-  <IconButton
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      left: "-50px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      color: "#333",
-      backgroundColor: "rgba(255, 255, 255, 0.8)",
-      "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
-      zIndex: 2,
-    }}
-  >
-    <FaArrowLeft size={20} />
-  </IconButton>
-);
-
-const CustomNextArrow = ({ onClick }) => (
-  <IconButton
-    onClick={onClick}
-    sx={{
-      position: "absolute",
-      right: "-50px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      color: "#333",
-      backgroundColor: "rgba(255, 255, 255, 0.8)",
-      "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
-      zIndex: 2,
-    }}
-  >
-    <FaArrowRight size={20} />
-  </IconButton>
-);
+const API_URL = "http://localhost:5001/api/reviews"; // Call the backend server
+const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/place/Tint+Tek+Plus/reviews"; // Replace with your Google Reviews URL
+const GOOGLE_LOGO = "/TintTek-Website/google-logo.png"; // Local Google logo in 'public/' folder
 
 const Testimonials = () => {
-  // Carousel Settings
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        console.log("Google API Response:", data);
+        
+        if (data.length > 0) {
+          setReviews(data.slice(0, 6)); // Only keep the first 6 reviews
+        } else {
+          setError("No reviews found.");
+        }
+      } catch (error) {
+        setError("Error fetching reviews.");
+        console.error("Error fetching reviews:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  // Slick Carousel Settings
   const settings = {
     dots: true,
-    infinite: true,
-    speed: 700, // Slightly slower transition
-    slidesToShow: 1,
+    infinite: false, // Stop infinite looping
+    speed: 700,
+    slidesToShow: 3, // Display 3 reviews per row
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000, // Increased time before auto-scrolling
-    arrows: true, // Enable manual arrows
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
+    autoplaySpeed: 5000,
+    arrows: false, // Hide default arrows for a cleaner UI
+    responsive: [
+      {
+        breakpoint: 1400, // For large tablets
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1024, // For tablets
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // For mobile
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <Box
-      sx={{
-        py: 8,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        textAlign: "center",
-        minHeight: "40vh", // Ensures it takes enough vertical space
-        backgroundColor: "#e3eff4",
-        position: "relative",
-      }}
-    >
-      <Container maxWidth="md">
-        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold", fontFamily: "Poppins, sans-serif" }}>
-          What Our Customers Say
+    <Box sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
+      <Container maxWidth="xl"> 
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+          What Our Customers Say (Google Reviews)
         </Typography>
-        <Slider {...settings}>
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} sx={{ maxWidth: 700, mx: "auto", textAlign: "center", p: 4, borderRadius: 3, boxShadow: 3 }}>
-              <CardContent>
-                {/* Star Rating */}
-                <Rating value={testimonial.rating} precision={0.5} readOnly sx={{ mb: 2, fontSize: "2rem" }} />
 
-                <Typography variant="body1" sx={{ fontStyle: "italic", fontSize: "1.2rem", mb: 2 }}>
-                  "{testimonial.review}"
-                </Typography>
-                <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>
-                  {testimonial.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {testimonial.role}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </Slider>
+        {loading ? (
+          <CircularProgress />
+        ) : error ? (
+          <Typography variant="body1" color="text.secondary">
+            {error}
+          </Typography>
+        ) : (
+          <>
+            <Slider {...settings}>
+              {reviews.map((review, index) => (
+                <Box key={index} sx={{ px: 2 }}> {/* Adds spacing between cards */}
+                  <Card 
+                    sx={{ 
+                      width: "80%", 
+                      mx: "auto", 
+                      my: 2, 
+                      p: 3, 
+                      borderRadius: 3, 
+                      boxShadow: 3, 
+                      textAlign: "left",
+                      minHeight: 350, 
+                      maxHeight: 400, 
+                      position: "relative",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <CardContent sx={{ flex: 1, overflowY: "auto", maxHeight: "300px", paddingRight: "10px" }}>
+                      {/* Google Logo (Top-Right) */}
+                      <Box 
+                        sx={{ 
+                          position: "absolute", 
+                          top: 10, 
+                          right: 10, 
+                          width: 30, 
+                          height: 30 
+                        }}
+                      >
+                        <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                      </Box>
+
+                      {/* User Profile Info */}
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                        <Avatar sx={{ width: 45, height: 45, mr: 2 }} src={review.profile_photo_url} alt={review.author_name} />
+                        <Box>
+                          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                            {review.author_name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {new Date(review.time * 1000).toLocaleDateString()}
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      {/* Star Rating */}
+                      <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
+
+                      {/* Review Text (With Scrollable Logic) */}
+                      <Typography 
+                        variant="body1" 
+                        sx={{ 
+                          fontStyle: "italic", 
+                          fontSize: "1rem", 
+                          lineHeight: 1.5, 
+                          overflowY: "auto", 
+                          maxHeight: "200px", 
+                          paddingRight: "5px", 
+                        }}
+                      >
+                        "{review.text}"
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Box>
+              ))}
+            </Slider>
+
+            {/* View More Reviews Button */}
+            <Button 
+              variant="contained" 
+              sx={{
+                mt: 4,
+                backgroundColor: "#4285F4", 
+                color: "white",
+                fontWeight: "bold",
+                padding: "12px 24px",
+                borderRadius: "8px",
+                marginTop:"50px",
+                textTransform: "none",
+                fontSize: "1rem",
+                transition: "0.3s",
+                "&:hover": {
+                  backgroundColor: "#357ae8",
+                }
+              }}
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View More Reviews on Google
+            </Button>
+          </>
+        )}
       </Container>
     </Box>
   );

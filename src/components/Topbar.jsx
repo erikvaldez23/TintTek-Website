@@ -77,6 +77,7 @@ const Topbar = () => {
                 <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Gallery</Button>
                 <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Pricing</Button>
                 <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>About</Button>
+                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Reviews</Button>
                 <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Contact</Button>
               </Box>
             ) : (
