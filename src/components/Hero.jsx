@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Hero.css";
-import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from "react-icons/fa";
-import Subhero from "./Subhero"; // Import Subhero component
+import { Dialog, DialogContent, IconButton } from "@mui/material";
+import { FaTimes } from "react-icons/fa";
 import BusinessInfo from "./BusinessInfo"; // Import BusinessInfo
-import video from '../../public/car.mp4';
+import Subhero from "./Subhero"; // Import Subhero
+import video from "../../public/car.mp4";
 
 const Hero = () => {
+  const [open, setOpen] = useState(false);
+
+  // Open the modal
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  // Close the modal
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <section className="hero">
@@ -27,19 +40,42 @@ const Hero = () => {
             Precision Tinting for a <br /> Sleek, Private, and Cool Ride
           </h1>
 
-          {/* Learn More Button */}
-          <button
-            className="learn-more-btn"
-            onClick={() =>
-              document.getElementById("services").scrollIntoView({ behavior: "smooth" })
-            }
-          >
+          {/* Learn More Button - Opens Modal */}
+          <button className="learn-more-btn" onClick={handleOpen}>
             MESSAGE FOR A FAST QUOTE
           </button>
         </div>
 
         {/* Subhero Overlay */}
-        <Subhero /> {/* Add Subhero inside Hero */}
+        <Subhero />
+
+        {/* Quote Form Modal */}
+        <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+          <DialogContent sx={{ position: "relative", padding: 0 }}>
+            {/* Close Button */}
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                backgroundColor: "white",
+                "&:hover": { backgroundColor: "lightgray" },
+              }}
+            >
+              <FaTimes />
+            </IconButton>
+
+            {/* Embedded Quote Form */}
+            <iframe
+              src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+              width="100%"
+              height="600px"
+              style={{ border: "none" }}
+              title="Fast Quote"
+            ></iframe>
+          </DialogContent>
+        </Dialog>
       </section>
     </>
   );

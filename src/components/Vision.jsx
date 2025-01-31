@@ -24,14 +24,14 @@ const visionPoints = [
   {
     id: 4,
     title: "Affordable Pricing",
-    description: "Delivering top-quality services at competitive rates, ensuring the best value without compromising on excellence.",
+    description: "Providing high-quality services at competitive rates.",
     icon: <FaHandHoldingUsd size={40} />,
   },
 ];
 
 const Vision = () => {
   return (
-    <Box sx={{ py: 8, backgroundColor: "#000", textAlign: "center" }}>
+    <Box sx={{ py: 8, backgroundColor: "#000", textAlign: "center" }}> {/* Light bluish-gray background */}
       <Container maxWidth="md">
         {/* Vision Statement */}
         <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontFamily: "Poppins, sans-serif", mb: 4 }}>
@@ -51,25 +51,21 @@ const Vision = () => {
               <Card
                 sx={{
                   textAlign: "center",
-                  display: "flex", // ✅ Ensures uniform height
-                  flexDirection: "column", // ✅ Aligns content properly
-                  justifyContent: "space-between", // ✅ Balances spacing
-                  alignItems: "center", // ✅ Centers text & icons
                   py: 4,
-                  px: 3,
-                  minHeight: "220px", // ✅ Ensures all cards have the same height
+                  px: 2,
                   boxShadow: 3,
                   borderRadius: 3,
+                  minHeight: "200px",
                   transition: "transform 0.3s ease-in-out",
-                  "&:hover": { transform: "scale(1.05)" },
+                  "&:hover": { transform: "scale(1.05)" }, // Hover effect
                 }}
               >
-                <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <CardContent>
                   <Box sx={{ mb: 2, color: "#007bff" }}>{point.icon}</Box>
-                  <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {point.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "gray", textAlign: "center", maxWidth: "90%" }}>
+                  <Typography variant="body2" sx={{ color: "gray" }}>
                     {point.description}
                   </Typography>
                 </CardContent>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // For routing
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -18,7 +18,6 @@ import { FaBars } from "react-icons/fa";
 import { styled } from "@mui/system";
 import logo from "../../public/logo.png"; // Ensure correct path
 
-// Styled Navbar Container
 const NavbarContainer = styled(Box)({
   width: "100%",
   maxWidth: "1200px",
@@ -33,7 +32,8 @@ const Topbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const isMobile = useMediaQuery("(max-width:900px)");
-  const navigate = useNavigate(); // Used for navigating back to home
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Detect Scroll Position
   useEffect(() => {
@@ -44,44 +44,50 @@ const Topbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Dropdown handlers
+  // ✅ Re-added Function to Open Services Dropdown
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
 
   // Scroll to section smoothly
   const scrollToSection = (sectionId) => {
+    if (location.pathname !== "/") {
+      navigate(`/#${sectionId}`);
+      return;
+    }
+
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-  
+
     const startPosition = window.scrollY;
     const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 1000; // Adjust this value to make it slower (in milliseconds)
+    const duration = 1000;
     let startTime = null;
-  
-    const easeInOutQuad = (t) => {
-      return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    };
-  
+
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
     const animation = (currentTime) => {
       if (!startTime) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
       const easeProgress = easeInOutQuad(progress);
-      window.scrollTo(0, startPosition + distance * easeProgress);
-  
+      window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeProgress);
+
       if (timeElapsed < duration) {
         requestAnimationFrame(animation);
       }
     };
-  
+
     requestAnimationFrame(animation);
   };
-  
+
+  // ✅ Navigate to Service Pages Instead of Scrolling
+  const handleServiceClick = (serviceId) => {
+    navigate(`/services/${serviceId}`);
+    handleMenuClose();
+  };
 
   return (
     <>
-      {/* Navigation Bar */}
       <AppBar
         position="fixed"
         sx={{
@@ -97,20 +103,13 @@ const Topbar = () => {
       >
         <Toolbar sx={{ justifyContent: "center" }}>
           <NavbarContainer>
-            {/* Logo (Navigates to Home) */}
-            <Box
-              display="flex"
-              alignItems="center"
-              sx={{ cursor: "pointer" }}
-              onClick={() => navigate("/")}
-            >
+            <Box display="flex" alignItems="center" sx={{ cursor: "pointer" }} onClick={() => navigate("/")}>
               <img src={logo} alt="Logo" style={{ height: "50px", marginRight: "10px" }} />
             </Box>
 
-            {/* Navigation Links */}
             {!isMobile ? (
               <Box display="flex" gap={3}>
-                {/* Services Dropdown */}
+                {/* ✅ Services Dropdown */}
                 <Button
                   color="inherit"
                   onClick={handleMenuOpen}
@@ -159,23 +158,17 @@ const Topbar = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Services Dropdown Menu */}
+      {/* ✅ Services Dropdown Menu (Now Working) */}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
         {[
-          { name: "Vehicle Window Tinting", id: "vehicle-tint" },
-          { name: "Tesla Window Tinting", id: "tesla-tint" },
-          { name: "Commercial Window Tinting", id: "commercial-tint" },
-          { name: "Residential Window Tinting", id: "residential-tint" },
-          { name: "Vehicle Paint Correction", id: "paint-correction" },
-          { name: "Vehicle Paint Protection", id: "paint-protection" },
+          { name: "Vehicle Window Tinting", id: "vehicle-window-tinting" },
+          { name: "Tesla Window Tinting", id: "tesla-window-tinting" },
+          { name: "Commercial Window Tinting", id: "commercial-window-tinting" },
+          { name: "Residential Window Tinting", id: "residential-window-tinting" },
+          { name: "Vehicle Paint Correction", id: "vehicle-paint-correction" },
+          { name: "Vehicle Paint Protection", id: "vehicle-paint-protection" },
         ].map((service) => (
-          <MenuItem
-            key={service.name}
-            onClick={() => {
-              scrollToSection(service.id);
-              handleMenuClose(); // Ensure dropdown closes after clicking
-            }}
-          >
+          <MenuItem key={service.id} onClick={() => handleServiceClick(service.id)}>
             {service.name}
           </MenuItem>
         ))}
@@ -195,7 +188,6 @@ const Topbar = () => {
         }}
       >
         <List sx={{ width: 250 }}>
-          {/* Services Dropdown in Mobile Drawer */}
           <ListItem button onClick={handleMenuOpen}>
             <ListItemText primary="Services ▾" />
           </ListItem>
