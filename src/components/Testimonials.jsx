@@ -68,7 +68,7 @@ const Testimonials = () => {
   };
 
   return (
-    <Box sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
+    <Box id="reviews"sx={{ py: 8, textAlign: "center", backgroundColor: "#ccc" }}>
       <Container maxWidth="xl"> 
         <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
           What Our Customers Say (Google Reviews)

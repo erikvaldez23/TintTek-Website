@@ -24,20 +24,20 @@ const visionPoints = [
   {
     id: 4,
     title: "Affordable Pricing",
-    description: "Providing high-quality services at competitive rates.",
+    description: "Delivering top-quality services at competitive rates, ensuring the best value without compromising on excellence.",
     icon: <FaHandHoldingUsd size={40} />,
   },
 ];
 
 const Vision = () => {
   return (
-    <Box sx={{ py: 8, backgroundColor: "#e3eff4", textAlign: "center" }}> {/* Light bluish-gray background */}
+    <Box sx={{ py: 8, backgroundColor: "#000", textAlign: "center" }}>
       <Container maxWidth="md">
         {/* Vision Statement */}
-        <Typography variant="h4" sx={{ fontWeight: "bold", fontFamily: "Poppins, sans-serif", mb: 4 }}>
+        <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff", fontFamily: "Poppins, sans-serif", mb: 4 }}>
           Our Vision
         </Typography>
-        <Typography variant="body1" sx={{ mb: 6, fontSize: "1.2rem", color: "gray", lineHeight: 1.6 }}>
+        <Typography variant="body1" sx={{ mb: 6, fontSize: "1.2rem", color: "#fff", lineHeight: 1.6 }}>
           <strong>At TintTek+,</strong> our vision is to be your choice for <strong>high-quality window tinting services</strong>,
           delivering <strong>craftsmanship</strong> and <strong>exceptional value</strong>. We are dedicated to enhancing the
           <strong> comfort, style, and privacy</strong> of every vehicle and building we serve, ensuring customer satisfaction
@@ -51,20 +51,25 @@ const Vision = () => {
               <Card
                 sx={{
                   textAlign: "center",
+                  display: "flex", // ✅ Ensures uniform height
+                  flexDirection: "column", // ✅ Aligns content properly
+                  justifyContent: "space-between", // ✅ Balances spacing
+                  alignItems: "center", // ✅ Centers text & icons
                   py: 4,
-                  px: 2,
+                  px: 3,
+                  minHeight: "220px", // ✅ Ensures all cards have the same height
                   boxShadow: 3,
                   borderRadius: 3,
                   transition: "transform 0.3s ease-in-out",
-                  "&:hover": { transform: "scale(1.05)" }, // Hover effect
+                  "&:hover": { transform: "scale(1.05)" },
                 }}
               >
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <Box sx={{ mb: 2, color: "#007bff" }}>{point.icon}</Box>
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                     {point.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "gray" }}>
+                  <Typography variant="body2" sx={{ color: "gray", textAlign: "center", maxWidth: "90%" }}>
                     {point.description}
                   </Typography>
                 </CardContent>

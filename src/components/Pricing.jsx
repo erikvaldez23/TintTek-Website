@@ -45,7 +45,7 @@ const PricingComponent = () => {
   };
 
   return (
-    <Box sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
+    <Box id ="pricing"sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
       <Container maxWidth="lg">
         {/* Title */}
         <Typography variant="h4" fontWeight="bold" sx={{ mb: 3, textTransform: "uppercase" }}>
