@@ -1,23 +1,24 @@
 /* Services Section */
 .services-section {
-    padding-top: 10px;
-    padding-bottom: 30px;
-    text-align: center;
-    background: #e3eff4; /* Dark background for contrast */
-    color: #000;
-  }
+  padding-top: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+  background: #000; /* Ensure the color matches the gradient */
+  color: #fff;
+}
+
   
   /* Section Header */
   .services-section h2 {
     font-size: 2rem;
-    color: #000;
+    color: #fff;
     font-family: 'Times New Roman', Times, serif;
   }
   
   .services-intro {
     font-size: 1.2rem;
     margin-bottom: 40px;
-    color: #000;
+    color: #fff;
   }
   
   /* Grid Layout for Services */

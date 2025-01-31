@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -30,7 +30,22 @@ const NavbarContainer = styled(Box)({
 const Topbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
   const isMobile = useMediaQuery("(max-width:900px)");
+
+  // Detect Scroll Position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true); // If user scrolls past 50px, change navbar style
+      } else {
+        setScrolling(false); // Reset when user scrolls to top
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Dropdown handlers
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
@@ -39,15 +54,17 @@ const Topbar = () => {
   return (
     <>
       {/* Navigation Bar */}
-      <AppBar 
-        position="fixed" // Ensures navbar stays at the top
-        sx={{ 
-          backgroundColor: "#fff", 
-          width: "100vw", 
-          left: 0, 
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: scrolling ? "white" : "transparent", // Change based on scroll
+          color: scrolling ? "black" : "white", // Change text color
+          boxShadow: scrolling ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none", // Add shadow on scroll
+          transition: "all 0.3s ease-in-out", // Smooth transition
+          width: "100vw",
+          left: 0,
           top: 0,
-          zIndex: 1100, // Keeps it above other elements
-          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)"
+          zIndex: 1100,
         }}
       >
         <Toolbar sx={{ justifyContent: "center" }}>
@@ -59,26 +76,24 @@ const Topbar = () => {
 
             {/* Navigation Links */}
             {!isMobile ? (
-              <Box display="flex" gap={3} color="#000">
-                <Button 
-                  color="inherit" 
-                  onClick={handleMenuOpen}
-                  sx={{
-                    fontFamily: "Poppins, sans-serif",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    letterSpacing: "0.5px",
-                    transition: "0.3s",
-                    "&:hover": { color: "#007bff" }
-                  }}
-                >
-                  Services ▾
-                </Button>
-                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Gallery</Button>
-                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Pricing</Button>
-                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>About</Button>
-                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Reviews</Button>
-                <Button color="inherit" sx={{ fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.5px", transition: "0.3s", "&:hover": { color: "#007bff" } }}>Contact</Button>
+              <Box display="flex" gap={3}>
+                {["Services", "Gallery", "Pricing", "About", "Reviews", "Contact"].map((text) => (
+                  <Button
+                    key={text}
+                    color="inherit"
+                    onClick={text === "Services" ? handleMenuOpen : null}
+                    sx={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      letterSpacing: "0.5px",
+                      transition: "color 0.3s",
+                      "&:hover": { color: "#007bff" },
+                    }}
+                  >
+                    {text} {text === "Services" && "▾"}
+                  </Button>
+                ))}
               </Box>
             ) : (
               <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
@@ -99,25 +114,34 @@ const Topbar = () => {
           "Vehicle Paint Correction",
           "Vehicle Paint Protection",
         ].map((service) => (
-          <MenuItem key={service} onClick={handleMenuClose}>{service}</MenuItem>
+          <MenuItem key={service} onClick={handleMenuClose}>
+            {service}
+          </MenuItem>
         ))}
       </Menu>
 
       {/* Mobile Drawer */}
-      <Drawer 
-        anchor="right" 
-        open={drawerOpen} 
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        sx={{ "& .MuiDrawer-paper": { backgroundColor: "black", color: "white", fontFamily: "Poppins, sans-serif" } }} 
+        sx={{
+          "& .MuiDrawer-paper": {
+            backgroundColor: "black",
+            color: "white",
+            fontFamily: "Poppins, sans-serif",
+          },
+        }}
       >
-        <List sx={{ width: 250, fontFamily: "Poppins, sans-serif" }}>
+        <List sx={{ width: 250 }}>
           <ListItem button onClick={handleMenuOpen}>
-            <ListItemText primary="Services ▾" sx={{ color: "white" }} />
+            <ListItemText primary="Services ▾" />
           </ListItem>
-          <ListItem button><ListItemText primary="Gallery" sx={{ color: "white" }} /></ListItem>
-          <ListItem button><ListItemText primary="Pricing" sx={{ color: "white" }} /></ListItem>
-          <ListItem button><ListItemText primary="About" sx={{ color: "white" }} /></ListItem>
-          <ListItem button><ListItemText primary="Contact" sx={{ color: "white" }} /></ListItem>
+          {["Gallery", "Pricing", "About", "Reviews", "Contact"].map((text) => (
+            <ListItem button key={text}>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
     </>
