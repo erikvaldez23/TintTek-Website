@@ -15,7 +15,7 @@ function App() {
       <div>
         <Routes>
           <Route 
-            path="/" 
+            path="/TintTek-Website/" 
             element={
               <>
                 <Topbar />
