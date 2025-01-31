@@ -1,0 +1,97 @@
+/* Services Section */
+.services-section {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+    background: #e3eff4; /* Dark background for contrast */
+    color: #000;
+  }
+  
+  /* Section Header */
+  .services-section h2 {
+    font-size: 2rem;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .services-intro {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #000;
+  }
+  
+  /* Grid Layout for Services */
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Individual Service Card */
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 10px;
+  }
+  
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+/* Service Overlay - Always Visible */
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Slightly transparent dark overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1; /* Make sure it's always visible */
+    transition: none; /* Remove hover effect */
+  }
+  
+  /* Increase Visibility of Text */
+  .service-overlay h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .service-overlay p {
+    font-size: 1.1rem;
+    color: #fff;
+  }  
+  /* Hover Effect */
+  .service-card:hover .service-overlay {
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .service-card:hover .service-image {
+    transform: scale(1.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .services-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .services-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
