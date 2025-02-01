@@ -158,14 +158,15 @@ const ServicePage = () => {
             variant="contained"
             sx={{
               mt: 3,
-              backgroundColor: "#ffcc00",
+              backgroundColor: "#007BFF",
               color: "#000",
               fontWeight: "bold",
               padding: "12px 24px",
-              borderRadius: "8px",
+              border: "5px solid #000",
+              boderRadius: "10px",
               fontSize: "1.1rem",
               "&:hover": {
-                backgroundColor: "#ffdb4d",
+                backgroundColor: "#fff",
               },
             }}
           >
