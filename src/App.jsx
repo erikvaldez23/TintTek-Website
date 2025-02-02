@@ -12,6 +12,8 @@ import PricingComponent from './components/Pricing';
 import ServicesPage from './components/ServicesPage';
 import Chatbot from './ChatBot';
 import TintSelector from './components/TintSelector';
+import TintedCar from './components/TintedCar';
+import WhyChooseUs from './components/WhyChooseUs'
 
 const theme = createTheme({
     palette: {
@@ -35,7 +37,9 @@ function App() {
               <>
                 <Hero />
                 <Services />
-                <TintSelector />
+                {/* <TintSelector /> */}
+                {/* <TintedCar />  */}
+                <WhyChooseUs />
                 <Testimonials />
                 <Vision />
                 <PricingComponent />
