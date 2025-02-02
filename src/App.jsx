@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import './App.css';
 import Topbar from './components/Topbar';
 import Hero from './components/Hero';
@@ -8,33 +9,47 @@ import Contact from './components/Contact';
 import Vision from './components/Vision';
 import Footer from './components/Footer';
 import PricingComponent from './components/Pricing';
-import ServicesPage from './components/ServicesPage'; // Import the dynamic service page
+import ServicesPage from './components/ServicesPage';
+import Chatbot from './ChatBot';
+import TintSelector from './components/TintSelector';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#007bff",
+        },
+    },
+});
 
 function App() {
   return (
-    <Router basename="/TintTek-Website"> {/* ✅ Set basename for GitHub Pages */}
-      <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
-      <Routes className="App">
-        {/* ✅ Home Page Route */}
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Hero />
-              <Services />
-              <Testimonials />
-              <Vision />
-              <PricingComponent />
-              <Contact />
-              <Footer />
-            </>
-          } 
-        />
-
-        {/* ✅ Dynamic Route for Individual Service Pages */}
-        <Route path="/services/:serviceId" element={<ServicesPage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router basename="/TintTek-Website"> {/* ✅ Set basename for GitHub Pages */}
+        <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
+        <Routes className="App">
+          {/* ✅ Home Page Route */}
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Hero />
+                <Services />
+                <TintSelector />
+                <Testimonials />
+                <Vision />
+                <PricingComponent />
+                <Contact />
+                <Footer />
+              </>
+            } 
+          />
+          {/* ✅ Dynamic Route for Individual Service Pages */}
+          <Route path="/services/:serviceId" element={<ServicesPage />} />
+        </Routes>
+        <Chatbot /> {/* ✅ Keep chatbot outside of <Routes> to persist across all pages */}
+      </Router>
+    </ThemeProvider>
   );
 }
 
