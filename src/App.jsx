@@ -14,6 +14,8 @@ import Chatbot from './ChatBot';
 import TintSelector from './components/TintSelector';
 import TintedCar from './components/TintedCar';
 import WhyChooseUs from './components/WhyChooseUs'
+import Gallery from './components/Gallery';
+import ScrollToTop from './components/ScrollToTop'
 
 const theme = createTheme({
     palette: {
@@ -28,6 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router basename="/TintTek-Website"> {/* ✅ Set basename for GitHub Pages */}
+        <ScrollToTop />
         <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
         <Routes className="App">
           {/* ✅ Home Page Route */}
@@ -50,6 +53,7 @@ function App() {
           />
           {/* ✅ Dynamic Route for Individual Service Pages */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
         <Chatbot /> {/* ✅ Keep chatbot outside of <Routes> to persist across all pages */}
       </Router>

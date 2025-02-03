@@ -37,19 +37,22 @@ const Topbar = () => {
 
   // Detect Scroll Position
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolling(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolling(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Re-added Function to Open Services Dropdown
+  // Open and Close the Dropdown Menu
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
 
-  // Scroll to section smoothly
+  // Scroll to Section (Except Gallery)
   const scrollToSection = (sectionId) => {
+    if (sectionId === "gallery") {
+      navigate("/gallery"); // Navigate to /gallery instead of scrolling
+      return;
+    }
+
     if (location.pathname !== "/") {
       navigate(`/#${sectionId}`);
       return;
@@ -63,7 +66,8 @@ const Topbar = () => {
     const duration = 1000;
     let startTime = null;
 
-    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const easeInOutQuad = (t) =>
+      t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
     const animation = (currentTime) => {
       if (!startTime) startTime = currentTime;
@@ -80,7 +84,7 @@ const Topbar = () => {
     requestAnimationFrame(animation);
   };
 
-  // ✅ Navigate to Service Pages Instead of Scrolling
+  // Navigate to a Service Page
   const handleServiceClick = (serviceId) => {
     navigate(`/services/${serviceId}`);
     handleMenuClose();
@@ -103,13 +107,19 @@ const Topbar = () => {
       >
         <Toolbar sx={{ justifyContent: "center" }}>
           <NavbarContainer>
-            <Box display="flex" alignItems="center" sx={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+            {/* Logo */}
+            <Box
+              display="flex"
+              alignItems="center"
+              sx={{ cursor: "pointer", "&:hover": { transform: "scale(1.03)" } }}
+              onClick={() => navigate("/")}
+            >
               <img src={logo} alt="Logo" style={{ height: "50px", marginRight: "10px" }} />
             </Box>
 
             {!isMobile ? (
               <Box display="flex" gap={3}>
-                {/* ✅ Services Dropdown */}
+                {/* Services Dropdown */}
                 <Button
                   color="inherit"
                   onClick={handleMenuOpen}
@@ -125,6 +135,7 @@ const Topbar = () => {
                   Services ▾
                 </Button>
 
+                {/* Navigation Links */}
                 {[
                   { name: "Gallery", id: "gallery" },
                   { name: "Pricing", id: "pricing" },
@@ -158,7 +169,7 @@ const Topbar = () => {
         </Toolbar>
       </AppBar>
 
-      {/* ✅ Services Dropdown Menu (Now Working) */}
+      {/* Services Dropdown Menu */}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
         {[
           { name: "Vehicle Window Tinting", id: "vehicle-window-tinting" },

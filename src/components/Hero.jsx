@@ -47,7 +47,7 @@ const Hero = () => {
         </div>
 
         {/* Subhero Overlay */}
-        {/* <Subhero /> */}
+        <Subhero />
 
         {/* Quote Form Modal */}
         <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>

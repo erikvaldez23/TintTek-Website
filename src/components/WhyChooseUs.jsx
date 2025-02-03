@@ -12,7 +12,7 @@ export default function WhyChooseUs() {
             details: "We use only the highest-quality films that provide superior clarity, durability, and performance. Our professional-grade tint ensures a sleek finish without bubbles or peeling.",
         },
         {
-            text: "99% UV Protection",
+            text: "UV Protection",
             color: "#45A9F7",
             details: "Our premium window films block up to 99% of harmful UV rays, protecting you and your passengers from skin damage while also preserving your car's interior from fading and cracking.",
         },
@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
         }}
     >
         {/* Existing Content */}
-        <Typography variant="h3" fontWeight="bold" gutterBottom sx={{ color: "#007bff" }}>
+        <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ color: "#007bff" }}>
             Why Choose Us?
         </Typography>
 
@@ -129,7 +129,8 @@ export default function WhyChooseUs() {
                 color: "#fff",
                 borderRadius: "20px",
                 fontWeight: "bold",
-                "&:hover": { backgroundColor: "#000" },
+                padding: "10px 20px",
+                "&:hover": { backgroundColor: "#000", border: "2px solid #fff" },
             }}
         >
             Get a Free Quote
