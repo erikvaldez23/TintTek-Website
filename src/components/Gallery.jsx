@@ -22,8 +22,17 @@ const images = [
   "/TintTek-Website/picture5.jpeg",
   "/TintTek-Website/picture6.jpeg",
   "/TintTek-Website/picture7.jpeg",
-  "/TintTek-Website/picture8.jpeg",
   "/TintTek-Website/picture9.jpeg",
+  "/TintTek-Website/picture1.jpeg",
+  "/TintTek-Website/picture2.jpeg",
+  "/TintTek-Website/picture3.jpeg",
+  "/TintTek-Website/picture4.jpeg",
+  "/TintTek-Website/picture5.jpeg",
+  "/TintTek-Website/picture6.jpeg",
+  "/TintTek-Website/picture7.jpeg",
+  "/TintTek-Website/picture9.jpeg",
+  "/TintTek-Website/picture1.jpeg",
+  "/TintTek-Website/picture2.jpeg",
 ];
 
 const Gallery = () => {
@@ -177,7 +186,7 @@ const Gallery = () => {
             variant="contained"
             size="large"
             sx={{
-                mt: 5,
+                mt: 10,
                 backgroundColor: "#007bff",
                 color: "#fff",
                 borderRadius: "20px",

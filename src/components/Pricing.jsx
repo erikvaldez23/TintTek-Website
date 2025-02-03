@@ -1,7 +1,18 @@
 import React, { useState } from "react";
-import { Box, Container, Typography, Grid, Fade } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Fade,
+  ToggleButton,
+  ToggleButtonGroup,
+  Tooltip,
+} from "@mui/material";
+import { FaCarSide, FaTint, FaSun, FaShieldAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-// Pricing Data (Changes Based on Selection)
+// Pricing Data
 const pricingData = {
   COUPE: { ATC: "$179.00", CTX: "$229.00", IRX: "$279.00" },
   SEDAN: { ATC: "$199.00", CTX: "$259.00", IRX: "$309.00" },
@@ -9,54 +20,112 @@ const pricingData = {
   "2 WINDOWS": { ATC: "$99.00", CTX: "$129.00", IRX: "$149.00" },
 };
 
-// Descriptions (Same for All Selections)
+// Feature Descriptions
 const descriptions = {
   ATC: [
     "Budget-friendly dyed tint",
-    "Blocks 99% of harmful UV rays",
-    "Adds privacy and reduces glare",
+    "Blocks 99% of UV rays",
+    "Adds privacy & reduces glare",
   ],
-  CTX: [
-    "Ceramic automotive tint",
-    "Blocks 99% of harmful UV rays",
-    "Reduces heat from the sun",
-  ],
+  CTX: ["Ceramic automotive tint", "99% UV ray block", "Reduces heat from sun"],
   IRX: [
     "Nano-ceramic construction",
-    "Blocks 99% of harmful UV rays",
-    "Best heat reduction option we offer",
+    "Best heat reduction",
+    "Superior clarity & comfort",
   ],
 };
 
-// Selection Options
 const pricingOptions = ["COUPE", "SEDAN", "FULL SUV", "2 WINDOWS"];
 
 const PricingComponent = () => {
   const [selectedOption, setSelectedOption] = useState("COUPE");
-  const [fadeIn, setFadeIn] = useState(true); // Controls fade effect
+  const [fadeIn, setFadeIn] = useState(true);
+  const [pricingType, setPricingType] = useState("one-time"); // Monthly or Yearly
 
-  // Handles user selection with animation
+  // Handles selection change
   const handleOptionChange = (option) => {
-    setFadeIn(false); // Fade out current price
+    setFadeIn(false);
     setTimeout(() => {
       setSelectedOption(option);
-      setFadeIn(true); // Fade in new price
-    }, 200); // Delay for smooth transition
+      setFadeIn(true);
+    }, 200);
   };
 
   return (
-    <Box id ="pricing"sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
+    <Box
+      id="pricing"
+      sx={{
+        py: 8,
+        textAlign: "center",
+        backgroundColor: "#111",
+        color: "#fff",
+      }}
+    >
       <Container maxWidth="lg">
         {/* Title */}
-        <Typography variant="h4" fontWeight="bold" sx={{ mb: 3, textTransform: "uppercase" }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          sx={{ mb: 3, textTransform: "uppercase", color: "#007BFF" }}
+        >
           Car Window Tint Pricing
         </Typography>
 
-        {/* Pricing Selection Tabs */}
-        <Grid container spacing={0} sx={{ borderBottom: "2px solid #ddd" }}>
+        {/* Toggle for One-Time vs Monthly */}
+        {/* Toggle for One-Time vs Monthly */}
+        <ToggleButtonGroup
+          value={pricingType}
+          exclusive
+          onChange={(e, newType) => newType && setPricingType(newType)}
+          sx={{ mb: 4, background: "#222", borderRadius: "8px", p: 1 }}
+        >
+          <ToggleButton
+            value="one-time"
+            sx={{
+              color: "#fff",
+              fontWeight: "bold",
+              transition: "all 0.3s ease-in-out",
+              "&.Mui-selected": {
+                backgroundColor: "#007BFF",
+                color: "white",
+              },
+              "&:hover": {
+                backgroundColor: "#000",
+                color: "#fff",
+                border: "2px solid #fff",
+              },
+            }}
+          >
+            One-Time Payment
+          </ToggleButton>
+
+          <ToggleButton
+            value="monthly"
+            sx={{
+              color: "#fff",
+              fontWeight: "bold",
+              transition: "all 0.3s ease-in-out",
+              "&.Mui-selected": {
+                backgroundColor: "#007BFF",
+                color: "white",
+              },
+              "&:hover": {
+                backgroundColor: "#000",
+                color: "#fff",
+                border: "2px solid #fff",
+              },
+            }}
+          >
+            Monthly Plan
+          </ToggleButton>
+        </ToggleButtonGroup>
+
+        {/* Pricing Tabs */}
+        <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
           {pricingOptions.map((option) => (
             <Grid
-              item xs={3}
+              item
+              xs={3}
               key={option}
               sx={{
                 textAlign: "center",
@@ -64,13 +133,16 @@ const PricingComponent = () => {
                 fontWeight: "bold",
                 textTransform: "uppercase",
                 cursor: "pointer",
-                borderBottom: selectedOption === option ? "4px solid #2196F3" : "none",
-                backgroundColor: selectedOption === option ? "#2196F3" : "transparent",
-                color: selectedOption === option ? "white" : "#333",
+                borderBottom:
+                  selectedOption === option ? "4px solid #007BFF" : "none",
+                backgroundColor:
+                  selectedOption === option ? "#007BFF" : "transparent",
+                color: selectedOption === option ? "white" : "#ddd",
                 transition: "all 0.3s ease-in-out",
                 "&:hover": {
-                  backgroundColor: selectedOption === option ? "#2196F3" : "#f0f0f0", // FIXED: Selected tab stays blue
-                  color: selectedOption === option ? "white" : "#000", // Text remains visible
+                  backgroundColor:
+                    selectedOption === option ? "#007BFF" : "#222",
+                  color: "white",
                 },
               }}
               onClick={() => handleOptionChange(option)}
@@ -80,38 +152,88 @@ const PricingComponent = () => {
           ))}
         </Grid>
 
-        {/* Pricing Content - Three Column Layout with Animation */}
+        {/* Pricing Cards */}
         <Fade in={fadeIn} timeout={500}>
           <Grid container spacing={3} sx={{ mt: 3 }}>
             {["ATC", "CTX", "IRX"].map((tint, index) => (
-              <Grid item xs={4} key={index}>
-                <Box sx={{ textAlign: "center", p: 3, border: "1px solid #ddd", borderRadius: 2 }}>
-                  {/* Tint Name */}
-                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", color: "#007BFF" }}>
-                    LLUMAR {tint}
-                  </Typography>
-
-                  {/* Dynamic Price with Fade Animation */}
-                  <Typography
-                    variant="h5"
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Box
                     sx={{
-                      fontWeight: "bold",
-                      mt: 1,
-                      transition: "opacity 0.3s ease-in-out",
+                      textAlign: "center",
+                      p: 3,
+                      border: "2px solid #444",
+                      borderRadius: 4,
+                      background: "rgba(255,255,255,0.1)",
+                      backdropFilter: "blur(10px)",
+                      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
                     }}
                   >
-                    {pricingData[selectedOption][tint]}
-                  </Typography>
+                    {/* Tint Name */}
+                    <Typography
+                      variant="h6"
+                      sx={{ fontWeight: "bold", color: "#007BFF", mb: 1 }}
+                    >
+                      LLUMAR {tint}
+                    </Typography>
 
-                  {/* Static Description */}
-                  <Box sx={{ mt: 2 }}>
-                    {descriptions[tint].map((feature, i) => (
-                      <Typography key={i} variant="body2" sx={{ mb: 1, color: "#555" }}>
-                        {feature}
-                      </Typography>
-                    ))}
+                    {/* Dynamic Pricing */}
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: "bold",
+                        transition: "opacity 0.3s ease-in-out",
+                        color:
+                          pricingType === "monthly" ? "#FFB400" : "#00FF99",
+                        "$:hover:": {
+                          backgroundColor: "#000",
+                          color: "#fff",
+                          border: "2px solid #fff",
+                        },
+                      }}
+                    >
+                      {pricingType === "monthly"
+                        ? `$${(
+                            parseFloat(
+                              pricingData[selectedOption][tint].replace("$", "")
+                            ) / 12
+                          ).toFixed(2)}/mo`
+                        : pricingData[selectedOption][tint]}
+                    </Typography>
+
+                    {/* Features with Tooltips */}
+                    <Box sx={{ mt: 2 }}>
+                      {descriptions[tint].map((feature, i) => (
+                        <Tooltip key={i} title="More info" arrow>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              mb: 1,
+                              color: "#ccc",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {i === 0 ? (
+                              <FaCarSide style={{ marginRight: "5px" }} />
+                            ) : null}
+                            {i === 1 ? (
+                              <FaSun style={{ marginRight: "5px" }} />
+                            ) : null}
+                            {i === 2 ? (
+                              <FaShieldAlt style={{ marginRight: "5px" }} />
+                            ) : null}
+                            {feature}
+                          </Typography>
+                        </Tooltip>
+                      ))}
+                    </Box>
                   </Box>
-                </Box>
+                </motion.div>
               </Grid>
             ))}
           </Grid>

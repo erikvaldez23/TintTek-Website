@@ -75,7 +75,7 @@ export default function Chatbot() {
           <ChatIcon />
         </IconButton>
       )}
-
+  
       {open && (
         <Paper
           elevation={6}
