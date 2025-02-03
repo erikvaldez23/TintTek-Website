@@ -181,26 +181,31 @@ const Gallery = () => {
         </Grid>
 
         {/* See More Button */}
-        <Box sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <Button
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+        >
+          <Button
             variant="contained"
             size="large"
             sx={{
-                mt: 10,
-                backgroundColor: "#007bff",
-                color: "#fff",
-                borderRadius: "20px",
-                fontWeight: "bold",
-                fontSize: "1.3rem",
-                padding: "10px 30px",
-                "&:hover": { 
-                  backgroundColor: "#000", 
-                  border: "5px solid #fff" 
-                },
+              mt: 10,
+              backgroundColor: "#007bff",
+              color: "#fff",
+              borderRadius: "20px",
+              fontWeight: "bold",
+              fontSize: "1.3rem",
+              padding: "10px 30px",
+              "&:hover": {
+                backgroundColor: "#000",
+                border: "5px solid #fff",
+              },
             }}
-        >
+            href="https://www.instagram.com/tinttekplus/" // Replace with actual Instagram link
+            target="_blank" // Opens in a new tab
+            rel="noopener noreferrer" // Security best practice
+          >
             SEE MORE PHOTOS ON INSTAGRAM
-        </Button>
+          </Button>
         </Box>
       </Box>
 
