@@ -5,6 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import BusinessInfo from "./BusinessInfo"; // Import BusinessInfo
 import Subhero from "./Subhero"; // Import Subhero
 import video from "../../public/car.mp4";
+import SubIcons from './SubIcons'
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
@@ -47,7 +48,8 @@ const Hero = () => {
         </div>
 
         {/* Subhero Overlay */}
-        <Subhero />
+        {/* <Subhero /> */}
+        <SubIcons />
 
         {/* Quote Form Modal */}
         <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
@@ -70,7 +72,7 @@ const Hero = () => {
             <iframe
               src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
               width="100%"
-              height="600px"
+              height="800px"
               style={{ border: "none" }}
               title="Fast Quote"
             ></iframe>

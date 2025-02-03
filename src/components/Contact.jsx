@@ -198,9 +198,12 @@ const Contact = () => {
         type="submit"
         variant="contained"
         sx={{
-          backgroundColor: "#222",
+          backgroundColor: "#007bff",
           color: "white",
-          "&:hover": { backgroundColor: "#333" },
+          "&:hover": { 
+            backgroundColor: "#000",
+            color: "#fff",
+          },
         }}
       >
         Send Message

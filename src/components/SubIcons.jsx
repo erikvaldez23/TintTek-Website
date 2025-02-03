@@ -8,11 +8,9 @@ const SubIcons = () => {
       <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
         <FaInstagram />
       </a>
-      <div className="divider"></div>
       <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
         <FaFacebookF />
       </a>
-      <div className="divider"></div>
       <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="social-icon">
         <FaTiktok />
       </a>

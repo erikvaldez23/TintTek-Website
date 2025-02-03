@@ -35,7 +35,7 @@ const Testimonials = () => {
   return (
     <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
       <Container maxWidth="xl"> {/* ✅ Keeps section centered & max width 1200px */}
-        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold", paddingBottom: "30px" }}>
           What Our Customers Say (Google Reviews)
         </Typography>
 
@@ -131,17 +131,21 @@ const Testimonials = () => {
             color: "white",
             fontWeight: "bold",
             padding: "10px 20px",
-            borderRadius: "8px",
+            borderRadius: "20px",
             textTransform: "none",
             fontSize: "0.9rem",
             transition: "0.3s",
-            "&:hover": { backgroundColor: "#357ae8" },
+            "&:hover": { 
+              backgroundColor: "#fff", 
+              border: "5px solid #000", 
+              color:"#000" 
+            },
           }}
           href={GOOGLE_REVIEWS_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
-          View More Reviews on Google
+          VIEW MORE REVIEWS ON GOOGLE
         </Button>
       </Container>
     </Box>

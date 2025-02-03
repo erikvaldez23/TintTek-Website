@@ -119,8 +119,7 @@ export default function WhyChooseUs() {
             ))}
         </Grid>
 
-        {/* Call-To-Action (CTA) */}
-        <Button
+        {/* <Button
             variant="contained"
             size="large"
             sx={{
@@ -130,11 +129,11 @@ export default function WhyChooseUs() {
                 borderRadius: "20px",
                 fontWeight: "bold",
                 padding: "10px 20px",
-                "&:hover": { backgroundColor: "#000", border: "2px solid #fff" },
+                "&:hover": { backgroundColor: "#000", border: "5px solid #fff" },
             }}
         >
             Get a Free Quote
-        </Button>
+        </Button> */}
     </Box>
 </Box>
 
