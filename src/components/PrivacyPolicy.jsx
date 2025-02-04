@@ -35,9 +35,6 @@ const PrivacyPolicy = () => {
         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
           Privacy Policy
         </Typography>
-        <Typography variant="h6" sx={{ maxWidth: "600px", opacity: 0.8 }}>
-          Learn how we handle your data with transparency and care.
-        </Typography>
       </Box>
 
       {/* Main Content - Expands to Fit Content */}
