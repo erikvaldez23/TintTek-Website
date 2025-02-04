@@ -16,6 +16,7 @@ import TintedCar from './components/TintedCar';
 import WhyChooseUs from './components/WhyChooseUs'
 import Gallery from './components/Gallery';
 import ScrollToTop from './components/ScrollToTop'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 const theme = createTheme({
     palette: {
@@ -54,6 +55,7 @@ function App() {
           {/* ✅ Dynamic Route for Individual Service Pages */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <Chatbot /> {/* ✅ Keep chatbot outside of <Routes> to persist across all pages */}
       </Router>
