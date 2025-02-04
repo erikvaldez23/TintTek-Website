@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Fade,
-  ToggleButton,
-  ToggleButtonGroup,
-  Tooltip,
-} from "@mui/material";
-import { FaCarSide, FaTint, FaSun, FaShieldAlt } from "react-icons/fa";
+import { Box, Container, Typography, Grid, Fade, Tooltip } from "@mui/material";
+import { FaCarSide, FaSun, FaShieldAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 // Pricing Data
@@ -40,7 +31,6 @@ const pricingOptions = ["COUPE", "SEDAN", "FULL SUV", "2 WINDOWS"];
 const PricingComponent = () => {
   const [selectedOption, setSelectedOption] = useState("COUPE");
   const [fadeIn, setFadeIn] = useState(true);
-  const [pricingType, setPricingType] = useState("one-time"); // Monthly or Yearly
 
   // Handles selection change
   const handleOptionChange = (option) => {
@@ -70,55 +60,6 @@ const PricingComponent = () => {
         >
           Car Window Tint Pricing
         </Typography>
-
-        {/* Toggle for One-Time vs Monthly */}
-        {/* Toggle for One-Time vs Monthly */}
-        <ToggleButtonGroup
-          value={pricingType}
-          exclusive
-          onChange={(e, newType) => newType && setPricingType(newType)}
-          sx={{ mb: 4, background: "#222", borderRadius: "8px", p: 1 }}
-        >
-          <ToggleButton
-            value="one-time"
-            sx={{
-              color: "#fff",
-              fontWeight: "bold",
-              transition: "all 0.3s ease-in-out",
-              "&.Mui-selected": {
-                backgroundColor: "#007BFF",
-                color: "white",
-              },
-              "&:hover": {
-                backgroundColor: "#000",
-                color: "#fff",
-                border: "2px solid #fff",
-              },
-            }}
-          >
-            One-Time Payment
-          </ToggleButton>
-
-          <ToggleButton
-            value="monthly"
-            sx={{
-              color: "#fff",
-              fontWeight: "bold",
-              transition: "all 0.3s ease-in-out",
-              "&.Mui-selected": {
-                backgroundColor: "#007BFF",
-                color: "white",
-              },
-              "&:hover": {
-                backgroundColor: "#000",
-                color: "#fff",
-                border: "2px solid #fff",
-              },
-            }}
-          >
-            Monthly Plan
-          </ToggleButton>
-        </ToggleButtonGroup>
 
         {/* Pricing Tabs */}
         <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
@@ -180,28 +121,16 @@ const PricingComponent = () => {
                       LLUMAR {tint}
                     </Typography>
 
-                    {/* Dynamic Pricing */}
+                    {/* Static Pricing (Only One-Time Payment) */}
                     <Typography
                       variant="h4"
                       sx={{
                         fontWeight: "bold",
                         transition: "opacity 0.3s ease-in-out",
-                        color:
-                          pricingType === "monthly" ? "#FFB400" : "#00FF99",
-                        "$:hover:": {
-                          backgroundColor: "#000",
-                          color: "#fff",
-                          border: "2px solid #fff",
-                        },
+                        color: "#00FF99",
                       }}
                     >
-                      {pricingType === "monthly"
-                        ? `$${(
-                            parseFloat(
-                              pricingData[selectedOption][tint].replace("$", "")
-                            ) / 12
-                          ).toFixed(2)}/mo`
-                        : pricingData[selectedOption][tint]}
+                      {pricingData[selectedOption][tint]}
                     </Typography>
 
                     {/* Features with Tooltips */}
