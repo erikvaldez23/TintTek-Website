@@ -1,5 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import { useMediaQuery } from "@mui/material";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./Services.css";
 
 const servicesData = [
@@ -42,11 +46,24 @@ const servicesData = [
 ];
 
 const Services = () => {
-  const navigate = useNavigate(); // Hook to handle navigation
+  const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
   const handleServiceClick = (serviceId) => {
-    navigate(`/services/${serviceId}`); // Navigate to the unique service page
+    navigate(`/services/${serviceId}`);
   };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,  // ✅ Ensure arrows are enabled
+    prevArrow: <div className="slick-custom-prev">◀</div>,
+    nextArrow: <div className="slick-custom-next">▶</div>,
+  };
+  
 
   return (
     <section className="services-section">
@@ -55,17 +72,41 @@ const Services = () => {
         Premium automotive care to enhance, protect, and maintain your vehicle.
       </p>
 
-      <div className="services-container">
-        {servicesData.map((service) => (
-          <div key={service.id} className="service-card" onClick={() => handleServiceClick(service.id)}>
-            <img src={service.image} alt={service.title} className="service-image" />
-            <div className="service-overlay">
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
+      {isMobile ? (
+        /** 🎠 Carousel on Mobile */
+        <Slider {...sliderSettings} className="services-slider">
+          {servicesData.map((service) => (
+            <div
+              key={service.id}
+              className="service-card"
+              onClick={() => handleServiceClick(service.id)}
+            >
+              <img src={service.image} alt={service.title} className="service-image" />
+              <div className="service-overlay">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </Slider>
+      ) : (
+        /** 🖥️ Grid Layout on Desktop */
+        <div className="services-container">
+          {servicesData.map((service) => (
+            <div
+              key={service.id}
+              className="service-card"
+              onClick={() => handleServiceClick(service.id)}
+            >
+              <img src={service.image} alt={service.title} className="service-image" />
+              <div className="service-overlay">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

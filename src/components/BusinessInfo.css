@@ -6,36 +6,39 @@
     width: 100%;
     max-width: 1200px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 10px 16px;
+    flex-wrap: wrap; /* Allow wrapping */
+    padding: 10px 20px;
     color: white;
     text-align: center;
     background: transparent;
     z-index: 10;
-    font-family: "Poppins", sans-serif; /* Apply Poppins to entire component */
-    font-size: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
     font-weight: 500;
+    gap: 10px;
 }
 
 /* Targets icons inside the business info */
 .business-info-overlay svg {
-    font-size: 1.5rem;
-    margin-right: 8px;
+    font-size: 1.2rem;
+    margin-right: 6px;
 }
 
-/* Ensures items don’t collapse on smaller screens */
-.business-info-overlay > * {
+/* Ensures items adjust properly */
+.business-info-item {
     flex: 1;
-    min-width: 180px;
+    min-width: 160px; /* Adjusted to prevent overlap */
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Responsive Design */
+/* ✅ Hide the component on smaller screens */
 @media (max-width: 768px) {
     .business-info-overlay {
-        flex-direction: column;
-        gap: 8px;
+        display: none; /* Hides the component completely */
     }
 }
