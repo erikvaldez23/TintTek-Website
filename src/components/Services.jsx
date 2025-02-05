@@ -62,7 +62,7 @@ const Services = () => {
   };
 
   return (
-    <Box sx={{ py: 6, textAlign: "center", backgroundColor: "#000", color: "#fff" }}>
+    <Box id="services" sx={{ py: 6, textAlign: "center", backgroundColor: "#000", color: "#fff" }}>
       <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
         TINTEK+ SERVICES
       </Typography>

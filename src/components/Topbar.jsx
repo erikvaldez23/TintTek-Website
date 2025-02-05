@@ -10,6 +10,8 @@ import {
   ListItem,
   ListItemText,
   Button,
+  Dialog,
+  DialogContent,
 } from "@mui/material";
 import {
   FaBars,
@@ -34,6 +36,7 @@ const NavbarContainer = styled(Box)({
 const Topbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false); // 🏆 New State for Modal
   const isMobile = window.innerWidth <= 900;
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,6 +64,16 @@ const Topbar = () => {
 
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
+  };
+
+  // 🏆 Handlers for Modal
+  const handleOpenQuote = () => {
+    setQuoteOpen(true);
+    setDrawerOpen(false); // Close the mobile menu when opening the modal
+  };
+
+  const handleCloseQuote = () => {
+    setQuoteOpen(false);
   };
 
   return (
@@ -100,32 +113,37 @@ const Topbar = () => {
               </IconButton>
             ) : (
               <Box display="flex" gap={3}>
-                {["Gallery", "Pricing", "About", "Reviews", "Contact"].map(
-                  (item) => (
-                    <Button
-                      key={item}
-                      color="inherit"
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      sx={{
-                        fontFamily: "Poppins, sans-serif",
-                        fontSize: "16px",
-                        fontWeight: 500,
-                        letterSpacing: "0.5px",
-                        transition: "color 0.3s",
-                        "&:hover": { color: "#007bff" },
-                      }}
-                    >
-                      {item}
-                    </Button>
-                  )
-                )}
+                {[
+                  "Services",
+                  "Gallery",
+                  "Pricing",
+                  "About",
+                  "Reviews",
+                  "Contact",
+                ].map((item) => (
+                  <Button
+                    key={item}
+                    color="inherit"
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    sx={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      letterSpacing: "0.5px",
+                      transition: "color 0.3s",
+                      "&:hover": { color: "#007bff" },
+                    }}
+                  >
+                    {item}
+                  </Button>
+                ))}
               </Box>
             )}
           </NavbarContainer>
         </Toolbar>
       </AppBar>
 
-      {/* 🏆 Mobile Drawer (Full-Screen, Sliding from Top) */}
+      {/* 🏆 Mobile Drawer */}
       <Drawer
         anchor="top"
         open={drawerOpen}
@@ -139,7 +157,7 @@ const Topbar = () => {
             minHeight: "90vh", // Ensure it takes up the full height
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around", // Evenly distribute content
+            justifyContent: "space-around",
             alignItems: "center",
             textAlign: "center",
             padding: "5vh 0",
@@ -158,7 +176,14 @@ const Topbar = () => {
 
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
-          {["Gallery", "Pricing", "About", "Reviews", "Contact"].map((item) => (
+          {[
+            "Services",
+            "Gallery",
+            "Pricing",
+            "About",
+            "Reviews",
+            "Contact",
+          ].map((item) => (
             <ListItem
               button
               key={item}
@@ -168,7 +193,7 @@ const Topbar = () => {
                 primary={item}
                 primaryTypographyProps={{
                   sx: {
-                    fontSize: "32px", // Force font size
+                    fontSize: "32px",
                     fontWeight: "bold",
                     color: "white",
                     textTransform: "uppercase",
@@ -181,48 +206,56 @@ const Topbar = () => {
           ))}
         </List>
 
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-  {/* Get a Quote Button */}
-  <Button
-    variant="contained"
-    sx={{
-      backgroundColor: "#007bff",
-      color: "black",
-      fontSize: "22px",
-      fontWeight: "bold",
-      borderRadius: "40px",
-      minWidth: "250px", // Ensures same width
-      height: "60px", // Ensures same height
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      textTransform: "none",
-    }}
-  >
-    GET A QUOTE
-  </Button>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          {/* Get a Quote Button */}
+          <Button
+            variant="contained"
+            onClick={handleOpenQuote}
+            sx={{
+              backgroundColor: "#007bff",
+              color: "black",
+              fontSize: "22px",
+              fontWeight: "bold",
+              borderRadius: "40px",
+              minWidth: "100%", // Ensures same width
+              height: "60px", // Ensures same height
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none",
+            }}
+          >
+            GET A QUOTE
+          </Button>
 
-  {/* Ask a Question Button */}
-  <Button
-    variant="contained"
-    sx={{
-      mt: 2,
-      backgroundColor: "#222",
-      color: "white",
-      fontSize: "22px",
-      fontWeight: "bold",
-      borderRadius: "40px",
-      minWidth: "250px", // Same width as the first button
-      height: "60px", // Same height as the first button
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      textTransform: "none",
-    }}
-  >
-    ASK A QUESTION
-  </Button>
-</Box>
+          {/* Ask a Question Button */}
+          <Button
+            variant="contained"
+            sx={{
+              mt: 2,
+              backgroundColor: "#222",
+              color: "white",
+              fontSize: "22px",
+              fontWeight: "bold",
+              borderRadius: "40px",
+              minWidth: "100%", // Same width as the first button
+              height: "60px", // Same height as the first button
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none",
+            }}
+          >
+            ASK A QUESTION
+          </Button>
+        </Box>
 
 
         {/* Social Media Icons */}
@@ -234,6 +267,34 @@ const Topbar = () => {
           ))}
         </Box>
       </Drawer>
+
+      {/* 🏆 Quote Form Modal */}
+      <Dialog open={quoteOpen} onClose={handleCloseQuote} maxWidth="md" fullWidth>
+        <DialogContent sx={{ position: "relative", padding: 0 }}>
+          {/* Close Button */}
+          <IconButton
+            onClick={handleCloseQuote}
+            sx={{
+              position: "absolute",
+              top: 10,
+              right: 10,
+              backgroundColor: "white",
+              "&:hover": { backgroundColor: "lightgray" },
+            }}
+          >
+            <FaTimes />
+          </IconButton>
+
+          {/* Embedded Quote Form */}
+          <iframe
+            src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+            width="100%"
+            height="800px"
+            style={{ border: "none" }}
+            title="Fast Quote"
+          ></iframe>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
