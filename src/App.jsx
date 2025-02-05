@@ -53,12 +53,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/TintTek-Website"> {/* ✅ Set basename for GitHub Pages */}
+      <Router basename="/TintTek-Website"> 
         <ScrollToTop />
         <ScrollHandler />  {/* ✅ New component to handle scrolling */}
         <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
         <Routes className="App">
-          {/* ✅ Home Page Route */}
           <Route 
             path="/" 
             element={
