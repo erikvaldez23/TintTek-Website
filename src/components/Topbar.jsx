@@ -153,7 +153,7 @@ const Topbar = () => {
           "& .MuiDrawer-paper": {
             backgroundColor: "black",
             color: "white",
-            width: "100vw",
+            width: "100%",
             minHeight: "100dvh", // Ensure full screen, even with Safari URL bar
             display: "flex",
             flexDirection: "column",
@@ -194,25 +194,24 @@ const Topbar = () => {
               onClick={() => scrollToSection(item.toLowerCase())}
             >
               <ListItemText
-  primary={item}
-  primaryTypographyProps={{
-    sx: {
-      fontWeight: "bold",
-      color: "white",
-      textTransform: "uppercase",
-      textAlign: "center",
-      fontSize: "35px", // Default font size
-      "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-      "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-      "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-      "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-      "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-      "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-      "&:hover": { color: "#d4c1a5" },
-    },
-  }}
-/>
-
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontWeight: "bold",
+                    color: "white",
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                    fontSize: "35px", // Default font size
+                    "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
+                    "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
+                    "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
+                    "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
+                    "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
+                    "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
+                    "&:hover": { color: "#d4c1a5" },
+                  },
+                }}
+              />
             </ListItem>
           ))}
         </List>
