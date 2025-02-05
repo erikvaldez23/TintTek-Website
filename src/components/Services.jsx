@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import { useMediaQuery } from "@mui/material";
+import { Box, Grid, Card, CardMedia, CardContent, Typography, useMediaQuery, Container } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./Services.css";
 
 const servicesData = [
   {
@@ -59,55 +58,110 @@ const Services = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,  // ✅ Ensure arrows are enabled
-    prevArrow: <div className="slick-custom-prev">◀</div>,
-    nextArrow: <div className="slick-custom-next">▶</div>,
+    arrows: true,
   };
-  
 
   return (
-    <section className="services-section">
-      <h2>TINTEK+ SERVICES</h2>
-      <p className="services-intro">
+    <Box sx={{ py: 6, textAlign: "center", backgroundColor: "#000", color: "#fff" }}>
+      <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
+        TINTEK+ SERVICES
+      </Typography>
+      <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
         Premium automotive care to enhance, protect, and maintain your vehicle.
-      </p>
+      </Typography>
 
       {isMobile ? (
-        /** 🎠 Carousel on Mobile */
+        /** 🎠 MUI Carousel for Mobile */
         <Slider {...sliderSettings} className="services-slider">
           {servicesData.map((service) => (
-            <div
-              key={service.id}
-              className="service-card"
-              onClick={() => handleServiceClick(service.id)}
-            >
-              <img src={service.image} alt={service.title} className="service-image" />
-              <div className="service-overlay">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
-            </div>
+            <Box key={service.id} sx={{ px: 2 }}>
+              <Card
+                sx={{
+                  maxWidth: 400,
+                  margin: "0 auto",
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  position: "relative",
+                  cursor: "pointer",
+                }}
+                onClick={() => handleServiceClick(service.id)}
+              >
+                <CardMedia component="img" height="250" image={service.image} alt={service.title} />
+                <CardContent
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: "rgba(0, 0, 0, 0.5)", // Dark overlay (Always Visible)
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>{service.title}</Typography>
+                  <Typography variant="body2">{service.description}</Typography>
+                </CardContent>
+              </Card>
+            </Box>
           ))}
         </Slider>
       ) : (
-        /** 🖥️ Grid Layout on Desktop */
-        <div className="services-container">
-          {servicesData.map((service) => (
-            <div
-              key={service.id}
-              className="service-card"
-              onClick={() => handleServiceClick(service.id)}
-            >
-              <img src={service.image} alt={service.title} className="service-image" />
-              <div className="service-overlay">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        /** 🖥️ MUI Grid Layout for Desktop */
+        <Container maxWidth="lg">
+          <Grid
+            container
+            spacing={2} // Controls the gap between cards
+            justifyContent="center" // Centers the grid on the page
+            alignItems="stretch" // Ensures equal card heights
+          >
+            {servicesData.map((service) => (
+              <Grid item key={service.id} xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    maxWidth: 350,
+                    borderRadius: 5,
+                    overflow: "hidden",
+                    position: "relative",
+                    cursor: "pointer",
+                    "&:hover": { 
+                      transform: "scale(1.05)", 
+                      border: "5px solid #007bff"
+                    },
+                  }}
+                  onClick={() => handleServiceClick(service.id)}
+                >
+                  <CardMedia component="img" height="250" image={service.image} alt={service.title} />
+                  <CardContent
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: "rgba(0, 0, 0, 0.5)", // Dark overlay (Always Visible)
+                      color: "white",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>{service.title}</Typography>
+                    <Typography variant="body2">{service.description}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       )}
-    </section>
+    </Box>
   );
 };
 

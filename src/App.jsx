@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { useEffect } from "react";  // ✅ Import useEffect
 import './App.css';
 import Topbar from './components/Topbar';
 import Hero from './components/Hero';
@@ -13,10 +14,10 @@ import ServicesPage from './components/ServicesPage';
 import Chatbot from './ChatBot';
 import TintSelector from './components/TintSelector';
 import TintedCar from './components/TintedCar';
-import WhyChooseUs from './components/WhyChooseUs'
+import WhyChooseUs from './components/WhyChooseUs';
 import Gallery from './components/Gallery';
-import ScrollToTop from './components/ScrollToTop'
-import PrivacyPolicy from './components/PrivacyPolicy'
+import ScrollToTop from './components/ScrollToTop';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 const theme = createTheme({
     palette: {
@@ -26,12 +27,35 @@ const theme = createTheme({
     },
 });
 
+// ✅ Helper function to handle scrolling after navigation
+const ScrollHandler = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      setTimeout(() => {
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          const offset = 100; // Adjust this value as needed
+          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        }
+      }, 100); // Small delay to ensure the page loads before scrolling
+    }
+  }, [location]);
+
+  return null;
+};
+
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router basename="/TintTek-Website"> {/* ✅ Set basename for GitHub Pages */}
         <ScrollToTop />
+        <ScrollHandler />  {/* ✅ New component to handle scrolling */}
         <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
         <Routes className="App">
           {/* ✅ Home Page Route */}

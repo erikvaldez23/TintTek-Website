@@ -5,16 +5,20 @@ import {
   Toolbar,
   IconButton,
   Box,
-  Menu,
-  MenuItem,
-  Button,
-  useMediaQuery,
   Drawer,
   List,
   ListItem,
   ListItemText,
+  Button,
 } from "@mui/material";
-import { FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaFacebook,
+  FaTiktok,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa"; // ✅ Import Icons
 import { styled } from "@mui/system";
 import logo from "../../public/logo.png"; // Ensure correct path
 
@@ -28,10 +32,9 @@ const NavbarContainer = styled(Box)({
 });
 
 const Topbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const isMobile = window.innerWidth <= 900;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,52 +45,22 @@ const Topbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Open and Close the Dropdown Menu
-  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
-  const handleMenuClose = () => setAnchorEl(null);
-
-  // Scroll to Section (Except Gallery)
   const scrollToSection = (sectionId) => {
-    if (sectionId === "gallery") {
-      navigate("/gallery"); // Navigate to /gallery instead of scrolling
-      return;
-    }
-
     if (location.pathname !== "/") {
-      navigate(`/#${sectionId}`);
+      navigate("/", { state: { scrollTo: sectionId } });
+      setDrawerOpen(false);
       return;
     }
 
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
 
-    const startPosition = window.scrollY;
-    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
-    const duration = 1000;
-    let startTime = null;
+    const offset = 80;
+    const targetPosition =
+      targetSection.getBoundingClientRect().top + window.scrollY - offset;
 
-    const easeInOutQuad = (t) =>
-      t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-
-    const animation = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easeProgress = easeInOutQuad(progress);
-      window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeProgress);
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-
-    requestAnimationFrame(animation);
-  };
-
-  // Navigate to a Service Page
-  const handleServiceClick = (serviceId) => {
-    navigate(`/services/${serviceId}`);
-    handleMenuClose();
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+    setDrawerOpen(false);
   };
 
   return (
@@ -111,109 +84,155 @@ const Topbar = () => {
             <Box
               display="flex"
               alignItems="center"
-              sx={{ cursor: "pointer", "&:hover": { transform: "scale(1.03)" } }}
+              sx={{ cursor: "pointer" }}
               onClick={() => navigate("/")}
             >
-              <img src={logo} alt="Logo" style={{ height: "50px", marginRight: "10px" }} />
+              <img
+                src={logo}
+                alt="Logo"
+                style={{ height: "50px", marginRight: "10px" }}
+              />
             </Box>
 
-            {!isMobile ? (
-              <Box display="flex" gap={3}>
-                {/* Services Dropdown */}
-                <Button
-                  color="inherit"
-                  onClick={handleMenuOpen}
-                  sx={{
-                    fontFamily: "Poppins, sans-serif",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    letterSpacing: "0.5px",
-                    transition: "color 0.3s",
-                    "&:hover": { color: "#007bff" },
-                  }}
-                >
-                  Services ▾
-                </Button>
-
-                {/* Navigation Links */}
-                {[
-                  { name: "Gallery", id: "gallery" },
-                  { name: "Pricing", id: "pricing" },
-                  { name: "About", id: "about" },
-                  { name: "Reviews", id: "reviews" },
-                  { name: "Contact", id: "contact" },
-                ].map((item) => (
-                  <Button
-                    key={item.name}
-                    color="inherit"
-                    onClick={() => scrollToSection(item.id)}
-                    sx={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontSize: "16px",
-                      fontWeight: 500,
-                      letterSpacing: "0.5px",
-                      transition: "color 0.3s",
-                      "&:hover": { color: "#007bff" },
-                    }}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
-              </Box>
-            ) : (
+            {isMobile ? (
               <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
                 <FaBars />
               </IconButton>
+            ) : (
+              <Box display="flex" gap={3}>
+                {["Gallery", "Pricing", "About", "Reviews", "Contact"].map(
+                  (item) => (
+                    <Button
+                      key={item}
+                      color="inherit"
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      sx={{
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        letterSpacing: "0.5px",
+                        transition: "color 0.3s",
+                        "&:hover": { color: "#007bff" },
+                      }}
+                    >
+                      {item}
+                    </Button>
+                  )
+                )}
+              </Box>
             )}
           </NavbarContainer>
         </Toolbar>
       </AppBar>
 
-      {/* Services Dropdown Menu */}
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-        {[
-          { name: "Vehicle Window Tinting", id: "vehicle-window-tinting" },
-          { name: "Tesla Window Tinting", id: "tesla-window-tinting" },
-          { name: "Commercial Window Tinting", id: "commercial-window-tinting" },
-          { name: "Residential Window Tinting", id: "residential-window-tinting" },
-          { name: "Vehicle Paint Correction", id: "vehicle-paint-correction" },
-          { name: "Vehicle Paint Protection", id: "vehicle-paint-protection" },
-        ].map((service) => (
-          <MenuItem key={service.id} onClick={() => handleServiceClick(service.id)}>
-            {service.name}
-          </MenuItem>
-        ))}
-      </Menu>
-
-      {/* Mobile Drawer */}
+      {/* 🏆 Mobile Drawer (Full-Screen, Sliding from Top) */}
       <Drawer
-        anchor="right"
+        anchor="top"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
+        transitionDuration={500}
         sx={{
           "& .MuiDrawer-paper": {
             backgroundColor: "black",
             color: "white",
-            fontFamily: "Poppins, sans-serif",
+            width: "100vw",
+            minHeight: "90vh", // Ensure it takes up the full height
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around", // Evenly distribute content
+            alignItems: "center",
+            textAlign: "center",
+            padding: "5vh 0",
           },
         }}
       >
-        <List sx={{ width: 250 }}>
-          <ListItem button onClick={handleMenuOpen}>
-            <ListItemText primary="Services ▾" />
-          </ListItem>
-          {[
-            { name: "Gallery", id: "gallery" },
-            { name: "Pricing", id: "pricing" },
-            { name: "About", id: "about" },
-            { name: "Reviews", id: "reviews" },
-            { name: "Contact", id: "contact" },
-          ].map((item) => (
-            <ListItem button key={item.name} onClick={() => scrollToSection(item.id)}>
-              <ListItemText primary={item.name} />
+        {/* Close Button */}
+        <Box sx={{ position: "absolute", top: 20, right: 20 }}>
+          <IconButton
+            onClick={() => setDrawerOpen(false)}
+            sx={{ color: "white", fontSize: 30 }}
+          >
+            <FaTimes />
+          </IconButton>
+        </Box>
+
+        {/* Navigation Links */}
+        <List sx={{ textAlign: "center", p: 0 }}>
+          {["Gallery", "Pricing", "About", "Reviews", "Contact"].map((item) => (
+            <ListItem
+              button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+            >
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontSize: "32px", // Force font size
+                    fontWeight: "bold",
+                    color: "white",
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                    "&:hover": { color: "#d4c1a5" },
+                  },
+                }}
+              />
             </ListItem>
           ))}
         </List>
+
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+  {/* Get a Quote Button */}
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: "#007bff",
+      color: "black",
+      fontSize: "22px",
+      fontWeight: "bold",
+      borderRadius: "40px",
+      minWidth: "250px", // Ensures same width
+      height: "60px", // Ensures same height
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textTransform: "none",
+    }}
+  >
+    GET A QUOTE
+  </Button>
+
+  {/* Ask a Question Button */}
+  <Button
+    variant="contained"
+    sx={{
+      mt: 2,
+      backgroundColor: "#222",
+      color: "white",
+      fontSize: "22px",
+      fontWeight: "bold",
+      borderRadius: "40px",
+      minWidth: "250px", // Same width as the first button
+      height: "60px", // Same height as the first button
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textTransform: "none",
+    }}
+  >
+    ASK A QUESTION
+  </Button>
+</Box>
+
+
+        {/* Social Media Icons */}
+        <Box sx={{ display: "flex", gap: 4, mt: 6 }}>
+          {[FaFacebook, FaTiktok, FaInstagram, FaYoutube].map((Icon, index) => (
+            <IconButton key={index} sx={{ color: "white", fontSize: "36px" }}>
+              <Icon />
+            </IconButton>
+          ))}
+        </Box>
       </Drawer>
     </>
   );
