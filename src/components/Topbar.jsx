@@ -21,6 +21,7 @@ import {
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa"; // ✅ Import Icons
+import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
 import logo from "../../public/logo.png"; // Ensure correct path
 
@@ -37,7 +38,7 @@ const Topbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false); // 🏆 New State for Modal
-  const isMobile = window.innerWidth <= 900;
+  const isMobile = useMediaQuery("(max-width:900px)");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -208,7 +209,7 @@ const Topbar = () => {
                     "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
                     "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
                     "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#d4c1a5" },
+                    "&:hover": { color: "#007bff", cursor:"pointer" },
                   },
                 }}
               />
@@ -240,6 +241,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
+              "&:hover": { 
+                backgroundColor: "#000",
+                border: "3px solid #fff",
+                color: "#fff"
+              }
             }}
           >
             GET A QUOTE
@@ -261,6 +267,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
+              "&:hover": { 
+                backgroundColor: "#000",
+                border: "3px solid #fff",
+                color: "#fff"
+              }
             }}
           >
             ASK A QUESTION
@@ -277,7 +288,9 @@ const Topbar = () => {
           }}
         >
           {[FaFacebook, FaTiktok, FaInstagram, FaYoutube].map((Icon, index) => (
-            <IconButton key={index} sx={{ color: "white", fontSize: "36px" }}>
+            <IconButton key={index} sx={{ color: "white", fontSize: "36px",  "&:hover": { 
+              color: "#007bff",
+            } }}>
               <Icon />
             </IconButton>
           ))}
