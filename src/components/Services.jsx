@@ -221,7 +221,7 @@ const Services = () => {
                 >
                   <CardMedia
                     component="img"
-                    height="250"
+                    height="450"
                     image={service.image}
                     alt={service.title}
                   />

@@ -1,64 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, Typography, Avatar, Rating, Container, CircularProgress, Button } from "@mui/material";
+import React from "react";
+import { Box, Card, CardContent, Typography, Avatar, Rating, Container, Button } from "@mui/material";
 
-const API_URL = "http://localhost:5001/api/reviews"; // Call the backend server
-const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9"; // Google Reviews URL
-const GOOGLE_LOGO = "/TintTek-Website/google-logo.png"; // Local Google logo in 'public/' folder
+// Google Reviews URL and logo
+const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9";
+const GOOGLE_LOGO = "/TintTek-Website/google-logo.png";
+
+const reviews = [
+  {
+    author_name: "Andrew Pham",
+    profile_photo_url: "https://via.placeholder.com/40",  // Replace with actual photo URL if available
+    rating: 5,
+    time: new Date().setDate(new Date().getDate() - 7) / 1000,  // 1 week ago
+    text: "I had a fantastic experience with this tint company! Their timing was spot on, and they communicated with me every step of the way. They offer great prices on a variety of tint options, making it easy to find exactly what I needed.",
+  },
+  {
+    author_name: "Josue Chavez",
+    profile_photo_url: "https://via.placeholder.com/40",
+    rating: 5,
+    time: new Date().setDate(new Date().getDate() - 30) / 1000,  // 1 month ago
+    text: "Left my Tesla looking great! No problems whatsoever! Definitely recommend you bring your car here! Their customer service is top notch. I’ve never had a customer experience as good as this one!",
+  },
+  {
+    author_name: "Richanda Bryant",
+    profile_photo_url: "https://via.placeholder.com/40",
+    rating: 5,
+    time: new Date().setDate(new Date().getDate() - 21) / 1000,  // 3 weeks ago
+    text: "I had a great experience at Tint Tek Plus! This is the first car I've had to purchase tint for as previous vehicles had it from the factory. I was very impressed with Ryan and team!",
+  },
+  {
+    author_name: "Giovanni Romero",
+    profile_photo_url: "https://via.placeholder.com/40", 
+    rating: 5,
+    time: new Date().setDate(new Date().getDate() - 60) / 1000,  // 2 months ago
+    text: "I recently had the pleasure of working with Tint Tek Plus, and I couldn't be more satisfied with the entire experience! From the moment I contacted them, their customer service was outstanding. They were knowledgeable, friendly, and took care of everything!",
+  },
+];
+
 
 const Testimonials = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        console.log("📩 API Response:", data); // Add this log to see what the frontend receives
-  
-        if (data.length > 0) {
-          setReviews(data.slice(0, 4));
-        } else {
-          setError("No reviews found.");
-        }
-      } catch (error) {
-        setError("Error fetching reviews.");
-        console.error("❌ Error fetching reviews:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    fetchReviews();
-  }, []);
-  
-
   return (
     <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
-      <Container maxWidth="xl"> {/* ✅ Keeps section centered & max width 1200px */}
+      <Container maxWidth="xl">
         <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold", paddingBottom: "30px" }}>
           What Our Customers Say (Google Reviews)
         </Typography>
 
-        {loading ? (
-          <CircularProgress />
-        ) : error ? (
-          <Typography variant="body1" color="text.secondary">
-            {error}
-          </Typography>
-        ) : (
-          <Box 
-            sx={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(4, 1fr)", // ✅ Show exactly 4 reviews in a row
-              gap: 2, 
-              justifyContent: "center",
-              alignItems: "stretch",
-            }}
-          >
-            {reviews.map((review, index) => (
-              <Card 
+        <Box 
+          sx={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(4, 1fr)", 
+            gap: 2, 
+            justifyContent: "center",
+            alignItems: "stretch",
+          }}
+        >
+          {reviews.map((review, index) => (
+            <Card 
               key={index}
               sx={{ 
                 p: 3, 
@@ -69,24 +66,24 @@ const Testimonials = () => {
                 maxHeight: 350, 
                 display: "flex",
                 flexDirection: "column",
-                position: "relative", // ✅ Make this the reference for absolute positioning
+                position: "relative",
               }}
             >
               <CardContent
                 sx={{
-                  flex: "1 1 auto", 
+                  flex: "1 1 auto",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                   overflow: "hidden",
                 }}
               >
-                {/* ✅ Google Logo (Top-Right) */}
+                {/* Google Logo */}
                 <Box sx={{ position: "absolute", top: 10, right: 10, width: 25, height: 25 }}>
                   <img src={GOOGLE_LOGO} alt="Google" width="100%" />
                 </Box>
-            
-                {/* ✅ User Profile Info */}
+
+                {/* User Info */}
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <Avatar sx={{ width: 40, height: 40, mr: 2 }} src={review.profile_photo_url} alt={review.author_name} />
                   <Box>
@@ -98,17 +95,17 @@ const Testimonials = () => {
                     </Typography>
                   </Box>
                 </Box>
-            
-                {/* ✅ Star Rating */}
+
+                {/* Star Rating */}
                 <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
-            
-                {/* ✅ Review Text (No Scrolling) */}
+
+                {/* Review Text */}
                 <Typography 
                   variant="body2" 
                   sx={{ 
                     flexGrow: 1,
                     display: "-webkit-box",
-                    overflowY: "scroll",
+                    overflowY: "auto",
                     textOverflow: "ellipsis",
                     fontStyle: "italic",
                     fontSize: "0.9rem",
@@ -119,12 +116,10 @@ const Testimonials = () => {
                 </Typography>
               </CardContent>
             </Card>
-            
-            ))}
-          </Box>
-        )}
+          ))}
+        </Box>
 
-        {/* ✅ View More Reviews Button */}
+        {/* View More Button */}
         <Button 
           variant="contained" 
           sx={{
@@ -140,7 +135,7 @@ const Testimonials = () => {
             "&:hover": { 
               backgroundColor: "#fff", 
               border: "5px solid #000", 
-              color:"#000" 
+              color: "#000",
             },
           }}
           href={GOOGLE_REVIEWS_URL}

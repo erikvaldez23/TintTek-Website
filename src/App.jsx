@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { useEffect } from "react";  // ✅ Import useEffect
 import './App.css';
@@ -48,12 +48,12 @@ const ScrollHandler = () => {
   return null;
 };
 
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/TintTek-Website"> 
+      {/* ✅ Switched from BrowserRouter to HashRouter */}
+      <Router>
         <ScrollToTop />
         <ScrollHandler />  {/* ✅ New component to handle scrolling */}
         <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
