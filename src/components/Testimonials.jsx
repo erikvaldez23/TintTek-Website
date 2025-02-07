@@ -15,22 +15,24 @@ const Testimonials = () => {
       try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        console.log("Google API Response:", data);
-        
+        console.log("📩 API Response:", data); // Add this log to see what the frontend receives
+  
         if (data.length > 0) {
-          setReviews(data.slice(0, 4)); // ✅ Show only 4 reviews
+          setReviews(data.slice(0, 4));
         } else {
           setError("No reviews found.");
         }
       } catch (error) {
         setError("Error fetching reviews.");
-        console.error("Error fetching reviews:", error);
+        console.error("❌ Error fetching reviews:", error);
       } finally {
         setLoading(false);
       }
     };
+  
     fetchReviews();
   }, []);
+  
 
   return (
     <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#e3eff4" }}>
