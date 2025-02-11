@@ -52,17 +52,17 @@ const reviews = [
 const Testimonials = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // Carousel settings for mobile view
   const sliderSettings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1.2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    centerMode: false, // Disable this to see if the overflow disappears
-    centerPadding: "0px", // Ensure no extra padding is added
+    centerMode: true,  // Enable center mode
+    centerPadding: "20px",  // Adjust this value to control how much of the next review is visible
   };
+  
 
   return (
     <Box

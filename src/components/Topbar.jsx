@@ -82,38 +82,47 @@ const Topbar = () => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: scrolling ? "white" : "transparent",
+          backgroundColor: scrolling
+            ? "rgba(255, 255, 255, 0.8)"
+            : "transparent",
+          backdropFilter: scrolling ? "blur(10px)" : "none", // Frosted glass effect
           color: scrolling ? "black" : "white",
-          boxShadow: scrolling ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          boxShadow: scrolling ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
+          borderBottom: scrolling ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
           width: "100vw",
           left: 0,
           top: 0,
           zIndex: 1100,
         }}
       >
-        <Toolbar sx={{ justifyContent: "center" }}>
+        <Toolbar sx={{ justifyContent: "center", padding: "0 20px" }}>
           <NavbarContainer>
-            {/* Logo */}
+            {/* Logo with subtle hover effect */}
             <Box
               display="flex"
               alignItems="center"
-              sx={{ cursor: "pointer" }}
+              sx={{
+                cursor: "pointer",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "scale(1.05)" },
+              }}
               onClick={() => navigate("/")}
             >
               <img
                 src={logo}
                 alt="Logo"
-                style={{ height: "50px", marginRight: "10px" }}
+                style={{
+                  height: "55px",
+                  marginRight: "10px",
+                  borderRadius: "8px",
+                }} // Slightly bigger logo with rounded edges
               />
             </Box>
 
-            {isMobile ? (
-              <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
-                <FaBars />
-              </IconButton>
-            ) : (
-              <Box display="flex" gap={3}>
+            {/* Desktop Navigation */}
+            {!isMobile && (
+              <Box display="flex" gap={4}>
                 {[
                   "Services",
                   "Gallery",
@@ -127,18 +136,49 @@ const Topbar = () => {
                     color="inherit"
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontFamily: "Poppins, sans-serif",
-                      fontSize: "16px",
-                      fontWeight: 500,
-                      letterSpacing: "0.5px",
-                      transition: "color 0.3s",
-                      "&:hover": { color: "#007bff" },
+                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      position: "relative",
+                      padding: "10px 20px",
+                      color: scrolling ? "#333" : "#fff", // Dynamic text color
+                      transition: "all 0.3s ease-in-out",
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "3px",
+                        bottom: "0",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "linear-gradient(90deg, #007bff, #00c6ff)", // Gradient underline
+                        transition: "width 0.4s ease-in-out",
+                        borderRadius: "2px",
+                      },
+                      "&:hover": {
+                        color: "#00c6ff", // Bright hover color
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                        "&:after": { width: "100%" }, // Underline expands
+                      },
                     }}
                   >
                     {item}
                   </Button>
                 ))}
               </Box>
+            )}
+            {isMobile && (
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={() => setDrawerOpen(true)}
+                sx={{ fontSize: 30 }}
+              >
+                <FaBars />
+              </IconButton>
             )}
           </NavbarContainer>
         </Toolbar>
@@ -209,7 +249,7 @@ const Topbar = () => {
                     "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
                     "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
                     "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#007bff", cursor:"pointer" },
+                    "&:hover": { color: "#007bff", cursor: "pointer" },
                   },
                 }}
               />
@@ -241,11 +281,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
-              "&:hover": { 
+              "&:hover": {
                 backgroundColor: "#000",
                 border: "3px solid #fff",
-                color: "#fff"
-              }
+                color: "#fff",
+              },
             }}
           >
             GET A QUOTE
@@ -267,11 +307,11 @@ const Topbar = () => {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "none",
-              "&:hover": { 
+              "&:hover": {
                 backgroundColor: "#000",
                 border: "3px solid #fff",
-                color: "#fff"
-              }
+                color: "#fff",
+              },
             }}
           >
             ASK A QUESTION
@@ -288,9 +328,16 @@ const Topbar = () => {
           }}
         >
           {[FaFacebook, FaTiktok, FaInstagram, FaYoutube].map((Icon, index) => (
-            <IconButton key={index} sx={{ color: "white", fontSize: "36px",  "&:hover": { 
-              color: "#007bff",
-            } }}>
+            <IconButton
+              key={index}
+              sx={{
+                color: "white",
+                fontSize: "36px",
+                "&:hover": {
+                  color: "#007bff",
+                },
+              }}
+            >
               <Icon />
             </IconButton>
           ))}
