@@ -7,9 +7,11 @@ const serviceOptions = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting Services",
     list: [
-      "Standard Tint",
-      "Ceramic Tint",
-      "Nano-Ceramic Tint",
+      "Full SUV Tinting",
+      "Full Sedan Tinting",
+      "Full Coupe Tinting",
+      "2 Windows Only",
+      "Front Windshield and Sunroof",
     ],
     filmTypes: [
       { name: "Llumar ATC", description: "A budget-friendly dyed-stable film that blocks 99% of harmful UV rays and enhances your vehicle’s appearance." },
@@ -32,8 +34,68 @@ const serviceOptions = {
       { name: "Llumar IRX", description: "The most premium option, featuring nano-ceramic construction for optimal heat rejection and infrared protection." },
     ],
   },
-  // Add other services here...
+  "commercial-window-tinting": {
+    title: "Commercial Window Tinting Services",
+    list: [
+      "Office Window Tinting",
+      "Storefront Window Tinting",
+      "Skyscraper Window Tinting",
+      "Conference Room Tinting",
+      "Custom Business Tinting Solutions",
+    ],
+    filmTypes: [
+      { name: "Llumar Frosted Film", description: "Provides privacy while allowing natural light, perfect for office and commercial spaces." },
+      { name: "Llumar Reflective Film", description: "Reduces glare and heat, offering both privacy and energy savings for large buildings." },
+      { name: "Llumar Dual-Reflective Film", description: "Balances interior visibility with exterior privacy and superior UV protection." },
+    ],
+  },
+  "residential-window-tinting": {
+    title: "Residential Window Tinting Services",
+    list: [
+      "Full Home Window Tinting",
+      "Single Room Window Tinting",
+      "Sunroom Tinting",
+      "Patio Door Tinting",
+      "Custom Home Tinting Solutions",
+    ],
+    filmTypes: [
+      { name: "Llumar UVShield", description: "Blocks harmful UV rays to protect your furniture and flooring from fading." },
+      { name: "Llumar Energy-Saving Film", description: "Improves home energy efficiency by reducing heat gain and loss." },
+      { name: "Llumar Decorative Film", description: "Adds aesthetic appeal while offering privacy for bathrooms and living spaces." },
+    ],
+  },
+  "vehicle-paint-correction": {
+    title: "Vehicle Paint Correction Services",
+    list: [
+      "Single-Stage Paint Correction",
+      "Multi-Stage Paint Correction",
+      "Swirl Mark Removal",
+      "Scratch Removal",
+      "Gloss Enhancement",
+    ],
+    filmTypes: [
+      { name: "Stage 1 Correction", description: "Removes light swirls and scratches to restore your car's shine." },
+      { name: "Stage 2 Correction", description: "A more intensive process to eliminate deeper scratches and imperfections." },
+      { name: "Stage 3 Correction", description: "Comprehensive restoration for severely damaged paint, returning a showroom-quality finish." },
+    ],
+  },
+  "vehicle-paint-protection": {
+    title: "Vehicle Paint Protection Services",
+    list: [
+      "Full Vehicle Vinyl Wrap",
+      "Partial Vehicle Wrap",
+      "Clear Bra Protection",
+      "Ceramic Coating",
+      "Custom Wrap Designs",
+    ],
+    filmTypes: [
+      { name: "Llumar Paint Protection Film", description: "Invisible shield that protects your car from chips, scratches, and road debris." },
+      { name: "Ceramic Coating", description: "Provides a long-lasting, high-gloss finish that repels water and contaminants." },
+      { name: "Custom Vinyl Wraps", description: "High-quality vinyl wraps to customize your vehicle’s look with various colors and finishes." },
+    ],
+  },
 };
+
 
 const ServicesOffered = ({ serviceId }) => {
   const service = serviceOptions[serviceId];

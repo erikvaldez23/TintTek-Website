@@ -1,33 +1,34 @@
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useEffect } from "react";  // ✅ Import useEffect
-import './App.css';
-import Topbar from './components/Topbar';
-import Hero from './components/Hero';
-import Testimonials from './components/Testimonials';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Vision from './components/Vision';
-import Footer from './components/Footer';
-import PricingComponent from './components/Pricing';
-import ServicesPage from './components/ServicesPage';
-import Chatbot from './ChatBot';
-import TintSelector from './components/TintSelector';
-import TintedCar from './components/TintedCar';
-import WhyChooseUs from './components/WhyChooseUs';
-import Gallery from './components/Gallery';
-import ScrollToTop from './components/ScrollToTop';
-import PrivacyPolicy from './components/PrivacyPolicy';
+import { useEffect } from "react";
+import "./App.css";
+import Topbar from "./components/Topbar";
+import Hero from "./components/Hero";
+import Testimonials from "./components/Testimonials";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
+import Vision from "./components/Vision";
+import Footer from "./components/Footer";
+import PricingComponent from "./components/Pricing";
+import ServicesPage from "./components/ServicesPage";
+import Chatbot from "./ChatBot";
+import TintSelector from "./components/TintSelector";
+import TintedCar from "./components/TintedCar";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Gallery from "./components/Gallery";
+import ScrollToTop from "./components/ScrollToTop";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
+// Theme Configuration
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#007bff",
-        },
+  palette: {
+    primary: {
+      main: "#007bff",
     },
+  },
 });
 
-// ✅ Helper function to handle scrolling after navigation
+// Scroll Handler for navigating to specific sections on the homepage
 const ScrollHandler = () => {
   const location = useLocation();
 
@@ -37,11 +38,12 @@ const ScrollHandler = () => {
       setTimeout(() => {
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
-          const offset = 100; // Adjust this value as needed
-          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+          const offset = 100; // Adjust this if your Topbar height changes
+          const targetPosition =
+            targetSection.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
-      }, 100); // Small delay to ensure the page loads before scrolling
+      }, 100); // Delay to ensure DOM is ready
     }
   }, [location]);
 
@@ -52,20 +54,20 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* ✅ Switched from BrowserRouter to HashRouter */}
-      <Router>
-        <ScrollToTop />
-        <ScrollHandler />  {/* ✅ New component to handle scrolling */}
-        <Topbar /> {/* ✅ Keep Topbar on all pages for navigation */}
+      {/* Use HashRouter with basename to ensure correct routing */}
+      <Router >
+        <ScrollToTop /> {/* Scroll to top on every route change */}
+        <ScrollHandler /> {/* Scroll to specific sections if provided */}
+        <Topbar /> {/* Topbar is persistent on all pages */}
+        
+        {/* Define routes for different pages */}
         <Routes className="App">
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <>
                 <Hero />
                 <Services />
-                {/* <TintSelector /> */}
-                {/* <TintedCar />  */}
                 <WhyChooseUs />
                 <Testimonials />
                 <Vision />
@@ -73,14 +75,20 @@ function App() {
                 <Contact />
                 <Footer />
               </>
-            } 
+            }
           />
-          {/* ✅ Dynamic Route for Individual Service Pages */}
+          {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
+          
+          {/* Gallery Page */}
           <Route path="/gallery" element={<Gallery />} />
+          
+          {/* Privacy Policy Page */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
-        <Chatbot /> {/* ✅ Keep chatbot outside of <Routes> to persist across all pages */}
+
+        {/* Persistent Chatbot across all pages */}
+        <Chatbot />
       </Router>
     </ThemeProvider>
   );

@@ -10,8 +10,7 @@ const serviceSteps = {
     steps: [
       {
         title: "Preparation",
-        description:
-          "We clean the car windows to remove any dirt, dust, or debris.",
+        description: "We clean the car windows to remove any dirt, dust, or debris.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
       },
       {
@@ -31,9 +30,9 @@ const serviceSteps = {
       },
     ],
     images: [
-      "/TintTek-Website/picture1.jpeg",
-      "/TintTek-Website/picture1.jpeg",
-      "/TintTek-Website/picture1.jpeg",
+      "/TintTek-Website/vehicle-tint1.jpeg",
+      "/TintTek-Website/vehicle-tint2.jpeg",
+      "/TintTek-Website/vehicle-tint3.jpeg",
     ],
   },
   "tesla-window-tinting": {
@@ -41,8 +40,7 @@ const serviceSteps = {
     steps: [
       {
         title: "Cleaning",
-        description:
-          "We ensure all Tesla windows are spotless before applying tint.",
+        description: "We ensure all Tesla windows are spotless before applying tint.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
       },
       {
@@ -62,13 +60,133 @@ const serviceSteps = {
       },
     ],
     images: [
-      "/TintTek-Website/picture1.jpeg",
-      "/TintTek-Website/picture1.jpeg",
-      "/TintTek-Website/picture1.jpeg",
+      "/TintTek-Website/tesla-tint1.jpeg",
+      "/TintTek-Website/tesla-tint2.jpeg",
+      "/TintTek-Website/tesla-tint3.jpeg",
     ],
   },
-  // Add more services here...
+  "commercial-window-tinting": {
+    title: "Commercial Window Tinting",
+    steps: [
+      {
+        title: "Initial Consultation",
+        description: "We assess your commercial space to recommend the best tinting solutions.",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Surface Preparation",
+        description: "All glass surfaces are thoroughly cleaned to ensure optimal adhesion.",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Tint Installation",
+        description: "We apply high-quality commercial-grade films with precision.",
+        icon: <LayersIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Inspection & Final Touches",
+        description: "Final quality checks ensure a flawless, professional finish.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+    ],
+    images: [
+      "/TintTek-Website/commercial-tint1.jpeg",
+      "/TintTek-Website/commercial-tint2.jpeg",
+      "/TintTek-Website/commercial-tint3.jpeg",
+    ],
+  },
+  "residential-window-tinting": {
+    title: "Residential Window Tinting",
+    steps: [
+      {
+        title: "Consultation",
+        description: "We discuss your needs and recommend the right film for your home.",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Measurement & Cutting",
+        description: "Window measurements are taken, and films are custom cut for a perfect fit.",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Film Application",
+        description: "We apply the tint smoothly to avoid bubbles and creases.",
+        icon: <LayersIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Final Inspection",
+        description: "We ensure all windows meet our high-quality standards before completion.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+    ],
+    images: [
+      "/TintTek-Website/residential-tint1.jpeg",
+      "/TintTek-Website/residential-tint2.jpeg",
+      "/TintTek-Website/residential-tint3.jpeg",
+    ],
+  },
+  "vehicle-paint-correction": {
+    title: "Vehicle Paint Correction",
+    steps: [
+      {
+        title: "Surface Inspection",
+        description: "We examine your vehicle's paint to identify imperfections.",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Polishing & Compounding",
+        description: "We remove swirls, scratches, and oxidation with multi-stage polishing.",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Gloss Enhancement",
+        description: "A final polish brings out the natural shine of your vehicle.",
+        icon: <LayersIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Protection Application",
+        description: "We apply protective coatings to maintain the finish.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+    ],
+    images: [
+      "/TintTek-Website/paint-correction1.jpeg",
+      "/TintTek-Website/paint-correction2.jpeg",
+      "/TintTek-Website/paint-correction3.jpeg",
+    ],
+  },
+  "vehicle-paint-protection": {
+    title: "Vehicle Paint Protection",
+    steps: [
+      {
+        title: "Preparation",
+        description: "We clean and prep the vehicle’s surface for film application.",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Film Application",
+        description: "Clear bra or vinyl wrap is applied to protect against scratches and chips.",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Sealing",
+        description: "We apply ceramic coatings for added durability and shine.",
+        icon: <LayersIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+      {
+        title: "Final Inspection",
+        description: "A thorough check ensures the protection is flawless and durable.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#007BFF" }} />,
+      },
+    ],
+    images: [
+      "/TintTek-Website/paint-protection1.jpeg",
+      "/TintTek-Website/paint-protection2.jpeg",
+      "/TintTek-Website/paint-protection3.jpeg",
+    ],
+  },
 };
+
 
 const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];

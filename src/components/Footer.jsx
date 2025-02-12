@@ -33,7 +33,13 @@ const Footer = () => {
           }}
         >
           {/* Company Logo */}
-          <Box sx={{ display: "flex", alignItems: "center", "&:hover": { cursor: "pointer", transform:"scale(1.05)" } }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              "&:hover": { cursor: "pointer", transform: "scale(1.05)" },
+            }}
+          >
             <img src={logo} alt="Company Logo" style={{ height: "50px" }} />
           </Box>
 
@@ -112,7 +118,7 @@ const Footer = () => {
           >
             www.tinttekplus.com
           </Link>
-          <Link href="/privacy-policy" color="inherit" underline="hover">
+          <Link href="#/privacy-policy" color="inherit" underline="hover">
             Privacy Policy
           </Link>
         </Box>

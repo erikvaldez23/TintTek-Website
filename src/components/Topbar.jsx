@@ -34,10 +34,10 @@ const NavbarContainer = styled(Box)({
   margin: "0 auto",
 });
 
-const Topbar = () => {
+const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [quoteOpen, setQuoteOpen] = useState(false); // 🏆 New State for Modal
+  const [quoteOpen, setQuoteOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width:900px)");
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,22 +50,34 @@ const Topbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
+    const subPages = ["gallery", "privacy-policy"]; // Add more subpages here if needed
+  
+    if (subPages.includes(sectionId)) {
+      // Navigate to the subpage instead of scrolling
+      navigate(`/${sectionId}`);
+      setDrawerOpen(false);
+      return;
+    }
+  
     if (location.pathname !== "/") {
+      // If not on the homepage, navigate to home and scroll to the section
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-
+  
+    // Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-
-    const offset = 80;
+  
+    const offset = 80; // Adjust offset based on your Topbar height
     const targetPosition =
       targetSection.getBoundingClientRect().top + window.scrollY - offset;
-
+  
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
+  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -82,14 +94,16 @@ const Topbar = () => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: scrolling
-            ? "rgba(255, 255, 255, 0.8)"
+          backgroundColor: notFound 
+            ? "#000" // Black background if notFound is true
+            : scrolling 
+            ? "rgba(255, 255, 255, 0.8)" 
             : "transparent",
-          backdropFilter: scrolling ? "blur(10px)" : "none", // Frosted glass effect
-          color: scrolling ? "black" : "white",
-          boxShadow: scrolling ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
+          color: notFound || scrolling ? "#fff" : "#fff",
+          boxShadow: scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
-          borderBottom: scrolling ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
+          borderBottom: scrolling && !notFound ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
           width: "100vw",
           left: 0,
           top: 0,

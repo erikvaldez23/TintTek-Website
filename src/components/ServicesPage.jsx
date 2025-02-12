@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Box, Container, Typography, Button, Grid } from "@mui/material";
 import PricingComponent from "./Pricing"; // Import Pricing model
 import Contact from "./Contact"; // Import Contact component
+import Topbar from "./Topbar";
 import Footer from "./Footer";
 import BenefitsSection from "./BenefitsSection";
 import HowItWorks from "./HowItWorks";
@@ -12,55 +13,233 @@ import ServicesOffered from "./ServicesOffered";
 const serviceDetails = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting",
-    description:
-      "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
+    description: "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
     image: "/TintTek-Website/v-window-tint.png",
-    details:
-      "We use high-quality films to protect your car windows and provide maximum UV protection.",
+    details: "We use high-quality films to protect your car windows and provide maximum UV protection.",
     benefits: [
-      "Increased privacy",
-      "Blocks harmful UV rays",
-      "Reduces heat inside the vehicle",
+      "Heat Protection",
       "Protects interior from fading",
-      "Enhances vehicle aesthetics",
+      "Blocks 99% of harmful UV rays",
+      "Reduces glare from the sun and headlights",
+      "Provides increased privacy",
+      "Improves the overall look and style",
     ],
-    servicesOffered: ["Standard Tint", "Ceramic Tint", "Nano-Ceramic Tint"],
+    servicesOffered: [
+      "Full SUV Tinting",
+      "Full Sedan Tinting",
+      "Full Coupe Tinting",
+      "2 Windows Only",
+      "Front Windshield and Sunroof",
+    ],
   },
   "tesla-window-tinting": {
     title: "Tesla Window Tinting",
-    description:
-      "Specialized tinting for Tesla models, ensuring perfect heat rejection and premium clarity.",
+    description: "Specialized tinting for Tesla models, ensuring perfect heat rejection and premium clarity.",
     image: "/TintTek-Website/cybertruck.jpg",
-    details:
-      "High-quality window tinting designed specifically for Tesla vehicles.",
+    details: "High-quality window tinting designed specifically for Tesla vehicles.",
     benefits: [
-      "Increased milage per batter charge.",
-      "Heat reduction in cabin.",
-      "Blocks 99% of harmful UV rays.",
-      "Reduces glare from the sun and headlights.",
-      "Provides increased privacy.",
-      "Prevents unnecessary battery drain.",
+      "Increased mileage per battery charge",
+      "Heat reduction in cabin",
+      "Blocks 99% of harmful UV rays",
+      "Reduces glare from the sun and headlights",
+      "Provides increased privacy",
+      "Prevents unnecessary battery drain",
     ],
     servicesOffered: [
-      "Tesla Model S Tint",
-      "Tesla Model 3 Tint",
-      "Tesla Model X Tint",
-      "Tesla Model Y Tint",
+      "Full Model S window tinting, windshield, pano sunroof, single sunroof",
+      "Full Model 3 window tinting, windshield, sunroof",
+      "Full Model X window tinting, windshield",
+      "Full Model Y window tinting, windshield, pano sunroof, single sunroof",
+      "Full Cybertruck window tinting, windshield",
     ],
   },
+  "commercial-window-tinting": {
+    title: "Commercial Window Tinting",
+    description: "Protect your building's windows from UV rays, reduce glare, and improve energy efficiency.",
+    image: "/TintTek-Website/commercial-tint.png",
+    details: "Our commercial window tinting services provide superior heat rejection and protection from environmental damage.",
+    benefits: [
+      "Energy savings by reducing cooling costs",
+      "Blocks 99% of harmful UV rays",
+      "Reduces glare in office spaces",
+      "Protects interiors from fading",
+      "Enhances building appearance",
+      "Improves privacy for employees",
+    ],
+    servicesOffered: [
+      "Office Window Tinting",
+      "Storefront Window Tinting",
+      "Skyscraper Window Tinting",
+      "Conference Room Tinting",
+      "Custom Business Tinting Solutions",
+    ],
+  },
+  "residential-window-tinting": {
+    title: "Residential Window Tinting",
+    description: "Long-lasting protection for your home’s windows against dirt, heat, and UV rays.",
+    image: "/TintTek-Website/residential-tint.png",
+    details: "Keep your home cool, protect your furniture from fading, and improve privacy with our residential tinting services.",
+    benefits: [
+      "Reduces indoor heat",
+      "Blocks 99% of harmful UV rays",
+      "Protects furniture and flooring from fading",
+      "Improves energy efficiency",
+      "Enhances privacy without sacrificing light",
+      "Adds aesthetic appeal to your home",
+    ],
+    servicesOffered: [
+      "Full Home Window Tinting",
+      "Single Room Window Tinting",
+      "Sunroom Tinting",
+      "Patio Door Tinting",
+      "Custom Home Tinting Solutions",
+    ],
+  },
+  "vehicle-paint-correction": {
+    title: "Vehicle Paint Correction",
+    description: "Restore your vehicle’s original shine and remove imperfections with our professional paint correction services.",
+    image: "/TintTek-Website/paint-correction.png",
+    details: "We offer multi-stage paint correction to remove swirls, scratches, and oxidation, leaving your vehicle looking brand new.",
+    benefits: [
+      "Restores original paint finish",
+      "Removes swirl marks and scratches",
+      "Enhances gloss and clarity",
+      "Protects paint from further damage",
+      "Increases vehicle resale value",
+      "Prepares car surface for protective coatings",
+    ],
+    servicesOffered: [
+      "Single-Stage Paint Correction",
+      "Multi-Stage Paint Correction",
+      "Swirl Mark Removal",
+      "Scratch Removal",
+      "Gloss Enhancement",
+    ],
+  },
+  // "vehicle-paint-protection": {
+  //   title: "Vehicle Paint Protection",
+  //   description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+  //   image: "/TintTek-Website/paint-protection.png",
+  //   details: "Our paint protection services include vinyl wraps, clear bras, and ceramic coatings to keep your car looking pristine.",
+  //   benefits: [
+  //     "Protects from chips, scratches, and road debris",
+  //     "Maintains your car’s showroom finish",
+  //     "Provides a high-gloss, durable finish",
+  //     "Easy maintenance and cleaning",
+  //     "Customizes vehicle appearance",
+  //     "Prevents UV damage and fading",
+  //   ],
+  //   servicesOffered: [
+  //     "Full Vehicle Vinyl Wrap",
+  //     "Partial Vehicle Wrap",
+  //     "Clear Bra Protection",
+  //     "Ceramic Coating",
+  //     "Custom Wrap Designs",
+  //   ],
+  // },
 };
+
 
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = serviceDetails[serviceId];
 
-  if (!service) {
-    return (
-      <Typography variant="h4" textAlign="center">
-        Service not found
-      </Typography>
-    );
-  }
+ // ✅ Handle "Service Not Found" with Full Layout
+ if (!service) {
+  return (
+<Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    backgroundColor: "#f9f9f9",
+  }}
+>
+  <Topbar notFound={true} />  {/* Topbar stays on the page */}
+
+  {/* Main 404 Section with Max Width */}
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",  // Centers the content horizontally
+      alignItems: "center",
+      flexGrow: 1,
+      backgroundColor: "#b6c0c2", // Light peach background
+      padding: { xs: 4, md: 8 },
+      mt: { xs: "56px", md: "64px" },  // Offset for Topbar
+    }}
+  >
+    {/* Content Container with Max Width */}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        maxWidth: "1200px",  // Limit the width to 1200px
+        mx: "auto",          // Center the container
+      }}
+    >
+      {/* Text Section */}
+      <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" }, mb: { xs: 4, md: 0 } }}>
+        <Typography variant="h4" sx={{ color: "#FF6F61", fontWeight: "bold", mb: 1 }}>
+          404
+        </Typography>
+        <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+          Oops! I may have chewed up the power cord.
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 4, color: "#555" }}>
+          Go back to our main page to continue your visit.
+        </Typography>
+
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#000",
+            color: "#fff",
+            fontWeight: "bold",
+            borderRadius: "25px",
+            px: 4,
+            py: 1.5,
+            "&:hover": {
+              backgroundColor: "#333",
+            },
+          }}
+          href="/"
+        >
+          Back to main page
+        </Button>
+      </Box>
+
+      {/* Image Section */}
+      <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+        <img
+          src="/TintTek-Website/dog.jpeg"  // Replace with your desired image
+          alt="Funny Dog"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            objectFit: "contain",
+          }}
+        />
+      </Box>
+    </Box>
+  </Box>
+
+  {/* Contact Section */}
+  <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
+    <Contact /> {/* Keep the contact section */}
+  </Box>
+
+  {/* Footer */}
+  <Footer /> {/* Keep the footer */}
+</Box>
+
+
+  );
+}
+
 
   return (
     <Box
@@ -115,37 +294,41 @@ const ServicePage = () => {
 
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box
-  sx={{
-    width: "100vw", // Full viewport width
-    backgroundColor: "#007BFF",
-    textAlign: "center",
-    color: "white",
-  }}
->
-  {/* Inner Box for Content Centering */}
-  <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
-    <Typography variant="h4" fontWeight="bold">
-      Do You Need Window Tint?
-    </Typography>
-    <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
-      If you want to reduce the heat that comes into your vehicle, protect yourself and your car's interior from harmful UV rays, or just want more privacy, window tint might be a good option for you. At TintTek+, we provide comprehensive heat and UV protection, including tinting for windshields and sunroofs, to ensure optimal heat rejection, especially in the intense Dallas heat.
-    </Typography>
-    <Button
-      variant="contained"
-      sx={{
-        backgroundColor: "white",
-        color: "#007BFF",
-        fontWeight: "bold",
-        px: 4,
-        py: 1.5,
-      }}
-      href="tel:+1234567890" // Replace with actual phone number
-    >
-      Call Now
-    </Button>
-  </Box>
-</Box>
-
+        sx={{
+          width: "100vw", // Full viewport width
+          backgroundColor: "#007BFF",
+          textAlign: "center",
+          color: "white",
+        }}
+      >
+        {/* Inner Box for Content Centering */}
+        <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
+          <Typography variant="h4" fontWeight="bold">
+            Do You Need Window Tint?
+          </Typography>
+          <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
+            If you want to reduce the heat that comes into your vehicle, protect
+            yourself and your car's interior from harmful UV rays, or just want
+            more privacy, window tint might be a good option for you. At
+            TintTek+, we provide comprehensive heat and UV protection, including
+            tinting for windshields and sunroofs, to ensure optimal heat
+            rejection, especially in the intense Dallas heat.
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "white",
+              color: "#007BFF",
+              fontWeight: "bold",
+              px: 4,
+              py: 1.5,
+            }}
+            href="tel:+1234567890" // Replace with actual phone number
+          >
+            Call Now
+          </Button>
+        </Box>
+      </Box>
 
       {/* ✅ Contact Section */}
       <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
