@@ -10,6 +10,7 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -59,23 +60,22 @@ const Testimonials = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    centerMode: true,  // Enable center mode
-    centerPadding: "20px",  // Adjust this value to control how much of the next review is visible
+    centerMode: true, // Enable center mode
+    centerPadding: "20px", // Adjust this value to control how much of the next review is visible
   };
-  
 
   return (
     <Box
       id="reviews"
-      sx={{ py: 8, textAlign: "center", backgroundColor: "#000" }}
+      sx={{ py: 8, textAlign: "center", backgroundColor: "#000", paddingY: "80px" }}
     >
       <Container maxWidth="xl">
         <Typography
-          variant="h4"
+          variant="h2"
           gutterBottom
-          sx={{ fontWeight: "bold", paddingBottom: "30px", color: "#fff" }}
+          sx={{ fontWeight: "bold", paddingBottom: "30px", color: "#B0C4DE", }}
         >
-          What Our Customers Say (Google Reviews)
+          What Our Customers Say  (Google Reviews)
         </Typography>
 
         {/* Mobile View - Carousel */}
@@ -175,81 +175,91 @@ const Testimonials = () => {
             }}
           >
             {reviews.map((review, index) => (
-              <Card
-                key={index}
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  boxShadow: 3,
-                  textAlign: "left",
-                  minHeight: 300,
-                  maxHeight: 350,
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                }}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }} // Animation only happens once per scroll
               >
-                <CardContent
+                <Card
+                  key={index}
                   sx={{
-                    flex: "1 1 auto",
+                    p: 3,
+                    borderRadius: 6,
+                    boxShadow: 3,
+                    textAlign: "left",
+                    minHeight: 350,
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "space-between",
+                    position: "relative",
+                    backgroundColor: "#B0C4DE",
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                    "&:hover": {
+                      transform: "translateY(-10px) scale(1.03)",
+                      boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                    },
                   }}
                 >
-                  <Box
+                  <CardContent
                     sx={{
-                      position: "absolute",
-                      top: 10,
-                      right: 10,
-                      width: 25,
-                      height: 25,
+                      flex: "1 1 auto",
+                      display: "flex",
+                      flexDirection: "column",
                     }}
                   >
-                    <img src={GOOGLE_LOGO} alt="Google" width="100%" />
-                  </Box>
-
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <Avatar
-                      sx={{ width: 40, height: 40, mr: 2 }}
-                      src={review.profile_photo_url}
-                      alt={review.author_name}
-                    />
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
-                      >
-                        {review.author_name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {new Date(review.time * 1000).toLocaleDateString()}
-                      </Typography>
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 10,
+                        right: 10,
+                        width: 25,
+                        height: 25,
+                      }}
+                    >
+                      <img src={GOOGLE_LOGO} alt="Google" width="100%" />
                     </Box>
-                  </Box>
 
-                  <Rating
-                    value={review.rating}
-                    precision={0.5}
-                    readOnly
-                    sx={{ mb: 1 }}
-                  />
+                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Avatar
+                        sx={{ width: 40, height: 40, mr: 2 }}
+                        src={review.profile_photo_url}
+                        alt={review.author_name}
+                      />
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                        >
+                          {review.author_name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {new Date(review.time * 1000).toLocaleDateString()}
+                        </Typography>
+                      </Box>
+                    </Box>
 
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      display: "-webkit-box",
-                      overflowY: "auto",
-                      textOverflow: "ellipsis",
-                      fontStyle: "italic",
-                      fontSize: "0.9rem",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    "{review.text}"
-                  </Typography>
-                </CardContent>
-              </Card>
+                    <Rating
+                      value={review.rating}
+                      precision={0.5}
+                      readOnly
+                      sx={{ mb: 1 }}
+                    />
+
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontStyle: "italic",
+                        fontSize: "0.9rem",
+                        lineHeight: 1.5,
+                        flexGrow: 1, // Pushes content to the bottom
+                      }}
+                    >
+                      "{review.text}"
+                    </Typography>
+                  </CardContent>
+                  {/* Card Content */}
+                </Card>
+              </motion.div>
             ))}
           </Box>
         )}
@@ -259,18 +269,19 @@ const Testimonials = () => {
           variant="contained"
           sx={{
             mt: 4,
-            backgroundColor: "#4285F4",
-            color: "white",
+            backgroundColor: "#000",
+            color: "#B0C4DE",
             fontWeight: "bold",
             padding: "10px 20px",
             borderRadius: "20px",
             textTransform: "none",
             fontSize: "0.9rem",
+            border: "5px solid #B0C4DE", // Add transparent border
             transition: "0.3s",
             "&:hover": {
-              backgroundColor: "#fff",
-              border: "5px solid #000",
+              backgroundColor: "#B0C4DE",
               color: "#000",
+              transform: "scale(1.1)",
             },
           }}
           href={GOOGLE_REVIEWS_URL}

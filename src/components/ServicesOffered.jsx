@@ -82,11 +82,12 @@ const serviceOptions = {
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection Services",
     list: [
-      "Full Vehicle Vinyl Wrap",
-      "Partial Vehicle Wrap",
-      "Clear Bra Protection",
-      "Ceramic Coating",
-      "Custom Wrap Designs",
+      "Platinum Extra PPF",
+      "Platinum Gloss PPF",
+      "Platinum Matte PPF",
+      "Valor PFF",
+      "Select Black PPF",
+      "Gloss and Matte PPF",
     ],
     filmTypes: [
       { name: "Llumar Paint Protection Film", description: "Invisible shield that protects your car from chips, scratches, and road debris." },

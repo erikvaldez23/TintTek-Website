@@ -18,6 +18,7 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import Gallery from "./components/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import NotFound from "./components/NotFound";  // Import NotFound Component
 
 // Theme Configuration
 const theme = createTheme({
@@ -54,12 +55,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* Use HashRouter with basename to ensure correct routing */}
-      <Router >
-        <ScrollToTop /> {/* Scroll to top on every route change */}
-        <ScrollHandler /> {/* Scroll to specific sections if provided */}
-        <Topbar /> {/* Topbar is persistent on all pages */}
-        
+      <Router>
+        <ScrollToTop />
+        <ScrollHandler />
+        <Topbar />
+
         {/* Define routes for different pages */}
         <Routes className="App">
           <Route
@@ -71,7 +71,7 @@ function App() {
                 <WhyChooseUs />
                 <Testimonials />
                 <Vision />
-                <PricingComponent />
+                {/* <PricingComponent /> */}
                 <Contact />
                 <Footer />
               </>
@@ -79,12 +79,15 @@ function App() {
           />
           {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
-          
+
           {/* Gallery Page */}
           <Route path="/gallery" element={<Gallery />} />
-          
+
           {/* Privacy Policy Page */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+          {/* Catch-All Route for 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {/* Persistent Chatbot across all pages */}

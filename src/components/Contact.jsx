@@ -65,7 +65,7 @@ const Contact = () => {
   return (
     <Box sx={{ padding: "40px", maxWidth: "1200px", margin: "auto" }} id="contact">
       {/* Contact Header */}
-      <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center", marginBottom: 2 }}>
+      <Typography variant="h2" fontWeight="bold" sx={{ textAlign: "center", marginBottom: 2 }}>
         CONTACT US
       </Typography>
       <Typography

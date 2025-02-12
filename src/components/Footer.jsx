@@ -57,6 +57,8 @@ const Footer = () => {
             >
               <FaFacebook size={24} />
             </IconButton>
+
+            
             <IconButton
               color="inherit"
               sx={{
@@ -69,7 +71,9 @@ const Footer = () => {
             >
               <FaInstagram size={24} />
             </IconButton>
-            <IconButton
+
+
+            {/* <IconButton
               color="inherit"
               sx={{
                 mx: 1,
@@ -80,8 +84,10 @@ const Footer = () => {
               target="_blank"
             >
               <FaLinkedin size={24} />
-            </IconButton>
-            <IconButton
+            </IconButton> */}
+
+
+            {/* <IconButton
               color="inherit"
               sx={{
                 mx: 1,
@@ -92,7 +98,7 @@ const Footer = () => {
               target="_blank"
             >
               <FaTwitter size={24} />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Box>
 

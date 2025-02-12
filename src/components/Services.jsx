@@ -93,9 +93,10 @@ const Services = () => {
         textAlign: "center",
         backgroundColor: "#000",
         color: "#fff",
+        paddingBottom: "80px",
       }}
     >
-      <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
+      <Typography variant="h2" sx={{ mb: 2, fontWeight: "bold" }}>
         TINTEK+ SERVICES
       </Typography>
       <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>

@@ -341,7 +341,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
           }}
         >
-          {[FaFacebook, FaTiktok, FaInstagram, FaYoutube].map((Icon, index) => (
+          {[FaFacebook, FaInstagram ].map((Icon, index) => (
             <IconButton
               key={index}
               sx={{
