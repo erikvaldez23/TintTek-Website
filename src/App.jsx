@@ -9,11 +9,8 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Vision from "./components/Vision";
 import Footer from "./components/Footer";
-import PricingComponent from "./components/Pricing";
 import ServicesPage from "./components/ServicesPage";
 import Chatbot from "./ChatBot";
-import TintSelector from "./components/TintSelector";
-import TintedCar from "./components/TintedCar";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Gallery from "./components/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
@@ -62,7 +59,7 @@ function App() {
         <Topbar />
 
         {/* Define routes for different pages */}
-        <Routes className="App">
+        <Routes>
           <Route
             path="/"
             element={
@@ -73,12 +70,12 @@ function App() {
                 <Testimonials />
                 <Vision />
                 <CallToAction />
-                {/* <PricingComponent /> */}
                 <Contact />
                 <Footer />
               </>
             }
           />
+          
           {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
 
@@ -88,7 +85,7 @@ function App() {
           {/* Privacy Policy Page */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-          {/* Catch-All Route for 404 */}
+          {/* Catch-All Route for 404 Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
