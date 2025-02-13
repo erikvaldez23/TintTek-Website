@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
       sx={{
         p: 6,
         textAlign: "center",
-        background: "#B0C4DE",
+        background: "#EEEEFF",
         color: "white",
       }}
     >
@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
                   alignItems: "center",
                   gap: 1,
                   backgroundColor:
-                    hoveredIndex === index ? "#B0C4DE" : "#2C2F33",
+                    hoveredIndex === index ? "#EEEEFF" : "#2C2F33",
                   color: hoveredIndex === index ? "black" : "white",
                   borderRadius: "10px",
                   transition: "all 0.3s ease-in-out",

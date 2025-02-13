@@ -15,10 +15,9 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#111", // Dark modern background
+        backgroundColor: "#111",
         color: "white",
         py: 4,
-        mt: 4,
       }}
     >
       <Container maxWidth="lg">
@@ -58,7 +57,6 @@ const Footer = () => {
               <FaFacebook size={24} />
             </IconButton>
 
-            
             <IconButton
               color="inherit"
               sx={{
@@ -72,7 +70,6 @@ const Footer = () => {
               <FaInstagram size={24} />
             </IconButton>
 
-
             {/* <IconButton
               color="inherit"
               sx={{
@@ -85,7 +82,6 @@ const Footer = () => {
             >
               <FaLinkedin size={24} />
             </IconButton> */}
-
 
             {/* <IconButton
               color="inherit"

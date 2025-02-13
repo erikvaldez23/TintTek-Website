@@ -73,7 +73,7 @@ const Testimonials = () => {
         <Typography
           variant="h2"
           gutterBottom
-          sx={{ fontWeight: "bold", paddingBottom: "30px", color: "#B0C4DE", }}
+          sx={{ fontWeight: "bold", paddingBottom: "30px", color:"#EEEEFF" }}
         >
           What Our Customers Say  (Google Reviews)
         </Typography>
@@ -192,7 +192,7 @@ const Testimonials = () => {
                     display: "flex",
                     flexDirection: "column",
                     position: "relative",
-                    backgroundColor: "#B0C4DE",
+                    backgroundColor: "#EEEEFF",
                     transition: "transform 0.3s, box-shadow 0.3s",
                     "&:hover": {
                       transform: "translateY(-10px) scale(1.03)",
@@ -270,16 +270,16 @@ const Testimonials = () => {
           sx={{
             mt: 4,
             backgroundColor: "#000",
-            color: "#B0C4DE",
+            color: "#EEEEFF",
             fontWeight: "bold",
             padding: "10px 20px",
             borderRadius: "20px",
             textTransform: "none",
             fontSize: "0.9rem",
-            border: "5px solid #B0C4DE", // Add transparent border
+            border: "5px solid #EEEEFF", // Add transparent border
             transition: "0.3s",
             "&:hover": {
-              backgroundColor: "#B0C4DE",
+              backgroundColor: "#EEEEFF",
               color: "#000",
               transform: "scale(1.1)",
             },

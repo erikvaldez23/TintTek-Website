@@ -92,7 +92,7 @@ const Services = () => {
         py: 6,
         textAlign: "center",
         backgroundColor: "#000",
-        color: "#fff",
+        color: "#EEEEFF",
         paddingBottom: "80px",
       }}
     >
@@ -167,7 +167,7 @@ const Services = () => {
                       alignItems: "center",
                       textAlign: "center",
                       padding: "20px",
-                      color: "#fff", // Ensure text is readable
+                      color: "#EEEEFF", // Ensure text is readable
                     }}
                   >
                     <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -179,7 +179,7 @@ const Services = () => {
                       variant="contained"
                       sx={{
                         backgroundColor: "rgba(255,255,255,0.2)", // Light transparency
-                        color: "#fff",
+                        color: "#EEEEFF",
                         width: "90%",
                         borderRadius: 50,
                         "&:hover": { backgroundColor: "rgba(255,255,255,0.3)" },
@@ -214,7 +214,7 @@ const Services = () => {
                     backgroundColor: "black", // Ensures no background gaps
                     "&:hover": {
                       transform: "scale(1.05)",
-                      outline: "5px solid #007bff", // Change from border to outline
+                      outline: "5px solid #EEEEFF", // Change from border to outline
                       backgroundColor: "black", // Prevents visual gaps
                     },
                   }}
