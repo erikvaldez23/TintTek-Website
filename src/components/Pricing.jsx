@@ -56,7 +56,7 @@ const PricingComponent = () => {
         <Typography
           variant="h4"
           fontWeight="bold"
-          sx={{ mb: 3, textTransform: "uppercase", color: "#007BFF" }}
+          sx={{ mb: 3, textTransform: "uppercase", color: "#2794d2" }}
         >
           Car Window Tint Pricing
         </Typography>
@@ -75,14 +75,14 @@ const PricingComponent = () => {
                 textTransform: "uppercase",
                 cursor: "pointer",
                 borderBottom:
-                  selectedOption === option ? "4px solid #007BFF" : "none",
+                  selectedOption === option ? "4px solid #2794d2" : "none",
                 backgroundColor:
-                  selectedOption === option ? "#007BFF" : "transparent",
+                  selectedOption === option ? "#2794d2" : "transparent",
                 color: selectedOption === option ? "white" : "#ddd",
                 transition: "all 0.3s ease-in-out",
                 "&:hover": {
                   backgroundColor:
-                    selectedOption === option ? "#007BFF" : "#222",
+                    selectedOption === option ? "#2794d2" : "#222",
                   color: "white",
                 },
               }}
@@ -116,7 +116,7 @@ const PricingComponent = () => {
                     {/* Tint Name */}
                     <Typography
                       variant="h6"
-                      sx={{ fontWeight: "bold", color: "#007BFF", mb: 1 }}
+                      sx={{ fontWeight: "bold", color: "#2794d2", mb: 1 }}
                     >
                       LLUMAR {tint}
                     </Typography>

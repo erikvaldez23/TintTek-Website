@@ -189,7 +189,7 @@ const Gallery = () => {
             size="large"
             sx={{
               mt: 10,
-              backgroundColor: "#007bff",
+              backgroundColor: "#2794d2",
               color: "#fff",
               borderRadius: "20px",
               fontWeight: "bold",
@@ -210,7 +210,7 @@ const Gallery = () => {
       </Box>
 
       {/* Contact Section */}
-      <Box sx={{ width: "100%", color: "#fff" }}>
+      <Box sx={{ width: "100%", color: "#000" }}>
         <Contact />
       </Box>
 

@@ -318,7 +318,7 @@ const ServicePage = () => {
       <Box
         sx={{
           width: "100vw",
-          backgroundColor: "#007BFF",
+          backgroundColor: "#2794d2",
           textAlign: "center",
           color: "white",
         }}
@@ -339,7 +339,7 @@ const ServicePage = () => {
             variant="contained"
             sx={{
               backgroundColor: "white",
-              color: "#007BFF",
+              color: "#2794d2",
               fontWeight: "bold",
               px: 4,
               py: 1.5,

@@ -81,8 +81,8 @@
 }
 
 .learn-more-btn:hover {
-  background: #007bff;
-  color: #fff;
+  background: #EEEEFF;
+  color: #000;
   transform: scale(1.05);
 }
 

@@ -167,12 +167,12 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
                         bottom: "0",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "linear-gradient(90deg, #007bff, #00c6ff)", // Gradient underline
+                        background: "#2794d2", // Gradient underline
                         transition: "width 0.4s ease-in-out",
                         borderRadius: "2px",
                       },
                       "&:hover": {
-                        color: "#00c6ff", // Bright hover color
+                        color: "#2794d2", // Bright hover color
                         textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
                         "&:after": { width: "100%" }, // Underline expands
                       },
@@ -263,7 +263,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
                     "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
                     "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
                     "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#007bff", cursor: "pointer" },
+                    "&:hover": { color: "#2794d2", cursor: "pointer" },
                   },
                 }}
               />
@@ -284,7 +284,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             variant="contained"
             onClick={handleOpenQuote}
             sx={{
-              backgroundColor: "#007bff",
+              backgroundColor: "#2794d2",
               color: "black",
               fontSize: "22px",
               fontWeight: "bold",
@@ -348,7 +348,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
                 color: "white",
                 fontSize: "36px",
                 "&:hover": {
-                  color: "#007bff",
+                  color: "#2794d2",
                 },
               }}
             >

@@ -67,7 +67,7 @@ export default function Chatbot() {
         <IconButton
           onClick={handleOpenChat} // ✅ Show welcome message when opening
           sx={{
-            bgcolor: "primary.main",
+            bgcolor: "#2794d2",
             color: "white",
             "&:hover": { bgcolor: "primary.dark" },
           }}
@@ -213,7 +213,7 @@ export default function Chatbot() {
                 },
               }}
             />
-            <IconButton onClick={sendMessage} sx={{ color: "#007AFF", ml: 1 }}>
+            <IconButton onClick={sendMessage} sx={{ color: "#2794d2", ml: 1 }}>
               <SendIcon />
             </IconButton>
           </Box>

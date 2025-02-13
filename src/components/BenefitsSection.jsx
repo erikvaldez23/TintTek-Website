@@ -43,7 +43,7 @@ const BenefitsSection = ({ benefits }) => {
                   textAlign: "center",
                 }}
               >
-                <CheckCircleIcon sx={{ color: "#007BFF", fontSize: 28 }} />
+                <CheckCircleIcon sx={{ color: "#2794d2", fontSize: 28 }} />
                 <Typography
                   variant="body1"
                   fontWeight="bold"

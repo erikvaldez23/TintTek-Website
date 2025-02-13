@@ -69,7 +69,7 @@ const missionPoints = [
 const Vision = () => {
   return (
     <Box
-      sx={{ py: 8, background: "linear-gradient(to bottom, #0D0D0D, #000)" }}
+      sx={{ py: 8, background: "#EEEEFF", }}
     >
       <Container maxWidth="md">
         {/* Company Vision Section */}
@@ -77,7 +77,7 @@ const Vision = () => {
           variant="h2"
           sx={{
             fontWeight: "bold",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Poppins, sans-serif",
             mb: 4,
             textAlign: "center",
@@ -91,7 +91,7 @@ const Vision = () => {
           sx={{
             mb: 6,
             fontSize: "1.3rem",
-            color: "#ddd",
+            color: "#000",
             lineHeight: 1.8,
             maxWidth: "900px",
             mx: "auto",
@@ -128,12 +128,12 @@ const Vision = () => {
                       "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.05)",
-                      boxShadow: "0px 4px 30px rgba(0, 123, 255, 0.6)",
+                      boxShadow: "0px 4px 30px #2794d2",
                     },
                   }}
                 >
                   <CardContent>
-                    <Box sx={{ mb: 2, color: "#007bff" }}>{point.icon}</Box>
+                    <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
                     <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                       {point.title}
                     </Typography>

@@ -124,7 +124,7 @@ const ServicesOffered = ({ serviceId }) => {
           {service.list.map((item, index) => (
             <ListItem key={index}>
               <ListItemIcon>
-                <CheckCircleIcon sx={{ color: "#007BFF" }} />
+                <CheckCircleIcon sx={{ color: "#2794d2" }} />
               </ListItemIcon>
               <ListItemText primary={item} />
             </ListItem>
@@ -148,7 +148,7 @@ const ServicesOffered = ({ serviceId }) => {
                 }}
               >
                 <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                  <LayersIcon sx={{ fontSize: 40, color: "#007BFF", mb: 1 }} />
+                  <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
                   <Typography variant="h6" fontWeight="bold">
                     {film.name}
                   </Typography>

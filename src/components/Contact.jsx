@@ -63,6 +63,11 @@ const Contact = () => {
   };
 
   return (
+    <Box
+    sx = {{
+      backgroundColor: "#EEEEFF",
+      width: "100%"
+    }}>
     <Box sx={{ padding: "40px", maxWidth: "1200px", margin: "auto" }} id="contact">
       {/* Contact Header */}
       <Typography variant="h2" fontWeight="bold" sx={{ textAlign: "center", marginBottom: 2 }}>
@@ -81,7 +86,7 @@ const Contact = () => {
     <Card sx={{ backgroundColor: "#f8f9fa", padding: "20px", flexGrow: 1 }}>
       <CardContent sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <FaMapMarkerAlt size={24} style={{ marginRight: 10, color:"#007bff" }} />
+          <FaMapMarkerAlt size={24} style={{ marginRight: 10, color:"#2794d2" }} />
           <Box>
             <Typography variant="h6">Location</Typography>
             <Typography variant="body2">Tint Tek +</Typography>
@@ -90,7 +95,7 @@ const Contact = () => {
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <FaPhone size={24} style={{ marginRight: 10, color:"#007bff" }} />
+          <FaPhone size={24} style={{ marginRight: 10, color:"#2794d2" }} />
           <Box>
             <Typography variant="h6">Call Us</Typography>
             <Typography variant="body2">+1 (972) 362-8468</Typography>
@@ -98,7 +103,7 @@ const Contact = () => {
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <FaEnvelope size={24} style={{ marginRight: 10, color:"#007bff" }} />
+          <FaEnvelope size={24} style={{ marginRight: 10, color:"#2794d2" }} />
           <Box>
             <Typography variant="h6">Email Us</Typography>
             <Typography variant="body2">info@tinttekplus.com</Typography>
@@ -198,7 +203,7 @@ const Contact = () => {
         type="submit"
         variant="contained"
         sx={{
-          backgroundColor: "#007bff",
+          backgroundColor: "#2794d2",
           color: "white",
           "&:hover": { 
             backgroundColor: "#000",
@@ -212,6 +217,7 @@ const Contact = () => {
   </Grid>
 </Grid>
 
+    </Box>
     </Box>
   );
 };

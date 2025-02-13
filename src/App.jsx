@@ -18,7 +18,8 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import Gallery from "./components/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import NotFound from "./components/NotFound";  // Import NotFound Component
+import NotFound from "./components/NotFound";  
+import CallToAction from "./components/CallToAction";
 
 // Theme Configuration
 const theme = createTheme({
@@ -71,6 +72,7 @@ function App() {
                 <WhyChooseUs />
                 <Testimonials />
                 <Vision />
+                <CallToAction />
                 {/* <PricingComponent /> */}
                 <Contact />
                 <Footer />

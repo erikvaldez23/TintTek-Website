@@ -49,7 +49,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" }, // Blue color on hover
+                "&:hover": { color: "#2794d2" }, // Blue color on hover
               }}
               href="https://facebook.com"
               target="_blank"
@@ -62,7 +62,7 @@ const Footer = () => {
               sx={{
                 mx: 1,
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
+                "&:hover": { color: "#2794d2" },
               }}
               href="https://instagram.com"
               target="_blank"

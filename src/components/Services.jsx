@@ -214,7 +214,7 @@ const Services = () => {
                     backgroundColor: "black", // Ensures no background gaps
                     "&:hover": {
                       transform: "scale(1.05)",
-                      outline: "5px solid #EEEEFF", // Change from border to outline
+                      outline: "5px solid #2794d2", // Change from border to outline
                       backgroundColor: "black", // Prevents visual gaps
                     },
                   }}
@@ -233,7 +233,7 @@ const Services = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "rgba(0, 0, 0, 0.5)", // Dark overlay (Always Visible)
+                      background: "rgba(0, 0, 0, 0.2)", // Dark overlay (Always Visible)
                       color: "white",
                       display: "flex",
                       flexDirection: "column",
