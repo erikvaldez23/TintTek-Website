@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper, useMediaQuery } from "@mui/material";
+import { Box, Typography, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
@@ -219,7 +219,8 @@ const serviceSteps = {
 
 const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
-  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
   if (!service) {
     return (
@@ -230,10 +231,17 @@ const HowItWorks = ({ serviceId }) => {
   }
 
   return (
-    <Box sx={{ py: 6, px: 4, backgroundColor: "#000", width: "100vw" }}>
+    <Box
+      sx={{
+        py: isMobile ? 4 : 6, // Reduce padding for mobile
+        px: isMobile ? 2 : 4, // Reduce horizontal padding
+        backgroundColor: "#000",
+        width: "100vw",
+      }}
+    >
       <Typography
-        variant={isMobile ? "h4" : "h2"}
-        sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+        variant={isMobile ? "h5" : "h2"} // Smaller font size for mobile
+        sx={{ mb: isMobile ? 1.5 : 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
       >
         HOW IT WORKS
       </Typography>
@@ -241,22 +249,22 @@ const HowItWorks = ({ serviceId }) => {
       {/* Steps Section */}
       <Grid
         container
-        spacing={3}
+        spacing={isMobile ? 2 : 3} // Reduce spacing for mobile
         justifyContent="center"
         sx={{ maxWidth: "1200px", mx: "auto" }}
       >
         {/* Dynamic Description Under Steps */}
         {service.finalDescription && (
           <Typography
-            variant="body1"
+            variant={isMobile ? "body2" : "body1"} // Adjust text size
             textAlign="center"
             sx={{
-              mt: 4,
+              mt: isMobile ? 2 : 4,
               color: "#fff",
-              fontSize: "1.5rem",
-              maxWidth: "1150px",
-              m: "auto",
-              paddingTop: "20px",
+              fontSize: isMobile ? "1.1rem" : "1.5rem", // Adjust font size
+              maxWidth: "90%",
+              mx: "auto",
+              pt: isMobile ? 1 : 2, // Reduce top padding
             }}
           >
             {service.finalDescription}
@@ -272,14 +280,12 @@ const HowItWorks = ({ serviceId }) => {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-                p: 3,
+                p: isMobile ? 2 : 3, // Reduce padding for mobile
                 borderRadius: 2,
                 height: "100%",
                 backgroundColor: "#292929",
                 color: "#fff",
                 transition: "all 0.3s ease-in-out", // Smooth transition
-
-                /* ✅ Hover Effects */
                 "&:hover": {
                   transform: "scale(1.05)", // Slight scale-up
                   boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
@@ -288,10 +294,17 @@ const HowItWorks = ({ serviceId }) => {
               }}
             >
               {step.icon}
-              <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+              <Typography
+                variant={isMobile ? "h6" : "h5"} // Adjust title size
+                fontWeight="bold"
+                sx={{ mt: 1.5 }}
+              >
                 {step.title}
               </Typography>
-              <Typography variant="body1" sx={{ mt: 1, fontSize: "0.95rem" }}>
+              <Typography
+                variant={isMobile ? "body2" : "body1"} // Adjust description size
+                sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
+              >
                 {step.description}
               </Typography>
             </Paper>
@@ -300,10 +313,10 @@ const HowItWorks = ({ serviceId }) => {
       </Grid>
 
       {/* Image Section */}
-      <Box sx={{ mt: 6 }}>
+      <Box sx={{ mt: isMobile ? 4 : 6 }}>
         <Grid
           container
-          spacing={3}
+          spacing={isMobile ? 1.5 : 3} // Reduce spacing for mobile
           justifyContent="center"
           sx={{ maxWidth: "1200px", mx: "auto" }}
         >
@@ -317,8 +330,6 @@ const HowItWorks = ({ serviceId }) => {
                   height: "100%",
                   display: "flex",
                   transition: "all 0.3s ease-in-out", // Smooth transition
-
-                  /* ✅ Hover Effects */
                   "&:hover": {
                     transform: "scale(1.05)", // Slight scale-up
                     boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
