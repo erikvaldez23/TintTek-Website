@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Box, Container, Typography, Button, Grid } from "@mui/material";
+import { Box, Container, Typography, Button, Grid, useMediaQuery } from "@mui/material";
 import PricingComponent from "./Pricing"; // Import Pricing model
 import Contact from "./Contact"; // Import Contact component
 import Topbar from "./Topbar";
@@ -154,6 +154,7 @@ const serviceDetails = {
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = serviceDetails[serviceId];
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
   // ✅ Handle "Service Not Found" with Full Layout
   if (!service) {
@@ -324,9 +325,12 @@ const ServicePage = () => {
         }}
       >
         <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
-          <Typography variant="h4" fontWeight="bold">
-            Do You Need Window Tint?
-          </Typography>
+        <Typography
+        variant={isMobile ? "h4" : "h2"}
+        sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+      >
+        Do You Need Window Tint?
+      </Typography>
           <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
             If you want to reduce the heat that comes into your vehicle, protect
             yourself and your car's interior from harmful UV rays, or just want

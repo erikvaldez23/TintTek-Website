@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper } from "@mui/material";
+import { Box, Typography, Grid, Paper, useMediaQuery } from "@mui/material";
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
@@ -30,7 +30,8 @@ const serviceSteps = {
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
-    finalDescription: "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
+    finalDescription:
+      "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
     images: [
       "/TintTek-Website/vehicle-tint1.jpeg",
       "/TintTek-Website/vehicle-tint2.jpeg",
@@ -48,21 +49,25 @@ const serviceSteps = {
       },
       {
         title: "Custom Cutting",
-        description: "We then measure and cut the tint film to match the size and shape of each window.",
+        description:
+          "We then measure and cut the tint film to match the size and shape of each window.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Precision Application",
-        description: " We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
+        description:
+          " We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Drying and Setting",
-        description: "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window..",
+        description:
+          "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window..",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
-    finalDescription: "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
+    finalDescription:
+      "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
     images: [
       "/TintTek-Website/tesla-tint1.jpeg",
       "/TintTek-Website/tesla-tint2.jpeg",
@@ -202,7 +207,8 @@ const serviceSteps = {
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
-    finalDescription: "Paint Protection Film (PPF) application involves a few key steps to ensure proper installation and optimal protection, all of which we practice at TintTek+:",
+    finalDescription:
+      "Paint Protection Film (PPF) application involves a few key steps to ensure proper installation and optimal protection, all of which we practice at TintTek+:",
     images: [
       "/TintTek-Website/paint-protection1.jpeg",
       "/TintTek-Website/paint-protection2.jpeg",
@@ -213,6 +219,7 @@ const serviceSteps = {
 
 const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
   if (!service) {
     return (
@@ -225,10 +232,8 @@ const HowItWorks = ({ serviceId }) => {
   return (
     <Box sx={{ py: 6, px: 4, backgroundColor: "#000", width: "100vw" }}>
       <Typography
-        variant="h4"
-        fontWeight="bold"
-        textAlign="center"
-        sx={{ mb: 3, color: "#fff" }}
+        variant={isMobile ? "h4" : "h2"}
+        sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
       >
         HOW IT WORKS
       </Typography>
@@ -272,6 +277,14 @@ const HowItWorks = ({ serviceId }) => {
                 height: "100%",
                 backgroundColor: "#292929",
                 color: "#fff",
+                transition: "all 0.3s ease-in-out", // Smooth transition
+
+                /* ✅ Hover Effects */
+                "&:hover": {
+                  transform: "scale(1.05)", // Slight scale-up
+                  boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
+                  backgroundColor: "#333", // Lighter background
+                },
               }}
             >
               {step.icon}
@@ -303,6 +316,13 @@ const HowItWorks = ({ serviceId }) => {
                   overflow: "hidden",
                   height: "100%",
                   display: "flex",
+                  transition: "all 0.3s ease-in-out", // Smooth transition
+
+                  /* ✅ Hover Effects */
+                  "&:hover": {
+                    transform: "scale(1.05)", // Slight scale-up
+                    boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
+                  },
                 }}
               >
                 <img
@@ -313,7 +333,10 @@ const HowItWorks = ({ serviceId }) => {
                     height: "100%",
                     objectFit: "cover",
                     display: "block",
+                    transition: "transform 0.3s ease-in-out", // Smooth image zoom
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
                 />
               </Paper>
             </Grid>

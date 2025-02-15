@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper, List, ListItem, ListItemIcon, ListItemText, Card, CardContent } from "@mui/material";
+import { Box, Typography, Grid, Paper, List, ListItem, ListItemIcon, ListItemText, Card, CardContent, useMediaQuery } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LayersIcon from "@mui/icons-material/Layers";
 
@@ -100,6 +100,7 @@ const serviceOptions = {
 
 const ServicesOffered = ({ serviceId }) => {
   const service = serviceOptions[serviceId];
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
   if (!service) {
     return (
@@ -112,7 +113,10 @@ const ServicesOffered = ({ serviceId }) => {
   return (
     <Box sx={{ py: 6, px: 4, backgroundColor: "#292929", color: "#fff", width: "100vw" }}>
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
-        <Typography variant="h4" fontWeight="bold" textAlign="center" sx={{ mb: 4 }}>
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
+          sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+        >
           SERVICES WE OFFER
         </Typography>
 
@@ -122,7 +126,16 @@ const ServicesOffered = ({ serviceId }) => {
         </Typography>
         <List>
           {service.list.map((item, index) => (
-            <ListItem key={index}>
+            <ListItem
+              key={index}
+              sx={{
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  color: "#2794d2", // Text color change
+                  transform: "translateX(8px)", // Slight movement effect
+                },
+              }}
+            >
               <ListItemIcon>
                 <CheckCircleIcon sx={{ color: "#2794d2" }} />
               </ListItemIcon>
@@ -145,6 +158,14 @@ const ServicesOffered = ({ serviceId }) => {
                   borderRadius: 2,
                   boxShadow: 3,
                   height: "100%",
+                  transition: "all 0.3s ease-in-out", // Smooth transition
+                  
+                  /* ✅ Hover Effects */
+                  "&:hover": {
+                    transform: "scale(1.05)", // Slight scale-up effect
+                    boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
+                    backgroundColor: "#333", // Lighter background
+                  },
                 }}
               >
                 <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>

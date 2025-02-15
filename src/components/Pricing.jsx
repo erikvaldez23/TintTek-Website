@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Container, Typography, Grid, Fade, Tooltip } from "@mui/material";
+import { Box, Container, Typography, Grid, Fade, Tooltip, useMediaQuery } from "@mui/material";
 import { FaCarSide, FaSun, FaShieldAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -31,6 +31,7 @@ const pricingOptions = ["COUPE", "SEDAN", "FULL SUV", "2 WINDOWS"];
 const PricingComponent = () => {
   const [selectedOption, setSelectedOption] = useState("COUPE");
   const [fadeIn, setFadeIn] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
   // Handles selection change
   const handleOptionChange = (option) => {
@@ -54,13 +55,11 @@ const PricingComponent = () => {
       <Container maxWidth="lg">
         {/* Title */}
         <Typography
-          variant="h4"
-          fontWeight="bold"
-          sx={{ mb: 3, textTransform: "uppercase", color: "#2794d2" }}
-        >
-          Car Window Tint Pricing
-        </Typography>
-
+        variant={isMobile ? "h4" : "h2"}
+        sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+      >
+        PRICING OPTIONS
+      </Typography>
         {/* Pricing Tabs */}
         <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
           {pricingOptions.map((option) => (
