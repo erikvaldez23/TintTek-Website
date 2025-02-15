@@ -11,9 +11,9 @@ const SubIcons = () => {
       <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
         <FaFacebookF />
       </a>
-      <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+      {/* <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="social-icon">
         <FaTiktok />
-      </a>
+      </a> */}
     </div>
   );
 };

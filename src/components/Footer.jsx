@@ -6,18 +6,24 @@ import {
   IconButton,
   Divider,
   Link,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import logo from "../../public/logo.png"; // Ensure correct path
 
 const Footer = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+
   return (
     <Box
       component="footer"
       sx={{
         backgroundColor: "#111",
         color: "white",
-        py: 4,
+        py: isMobile ? 2 : 4, // Reduce padding for mobile
+        textAlign: "center",
       }}
     >
       <Container maxWidth="lg">
@@ -25,10 +31,12 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            flexDirection: isMobile ? "column" : "row", // Stack elements on mobile
             alignItems: "center",
+            justifyContent: isMobile ? "center" : "space-between",
             flexWrap: "wrap",
-            mb: 2,
+            mb: isMobile ? 3 : 2,
+            gap: isMobile ? 2 : 0, // Add spacing for stacked elements
           }}
         >
           {/* Company Logo */}
@@ -36,64 +44,68 @@ const Footer = () => {
             sx={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               "&:hover": { cursor: "pointer", transform: "scale(1.05)" },
             }}
           >
-            <img src={logo} alt="Company Logo" style={{ height: "50px" }} />
+            <img src={logo} alt="Company Logo" style={{ height: isMobile ? "40px" : "50px" }} />
           </Box>
 
           {/* Social Media Icons */}
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: isMobile ? "1rem" : "1.5rem", // Adjust spacing for mobile
+            }}
+          >
             <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
                 "&:hover": { color: "#2794d2" }, // Blue color on hover
               }}
               href="https://facebook.com"
               target="_blank"
             >
-              <FaFacebook size={24} />
+              <FaFacebook size={isMobile ? 22 : 24} />
             </IconButton>
 
             <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
                 "&:hover": { color: "#2794d2" },
               }}
               href="https://instagram.com"
               target="_blank"
             >
-              <FaInstagram size={24} />
+              <FaInstagram size={isMobile ? 22 : 24} />
             </IconButton>
 
+            {/* Uncomment when needed */}
             {/* <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
                 "&:hover": { color: "#007bff" },
               }}
               href="https://linkedin.com"
               target="_blank"
             >
-              <FaLinkedin size={24} />
+              <FaLinkedin size={isMobile ? 22 : 24} />
             </IconButton> */}
 
             {/* <IconButton
               color="inherit"
               sx={{
-                mx: 1,
                 transition: "color 0.3s",
                 "&:hover": { color: "#007bff" },
               }}
               href="https://twitter.com"
               target="_blank"
             >
-              <FaTwitter size={24} />
+              <FaTwitter size={isMobile ? 22 : 24} />
             </IconButton> */}
           </Box>
         </Box>
@@ -105,10 +117,10 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row", // Stack links on mobile
             justifyContent: "center",
             alignItems: "center",
-            flexWrap: "wrap",
-            gap: 3,
+            gap: 2,
             textAlign: "center",
             fontSize: "14px",
           }}
@@ -117,10 +129,16 @@ const Footer = () => {
             href="https://tinttekplus.com"
             color="inherit"
             underline="hover"
+            sx={{ fontSize: isMobile ? "13px" : "14px" }}
           >
             www.tinttekplus.com
           </Link>
-          <Link href="#/privacy-policy" color="inherit" underline="hover">
+          <Link
+            href="#/privacy-policy"
+            color="inherit"
+            underline="hover"
+            sx={{ fontSize: isMobile ? "13px" : "14px" }}
+          >
             Privacy Policy
           </Link>
         </Box>
@@ -128,7 +146,11 @@ const Footer = () => {
         {/* Bottom Section: All Rights Reserved */}
         <Typography
           variant="body2"
-          sx={{ textAlign: "center", mt: 2, fontSize: "12px", opacity: 0.7 }}
+          sx={{
+            mt: 2,
+            fontSize: isMobile ? "11px" : "12px",
+            opacity: 0.7,
+          }}
         >
           © {new Date().getFullYear()} Tint Tek + . All rights reserved.
         </Typography>

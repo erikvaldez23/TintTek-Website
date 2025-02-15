@@ -57,7 +57,7 @@ const Testimonials = () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1.1,
     slidesToScroll: 1,
     arrows: false,
     centerMode: true, // Enable center mode
@@ -70,13 +70,13 @@ const Testimonials = () => {
       sx={{ py: 8, textAlign: "center", backgroundColor: "#000", paddingY: "80px" }}
     >
       <Container maxWidth="xl">
-        <Typography
-          variant="h2"
-          gutterBottom
-          sx={{ fontWeight: "bold", paddingBottom: "30px", color:"#EEEEFF" }}
+      <Typography
+          variant={isMobile ? "h4" : "h2"}
+          sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
         >
-          What Our Customers Say  (Google Reviews)
+          What Our Customers Say?
         </Typography>
+
 
         {/* Mobile View - Carousel */}
         {isMobile ? (

@@ -100,7 +100,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             ? "#EEEEFF"
             : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
-          color: notFound || scrolling ? "#EEEEFF" : "#EEEEFF",
+          color: notFound || scrolling ? "#000" : "#EEEEFF",
           boxShadow: scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
           borderBottom: scrolling && !notFound ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
