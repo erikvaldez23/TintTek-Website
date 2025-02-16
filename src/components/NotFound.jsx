@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import Topbar from "./Topbar";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import CallToAction from "./CallToAction";
 
 const NotFound = () => {
   return (
@@ -94,6 +95,10 @@ const NotFound = () => {
         </Box>
       </Box>
 
+
+      <Box>
+        <CallToAction />
+      </Box>
       {/* Contact Section */}
       <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
         <Contact />
