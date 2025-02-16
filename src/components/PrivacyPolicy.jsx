@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
         sx={{
           width: "100%",
           minHeight: "300px",
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 40%, #000), url(/TintTek-Website/car.mp4)`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 40%, #000), url(/TintTek-Website/privacy-banner.jpg)`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -30,10 +30,9 @@ const PrivacyPolicy = () => {
           color: "white",
           textAlign: "center",
           padding: "40px 20px",
-          backdropFilter: "blur(5px)",
         }}
       >
-        <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+        <Typography variant="h2" sx={{ fontWeight: "bold", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}>
           Privacy Policy
         </Typography>
       </Box>
@@ -48,126 +47,40 @@ const PrivacyPolicy = () => {
           justifyContent: "center",
           alignItems: "flex-start",
           paddingY: "40px",
-          color: "white", // Ensure text stays white
+          color: "white", 
+          overflowY: "auto",
         }}
       >
-        <Typography variant="subtitle1" sx={{ opacity: 0.7 }}>
+        <Typography variant="subtitle1" sx={{ opacity: 0.7, marginBottom: 2 }}>
           Last Updated: September 4, 2024
         </Typography>
         <Divider sx={{ my: 2, backgroundColor: "white" }} />
 
-        {/* Privacy Policy Content */}
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            Online Privacy Policy Agreement
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Tint Tek Plus LLC values its users' privacy. This Privacy Policy
-            ("Policy") will help you understand how we collect and use personal
-            information from those who visit our website or make use of our
-            online facilities and services.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            1. Information We Collect
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            It is always up to you whether to disclose personally identifiable
-            information to us. We may collect non-personal demographic
-            information such as age, gender, IP address, and browser type.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            2. Why We Collect Information & Retention Period
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            We collect data to improve our services, send promotional emails,
-            and conduct market research with your consent. Data is retained
-            based on regulatory and operational needs.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            3. Use of Collected Information
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Tint Tek Plus LLC does not sell, rent, or lease customer data to
-            third parties. We use personal information to improve services and
-            keep customers informed about new products.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            4. Disclosure of Information
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Your information may be disclosed if required by law, in response to
-            subpoenas, or to enforce our Terms of Service. SMS consent will
-            never be shared or sold.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            5. Non-Marketing Purposes
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            We may contact you for non-marketing purposes such as security
-            alerts or policy updates.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            6. Children's Privacy
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Our website is not directed to children under 13, and we do not
-            knowingly collect data from them.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            7. Unsubscribe or Opt-Out
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Users may opt out of receiving communications by emailing
-            info@tinttekplus.com.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            8. Links to Other Websites
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Our website may contain links to third-party websites. We are not
-            responsible for their privacy policies.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            9. EU Data Transfers
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            Your data may be transferred to the U.S. under the Privacy Shield
-            framework.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            10. Security Measures
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            We use encryption and secure servers to protect your data. Only
-            authorized employees have access to personally identifiable
-            information.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            11. Acceptance of Terms
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            By using this site, you accept this policy. Continued use after
-            changes means agreement with updates.
-          </Typography>
-
-          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
-            12. Contact Information
-          </Typography>
-          <Typography paragraph sx={{ mb: 3 }}>
-            For questions, contact us at support@tinttekplus.com.
-          </Typography>
-        </Box>
+        {/* Privacy Policy Sections */}
+        {[
+          { title: "Online Privacy Policy Agreement", content: "Tint Tek Plus LLC values its users' privacy. This Privacy Policy will help you understand how we collect and use personal information from those who visit our website or make use of our online facilities and services, and what we will and will not do with the information we collect. Our Policy has been designed and created to ensure those affiliated with Tint Tek Plus LLC of our commitment and realization of our obligation not only to meet, but to exceed, most existing privacy standards. We reserve the right to make changes to this Policy at any given time. If you want to make sure that you are up to date with the latest changes, we advise you to frequently visit this page. If at any point in time Tint Tek Plus LLC decides to make use of any personally identifiable information on file, in a manner vastly different from that which was stated when this information was initially collected, the user or users shall be promptly notified by email. Users at that time shall have the option as to whether to permit the use of their information in this separate manner."},
+          { title: "1. Information We Collect", content: "It is always up to you whether to disclose personally identifiable information to us. We may collect non-personal demographic information such as age, gender, IP address, and browser type." },
+          { title: "2. Why We Collect Information & Retention Period", content: "We collect data to improve our services, send promotional emails, and conduct market research with your consent. Data is retained based on regulatory and operational needs." },
+          { title: "3. Use of Collected Information", content: "Tint Tek Plus LLC does not sell, rent, or lease customer data to third parties. We use personal information to improve services and keep customers informed about new products." },
+          { title: "4. Disclosure of Information", content: "Your information may be disclosed if required by law, in response to subpoenas, or to enforce our Terms of Service. SMS consent will never be shared or sold." },
+          { title: "5. Non-Marketing Purposes", content: "We may contact you for non-marketing purposes such as security alerts or policy updates." },
+          { title: "6. Children's Privacy", content: "Our website is not directed to children under 13, and we do not knowingly collect data from them." },
+          { title: "7. Unsubscribe or Opt-Out", content: "Users may opt out of receiving communications by emailing info@tinttekplus.com." },
+          { title: "8. Links to Other Websites", content: "Our website may contain links to third-party websites. We are not responsible for their privacy policies." },
+          { title: "9. EU Data Transfers", content: "Your data may be transferred to the U.S. under the Privacy Shield framework." },
+          { title: "10. Security Measures", content: "We use encryption and secure servers to protect your data. Only authorized employees have access to personally identifiable information." },
+          { title: "11. Acceptance of Terms", content: "By using this site, you accept this policy. Continued use after changes means agreement with updates." },
+          { title: "12. Contact Information", content: "For questions, contact us at support@tinttekplus.com." }
+        ].map((section, index) => (
+          <Box key={index} sx={{ mb: 4 }}>
+            <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
+              {section.title}
+            </Typography>
+            <Typography paragraph sx={{ lineHeight: 1.6, opacity: 0.9 }}>
+              {section.content}
+            </Typography>
+          </Box>
+        ))}
       </Container>
 
       {/* Footer */}
