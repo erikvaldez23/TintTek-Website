@@ -34,7 +34,8 @@ const NavbarContainer = styled(Box)({
   margin: "0 auto",
 });
 
-const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
+const Topbar = ({ notFound }) => {
+  // Accepting `notFound` prop
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -51,33 +52,32 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
 
   const scrollToSection = (sectionId) => {
     const subPages = ["gallery", "privacy-policy"]; // Add more subpages here if needed
-  
+
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
       navigate(`/${sectionId}`);
       setDrawerOpen(false);
       return;
     }
-  
+
     if (location.pathname !== "/") {
       // If not on the homepage, navigate to home and scroll to the section
       navigate("/", { state: { scrollTo: sectionId } });
       setDrawerOpen(false);
       return;
     }
-  
+
     // Scroll to section on the homepage
     const targetSection = document.getElementById(sectionId);
     if (!targetSection) return;
-  
+
     const offset = 80; // Adjust offset based on your Topbar height
     const targetPosition =
       targetSection.getBoundingClientRect().top + window.scrollY - offset;
-  
+
     window.scrollTo({ top: targetPosition, behavior: "smooth" });
     setDrawerOpen(false);
   };
-  
 
   // 🏆 Handlers for Modal
   const handleOpenQuote = () => {
@@ -94,16 +94,18 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: notFound 
+          backgroundColor: notFound
             ? "#000" // Black background if notFound is true
-            : scrolling 
+            : scrolling
             ? "#EEEEFF"
             : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
           color: notFound || scrolling ? "#000" : "#EEEEFF",
-          boxShadow: scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          boxShadow:
+            scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
-          borderBottom: scrolling && !notFound ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
+          borderBottom:
+            scrolling && !notFound ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
           width: "100vw",
           left: 0,
           top: 0,
@@ -139,10 +141,10 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
               <Box display="flex" gap={4}>
                 {[
                   "Services",
-                  "Gallery",
-                  "Pricing",
                   "About",
                   "Reviews",
+                  "Gallery",
+                  "Blog",
                   "Contact",
                 ].map((item) => (
                   <Button
@@ -235,40 +237,35 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
 
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
-          {[
-            "Services",
-            "Gallery",
-            "Pricing",
-            "About",
-            "Reviews",
-            "Contact",
-          ].map((item) => (
-            <ListItem
-              button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-            >
-              <ListItemText
-                primary={item}
-                primaryTypographyProps={{
-                  sx: {
-                    fontWeight: "bold",
-                    color: "white",
-                    textTransform: "uppercase",
-                    textAlign: "center",
-                    fontSize: "35px", // Default font size
-                    "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-                    "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-                    "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-                    "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-                    "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-                    "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#2794d2", cursor: "pointer" },
-                  },
-                }}
-              />
-            </ListItem>
-          ))}
+          {["Services", "About", "Reviews", "Gallery", "Blog", "Contact"].map(
+            (item) => (
+              <ListItem
+                button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+              >
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    sx: {
+                      fontWeight: "bold",
+                      color: "white",
+                      textTransform: "uppercase",
+                      textAlign: "center",
+                      fontSize: "35px", // Default font size
+                      "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
+                      "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
+                      "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
+                      "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
+                      "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
+                      "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
+                      "&:hover": { color: "#2794d2", cursor: "pointer" },
+                    },
+                  }}
+                />
+              </ListItem>
+            )
+          )}
         </List>
 
         <Box
@@ -341,7 +338,7 @@ const Topbar = ({ notFound }) => {  // Accepting `notFound` prop
             mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
           }}
         >
-          {[FaFacebook, FaInstagram ].map((Icon, index) => (
+          {[FaFacebook, FaInstagram].map((Icon, index) => (
             <IconButton
               key={index}
               sx={{

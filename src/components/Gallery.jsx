@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 import Video from "../../public/car.mp4";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
+import CallToAction from "../components/CallToAction"; // Import the CallToAction component
 
 const images = [
   "/TintTek-Website/picture1.jpeg",
@@ -144,7 +145,7 @@ const Gallery = () => {
           padding: 2,
           mt: "20px",
           paddingTop: 20,
-          paddingBottom: 20,
+          paddingBottom: 10,
         }}
       >
         <Grid container spacing={2}>
@@ -207,6 +208,10 @@ const Gallery = () => {
             SEE MORE PHOTOS ON INSTAGRAM
           </Button>
         </Box>
+      </Box>
+
+      <Box sx={{ backgroundColor: "#ccc", width: "100%", maxWidth: "1400px", margin: "0 auto" }}>
+        <CallToAction />
       </Box>
 
       {/* Contact Section */}

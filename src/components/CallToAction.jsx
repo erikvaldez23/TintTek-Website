@@ -10,7 +10,7 @@ const CallToAction = () => {
     <Box
       sx={{
         position: "relative",
-        height: isMobile ? "auto" : "600px", // Adjust height for mobile
+        height: isMobile ? "auto" : "500px", // Adjust height for mobile
         display: "flex",
         flexDirection: "column", // Stack elements on mobile
         alignItems: "center",
@@ -126,7 +126,7 @@ const CallToAction = () => {
           transition={{ type: "spring", stiffness: 300 }}
           sx={{
             mt: 3,
-            backgroundColor: "#2794d2", // Vibrant color
+            backgroundColor: "#2794d2",
             color: "#000",
             fontWeight: "bold",
             px: isMobile ? 3 : 4, // Adjust padding for mobile

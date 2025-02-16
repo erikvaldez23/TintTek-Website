@@ -10,14 +10,14 @@ export default function WhyChooseUs() {
   const features = [
     { text: "Professional-Grade Tinting", details: "We use only the highest-quality films that provide superior clarity, durability, and performance. Our professional-grade tint ensures a sleek finish without bubbles or peeling." },
     { text: "UV Protection", details: "Our premium window films block up to 99% of harmful UV rays, protecting you and your passengers from skin damage while also preserving your car's interior from fading and cracking." },
-    { text: "Lifetime Warranty", details: "We stand behind our work. Our lifetime warranty covers peeling, bubbling, and discoloration, ensuring your tint stays in perfect condition for years to come." },
+    { text: "Custom Tint Options", details: "We offer a variety of tint shades and finishes to match your style and preferences. Whether you're looking for a light touch or a sleek, dark tint, we customize the look to your needs." },
     { text: "Heat & Glare Reduction", details: "Experience a cooler, more comfortable ride with our heat-rejecting films. Reduce glare from the sun and headlights, improving visibility and reducing eye strain while driving." },
     { text: "Certified Technicians", details: "Our highly trained technicians have years of experience in precision tinting. We follow strict industry standards to ensure every application is flawless and long-lasting." },
     { text: "Privacy & Security", details: "Window tinting provides an added layer of privacy and security, keeping prying eyes away and reducing the risk of break-ins. Our films reinforce your glass, adding an extra level of protection." },
   ];
 
   return (
-    <Box
+    <Box id="about"
       sx={{
         p: isMobile ? 4 : 6, // Reduce padding for mobile
         textAlign: "center",

@@ -17,6 +17,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import NotFound from "./components/NotFound";  
 import CallToAction from "./components/CallToAction";
+import Blog from "./components/Blog";
 
 // Theme Configuration
 const theme = createTheme({
@@ -85,8 +86,11 @@ function App() {
           {/* Privacy Policy Page */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
+          <Route path="/blog" element={<Blog />} />
+
           {/* Catch-All Route for 404 Page */}
           <Route path="*" element={<NotFound />} />
+          
         </Routes>
 
         {/* Persistent Chatbot across all pages */}
