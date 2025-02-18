@@ -19,6 +19,7 @@ import NotFound from "./components/NotFound";
 import CallToAction from "./components/CallToAction";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
+import PricingComponent from "./components/Pricing";
 
 // Theme Configuration
 const theme = createTheme({

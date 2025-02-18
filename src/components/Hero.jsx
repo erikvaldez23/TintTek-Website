@@ -4,7 +4,7 @@ import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
 import BusinessInfo from "./BusinessInfo"; // Import BusinessInfo
 import Subhero from "./Subhero"; // Import Subhero
-import video from "../../public/car.mp4";
+import video from "../../public/hero.mp4";
 import SubIcons from './SubIcons'
 
 const Hero = () => {

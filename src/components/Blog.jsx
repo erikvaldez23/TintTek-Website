@@ -102,7 +102,6 @@ const Blog = () => {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            background: "rgba(0, 0, 0, 0.3)",
             color: "white",
             background:
               "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%)",
@@ -115,7 +114,7 @@ const Blog = () => {
               textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
             }}
           >
-            Blogs
+            Blog
           </Typography>
         </Box>
       </Box>
@@ -128,7 +127,7 @@ const Blog = () => {
               <Card
                 sx={{
                   boxShadow: 3,
-                  borderRadius: 2,
+                  borderRadius: 5,
                   height: 280,
                   position: "relative",
                   overflow: "hidden",
