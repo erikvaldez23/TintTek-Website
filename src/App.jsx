@@ -18,6 +18,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import NotFound from "./components/NotFound";  
 import CallToAction from "./components/CallToAction";
 import Blog from "./components/Blog";
+import BlogDetail from "./components/BlogDetail";
 
 // Theme Configuration
 const theme = createTheme({
@@ -76,21 +77,14 @@ function App() {
               </>
             }
           />
-          
           {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
-
-          {/* Gallery Page */}
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/gallery" element={<Gallery />} />
-
-          {/* Privacy Policy Page */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
           <Route path="/blog" element={<Blog />} />
-
           {/* Catch-All Route for 404 Page */}
           <Route path="*" element={<NotFound />} />
-          
         </Routes>
 
         {/* Persistent Chatbot across all pages */}
