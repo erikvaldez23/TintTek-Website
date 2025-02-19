@@ -57,11 +57,10 @@ const Testimonials = () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1.1,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     centerMode: true, // Enable center mode
-    centerPadding: "20px", // Adjust this value to control how much of the next review is visible
   };
 
   return (
@@ -86,7 +85,7 @@ const Testimonials = () => {
                 <Card
                   sx={{
                     width: "100%",
-                    maxWidth: 300, // Limit max width but allow it to shrink
+                    maxWidth: 400, // Limit max width but allow it to shrink
                     height: 350,
                     margin: "0 auto",
                     p: 3,
