@@ -157,7 +157,7 @@ const Topbar = ({ notFound }) => {
                     letterSpacing: "1.5px",
                     textTransform: "uppercase",
                     position: "relative",
-                    padding: "10px 20px",
+                    padding: "10px 10px",
                     color: scrolling ? "#333" : "#fff",
                     transition: "all 0.3s ease-in-out",
                     "&:hover": { color: "#2794d2" },
