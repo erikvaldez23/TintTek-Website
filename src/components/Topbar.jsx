@@ -41,7 +41,7 @@ const Topbar = ({ notFound }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null); 
+  const [anchorEl, setAnchorEl] = useState(null);
   const isMobile = useMediaQuery("(max-width:900px)");
   const navigate = useNavigate();
   const location = useLocation();
@@ -82,7 +82,6 @@ const Topbar = ({ notFound }) => {
     setDrawerOpen(false);
   };
 
-
   useEffect(() => {
     const handleScroll = () => setScrolling(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -117,10 +116,15 @@ const Topbar = ({ notFound }) => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: notFound ? "#000" : scrolling ? "#EEEEFF" : "transparent",
+          backgroundColor: notFound
+            ? "#000"
+            : scrolling
+            ? "#EEEEFF"
+            : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
           color: notFound || scrolling ? "#000" : "#EEEEFF",
-          boxShadow: scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          boxShadow:
+            scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
           width: "100vw",
           left: 0,
@@ -133,13 +137,21 @@ const Topbar = ({ notFound }) => {
             <Box
               display="flex"
               alignItems="center"
-              sx={{ cursor: "pointer", transition: "transform 0.3s", "&:hover": { transform: "scale(1.05)" } }}
+              sx={{
+                cursor: "pointer",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "scale(1.05)" },
+              }}
               onClick={() => navigate("/")}
             >
               <img
                 src={logo}
                 alt="Logo"
-                style={{ height: "55px", marginRight: "10px", borderRadius: "8px" }}
+                style={{
+                  height: "60px",
+                  marginRight: "10px",
+                  borderRadius: "8px",
+                }}
               />
             </Box>
 
@@ -151,19 +163,37 @@ const Topbar = ({ notFound }) => {
                   color="inherit"
                   onClick={handleServicesClick}
                   sx={{
+                    display: "flex", // Ensures text and arrow are in one line
+                    alignItems: "center", // Aligns items vertically
+                    gap: "5px", // Adds space between text and arrow
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "18px",
+                    fontSize: "22px",
                     fontWeight: 600,
                     letterSpacing: "1.5px",
                     textTransform: "uppercase",
-                    position: "relative",
-                    padding: "10px 10px",
+                    padding: "10px 5px",
                     color: scrolling ? "#333" : "#fff",
                     transition: "all 0.3s ease-in-out",
-                    "&:hover": { color: "#2794d2" },
+                    "&:after": {
+                      content: '""',
+                      position: "absolute",
+                      width: "0%",
+                      height: "3px",
+                      bottom: "0",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      background: "#2794d2", // Gradient underline
+                      transition: "width 0.4s ease-in-out",
+                      borderRadius: "2px",
+                    },
+                    "&:hover": {
+                      color: "#2794d2", // Bright hover color
+                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                      "&:after": { width: "100%" }, // Underline expands
+                    },
                   }}
                 >
-                  Services ▾
+                  Services <span style={{ fontSize: "14px" }}>▾</span>
                 </Button>
 
                 {/* Dropdown Menu for Services */}
@@ -180,35 +210,93 @@ const Topbar = ({ notFound }) => {
                     },
                   }}
                 >
-                  <MenuItem onClick={() => handleServiceSelect("vehicle-window-tinting")}>Vehicle Window Tinting</MenuItem>
-                  <MenuItem onClick={() => handleServiceSelect("tesla-window-tinting")}>Tesla Window Tinting</MenuItem>
-                  <MenuItem onClick={() => handleServiceSelect("commercial-window-tinting")}>Commercial Window Tinting</MenuItem>
-                  <MenuItem onClick={() => handleServiceSelect("residential-window-tinting")}>Residential Window Tinting</MenuItem>
-                  <MenuItem onClick={() => handleServiceSelect("vehicle-paint-correction")}>Vehicle Paint Correction</MenuItem>
-                  <MenuItem onClick={() => handleServiceSelect("vehicle-paint-protection")}>Vehicle Paint Protection</MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("vehicle-window-tinting")
+                    }
+                  >
+                    Vehicle Window Tinting
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => handleServiceSelect("tesla-window-tinting")}
+                  >
+                    Tesla Window Tinting
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("commercial-window-tinting")
+                    }
+                  >
+                    Commercial Window Tinting
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("residential-window-tinting")
+                    }
+                  >
+                    Residential Window Tinting
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("vehicle-paint-correction")
+                    }
+                  >
+                    Vehicle Paint Correction
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("vehicle-paint-protection")
+                    }
+                  >
+                    Vehicle Paint Protection
+                  </MenuItem>
                 </Menu>
 
                 {/* Other Navigation Links */}
-                {["About", "Reviews", "Gallery", "Blog", "Contact"].map((item) => (
+                {[
+                  "About",
+                  "Reviews",
+                  "Gallery",
+                  "Blog",
+                  "Contact",
+                ].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
-                    onClick={() => navigate(`/${item.toLowerCase()}`)}
+                    onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontSize: "18px",
+                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
+                      fontSize: "22px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",
+                      position: "relative",
                       padding: "10px 20px",
-                      color: scrolling ? "#333" : "#fff",
+                      color: scrolling ? "#333" : "#fff", // Dynamic text color
                       transition: "all 0.3s ease-in-out",
-                      "&:hover": { color: "#2794d2" },
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "3px",
+                        bottom: "0",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "#2794d2", // Gradient underline
+                        transition: "width 0.4s ease-in-out",
+                        borderRadius: "2px",
+                      },
+                      "&:hover": {
+                        color: "#2794d2", // Bright hover color
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                        "&:after": { width: "100%" }, // Underline expands
+                      },
                     }}
                   >
                     {item}
                   </Button>
-                ))}
+                  )
+                )}
               </Box>
             )}
             {isMobile && (
