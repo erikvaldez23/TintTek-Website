@@ -38,7 +38,7 @@ const Hero = () => {
         {/* Hero Content */}
         <div className="hero-content">
           <h1>
-            Precision Tinting for a <br /> Sleek, Private, and Cool Ride
+            Enhance your Ride, Home or Business with <br /> Precision Tinting and Protection
           </h1>
 
           {/* Learn More Button - Opens Modal */}
