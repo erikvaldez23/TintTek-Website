@@ -171,7 +171,8 @@ const Topbar = ({ notFound }) => {
                     fontWeight: 600,
                     letterSpacing: "1.5px",
                     textTransform: "uppercase",
-                    padding: "10px 5px",
+                    padding: "10px 2px",
+                    paddingLeft: "20px",
                     color: scrolling ? "#333" : "#fff",
                     transition: "all 0.3s ease-in-out",
                     "&:after": {
@@ -203,7 +204,7 @@ const Topbar = ({ notFound }) => {
                   onClose={handleClose}
                   sx={{
                     "& .MuiPaper-root": {
-                      backgroundColor: "white",
+                      backgroundColor: "#EEEEFF",
                       boxShadow: "0px 5px 15px rgba(0,0,0,0.2)",
                       borderRadius: "8px",
                       minWidth: "200px",
