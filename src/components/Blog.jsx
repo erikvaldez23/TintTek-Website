@@ -13,7 +13,7 @@ import Topbar from "./Topbar";
 import CallToAction from "./CallToAction";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import Video from "../../public/car.mp4"; // Import the video file
+import Video from "../../public/compressed-output.mp4"; // Import the video file
 
 const blogPosts = [
   {

@@ -11,9 +11,10 @@ import {
 } from "@mui/material";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-import Video from "../../public/car.mp4";
+import Video from "../../public/compressed-output.mp4";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
 import CallToAction from "../components/CallToAction"; // Import the CallToAction component
+import { motion } from "framer-motion";
 
 const images = [
   "/TintTek-Website/picture1.jpeg",
@@ -183,34 +184,40 @@ const Gallery = () => {
 
         {/* See More Button */}
         <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+          sx={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
         >
           <Button
-            variant="contained"
-            size="large"
+            component={motion.button}
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
             sx={{
-              mt: 10,
+              mt: 3,
               backgroundColor: "#2794d2",
-              color: "#fff",
-              borderRadius: "20px",
+              color: "#000",
               fontWeight: "bold",
-              fontSize: "1.3rem",
-              padding: "10px 30px",
-              "&:hover": {
-                backgroundColor: "#000",
-                border: "5px solid #fff",
-              },
+              borderRadius: "40px", // Increased for a softer button look
+              textTransform: "uppercase",
+              fontSize: "1.2rem", // Increased font size
+              padding: "10px", // Increased padding
+              width: "100%", // Makes it responsive
+              maxWidth: "400px", // Prevents it from being too large on big screens
             }}
-            href="https://www.instagram.com/tinttekplus/" // Replace with actual Instagram link
-            target="_blank" // Opens in a new tab
-            rel="noopener noreferrer" // Security best practice
           >
-            SEE MORE PHOTOS ON INSTAGRAM
+            SEE MORE ON INSTAGRAM
           </Button>
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: "#ccc", width: "100%", maxWidth: "1400px", margin: "0 auto" }}>
+      <Box
+        sx={{
+          backgroundColor: "#ccc",
+          width: "100%",
+          maxWidth: "1400px",
+          margin: "0 auto",
+        }}
+      >
         <CallToAction />
       </Box>
 
