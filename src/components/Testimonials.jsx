@@ -54,14 +54,35 @@ const Testimonials = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const sliderSettings = {
-    dots: true,
+    dots: true, // ✅ Enables dot navigation
     infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    centerMode: true, // Enable center mode
+    centerMode: true, 
+    adaptiveHeight: true,
+    appendDots: dots => (
+      <Box sx={{ textAlign: "center", mt: 2 }}>
+        <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
+      </Box>
+    ),
+    customPaging: i => (
+      <Box
+        sx={{
+          width: "10px",
+          height: "10px",
+          backgroundColor: "#aaa",
+          borderRadius: "50%",
+          display: "inline-block",
+          margin: "0 5px",
+          transition: "background-color 0.3s ease",
+          "&.slick-active": { backgroundColor: "#000" }, // Active dot color
+        }}
+      />
+    ),
   };
+  
 
   return (
     <Box
@@ -80,88 +101,84 @@ const Testimonials = () => {
         {/* Mobile View - Carousel */}
         {isMobile ? (
           <Slider {...sliderSettings}>
-            {reviews.map((review, index) => (
-              <Box key={index} sx={{ px: 2 }}>
-                <Card
+          {reviews.map((review, index) => (
+            <Box key={index} sx={{ px: 2 }}>
+              <Card
+                sx={{
+                  width: "100%",
+                  maxWidth: 400,
+                  height: 350,
+                  margin: "0 auto",
+                  p: 3,
+                  borderRadius: 3,
+                  boxShadow: 3,
+                  textAlign: "left",
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative",
+                }}
+              >
+                <CardContent
                   sx={{
-                    width: "100%",
-                    maxWidth: 400, // Limit max width but allow it to shrink
-                    height: 350,
-                    margin: "0 auto",
-                    p: 3,
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    textAlign: "left",
+                    flex: "1 1 auto",
                     display: "flex",
                     flexDirection: "column",
-                    position: "relative",
+                    justifyContent: "space-between",
+                    overflow: "scroll",
                   }}
                 >
-                  <CardContent
+                  <Box
                     sx={{
-                      flex: "1 1 auto",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      overflow: "scroll",
+                      position: "absolute",
+                      top: 10,
+                      right: 10,
+                      width: 25,
+                      height: 25,
                     }}
                   >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 10,
-                        right: 10,
-                        width: 25,
-                        height: 25,
-                      }}
-                    >
-                      <img src={GOOGLE_LOGO} alt="Google" width="100%" />
-                    </Box>
-
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                      <Avatar
-                        sx={{ width: 40, height: 40, mr: 2 }}
-                        src={review.profile_photo_url}
-                        alt={review.author_name}
-                      />
-                      <Box>
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
-                        >
-                          {review.author_name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {new Date(review.time * 1000).toLocaleDateString()}
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Rating
-                      value={review.rating}
-                      precision={0.5}
-                      readOnly
-                      sx={{ mb: 1 }}
+                    <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                  </Box>
+        
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                    <Avatar
+                      sx={{ width: 40, height: 40, mr: 2 }}
+                      src={review.profile_photo_url}
+                      alt={review.author_name}
                     />
-
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        display: "-webkit-box",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        fontStyle: "italic",
-                        fontSize: "0.9rem",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      "{review.text}"
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Slider>
+                    <Box>
+                      <Typography
+                        variant="h6"
+                        sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                      >
+                        {review.author_name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {new Date(review.time * 1000).toLocaleDateString()}
+                      </Typography>
+                    </Box>
+                  </Box>
+        
+                  <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
+        
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      display: "-webkit-box",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      fontStyle: "italic",
+                      fontSize: "0.9rem",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    "{review.text}"
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Slider>
+        
         ) : (
           // Desktop View - Grid Layout
           <Box
