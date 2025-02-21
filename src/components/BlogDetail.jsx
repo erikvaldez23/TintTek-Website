@@ -210,7 +210,7 @@ const BlogDetail = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#EEEEFF",
+        backgroundColor: "#000",
       }}
     >
       {/* Topbar */}
@@ -221,7 +221,7 @@ const BlogDetail = () => {
           position: "relative",
           width: "100%",
           height: "30vh", // Adjust height as needed
-          backgroundImage: "url('/TintTek-Website/banner.jpg')", // Make sure banner.jpg is in public/
+          backgroundImage: "url('/TintTek-Website/compressed-output.mp4')", // Make sure banner.jpg is in public/
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -236,7 +236,7 @@ const BlogDetail = () => {
             width: "100%",
             height: "100%",
             background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, #EEEEFF 100%)",
+              "linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, #000 100%)",
           }}
         />
 
