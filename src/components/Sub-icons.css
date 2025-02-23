@@ -45,4 +45,8 @@
   .divider {
     height: 30px;
   }
+  .social-icon {
+    font-size: 2rem; /* Adjust icon size */
+    margin: 0 15px; /* Spacing between icons */
+  }
 }
