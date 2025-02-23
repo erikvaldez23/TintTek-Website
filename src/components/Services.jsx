@@ -210,7 +210,8 @@ const Services = () => {
               <Grid item key={service.id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
-                    maxWidth: 350,
+                    minWidth: 400,
+                    maxWidth: 500,
                     borderRadius: 5,
                     overflow: "hidden",
                     position: "relative",
