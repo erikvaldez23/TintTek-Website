@@ -59,8 +59,6 @@ const Blog = () => {
 
   return (
     <Box sx={{ backgroundColor: "#000", color: "#FFFFFF", minHeight: "100vh" }}>
-      {/* Topbar */}
-      <Topbar />
 
       {/* Hero Section */}
       <Box

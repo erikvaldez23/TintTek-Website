@@ -165,7 +165,7 @@ const Testimonials = () => {
                     sx={{
                       display: "-webkit-box",
                       overflow: "hidden",
-                      textOverflow: "ellipsis",
+                      textOverflow: "scroll",
                       fontStyle: "italic",
                       fontSize: "0.9rem",
                       lineHeight: 1.5,

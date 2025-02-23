@@ -1,6 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Box, Container, Typography, Button, Grid, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  useMediaQuery,
+} from "@mui/material";
 import PricingComponent from "./Pricing"; // Import Pricing model
 import Contact from "./Contact"; // Import Contact component
 import Topbar from "./Topbar";
@@ -285,22 +292,39 @@ const ServicePage = () => {
           px: 2,
         }}
       >
-        <Typography variant="h3" fontWeight="bold">
+        <Typography
+          variant="h2"
+          sx={{
+            mb: 2,
+            fontWeight: "bold",
+            color: "#fff",
+            textAlign: "center",
+            fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "3.5rem" },
+          }}
+        >
           {service.title}
         </Typography>
-        <Typography variant="h6" sx={{ mt: 1, maxWidth: "800px" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            mb: 2,
+            fontWeight: "bold",
+            color: "#fff",
+            textAlign: "center",
+            fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
+          }}
+        >
           {service.description}
         </Typography>
       </Box>
 
-            {/* ✅ Pricing Section (Only for Non-Paint Services) */}
-            {serviceId !== "vehicle-paint-correction" &&
+      {/* ✅ Pricing Section (Only for Non-Paint Services) */}
+      {serviceId !== "vehicle-paint-correction" &&
         serviceId !== "vehicle-paint-protection" && (
           <Box sx={{ width: "100vw" }}>
             <PricingComponent />
           </Box>
         )}
-
 
       {/* ✅ Benefits Section (Only for Non-Commercial/Residential Services) */}
       {serviceId !== "commercial-window-tinting" &&
@@ -317,7 +341,6 @@ const ServicePage = () => {
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
 
-
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box
         sx={{
@@ -328,12 +351,17 @@ const ServicePage = () => {
         }}
       >
         <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
-        <Typography
-        variant={isMobile ? "h4" : "h2"}
-        sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
-      >
-        Do You Need Window Tint?
-      </Typography>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+            }}
+          >
+            Do You Need Window Tint?
+          </Typography>
           <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
             If you want to reduce the heat that comes into your vehicle, protect
             yourself and your car's interior from harmful UV rays, or just want
@@ -343,27 +371,27 @@ const ServicePage = () => {
             rejection, especially in the intense Dallas heat.
           </Typography>
           <Button
-          component={motion.button}
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          sx={{
-            mt: 3,
-            backgroundColor: "#000",
-            color: "#fff",
-            fontWeight: "bold",
-            px: isMobile ? 3 : 4, // Adjust padding for mobile
-            py: isMobile ? 1.2 : 1.5,
-            borderRadius: "30px",
-            textTransform: "uppercase",
-            fontSize: isMobile ? "1rem" : "1.1rem",
-            width: isMobile ? "100%" : "auto", // Make button full width on mobile
-          }}
-          href="/quote"
-        >
-          Get a Free Quote
-        </Button>
+            component={motion.button}
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            sx={{
+              mt: 3,
+              backgroundColor: "#000",
+              color: "#fff",
+              fontWeight: "bold",
+              px: isMobile ? 3 : 4, // Adjust padding for mobile
+              py: isMobile ? 1.2 : 1.5,
+              borderRadius: "30px",
+              textTransform: "uppercase",
+              fontSize: isMobile ? "1rem" : "1.1rem",
+              width: isMobile ? "100%" : "auto", // Make button full width on mobile
+            }}
+            href="/quote"
+          >
+            Get a Free Quote
+          </Button>
         </Box>
       </Box>
 

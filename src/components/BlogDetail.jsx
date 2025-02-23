@@ -213,15 +213,12 @@ const BlogDetail = () => {
         backgroundColor: "#000",
       }}
     >
-      {/* Topbar */}
-      <Topbar />
-
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          height: "30vh", // Adjust height as needed
-          backgroundImage: "url('/TintTek-Website/compressed-output.mp4')", // Make sure banner.jpg is in public/
+          height: "25vh", // Adjust height as needed
+          backgroundColor: "#fff",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -258,6 +255,7 @@ const BlogDetail = () => {
             sx={{
               fontWeight: "bold",
               textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8)",
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "3.5rem" },
             }}
           >
             {post.title}
