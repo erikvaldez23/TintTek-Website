@@ -89,7 +89,7 @@ const Services = () => {
     <Box
       id="services"
       sx={{
-        py: 6,
+        py: 4,
         textAlign: "center",
         backgroundColor: "#000",
         color: "#EEEEFF",
@@ -103,9 +103,9 @@ const Services = () => {
           SERVICES
         </Typography>
 
-      <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
+      {/* <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
         Premium automotive care to enhance, protect, and maintain your vehicle.
-      </Typography>
+      </Typography> */}
 
       {isMobile ? (
         /** 🎠 Mobile Carousel */
@@ -124,10 +124,6 @@ const Services = () => {
                     position: "relative",
                     cursor: "pointer",
                     backgroundColor: "#1C1C1E",
-                    "&:hover": {
-                      transform: "scale(1.02)",
-                      transition: "0.3s ease-in-out",
-                    },
                   }}
                   onClick={() => handleServiceClick(service.id)}
                 >
@@ -210,8 +206,7 @@ const Services = () => {
               <Grid item key={service.id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
-                    minWidth: 400,
-                    maxWidth: 500,
+                    maxWidth: 350,
                     borderRadius: 5,
                     overflow: "hidden",
                     position: "relative",
