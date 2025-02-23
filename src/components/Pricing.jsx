@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 // Pricing Data Configuration
 const pricingConfig = {
   "vehicle-window-tinting": {
-    title: "Vehicle Window Tinting",
+    title: "PRICING",
     pricingData: {
       COUPE: { ATC: "$179.00", CTX: "$229.00", IRX: "$279.00" },
       SEDAN: { ATC: "$199.00", CTX: "$329.00", IRX: "$529.00" },
@@ -34,7 +34,7 @@ const pricingConfig = {
     },
   },
   "tesla-window-tinting": {
-    title: "Tesla Window Tinting",
+    title: "PRICING",
     pricingData: {
       MODEL3: { ATC: "$199.00", CTX: "$259.00", IRX: "$319.00" },
       MODELX: { ATC: "$249.00", CTX: "$299.00", IRX: "$359.00" },
@@ -60,7 +60,7 @@ const pricingConfig = {
     },
   },
   "commercial-window-tinting": {
-    title: "Commercial Window Tinting",
+    title: "PRICING",
     pricingData: {
       "SMALL OFFICE": { BASIC: "$299.00", PRO: "$399.00", ULTRA: "$499.00" },
       "LARGE BUILDING": { BASIC: "$499.00", PRO: "$699.00", ULTRA: "$899.00" },
@@ -85,7 +85,7 @@ const pricingConfig = {
     },
   },
   "residential-window-tinting": {
-    title: "Residential Window Tinting",
+    title: "PRICING",
     pricingData: {
       "1-5 WINDOWS": { BASIC: "$199.00", PRO: "$299.00", ULTRA: "$399.00" },
       "6+ WINDOWS": { BASIC: "$349.00", PRO: "$499.00", ULTRA: "$649.00" },
@@ -102,7 +102,7 @@ const pricingConfig = {
     },
   },
   "vehicle-paint-correction": {
-    title: "Vehicle Paint Correction",
+    title: "PRICING",
     pricingData: {
       "STAGE 1": { BASIC: "$249.00", PRO: "$349.00", ULTRA: "$449.00" },
       "STAGE 2": { BASIC: "$349.00", PRO: "$449.00", ULTRA: "$549.00" },
@@ -127,7 +127,7 @@ const pricingConfig = {
     },
   },
   "vehicle-paint-protection": {
-    title: "Vehicle Paint Protection",
+    title: "PRICING",
     pricingData: {
       HOOD: { BASIC: "$199.00", PRO: "$299.00", ULTRA: "$399.00" },
       FULL_BODY: { BASIC: "$999.00", PRO: "$1299.00", ULTRA: "$1599.00" },
@@ -181,86 +181,124 @@ const PricingComponent = () => {
 
   return (
     <Box
-      id="pricing"
-      sx={{
-        py: 8,
-        textAlign: "center",
-        backgroundColor: "#111",
-        color: "#fff",
-      }}
-    >
-      <Container maxWidth="lg">
-        <Typography
-          variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
-        >
-          {service.title}
-        </Typography>
-
-        {/* Pricing Options Tabs */}
-        <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
-          {service.pricingOptions.map((option) => (
-            <Grid
-              item xs={12 / service.pricingOptions.length} key={option}
-              sx={{
-                textAlign: "center", py: 2, fontWeight: "bold", textTransform: "uppercase",
-                cursor: "pointer", borderBottom: selectedOption === option ? "4px solid #2794d2" : "none",
-                backgroundColor: selectedOption === option ? "#2794d2" : "transparent",
-                color: selectedOption === option ? "white" : "#ddd",
-                transition: "all 0.3s ease-in-out",
-                "&:hover": { backgroundColor: selectedOption === option ? "#2794d2" : "#222", color: "white" },
-              }}
-              onClick={() => handleOptionChange(option)}
-            >
-              {option}
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* Pricing Cards */}
-        <Fade in={fadeIn} timeout={500}>
-          <Grid container spacing={3} sx={{ mt: 3 }}>
-            {Object.keys(service.descriptions).map((tier) => (
-              <Grid item xs={12} sm={6} md={4} key={tier}>
-                <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                  <Box sx={{ textAlign: "center", p: 3, border: "2px solid #444", borderRadius: 4, background: "rgba(255,255,255,0.1)" }}>
-                    <Typography variant="h6" sx={{ fontWeight: "bold", color: "#2794d2" }}>{tier}</Typography>
-
-                    {/* ✅ Check if selectedOption exists in pricingData */}
-                    <Typography variant="h4" sx={{ fontWeight: "bold", color: "#00FF99" }}>
-                      {service.pricingData[selectedOption]?.[tier] || "N/A"}
-                    </Typography>
-
-                    {/* Feature Descriptions */}
-                    <Box sx={{ mt: 2 }}>
-                      {service.descriptions[tier]?.map((feature, i) => (
-                        <Tooltip key={i} title="More info" arrow>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              mb: 1,
-                              color: "#ccc",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {i === 0 && <FaCarSide style={{ marginRight: "5px" }} />}
-                            {i === 1 && <FaSun style={{ marginRight: "5px" }} />}
-                            {i === 2 && <FaShieldAlt style={{ marginRight: "5px" }} />}
-                            {feature}
-                          </Typography>
-                        </Tooltip>
-                      ))}
-                    </Box>
-                  </Box>
-                </motion.div>
-              </Grid>
-            ))}
+    id="pricing"
+    sx={{
+      py: 8,
+      textAlign: "center",
+      backgroundColor: "#111",
+      color: "#fff",
+      minHeight: "20vh", // Full viewport height for better visibility
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
+    <Container maxWidth="lg">
+      <Typography
+        variant={isMobile ? "h4" : "h2"}
+        sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
+      >
+        {service.title}
+      </Typography>
+  
+      {/* Pricing Options Tabs */}
+      <Grid
+        container
+        spacing={0}
+        sx={{
+          borderBottom: "2px solid #555",
+          overflowX: isMobile ? "auto" : "unset",
+          whiteSpace: isMobile ? "nowrap" : "unset",
+        }}
+      >
+        {service.pricingOptions.map((option) => (
+          <Grid
+            item
+            xs={12 / service.pricingOptions.length}
+            key={option}
+            sx={{
+              textAlign: "center",
+              py: 2,
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              borderBottom: selectedOption === option ? "4px solid #2794d2" : "none",
+              backgroundColor: selectedOption === option ? "#2794d2" : "transparent",
+              color: selectedOption === option ? "white" : "#ddd",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": { backgroundColor: selectedOption === option ? "#2794d2" : "#222", color: "white" },
+            }}
+            onClick={() => handleOptionChange(option)}
+          >
+            {option}
           </Grid>
-        </Fade>
-      </Container>
-    </Box>
+        ))}
+      </Grid>
+  
+      {/* Pricing Cards - Horizontal Scroll for Mobile */}
+      <Fade in={fadeIn} timeout={500}>
+        <Box
+          sx={{
+            mt: 3,
+            overflowX: isMobile ? "auto" : "unset",
+            display: "flex",
+            flexDirection: isMobile ? "row" : "row",
+            gap: 2,
+            p: isMobile ? 1 : 0,
+          }}
+        >
+          {Object.keys(service.descriptions).map((tier) => (
+            <Box
+              key={tier}
+              sx={{
+                flex: isMobile ? "0 0 90%" : "1",
+                minWidth: isMobile ? "90%" : "auto",
+                maxWidth: isMobile ? "90%" : "100%",
+                textAlign: "center",
+                p: 3,
+                border: "2px solid #444",
+                borderRadius: 4,
+                background: "rgba(255,255,255,0.1)",
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: "bold", color: "#2794d2" }}>
+                {tier}
+              </Typography>
+  
+              {/* ✅ Check if selectedOption exists in pricingData */}
+              <Typography variant="h4" sx={{ fontWeight: "bold", color: "#00FF99" }}>
+                {service.pricingData[selectedOption]?.[tier] || "N/A"}
+              </Typography>
+  
+              {/* Feature Descriptions */}
+              <Box sx={{ mt: 2 }}>
+                {service.descriptions[tier]?.map((feature, i) => (
+                  <Tooltip key={i} title="More info" arrow>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        mb: 1,
+                        color: "#ccc",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {i === 0 && <FaCarSide style={{ marginRight: "5px" }} />}
+                      {i === 1 && <FaSun style={{ marginRight: "5px" }} />}
+                      {i === 2 && <FaShieldAlt style={{ marginRight: "5px" }} />}
+                      {feature}
+                    </Typography>
+                  </Tooltip>
+                ))}
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </Fade>
+    </Container>
+  </Box>
+  
   );
 };
 
