@@ -88,82 +88,64 @@ const Vision = () => {
         </Typography>
 
         {/* Mobile Carousel */}
-       {isMobile ? (
-  <Swiper
-    modules={[Pagination]}
-    spaceBetween={15} // Less space for better compactness
-    slidesPerView={1.1} // Allows slight overflow for intuitive scrolling
-    centeredSlides={true}
-    pagination={{ clickable: true }}
-    grabCursor={true} // Adds a grab cursor for better user feedback
-    loop={true} // Ensures seamless transitions
-    style={{
-      paddingBottom: "40px",
-      display: "flex",
-      justifyContent: "center",
-    }}
-  >
-    {visionPoints.map((point) => (
-      <SwiperSlide
-        key={point.id}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <Card
-            sx={{
-              textAlign: "center",
-              py: 4,
-              px: 3,
-              borderRadius: 3,
-              minHeight: "210px", // Reduced slightly for better fit
-              background: "#121212",
-              color: "#fff",
-              width: "85vw", // Makes cards slightly larger for easier reading
-              maxWidth: "380px", // Prevents excessive size on larger mobile screens
-              boxShadow: "0px 4px 12px rgba(255, 255, 255, 0.1)", // Soft shadow for depth
-              transition: "transform 0.3s ease-in-out",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
+        {isMobile ? (
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={20}
+            slidesPerView={"auto"} // Automatically sizes slides based on content
+            centeredSlides={true} // Ensures the active slide is centered
+            pagination={{ clickable: true }}
+            style={{
+              paddingBottom: "40px",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <CardContent>
-              <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-              <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>
-                {point.title}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "#ccc",
-                  mt: 1,
-                  fontSize: "0.95rem", // Increased size slightly
-                  lineHeight: 1.5, // Improved spacing for readability
-                  maxWidth: "85%", // Prevents excessive width
-                  mx: "auto",
-                }}
+            {visionPoints.map((point) => (
+              <SwiperSlide
+                key={point.id}
+                style={{ display: "flex", justifyContent: "center" }}
               >
-                {point.description}
-              </Typography>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "100%",
+                  }}
+                >
+                  <Card
+                    sx={{
+                      textAlign: "center",
+                      py: 4,
+                      px: 2,
+                      borderRadius: 3,
+                      minHeight: "220px",
+                      background: "#121212",
+                      color: "#fff",
+                      width: "80vw", // Ensures card takes up 80% of viewport width
+                      maxWidth: "350px", // Prevents it from becoming too large on bigger mobile screens
+                      transition:
+                        "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    }}
+                  >
+                    <CardContent>
+                      <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
+                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        {point.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
+                        {point.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
           /* Desktop Grid */
           <Grid container spacing={4} justifyContent="center">
             {visionPoints.map((point, index) => (
