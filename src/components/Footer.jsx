@@ -11,10 +11,22 @@ import {
 } from "@mui/material";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import logo from "../../public/logo.png"; // Ensure correct path
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // ✅ Click Handler for Logo
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ Scroll to top if already on homepage
+    } else {
+      navigate("/"); // ✅ Navigate to homepage if on a subpage
+    }
+  };
 
   return (
     <Box
@@ -22,7 +34,7 @@ const Footer = () => {
       sx={{
         backgroundColor: "#111",
         color: "white",
-        py: isMobile ? 2 : 4, // Reduce padding for mobile
+        py: isMobile ? 2 : 4,
         textAlign: "center",
       }}
     >
@@ -31,15 +43,15 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row", // Stack elements on mobile
+            flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
             justifyContent: isMobile ? "center" : "space-between",
             flexWrap: "wrap",
             mb: isMobile ? 3 : 2,
-            gap: isMobile ? 2 : 0, // Add spacing for stacked elements
+            gap: isMobile ? 2 : 0,
           }}
         >
-          {/* Company Logo */}
+          {/* Company Logo (With Click Functionality) */}
           <Box
             sx={{
               display: "flex",
@@ -47,6 +59,7 @@ const Footer = () => {
               justifyContent: "center",
               "&:hover": { cursor: "pointer", transform: "scale(1.05)" },
             }}
+            onClick={handleLogoClick} // ✅ Click to Navigate or Scroll
           >
             <img src={logo} alt="Company Logo" style={{ height: isMobile ? "40px" : "50px" }} />
           </Box>

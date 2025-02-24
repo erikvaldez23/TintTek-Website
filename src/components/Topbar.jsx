@@ -142,7 +142,13 @@ const Topbar = ({ notFound }) => {
                 transition: "transform 0.3s",
                 "&:hover": { transform: "scale(1.05)" },
               }}
-              onClick={() => navigate("/")}
+              onClick={() => {
+                if (location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" }); // ✅ Scroll to top
+                } else {
+                  navigate("/"); // ✅ Navigate to homepage if on another page
+                }
+              }}
             >
               <img
                 src={logo}
@@ -254,45 +260,43 @@ const Topbar = ({ notFound }) => {
                 </Menu>
 
                 {/* Other Navigation Links */}
-                {["About",  "Gallery", "Blog", "Contact", "FAQ"].map(
-                  (item) => (
-                    <Button
-                      key={item}
-                      color="inherit"
-                      onClick={() => scrollToSection(item.toLowerCase())}
-                      sx={{
-                        fontFamily: "Montserrat, sans-serif", // Sleek modern font
-                        fontSize: "22px",
-                        fontWeight: 600,
-                        letterSpacing: "1.5px",
-                        textTransform: "uppercase",
-                        position: "relative",
-                        padding: "10px 20px",
-                        color: scrolling ? "#333" : "#fff", // Dynamic text color
-                        transition: "all 0.3s ease-in-out",
-                        "&:after": {
-                          content: '""',
-                          position: "absolute",
-                          width: "0%",
-                          height: "3px",
-                          bottom: "0",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          background: "#2794d2", // Gradient underline
-                          transition: "width 0.4s ease-in-out",
-                          borderRadius: "2px",
-                        },
-                        "&:hover": {
-                          color: "#2794d2", // Bright hover color
-                          textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
-                          "&:after": { width: "100%" }, // Underline expands
-                        },
-                      }}
-                    >
-                      {item}
-                    </Button>
-                  )
-                )}
+                {["About", "Gallery", "Blog", "Contact", "FAQ"].map((item) => (
+                  <Button
+                    key={item}
+                    color="inherit"
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    sx={{
+                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
+                      fontSize: "22px",
+                      fontWeight: 600,
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      position: "relative",
+                      padding: "10px 20px",
+                      color: scrolling ? "#333" : "#fff", // Dynamic text color
+                      transition: "all 0.3s ease-in-out",
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "3px",
+                        bottom: "0",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "#2794d2", // Gradient underline
+                        transition: "width 0.4s ease-in-out",
+                        borderRadius: "2px",
+                      },
+                      "&:hover": {
+                        color: "#2794d2", // Bright hover color
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                        "&:after": { width: "100%" }, // Underline expands
+                      },
+                    }}
+                  >
+                    {item}
+                  </Button>
+                ))}
               </Box>
             )}
             {isMobile && (
