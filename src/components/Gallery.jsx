@@ -17,24 +17,30 @@ import CallToAction from "../components/CallToAction"; // Import the CallToActio
 import { motion } from "framer-motion";
 
 const images = [
-  "/TintTek-Website/picture1.jpeg",
-  "/TintTek-Website/picture2.jpeg",
-  "/TintTek-Website/picture3.jpeg",
-  "/TintTek-Website/picture4.jpeg",
-  "/TintTek-Website/picture5.jpeg",
-  "/TintTek-Website/picture6.jpeg",
-  "/TintTek-Website/picture7.jpeg",
-  "/TintTek-Website/picture9.jpeg",
-  "/TintTek-Website/picture1.jpeg",
-  "/TintTek-Website/picture2.jpeg",
-  "/TintTek-Website/picture3.jpeg",
-  "/TintTek-Website/picture4.jpeg",
-  "/TintTek-Website/picture5.jpeg",
-  "/TintTek-Website/picture6.jpeg",
-  "/TintTek-Website/picture7.jpeg",
-  "/TintTek-Website/picture9.jpeg",
-  "/TintTek-Website/picture1.jpeg",
-  "/TintTek-Website/picture2.jpeg",
+  "/TintTek-Website/Tint Tek-2.jpeg",
+  "/TintTek-Website/Tint Tek-4.jpeg",
+  "/TintTek-Website/Tint Tek-6.jpeg",
+  "/TintTek-Website/Tint Tek-25.jpeg",
+  "/TintTek-Website/Tint Tek-28.jpeg",
+  "/TintTek-Website/Tint Tek-32.jpeg",
+  "/TintTek-Website/Tint Tek-33.jpeg",
+  "/TintTek-Website/Tint Tek-37.jpeg",
+  "/TintTek-Website/Tint Tek-42.jpeg",
+  "/TintTek-Website/Tint Tek-46.jpeg",
+  "/TintTek-Website/Tint Tek-63.jpeg",
+  "/TintTek-Website/Tint Tek-64.jpeg",
+  "/TintTek-Website/Tint Tek-69.jpeg",
+  "/TintTek-Website/Tint Tek-72.jpeg",
+  "/TintTek-Website/Tint Tek-80.jpeg",
+  "/TintTek-Website/Tint Tek-82.jpeg",
+  "/TintTek-Website/Tint Tek-85.jpeg",
+  "/TintTek-Website/Tint Tek-87.jpeg",
+  "/TintTek-Website/Tint Tek-92.jpeg",
+  "/TintTek-Website/Tint Tek-97.jpeg",
+  "/TintTek-Website/Tint Tek-99.jpeg",
+  "/TintTek-Website/Tint Tek-102.jpeg",
+  "/TintTek-Website/Tint Tek-103.jpeg",
+  "/TintTek-Website/Tint Tek-104.jpeg",
 ];
 
 const Gallery = () => {
@@ -66,7 +72,7 @@ const Gallery = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        backgroundColor: "#000",
+        backgroundColor: "#EEEEFF",
       }}
     >
       {/* Hero Video Section */}
@@ -78,24 +84,6 @@ const Gallery = () => {
           overflow: "hidden",
         }}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <source src={Video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
 
         <Box
           sx={{
@@ -104,8 +92,6 @@ const Gallery = () => {
             left: 0,
             width: "100%",
             height: "50%",
-            background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%)",
             pointerEvents: "none",
           }}
         />
@@ -121,12 +107,12 @@ const Gallery = () => {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            background: "rgba(0, 0, 0, 0.3)",
+            background: "#000",
             color: "white",
           }}
         >
           <Typography
-            variant="h3"
+            variant="h2"
             sx={{
               fontWeight: "bold",
               textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
@@ -214,7 +200,6 @@ const Gallery = () => {
         sx={{
           backgroundColor: "#ccc",
           width: "100%",
-          maxWidth: "1400px",
           margin: "0 auto",
         }}
       >

@@ -20,6 +20,7 @@ import CallToAction from "./components/CallToAction";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
 import PricingComponent from "./components/Pricing";
+import FAQ from "./components/FAQ";
 
 // Theme Configuration
 const theme = createTheme({
@@ -83,12 +84,12 @@ function App() {
           <Route path="/services/:serviceId" element={<PricingComponent />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
           {/* Catch-All Route for 404 Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-
         {/* Persistent Chatbot across all pages */}
         <Chatbot />
       </Router>

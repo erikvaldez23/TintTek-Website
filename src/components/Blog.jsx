@@ -218,7 +218,9 @@ const Blog = () => {
 
       {/* Call to Action & Footer */}
       <CallToAction />
-      <Contact />
+      <Box sx={{ color: "#000" }} >
+        <Contact/>
+      </Box>
       <Footer />
     </Box>
   );

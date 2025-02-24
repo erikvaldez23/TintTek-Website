@@ -42,7 +42,7 @@ const Topbar = ({ notFound }) => {
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const isMobile = useMediaQuery("(max-width:1500px)");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,7 +54,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["gallery", "privacy-policy", "blog"]; // Add more subpages here if needed
+    const subPages = ["gallery", "privacy-policy", "blog", "faq"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -254,48 +254,43 @@ const Topbar = ({ notFound }) => {
                 </Menu>
 
                 {/* Other Navigation Links */}
-                {[
-                  "About",
-                  "Reviews",
-                  "Gallery",
-                  "Blog",
-                  "Contact",
-                ].map((item) => (
-                  <Button
-                    key={item}
-                    color="inherit"
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    sx={{
-                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
-                      fontSize: "22px",
-                      fontWeight: 600,
-                      letterSpacing: "1.5px",
-                      textTransform: "uppercase",
-                      position: "relative",
-                      padding: "10px 20px",
-                      color: scrolling ? "#333" : "#fff", // Dynamic text color
-                      transition: "all 0.3s ease-in-out",
-                      "&:after": {
-                        content: '""',
-                        position: "absolute",
-                        width: "0%",
-                        height: "3px",
-                        bottom: "0",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        background: "#2794d2", // Gradient underline
-                        transition: "width 0.4s ease-in-out",
-                        borderRadius: "2px",
-                      },
-                      "&:hover": {
-                        color: "#2794d2", // Bright hover color
-                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
-                        "&:after": { width: "100%" }, // Underline expands
-                      },
-                    }}
-                  >
-                    {item}
-                  </Button>
+                {["About",  "Gallery", "Blog", "Contact", "FAQ"].map(
+                  (item) => (
+                    <Button
+                      key={item}
+                      color="inherit"
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      sx={{
+                        fontFamily: "Montserrat, sans-serif", // Sleek modern font
+                        fontSize: "22px",
+                        fontWeight: 600,
+                        letterSpacing: "1.5px",
+                        textTransform: "uppercase",
+                        position: "relative",
+                        padding: "10px 20px",
+                        color: scrolling ? "#333" : "#fff", // Dynamic text color
+                        transition: "all 0.3s ease-in-out",
+                        "&:after": {
+                          content: '""',
+                          position: "absolute",
+                          width: "0%",
+                          height: "3px",
+                          bottom: "0",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: "#2794d2", // Gradient underline
+                          transition: "width 0.4s ease-in-out",
+                          borderRadius: "2px",
+                        },
+                        "&:hover": {
+                          color: "#2794d2", // Bright hover color
+                          textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
+                          "&:after": { width: "100%" }, // Underline expands
+                        },
+                      }}
+                    >
+                      {item}
+                    </Button>
                   )
                 )}
               </Box>
@@ -352,35 +347,41 @@ const Topbar = ({ notFound }) => {
 
         {/* Navigation Links */}
         <List sx={{ textAlign: "center", p: 0 }}>
-          {["Services", "About", "Reviews", "Gallery", "Blog", "Contact"].map(
-            (item) => (
-              <ListItem
-                button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-              >
-                <ListItemText
-                  primary={item}
-                  primaryTypographyProps={{
-                    sx: {
-                      fontWeight: "bold",
-                      color: "white",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontSize: "35px", // Default font size
-                      "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-                      "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-                      "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-                      "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-                      "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-                      "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                      "&:hover": { color: "#2794d2", cursor: "pointer" },
-                    },
-                  }}
-                />
-              </ListItem>
-            )
-          )}
+          {[
+            "Services",
+            "About",
+            "Reviews",
+            "Gallery",
+            "Blog",
+            "Contact",
+            "FAQ",
+          ].map((item) => (
+            <ListItem
+              button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+            >
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontWeight: "bold",
+                    color: "white",
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                    fontSize: "35px", // Default font size
+                    "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
+                    "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
+                    "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
+                    "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
+                    "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
+                    "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
+                    "&:hover": { color: "#2794d2", cursor: "pointer" },
+                  },
+                }}
+              />
+            </ListItem>
+          ))}
         </List>
 
         <Box
