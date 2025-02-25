@@ -23,41 +23,48 @@ const serviceSteps = {
     title: "Vehicle Window Tinting",
     steps: [
       {
-        title: "Preparation",
+        title: "Consultation & Customization",
         description:
           "We clean the car windows to remove any dirt, dust, or debris.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "We start with a quick consultation to understand your specific needs and recommend the best tinting solutions for your vehicle, home, or business. Whether you're looking to reduce heat, enhance privacy, or protect your investment, we tailor our services to meet your goals.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Cutting the Film",
+        title: "Installation Process",
         description: "We measure and cut the tint film to fit perfectly.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "The process begins with a thorough cleaning of your windows to remove dirt, dust, and debris, ensuring a smooth, clean surface for tint application. We protect your vehicle’s interior by covering the seats and trim. We use the latest equipment and technology to cut the tint to fit each window. The film is then carefully applied to the inside of the glass, ensuring a smooth finish.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Application",
+        title: "Curing & Inspection",
         description: "The film is applied and smoothed with a squeegee.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "After installation, we allow the tint to cure properly, ensuring it adheres securely to the glass for long-lasting results. We perform a final inspection to make sure the installation is close to flawless, minimizing bubbles and imperfections. Curing time for window tint typically takes 3-5 days.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Drying and Setting",
+        title: "Enjoy the Benefits",
         description: "The tint is allowed to dry for long-lasting adhesion.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "Once the curing process is complete, enjoy enhanced comfort, privacy, and protection with your newly tinted windows. With long-lasting results, your vehicle will remain cooler, more comfortable, and better protected from harmful UV rays and heat.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Liftime Warranty & Nationwide Coverage",
+        description: "The tint is allowed to dry for long-lasting adhesion.",
+        detailedDescription:
+          "We stand behind the quality of our work with a lifetime warranty on all our tint installations. Plus, our services come with nationwide coverage, so you can trust that you’re protected wherever you go!",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
       "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
     images: [
-      "/TintTek-Website/vehicle-tint1.jpeg",
-      "/TintTek-Website/vehicle-tint2.jpeg",
-      "/TintTek-Website/vehicle-tint3.jpeg",
+      "/TintTek-Website/Tint Tek-6.jpeg",
+      "/TintTek-Website/Tint Tek-46.jpeg",
+      "/TintTek-Website/Tint Tek-102.jpeg",
     ],
   },
   "tesla-window-tinting": {
@@ -354,58 +361,57 @@ const HowItWorks = ({ serviceId }) => {
         {service.steps.map((step, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <Paper
-  elevation={3}
-  sx={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    p: isMobile ? 2 : 3, // Reduce padding for mobile
-    borderRadius: 2,
-    height: "100%",
-    backgroundColor: "#292929",
-    color: "#fff",
-    transition: "all 0.3s ease-in-out",
-    "&:hover": {
-      transform: "scale(1.05)",
-      boxShadow: "0px 0px 15px #2794d2",
-      backgroundColor: "#333",
-    },
-  }}
->
-  {step.icon}
-  <Typography
-    variant={isMobile ? "h6" : "h5"}
-    fontWeight="bold"
-    sx={{ mt: 1.5 }}
-  >
-    {step.title}
-  </Typography>
-  <Typography
-    variant={isMobile ? "body2" : "body1"}
-    sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
-  >
-    {step.description}
-  </Typography>
+              elevation={3}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                p: isMobile ? 2 : 3, // Reduce padding for mobile
+                borderRadius: 2,
+                height: "100%",
+                backgroundColor: "#292929",
+                color: "#fff",
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0px 0px 15px #2794d2",
+                  backgroundColor: "#333",
+                },
+              }}
+            >
+              {step.icon}
+              <Typography
+                variant={isMobile ? "h6" : "h5"}
+                fontWeight="bold"
+                sx={{ mt: 1.5 }}
+              >
+                {step.title}
+              </Typography>
+              <Typography
+                variant={isMobile ? "body2" : "body1"}
+                sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
+              >
+                {step.description}
+              </Typography>
 
-  {/* Spacer Box to Push Button to Bottom */}
-  <Box sx={{ flexGrow: 1 }} />
+              {/* Spacer Box to Push Button to Bottom */}
+              <Box sx={{ flexGrow: 1 }} />
 
-  {/* Learn More Button */}
-  <Button
-    sx={{
-      mt: "auto",
-      color: "#fff",
-      "&:hover": {
-        backgroundColor: "#2794d2",
-      },
-    }}
-    onClick={() => handleLearnMoreClick(step)}
-  >
-    Learn More
-  </Button>
-</Paper>
-
+              {/* Learn More Button */}
+              <Button
+                sx={{
+                  mt: "auto",
+                  color: "#fff",
+                  "&:hover": {
+                    backgroundColor: "#2794d2",
+                  },
+                }}
+                onClick={() => handleLearnMoreClick(step)}
+              >
+                Learn More
+              </Button>
+            </Paper>
           </Grid>
         ))}
       </Grid>
@@ -428,10 +434,6 @@ const HowItWorks = ({ serviceId }) => {
                   height: "100%",
                   display: "flex",
                   transition: "all 0.3s ease-in-out", // Smooth transition
-                  "&:hover": {
-                    transform: "scale(1.05)", // Slight scale-up
-                    boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
-                  },
                 }}
               >
                 <img
@@ -444,12 +446,6 @@ const HowItWorks = ({ serviceId }) => {
                     display: "block",
                     transition: "transform 0.3s ease-in-out", // Smooth image zoom
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "scale(1.1)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
                 />
               </Paper>
             </Grid>

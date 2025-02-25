@@ -16,6 +16,7 @@ import BenefitsSection from "./BenefitsSection";
 import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
 import { motion } from "framer-motion";
+import CallToAction from "./CallToAction";
 
 // Define service details for each page
 const serviceDetails = {
@@ -27,12 +28,12 @@ const serviceDetails = {
     details:
       "We use high-quality films to protect your car windows and provide maximum UV protection.",
     benefits: [
-      "Heat Protection",
-      "Protects interior from fading",
       "Blocks 99% of harmful UV rays",
+      "Heat Rejection",
+      "Improved Privacy and Security",
       "Reduces glare from the sun and headlights",
-      "Provides increased privacy",
-      "Improves the overall look and style",
+      "Protects interiors from fading",
+      "Elevate overall appearance",
     ],
     servicesOffered: [
       "Full SUV Tinting",
@@ -280,7 +281,7 @@ const ServicePage = () => {
           width: "100vw",
           height: "40vh",
           // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 40%, #000), url(${service.image})`,
-          backgroundColor: "#000",
+          backgroundColor: "#2794d2",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -351,7 +352,7 @@ const ServicePage = () => {
           color: "white",
         }}
       >
-        <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
+        {/* <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
           <Typography
             variant={isMobile ? "h4" : "h2"}
             sx={{
@@ -393,8 +394,10 @@ const ServicePage = () => {
           >
             Get a Free Quote
           </Button>
-        </Box>
+        </Box> */}
       </Box>
+
+      <CallToAction />
 
       {/* ✅ Contact Section */}
       <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>

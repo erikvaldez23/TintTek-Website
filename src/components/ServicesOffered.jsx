@@ -12,11 +12,14 @@ const serviceOptions = {
       "Full Coupe Tinting",
       "2 Windows Only",
       "Front Windshield and Sunroof",
+      "Front Windsheild Only",
+      "Sunroof/Panoramic Roof",
+      "Visor Strips",
     ],
     filmTypes: [
-      { name: "Llumar ATC", description: "A budget-friendly dyed-stable film that blocks 99% of harmful UV rays and enhances your vehicle’s appearance." },
-      { name: "Llumar CTX", description: "A durable, non-metal window tint with multiple color-stable charcoal shades for a non-reflective finish." },
-      { name: "Llumar IRX", description: "A premium nano-ceramic film that targets infrared rays for superior heat rejection and cooling." },
+      { name: "Llumar ATC", description: "Enjoy 99% UV protection and significant heat reduction with the Llumar ATC film. Perfect for those looking to upgrade their vehicle or property’s appearance, this budget-friendly, dyed film offers sleek styling while protecting both you and your interior from the sun’s harmful effects." },
+      { name: "Llumar CTX", description: "Experience the power of advanced ceramic technology with Llumar CTX. Offering exceptional heat rejection and 99% UV protection, this film keeps your car cooler and more comfortable year-round" },
+      { name: "Llumar IRX", description: "Take comfort to the next level with Llumar IRX, featuring advanced nano-ceramic technology that blocks infrared heat for superior comfort. With 99% UV protection and remarkable heat rejection, this premium film not only keeps your interior cooler but also enhances your vehicle’s sleek, high-end look." },
     ],
   },
   "tesla-window-tinting": {
@@ -111,11 +114,11 @@ const ServicesOffered = ({ serviceId }) => {
   }
 
   return (
-    <Box sx={{ py: 6, px: 4, backgroundColor: "#292929", color: "#fff", width: "100vw" }}>
+    <Box sx={{ py: 6, px: 4, backgroundColor: "#EEEEFF", color: "#000", width: "100vw" }}>
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
         <Typography
           variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+          sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}
         >
           SERVICES WE OFFER
         </Typography>
@@ -153,7 +156,7 @@ const ServicesOffered = ({ serviceId }) => {
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
-                  backgroundColor: "#1E1E1E",
+                  backgroundColor: "#000",
                   color: "#fff",
                   borderRadius: 2,
                   boxShadow: 3,

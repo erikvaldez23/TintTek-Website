@@ -43,7 +43,7 @@ const CallToAction = () => {
         sx={{
           position: "relative",
           zIndex: 2,
-          maxWidth: "900px",
+          maxWidth: "1100px",
           width: "100%",
         }}
       >

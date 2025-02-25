@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
   return (
     <Box id="about"
       sx={{
-        p: isMobile ? 4 : 6, // Reduce padding for mobile
+        p: isMobile ? 4 : 4, // Reduce padding for mobile
         textAlign: "center",
         background: "#EEEEFF",
         color: "white",

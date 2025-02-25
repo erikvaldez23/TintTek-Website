@@ -10,15 +10,15 @@ const BenefitsSection = ({ benefits }) => {
       sx={{
         py: isMobile ? 4 : 6, // Reduce padding for mobile
         px: isMobile ? 2 : 4, // Reduce horizontal padding
-        backgroundColor: "#000",
+        backgroundColor: "#EEEEFF",
         width: "100vw",
         display: "flex",
         justifyContent: "center",
       }}
     >
-      <Box sx={{ maxWidth: "1200px", width: "100%", color: "#fff" }}>
+      <Box sx={{ maxWidth: "1200px", width: "100%", color: "#000" }}>
         <Typography
-          variant={isMobile ? "h4" : "h2"} // Reduce heading size for mobile
+          variant={isMobile ? "h5" : "h2"} // Reduce heading size for mobile
           fontWeight="bold"
           textAlign="center"
           sx={{ mb: isMobile ? 2 : 3 }} // Reduce margin-bottom for mobile
@@ -41,7 +41,7 @@ const BenefitsSection = ({ benefits }) => {
                   color: "#fff",
                   padding: isMobile ? "10px" : "12px", // Reduce padding for mobile
                   borderRadius: 2,
-                  backgroundColor: "#292929",
+                  backgroundColor: "#000",
                   minHeight: isMobile ? "100px" : "120px", // Adjust height for mobile
                   textAlign: "center",
                   transition: "all 0.3s ease-in-out", // Smooth transition

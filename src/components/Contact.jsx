@@ -111,7 +111,7 @@ const Contact = () => {
                   />
                   <Box>
                     <Typography variant="h6">Location</Typography>
-                    <Typography variant="body2">Tint Tek +</Typography>
+                    <Typography variant="body2">2518 West Kingsley Rd</Typography>
                     <Typography variant="body2">Garland, TX</Typography>
                   </Box>
                 </Box>

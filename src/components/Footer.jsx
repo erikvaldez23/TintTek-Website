@@ -32,7 +32,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#111",
+        backgroundColor: "#000",
         color: "white",
         py: isMobile ? 2 : 4,
         textAlign: "center",

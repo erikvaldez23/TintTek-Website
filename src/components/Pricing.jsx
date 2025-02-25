@@ -9,12 +9,13 @@ const pricingConfig = {
   "vehicle-window-tinting": {
     title: "PRICING",
     pricingData: {
-      COUPE: { ATC: "$179.00", CTX: "$229.00", IRX: "$279.00" },
+      COUPE: { ATC: "$179.00", CTX: "$279.00", IRX: "$529.00" },
       SEDAN: { ATC: "$199.00", CTX: "$329.00", IRX: "$529.00" },
+      TRUCK: { ATC: "$249.00", CTX: "$349.00", IRX: "$549.00" },
       "FULL SUV": { ATC: "$289.00", CTX: "$389.00", IRX: "$589.00" },
       "2 WINDOWS": { ATC: "$85.00", CTX: "$119.00", IRX: "$149.00" },
     },
-    pricingOptions: ["COUPE", "SEDAN", "FULL SUV", "2 WINDOWS"],
+    pricingOptions: ["COUPE", "SEDAN", "TRUCK", "FULL SUV", "2 WINDOWS"],
     descriptions: {
       ATC: [
         "Budget-friendly dyed tint",
@@ -185,7 +186,7 @@ const PricingComponent = () => {
     sx={{
       py: 8,
       textAlign: "center",
-      backgroundColor: "#111",
+      backgroundColor: "#000",
       color: "#fff",
       minHeight: "20vh", // Full viewport height for better visibility
       display: "flex",
