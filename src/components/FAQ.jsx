@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Typography, List, ListItemButton, Paper, Box, Container } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "./Footer";
+import CallToAction from "./CallToAction";
+import Contact from "./Contact";
 
 // Define sections with 5 questions each
 const faqSections = [
@@ -69,7 +71,7 @@ export default function FAQ() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#EEEEFF" }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -133,6 +135,8 @@ export default function FAQ() {
           </div>
         ))}
       </Container>
+      <CallToAction />
+      <Contact />
       <Footer />
     </div>
    

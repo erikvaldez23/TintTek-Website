@@ -75,7 +75,7 @@ export default function WhyChooseUs() {
                   flexDirection: "column",
                   alignItems: "center",
                   gap: 1,
-                  backgroundColor: hoveredIndex === index ? "#EEEEFF" : "#2C2F33",
+                  backgroundColor: hoveredIndex === index ? "#EEEEFF" : "#000",
                   color: hoveredIndex === index ? "black" : "white",
                   borderRadius: "10px",
                   transition: "all 0.3s ease-in-out",

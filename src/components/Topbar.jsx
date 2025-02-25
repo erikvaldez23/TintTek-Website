@@ -42,7 +42,8 @@ const Topbar = ({ notFound }) => {
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const isMobile = useMediaQuery("(max-width:1500px)");
+  const isSmallDesktop = useMediaQuery("(max-width: 1500px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -316,29 +317,29 @@ const Topbar = ({ notFound }) => {
 
       {/* 🏆 Mobile Drawer */}
       <Drawer
-        anchor="top"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        transitionDuration={500}
-        sx={{
-          "& .MuiDrawer-paper": {
-            backgroundColor: "black",
-            color: "white",
-            width: "100%",
-            minHeight: "100dvh", // Ensure full screen, even with Safari URL bar
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center",
-            textAlign: "center",
-            padding: "5vh 0",
-            paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Ensures content isn't hidden by Safari bar
-          },
-          "& .MuiBackdrop-root": {
-            backgroundColor: "#000 !important",
-          },
-        }}
-      >
+  anchor="top"
+  open={drawerOpen}
+  onClose={() => setDrawerOpen(false)}
+  transitionDuration={500}
+  sx={{
+    "& .MuiDrawer-paper": {
+      backgroundColor: "black",
+      color: "white",
+      width: "100%",
+      minHeight: isMobile ? "100vh" : isSmallDesktop ? "50vh" : "100vh", // Dynamic height
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
+      alignItems: "center",
+      textAlign: "center",
+      padding: "5vh 0",
+      paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)",
+    },
+    "& .MuiBackdrop-root": {
+      backgroundColor: "#000 !important",
+    },
+  }}
+>
         {/* Close Button */}
         <Box sx={{ position: "absolute", top: 20, right: 20 }}>
           <IconButton

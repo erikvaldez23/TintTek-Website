@@ -1,4 +1,18 @@
-import { Box, Typography, Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  Grid,
+  Paper,
+  useMediaQuery,
+  useTheme,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+// Import icons
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
@@ -12,21 +26,29 @@ const serviceSteps = {
         title: "Preparation",
         description:
           "We clean the car windows to remove any dirt, dust, or debris.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Cutting the Film",
         description: "We measure and cut the tint film to fit perfectly.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Application",
         description: "The film is applied and smoothed with a squeegee.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Drying and Setting",
         description: "The tint is allowed to dry for long-lasting adhesion.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -45,24 +67,32 @@ const serviceSteps = {
         title: "Preparation",
         description:
           "We clean the car windows thoroughly to remove any dirt, dust, or debris.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Custom Cutting",
         description:
           "We then measure and cut the tint film to match the size and shape of each window.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Precision Application",
         description:
           " We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Drying and Setting",
         description:
           "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window..",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -81,24 +111,32 @@ const serviceSteps = {
         title: "Initial Consultation",
         description:
           "We assess your commercial space to recommend the best tinting solutions.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Surface Preparation",
         description:
           "All glass surfaces are thoroughly cleaned to ensure optimal adhesion.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Tint Installation",
         description:
           "We apply high-quality commercial-grade films with precision.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Inspection & Final Touches",
         description:
           "Final quality checks ensure a flawless, professional finish.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -116,23 +154,31 @@ const serviceSteps = {
         title: "Consultation",
         description:
           "We discuss your needs and recommend the right film for your home.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Measurement & Cutting",
         description:
           "Window measurements are taken, and films are custom cut for a perfect fit.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Film Application",
         description: "We apply the tint smoothly to avoid bubbles and creases.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "We ensure all windows meet our high-quality standards before completion.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -150,24 +196,32 @@ const serviceSteps = {
         title: "Washing & Claying",
         description:
           "We wash and clay the car to remove dirt, dust, and contaminants, prepping the paint for polishing.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Polishing",
         description:
           "Using a machine polisher, we eliminate swirl marks, scratches, and oxidation for a smooth finish.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Inspecting, Finishing, & Sealing",
         description:
           "We inspect for imperfections, refine the gloss, and apply a sealant for lasting protection.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Detailing Touch-ups",
         description:
           "We detail hard-to-reach areas, ensuring a uniform, clean look that restores the car's appearance.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -186,24 +240,32 @@ const serviceSteps = {
         title: "Preparation",
         description:
           "We clean and prep the vehicle’s surface for film application.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Film Application",
         description:
           "Clear bra or vinyl wrap is applied to protect against scratches and chips.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Sealing",
         description:
           "We apply ceramic coatings for added durability and shine.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "A thorough check ensures the protection is flawless and durable.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -221,6 +283,19 @@ const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedStep, setSelectedStep] = useState(null);
+
+  const handleLearnMoreClick = (step) => {
+    setSelectedStep(step);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedStep(null);
+  };
 
   if (!service) {
     return (
@@ -241,7 +316,12 @@ const HowItWorks = ({ serviceId }) => {
     >
       <Typography
         variant={isMobile ? "h5" : "h2"} // Smaller font size for mobile
-        sx={{ mb: isMobile ? 1.5 : 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
+        sx={{
+          mb: isMobile ? 1.5 : 2,
+          fontWeight: "bold",
+          color: "#fff",
+          textAlign: "center",
+        }}
       >
         HOW IT WORKS
       </Typography>
@@ -274,40 +354,58 @@ const HowItWorks = ({ serviceId }) => {
         {service.steps.map((step, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <Paper
-              elevation={3}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                p: isMobile ? 2 : 3, // Reduce padding for mobile
-                borderRadius: 2,
-                height: "100%",
-                backgroundColor: "#292929",
-                color: "#fff",
-                transition: "all 0.3s ease-in-out", // Smooth transition
-                "&:hover": {
-                  transform: "scale(1.05)", // Slight scale-up
-                  boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
-                  backgroundColor: "#333", // Lighter background
-                },
-              }}
-            >
-              {step.icon}
-              <Typography
-                variant={isMobile ? "h6" : "h5"} // Adjust title size
-                fontWeight="bold"
-                sx={{ mt: 1.5 }}
-              >
-                {step.title}
-              </Typography>
-              <Typography
-                variant={isMobile ? "body2" : "body1"} // Adjust description size
-                sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
-              >
-                {step.description}
-              </Typography>
-            </Paper>
+  elevation={3}
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    p: isMobile ? 2 : 3, // Reduce padding for mobile
+    borderRadius: 2,
+    height: "100%",
+    backgroundColor: "#292929",
+    color: "#fff",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0px 0px 15px #2794d2",
+      backgroundColor: "#333",
+    },
+  }}
+>
+  {step.icon}
+  <Typography
+    variant={isMobile ? "h6" : "h5"}
+    fontWeight="bold"
+    sx={{ mt: 1.5 }}
+  >
+    {step.title}
+  </Typography>
+  <Typography
+    variant={isMobile ? "body2" : "body1"}
+    sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
+  >
+    {step.description}
+  </Typography>
+
+  {/* Spacer Box to Push Button to Bottom */}
+  <Box sx={{ flexGrow: 1 }} />
+
+  {/* Learn More Button */}
+  <Button
+    sx={{
+      mt: "auto",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#2794d2",
+      },
+    }}
+    onClick={() => handleLearnMoreClick(step)}
+  >
+    Learn More
+  </Button>
+</Paper>
+
           </Grid>
         ))}
       </Grid>
@@ -346,14 +444,33 @@ const HowItWorks = ({ serviceId }) => {
                     display: "block",
                     transition: "transform 0.3s ease-in-out", // Smooth image zoom
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "scale(1.1)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "scale(1)")
+                  }
                 />
               </Paper>
             </Grid>
           ))}
         </Grid>
       </Box>
+
+      {/* Modal for Detailed Step */}
+      <Dialog open={openModal} onClose={handleCloseModal}>
+        <DialogTitle>{selectedStep?.title}</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">
+            {selectedStep?.detailedDescription}
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
