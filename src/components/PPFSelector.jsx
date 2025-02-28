@@ -161,7 +161,7 @@ const PPFSelector = () => {
           }}
         >
           <Typography
-            variant={isMobile ? "h5" : "h4"}
+            variant={isMobile ? "h5" : "h3"}
             fontWeight="bold"
             sx={{ color: "#fff" }}
           >
