@@ -9,14 +9,9 @@ import Contact from "./Contact";
 const faqSections = [
     {
       id: "paint-protection",
-      title: "Paint Protection Film and Vinyl Wraps",
+      title: "Paint Protection Film",
       questions: [
         { id: "q1", question: "What exactly is Paint Protection Film?", answer: "Paint Protection Film (PPF) is a transparent film applied to your vehicle to protect it from scratches, rock chips, and other environmental damage." },
-        { id: "q2", question: "What exactly is Vinyl Wrap?", answer: "Vinyl Wrap is a thin, adhesive film that is applied to a vehicle’s surface to change its color or appearance." },
-        { id: "q3", question: "Will Paint Protection Film or Vinyl Wrap damage my paint?", answer: "No, professionally installed PPF or Vinyl Wrap should not damage your paint. In fact, PPF helps protect your paint, while vinyl wraps are designed to be removable without harming the surface." },
-        { id: "q4", question: "Will my Paint Protection Film or Vinyl Wrap look perfect?", answer: "While our professional installers aim for the best possible finish, slight imperfections such as minor seams and edges may be visible upon close inspection." },
-        { id: "q5", question: "Will it be necessary for you to remove any parts from my vehicle?", answer: "In some cases, yes. To achieve the best results, we may need to remove certain parts like badges or trim pieces." },
-        { id: "q6", question: "Will it be necessary for you to drive my vehicle?", answer: "Only if necessary for the installation process. We take every precaution to ensure your vehicle remains safe and secure." },
         { id: "q7", question: "Body Work or Repainted Panels on your Vehicle?", answer: "If your vehicle has had bodywork or repainting, we need to inspect the surface to ensure proper adhesion of the film or wrap." },
       ],
     },
@@ -52,7 +47,6 @@ const faqSections = [
       title: "What is my warranty on these products and services?",
       questions: [
         { id: "q17", question: "STEK Paint Protection Film Warranty", answer: "STEK warrants Dynoshield Paint Protection Film for 10 years against defects like yellowing, staining, cracking, and delaminating. This does not cover normal wear, road debris, or intentional damage." },
-        { id: "q18", question: "Vinyl Wrap", answer: "Vinyl Wrap warranties vary based on the manufacturer and specific installation details. Contact us for more information." },
         { id: "q19", question: "STEK Window Tint Warranty", answer: "STEK warranties your window tint for the lifetime of your vehicle ownership." },
         { id: "q20", question: "Ceramic Coatings Warranty", answer: "Ceramic coatings require proper maintenance. As long as your car is regularly washed and stored properly, we provide annual maintenance for $250." },
         { id: "q21", question: "Windshield Protection Warranty", answer: "Windshield Protection warranties vary depending on film type and installation. Contact us for details." },

@@ -1,45 +1,97 @@
-import { useState, useRef, useEffect } from "react";
-import { Box, Button, Typography, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Select, MenuItem, Card, CardMedia, Fade } from "@mui/material";
 
-const tintOptions = [5, 20, 35, 50, 70]; // Tint percentages
+const tintOptions = {
+  "llumar-atc": {
+    name: "Llumar ATC",
+    image: "/images/llumar-atc.jpg", // Replace with your actual image paths
+    description: "Budget-friendly dyed film with 99% UV protection.",
+  },
+  "llumar-ctx": {
+    name: "Llumar CTX",
+    image: "/images/llumar-ctx.jpg",
+    description: "Non-metal ceramic film with superior heat rejection.",
+  },
+  "llumar-irx": {
+    name: "Llumar IRX",
+    image: "/images/llumar-irx.jpg",
+    description: "Nano-ceramic tint with infrared heat blocking technology.",
+  },
+};
 
-export default function TintSelector() {
-    const [selectedTint, setSelectedTint] = useState(35);
-    const canvasRef = useRef(null);
-    
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        const img = new Image();
-        
-        img.src = "/TintTek-Website/tesla-model.jpg"; // 🔹 Replace with actual vehicle image
-        img.onload = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            
-            // Apply tint overlay
-            ctx.fillStyle = `rgba(0, 0, 0, ${1 - selectedTint / 100})`; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        };
-    }, [selectedTint]);
+const TintSelector = () => {
+  const [selectedTint, setSelectedTint] = useState("llumar-atc"); // Default selection
+  const [fade, setFade] = useState(true); // Fade effect for smooth transitions
 
-    return (
-        <Box sx={{ textAlign: "center", p: 2 }}>
-            <Typography variant="h5">Select Your Tint</Typography>
-            <canvas ref={canvasRef} width={500} height={300} style={{ borderRadius: 10 }} />
+  const handleChange = (event) => {
+    setFade(false); // Trigger fade-out
+    setTimeout(() => {
+      setSelectedTint(event.target.value); // Update the tint
+      setFade(true); // Trigger fade-in
+    }, 200); // Smooth transition effect
+  };
 
-            <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
-                {tintOptions.map((tint) => (
-                    <Grid item key={tint}>
-                        <Button 
-                            variant={selectedTint === tint ? "contained" : "outlined"} 
-                            onClick={() => setSelectedTint(tint)}
-                        >
-                            {tint}%
-                        </Button>
-                    </Grid>
-                ))}
-            </Grid>
-        </Box>
-    );
-}
+  return (
+    <Box
+      sx={{
+        textAlign: "center",
+        maxWidth: "600px",
+        mx: "auto",
+        mt: 4,
+        p: 3,
+        backgroundColor: "#f9f9f9",
+        borderRadius: 2,
+        boxShadow: 3,
+      }}
+    >
+      <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+        Select Your Tint Type
+      </Typography>
+
+      {/* Tint Selection Dropdown */}
+      <Select
+        value={selectedTint}
+        onChange={handleChange}
+        fullWidth
+        sx={{
+          mb: 3,
+          backgroundColor: "#fff",
+          borderRadius: "8px",
+          "&:hover": { backgroundColor: "#f0f0f0" },
+        }}
+      >
+        {Object.entries(tintOptions).map(([key, option]) => (
+          <MenuItem key={key} value={key}>
+            {option.name}
+          </MenuItem>
+        ))}
+      </Select>
+
+      {/* Tint Image Display with Fade Effect */}
+      <Fade in={fade} timeout={500}>
+        <Card
+          sx={{
+            borderRadius: 2,
+            boxShadow: 3,
+            overflow: "hidden",
+          }}
+        >
+          <CardMedia
+            component="img"
+            height="300"
+            image={tintOptions[selectedTint].image}
+            alt={tintOptions[selectedTint].name}
+            sx={{ objectFit: "cover" }}
+          />
+        </Card>
+      </Fade>
+
+      {/* Tint Description */}
+      <Typography variant="body1" sx={{ mt: 2, color: "#333" }}>
+        {tintOptions[selectedTint].description}
+      </Typography>
+    </Box>
+  );
+};
+
+export default TintSelector;

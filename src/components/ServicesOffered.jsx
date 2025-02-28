@@ -152,38 +152,52 @@ const ServicesOffered = ({ serviceId }) => {
           The <strong>3 main types of film</strong> we use:
         </Typography>
         <Grid container spacing={3}>
-          {service.filmTypes.map((film, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                sx={{
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  height: "100%",
-                  transition: "all 0.3s ease-in-out", // Smooth transition
-                  
-                  /* ✅ Hover Effects */
-                  "&:hover": {
-                    transform: "scale(1.05)", // Slight scale-up effect
-                    boxShadow: "0px 0px 15px #2794d2", // Blue glow effect
-                    backgroundColor: "#333", // Lighter background
-                  },
-                }}
-              >
-                <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                  <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
-                  <Typography variant="h6" fontWeight="bold">
-                    {film.name}
-                  </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
-                    {film.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+  {service.filmTypes.map((film, index) => (
+    <Grid item xs={12} sm={6} md={4} key={index}>
+      <Card
+        sx={{
+          position: "relative", // ✅ Needed for absolute positioning of the logo
+          backgroundColor: "#000",
+          color: "#fff",
+          borderRadius: 2,
+          boxShadow: 3,
+          height: "100%",
+          transition: "all 0.3s ease-in-out",
+          "&:hover": {
+            transform: "scale(1.05)",
+            boxShadow: "0px 0px 15px #2794d2",
+            backgroundColor: "#333",
+          },
+        }}
+      >
+        {/* ✅ Horizontal Logo at Top-Right */}
+        <Box
+          component="img"
+          src="/TintTek-Website/llumar-logo.png" // ✅ Change this to your logo's path
+          alt="Film Type Logo"
+          sx={{
+            position: "absolute",
+            top: 8,
+            right: 8,
+            width: 70, // Adjust width
+            height: "auto", // Keep aspect ratio
+          }}
+        />
+
+        <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+          <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
+          <Typography variant="h6" fontWeight="bold">
+            {film.name}
+          </Typography>
+          <Typography variant="body2" sx={{ mt: 1 }}>
+            {film.description}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+  ))}
+</Grid>
+
       </Box>
     </Box>
   );

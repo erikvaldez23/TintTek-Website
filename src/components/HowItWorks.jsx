@@ -17,6 +17,8 @@ import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CloseIcon from "@mui/icons-material/Close";
+import { IconButton } from "@mui/material";
 
 const serviceSteps = {
   "vehicle-window-tinting": {
@@ -332,7 +334,6 @@ const HowItWorks = ({ serviceId }) => {
       >
         HOW IT WORKS
       </Typography>
-
       {/* Steps Section */}
       <Grid
         container
@@ -415,7 +416,6 @@ const HowItWorks = ({ serviceId }) => {
           </Grid>
         ))}
       </Grid>
-
       {/* Image Section */}
       <Box sx={{ mt: isMobile ? 4 : 6 }}>
         <Grid
@@ -452,21 +452,90 @@ const HowItWorks = ({ serviceId }) => {
           ))}
         </Grid>
       </Box>
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        sx={{
+          "& .MuiDialog-paper": {
+            borderRadius: "12px", // ✅ Rounded corners for modern look
+            background: "rgba(255, 255, 255, 0.1)", // ✅ Transparent Glass Effect
+            backdropFilter: "blur(10px)", // ✅ Glassmorphism blur
+            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)", // ✅ Modern shadow effect
+            maxWidth: "500px", // ✅ Keep the modal a reasonable size
+            padding: "20px",
+          },
+        }}
+      >
+        {/* ✅ Close Button (Top-Right) */}
+        <IconButton
+          onClick={handleCloseModal}
+          sx={{
+            position: "absolute",
+            top: 10,
+            right: 10,
+            color: "#fff",
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              backgroundColor: "#2794d2",
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
 
-      {/* Modal for Detailed Step */}
-      <Dialog open={openModal} onClose={handleCloseModal}>
-        <DialogTitle>{selectedStep?.title}</DialogTitle>
-        <DialogContent>
+        {/* ✅ Modern Title Styling */}
+        <DialogTitle
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "1.8rem",
+            color: "#fff",
+          }}
+        >
+          {selectedStep?.title}
+        </DialogTitle>
+
+        {/* ✅ Content Section */}
+        <DialogContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            color: "#eee",
+            fontSize: "1.5rem",
+            px: 3,
+          }}
+        >
           <Typography variant="body1">
             {selectedStep?.detailedDescription}
           </Typography>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseModal} color="primary">
+
+        {/* ✅ Modernized Action Buttons */}
+        <DialogActions sx={{ justifyContent: "center", paddingBottom: 2 }}>
+          <Button
+            onClick={handleCloseModal}
+            sx={{
+              backgroundColor: "#2794d2",
+              color: "#fff",
+              borderRadius: "8px",
+              fontSize: "1rem",
+              fontWeight: "bold",
+              px: 4,
+              py: 1.5,
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#1e6ca0",
+              },
+            }}
+          >
             Close
           </Button>
         </DialogActions>
       </Dialog>
+      ;
     </Box>
   );
 };

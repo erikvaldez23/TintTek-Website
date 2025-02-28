@@ -17,6 +17,8 @@ import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
 import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
+import TintSelector from "./TintSelector"
+import PPFSelector from "./PPFSelector"
 
 // Define service details for each page
 const serviceDetails = {
@@ -151,11 +153,11 @@ const serviceDetails = {
       "Prevents UV damage and fading",
     ],
     servicesOffered: [
-      "Full Vehicle Vinyl Wrap",
-      "Partial Vehicle Wrap",
-      "Clear Bra Protection",
-      "Ceramic Coating",
-      "Custom Wrap Designs",
+      "Single-Stage Paint Correction",
+      "Multi-Stage Paint Correction",
+      "Swirl Mark Removal",
+      "Scratch Removal",
+      "Gloss Enhancement",
     ],
   },
 };
@@ -184,7 +186,7 @@ const ServicePage = () => {
             justifyContent: "center", // Centers the content horizontally
             alignItems: "center",
             flexGrow: 1,
-            backgroundColor: "#b6c0c2", // Light peach background
+            backgroundColor: "#b6c0c2",
             padding: { xs: 4, md: 8 },
             mt: { xs: "56px", md: "64px" }, // Offset for Topbar
           }}
@@ -279,7 +281,7 @@ const ServicePage = () => {
         sx={{
           position: "relative",
           width: "100vw",
-          height: "40vh",
+          height: "30vh",
           // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 40%, #000), url(${service.image})`,
           backgroundColor: "#2794d2",
           backgroundSize: "cover",
@@ -342,6 +344,9 @@ const ServicePage = () => {
 
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
+      
+      {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+
 
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box
