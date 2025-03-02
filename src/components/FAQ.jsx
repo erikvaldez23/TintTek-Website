@@ -109,7 +109,7 @@ export default function FAQ() {
         {/* FAQ Sections */}
         {faqSections.map(({ id, title, questions }) => (
           <div key={id} ref={(el) => (sectionRefs.current[id] = el)}>
-            <Typography variant="h4" fontWeight="bold" sx={{ marginTop: 4, marginBottom: 2 }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ marginTop: 6, marginBottom: 4 }}>
               {title}
             </Typography>
             {questions.map(({ id, question, answer }) => (

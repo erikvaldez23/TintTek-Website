@@ -12,7 +12,7 @@ const serviceOptions = {
       "Full Coupe Tinting",
       "2 Windows Only",
       "Front Windshield and Sunroof",
-      "Front Windsheild Only",
+      "Front Windshield Only",
       "Sunroof/Panoramic Roof",
       "Visor Strips",
     ],

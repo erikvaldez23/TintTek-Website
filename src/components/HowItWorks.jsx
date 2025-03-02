@@ -107,11 +107,11 @@ const serviceSteps = {
     ],
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
-    images: [
-      "/TintTek-Website/tesla-tint1.jpeg",
-      "/TintTek-Website/tesla-tint2.jpeg",
-      "/TintTek-Website/tesla-tint3.jpeg",
-    ],
+      images: [
+        "/TintTek-Website/Tint Tek-6.jpeg",
+        "/TintTek-Website/Tint Tek-46.jpeg",
+        "/TintTek-Website/Tint Tek-102.jpeg",
+      ],
   },
   "commercial-window-tinting": {
     title: "Commercial Window Tinting",

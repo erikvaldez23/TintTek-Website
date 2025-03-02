@@ -210,7 +210,7 @@ const BlogDetail = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#000",
+        backgroundColor: "#EEEEFF",
       }}
     >
       <Box
@@ -218,25 +218,13 @@ const BlogDetail = () => {
           position: "relative",
           width: "100%",
           height: "25vh", // Adjust height as needed
-          backgroundColor: "#fff",
+          backgroundColor: "#2794d2",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
         {/* Gradient Overlay to Fade Into Grey */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, #000 100%)",
-          }}
-        />
-
         {/* Centered Blog Title */}
         <Box
           sx={{

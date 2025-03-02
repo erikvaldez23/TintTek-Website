@@ -206,22 +206,51 @@ const PricingComponent = () => {
         {/* ✅ Show Tabs on Desktop | Show Dropdown on Mobile */}
         {isMobile ? (
           <Select
-            value={selectedOption}
-            onChange={(e) => handleOptionChange(e.target.value)}
-            fullWidth
-            sx={{
-              backgroundColor: "#2794d2",
-              borderRadius: "8px",
-              mb: 2,
-              "& .MuiSelect-select": { padding: "12px" },
-            }}
-          >
-            {service.pricingOptions.map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </Select>
+          value={selectedOption}
+          onChange={(e) => handleOptionChange(e.target.value)}
+          fullWidth
+          displayEmpty
+          sx={{
+            background: "rgba(255, 255, 255, 0.1)", // Light transparency
+            backdropFilter: "blur(10px)", // Frosted effect
+            borderRadius: "30px",
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Soft border
+            color: "#fff", // White text for contrast
+            fontWeight: "500",
+            fontSize: "16px",
+            textTransform: "uppercase",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              background: "rgba(255, 255, 255, 0.2)", // Slightly brighter on hover
+            },
+            "& .MuiSelect-icon": {
+              color: "#2794d2" 
+            },
+            "& .MuiSelect-select": {
+              padding: "12px 18px",
+              display: "flex",
+              alignItems: "center",
+            },
+          }}
+        >
+          {service.pricingOptions.map((option) => (
+            <MenuItem
+              key={option}
+              value={option}
+              sx={{
+                fontSize: "15px",
+                fontWeight: "500",
+                display: "flex",
+                alignItems: "center",
+                padding: "12px",
+                transition: "all 0.3s ease",
+              }}
+            >
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+        
         ) : (
           <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
             {service.pricingOptions.map((option) => (

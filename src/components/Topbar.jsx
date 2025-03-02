@@ -211,10 +211,23 @@ const Topbar = ({ notFound }) => {
                   onClose={handleClose}
                   sx={{
                     "& .MuiPaper-root": {
-                      backgroundColor: "#EEEEFF",
-                      boxShadow: "0px 5px 15px rgba(0,0,0,0.2)",
-                      borderRadius: "8px",
-                      minWidth: "200px",
+                      background: "#EEEEFF", // Glass effect
+                      borderRadius: "35px",
+                      minWidth: "220px",
+                      transition: "all 0.3s ease-in-out", // Smooth transition
+                    },
+                    "& .MuiMenuItem-root": {
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      padding: "12px 20px",
+                      borderRadius: "6px",
+                      transition: "all 0.2s ease-in-out",
+                      color: "#333",
+                      "&:hover": {
+                        background: "#2794d2", // Modern blue gradient
+                        color: "white",
+                        transform: "scale(1.05)", // Slight scale effect
+                      },
                     },
                   }}
                 >
@@ -261,7 +274,7 @@ const Topbar = ({ notFound }) => {
                 </Menu>
 
                 {/* Other Navigation Links */}
-                {["About", "Gallery", "Blog", "Contact", "FAQ"].map((item) => (
+                {["About", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -317,29 +330,29 @@ const Topbar = ({ notFound }) => {
 
       {/* 🏆 Mobile Drawer */}
       <Drawer
-  anchor="top"
-  open={drawerOpen}
-  onClose={() => setDrawerOpen(false)}
-  transitionDuration={500}
-  sx={{
-    "& .MuiDrawer-paper": {
-      backgroundColor: "black",
-      color: "white",
-      width: "100%",
-      minHeight: isMobile ? "100vh" : isSmallDesktop ? "50vh" : "100vh", // Dynamic height
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-around",
-      alignItems: "center",
-      textAlign: "center",
-      padding: "5vh 0",
-      paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)",
-    },
-    "& .MuiBackdrop-root": {
-      backgroundColor: "#000 !important",
-    },
-  }}
->
+        anchor="top"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        transitionDuration={500}
+        sx={{
+          "& .MuiDrawer-paper": {
+            backgroundColor: "black",
+            color: "white",
+            width: "100%",
+            minHeight: isMobile ? "100vh" : isSmallDesktop ? "50vh" : "100vh", // Dynamic height
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+            textAlign: "center",
+            padding: "5vh 0",
+            paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)",
+          },
+          "& .MuiBackdrop-root": {
+            backgroundColor: "#000 !important",
+          },
+        }}
+      >
         {/* Close Button */}
         <Box sx={{ position: "absolute", top: 20, right: 20 }}>
           <IconButton
@@ -358,8 +371,8 @@ const Topbar = ({ notFound }) => {
             "Reviews",
             "Gallery",
             "Blog",
-            "Contact",
             "FAQ",
+            "Contact",
           ].map((item) => (
             <ListItem
               button

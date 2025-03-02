@@ -56,7 +56,7 @@ const ppfOptions = {
 };
 
 const PPFSelector = () => {
-  const [selectedPPF, setSelectedPPF] = useState("full-car"); // Default selection
+  const [selectedPPF, setSelectedPPF] = useState("front-end"); // Default selection
   const [fade, setFade] = useState(true); // State for fade effect
 
   const theme = useTheme();
@@ -72,7 +72,14 @@ const PPFSelector = () => {
   };
 
   return (
-    <Box sx={{ textAlign: "center", width: "100vw", overflowX: "hidden" }}>
+    <Box
+      sx={{
+        textAlign: "center",
+        width: "100vw",
+        overflowX: "hidden",
+        backgroundColor: "#000",
+      }}
+    >
       {/* Navigation Tabs for Larger Screens */}
       {!isMobile ? (
         <Box
@@ -81,7 +88,7 @@ const PPFSelector = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            backgroundColor: "#888",
+            background: "rgba(255,255,255,0.1)",
           }}
         >
           {Object.entries(ppfOptions).map(([key, option]) => (
@@ -115,16 +122,49 @@ const PPFSelector = () => {
             value={selectedPPF}
             onChange={(e) => handleSelection(e.target.value)}
             fullWidth
+            displayEmpty
             sx={{
-              backgroundColor: "#fff",
-              borderRadius: "8px",
+              background: "rgba(255, 255, 255, 0.1)", // Glassmorphism effect
+              backdropFilter: "blur(12px)", // Frosted background
+              border: "1px solid rgba(255, 255, 255, 0.2)", // Soft white border
+              borderRadius: "12px",
+              color: "#fff", // White text for contrast
+              fontWeight: "500",
+              fontSize: "16px",
+              textTransform: "uppercase",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
+              },
+              "& .MuiSelect-icon": {
+                color: "#2794d2", // Custom dropdown arrow color
+              },
               "& .MuiSelect-select": {
-                padding: "12px",
+                padding: "14px 18px",
+                display: "flex",
+                alignItems: "center",
               },
             }}
           >
             {Object.entries(ppfOptions).map(([key, option]) => (
-              <MenuItem key={key} value={key}>
+              <MenuItem
+                key={key}
+                value={key}
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "500",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "12px",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
+                    color: "#fff",
+                    transform: "scale(1.03)", // Subtle scale effect
+                  },
+                }}
+              >
                 {option.name}
               </MenuItem>
             ))}
@@ -138,7 +178,7 @@ const PPFSelector = () => {
           position: "relative",
           width: "100%",
           height: isMobile ? "60vh" : "50vh", // Increased height for proper spacing
-          backgroundColor: "#888",
+          background: "rgba(255,255,255,0.1)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
