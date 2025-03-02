@@ -281,8 +281,7 @@ const ServicePage = () => {
         sx={{
           position: "relative",
           width: "100vw",
-          height: "30vh",
-          // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 40%, #000), url(${service.image})`,
+          height: { xs: "30vh", md: "20vh" }, 
           backgroundColor: "#2794d2",
           backgroundSize: "cover",
           backgroundPosition: "center",

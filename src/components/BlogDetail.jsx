@@ -218,7 +218,7 @@ const BlogDetail = () => {
           position: "relative",
           width: "100%",
           height: "25vh", // Adjust height as needed
-          backgroundColor: "#2794d2",
+          backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

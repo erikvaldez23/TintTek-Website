@@ -58,36 +58,18 @@ const Blog = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ backgroundColor: "#000", color: "#FFFFFF", minHeight: "100vh" }}>
+    <Box sx={{ backgroundColor: "#EEEEFF", color: "#FFFFFF", minHeight: "100vh" }}>
 
       {/* Hero Section */}
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          height: "30vh",
+          height: { xs: "30vh", md: "20vh" }, 
           overflow: "hidden",
+          backgroundColor: "#000"
         }}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <source src={Video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
         {/* Title Overlay */}
         <Box
           sx={{
@@ -101,19 +83,20 @@ const Blog = () => {
             alignItems: "center",
             textAlign: "center",
             color: "white",
-            background:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%)",
           }}
         >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: "bold",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
-            }}
-          >
-            Blog
-          </Typography>
+                 <Typography
+                     variant="h2"
+                     sx={{
+                       mb: 2,
+                       fontWeight: "bold",
+                       color: "#fff",
+                       textAlign: "center",
+                       fontSize: { xs: "2.5rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
+                     }}
+                   >
+                     BLOGS
+                   </Typography>
         </Box>
       </Box>
 
@@ -126,7 +109,7 @@ const Blog = () => {
                 sx={{
                   boxShadow: 3,
                   borderRadius: 5,
-                  height: 280,
+                  height: 300,
                   position: "relative",
                   overflow: "hidden",
                   cursor: "pointer",

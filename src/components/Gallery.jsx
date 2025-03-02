@@ -8,13 +8,14 @@ import {
   Dialog,
   IconButton,
   Button,
+  useMediaQuery
 } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useSwipeable } from "react-swipeable"; // ✅ Import react-swipeable for mobile gestures
+import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-import Video from "../../public/compressed-output.mp4";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material"; // Import icons for arrows
-import CallToAction from "../components/CallToAction"; // Import the CallToAction component
-import { motion } from "framer-motion";
+import CallToAction from "../components/CallToAction"
 
 const images = [
   "/TintTek-Website/Tint Tek-2.jpeg",
@@ -80,11 +81,10 @@ const Gallery = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: "30vh",
+          height: { xs: "30vh", md: "20vh" },
           overflow: "hidden",
         }}
       >
-
         <Box
           sx={{
             position: "absolute",
@@ -114,8 +114,11 @@ const Gallery = () => {
           <Typography
             variant="h2"
             sx={{
+              mb: 2,
               fontWeight: "bold",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: { xs: "2.5rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
             }}
           >
             Our Gallery
