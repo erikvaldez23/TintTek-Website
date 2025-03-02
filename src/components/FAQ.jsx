@@ -189,9 +189,9 @@ export default function FAQ() {
           >
             FREQUENTLY ASKED QUESTIONS
           </Typography>
-          <Typography variant="h6" sx={{ opacity: 0.9 }}>
+          {/* <Typography variant="h6" sx={{ opacity: 0.9 }}>
             Find answers to common questions or contact us for support.
-          </Typography>
+          </Typography> */}
         </Container>
       </Box>
 
