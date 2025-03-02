@@ -330,164 +330,171 @@ const Topbar = ({ notFound }) => {
 
       {/* 🏆 Mobile Drawer */}
       <Drawer
-        anchor="top"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        transitionDuration={500}
-        sx={{
-          "& .MuiDrawer-paper": {
-            backgroundColor: "black",
-            color: "white",
-            width: "100%",
-            minHeight: isMobile ? "100vh" : isSmallDesktop ? "50vh" : "100vh", // Dynamic height
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center",
-            textAlign: "center",
-            padding: "5vh 0",
-            paddingBottom: "calc(env(safe-area-inset-bottom, 20px) + 10px)",
-          },
-          "& .MuiBackdrop-root": {
-            backgroundColor: "#000 !important",
-          },
-        }}
+  anchor="top"
+  open={drawerOpen}
+  onClose={() => setDrawerOpen(false)}
+  transitionDuration={500}
+  sx={{
+    "& .MuiDrawer-paper": {
+      backgroundColor: "black",
+      color: "white",
+      width: "100%",
+      height: "100dvh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      textAlign: "center",
+      padding: "5vh 0",
+    },
+    "& .MuiBackdrop-root": {
+      backgroundColor: "#000 !important",
+    },
+  }}
+>
+  {/* 🔹 Close Button (Fixed at the Top-Right) */}
+  <Box sx={{ 
+    position: "absolute", 
+    top: "20px", 
+    right: "20px", 
+    zIndex: 1000 
+  }}>
+    <IconButton
+      onClick={() => setDrawerOpen(false)}
+      sx={{
+        color: "white",
+        fontSize: "30px",
+        "&:hover": { color: "#2794d2" },
+      }}
+    >
+      <FaTimes />
+    </IconButton>
+  </Box>
+
+  {/* 🔹 Navigation Links (Now fully expanding) */}
+  <List sx={{ 
+    textAlign: "center", 
+    flexGrow: 1,  // ✅ Forces links to take up space and push buttons down
+    display: "flex", 
+    flexDirection: "column", 
+    justifyContent: "center", // ✅ Centers links perfectly
+    gap: "15px" // ✅ Adds consistent spacing between links
+  }}>
+    {["Services", "Reviews", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
+      <ListItem
+        button
+        key={item}
+        onClick={() => scrollToSection(item.toLowerCase())}
       >
-        {/* Close Button */}
-        <Box sx={{ position: "absolute", top: 20, right: 20 }}>
-          <IconButton
-            onClick={() => setDrawerOpen(false)}
-            sx={{ color: "white", fontSize: 30 }}
-          >
-            <FaTimes />
-          </IconButton>
-        </Box>
-
-        {/* Navigation Links */}
-        <List sx={{ textAlign: "center", p: 0 }}>
-          {[
-            "Services",
-            "About",
-            "Reviews",
-            "Gallery",
-            "Blog",
-            "FAQ",
-            "Contact",
-          ].map((item) => (
-            <ListItem
-              button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-            >
-              <ListItemText
-                primary={item}
-                primaryTypographyProps={{
-                  sx: {
-                    fontWeight: "bold",
-                    color: "white",
-                    textTransform: "uppercase",
-                    textAlign: "center",
-                    fontSize: "35px", // Default font size
-                    "@media (max-width: 430px)": { fontSize: "35px" }, // iPhone 16 Pro Max (430px)
-                    "@media (max-width: 414px)": { fontSize: "30px" }, // iPhone 15/14 Plus (414px)
-                    "@media (max-width: 390px)": { fontSize: "19px" }, // iPhone 15/14 Pro (390px)
-                    "@media (max-width: 375px)": { fontSize: "18px" }, // iPhone 13 Mini (375px)
-                    "@media (max-width: 360px)": { fontSize: "16px" }, // Small Androids (Pixel 4a)
-                    "@media (max-width: 320px)": { fontSize: "14px" }, // iPhone SE (320px)
-                    "&:hover": { color: "#2794d2", cursor: "pointer" },
-                  },
-                }}
-              />
-            </ListItem>
-          ))}
-        </List>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          {/* Get a Quote Button */}
-          <Button
-            variant="contained"
-            onClick={handleOpenQuote}
-            sx={{
-              backgroundColor: "#2794d2",
-              color: "black",
-              fontSize: "22px",
+        <ListItemText
+          primary={item}
+          primaryTypographyProps={{
+            sx: {
               fontWeight: "bold",
-              borderRadius: "40px",
-              minWidth: "100%", // Ensures same width
-              height: "60px", // Ensures same height
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#000",
-                border: "3px solid #fff",
-                color: "#fff",
-              },
-            }}
-          >
-            GET A QUOTE
-          </Button>
-
-          {/* Ask a Question Button */}
-          <Button
-            variant="contained"
-            sx={{
-              mt: 2,
-              backgroundColor: "#222",
               color: "white",
-              fontSize: "22px",
-              fontWeight: "bold",
-              borderRadius: "40px",
-              minWidth: "100%", // Same width as the first button
-              height: "60px", // Same height as the first button
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#000",
-                border: "3px solid #fff",
-                color: "#fff",
-              },
-            }}
-          >
-            ASK A QUESTION
-          </Button>
-        </Box>
+              textTransform: "uppercase",
+              textAlign: "center",
+              fontSize: "clamp(30px, 4vw, 50px)", 
+              lineHeight: "1.2",
+              "&:hover": { color: "#2794d2", cursor: "pointer" },
+            },
+          }}
+        />
+      </ListItem>
+    ))}
+  </List>
 
-        {/* Social Media Icons */}
-        <Box
+  {/* Buttons & Social Icons in a Tightly Packed Layout */}
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "10px", // ✅ Prevents space between buttons and nav links
+      width: "100%",
+      paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)", // ✅ Ensures spacing for iPhones
+    }}
+  >
+    {/* Get a Quote Button */}
+    <Button
+      variant="contained"
+      onClick={handleOpenQuote}
+      sx={{
+        backgroundColor: "#2794d2",
+        color: "black",
+        fontSize: "22px",
+        fontWeight: "bold",
+        borderRadius: "40px",
+        minWidth: "90%",
+        height: "60px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textTransform: "none",
+        "&:hover": {
+          backgroundColor: "#000",
+          border: "3px solid #fff",
+          color: "#fff",
+        },
+      }}
+    >
+      GET A QUOTE
+    </Button>
+
+    {/* Ask a Question Button */}
+    <Button
+      variant="contained"
+      sx={{
+        backgroundColor: "#222",
+        color: "white",
+        fontSize: "22px",
+        fontWeight: "bold",
+        borderRadius: "40px",
+        minWidth: "90%",
+        height: "60px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textTransform: "none",
+        "&:hover": {
+          backgroundColor: "#000",
+          border: "3px solid #fff",
+          color: "#fff",
+        },
+      }}
+    >
+      ASK A QUESTION
+    </Button>
+
+    {/* Social Media Icons */}
+    <Box
+      sx={{
+        display: "flex",
+        gap: 4,
+        mt: "5px", // ✅ Ensures no large gap between buttons & icons
+        mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)", // ✅ Accounts for iPhone bottom navbar
+      }}
+    >
+      {[FaFacebook, FaInstagram].map((Icon, index) => (
+        <IconButton
+          key={index}
           sx={{
-            display: "flex",
-            gap: 4,
-            mt: "auto", // Pushes icons to the bottom
-            mb: "calc(env(safe-area-inset-bottom, 20px) + 10px)", // Prevents overlap with bottom bar
+            color: "white",
+            fontSize: "36px",
+            "&:hover": {
+              color: "#2794d2",
+            },
           }}
         >
-          {[FaFacebook, FaInstagram].map((Icon, index) => (
-            <IconButton
-              key={index}
-              sx={{
-                color: "white",
-                fontSize: "36px",
-                "&:hover": {
-                  color: "#2794d2",
-                },
-              }}
-            >
-              <Icon />
-            </IconButton>
-          ))}
-        </Box>
-      </Drawer>
+          <Icon />
+        </IconButton>
+      ))}
+    </Box>
+  </Box>
+</Drawer>
+
+
+
 
       {/* 🏆 Quote Form Modal */}
       <Dialog
