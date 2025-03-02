@@ -96,12 +96,18 @@ const Services = () => {
         paddingBottom: "80px",
       }}
     >
-     <Typography
-          variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
-        >
-          SERVICES
-        </Typography>
+  <Typography
+  variant={isMobile ? "h4" : "h2"}
+  sx={{
+    mb: 2,
+    fontWeight: "bold",
+    color: "#fff",
+    fontFamily: "'NoizeSport', sans-serif", // ✅ Apply Custom Font
+  }}
+>
+  SERVICES
+</Typography>
+
 
       {/* <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
         Premium automotive care to enhance, protect, and maintain your vehicle.
