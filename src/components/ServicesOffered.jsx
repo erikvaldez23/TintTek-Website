@@ -133,10 +133,6 @@ const ServicesOffered = ({ serviceId }) => {
               key={index}
               sx={{
                 transition: "all 0.3s ease-in-out",
-                "&:hover": {
-                  color: "#2794d2", // Text color change
-                  transform: "translateX(8px)", // Slight movement effect
-                },
               }}
             >
               <ListItemIcon>

@@ -157,7 +157,7 @@ const Gallery = () => {
                     "&:hover": {
                       transform: "scale(1.05)",
                       cursor: "pointer",
-                      opacity: 0.4,
+                      opacity: 0.8,
                     },
                   }}
                   onClick={() => handleImageClick(index)} // On click, enlarge image
