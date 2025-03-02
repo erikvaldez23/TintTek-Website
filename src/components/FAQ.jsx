@@ -175,6 +175,7 @@ export default function FAQ() {
           <Typography
             variant="h2"
             sx={{
+              mt: 4,
               mb: 2,
               fontWeight: "bold",
               color: "#fff",
