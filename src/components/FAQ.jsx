@@ -160,7 +160,7 @@ export default function FAQ() {
       <Box
         sx={{
           width: "100%",
-          height: { xs: "30vh", md: "20vh" }, 
+          height: { xs: "30vh", md: "20vh" },
           background: "#000",
           display: "flex",
           justifyContent: "center",
@@ -172,8 +172,22 @@ export default function FAQ() {
         }}
       >
         <Container>
-          <Typography variant="h3" fontWeight="bold" gutterBottom>
-            Frequently Asked Questions
+          <Typography
+            variant="h2"
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: {
+                xs: "2.5rem",
+                sm: "2.5rem",
+                md: "3.5rem",
+                lg: "4rem",
+              },
+            }}
+          >
+            FREQUENTLY ASKED QUESTIONS
           </Typography>
           <Typography variant="h6" sx={{ opacity: 0.9 }}>
             Find answers to common questions or contact us for support.
