@@ -131,7 +131,6 @@ const Gallery = () => {
           margin: "0 auto",
           padding: 2,
           mt: "20px",
-          paddingTop: 20,
           paddingBottom: 10,
         }}
       >
@@ -181,7 +180,7 @@ const Gallery = () => {
             sx={{
               mt: 3,
               backgroundColor: "#2794d2",
-              color: "#000",
+              color: "#fff",
               fontWeight: "bold",
               borderRadius: "40px", // Increased for a softer button look
               textTransform: "uppercase",
