@@ -1,4 +1,16 @@
-import { Box, Typography, Grid, Paper, List, ListItem, ListItemIcon, ListItemText, Card, CardContent, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  Paper,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Card,
+  CardContent,
+  useMediaQuery,
+} from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LayersIcon from "@mui/icons-material/Layers";
 
@@ -17,9 +29,21 @@ const serviceOptions = {
       "Visor Strips",
     ],
     filmTypes: [
-      { name: "Llumar ATC", description: "Enjoy 99% UV protection and significant heat reduction with the Llumar ATC film. Perfect for those looking to upgrade their vehicle or property’s appearance, this budget-friendly, dyed film offers sleek styling while protecting both you and your interior from the sun’s harmful effects." },
-      { name: "Llumar CTX", description: "Experience the power of advanced ceramic technology with Llumar CTX. Offering exceptional heat rejection and 99% UV protection, this film keeps your car cooler and more comfortable year-round" },
-      { name: "Llumar IRX", description: "Take comfort to the next level with Llumar IRX, featuring advanced nano-ceramic technology that blocks infrared heat for superior comfort. With 99% UV protection and remarkable heat rejection, this premium film not only keeps your interior cooler but also enhances your vehicle’s sleek, high-end look." },
+      {
+        name: "Llumar ATC",
+        description:
+          "Enjoy 99% UV protection and significant heat reduction with the Llumar ATC film. Perfect for those looking to upgrade their vehicle or property’s appearance, this budget-friendly, dyed film offers sleek styling while protecting both you and your interior from the sun’s harmful effects.",
+      },
+      {
+        name: "Llumar CTX",
+        description:
+          "Experience the power of advanced ceramic technology with Llumar CTX. Offering exceptional heat rejection and 99% UV protection, this film keeps your car cooler and more comfortable year-round",
+      },
+      {
+        name: "Llumar IRX",
+        description:
+          "Take comfort to the next level with Llumar IRX, featuring advanced nano-ceramic technology that blocks infrared heat for superior comfort. With 99% UV protection and remarkable heat rejection, this premium film not only keeps your interior cooler but also enhances your vehicle’s sleek, high-end look.",
+      },
     ],
   },
   "tesla-window-tinting": {
@@ -32,9 +56,21 @@ const serviceOptions = {
       "Full Cybertruck window tinting, windshield",
     ],
     filmTypes: [
-      { name: "Llumar ATC", description: "A budget-friendly dyed-stable film that blocks 99% of harmful UV rays and enhances Tesla aesthetics." },
-      { name: "Llumar CTX", description: "A durable non-metal tint with a mirror-free, reflective look optimized for Tesla windows." },
-      { name: "Llumar IRX", description: "The most premium option, featuring nano-ceramic construction for optimal heat rejection and infrared protection." },
+      {
+        name: "Llumar ATC",
+        description:
+          "A budget-friendly dyed-stable film that blocks 99% of harmful UV rays and enhances Tesla aesthetics.",
+      },
+      {
+        name: "Llumar CTX",
+        description:
+          "A durable non-metal tint with a mirror-free, reflective look optimized for Tesla windows.",
+      },
+      {
+        name: "Llumar IRX",
+        description:
+          "The most premium option, featuring nano-ceramic construction for optimal heat rejection and infrared protection.",
+      },
     ],
   },
   "commercial-window-tinting": {
@@ -47,9 +83,21 @@ const serviceOptions = {
       "Custom Business Tinting Solutions",
     ],
     filmTypes: [
-      { name: "Llumar Frosted Film", description: "Provides privacy while allowing natural light, perfect for office and commercial spaces." },
-      { name: "Llumar Reflective Film", description: "Reduces glare and heat, offering both privacy and energy savings for large buildings." },
-      { name: "Llumar Dual-Reflective Film", description: "Balances interior visibility with exterior privacy and superior UV protection." },
+      {
+        name: "Llumar Frosted Film",
+        description:
+          "Provides privacy while allowing natural light, perfect for office and commercial spaces.",
+      },
+      {
+        name: "Llumar Reflective Film",
+        description:
+          "Reduces glare and heat, offering both privacy and energy savings for large buildings.",
+      },
+      {
+        name: "Llumar Dual-Reflective Film",
+        description:
+          "Balances interior visibility with exterior privacy and superior UV protection.",
+      },
     ],
   },
   "residential-window-tinting": {
@@ -62,9 +110,21 @@ const serviceOptions = {
       "Custom Home Tinting Solutions",
     ],
     filmTypes: [
-      { name: "Llumar UVShield", description: "Blocks harmful UV rays to protect your furniture and flooring from fading." },
-      { name: "Llumar Energy-Saving Film", description: "Improves home energy efficiency by reducing heat gain and loss." },
-      { name: "Llumar Decorative Film", description: "Adds aesthetic appeal while offering privacy for bathrooms and living spaces." },
+      {
+        name: "Llumar UVShield",
+        description:
+          "Blocks harmful UV rays to protect your furniture and flooring from fading.",
+      },
+      {
+        name: "Llumar Energy-Saving Film",
+        description:
+          "Improves home energy efficiency by reducing heat gain and loss.",
+      },
+      {
+        name: "Llumar Decorative Film",
+        description:
+          "Adds aesthetic appeal while offering privacy for bathrooms and living spaces.",
+      },
     ],
   },
   "vehicle-paint-correction": {
@@ -77,9 +137,21 @@ const serviceOptions = {
       "Gloss Enhancement",
     ],
     filmTypes: [
-      { name: "Stage 1 Correction", description: "Removes light swirls and scratches to restore your car's shine." },
-      { name: "Stage 2 Correction", description: "A more intensive process to eliminate deeper scratches and imperfections." },
-      { name: "Stage 3 Correction", description: "Comprehensive restoration for severely damaged paint, returning a showroom-quality finish." },
+      {
+        name: "Stage 1 Correction",
+        description:
+          "Removes light swirls and scratches to restore your car's shine.",
+      },
+      {
+        name: "Stage 2 Correction",
+        description:
+          "A more intensive process to eliminate deeper scratches and imperfections.",
+      },
+      {
+        name: "Stage 3 Correction",
+        description:
+          "Comprehensive restoration for severely damaged paint, returning a showroom-quality finish.",
+      },
     ],
   },
   "vehicle-paint-protection": {
@@ -93,13 +165,24 @@ const serviceOptions = {
       "Gloss and Matte PPF",
     ],
     filmTypes: [
-      { name: "Llumar Paint Protection Film", description: "Invisible shield that protects your car from chips, scratches, and road debris." },
-      { name: "Ceramic Coating", description: "Provides a long-lasting, high-gloss finish that repels water and contaminants." },
-      { name: "Custom Vinyl Wraps", description: "High-quality vinyl wraps to customize your vehicle’s look with various colors and finishes." },
+      {
+        name: "Llumar Paint Protection Film",
+        description:
+          "Invisible shield that protects your car from chips, scratches, and road debris.",
+      },
+      {
+        name: "Ceramic Coating",
+        description:
+          "Provides a long-lasting, high-gloss finish that repels water and contaminants.",
+      },
+      {
+        name: "Custom Vinyl Wraps",
+        description:
+          "High-quality vinyl wraps to customize your vehicle’s look with various colors and finishes.",
+      },
     ],
   },
 };
-
 
 const ServicesOffered = ({ serviceId }) => {
   const service = serviceOptions[serviceId];
@@ -114,7 +197,15 @@ const ServicesOffered = ({ serviceId }) => {
   }
 
   return (
-    <Box sx={{ py: 6, px: 4, backgroundColor: "#EEEEFF", color: "#000", width: "100vw" }}>
+    <Box
+      sx={{
+        py: 6,
+        px: 4,
+        backgroundColor: "#EEEEFF",
+        color: "#000",
+        width: "100vw",
+      }}
+    >
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
         <Typography
           variant={isMobile ? "h4" : "h2"}
@@ -148,52 +239,66 @@ const ServicesOffered = ({ serviceId }) => {
           The <strong>3 main types of film</strong> we use:
         </Typography>
         <Grid container spacing={3}>
-  {service.filmTypes.map((film, index) => (
-    <Grid item xs={12} sm={6} md={4} key={index}>
-      <Card
-        sx={{
-          position: "relative", // ✅ Needed for absolute positioning of the logo
-          backgroundColor: "#000",
-          color: "#fff",
-          borderRadius: 2,
-          boxShadow: 3,
-          height: "100%",
-          transition: "all 0.3s ease-in-out",
-          "&:hover": {
-            transform: "scale(1.05)",
-            boxShadow: "0px 0px 15px #2794d2",
-            backgroundColor: "#333",
-          },
-        }}
-      >
-        {/* ✅ Horizontal Logo at Top-Right */}
-        <Box
-          component="img"
-          src="/TintTek-Website/llumar-logo.png" // ✅ Change this to your logo's path
-          alt="Film Type Logo"
-          sx={{
-            position: "absolute",
-            top: 8,
-            right: 8,
-            width: 70, // Adjust width
-            height: "auto", // Keep aspect ratio
-          }}
-        />
+          {service.filmTypes.map((film, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card
+                sx={{
+                  position: "relative", // ✅ Needed for absolute positioning of the logo
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  borderRadius: 2,
+                  boxShadow: 3,
+                  height: "100%",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 0px 15px #2794d2",
+                    backgroundColor: "#333",
+                  },
+                }}
+              >
+                {/* ✅ Horizontal Logo at Top-Right */}
+                <Box
+                  component="img"
+                  src={
+                    serviceId === "vehicle-paint-protection"
+                      ? "/TintTek-Website/stek-logo.png" // ✅ STEK logo
+                      : "/TintTek-Website/llumar-logo.png"
+                  } // ✅ Default Llumar logo
+                  alt="Film Type Logo"
+                  sx={{
+                    position: "absolute",
+                    top: 8,
+                    right: 8,
+                    width: 70,
+                    height: "auto",
+                    filter:
+                      serviceId === "vehicle-paint-protection"
+                        ? "invert(1)"
+                        : "none", // ✅ Apply inversion only for STEK
+                  }}
+                />
 
-        <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-          <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
-          <Typography variant="h6" fontWeight="bold">
-            {film.name}
-          </Typography>
-          <Typography variant="body2" sx={{ mt: 1 }}>
-            {film.description}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-  ))}
-</Grid>
-
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
+                  <Typography variant="h6" fontWeight="bold">
+                    {film.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{ mt: 1 }}>
+                    {film.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Box>
   );

@@ -458,7 +458,7 @@ const HowItWorks = ({ serviceId }) => {
         sx={{
           "& .MuiDialog-paper": {
             borderRadius: "12px", // ✅ Rounded corners for modern look
-            background: "rgba(255, 255, 255, 0.1)", // ✅ Transparent Glass Effect
+            background: "rgba(255, 255, 255, 0.2)", // ✅ Transparent Glass Effect
             backdropFilter: "blur(10px)", // ✅ Glassmorphism blur
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)", // ✅ Modern shadow effect
             maxWidth: "500px", // ✅ Keep the modal a reasonable size
