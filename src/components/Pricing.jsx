@@ -205,51 +205,76 @@ const PricingComponent = () => {
 
         {/* ✅ Show Tabs on Desktop | Show Dropdown on Mobile */}
         {isMobile ? (
-          <Select
-          value={selectedOption}
-          onChange={(e) => handleOptionChange(e.target.value)}
-          fullWidth
-          displayEmpty
-          sx={{
-            background: "rgba(255, 255, 255, 0.1)", // Light transparency
-            backdropFilter: "blur(10px)", // Frosted effect
-            borderRadius: "30px",
-            border: "1px solid rgba(255, 255, 255, 0.2)", // Soft border
-            color: "#fff", // White text for contrast
-            fontWeight: "500",
-            fontSize: "16px",
-            textTransform: "uppercase",
-            transition: "all 0.3s ease",
-            "&:hover": {
-              background: "rgba(255, 255, 255, 0.2)", // Slightly brighter on hover
-            },
-            "& .MuiSelect-icon": {
-              color: "#2794d2" 
-            },
-            "& .MuiSelect-select": {
-              padding: "12px 18px",
-              display: "flex",
-              alignItems: "center",
-            },
-          }}
-        >
-          {service.pricingOptions.map((option) => (
-            <MenuItem
-              key={option}
-              value={option}
-              sx={{
-                fontSize: "15px",
-                fontWeight: "500",
-                display: "flex",
-                alignItems: "center",
-                padding: "12px",
-                transition: "all 0.3s ease",
-              }}
-            >
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
+         <Select
+         value={selectedOption}
+         onChange={(e) => handleOptionChange(e.target.value)}
+         fullWidth
+         displayEmpty
+         MenuProps={{
+           PaperProps: {
+             sx: {
+               backgroundColor: "#444", // Grey background for dropdown menu
+               color: "#fff", // White text inside dropdown
+             },
+           },
+         }}
+         sx={{
+           background: "#000", // Black background for the select field itself
+           backdropFilter: "blur(12px)", // Frosted effect
+           border: "1px solid #ccc", // Light border for visibility
+           borderRadius: "30px", // Same rounded shape
+           color: "#fff", // White text for contrast
+           fontWeight: "500",
+           fontSize: "16px",
+           textTransform: "uppercase",
+           transition: "all 0.3s ease",
+           "&:hover": {
+             background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
+           },
+           "& .MuiSelect-icon": {
+             color: "#2794d2", // Custom dropdown arrow color
+           },
+           "& .MuiSelect-select": {
+             padding: "14px 18px",
+             display: "flex",
+             alignItems: "center",
+           },
+         }}
+       >
+         {service.pricingOptions.map((option) => (
+           <MenuItem
+             key={option}
+             value={option}
+             sx={{
+               fontSize: "15px",
+               fontWeight: "500",
+               display: "flex",
+               alignItems: "center",
+               padding: "12px",
+               borderRadius: "8px",
+               transition: "all 0.3s ease",
+               backgroundColor: "#444", // Grey background to match first dropdown
+               color: "#fff", // White text for contrast
+               "&:hover": {
+                 background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
+                 color: "#fff",
+                 transform: "scale(1.03)", // Subtle scale effect
+               },
+               "&.Mui-selected": {
+                 backgroundColor: "#555 !important", // Darker grey for selected item
+                 color: "#fff",
+               },
+               "&.Mui-selected:hover": {
+                 backgroundColor: "#2794d2 !important", // Blue hover effect for selected item
+                 color: "#fff",
+               },
+             }}
+           >
+             {option}
+           </MenuItem>
+         ))}
+       </Select>
+       
         
         ) : (
           <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>

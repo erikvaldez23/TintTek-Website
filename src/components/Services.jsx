@@ -239,7 +239,7 @@ const Services = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "rgba(0, 0, 0, 0.2)", // Dark overlay (Always Visible)
+                      background: "rgba(0, 0, 0, 0.3)", // Dark overlay (Always Visible)
                       color: "white",
                       display: "flex",
                       flexDirection: "column",

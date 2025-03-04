@@ -190,7 +190,7 @@ const PPFSelector = () => {
         <Box
           sx={{
             position: "absolute",
-            top: isMobile ? "5%" : "10%", // Adjusted to move above the image
+            top: isMobile ? "2%" : "5%", // Moves text closer to navigation buttons
             left: "50%",
             transform: "translateX(-50%)", // Center horizontally
             display: "flex",

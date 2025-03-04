@@ -403,9 +403,13 @@ const HowItWorks = ({ serviceId }) => {
               <Button
                 sx={{
                   mt: "auto",
+                  
+                  borderRadius: "10px",
+                  backgroundColor: "#2794d2",
                   color: "#fff",
                   "&:hover": {
-                    backgroundColor: "#2794d2",
+                    backgroundColor: "#000",
+                    color: "#fff",
                   },
                 }}
                 onClick={() => handleLearnMoreClick(step)}

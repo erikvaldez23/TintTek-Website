@@ -18,6 +18,7 @@ import ServicesOffered from "./ServicesOffered";
 import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
 import TintSelector from "./TintSelector"
+import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector"
 
 // Define service details for each page
@@ -346,6 +347,10 @@ const ServicePage = () => {
       
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
 
+      {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
+
+        {/* ✅ How It Works Section (Only for Non-Commercial/Residential Services) */}
+     
 
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box
