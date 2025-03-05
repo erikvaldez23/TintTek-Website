@@ -115,53 +115,69 @@ ${userMessage}
 
 // ✅ Chatbot Route
 app.post("/chat", async (req, res) => {
-    try {
-        const { message } = req.body;
-        console.log("📩 User Input:", message);
+  try {
+      const { message } = req.body;
+      console.log("📩 User Input:", message);
 
-        // ✅ Step 1: Try to find the best matching FAQ answer
-        const { bestMatch, similarityScore } = await findBestMatchAI(message);
+      // ✅ Step 1: Try to find the best matching FAQ answer
+      const { bestMatch, similarityScore } = await findBestMatchAI(message);
 
-        if (bestMatch && similarityScore > 0.95) {
-            console.log("✅ Strong FAQ Match Found:", bestMatch);
-            return res.json({ reply: bestMatch.answer });
-        }
+      if (bestMatch && similarityScore > 0.95) {
+          console.log("✅ Strong FAQ Match Found:", bestMatch);
+          return res.json({ reply: bestMatch.answer });
+      }
 
-        console.log("⚡ No Strong FAQ Match - Using AI to Generate Answer");
+      console.log("⚡ No Strong FAQ Match - Checking for Lower Similarity Threshold");
 
-        // ✅ Step 2: Try AI-Generated Response
-        const aiGeneratedResponse = await generateAIResponse(message);
+      // ✅ Step 2: If the similarity score is below 0.75, suggest live support
+      if (!bestMatch || similarityScore < 0.75) {
+          console.log("⚠ No close match found - Prompting user to contact live support.");
+          return res.json({
+              reply: "**I'm sorry, I couldn't find an exact match for your question.**\n\n"
+                  + "🔹 **Live Support Available!** You can contact a live representative for immediate assistance:\n\n"
+                  + "📍 **Location:** 123 Tint Street, Tint City, TX\n"
+                  + "📞 **Phone:** (123) 456-7890\n"
+                  + "📧 **Email:** support@windowtinting.com\n\n"
+                  + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) and use the live chat feature!"
+          });
+      }
 
-        // ✅ Step 3: If AI Response is Empty or Useless, Send Contact Info
-        if (!aiGeneratedResponse || aiGeneratedResponse.trim() === "" || aiGeneratedResponse.includes("I don't know")) {
-            console.log("⚠ AI failed to generate a response - Showing fallback message");
+      console.log("⚡ No strong FAQ match - Generating AI Response");
 
-            return res.json({
-                reply: "**I'm sorry, but I couldn't find an exact answer to your question.**\n\n"
-                    + "For more details, please contact our customer support team:\n\n"
-                    + "📍 **Location:** 123 Tint Street, Tint City, TX\n"
-                    + "📞 **Phone:** (123) 456-7890\n"
-                    + "📧 **Email:** support@windowtinting.com\n\n"
-                    + "You can also visit our [website](https://windowtinting.com) for more information."
-            });
-        }
+      // ✅ Step 3: Try AI-Generated Response
+      const aiGeneratedResponse = await generateAIResponse(message);
 
-        // ✅ Step 4: Return AI Response if it's Valid
-        return res.json({ reply: aiGeneratedResponse });
+      // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
+      if (!aiGeneratedResponse || aiGeneratedResponse.trim() === "" || aiGeneratedResponse.includes("I don't know")) {
+          console.log("⚠ AI failed to generate a response - Suggesting live support.");
 
-    } catch (error) {
-        console.error("❌ Error in chatbot:", error);
+          return res.json({
+              reply: "**I'm sorry, but I couldn't generate a confident answer.**\n\n"
+                  + "🔹 **Live Representative Available!**\n"
+                  + "For personalized assistance, please reach out to us:\n\n"
+                  + "📞 **Phone:** (123) 456-7890\n"
+                  + "📧 **Email:** support@windowtinting.com\n\n"
+                  + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) and chat with an expert now!"
+          });
+      }
 
-        // ✅ Step 5: If an Unexpected Error Occurs, Also Show Contact Info
-        return res.json({
-            reply: "**Oops! Something went wrong.**\n\n"
-                + "For immediate assistance, please contact us:\n\n"
-                + "📞 **Phone:** (123) 456-7890\n"
-                + "📧 **Email:** support@windowtinting.com\n\n"
-                + "We apologize for the inconvenience."
-        });
-    }
+      // ✅ Step 5: Return AI Response if it's Valid
+      return res.json({ reply: aiGeneratedResponse });
+
+  } catch (error) {
+      console.error("❌ Error in chatbot:", error);
+
+      // ✅ Step 6: If an Unexpected Error Occurs, Show Contact Info
+      return res.json({
+          reply: "**Oops! Something went wrong.**\n\n"
+              + "🔹 **Need Immediate Help?** Contact us:\n\n"
+              + "📞 **Phone:** (123) 456-7890\n"
+              + "📧 **Email:** support@windowtinting.com\n\n"
+              + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) for instant assistance."
+      });
+  }
 });
+
 
 
 
