@@ -42,8 +42,7 @@ const Topbar = ({ notFound }) => {
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const isSmallDesktop = useMediaQuery("(max-width: 1500px)");
-  const isMobile = useMediaQuery("(max-width: 600px)");
+  const isMobile = useMediaQuery("(max-width: 1300px)");
   const navigate = useNavigate();
   const location = useLocation();
 

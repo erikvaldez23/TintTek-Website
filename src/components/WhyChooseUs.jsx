@@ -8,12 +8,12 @@ export default function WhyChooseUs() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
   const features = [
-    { text: "Professional-Grade Tinting", details: "We use only the highest-quality films that provide superior clarity, durability, and performance. Our professional-grade tint ensures a sleek finish without bubbles or peeling." },
-    { text: "UV Protection", details: "Our premium window films block up to 99% of harmful UV rays, protecting you and your passengers from skin damage while also preserving your car's interior from fading and cracking." },
-    { text: "Custom Tint Options", details: "We offer a variety of tint shades and finishes to match your style and preferences. Whether you're looking for a light touch or a sleek, dark tint, we customize the look to your needs." },
-    { text: "Heat & Glare Reduction", details: "Experience a cooler, more comfortable ride with our heat-rejecting films. Reduce glare from the sun and headlights, improving visibility and reducing eye strain while driving." },
-    { text: "Certified Technicians", details: "Our highly trained technicians have years of experience in precision tinting. We follow strict industry standards to ensure every application is flawless and long-lasting." },
-    { text: "Privacy & Security", details: "Window tinting provides an added layer of privacy and security, keeping prying eyes away and reducing the risk of break-ins. Our films reinforce your glass, adding an extra level of protection." },
+    { text: "Professional-Grade Tinting", details: "We use premium films that guarantee superior clarity, durability, and performance. Our expert-grade tint provides a smooth, seamless finish without bubbles or peeling." },
+    { text: "UV Protection", details: "Our top-quality window films block up to 99% of harmful UV rays, safeguarding you and your passengers from skin damage while helping to protect your car's interior from fading and cracking." },
+    { text: "Custom Tint Options", details: "We offer a range of tint shades and finishes to suit your style and preferences. Whether you want a subtle touch or a bold, dark tint, we tailor the look to fit your needs perfectly." },
+    { text: "Heat & Glare Reduction", details: "Enjoy a more comfortable drive with our heat-rejecting films. They minimize glare from the sun and headlights, boosting visibility and reducing eye strain on the road." },
+    { text: "Certified Technicians", details: "Our skilled technicians bring years of expertise to every tinting job. We adhere to the highest industry standards to ensure each application is perfect and built to last." },
+    { text: "Privacy & Security", details: "Window tinting adds an extra layer of privacy and security by blocking prying eyes and lowering the risk of break-ins. Our films also strengthen your glass, providing additional protection." },
   ];
 
   return (
@@ -46,18 +46,17 @@ export default function WhyChooseUs() {
         <Typography
           variant={isMobile ? "body1" : "h6"} // Adjust text size
           sx={{
-            maxWidth: "800px",
+            maxWidth: "1100px",
             margin: "auto",
             color: "#000",
             lineHeight: 1.6,
             fontSize: isMobile ? "1rem" : "1.2rem", // Smaller font on mobile
           }}
         >
-          At Tint Tek +, we offer premium window tinting designed for style,
-          comfort, and protection. Our industry-leading films block 99% of UV
-          rays, reduce glare, and keep your car cooler. Backed by certified
-          technicians and a lifetime warranty, we guarantee unmatched quality
-          and service.
+          At Tint Tek Plus, we specialize in premium window tinting that enhances your car’s style, comfort, 
+          and protection. Our top-of-the-line films block 99% of harmful UV rays, reduce glare, and help keep your car cooler, 
+          even on the hottest days. With certified technicians and a lifetime warranty, we’re committed to delivering unmatched quality and service every time. 
+          Drive with confidence knowing your car is protected.
         </Typography>
 
         {/* Features Grid */}

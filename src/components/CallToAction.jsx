@@ -60,7 +60,7 @@ const CallToAction = () => {
             fontSize: isMobile ? "2rem" : "2.5rem", // Adjust for mobile
           }}
         >
-          Upgrade Your Ride with Premium Window Tinting
+          DO YOU NEED WINDOW TINT?
         </Typography>
 
         <Typography
@@ -77,10 +77,10 @@ const CallToAction = () => {
             px: isMobile ? 2 : 0, // Add padding for small screens
           }}
         >
-          Enhance Your Car’s Style, Comfort & Protection.  
-          Say goodbye to blinding sunlight, excessive heat, and nosy strangers.  
-          Our professional window tinting service blocks 99% of UV rays, reduces glare,  
-          and keeps your car cooler & more energy-efficient.
+          Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? 
+          Window tinting is the solution! At TintTek+, we offer top-tier heat and UV protection, including tinting for windshields and sunroofs, 
+          to keep you comfortable and shielded from the harsh Dallas heat. With our advanced tinting options, you can enjoy cooler temperatures, 
+          a more private ride, and longer-lasting protection for your vehicle’s interior.
         </Typography>
 
         <Typography

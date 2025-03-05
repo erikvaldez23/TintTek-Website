@@ -248,7 +248,7 @@ const serviceSteps = {
       {
         title: "Preparation",
         description:
-          "We clean and prep the vehicle’s surface for film application.",
+          "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
         detailedDescription:
           "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
@@ -256,30 +256,22 @@ const serviceSteps = {
       {
         title: "Film Application",
         description:
-          "Clear bra or vinyl wrap is applied to protect against scratches and chips.",
+          "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
         detailedDescription:
           "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Sealing",
-        description:
-          "We apply ceramic coatings for added durability and shine.",
-        detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
-        icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-      },
-      {
         title: "Final Inspection",
         description:
-          "A thorough check ensures the protection is flawless and durable.",
+          "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription:
           "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
-      "Paint Protection Film (PPF) application involves a few key steps to ensure proper installation and optimal protection, all of which we practice at TintTek+:",
+      "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
     images: [
       "/TintTek-Website/paint-protection1.jpeg",
       "/TintTek-Website/paint-protection2.jpeg",
@@ -403,7 +395,6 @@ const HowItWorks = ({ serviceId }) => {
               <Button
                 sx={{
                   mt: "auto",
-                  
                   borderRadius: "10px",
                   backgroundColor: "#2794d2",
                   color: "#fff",

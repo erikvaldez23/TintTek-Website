@@ -157,12 +157,12 @@ const serviceOptions = {
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection Services",
     list: [
-      "Platinum Extra PPF",
-      "Platinum Gloss PPF",
-      "Platinum Matte PPF",
-      "Valor PFF",
-      "Select Black PPF",
-      "Gloss and Matte PPF",
+      "Front End PPF",
+      "Extended PPF",
+      "Track Package PPF",
+      "Full Car PPF",
+      "Color Change PPF",
+      "Stealth/Matte PPF",
     ],
     filmTypes: [
       {
@@ -171,14 +171,9 @@ const serviceOptions = {
           "Invisible shield that protects your car from chips, scratches, and road debris.",
       },
       {
-        name: "Ceramic Coating",
+        name: "STEK PPF",
         description:
-          "Provides a long-lasting, high-gloss finish that repels water and contaminants.",
-      },
-      {
-        name: "Custom Vinyl Wraps",
-        description:
-          "High-quality vinyl wraps to customize your vehicle’s look with various colors and finishes.",
+          "High-quality, protective film that guards your car’s paint against chips, scratches, stains, and road debris while preserving its appearance.",
       },
     ],
   },
@@ -236,7 +231,7 @@ const ServicesOffered = ({ serviceId }) => {
 
         {/* Film Types Section */}
         <Typography variant="h6" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
-          The <strong>3 main types of film</strong> we use:
+          The <strong>main types of film</strong> we use:
         </Typography>
         <Grid container spacing={3}>
           {service.filmTypes.map((film, index) => (
