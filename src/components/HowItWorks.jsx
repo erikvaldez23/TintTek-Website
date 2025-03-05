@@ -11,14 +11,18 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
 } from "@mui/material";
-// Import icons
+import Slider from "react-slick"; // Import Slider
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
+
 
 const serviceSteps = {
   "vehicle-window-tinting": {
@@ -306,17 +310,41 @@ const HowItWorks = ({ serviceId }) => {
     );
   }
 
+  // Slick carousel settings for mobile (Steps)
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+  };
+
+  // Slick carousel settings for images (Mobile)
+  const imageSliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+  };
+
   return (
     <Box
       sx={{
-        py: isMobile ? 4 : 6, // Reduce padding for mobile
-        px: isMobile ? 2 : 4, // Reduce horizontal padding
+        py: isMobile ? 4 : 6,
+        px: isMobile ? 2 : 4,
         backgroundColor: "#000",
         width: "100vw",
       }}
     >
       <Typography
-        variant={isMobile ? "h5" : "h2"} // Smaller font size for mobile
+        variant={isMobile ? "h4" : "h2"}
         sx={{
           mb: isMobile ? 1.5 : 2,
           fontWeight: "bold",
@@ -326,211 +354,183 @@ const HowItWorks = ({ serviceId }) => {
       >
         HOW IT WORKS
       </Typography>
-      {/* Steps Section */}
-      <Grid
-        container
-        spacing={isMobile ? 2 : 3} // Reduce spacing for mobile
-        justifyContent="center"
-        sx={{ maxWidth: "1200px", mx: "auto" }}
-      >
-        {/* Dynamic Description Under Steps */}
-        {service.finalDescription && (
-          <Typography
-            variant={isMobile ? "body2" : "body1"} // Adjust text size
-            textAlign="center"
-            sx={{
-              mt: isMobile ? 2 : 4,
-              color: "#fff",
-              fontSize: isMobile ? "1.1rem" : "1.5rem", // Adjust font size
-              maxWidth: "90%",
-              mx: "auto",
-              pt: isMobile ? 1 : 2, // Reduce top padding
-            }}
-          >
-            {service.finalDescription}
-          </Typography>
-        )}
 
-        {service.steps.map((step, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Paper
-              elevation={3}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                p: isMobile ? 2 : 3, // Reduce padding for mobile
-                borderRadius: 2,
-                height: "100%",
-                backgroundColor: "#292929",
-                color: "#fff",
-                transition: "all 0.3s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 0px 15px #2794d2",
-                  backgroundColor: "#333",
-                },
-              }}
-            >
-              {step.icon}
-              <Typography
-                variant={isMobile ? "h6" : "h5"}
-                fontWeight="bold"
-                sx={{ mt: 1.5 }}
-              >
-                {step.title}
-              </Typography>
-              <Typography
-                variant={isMobile ? "body2" : "body1"}
-                sx={{ mt: 1, fontSize: isMobile ? "0.85rem" : "0.95rem" }}
-              >
-                {step.description}
-              </Typography>
-
-              {/* Spacer Box to Push Button to Bottom */}
-              <Box sx={{ flexGrow: 1 }} />
-
-              {/* Learn More Button */}
-              <Button
-                sx={{
-                  mt: "auto",
-                  borderRadius: "10px",
-                  backgroundColor: "#2794d2",
-                  color: "#fff",
-                  "&:hover": {
-                    backgroundColor: "#000",
-                    color: "#fff",
-                  },
-                }}
-                onClick={() => handleLearnMoreClick(step)}
-              >
-                Learn More
-              </Button>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-      {/* Image Section */}
-      <Box sx={{ mt: isMobile ? 4 : 6 }}>
-        <Grid
-          container
-          spacing={isMobile ? 1.5 : 3} // Reduce spacing for mobile
-          justifyContent="center"
-          sx={{ maxWidth: "1200px", mx: "auto" }}
+      {/* Service Unique Description */}
+      {service.finalDescription && (
+        <Typography
+          variant={isMobile ? "body2" : "body1"}
+          textAlign="center"
+          sx={{
+            mt: isMobile ? 2 : 4,
+            color: "#fff",
+            fontSize: isMobile ? "1.1rem" : "1.5rem",
+            maxWidth: "90%",
+            mx: "auto",
+            pt: isMobile ? 1 : 2,
+          }}
         >
-          {service.images.map((image, index) => (
-            <Grid item xs={12} sm={4} key={index}>
+          {service.finalDescription}
+        </Typography>
+      )}
+
+      {/* Steps Section */}
+      {isMobile ? (
+        <Slider {...sliderSettings}>
+          {service.steps.map((step, index) => (
+            <Box key={index} sx={{ px: 2 }}>
               <Paper
                 elevation={3}
                 sx={{
-                  borderRadius: 2,
-                  overflow: "hidden",
-                  height: "100%",
                   display: "flex",
-                  transition: "all 0.3s ease-in-out", // Smooth transition
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  p: 3,
+                  marginTop: "20px",
+                  borderRadius: 2,
+                  height: "100%",
+                  maxWidth: "400px",
+                  backgroundColor: "#292929",
+                  color: "#fff",
+                  mx: "auto",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 0px 15px #2794d2",
+                    backgroundColor: "#333",
+                  },
                 }}
               >
-                <img
-                  src={image}
-                  alt="Tinting Process"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                    transition: "transform 0.3s ease-in-out", // Smooth image zoom
+                {step.icon}
+                <Typography variant="h6" fontWeight="bold" sx={{ mt: 1.5 }}>
+                  {step.title}
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  {step.description}
+                </Typography>
+
+                <Box sx={{ flexGrow: 1 }} />
+
+                <Button
+                  sx={{
+                    mt: "auto",
+                    borderRadius: "10px",
+                    backgroundColor: "#2794d2",
+                    color: "#fff",
+                    "&:hover": {
+                      backgroundColor: "#000",
+                      color: "#fff",
+                    },
                   }}
-                />
+                  onClick={() => handleLearnMoreClick(step)}
+                >
+                  Learn More
+                </Button>
+              </Paper>
+            </Box>
+          ))}
+        </Slider>
+      ) : (
+        <Grid
+          container
+          spacing={3}
+          justifyContent="center"
+          sx={{ maxWidth: "1200px", mx: "auto" }}
+        >
+          {service.steps.map((step, index) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              key={index}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              <Paper
+                elevation={3}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  p: 3,
+                  borderRadius: 2,
+                  marginTop: "20px",
+                  height: "100%",
+                  maxWidth: "300px",
+                  backgroundColor: "#292929",
+                  color: "#fff",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 0px 15px #2794d2",
+                    backgroundColor: "#333",
+                  },
+                }}
+              >
+                {step.icon}
+                <Typography variant="h6" fontWeight="bold" sx={{ mt: 1.5 }}>
+                  {step.title}
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  {step.description}
+                </Typography>
+
+                <Box sx={{ flexGrow: 1 }} />
+
+                <Button
+                  sx={{
+                    mt: "auto",
+                    borderRadius: "10px",
+                    backgroundColor: "#2794d2",
+                    color: "#fff",
+                    "&:hover": {
+                      backgroundColor: "#000",
+                      color: "#fff",
+                    },
+                  }}
+                  onClick={() => handleLearnMoreClick(step)}
+                >
+                  Learn More
+                </Button>
               </Paper>
             </Grid>
           ))}
         </Grid>
+      )}
+
+      {/* Images Section */}
+      <Box sx={{ mt: isMobile ? 4 : 6 }}>
+        {isMobile ? (
+          <Slider {...imageSliderSettings}>
+            {service.images.map((image, index) => (
+              <Box key={index} sx={{ px: 2 }}>
+                <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
+                  <img
+                    src={image}
+                    alt="Tinting Process"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </Paper>
+              </Box>
+            ))}
+          </Slider>
+        ) : (
+          <Grid container spacing={3} justifyContent="center">
+            {service.images.map((image, index) => (
+              <Grid item xs={12} sm={4} key={index}>
+                <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
+                  <img
+                    src={image}
+                    alt="Tinting Process"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
-      <Dialog
-        open={openModal}
-        onClose={handleCloseModal}
-        sx={{
-          "& .MuiDialog-paper": {
-            borderRadius: "12px", // ✅ Rounded corners for modern look
-            background: "rgba(255, 255, 255, 0.2)", // ✅ Transparent Glass Effect
-            backdropFilter: "blur(10px)", // ✅ Glassmorphism blur
-            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)", // ✅ Modern shadow effect
-            maxWidth: "500px", // ✅ Keep the modal a reasonable size
-            padding: "20px",
-          },
-        }}
-      >
-        {/* ✅ Close Button (Top-Right) */}
-        <IconButton
-          onClick={handleCloseModal}
-          sx={{
-            position: "absolute",
-            top: 10,
-            right: 10,
-            color: "#fff",
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
-            transition: "all 0.3s ease",
-            "&:hover": {
-              backgroundColor: "#2794d2",
-            },
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-
-        {/* ✅ Modern Title Styling */}
-        <DialogTitle
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "1.8rem",
-            color: "#fff",
-          }}
-        >
-          {selectedStep?.title}
-        </DialogTitle>
-
-        {/* ✅ Content Section */}
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            color: "#eee",
-            fontSize: "1.5rem",
-            px: 3,
-          }}
-        >
-          <Typography variant="body1">
-            {selectedStep?.detailedDescription}
-          </Typography>
-        </DialogContent>
-
-        {/* ✅ Modernized Action Buttons */}
-        <DialogActions sx={{ justifyContent: "center", paddingBottom: 2 }}>
-          <Button
-            onClick={handleCloseModal}
-            sx={{
-              backgroundColor: "#2794d2",
-              color: "#fff",
-              borderRadius: "8px",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              px: 4,
-              py: 1.5,
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#1e6ca0",
-              },
-            }}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-      ;
     </Box>
   );
 };
