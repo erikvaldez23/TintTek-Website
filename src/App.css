@@ -12,14 +12,12 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  font-family: "NoizeSport", sans-serif;
   overscroll-behavior: none;
 }
 
 @font-face {
-  font-family: 'NoizeSport';
-  src: url('/TintTek-Website/fonts/NoizeSport.ttf') format('truetype'); 
+  font-family: "NoizeSport";
+  src: url("/src/assets/fonts/NoizeSport.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-

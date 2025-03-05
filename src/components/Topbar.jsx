@@ -172,7 +172,7 @@ const Topbar = ({ notFound }) => {
                     display: "flex", // Ensures text and arrow are in one line
                     alignItems: "center", // Aligns items vertically
                     gap: "5px", // Adds space between text and arrow
-                    fontFamily: "Montserrat, sans-serif",
+
                     fontSize: "22px",
                     fontWeight: 600,
                     letterSpacing: "1.5px",
@@ -279,7 +279,6 @@ const Topbar = ({ notFound }) => {
                     color="inherit"
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontFamily: "Montserrat, sans-serif", // Sleek modern font
                       fontSize: "22px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
@@ -329,171 +328,176 @@ const Topbar = ({ notFound }) => {
 
       {/* 🏆 Mobile Drawer */}
       <Drawer
-  anchor="top"
-  open={drawerOpen}
-  onClose={() => setDrawerOpen(false)}
-  transitionDuration={500}
-  sx={{
-    "& .MuiDrawer-paper": {
-      backgroundColor: "black",
-      color: "white",
-      width: "100%",
-      height: "100dvh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      alignItems: "center",
-      textAlign: "center",
-      padding: "5vh 0",
-    },
-    "& .MuiBackdrop-root": {
-      backgroundColor: "#000 !important",
-    },
-  }}
->
-  {/* 🔹 Close Button (Fixed at the Top-Right) */}
-  <Box sx={{ 
-    position: "absolute", 
-    top: "20px", 
-    right: "20px", 
-    zIndex: 1000 
-  }}>
-    <IconButton
-      onClick={() => setDrawerOpen(false)}
-      sx={{
-        color: "white",
-        fontSize: "30px",
-        "&:hover": { color: "#2794d2" },
-      }}
-    >
-      <FaTimes />
-    </IconButton>
-  </Box>
-
-  {/* 🔹 Navigation Links (Now fully expanding) */}
-  <List sx={{ 
-    textAlign: "center", 
-    flexGrow: 1,  // ✅ Forces links to take up space and push buttons down
-    display: "flex", 
-    flexDirection: "column", 
-    justifyContent: "center", // ✅ Centers links perfectly
-    gap: "15px" // ✅ Adds consistent spacing between links
-  }}>
-    {["Services", "Reviews", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
-      <ListItem
-        button
-        key={item}
-        onClick={() => scrollToSection(item.toLowerCase())}
-      >
-        <ListItemText
-          primary={item}
-          primaryTypographyProps={{
-            sx: {
-              fontWeight: "bold",
-              color: "white",
-              textTransform: "uppercase",
-              textAlign: "center",
-              fontSize: "clamp(30px, 4vw, 50px)", 
-              lineHeight: "1.2",
-              "&:hover": { color: "#2794d2", cursor: "pointer" },
-            },
-          }}
-        />
-      </ListItem>
-    ))}
-  </List>
-
-  {/* Buttons & Social Icons in a Tightly Packed Layout */}
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "10px", // ✅ Prevents space between buttons and nav links
-      width: "100%",
-      paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)", // ✅ Ensures spacing for iPhones
-    }}
-  >
-    {/* Get a Quote Button */}
-    <Button
-      variant="contained"
-      onClick={handleOpenQuote}
-      sx={{
-        backgroundColor: "#2794d2",
-        color: "black",
-        fontSize: "22px",
-        fontWeight: "bold",
-        borderRadius: "40px",
-        minWidth: "90%",
-        height: "60px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textTransform: "none",
-        "&:hover": {
-          backgroundColor: "#000",
-          border: "3px solid #fff",
-          color: "#fff",
-        },
-      }}
-    >
-      GET A QUOTE
-    </Button>
-
-    {/* Ask a Question Button */}
-    <Button
-      variant="contained"
-      sx={{
-        backgroundColor: "#222",
-        color: "white",
-        fontSize: "22px",
-        fontWeight: "bold",
-        borderRadius: "40px",
-        minWidth: "90%",
-        height: "60px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textTransform: "none",
-        "&:hover": {
-          backgroundColor: "#000",
-          border: "3px solid #fff",
-          color: "#fff",
-        },
-      }}
-    >
-      ASK A QUESTION
-    </Button>
-
-    {/* Social Media Icons */}
-    <Box
-      sx={{
-        display: "flex",
-        gap: 4,
-        mt: "5px", // ✅ Ensures no large gap between buttons & icons
-        mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)", // ✅ Accounts for iPhone bottom navbar
-      }}
-    >
-      {[FaFacebook, FaInstagram].map((Icon, index) => (
-        <IconButton
-          key={index}
-          sx={{
+        anchor="top"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        transitionDuration={500}
+        sx={{
+          "& .MuiDrawer-paper": {
+            backgroundColor: "black",
             color: "white",
-            fontSize: "36px",
-            "&:hover": {
-              color: "#2794d2",
-            },
+            width: "100%",
+            height: "100dvh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            textAlign: "center",
+            padding: "5vh 0",
+            fontFamily: "NoizeSport, sans-serif !important",
+          },
+          "& .MuiBackdrop-root": {
+            backgroundColor: "#000 !important",
+          },
+        }}
+      >
+        {/* 🔹 Close Button (Fixed at the Top-Right) */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            zIndex: 1000,
           }}
         >
-          <Icon />
-        </IconButton>
-      ))}
-    </Box>
-  </Box>
-</Drawer>
+          <IconButton
+            onClick={() => setDrawerOpen(false)}
+            sx={{
+              color: "white",
+              fontSize: "30px",
+              "&:hover": { color: "#2794d2" },
+            }}
+          >
+            <FaTimes />
+          </IconButton>
+        </Box>
 
+        {/* 🔹 Navigation Links (Now fully expanding) */}
+        <List
+          sx={{
+            textAlign: "center",
+            flexGrow: 1, // ✅ Forces links to take up space and push buttons down
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center", // ✅ Centers links perfectly
+            gap: "15px", // ✅ Adds consistent spacing between links
+          }}
+        >
+          {["Services", "Reviews", "Gallery", "Blog", "FAQ", "Contact"].map(
+            (item) => (
+              <ListItem
+                button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+              >
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    sx: {
+                      fontFamily: "NoizeSport, sans-serif", // ✅ Apply NoizeSport font
+                      fontWeight: "bold",
+                      color: "white",
+                      textTransform: "uppercase",
+                      textAlign: "center",
+                      fontSize: "clamp(30px, 4vw, 50px)", // Responsive size
+                      lineHeight: "1.2",
+                      "&:hover": { color: "#2794d2", cursor: "pointer" },
+                    },
+                  }}
+                />
+              </ListItem>
+            )
+          )}
+        </List>
 
+        {/* Buttons & Social Icons in a Tightly Packed Layout */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px", // ✅ Prevents space between buttons and nav links
+            width: "100%",
+            paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)", // ✅ Ensures spacing for iPhones
+          }}
+        >
+          {/* Get a Quote Button */}
+          <Button
+            variant="contained"
+            onClick={handleOpenQuote}
+            sx={{
+              backgroundColor: "#2794d2",
+              color: "black",
+              fontSize: "22px",
+              fontWeight: "bold",
+              borderRadius: "40px",
+              minWidth: "90%",
+              height: "60px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#000",
+                border: "3px solid #fff",
+                color: "#fff",
+              },
+            }}
+          >
+            GET A QUOTE
+          </Button>
 
+          {/* Ask a Question Button */}
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#222",
+              color: "white",
+              fontSize: "22px",
+              fontWeight: "bold",
+              borderRadius: "40px",
+              minWidth: "90%",
+              height: "60px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#000",
+                border: "3px solid #fff",
+                color: "#fff",
+              },
+            }}
+          >
+            ASK A QUESTION
+          </Button>
+
+          {/* Social Media Icons */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 4,
+              mt: "5px", // ✅ Ensures no large gap between buttons & icons
+              mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)", // ✅ Accounts for iPhone bottom navbar
+            }}
+          >
+            {[FaFacebook, FaInstagram].map((Icon, index) => (
+              <IconButton
+                key={index}
+                sx={{
+                  color: "white",
+                  fontSize: "36px",
+                  "&:hover": {
+                    color: "#2794d2",
+                  },
+                }}
+              >
+                <Icon />
+              </IconButton>
+            ))}
+          </Box>
+        </Box>
+      </Drawer>
 
       {/* 🏆 Quote Form Modal */}
       <Dialog
