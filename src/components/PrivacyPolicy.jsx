@@ -1,14 +1,136 @@
 import React from "react";
 import { Container, Typography, Divider, Box } from "@mui/material";
 import Footer from "./Footer";
+import CallToAction from "./CallToAction";
+import Contact from "./Contact";
 
 const PrivacyPolicy = () => {
+  // ✅ Updated Privacy Policy Data Structure
+  const policySections = [
+    {
+      title: "Online Privacy Policy Agreement",
+      content: [
+        "Tint Tek Plus LLC values its users' privacy. This Privacy Policy will help you understand how we collect and use personal information from those who visit our website or make use of our online facilities and services, and what we will and will not do with the information we collect. Our Policy has been designed and created to ensure those affiliated with Tint Tek Plus LLC of our commitment and realization of our obligation not only to meet, but to exceed, most existing privacy standards.",
+        "We reserve the right to make changes to this Policy at any given time. If you want to make sure that you are up to date with the latest changes, we advise you to frequently visit this page. If at any point in time Tint Tek Plus LLC decides to make use of any personally identifiable information on file, in a manner vastly different from that which was stated when this information was initially collected, the user or users shall be promptly notified by email. Users at that time shall have the option as to whether to permit the use of their information in this separate manner.",
+        "This Policy applies to Tint Tek Plus LLC, and it governs any and all data collection and usage by us. Through the use of www.tinttekplus.com, you are therefore consenting to the data collection procedures expressed in this Policy.",
+        "Please note that this Policy does not govern the collection and use of information by companies that Tint Tek Plus LLC does not control, nor by individuals not employed or managed by us. If you visit a website that we mention or link to, be sure to review its privacy policy before providing the site with information. It is highly recommended and suggested that you review the privacy policies and statements of any website you choose to use or frequent to better understand the way in which websites garner, make use of and share the information collected.",
+        "Specifically, this Policy will inform you of the following:",
+        [
+          "1. What personally identifiable information is collected from you through our website;",
+          "2. Why we collect personally identifiable information and the legal basis for such collection;",
+          "3. How we use the collected information and with whom it may be shared;",
+          "4. What choices are available to you regarding the use of your data; and",
+          "5. The security procedures in place to protect the misuse of your information.",
+        ],
+      ],
+    },
+    {
+      title: "Information We Collect",
+      content: [
+        "It is always up to you whether to disclose personally identifiable information to us, although if you elect not to do so, we reserve the right not to register you as a user or provide you with any products or services.",
+        "In addition, Tint Tek Plus LLC may have the occasion to collect non-personal anonymous demographic information, such as age, gender, household income, political affiliation, race and religion, as well as the type of browser you are using, IP address, or type of operating system, which will assist us in providing and maintaining superior quality service.",
+      ],
+    },
+    {
+      title: "Why We Collect Information and For How Long",
+      content: [
+        "We are collecting your data for several reasons:",
+        [
+          "To better understand your needs and provide you with the services you have requested",
+          "To fulfill our legitimate interest in improving our services and products",
+          "To send you promotional emails containing information we think you may like when we have your consent to do so",
+          "To contact you to fill out surveys or participate in other types of market research, when we have your consent to do so",
+          "To customize our website according to your online behavior and personal preferences.",
+        ],
+        "The data we collect from you will be stored for no longer than necessary. The length of time we retain said information will be determined based upon the following criteria: the length of time your personal information remains relevant; the length of time it is reasonable to keep records to demonstrate that we have fulfilled our duties and obligations; any limitation periods within which claims might be made; any retention periods prescribed by law or recommended by regulators, professional bodies or associations; the type of contract we have with you, the existence of your consent, and our legitimate interest in keeping such information as stated in this Policy.",
+      ],
+    },
+    {
+      title: "Use of Collected Information",
+      content: [
+        "Tint Tek Plus LLC does not now, nor will it in the future, sell, rent or lease any of its customer lists and/or names to any third parties.",
+        "Tint Tek Plus LLC may collect and may make use of personal information to assist in the operation of our website and to ensure delivery of the services you need and request. At times, we may find it necessary to use personally identifiable information as a means to keep you informed of other possible products and/or services that may be available to you from www.tinttekplus.com",
+        "Tint Tek Plus LLC may also be in contact with you with regards to completing surveys and/or research questionnaires related to your opinion of current or potential future services that may be offered.",
+      ],
+    },
+    {
+      title: "Disclosure of Information",
+      content: [
+        "Tint Tek Plus LLC may not use or disclose the information provided by you except under the following circumstances:",
+        [
+          "As necessary to provide services or products you have ordered",
+          "In other ways described in this Policy or to which you have otherwise consented",
+          "In the aggregate with other information in such a way so that your identity cannot reasonably be determined",
+          "As required by law, or in response to a subpoena or search warrant",
+          "To outside auditors who have agreed to keep the information confidential",
+          "As necessary to enforce the Terms of Service",
+          "As necessary to maintain, safeguard and preserve all the rights and property of Tint Tek Plus LLC.",
+          "SMS Consent will not be shared, sold, or disclosed with any third party or any other individual."
+        ]
+      ]
+    },
+    {
+      title: "Non-Marketing Purposes",
+      content: [
+        "Tint Tek Plus LLC greatly respects your privacy. We do maintain and reserve the right to contact you if needed for non-marketing purposes (such as bug alerts, security breaches, account issues, and/or changes in Tint Tek Plus LLC products and services). In certain circumstances, we may use our website, newspapers, or other public means to post a notice.",
+      ],
+    },
+    {
+      title: "Children Under The Age of 13",
+      content: [
+        "Tint Tek Plus LLC's website is not directed to, and does not knowingly collect personal identifiable information from, children under the age of thirteen (13). If it is determined that such information has been inadvertently collected on anyone under the age of thirteen (13), we shall immediately take the necessary steps to ensure that such information is deleted from our system's database, or in the alternative, that verifiable parental consent is obtained for the use and storage of such information. Anyone under the age of thirteen (13) must seek and obtain parent or guardian permission to use this website.",
+      ],
+    },
+    {
+      title: "Unsubscribe or Opt-Out",
+      content: [
+        "All users and visitors to our website have the option to discontinue receiving communications from us by way of email or newsletters. To discontinue or unsubscribe from our website please send an email that you wish to unsubscribe to info@tinttekplus.com. If you wish to unsubscribe or opt-out from any third-party websites, you must go to that specific website to unsubscribe or opt-out. Tint Tek Plus LLC will continue to adhere to this Policy with respect to any personal information previously collected.",
+      ],
+    },
+    {
+      title: "Links to Other Websites",
+      content: [
+        "Our website does contain links to affiliate and other websites. Tint Tek Plus LLC does not claim nor accept responsibility for any privacy policies, practices and/or procedures of other such websites. Therefore, we encourage all users and visitors to be aware when they leave our website and to read the privacy statements of every website that collects personally identifiable information. This Privacy Policy Agreement applies only and solely to the information collected by our website.",
+      ],
+    },
+    {
+      title: "Notice to European Union Users",
+      content: [
+        "Tint Tek Plus LLC's operations are located primarily in the United States. If you provide information to us, the information will be transferred out of the European Union (EU) and sent to the United States. (The adequacy decision on the EU-US Privacy became operational on August 1, 2016. This framework protects the fundamental rights of anyone in the EU whose personal data is transferred to the United States for commercial purposes. It allows the free transfer of data to companies that are certified in the US under the Privacy Shield.) By providing personal information to us, you are consenting to its storage and use as described in this Policy.",
+      ],
+    },
+    {
+      title: "Security",
+      content: [
+        'Tint Tek Plus LLC takes precautions to protect your information. When you submit sensitive information via the website, your information is protected both online and offline. Wherever we collect sensitive information (e.g. credit card information), that information is encrypted and transmitted to us in a secure way. You can verify this by looking for a lock icon in the address bar and looking for "https" at the beginning of the address of the webpage.',
+        "While we use encryption to protect sensitive information transmitted online, we also protect your information offline. Only employees who need the information to perform a specific job (for example, billing or customer service) are granted access to personally identifiable information. The computers and servers in which we store personally identifiable information are kept in a secure environment. This is all done to prevent any loss, misuse, unauthorized access, disclosure or modification of the user's personal information under our control."
+      ],
+    },
+    {
+      title: "Acceptance of Terms",
+      content: [
+        "Our website does contain links to affiliate and other websites. Tint Tek Plus LLC does not claim nor accept responsibility for any privacy policies, practices and/or procedures of other such websites. Therefore, we encourage all users and visitors to be aware when they leave our website and to read the privacy statements of every website that collects personally identifiable information. This Privacy Policy Agreement applies only and solely to the information collected by our website.",
+      ],
+    },
+    {
+      title: "How to Contact Us",
+      content: [
+        "If you have any questions or concerns regarding the Privacy Policy Agreement related to our website, please feel free to contact us at the following email, telephone number or mailing address.",
+        [
+          "Email: info@tinttekplus.com",
+          "Telephone Number: +1 (972) 362-8468",
+          "Mailing Address: Tint Tek Plus 2518 West Kingsley Rd, Garland, TX 75041",
+        ]
+      ]
+    },
+  ];
+
   return (
     <Box
       sx={{
         width: "100vw",
         minHeight: "100vh",
-        backgroundColor: "#000", // Black background
+        backgroundColor: "#EEEEFF", // Black background
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -20,19 +142,21 @@ const PrivacyPolicy = () => {
         sx={{
           width: "100%",
           minHeight: "300px",
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 40%, #000), url(/TintTek-Website/privacy-banner.jpg)`, 
+          backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          color: "white",
           textAlign: "center",
           padding: "40px 20px",
         }}
       >
-        <Typography variant="h2" sx={{ fontWeight: "bold", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}>
+        <Typography
+          variant="h2"
+          sx={{ fontWeight: "bold", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
+        >
           Privacy Policy
         </Typography>
       </Box>
@@ -47,7 +171,7 @@ const PrivacyPolicy = () => {
           justifyContent: "center",
           alignItems: "flex-start",
           paddingY: "40px",
-          color: "white", 
+          color: "#000",
           overflowY: "auto",
         }}
       >
@@ -56,34 +180,50 @@ const PrivacyPolicy = () => {
         </Typography>
         <Divider sx={{ my: 2, backgroundColor: "white" }} />
 
-        {/* Privacy Policy Sections */}
-        {[
-          { title: "Online Privacy Policy Agreement", content: "Tint Tek Plus LLC values its users' privacy. This Privacy Policy will help you understand how we collect and use personal information from those who visit our website or make use of our online facilities and services, and what we will and will not do with the information we collect. Our Policy has been designed and created to ensure those affiliated with Tint Tek Plus LLC of our commitment and realization of our obligation not only to meet, but to exceed, most existing privacy standards. We reserve the right to make changes to this Policy at any given time. If you want to make sure that you are up to date with the latest changes, we advise you to frequently visit this page. If at any point in time Tint Tek Plus LLC decides to make use of any personally identifiable information on file, in a manner vastly different from that which was stated when this information was initially collected, the user or users shall be promptly notified by email. Users at that time shall have the option as to whether to permit the use of their information in this separate manner."},
-          { title: "1. Information We Collect", content: "It is always up to you whether to disclose personally identifiable information to us. We may collect non-personal demographic information such as age, gender, IP address, and browser type." },
-          { title: "2. Why We Collect Information & Retention Period", content: "We collect data to improve our services, send promotional emails, and conduct market research with your consent. Data is retained based on regulatory and operational needs." },
-          { title: "3. Use of Collected Information", content: "Tint Tek Plus LLC does not sell, rent, or lease customer data to third parties. We use personal information to improve services and keep customers informed about new products." },
-          { title: "4. Disclosure of Information", content: "Your information may be disclosed if required by law, in response to subpoenas, or to enforce our Terms of Service. SMS consent will never be shared or sold." },
-          { title: "5. Non-Marketing Purposes", content: "We may contact you for non-marketing purposes such as security alerts or policy updates." },
-          { title: "6. Children's Privacy", content: "Our website is not directed to children under 13, and we do not knowingly collect data from them." },
-          { title: "7. Unsubscribe or Opt-Out", content: "Users may opt out of receiving communications by emailing info@tinttekplus.com." },
-          { title: "8. Links to Other Websites", content: "Our website may contain links to third-party websites. We are not responsible for their privacy policies." },
-          { title: "9. EU Data Transfers", content: "Your data may be transferred to the U.S. under the Privacy Shield framework." },
-          { title: "10. Security Measures", content: "We use encryption and secure servers to protect your data. Only authorized employees have access to personally identifiable information." },
-          { title: "11. Acceptance of Terms", content: "By using this site, you accept this policy. Continued use after changes means agreement with updates." },
-          { title: "12. Contact Information", content: "For questions, contact us at support@tinttekplus.com." }
-        ].map((section, index) => (
+        {/* ✅ Map Through Sections */}
+        {policySections.map((section, index) => (
           <Box key={index} sx={{ mb: 4 }}>
+            {/* Section Title */}
             <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
               {section.title}
             </Typography>
-            <Typography paragraph sx={{ lineHeight: 1.6, opacity: 0.9 }}>
-              {section.content}
-            </Typography>
+
+            {/* ✅ Iterate over content: Paragraphs & Lists */}
+            {section.content.map((item, pIndex) =>
+              Array.isArray(item) ? (
+                // ✅ Render Numbered List
+                <Box key={pIndex} component="ul" sx={{ pl: 3, mt: 1 }}>
+                  {item.map((listItem, listIndex) => (
+                    <Typography
+                      key={listIndex}
+                      component="li"
+                      sx={{ lineHeight: 1.6, opacity: 0.9 }}
+                    >
+                      {listItem}
+                    </Typography>
+                  ))}
+                </Box>
+              ) : (
+                // ✅ Render Normal Paragraph
+                <Typography
+                  key={pIndex}
+                  paragraph
+                  sx={{ lineHeight: 1.6, opacity: 0.9 }}
+                >
+                  {item}
+                </Typography>
+              )
+            )}
           </Box>
         ))}
       </Container>
 
-      {/* Footer */}
+      <Box sx={{ width: "100%" }}>
+        <CallToAction />
+      </Box>
+
+      <Contact />
+
       <Box sx={{ width: "100%" }}>
         <Footer />
       </Box>

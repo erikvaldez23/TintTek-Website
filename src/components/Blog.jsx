@@ -58,19 +58,19 @@ const Blog = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ backgroundColor: "#EEEEFF", color: "#FFFFFF", minHeight: "100vh" }}>
-
-      {/* Hero Section */}
+    <Box
+      sx={{ backgroundColor: "#EEEEFF", color: "#FFFFFF", minHeight: "100vh" }}
+    >
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "30vh", md: "20vh" }, 
+          height: { xs: "30vh", md: "20vh" },
           overflow: "hidden",
-          backgroundColor: "#000"
+          backgroundColor: "#000",
         }}
       >
-        {/* Title Overlay */}
+        {/* Title & Subheader Overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -79,24 +79,46 @@ const Blog = () => {
             width: "100%",
             height: "100%",
             display: "flex",
+            flexDirection: "column", // Stack text vertically
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
             color: "white",
+            px: 2, // Padding for smaller screens
           }}
         >
-                 <Typography
-                     variant="h2"
-                     sx={{
-                       mb: 2,
-                       fontWeight: "bold",
-                       color: "#fff",
-                       textAlign: "center",
-                       fontSize: { xs: "2.5rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
-                     }}
-                   >
-                     BLOGS
-                   </Typography>
+          {/* Main Title */}
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: {
+                xs: "2.5rem",
+                sm: "2.5rem",
+                md: "3.5rem",
+                lg: "4rem",
+              },
+            }}
+          >
+            BLOGS
+          </Typography>
+
+          {/* 🔹 Subheader Text */}
+          <Typography
+            variant="h6"
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
+            }}
+          >
+            Stay updated with the latest trends in window tinting and automotive
+            care.
+          </Typography>
         </Box>
       </Box>
 
@@ -201,8 +223,8 @@ const Blog = () => {
 
       {/* Call to Action & Footer */}
       <CallToAction />
-      <Box sx={{ color: "#000" }} >
-        <Contact/>
+      <Box sx={{ color: "#000" }}>
+        <Contact />
       </Box>
       <Footer />
     </Box>

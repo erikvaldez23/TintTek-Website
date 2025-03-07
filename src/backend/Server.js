@@ -113,73 +113,83 @@ ${userMessage}
   }
 };
 
-// ✅ Chatbot Route
+// ✅ Define Similarity Thresholds
+const HIGH_SIMILARITY_THRESHOLD = 0.95; // Strong match
+const LOW_SIMILARITY_THRESHOLD = 0.6; // Too far from training data
+
 app.post("/chat", async (req, res) => {
   try {
-      const { message } = req.body;
-      console.log("📩 User Input:", message);
+    const { message } = req.body;
+    console.log("📩 User Input:", message);
 
-      // ✅ Step 1: Try to find the best matching FAQ answer
-      const { bestMatch, similarityScore } = await findBestMatchAI(message);
+    // ✅ Step 1: Try to find the best matching FAQ answer
+    const { bestMatch, similarityScore } = await findBestMatchAI(message);
 
-      if (bestMatch && similarityScore > 0.95) {
-          console.log("✅ Strong FAQ Match Found:", bestMatch);
-          return res.json({ reply: bestMatch.answer });
-      }
+    if (bestMatch && similarityScore > HIGH_SIMILARITY_THRESHOLD) {
+      console.log("✅ Strong FAQ Match Found:", bestMatch);
+      return res.json({ reply: bestMatch.answer });
+    }
 
-      console.log("⚡ No Strong FAQ Match - Checking for Lower Similarity Threshold");
+    console.log("⚡ No Strong FAQ Match - Checking Similarity Score");
 
-      // ✅ Step 2: If the similarity score is below 0.75, suggest live support
-      if (!bestMatch || similarityScore < 0.75) {
-          console.log("⚠ No close match found - Prompting user to contact live support.");
-          return res.json({
-              reply: "**I'm sorry, I couldn't find an exact match for your question.**\n\n"
-                  + "🔹 **Live Support Available!** You can contact a live representative for immediate assistance:\n\n"
-                  + "📍 **Location:** 123 Tint Street, Tint City, TX\n"
-                  + "📞 **Phone:** (123) 456-7890\n"
-                  + "📧 **Email:** support@windowtinting.com\n\n"
-                  + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) and use the live chat feature!"
-          });
-      }
+    // ✅ Step 2: If the similarity score is below LOW_SIMILARITY_THRESHOLD, suggest live support
+    if (!bestMatch || similarityScore < LOW_SIMILARITY_THRESHOLD) {
+      console.log("⚠ Too Personal or Unrelated - Redirecting to Live Support.");
 
-      console.log("⚡ No strong FAQ match - Generating AI Response");
-
-      // ✅ Step 3: Try AI-Generated Response
-      const aiGeneratedResponse = await generateAIResponse(message);
-
-      // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
-      if (!aiGeneratedResponse || aiGeneratedResponse.trim() === "" || aiGeneratedResponse.includes("I don't know")) {
-          console.log("⚠ AI failed to generate a response - Suggesting live support.");
-
-          return res.json({
-              reply: "**I'm sorry, but I couldn't generate a confident answer.**\n\n"
-                  + "🔹 **Live Representative Available!**\n"
-                  + "For personalized assistance, please reach out to us:\n\n"
-                  + "📞 **Phone:** (123) 456-7890\n"
-                  + "📧 **Email:** support@windowtinting.com\n\n"
-                  + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) and chat with an expert now!"
-          });
-      }
-
-      // ✅ Step 5: Return AI Response if it's Valid
-      return res.json({ reply: aiGeneratedResponse });
-
-  } catch (error) {
-      console.error("❌ Error in chatbot:", error);
-
-      // ✅ Step 6: If an Unexpected Error Occurs, Show Contact Info
       return res.json({
-          reply: "**Oops! Something went wrong.**\n\n"
-              + "🔹 **Need Immediate Help?** Contact us:\n\n"
-              + "📞 **Phone:** (123) 456-7890\n"
-              + "📧 **Email:** support@windowtinting.com\n\n"
-              + "💬 **Live Chat:** Visit our [website](https://windowtinting.com) for instant assistance."
+        reply:
+        "Oops! Something went wrong.\n\n" +
+        "Need Immediate Help? Contact us:\n\n" +
+        "Phone: (123) 456-7890\n" +
+        "Email: support@windowtinting.com\n\n" +
+        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
       });
+    }
+
+    console.log("⚡ No strong FAQ match - Generating AI Response");
+
+    // ✅ Step 3: Try AI-Generated Response
+    const aiGeneratedResponse = await generateAIResponse(message);
+
+    // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
+    // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
+    if (
+      !aiGeneratedResponse ||
+      aiGeneratedResponse.trim() === "" ||
+      aiGeneratedResponse.includes("I don't know") ||
+      aiGeneratedResponse.includes("I'm sorry") ||
+      aiGeneratedResponse.includes("doesn't contain information")
+    ) {
+      console.log(
+        "⚠ AI generated a vague response - Replacing with live support message."
+      );
+
+      return res.json({
+        reply:
+        "Oops! Something went wrong.\n\n" +
+        "Need Immediate Help? Contact us:\n\n" +
+        "Phone: (123) 456-7890\n" +
+        "Email: support@windowtinting.com\n\n" +
+        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
+      });
+    }
+
+    // ✅ Step 5: Return AI Response if it's Valid
+    return res.json({ reply: aiGeneratedResponse });
+  } catch (error) {
+    console.error("❌ Error in chatbot:", error);
+
+    // ✅ Step 6: If an Unexpected Error Occurs, Show Contact Info
+    return res.json({
+      reply:
+        "Oops! Something went wrong.\n\n" +
+        "Need Immediate Help? Contact us:\n\n" +
+        "Phone: (123) 456-7890\n" +
+        "Email: support@windowtinting.com\n\n" +
+        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
+    });
   }
 });
-
-
-
 
 // ✅ Start Server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

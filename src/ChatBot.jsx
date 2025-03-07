@@ -145,9 +145,10 @@ export default function Chatbot() {
                       textAlign: "left",
                       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                       transition: "all 0.3s ease",
+                      whitespace: "pre-line",
                     }}
                   >
-                    {msg.text}
+                    <div dangerouslySetInnerHTML={{ __html: msg.text.replace(/\n/g, "<br>") }} />
                   </Typography>
                 </motion.div>
               ))}

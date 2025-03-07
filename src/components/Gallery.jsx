@@ -8,14 +8,14 @@ import {
   Dialog,
   IconButton,
   Button,
-  useMediaQuery
+  useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useSwipeable } from "react-swipeable"; // ✅ Import react-swipeable for mobile gestures
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-import CallToAction from "../components/CallToAction"
+import CallToAction from "../components/CallToAction";
 
 const images = [
   "/TintTek-Website/Tint Tek-2.jpeg",
@@ -83,19 +83,10 @@ const Gallery = () => {
           width: "100%",
           height: { xs: "30vh", md: "20vh" },
           overflow: "hidden",
+          backgroundColor: "#000",
         }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "50%",
-            pointerEvents: "none",
-          }}
-        />
-
+        {/* Title & Subheader Overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -104,24 +95,44 @@ const Gallery = () => {
             width: "100%",
             height: "100%",
             display: "flex",
+            flexDirection: "column", // Stack text vertically
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            background: "#000",
             color: "white",
+            px: 2, // Padding for smaller screens
           }}
         >
+          {/* Main Title */}
           <Typography
             variant="h2"
+            sx={{
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: {
+                xs: "2.5rem",
+                sm: "2.5rem",
+                md: "3.5rem",
+                lg: "4rem",
+              },
+            }}
+          >
+            OUR GALLERY
+          </Typography>
+
+          {/* 🔹 Subheader Text */}
+          <Typography
+            variant="h6"
             sx={{
               mb: 2,
               fontWeight: "bold",
               color: "#fff",
               textAlign: "center",
-              fontSize: { xs: "2.5rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
+              fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
             }}
           >
-            Our Gallery
+            See Our Work in Action
           </Typography>
         </Box>
       </Box>

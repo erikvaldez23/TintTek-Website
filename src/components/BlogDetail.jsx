@@ -13,6 +13,7 @@ import Topbar from "./Topbar";
 import CallToAction from "./CallToAction";
 import Footer from "./Footer";
 import Video from "../../public/car.mp4"; // Import the video file
+import Contact from "./Contact";
 
 const blogPosts = [
   {
@@ -283,8 +284,7 @@ const BlogDetail = () => {
 
       {/* Call to Action Section */}
       <CallToAction />
-
-      {/* Footer */}
+      <Contact />
       <Footer />
     </Box>
   );

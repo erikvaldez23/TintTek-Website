@@ -140,9 +140,9 @@ const pricingConfig = {
     title: "PRICING",
     pricingData: {
       HOOD: { BASIC: "$199.00", PRO: "$299.00", ULTRA: "$399.00" },
-      FULL_BODY: { BASIC: "$999.00", PRO: "$1299.00", ULTRA: "$1599.00" },
+      "FULL BODY": { BASIC: "$999.00", PRO: "$1299.00", ULTRA: "$1599.00" },
     },
-    pricingOptions: ["HOOD", "FULL_BODY"],
+    pricingOptions: ["HOOD", "FULL BODY"],
     descriptions: {
       BASIC: [
         "Basic paint protection film",

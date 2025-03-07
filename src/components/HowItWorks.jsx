@@ -364,7 +364,7 @@ const HowItWorks = ({ serviceId }) => {
             mt: isMobile ? 2 : 4,
             color: "#fff",
             fontSize: isMobile ? "1.1rem" : "1.5rem",
-            maxWidth: "90%",
+            maxWidth: "1200px",
             mx: "auto",
             pt: isMobile ? 1 : 2,
           }}
@@ -500,37 +500,46 @@ const HowItWorks = ({ serviceId }) => {
       )}
 
       {/* Images Section */}
-      <Box sx={{ mt: isMobile ? 4 : 6 }}>
-        {isMobile ? (
-          <Slider {...imageSliderSettings}>
-            {service.images.map((image, index) => (
-              <Box key={index} sx={{ px: 2 }}>
-                <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
-                  <img
-                    src={image}
-                    alt="Tinting Process"
-                    style={{ width: "100%", height: "auto", display: "block" }}
-                  />
-                </Paper>
-              </Box>
-            ))}
-          </Slider>
-        ) : (
-          <Grid container spacing={3} justifyContent="center">
-            {service.images.map((image, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
-                  <img
-                    src={image}
-                    alt="Tinting Process"
-                    style={{ width: "100%", height: "auto", display: "block" }}
-                  />
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        )}
-      </Box>
+      <Box
+  sx={{
+    mt: isMobile ? 8 : 12, // Increased spacing to separate from steps
+    maxWidth: "1200px", // Limit width
+    width: "100%", // Ensure responsiveness
+    margin: "0 auto", // Center the container
+    paddingTop: 8,
+  }}
+>
+  {isMobile ? (
+    <Slider {...imageSliderSettings}>
+      {service.images.map((image, index) => (
+        <Box key={index} sx={{ px: 2 }}>
+          <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
+            <img
+              src={image}
+              alt="Tinting Process"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </Paper>
+        </Box>
+      ))}
+    </Slider>
+  ) : (
+    <Grid container spacing={3} justifyContent="center">
+      {service.images.map((image, index) => (
+        <Grid item xs={12} sm={4} key={index}>
+          <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
+            <img
+              src={image}
+              alt="Tinting Process"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </Paper>
+        </Grid>
+      ))}
+    </Grid>
+  )}
+</Box>
+
     </Box>
   );
 };
