@@ -186,8 +186,8 @@ const Services = () => {
               <Card
                 sx={{
                   width: "100%",
-                  height: 450,
-                  maxWidth: 380,
+                  height: 400,
+                  maxWidth: 500, // Increased maxWidth for a wider card
                   margin: "0 auto",
                   borderRadius: 4,
                   overflow: "hidden",
@@ -260,6 +260,7 @@ const Services = () => {
       </Slider>
     </Box>
   );
+  
 
   return (
     <Box
