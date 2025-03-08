@@ -309,20 +309,18 @@ const HowItWorks = ({ serviceId }) => {
     );
   }
 
+  // Slick carousel settings for mobile (Steps)
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
     arrows: false,
     appendDots: (dots) => (
-      <div
-        style={{
-          marginTop: "20px",
-          textAlign: "center",
-        }}
-      >
+      <div style={{ marginTop: "20px", textAlign: "center" }}>
         <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -557,6 +555,61 @@ const HowItWorks = ({ serviceId }) => {
           </Grid>
         )}
       </Box>
+
+      {/* Modal Dialog for Learn More */}
+      <Dialog
+  open={openModal}
+  onClose={handleCloseModal}
+  maxWidth="sm"
+  PaperProps={{
+    sx: {
+      width: 500,
+      height: 300,
+      borderRadius: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+      p: 2,
+    },
+  }}
+>
+  <DialogTitle
+    sx={{
+      textAlign: "center",
+      color: "#fff",
+      m: 0,
+      p: 1,
+      fontSize: "1.5rem",
+      position: "relative", // Ensure the title is positioned relatively
+    }}
+  >
+    {selectedStep?.title}
+    <IconButton
+      onClick={handleCloseModal}
+      sx={{
+        position: "absolute",
+        top: 8,
+        right: 8,
+        color: "#fff",
+      }}
+    >
+      <CloseIcon />
+    </IconButton>
+  </DialogTitle>
+  <DialogContent
+    sx={{
+      textAlign: "center",
+      color: "#fff",
+      flex: 1,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
+    <Typography variant="body1">
+      {selectedStep?.detailedDescription}
+    </Typography>
+  </DialogContent>
+</Dialog>
+
     </Box>
   );
 };
