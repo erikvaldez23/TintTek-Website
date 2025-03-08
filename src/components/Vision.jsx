@@ -46,6 +46,26 @@ const visionPoints = [
   },
 ];
 
+// Variants for parent container to stagger children on desktop
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// Variant for each card
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: "easeOut" } 
+  },
+};
+
 const Vision = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
@@ -53,39 +73,53 @@ const Vision = () => {
   return (
     <Box sx={{ py: isMobile ? 6 : 8, background: "#EEEEFF" }}>
       <Container maxWidth="md">
-        {/* Title */}
-        <Typography
-          variant={isMobile ? "h4" : "h2"}
-          sx={{
-            mb: 3,
-            fontWeight: "bold",
-            color: "#000",
-            textAlign: "center",
-            width: "100%",
-          }}
+        {/* Title with on-scroll animation */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
-          OUR VISION
-        </Typography>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            sx={{
+              mb: 3,
+              fontWeight: "bold",
+              color: "#000",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            OUR VISION
+          </Typography>
+        </motion.div>
 
-        {/* Description */}
-        <Typography
-          variant={isMobile ? "body2" : "body1"}
-          sx={{
-            mb: 5,
-            fontSize: isMobile ? "1rem" : "1.3rem",
-            color: "#000",
-            lineHeight: 1.6,
-            maxWidth: "900px",
-            mx: "auto",
-            textAlign: "center",
-          }}
+        {/* Description with on-scroll animation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          At TintTek+, our vision is to be the leading choice for high-quality
-          window tinting services, delivering craftsmanship and exceptional
-          value. We are dedicated to enhancing the comfort, style, and privacy
-          of every vehicle and building we serve, ensuring customer satisfaction
-          through precision, professionalism, and affordable pricing.
-        </Typography>
+          <Typography
+            variant={isMobile ? "body2" : "body1"}
+            sx={{
+              mb: 5,
+              fontSize: isMobile ? "1rem" : "1.3rem",
+              color: "#000",
+              lineHeight: 1.6,
+              maxWidth: "900px",
+              mx: "auto",
+              textAlign: "center",
+            }}
+          >
+            At TintTek+, our vision is to be the leading choice for high-quality
+            window tinting services, delivering craftsmanship and exceptional
+            value. We are dedicated to enhancing the comfort, style, and privacy
+            of every vehicle and building we serve, ensuring customer satisfaction
+            through precision, professionalism, and affordable pricing.
+          </Typography>
+        </motion.div>
 
         {/* Mobile Carousel */}
         {isMobile ? (
@@ -108,7 +142,8 @@ const Vision = () => {
               >
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.6 }}
                   style={{
                     display: "flex",
@@ -146,47 +181,50 @@ const Vision = () => {
             ))}
           </Swiper>
         ) : (
-          /* Desktop Grid */
-          <Grid container spacing={4} justifyContent="center">
-            {visionPoints.map((point, index) => (
-              <Grid item xs={12} sm={6} key={point.id}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <Card
-                    sx={{
-                      textAlign: "center",
-                      py: 4,
-                      px: 2,
-                      borderRadius: 3,
-                      minHeight: "220px",
-                      background: "#121212",
-                      color: "#fff",
-                      width: "100%",
-                      transition:
-                        "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                        boxShadow: "0px 4px 30px #2794d2",
-                      },
-                    }}
-                  >
-                    <CardContent>
-                      <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        {point.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
-                        {point.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
+          /* Desktop Grid with staggered on-scroll animations */
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <Grid container spacing={4} justifyContent="center">
+              {visionPoints.map((point, index) => (
+                <Grid item xs={12} sm={6} key={point.id}>
+                  <motion.div variants={cardVariants}>
+                    <Card
+                      sx={{
+                        textAlign: "center",
+                        py: 4,
+                        px: 2,
+                        borderRadius: 3,
+                        minHeight: "220px",
+                        background: "#121212",
+                        color: "#fff",
+                        width: "100%",
+                        transition:
+                          "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          boxShadow: "0px 4px 30px #2794d2",
+                        },
+                      }}
+                    >
+                      <CardContent>
+                        <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
+                        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                          {point.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
+                          {point.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </motion.div>
         )}
       </Container>
     </Box>

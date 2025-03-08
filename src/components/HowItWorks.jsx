@@ -23,7 +23,6 @@ import LayersIcon from "@mui/icons-material/Layers";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CloseIcon from "@mui/icons-material/Close";
 
-
 const serviceSteps = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting",
@@ -57,13 +56,13 @@ const serviceSteps = {
           "Once the curing process is complete, enjoy enhanced comfort, privacy, and protection with your newly tinted windows. With long-lasting results, your vehicle will remain cooler, more comfortable, and better protected from harmful UV rays and heat.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
-      {
-        title: "Liftime Warranty & Nationwide Coverage",
-        description: "The tint is allowed to dry for long-lasting adhesion.",
-        detailedDescription:
-          "We stand behind the quality of our work with a lifetime warranty on all our tint installations. Plus, our services come with nationwide coverage, so you can trust that you’re protected wherever you go!",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-      },
+      // {
+      //   title: "Liftime Warranty & Nationwide Coverage",
+      //   description: "The tint is allowed to dry for long-lasting adhesion.",
+      //   detailedDescription:
+      //     "We stand behind the quality of our work with a lifetime warranty on all our tint installations. Plus, our services come with nationwide coverage, so you can trust that you’re protected wherever you go!",
+      //   icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      // },
     ],
     finalDescription:
       "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
@@ -111,11 +110,11 @@ const serviceSteps = {
     ],
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
-      images: [
-        "/TintTek-Website/Tint Tek-6.jpeg",
-        "/TintTek-Website/Tint Tek-46.jpeg",
-        "/TintTek-Website/Tint Tek-102.jpeg",
-      ],
+    images: [
+      "/TintTek-Website/Tint Tek-6.jpeg",
+      "/TintTek-Website/Tint Tek-46.jpeg",
+      "/TintTek-Website/Tint Tek-102.jpeg",
+    ],
   },
   "commercial-window-tinting": {
     title: "Commercial Window Tinting",
@@ -310,16 +309,35 @@ const HowItWorks = ({ serviceId }) => {
     );
   }
 
-  // Slick carousel settings for mobile (Steps)
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
     arrows: false,
+    appendDots: (dots) => (
+      <div
+        style={{
+          marginTop: "20px",
+          textAlign: "center",
+        }}
+      >
+        <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          backgroundColor: "#888",
+          borderRadius: "50%",
+          display: "inline-block",
+          margin: "0 5px",
+        }}
+      />
+    ),
   };
 
   // Slick carousel settings for images (Mobile)
@@ -388,17 +406,11 @@ const HowItWorks = ({ serviceId }) => {
                   p: 3,
                   marginTop: "20px",
                   borderRadius: 2,
-                  height: "100%",
-                  maxWidth: "400px",
+                  height: "250px", // Fixed height for uniformity
                   backgroundColor: "#292929",
                   color: "#fff",
                   mx: "auto",
                   transition: "all 0.3s ease-in-out",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 0px 15px #2794d2",
-                    backgroundColor: "#333",
-                  },
                 }}
               >
                 {step.icon}
@@ -501,45 +513,50 @@ const HowItWorks = ({ serviceId }) => {
 
       {/* Images Section */}
       <Box
-  sx={{
-    mt: isMobile ? 8 : 12, // Increased spacing to separate from steps
-    maxWidth: "1200px", // Limit width
-    width: "100%", // Ensure responsiveness
-    margin: "0 auto", // Center the container
-    paddingTop: 8,
-  }}
->
-  {isMobile ? (
-    <Slider {...imageSliderSettings}>
-      {service.images.map((image, index) => (
-        <Box key={index} sx={{ px: 2 }}>
-          <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
-            <img
-              src={image}
-              alt="Tinting Process"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
-          </Paper>
-        </Box>
-      ))}
-    </Slider>
-  ) : (
-    <Grid container spacing={3} justifyContent="center">
-      {service.images.map((image, index) => (
-        <Grid item xs={12} sm={4} key={index}>
-          <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
-            <img
-              src={image}
-              alt="Tinting Process"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
-          </Paper>
-        </Grid>
-      ))}
-    </Grid>
-  )}
-</Box>
-
+        sx={{
+          mt: isMobile ? 8 : 12, // Increased spacing to separate from steps
+          maxWidth: "1200px", // Limit width
+          width: "100%", // Ensure responsiveness
+          margin: "0 auto", // Center the container
+          paddingTop: 8,
+        }}
+      >
+        {isMobile ? (
+          <Slider {...imageSliderSettings}>
+            {service.images.map((image, index) => (
+              <Box key={index} sx={{ px: 2 }}>
+                <Paper
+                  elevation={3}
+                  sx={{ borderRadius: 2, overflow: "hidden" }}
+                >
+                  <img
+                    src={image}
+                    alt="Tinting Process"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </Paper>
+              </Box>
+            ))}
+          </Slider>
+        ) : (
+          <Grid container spacing={3} justifyContent="center">
+            {service.images.map((image, index) => (
+              <Grid item xs={12} sm={4} key={index}>
+                <Paper
+                  elevation={3}
+                  sx={{ borderRadius: 2, overflow: "hidden" }}
+                >
+                  <img
+                    src={image}
+                    alt="Tinting Process"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
     </Box>
   );
 };

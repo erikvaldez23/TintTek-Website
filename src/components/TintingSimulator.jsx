@@ -14,27 +14,27 @@ import {
 const tintOptions = {
   "5%": {
     name: "5% Tint",
-    image: "/TintTek-Website/front-ppf1.png",
+    image: "/TintTek-Website/5-tint.png",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
   "20%": {
     name: "20% Tint",
-    image: "/tint-images/20-percent.png",
+    image: "/TintTek-Website/20-tint.png",
     description: "Provides a balance of privacy and visibility.",
   },
   "35%": {
     name: "35% Tint",
-    image: "/tint-images/35-percent.png",
+    image: "/TintTek-Website/35-tint.png",
     description: "A medium tint that maintains a sleek, stylish look.",
   },
   "50%": {
     name: "50% Tint",
-    image: "/tint-images/50-percent.png",
+    image: "/TintTek-Website/50-tint.png",
     description: "Allows more visibility while still reducing glare and heat.",
   },
   "70%": {
     name: "70% Tint",
-    image: "/tint-images/70-percent.png",
+    image: "/TintTek-Website/70-tint.png",
     description: "A light tint for UV protection with high visibility.",
   },
 };
@@ -65,7 +65,7 @@ const TintingSimulator = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            background: "#999",
+            background: "#2e2e2e",
           }}
         >
           {Object.entries(tintOptions).map(([key, option]) => (
@@ -96,7 +96,7 @@ const TintingSimulator = () => {
         // Dropdown for Mobile Screens
         <Box
           sx={{
-            backgroundColor: "#000", // Force black background
+            backgroundColor: "#2E2E2E", // Force black background
             display: "flex",
             alignItems: "center",
             justifyContent: "center", // Center content
@@ -174,8 +174,8 @@ const TintingSimulator = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "60vh" : "50vh", // Increased height for proper spacing
-          background: "#999",
+          height: isMobile ? "50vh" : "50vh", // Increased height for proper spacing
+          background: "#2e2e2e",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -219,7 +219,7 @@ const TintingSimulator = () => {
             src={tintOptions[selectedTint].image}
             alt={tintOptions[selectedTint].name}
             sx={{
-              width: isMobile ? "90%" : "80%",
+              width: isMobile ? "100%" : "80%",
               height: isMobile ? "45vh" : "35vh",
               objectFit: "contain",
               zIndex: 2,

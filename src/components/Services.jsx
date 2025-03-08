@@ -1,6 +1,9 @@
+
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
 import {
   Box,
   Card,
@@ -10,11 +13,11 @@ import {
   Grid,
   Typography,
   Button,
-  IconButton,
   useMediaQuery,
 } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 const servicesData = [
   {
@@ -58,21 +61,39 @@ const servicesData = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3, // Delay between each card animation
+    },
+  },
+};
+
 const Services = () => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleServiceClick = (serviceId) => {
     navigate(`/services/${serviceId}`);
   };
 
   const sliderSettings = {
-    dots: false, // Remove bottom dots if needed
+    dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 1.2, // Slight overlap effect
+    slidesToShow: 1.2,
     slidesToScroll: 1,
-    arrows: false, // 🚨 This removes the right arrow!
+    arrows: false,
     centerMode: true,
     responsive: [
       {
@@ -83,133 +104,24 @@ const Services = () => {
       },
     ],
   };
-  
 
-  return (
-    <Box
-      id="services"
-      sx={{
-        py: 4,
-        textAlign: "center",
-        backgroundColor: "#000",
-        color: "#EEEEFF",
-        paddingBottom: "80px",
-      }}
-    >
-  <Typography
-  variant={isMobile ? "h4" : "h2"}
-  sx={{
-    mb: 2,
-    fontWeight: "bold",
-    color: "#fff",
-    fontFamily: "'NoizeSport', sans-serif", // ✅ Apply Custom Font
-  }}
->
-  SERVICES
-</Typography>
-
-
-      {/* <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
-        Premium automotive care to enhance, protect, and maintain your vehicle.
-      </Typography> */}
-
-      {isMobile ? (
-        /** 🎠 Mobile Carousel */
-        <Box sx={{ position: "relative", px: 2 }}>
-          <Slider {...sliderSettings}>
-            {servicesData.map((service) => (
-              <Box key={service.id} sx={{ px: 2 }}>
-                <Card
-                  sx={{
-                    width: "100%", // Full width inside the slider
-                    height: 450, // Fixed height for uniformity
-                    maxWidth: 380,
-                    margin: "0 auto",
-                    borderRadius: 4,
-                    overflow: "hidden",
-                    position: "relative",
-                    cursor: "pointer",
-                    backgroundColor: "#1C1C1E",
-                  }}
-                  onClick={() => handleServiceClick(service.id)}
-                >
-                  {/* Image Fully Covering the Card */}
-                  <CardMedia
-                    component="img"
-                    image={service.image}
-                    alt={service.title}
-                    sx={{
-                      width: "100%",
-                      height: "100%", // Ensure full height of card
-                      objectFit: "cover", // Crop image to fit properly
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                    }}
-                  />
-
-                  {/* Dark Overlay for Readability */}
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: "rgba(0, 0, 0, 0.2)", // Dark overlay (adjust opacity if needed)
-                    }}
-                  />
-
-                  {/* Text and Button Positioned Above Overlay */}
-                  <CardContent
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      textAlign: "center",
-                      padding: "20px",
-                      color: "#EEEEFF", // Ensure text is readable
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                      {service.title}
-                    </Typography>
-
-                    {/* Transparent See Details Button */}
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "rgba(255,255,255,0.2)", // Light transparency
-                        color: "#EEEEFF",
-                        width: "90%",
-                        borderRadius: 50,
-                        "&:hover": { backgroundColor: "rgba(255,255,255,0.3)" },
-                      }}
-                    >
-                      See Details
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Slider>
-        </Box>
-      ) : (
-        /** 🖥️ MUI Grid Layout for Desktop */
-        <Container maxWidth="lg">
-          <Grid
-            container
-            spacing={2} // Controls the gap between cards
-            justifyContent="center" // Centers the grid on the page
-            alignItems="stretch" // Ensures equal card heights
-          >
-            {servicesData.map((service) => (
-              <Grid item key={service.id} xs={12} sm={6} md={4}>
+  // Desktop layout with staggered animations for each card
+  const desktopContent = (
+    <Container maxWidth="lg">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          alignItems="stretch"
+        >
+          {servicesData.map((service) => (
+            <Grid item key={service.id} xs={12} sm={6} md={4}>
+              <motion.div variants={cardVariants}>
                 <Card
                   sx={{
                     maxWidth: 350,
@@ -217,11 +129,11 @@ const Services = () => {
                     overflow: "hidden",
                     position: "relative",
                     cursor: "pointer",
-                    backgroundColor: "black", // Ensures no background gaps
+                    backgroundColor: "black",
                     "&:hover": {
                       transform: "scale(1.05)",
-                      outline: "5px solid #2794d2", // Change from border to outline
-                      backgroundColor: "black", // Prevents visual gaps
+                      outline: "5px solid #2794d2",
+                      backgroundColor: "black",
                     },
                   }}
                   onClick={() => handleServiceClick(service.id)}
@@ -239,7 +151,7 @@ const Services = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "rgba(0, 0, 0, 0.3)", // Dark overlay (Always Visible)
+                      background: "rgba(0, 0, 0, 0.3)",
                       color: "white",
                       display: "flex",
                       flexDirection: "column",
@@ -256,12 +168,124 @@ const Services = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      )}
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </motion.div>
+    </Container>
+  );
+
+  // Mobile layout: apply the same animation to each slide if desired
+  const mobileContent = (
+    <Box sx={{ position: "relative", px: 2 }}>
+      <Slider {...sliderSettings}>
+        {servicesData.map((service) => (
+          <Box key={service.id} sx={{ px: 2 }}>
+            <motion.div variants={cardVariants} initial="hidden" animate="visible">
+              <Card
+                sx={{
+                  width: "100%",
+                  height: 450,
+                  maxWidth: 380,
+                  margin: "0 auto",
+                  borderRadius: 4,
+                  overflow: "hidden",
+                  position: "relative",
+                  cursor: "pointer",
+                  backgroundColor: "#1C1C1E",
+                }}
+                onClick={() => handleServiceClick(service.id)}
+              >
+                <CardMedia
+                  component="img"
+                  image={service.image}
+                  alt={service.title}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: "rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+                <CardContent
+                  sx={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    textAlign: "center",
+                    padding: "20px",
+                    color: "#EEEEFF",
+                  }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    {service.title}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "rgba(255,255,255,0.2)",
+                      color: "#EEEEFF",
+                      width: "90%",
+                      borderRadius: 50,
+                      "&:hover": {
+                        backgroundColor: "rgba(255,255,255,0.3)",
+                      },
+                    }}
+                  >
+                    See Details
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </Box>
+        ))}
+      </Slider>
+    </Box>
+  );
+
+  return (
+    <Box
+      id="services"
+      sx={{
+        py: 4,
+        textAlign: "center",
+        backgroundColor: "#000",
+        color: "#EEEEFF",
+        paddingBottom: "80px",
+      }}
+    >
+      <Typography
+        variant={isMobile ? "h4" : "h2"}
+        sx={{
+          mb: 2,
+          fontWeight: "bold",
+          color: "#fff",
+          fontFamily: "'NoizeSport', sans-serif",
+        }}
+      >
+        SERVICES
+      </Typography>
+      {isMobile ? mobileContent : desktopContent}
     </Box>
   );
 };
+
 export default Services;

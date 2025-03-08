@@ -54,167 +54,86 @@ const Testimonials = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const sliderSettings = {
-    dots: true, // ✅ Enables dot navigation
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     centerMode: true, 
+    centerPadding: "8%",
     adaptiveHeight: true,
-    appendDots: dots => (
+    appendDots: (dots) => (
       <Box sx={{ textAlign: "center", mt: 2 }}>
         <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
       </Box>
     ),
-    customPaging: i => (
+    customPaging: (i) => (
       <Box
+        component="div"
         sx={{
           width: "10px",
           height: "10px",
-          backgroundColor: "#aaa",
+          backgroundColor: "#888",
           borderRadius: "50%",
           display: "inline-block",
           margin: "0 5px",
           transition: "background-color 0.3s ease",
-          "&.slick-active": { backgroundColor: "#000" }, // Active dot color
+          py: "5",
         }}
+        className={`custom-dot-${i}`}
       />
-    ),
+    ),    
   };
-  
+
+  // Parent container variant to stagger children animations
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3, // Adjust delay between each card's animation
+      },
+    },
+  };
+
+  // Individual card animation variant
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
+  };
 
   return (
-    <Box
-      id="reviews"
-      sx={{ py: 8, textAlign: "center", backgroundColor: "#000", paddingY: "80px" }}
-    >
+    <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#000" }}>
       <Container maxWidth="xl">
-      <Typography
+        <Typography
           variant={isMobile ? "h4" : "h2"}
           sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
         >
           What Our Customers Say?
         </Typography>
 
-
-        {/* Mobile View - Carousel */}
         {isMobile ? (
+          // Mobile View - Carousel remains the same
           <Slider {...sliderSettings}>
-          {reviews.map((review, index) => (
-            <Box key={index} sx={{ px: 2 }}>
-              <Card
-                sx={{
-                  width: "100%",
-                  maxWidth: 400,
-                  height: 350,
-                  margin: "0 auto",
-                  p: 3,
-                  borderRadius: 3,
-                  boxShadow: 3,
-                  textAlign: "left",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                }}
-              >
-                <CardContent
-                  sx={{
-                    flex: "1 1 auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    overflow: "scroll",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 10,
-                      right: 10,
-                      width: 25,
-                      height: 25,
-                    }}
-                  >
-                    <img src={GOOGLE_LOGO} alt="Google" width="100%" />
-                  </Box>
-        
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <Avatar
-                      sx={{ width: 40, height: 40, mr: 2 }}
-                      src={review.profile_photo_url}
-                      alt={review.author_name}
-                    />
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
-                      >
-                        {review.author_name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {new Date(review.time * 1000).toLocaleDateString()}
-                      </Typography>
-                    </Box>
-                  </Box>
-        
-                  <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
-        
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      display: "-webkit-box",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      overflowY: "auto",
-                      fontStyle: "italic",
-                      fontSize: "0.9rem",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    "{review.text}"
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          ))}
-        </Slider>
-        
-        ) : (
-          // Desktop View - Grid Layout
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 2,
-              justifyContent: "center",
-              alignItems: "stretch",
-            }}
-          >
             {reviews.map((review, index) => (
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: true }} // Animation only happens once per scroll
-              >
+              <Box key={index} sx={{ px: 2 }}>
                 <Card
-                  key={index}
                   sx={{
-                    p: 3,
-                    borderRadius: 6,
-                    boxShadow: 3,
+                    width: "100%",
+                    maxWidth: 400,
+                    height: 350,
+                    margin: "0 auto",
+                    p: 2,
+                    borderRadius: 3,
                     textAlign: "left",
-                    minHeight: 350,
                     display: "flex",
                     flexDirection: "column",
                     position: "relative",
-                    backgroundColor: "#EEEEFF",
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    "&:hover": {
-                      transform: "translateY(-10px) scale(1.03)",
-                      boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                    },
+                    mb: 2,
                   }}
                 >
                   <CardContent
@@ -222,6 +141,8 @@ const Testimonials = () => {
                       flex: "1 1 auto",
                       display: "flex",
                       flexDirection: "column",
+                      justifyContent: "space-between",
+                      overflow: "scroll",
                     }}
                   >
                     <Box
@@ -243,10 +164,7 @@ const Testimonials = () => {
                         alt={review.author_name}
                       />
                       <Box>
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
-                        >
+                        <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "0.9rem" }}>
                           {review.author_name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -255,37 +173,125 @@ const Testimonials = () => {
                       </Box>
                     </Box>
 
-                    <Rating
-                      value={review.rating}
-                      precision={0.5}
-                      readOnly
-                      sx={{ mb: 1 }}
-                    />
+                    <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
 
                     <Typography
                       variant="body2"
                       sx={{
+                        display: "-webkit-box",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        overflowY: "auto",
                         fontStyle: "italic",
                         fontSize: "0.9rem",
                         lineHeight: 1.5,
-                        flexGrow: 1, // Pushes content to the bottom
                       }}
                     >
                       "{review.text}"
                     </Typography>
                   </CardContent>
-                  {/* Card Content */}
                 </Card>
-              </motion.div>
+              </Box>
             ))}
-          </Box>
+          </Slider>
+        ) : (
+          // Desktop View - Grid Layout with staggered animations
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: 2,
+                justifyContent: "center",
+                alignItems: "stretch",
+              }}
+            >
+              {reviews.map((review, index) => (
+                <motion.div key={index} variants={cardVariants}>
+                  <Card
+                    sx={{
+                      p: 3,
+                      borderRadius: 6,
+                      boxShadow: 3,
+                      textAlign: "left",
+                      minHeight: 350,
+                      display: "flex",
+                      flexDirection: "column",
+                      position: "relative",
+                      backgroundColor: "#EEEEFF",
+                      transition: "transform 0.3s, box-shadow 0.3s",
+                      "&:hover": {
+                        transform: "translateY(-10px) scale(1.03)",
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                      },
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        flex: "1 1 auto",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: 10,
+                          right: 10,
+                          width: 25,
+                          height: 25,
+                        }}
+                      >
+                        <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                      </Box>
+
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                        <Avatar
+                          sx={{ width: 40, height: 40, mr: 2 }}
+                          src={review.profile_photo_url}
+                          alt={review.author_name}
+                        />
+                        <Box>
+                          <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "0.9rem" }}>
+                            {review.author_name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {new Date(review.time * 1000).toLocaleDateString()}
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
+
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontStyle: "italic",
+                          fontSize: "0.9rem",
+                          lineHeight: 1.5,
+                          flexGrow: 1,
+                        }}
+                      >
+                        "{review.text}"
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </Box>
+          </motion.div>
         )}
 
         {/* View More Button */}
         <Button
           variant="contained"
           sx={{
-            mt: 4,
+            mt: 5,
             backgroundColor: "#000",
             color: "#EEEEFF",
             fontWeight: "bold",
@@ -293,7 +299,7 @@ const Testimonials = () => {
             borderRadius: "20px",
             textTransform: "none",
             fontSize: "0.9rem",
-            border: "5px solid #EEEEFF", // Add transparent border
+            border: "5px solid #EEEEFF",
             transition: "0.3s",
             "&:hover": {
               backgroundColor: "#EEEEFF",

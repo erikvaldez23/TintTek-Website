@@ -17,7 +17,6 @@ import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
 import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
-import TintSelector from "./TintSelector"
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector"
 

@@ -11,7 +11,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useSwipeable } from "react-swipeable"; // ✅ Import react-swipeable for mobile gestures
+import { useSwipeable } from "react-swipeable"; // For mobile gestures
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
@@ -44,9 +44,37 @@ const images = [
   "/TintTek-Website/Tint Tek-104.jpeg",
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2, // Stagger each card's animation
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5 } 
+  },
+};
+
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    transition: { duration: 0.3 } 
+  },
+};
+
 const Gallery = () => {
   const [open, setOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const handleImageClick = (index) => {
     setCurrentImageIndex(index);
@@ -95,15 +123,14 @@ const Gallery = () => {
             width: "100%",
             height: "100%",
             display: "flex",
-            flexDirection: "column", // Stack text vertically
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
             color: "white",
-            px: 2, // Padding for smaller screens
+            px: 2,
           }}
         >
-          {/* Main Title */}
           <Typography
             variant="h2"
             sx={{
@@ -120,8 +147,6 @@ const Gallery = () => {
           >
             OUR GALLERY
           </Typography>
-
-          {/* 🔹 Subheader Text */}
           <Typography
             variant="h6"
             sx={{
@@ -148,38 +173,48 @@ const Gallery = () => {
           paddingBottom: 10,
         }}
       >
-        <Grid container spacing={2}>
-          {images.map((image, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                sx={{
-                  boxShadow: 3,
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={image}
-                  alt={`Gallery image ${index + 1}`}
-                  sx={{
-                    width: "100%",
-                    height: 250,
-                    objectFit: "cover",
-                    borderRadius: "5px",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      cursor: "pointer",
-                      opacity: 0.8,
-                    },
-                  }}
-                  onClick={() => handleImageClick(index)} // On click, enlarge image
-                />
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        {/* Wrap grid container with motion.div to stagger animations */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+        >
+          <Grid container spacing={2}>
+            {images.map((image, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div variants={cardVariants}>
+                  <Card
+                    sx={{
+                      boxShadow: 3,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      image={image}
+                      alt={`Gallery image ${index + 1}`}
+                      sx={{
+                        width: "100%",
+                        height: 250,
+                        objectFit: "cover",
+                        borderRadius: "5px",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          cursor: "pointer",
+                          opacity: 0.8,
+                        },
+                      }}
+                      onClick={() => handleImageClick(index)}
+                    />
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </motion.div>
 
         {/* See More Button */}
         <Box
@@ -196,12 +231,12 @@ const Gallery = () => {
               backgroundColor: "#2794d2",
               color: "#fff",
               fontWeight: "bold",
-              borderRadius: "40px", // Increased for a softer button look
+              borderRadius: "40px",
               textTransform: "uppercase",
-              fontSize: "1.2rem", // Increased font size
-              padding: "10px", // Increased padding
-              width: "100%", // Makes it responsive
-              maxWidth: "400px", // Prevents it from being too large on big screens
+              fontSize: "1.2rem",
+              padding: "10px",
+              width: "100%",
+              maxWidth: "400px",
             }}
           >
             SEE MORE ON INSTAGRAM
@@ -209,13 +244,8 @@ const Gallery = () => {
         </Box>
       </Box>
 
-      <Box
-        sx={{
-          backgroundColor: "#ccc",
-          width: "100%",
-          margin: "0 auto",
-        }}
-      >
+      {/* Call To Action Section */}
+      <Box sx={{ backgroundColor: "#ccc", width: "100%", margin: "0 auto" }}>
         <CallToAction />
       </Box>
 
@@ -229,45 +259,53 @@ const Gallery = () => {
 
       {/* Image Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
-        <Box sx={{ position: "relative", padding: 0 }}>
-          <img
-            src={images[currentImageIndex]}
-            alt={`Enlarged gallery image`}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover", // Ensures the image fills the container and maintains its aspect ratio
-              display: "block", // Prevents any extra spacing below the image (common with inline-block elements)
-              margin: 0, // Removes any margin that might be causing extra space
-            }}
-          />
-          {/* Left Arrow */}
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "10px",
-              transform: "translateY(-50%)",
-              zIndex: 1,
-            }}
-          >
-            <ChevronLeft sx={{ color: "white", fontSize: 50 }} />
-          </IconButton>
-          {/* Right Arrow */}
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              position: "absolute",
-              top: "50%",
-              right: "10px",
-              transform: "translateY(-50%)",
-              zIndex: 1,
-            }}
-          >
-            <ChevronRight sx={{ color: "white", fontSize: 50 }} />
-          </IconButton>
-        </Box>
+        {/* Animate modal content */}
+        <motion.div
+          variants={modalVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          <Box sx={{ position: "relative", padding: 0 }}>
+            <img
+              src={images[currentImageIndex]}
+              alt={`Enlarged gallery image`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                margin: 0,
+              }}
+            />
+            {/* Left Arrow */}
+            <IconButton
+              onClick={handlePrev}
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "10px",
+                transform: "translateY(-50%)",
+                zIndex: 1,
+              }}
+            >
+              <ChevronLeft sx={{ color: "white", fontSize: 50 }} />
+            </IconButton>
+            {/* Right Arrow */}
+            <IconButton
+              onClick={handleNext}
+              sx={{
+                position: "absolute",
+                top: "50%",
+                right: "10px",
+                transform: "translateY(-50%)",
+                zIndex: 1,
+              }}
+            >
+              <ChevronRight sx={{ color: "white", fontSize: 50 }} />
+            </IconButton>
+          </Box>
+        </motion.div>
       </Dialog>
     </Box>
   );

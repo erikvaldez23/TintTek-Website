@@ -12,7 +12,6 @@ import {
 import Topbar from "./Topbar";
 import CallToAction from "./CallToAction";
 import Footer from "./Footer";
-import Video from "../../public/car.mp4"; // Import the video file
 import Contact from "./Contact";
 
 const blogPosts = [
@@ -218,7 +217,7 @@ const BlogDetail = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: "25vh", // Adjust height as needed
+          height: "20vh", // Adjust height as needed
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
