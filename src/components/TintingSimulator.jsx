@@ -14,7 +14,7 @@ import {
 const tintOptions = {
   "5%": {
     name: "5% Tint",
-    image: "/tint-images/5-percent.png",
+    image: "/TintTek-Website/front-ppf1.png",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
   "20%": {
@@ -40,7 +40,7 @@ const tintOptions = {
 };
 
 const TintingSimulator = () => {
-  const [selectedTint, setSelectedTint] = useState("35%"); // Default tint selection
+  const [selectedTint, setSelectedTint] = useState("5%"); // Default tint selection
   const [fade, setFade] = useState(true); // State for fade effect
 
   const theme = useTheme();

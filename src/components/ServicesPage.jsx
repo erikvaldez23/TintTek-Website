@@ -283,7 +283,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           height: { xs: "30vh", md: "20vh" }, 
-          backgroundColor: "#2794d2",
+          backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -322,6 +322,9 @@ const ServicePage = () => {
         </Typography>
       </Box>
 
+      {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
+      {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+
       {/* ✅ Pricing Section (Only for Non-Paint Services) */}
       {serviceId !== "vehicle-paint-correction" &&
         serviceId !== "vehicle-paint-protection" && (
@@ -345,12 +348,6 @@ const ServicePage = () => {
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
       
-      {serviceId === "vehicle-paint-protection" && <PPFSelector />}
-
-      {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
-
-        {/* ✅ How It Works Section (Only for Non-Commercial/Residential Services) */}
-     
 
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box
