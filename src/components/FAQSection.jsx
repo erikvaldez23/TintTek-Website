@@ -129,7 +129,7 @@ const FAQSection = () => {
   const faqs = faqConfig[path] || [];
 
   return (
-    <Box sx={{ py: 5, backgroundColor: "#1f1f1f" }}>
+    <Box sx={{ py: 5, backgroundColor: "#1f1f1f"}}>
       <Container maxWidth="lg">
       <Typography
             variant={isMobile ? "h4" : "h2"}

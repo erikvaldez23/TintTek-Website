@@ -47,9 +47,9 @@ const QuickLinks = () => {
       sx={{
         width: '100vw',
         textAlign: 'center',
-        background: "#1F1F1F",
+        background: "#3F3F3F",
         color: '#fff',
-        py: 8,
+        py: 5,
         px: { xs: 2, md: 6 },
       }}
     >
