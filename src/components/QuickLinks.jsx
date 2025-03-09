@@ -14,7 +14,7 @@ import { Link as RouterLink } from 'react-router-dom'; // Import react-router-do
 
 const quickLinksData = [
   {
-    title: 'SERVICES',
+    title: 'Services',
     links: [
       { text: 'Vehicle Window Tinting', to: '/services/vehicle-window-tinting' },
       { text: 'Tesla Window Tinting', to: '/services/tesla-window-tinting' },
@@ -54,7 +54,7 @@ const QuickLinks = () => {
       }}
     >
       <Typography variant={isMobile ? 'h4' : 'h2'} fontWeight="bold" sx={{ mb: 2 }}>
-        Explore Our Services
+        Explore
       </Typography>
       <Typography variant="subtitle1" sx={{ mb: 6, color: 'rgba(255,255,255,0.7)' }}>
         Discover our top offerings and resources tailored for your automotive needs.

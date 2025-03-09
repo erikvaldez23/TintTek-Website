@@ -80,14 +80,13 @@ const CallToAction = () => {
           }}
         >
           <Typography
-            variant={isMobile ? "h4" : "h3"}
+            variant={isMobile ? "h4" : "h2"}
             component={motion.h3}
             variants={fadeSlideVariant}
             sx={{
               fontWeight: "bold",
               letterSpacing: "1px",
               textTransform: "uppercase",
-              fontSize: isMobile ? "2rem" : "2.5rem",
             }}
           >
             DO YOU NEED WINDOW TINT?

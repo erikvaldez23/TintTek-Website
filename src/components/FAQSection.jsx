@@ -6,6 +6,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useLocation } from "react-router-dom";
@@ -90,6 +92,8 @@ const FAQSection = () => {
   // Get the current page slug from the URL
   const location = useLocation();
   const path = location.pathname.split("/").pop();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
   // Select FAQs based on the current service; if not found, show an empty array or default FAQs.
   const faqs = faqConfig[path] || [];
@@ -98,15 +102,13 @@ const FAQSection = () => {
     <Box sx={{ py: 5, backgroundColor: "#1f1f1f" }}>
       <Container maxWidth="lg">
       <Typography
-            variant="h3"
-            sx={{
-              mb: 2,
-              fontWeight: "bold",
-              color: "#fff",
-              textAlign: "center",
-            }}
+            variant={isMobile ? "h4" : "h2"}
+            fontWeight="bold"
+            textAlign="center"
+            gutterBottom
+            sx={{ color: "#fff" }}
           >
-            FREQUENTLY ASKED QUESTIONS
+            Frequently Asked Questions
           </Typography>
         {faqs.length > 0 ? (
           faqs.map((faq, index) => (

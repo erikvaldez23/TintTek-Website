@@ -354,15 +354,14 @@ const ServicePage = () => {
 
       <FAQSection />
 
-      {/* ✅ Do You Need Tint? Call to Action Section */}
-      <Box
+      {/* <Box
         sx={{
           width: "100vw",
           backgroundColor: "#2794d2",
           textAlign: "center",
           color: "white",
         }}
-      >
+      > */}
         {/* <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
           <Typography
             variant={isMobile ? "h4" : "h2"}
@@ -406,7 +405,7 @@ const ServicePage = () => {
             Get a Free Quote
           </Button>
         </Box> */}
-      </Box>
+      {/* </Box> */}
 
       <CallToAction />
 
