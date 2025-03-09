@@ -102,7 +102,7 @@ const CallToAction = () => {
               fontSize: isMobile ? "1rem" : "1.2rem",
               lineHeight: "1.6",
               opacity: 0.9,
-              px: isMobile ? 2 : 0,
+              px: isMobile ? 0 : 0,
             }}
           >
             Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? 
@@ -121,7 +121,7 @@ const CallToAction = () => {
               fontSize: isMobile ? "1rem" : "1.1rem",
               fontStyle: "italic",
               opacity: 0.9,
-              px: isMobile ? 2 : 0,
+              px: isMobile ? 0 : 0,
             }}
           >
             Join thousands of satisfied customers who trust our expert technicians for flawless and long-lasting window tinting.

@@ -14,6 +14,7 @@ import {
   IconButton,
 } from "@mui/material";
 import Slider from "react-slick"; // Import Slider
+import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -377,12 +378,12 @@ const HowItWorks = ({ serviceId }) => {
           variant={isMobile ? "body2" : "body1"}
           textAlign="center"
           sx={{
-            mt: isMobile ? 2 : 4,
+            mt: isMobile ? 2 : 0,
             color: "#fff",
             fontSize: isMobile ? "1.1rem" : "1.5rem",
             maxWidth: "1200px",
             mx: "auto",
-            pt: isMobile ? 1 : 2,
+            pt: isMobile ? 1 : 0,
           }}
         >
           {service.finalDescription}
@@ -421,7 +422,7 @@ const HowItWorks = ({ serviceId }) => {
 
                 <Box sx={{ flexGrow: 1 }} />
 
-                <Button
+                {/* <Button
                   sx={{
                     mt: "auto",
                     borderRadius: "10px",
@@ -435,7 +436,30 @@ const HowItWorks = ({ serviceId }) => {
                   onClick={() => handleLearnMoreClick(step)}
                 >
                   Learn More
-                </Button>
+                </Button> */}
+                        <Button
+                          component={motion.a}
+                          initial={{ scale: 0.9 }}
+                          animate={{ scale: 1 }}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                          sx={{
+                            mt: 3,
+                            backgroundColor: "#2794d2",
+                            color: "#000",
+                            fontWeight: "bold",
+                            px: isMobile ? 3 : 4,
+                            py: isMobile ? 1.2 : 1.5,
+                            borderRadius: "30px",
+                            textTransform: "uppercase",
+                            fontSize: isMobile ? "1rem" : "1.1rem",
+                            width: isMobile ? "100%" : "auto",
+                          }}
+                          onClick={() => handleLearnMoreClick(step)}
+                        >
+                          VIEW MORE REVIEWS
+                        </Button>
               </Paper>
             </Box>
           ))}
@@ -479,16 +503,16 @@ const HowItWorks = ({ serviceId }) => {
                 }}
               >
                 {step.icon}
-                <Typography variant="h6" fontWeight="bold" sx={{ mt: 1.5 }}>
+                <Typography variant="h5" fontWeight="bold" sx={{ mt: 1.5 }}>
                   {step.title}
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
+                <Typography variant="body1" sx={{ mt: 1 }}>
                   {step.description}
                 </Typography>
 
                 <Box sx={{ flexGrow: 1 }} />
 
-                <Button
+                {/* <Button
                   sx={{
                     mt: "auto",
                     borderRadius: "10px",
@@ -502,7 +526,30 @@ const HowItWorks = ({ serviceId }) => {
                   onClick={() => handleLearnMoreClick(step)}
                 >
                   Learn More
-                </Button>
+                </Button> */}
+                <Button
+                          component={motion.a}
+                          initial={{ scale: 0.9 }}
+                          animate={{ scale: 1 }}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                          sx={{
+                            mt: 3,
+                            backgroundColor: "#2794d2",
+                            color: "#000",
+                            fontWeight: "bold",
+                            px: isMobile ? 3 : 4,
+                            py: isMobile ? 1.2 : 1,
+                            borderRadius: "30px",
+                            textTransform: "uppercase",
+                            fontSize: isMobile ? "1rem" : "1.2rem",
+                            width: isMobile ? "100%" : "auto",
+                          }}
+                          onClick={() => handleLearnMoreClick(step)}
+                        >
+                          Learn More
+                        </Button>
               </Paper>
             </Grid>
           ))}

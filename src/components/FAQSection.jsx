@@ -25,6 +25,11 @@ const faqConfig = {
       answer:
         "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
     },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
+    },
   ],
   "tesla-window-tinting": [
     {
@@ -36,6 +41,11 @@ const faqConfig = {
       question: "How does Tesla tint differ from standard tint?",
       answer:
         "Tesla tint is specifically designed to meet the unique requirements of Tesla vehicles, including enhanced UV and heat protection.",
+    },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
     },
   ],
   "commercial-window-tinting": [
@@ -49,6 +59,11 @@ const faqConfig = {
       answer:
         "We offer full installation services for commercial projects to ensure optimal performance and durability.",
     },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
+    },
   ],
   "residential-window-tinting": [
     {
@@ -60,6 +75,11 @@ const faqConfig = {
       question: "Does tinting help in reducing your energy bills?",
       answer:
         "It can. By reducing heat transfer, window tinting can contribute to lower air conditioning costs during hot weather.",
+    },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
     },
   ],
   "vehicle-paint-correction": [
@@ -73,6 +93,11 @@ const faqConfig = {
       answer:
         "The process typically takes a few hours, depending on the condition of the vehicle.",
     },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
+    },
   ],
   "vehicle-paint-protection": [
     {
@@ -84,6 +109,11 @@ const faqConfig = {
       question: "Can I choose protection for only part of my vehicle?",
       answer:
         "Yes, you can opt for either hood protection or full body protection depending on your needs.",
+    },
+    {
+      question: "Is the tint legal in all states?",
+      answer:
+        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
     },
   ],
 };

@@ -21,6 +21,7 @@ import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector"
 import Commercial from "./commercial";
 import FAQSection from "./FAQSection";
+import TintPackages from "./TintPackages";
 
 // Define service details for each page
 const serviceDetails = {
@@ -351,6 +352,8 @@ const ServicePage = () => {
 
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
+
+      <TintPackages />
 
       <FAQSection />
 

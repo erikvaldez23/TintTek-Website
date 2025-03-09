@@ -60,7 +60,7 @@ const Testimonials = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    centerMode: true, 
+    centerMode: true,
     centerPadding: "8%",
     adaptiveHeight: true,
     appendDots: (dots) => (
@@ -83,7 +83,7 @@ const Testimonials = () => {
         }}
         className={`custom-dot-${i}`}
       />
-    ),    
+    ),
   };
 
   // Parent container variant to stagger children animations
@@ -99,15 +99,18 @@ const Testimonials = () => {
   // Individual card animation variant
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
   return (
-    <Box id="reviews" sx={{ py: 8, textAlign: "center", backgroundColor: "#000" }}>
+    <Box
+      id="reviews"
+      sx={{ py: 8, textAlign: "center", backgroundColor: "#000" }}
+    >
       <Container maxWidth="xl">
         <Typography
           variant={isMobile ? "h4" : "h2"}
@@ -164,7 +167,10 @@ const Testimonials = () => {
                         alt={review.author_name}
                       />
                       <Box>
-                        <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "0.9rem" }}>
+                        <Typography
+                          variant="h6"
+                          sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                        >
                           {review.author_name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -173,7 +179,12 @@ const Testimonials = () => {
                       </Box>
                     </Box>
 
-                    <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
+                    <Rating
+                      value={review.rating}
+                      precision={0.5}
+                      readOnly
+                      sx={{ mb: 1 }}
+                    />
 
                     <Typography
                       variant="body2"
@@ -250,14 +261,19 @@ const Testimonials = () => {
                         <img src={GOOGLE_LOGO} alt="Google" width="100%" />
                       </Box>
 
-                      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
                         <Avatar
                           sx={{ width: 40, height: 40, mr: 2 }}
                           src={review.profile_photo_url}
                           alt={review.author_name}
                         />
                         <Box>
-                          <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "0.9rem" }}>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                          >
                             {review.author_name}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
@@ -266,7 +282,12 @@ const Testimonials = () => {
                         </Box>
                       </Box>
 
-                      <Rating value={review.rating} precision={0.5} readOnly sx={{ mb: 1 }} />
+                      <Rating
+                        value={review.rating}
+                        precision={0.5}
+                        readOnly
+                        sx={{ mb: 1 }}
+                      />
 
                       <Typography
                         variant="body2"
@@ -286,32 +307,30 @@ const Testimonials = () => {
             </Box>
           </motion.div>
         )}
-
-        {/* View More Button */}
         <Button
-          variant="contained"
+          component={motion.a}
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}
           sx={{
-            mt: 5,
-            backgroundColor: "#000",
-            color: "#EEEEFF",
+            mt: 3,
+            backgroundColor: "#2794d2",
+            color: "#000",
             fontWeight: "bold",
-            padding: "10px 20px",
-            borderRadius: "20px",
-            textTransform: "none",
-            fontSize: "0.9rem",
-            border: "5px solid #EEEEFF",
-            transition: "0.3s",
-            "&:hover": {
-              backgroundColor: "#EEEEFF",
-              color: "#000",
-              transform: "scale(1.1)",
-            },
+            px: isMobile ? 3 : 4,
+            py: isMobile ? 1.2 : 1.5,
+            borderRadius: "30px",
+            textTransform: "uppercase",
+            fontSize: isMobile ? "1rem" : "1.1rem",
+            width: isMobile ? "100%" : "auto",
           }}
           href={GOOGLE_REVIEWS_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
-          VIEW MORE REVIEWS ON GOOGLE
+          VIEW MORE REVIEWS
         </Button>
       </Container>
     </Box>
