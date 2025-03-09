@@ -21,6 +21,8 @@ import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
 import PricingComponent from "./components/Pricing";
 import FAQ from "./components/FAQ";
+import QuickLinks from "./components/QuickLinks";
+import FAQSection from "./components/FAQSection";
 
 // Theme Configuration
 const theme = createTheme({
@@ -75,6 +77,7 @@ function App() {
                 <Vision />
                 <CallToAction />
                 <Contact />
+                <QuickLinks />
                 <Footer />
               </>
             }
@@ -82,6 +85,7 @@ function App() {
           {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<PricingComponent />} />
+          <Route path="/services/:serviceId" element={<FAQSection />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faq" element={<FAQ />} />

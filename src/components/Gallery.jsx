@@ -147,7 +147,7 @@ const Gallery = () => {
           >
             OUR GALLERY
           </Typography>
-          <Typography
+          {/* <Typography
             variant="h6"
             sx={{
               mb: 2,
@@ -158,7 +158,7 @@ const Gallery = () => {
             }}
           >
             See Our Work in Action
-          </Typography>
+          </Typography> */}
         </Box>
       </Box>
 

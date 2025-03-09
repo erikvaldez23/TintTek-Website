@@ -9,12 +9,12 @@ export default function WhyChooseUs() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const features = [
-    { text: "Professional-Grade Tinting", details: "We use premium films that guarantee superior clarity, durability, and performance. Our expert-grade tint provides a smooth, seamless finish without bubbles or peeling." },
-    { text: "UV Protection", details: "Our top-quality window films block up to 99% of harmful UV rays, safeguarding you and your passengers from skin damage while helping to protect your car's interior from fading and cracking." },
-    { text: "Custom Tint Options", details: "We offer a range of tint shades and finishes to suit your style and preferences. Whether you want a subtle touch or a bold, dark tint, we tailor the look to fit your needs perfectly." },
-    { text: "Heat & Glare Reduction", details: "Enjoy a more comfortable drive with our heat-rejecting films. They minimize glare from the sun and headlights, boosting visibility and reducing eye strain on the road." },
-    { text: "Certified Technicians", details: "Our skilled technicians bring years of expertise to every tinting job. We adhere to the highest industry standards to ensure each application is perfect and built to last." },
-    { text: "Privacy & Security", details: "Window tinting adds an extra layer of privacy and security by blocking prying eyes and lowering the risk of break-ins. Our films also strengthen your glass, providing additional protection." },
+    { text: "UV Protection", details: "Our top-quality window films block up to 99% of harmful UV rays, providing crucial protection against skin damage and reducing the risk of skin cancer. Not only does this safeguard you and your passengers, but it also helps preserve your car's interior by preventing fading, cracking, and deterioration." },
+    { text: "Heat & Glare Reduction", details: "Enjoy a more comfortable drive with our heat-rejecting films. By significantly reducing solar heat, we help keep your car cooler, even on the hottest Texas days. Our films also reduce glare from the sun and headlights, improving visibility and reducing eye strain, making every drive safer and more enjoyable." },
+    { text: "Certified Technicians", details: "Our team of certified technicians brings years of experience to every job. We adhere to the highest industry standards to ensure each installation is flawless, with a seamless finish that prevents bubbles, peeling, or imperfections. Your satisfaction and the durability of the tint are our top priorities." },
+    { text: "Premium Quality", details: "We offer premium films made in the USA, which are rigorously tested by third-party organizations to guarantee the highest levels of clarity, performance, and durability. Our films deliver the heat rejection and UV protection we promise, ensuring that you get exactly what you expect." },
+    { text: "Custom Tint Options", details: "Choose from a variety of tint shades and finishes to suit your style. Whether you prefer a subtle, sleek look or a bold, dark tint, we provide the flexibility to achieve the perfect aesthetic for your vehicle." },
+    { text: "Privacy & Security", details: "Tinting your windows adds an extra layer of privacy and security, blocking prying eyes and protecting your valuables. Our films also help strengthen your glass, providing additional protection against break-ins and enhancing your overall safety." },
   ];
 
   // const containerVariants = {
@@ -75,17 +75,16 @@ export default function WhyChooseUs() {
           <Typography
             variant={isMobile ? "body1" : "h6"}
             sx={{
-              maxWidth: "1100px",
+              maxWidth: "1200px",
               margin: "auto",
               color: "#000",
               lineHeight: 1.6,
               fontSize: isMobile ? "1rem" : "1.2rem",
             }}
           >
-            At Tint Tek Plus, we specialize in premium window tinting that enhances your car’s style, comfort, 
-            and protection. Our top-of-the-line films block 99% of harmful UV rays, reduce glare, and help keep your car cooler, 
-            even on the hottest days. With certified technicians and a lifetime warranty, we’re committed to delivering unmatched quality and service every time. 
-            Drive with confidence knowing your car is protected.
+          At Tint Tek Plus, we are committed to offering premium window tinting that combines style, comfort, and superior protection. 
+          Our expert-grade films are designed to block 99% of harmful UV rays, reduce glare, and keep your car cooler, ensuring an unmatched driving experience. 
+          With certified technicians and a lifetime warranty, we promise top-tier quality and service every time, giving you peace of mind and confidence on the road.
           </Typography>
         {/* </motion.div> */}
 
@@ -139,6 +138,7 @@ export default function WhyChooseUs() {
                         {feature.details}
                       </Typography>
                     </Collapse>
+                    
                   </Paper>
                 {/* </motion.div> */}
               </Grid>

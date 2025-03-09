@@ -20,6 +20,7 @@ import CallToAction from "./CallToAction";
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector"
 import Commercial from "./commercial";
+import FAQSection from "./FAQSection";
 
 // Define service details for each page
 const serviceDetails = {
@@ -282,7 +283,8 @@ const ServicePage = () => {
         sx={{
           position: "relative",
           width: "100vw",
-          height: { xs: "30vh", md: "vh" }, 
+          paddingTop: 5,
+          height: { xs: "30vh", md: "20vh" }, 
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -322,7 +324,7 @@ const ServicePage = () => {
         </Typography>
       </Box>
 
-      <Commercial />
+      {/* <Commercial /> */}
 
       {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
@@ -349,7 +351,8 @@ const ServicePage = () => {
 
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
-      
+
+      <FAQSection />
 
       {/* ✅ Do You Need Tint? Call to Action Section */}
       <Box

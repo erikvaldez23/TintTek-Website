@@ -85,6 +85,7 @@ const Blog = () => {
             textAlign: "center",
             color: "white",
             px: 2, // Padding for smaller screens
+            paddingTop: 5,
           }}
         >
           {/* Main Title */}
