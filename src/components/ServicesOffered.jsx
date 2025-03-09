@@ -76,11 +76,12 @@ const serviceOptions = {
   "commercial-window-tinting": {
     title: "Commercial Window Tinting Services",
     list: [
-      "Office Window Tinting",
-      "Storefront Window Tinting",
-      "Skyscraper Window Tinting",
-      "Conference Room Tinting",
-      "Custom Business Tinting Solutions",
+      "Decorative Tints and Films",
+      "Privacy Window Tinting",
+      "Skylight Window Tinting",
+      "Enhanced Security & Design",
+      "Solar/UV Blocking Window Tint",
+      "Thermal Rejection Window Tint",
     ],
     filmTypes: [
       {

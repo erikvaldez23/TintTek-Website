@@ -1,7 +1,7 @@
 import { Box, Typography, Grid, Paper, Collapse, useMediaQuery, useTheme } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+// import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function WhyChooseUs() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -17,21 +17,19 @@ export default function WhyChooseUs() {
     { text: "Privacy & Security", details: "Window tinting adds an extra layer of privacy and security by blocking prying eyes and lowering the risk of break-ins. Our films also strengthen your glass, providing additional protection." },
   ];
 
-  // Container variant for staggering child animations
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: {},
+  //   visible: {
+  //     transition: {
+  //       staggerChildren: 0.2,
+  //     },
+  //   },
+  // };
 
-  // Animation for each feature card
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 50 },
+  //   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  // };
 
   return (
     <Box
@@ -51,13 +49,12 @@ export default function WhyChooseUs() {
           py: isMobile ? 5 : 7,
         }}
       >
-        {/* Header Animation */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-        >
+        > */}
           <Typography
             variant={isMobile ? "h4" : "h2"}
             fontWeight="bold"
@@ -66,15 +63,15 @@ export default function WhyChooseUs() {
           >
             Why Choose Us?
           </Typography>
-        </motion.div>
+        {/* </motion.div> */}
 
         {/* Description Animation */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-        >
+        > */}
           <Typography
             variant={isMobile ? "body1" : "h6"}
             sx={{
@@ -90,19 +87,19 @@ export default function WhyChooseUs() {
             even on the hottest days. With certified technicians and a lifetime warranty, we’re committed to delivering unmatched quality and service every time. 
             Drive with confidence knowing your car is protected.
           </Typography>
-        </motion.div>
+        {/* </motion.div> */}
 
         {/* Features Grid with Staggered Animations */}
-        <motion.div
+        {/* <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
-        >
+        > */}
           <Grid container spacing={isMobile ? 2 : 3} sx={{ mt: 4, justifyContent: "center" }}>
             {features.map((feature, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <motion.div variants={cardVariants}>
+                {/* <motion.div variants={cardVariants}> */}
                   <Paper
                     elevation={6}
                     onMouseEnter={() => !isMobile && setHoveredIndex(index)}
@@ -143,11 +140,11 @@ export default function WhyChooseUs() {
                       </Typography>
                     </Collapse>
                   </Paper>
-                </motion.div>
+                {/* </motion.div> */}
               </Grid>
             ))}
           </Grid>
-        </motion.div>
+        {/* </motion.div> */}
       </Box>
     </Box>
   );

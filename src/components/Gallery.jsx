@@ -44,32 +44,32 @@ const images = [
   "/TintTek-Website/Tint Tek-104.jpeg",
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2, // Stagger each card's animation
-    },
-  },
-};
+// const containerVariants = {
+//   hidden: {},
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.2, // Stagger each card's animation
+//     },
+//   },
+// };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.5 } 
-  },
-};
+// const cardVariants = {
+//   hidden: { opacity: 0, y: 20 },
+//   visible: { 
+//     opacity: 1, 
+//     y: 0, 
+//     transition: { duration: 0.5 } 
+//   },
+// };
 
-const modalVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    transition: { duration: 0.3 } 
-  },
-};
+// const modalVariants = {
+//   hidden: { opacity: 0, scale: 0.95 },
+//   visible: { 
+//     opacity: 1, 
+//     scale: 1, 
+//     transition: { duration: 0.3 } 
+//   },
+// };
 
 const Gallery = () => {
   const [open, setOpen] = useState(false);
@@ -174,16 +174,16 @@ const Gallery = () => {
         }}
       >
         {/* Wrap grid container with motion.div to stagger animations */}
-        <motion.div
+        {/* <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
-        >
+        > */}
           <Grid container spacing={2}>
             {images.map((image, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <motion.div variants={cardVariants}>
+                {/* <motion.div variants={cardVariants}> */}
                   <Card
                     sx={{
                       boxShadow: 3,
@@ -210,11 +210,11 @@ const Gallery = () => {
                       onClick={() => handleImageClick(index)}
                     />
                   </Card>
-                </motion.div>
+                {/* </motion.div> */}
               </Grid>
             ))}
           </Grid>
-        </motion.div>
+        {/* </motion.div> */}
 
         {/* See More Button */}
         <Box
@@ -260,12 +260,12 @@ const Gallery = () => {
       {/* Image Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
         {/* Animate modal content */}
-        <motion.div
+        {/* <motion.div
           variants={modalVariants}
           initial="hidden"
           animate="visible"
           exit="hidden"
-        >
+        > */}
           <Box sx={{ position: "relative", padding: 0 }}>
             <img
               src={images[currentImageIndex]}
@@ -305,7 +305,7 @@ const Gallery = () => {
               <ChevronRight sx={{ color: "white", fontSize: 50 }} />
             </IconButton>
           </Box>
-        </motion.div>
+        {/* </motion.div> */}
       </Dialog>
     </Box>
   );

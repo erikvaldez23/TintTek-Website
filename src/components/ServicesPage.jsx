@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import CallToAction from "./CallToAction";
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector"
+import Commercial from "./commercial";
 
 // Define service details for each page
 const serviceDetails = {
@@ -281,7 +282,7 @@ const ServicePage = () => {
         sx={{
           position: "relative",
           width: "100vw",
-          height: { xs: "30vh", md: "20vh" }, 
+          height: { xs: "30vh", md: "vh" }, 
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -320,6 +321,8 @@ const ServicePage = () => {
           {service.description}
         </Typography>
       </Box>
+
+      <Commercial />
 
       {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
