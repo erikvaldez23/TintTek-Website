@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 import CallToAction from "../components/CallToAction";
+import QuickLinks from "./QuickLinks";
 
 const images = [
   "/TintTek-Website/Tint Tek-2.jpeg",
@@ -253,6 +254,8 @@ const Gallery = () => {
       <Box sx={{ width: "100%", color: "#000" }}>
         <Contact />
       </Box>
+
+      <QuickLinks />
 
       {/* Footer Section */}
       <Footer />

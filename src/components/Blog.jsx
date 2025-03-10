@@ -14,6 +14,7 @@ import CallToAction from "./CallToAction";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Video from "../../public/compressed-output.mp4"; // Import the video file
+import QuickLinks from "./QuickLinks";
 
 const blogPosts = [
   {
@@ -227,6 +228,9 @@ const Blog = () => {
       <Box sx={{ color: "#000" }}>
         <Contact />
       </Box>
+
+      <QuickLinks />
+
       <Footer />
     </Box>
   );

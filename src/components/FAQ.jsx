@@ -14,6 +14,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "./Footer";
 import CallToAction from "./CallToAction";
 import Contact from "./Contact";
+import QuickLinks from "./QuickLinks";
 
 // Define sections with 5 questions each
 const faqSections = [
@@ -279,6 +280,7 @@ export default function FAQ() {
 
       <CallToAction />
       <Contact />
+      <QuickLinks />
       <Footer />
     </div>
   );

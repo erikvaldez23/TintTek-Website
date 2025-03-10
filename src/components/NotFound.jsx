@@ -4,6 +4,7 @@ import Topbar from "./Topbar";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import CallToAction from "./CallToAction";
+import QuickLinks from "./QuickLinks";
 
 const NotFound = () => {
   return (
@@ -104,7 +105,8 @@ const NotFound = () => {
         <Contact />
       </Box>
 
-      {/* Footer */}
+      <QuickLinks />
+
       <Footer />
     </Box>
   );
