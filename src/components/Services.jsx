@@ -31,32 +31,32 @@ const servicesData = [
     id: "tesla-window-tinting",
     title: "TESLA WINDOW TINTING",
     description:
-      "Remove swirls and scratches for a flawless, mirror-like finish.",
+      "Extend battery life, reduce heat in cabin, and enhance privacy.",
     image: "/TintTek-Website/tesla.jpg",
   },
   {
     id: "commercial-window-tinting",
     title: "COMMERCIAL WINDOW TINTING",
     description:
-      "Protect your paint from chips, scratches, and environmental damage.",
+      "Enhance energy savings, privacy, and security.",  
     image: "/TintTek-Website/commercial.jpg",
   },
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
-    description: "Long-lasting protection against dirt and contaminants.",
+    description: "Lower your energy costs, get UV protection, enhance privacy and security.",
     image: "/TintTek-Website/residential-tint.png",
   },
   {
     id: "vehicle-paint-correction",
     title: "VEHICLE PAINT CORRECTION",
-    description: "Restore your vehicle’s original shine inside and out.",
+    description: "Restore your vehicle’s original shine.",
     image: "/TintTek-Website/paint-correction.jpeg",
   },
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
-    description: "Customize your vehicle’s look with high-quality vinyl wraps.",
+    description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
     image: "/TintTek-Website/paint-protection1.jpg",
   },
   {

@@ -22,6 +22,7 @@ import PPFSelector from "./PPFSelector"
 import Commercial from "./commercial";
 import FAQSection from "./FAQSection";
 import TintPackages from "./TintPackages";
+import TeslaTintingSimulator from "./TeslaTintingSimulator";
 
 // Define service details for each page
 const serviceDetails = {
@@ -352,7 +353,8 @@ const ServicePage = () => {
 
       {/* <Commercial /> */}
 
-      {(serviceId === "vehicle-window-tinting" || serviceId === "tesla-window-tinting") && <TintingSimulator />}
+      {serviceId ==="tesla-window-tinting" && <TeslaTintingSimulator />}
+      {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
 
       {/* ✅ Pricing Section (Only for Non-Paint Services) */}
