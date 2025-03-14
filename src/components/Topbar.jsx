@@ -270,6 +270,20 @@ const Topbar = ({ notFound }) => {
                   >
                     Vehicle Paint Protection
                   </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("headlight-services")
+                    }
+                  >
+                    Headlight Services
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      handleServiceSelect("windshield-protection-film")
+                    }
+                  >
+                    Windshield Protection Film
+                  </MenuItem>
                 </Menu>
 
                 {/* Other Navigation Links */}

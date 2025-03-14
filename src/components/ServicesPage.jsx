@@ -35,8 +35,8 @@ const serviceDetails = {
       "We use high-quality films to protect your car windows and provide maximum UV protection.",
     benefits: [
       "Blocks 99% of harmful UV rays",
-      "Heat Rejection",
-      "Improved Privacy and Security",
+      "Heat rejection",
+      "Improved privacy and security",
       "Reduces glare from the sun and headlights",
       "Protects interiors from fading",
       "Elevate overall appearance",
@@ -187,6 +187,29 @@ const serviceDetails = {
       "Gloss Enhancement",
     ],
   },
+  "windshield-protection-film": {
+    title: "Windshield Protection Film",
+    description:
+      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    image: "/TintTek-Website/ppf.jpg",
+    details:
+      "Placeholder",
+    benefits: [
+      "Protects from chips, scratches, and road debris",
+      "Maintains your car’s showroom finish",
+      "Provides a high-gloss, durable finish",
+      "Easy maintenance and cleaning",
+      "Customizes vehicle appearance",
+      "Prevents UV damage and fading",
+    ],
+    servicesOffered: [
+      "Single-Stage Paint Correction",
+      "Multi-Stage Paint Correction",
+      "Swirl Mark Removal",
+      "Scratch Removal",
+      "Gloss Enhancement",
+    ],
+  },
 };
 
 const ServicePage = () => {
@@ -311,7 +334,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           paddingTop: 5,
-          height: { xs: "30vh", md: "20vh" }, 
+          height: { xs: "30vh", md: "25vh" }, 
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -380,7 +403,10 @@ const ServicePage = () => {
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
 
-      <TintPackages />
+      {(serviceId === "vehicle-window-tinting" ||
+        serviceId === "tesla-window-tinting") && (
+         <TintPackages />
+      )}
 
       <FAQSection />
 

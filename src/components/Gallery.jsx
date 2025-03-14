@@ -110,7 +110,7 @@ const Gallery = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "30vh", md: "20vh" },
+          height: { xs: "30vh", md: "25vh" },
           overflow: "hidden",
           backgroundColor: "#000",
         }}

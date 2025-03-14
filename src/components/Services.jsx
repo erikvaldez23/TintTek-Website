@@ -282,7 +282,7 @@ const Services = () => {
         textAlign: "center",
         backgroundColor: "#000",
         color: "#EEEEFF",
-        paddingBottom: "80px",
+        paddingBottom: 8,
       }}
     >
       <Typography
