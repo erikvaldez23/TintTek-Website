@@ -88,7 +88,7 @@ const QuickLinks = () => {
                   sx={{
                     fontWeight: "bold",
                     borderBottom: "2px solid",
-                    borderColor: "primary.main",
+                    borderColor: "#2794d2",
                     color: "#fff",
                     pb: 1,
                     mb: 2,
@@ -117,7 +117,7 @@ const QuickLinks = () => {
                       textOverflow: "ellipsis",
                       lineHeight: 1.4,
                       "&:hover": {
-                        color: "primary.main",
+                        color: "#2794d2",
                         transform: "translateX(5px)",
                       },
                     }}

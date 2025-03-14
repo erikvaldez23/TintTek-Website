@@ -25,7 +25,7 @@ import {
 } from "react-icons/fa"; // ✅ Import Icons
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
-import logo from "../../public/logo.png"; // Ensure correct path
+import logo from "../../public/tinttek-logo1.png"; // Ensure correct path
 
 const NavbarContainer = styled(Box)({
   width: "100%",
@@ -119,7 +119,7 @@ const Topbar = ({ notFound }) => {
           backgroundColor: notFound
             ? "#000"
             : scrolling
-            ? "#EEEEFF"
+            ? "#000"
             : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
           color: notFound || scrolling ? "#000" : "#EEEEFF",
@@ -154,7 +154,7 @@ const Topbar = ({ notFound }) => {
                 src={logo}
                 alt="Logo"
                 style={{
-                  height: "60px",
+                  height: "50px",
                   marginRight: "10px",
                   borderRadius: "8px",
                 }}
@@ -179,7 +179,7 @@ const Topbar = ({ notFound }) => {
                     textTransform: "uppercase",
                     padding: "10px 2px",
                     paddingLeft: "20px",
-                    color: scrolling ? "#333" : "#fff",
+                    color: scrolling ? "#fff" : "#fff",
                     transition: "all 0.3s ease-in-out",
                     "&:after": {
                       content: '""',
@@ -299,7 +299,7 @@ const Topbar = ({ notFound }) => {
                       textTransform: "uppercase",
                       position: "relative",
                       padding: "10px 20px",
-                      color: scrolling ? "#333" : "#fff", // Dynamic text color
+                      color: scrolling ? "#fff" : "#fff", // Dynamic text color
                       transition: "all 0.3s ease-in-out",
                       "&:after": {
                         content: '""',

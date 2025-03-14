@@ -117,6 +117,19 @@ const Services = () => {
     ],
   };
 
+  const mobileSliderSettings = {
+    dots: false,
+    infinite: true, // Loop so that there is always a previous slide visible
+    speed: 500,
+    slidesToShow: 1, // Show one slide fully
+    slidesToScroll: 1,
+    arrows: false,
+    centerMode: true, // Center the active slide
+    centerPadding: "15%", // Adjust this value to show equal portions of adjacent slides
+  };
+  
+  
+
   // Desktop layout with staggered animations for each card
   const desktopContent = (
     <Container maxWidth="lg">
@@ -142,11 +155,6 @@ const Services = () => {
                     position: "relative",
                     cursor: "pointer",
                     backgroundColor: "black",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      outline: "5px solid #2794d2",
-                      backgroundColor: "black",
-                    },
                   }}
                   onClick={() => handleServiceClick(service.id)}
                 >
@@ -188,18 +196,16 @@ const Services = () => {
     </Container>
   );
 
-  // Mobile layout: apply the same animation to each slide if desired
   const mobileContent = (
-    <Box sx={{ position: "relative", px: 2 }}>
-      <Slider {...sliderSettings}>
+    <Box sx={{ position: "relative" }}>
+      <Slider {...(isMobile ? mobileSliderSettings : sliderSettings)}>
         {servicesData.map((service) => (
           <Box key={service.id} sx={{ px: 2 }}>
             <motion.div variants={cardVariants} initial="hidden" animate="visible">
               <Card
                 sx={{
-                  width: "100%",
+                  width: "65vw", // Adjust as needed
                   height: 400,
-                  maxWidth: 500, // Increased maxWidth for a wider card
                   margin: "0 auto",
                   borderRadius: 4,
                   overflow: "hidden",
@@ -257,9 +263,6 @@ const Services = () => {
                       color: "#EEEEFF",
                       width: "90%",
                       borderRadius: 50,
-                      "&:hover": {
-                        backgroundColor: "rgba(255,255,255,0.3)",
-                      },
                     }}
                   >
                     See Details
@@ -273,6 +276,8 @@ const Services = () => {
     </Box>
   );
   
+  
+  
 
   return (
     <Box
@@ -282,7 +287,7 @@ const Services = () => {
         textAlign: "center",
         backgroundColor: "#000",
         color: "#EEEEFF",
-        paddingBottom: 8,
+        paddingBottom: "80px",
       }}
     >
       <Typography
