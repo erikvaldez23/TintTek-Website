@@ -10,7 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import logo from "../../public/logo.png"; // Ensure correct path
+import logo from "../../public/tinttek-logo1.png"; // Ensure correct path
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
