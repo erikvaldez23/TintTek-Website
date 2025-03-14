@@ -80,8 +80,8 @@ const Contact = () => {
   // };
 
   return (
-    <Box sx={{ backgroundColor: "#EEEEFF", width: "100%" }}>
-      <Box sx={{ padding: "40px", maxWidth: "1200px", margin: "auto" }} id="contact">
+    <Box sx={{ backgroundColor: "#EEEEFF", width: "100%", py: 2 }}>
+      <Box sx={{ padding: "20px", maxWidth: "1200px", margin: "auto" }} id="contact">
         {/* Contact Header */}
         {/* <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={headerVariant}> */}
           <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}>
