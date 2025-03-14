@@ -163,6 +163,29 @@ const serviceDetails = {
       "Gloss Enhancement",
     ],
   },
+  "headlight-services": {
+    title: "Headlight Services",
+    description:
+      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    image: "/TintTek-Website/ppf.jpg",
+    details:
+      "Placeholder",
+    benefits: [
+      "Protects from chips, scratches, and road debris",
+      "Maintains your car’s showroom finish",
+      "Provides a high-gloss, durable finish",
+      "Easy maintenance and cleaning",
+      "Customizes vehicle appearance",
+      "Prevents UV damage and fading",
+    ],
+    servicesOffered: [
+      "Single-Stage Paint Correction",
+      "Multi-Stage Paint Correction",
+      "Swirl Mark Removal",
+      "Scratch Removal",
+      "Gloss Enhancement",
+    ],
+  },
 };
 
 const ServicePage = () => {
@@ -260,6 +283,8 @@ const ServicePage = () => {
             </Box>
           </Box>
         </Box>
+
+        <CallToAction />
         {/* Contact Section */}
         <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
           <Contact /> {/* Keep the contact section */}

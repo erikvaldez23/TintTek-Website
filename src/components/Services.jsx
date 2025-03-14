@@ -57,7 +57,19 @@ const servicesData = [
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
     description: "Customize your vehicle’s look with high-quality vinyl wraps.",
+    image: "/TintTek-Website/paint-protection1.jpg",
+  },
+  {
+    id: "headlight-services",
+    title: "HEADLIGHT SERVICES",
+    description: "Filler Quote",
     image: "/TintTek-Website/paint-protection.jpg",
+  },
+  {
+    id: "windshield-protection-film",
+    title: "WINDSHIELD PROTECTION FILM",
+    description: "Filler Quote",
+    image: "/TintTek-Website/windshield-protection.jpg",
   },
 ];
 
@@ -120,7 +132,7 @@ const Services = () => {
           alignItems="stretch"
         >
           {servicesData.map((service) => (
-            <Grid item key={service.id} xs={12} sm={6} md={4}>
+            <Grid item key={service.id} xs={12} sm={6} md={3}>
               <motion.div variants={cardVariants}>
                 <Card
                   sx={{

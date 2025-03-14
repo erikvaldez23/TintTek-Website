@@ -174,7 +174,7 @@ const TintingSimulator = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "50vh" : "50vh", // Increased height for proper spacing
+          height: isMobile ? "50vh" : "60vh", // Increased height for proper spacing
           background: "#2e2e2e",
           display: "flex",
           flexDirection: "column",

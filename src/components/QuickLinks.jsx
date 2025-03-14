@@ -51,7 +51,7 @@ const quickLinksData = [
         to: "/paint-protection-simulator",
       },
       {
-        text: "Commercial & Residential Tinting Simulator",
+        text: "Commercial Tinting Simulator",
         to: "/tinting-simulator",
       },
     ],
@@ -70,24 +70,24 @@ const QuickLinks = () => {
         textAlign: "center",
         background: "#000",
         color: "#fff",
-        py: 5,
+        py: 2,
         px: { xs: 2, md: 6 },
       }}
     >
-      <Typography
+      {/* <Typography
         variant={isMobile ? "h4" : "h2"}
         fontWeight="bold"
         sx={{ mb: 2 }}
       >
         Explore
-      </Typography>
-      <Typography
+      </Typography> */}
+      {/* <Typography
         variant="subtitle1"
         sx={{ mb: 3, color: "rgba(255,255,255,0.7)" }}
       >
         Discover our top offerings and resources tailored for your automotive
         needs.
-      </Typography>
+      </Typography> */}
 
       <Grid container spacing={4} justifyContent="center">
         {quickLinksData.map((column, index) => (
@@ -107,14 +107,14 @@ const QuickLinks = () => {
                   flexDirection: "column",
                   gap: 2,
                   borderRadius: 3,
-                  background: "rgba(255, 255, 255, 0.05)",
+                  background: "#000",
                   backdropFilter: "blur(8px)",
                   boxShadow: "0 10px 25px rgba(0,0,0,0.35)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: "0 14px 35px rgba(0,0,0,0.5)",
-                  },
+                  // "&:hover": {
+                  //   transform: "translateY(-5px)",
+                  //   boxShadow: "0 14px 35px rgba(0,0,0,0.5)",
+                  // },
                 }}
               >
                 <Typography
@@ -145,6 +145,9 @@ const QuickLinks = () => {
                       fontWeight: 500,
                       color: "rgba(255,255,255,0.85)",
                       transition: "all 0.3s ease",
+                      wordBreak: "break-word", // NEW
+                      whiteSpace: "normal",    // Ensures wrapping happens naturally
+                      lineHeight: 1.4,
                       "&:hover": {
                         color: "primary.main",
                         transform: "translateX(5px)",
