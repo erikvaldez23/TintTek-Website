@@ -10,33 +10,20 @@ import {
 } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { motion } from "framer-motion";
-import { Link as RouterLink } from "react-router-dom"; // Import react-router-dom Link
+import { Link as RouterLink } from "react-router-dom";
 
 const quickLinksData = [
   {
     title: "Services",
     links: [
-      {
-        text: "Vehicle Window Tinting",
-        to: "/services/vehicle-window-tinting",
-      },
+      { text: "Vehicle Window Tinting", to: "/services/vehicle-window-tinting" },
       { text: "Tesla Window Tinting", to: "/services/tesla-window-tinting" },
-      {
-        text: "Commercial Window Tinting",
-        to: "/services/commercial-window-tinting",
-      },
-      {
-        text: "Residential Window Tinting",
-        to: "/services/residential-window-tinting",
-      },
-      {
-        text: "Vehicle Paint Correction",
-        to: "/services/vehicle-paint-correction",
-      },
-      {
-        text: "Vehicle Paint Protection",
-        to: "/services/vehicle-paint-protection",
-      },
+      { text: "Commercial Window Tinting", to: "/services/commercial-window-tinting" },
+      { text: "Residential Window Tinting", to: "/services/residential-window-tinting" },
+      { text: "Vehicle Paint Correction", to: "/services/vehicle-paint-correction" },
+      { text: "Vehicle Paint Protection", to: "/services/vehicle-paint-protection" },
+      { text: "Headlight Services", to: "/services/headlight-services" },
+      { text: "Windshield Protection Film", to: "/services/windshield-protection-film" },
     ],
   },
   {
@@ -45,15 +32,11 @@ const quickLinksData = [
       { text: "Frequently Asked Questions", to: "/faq" },
       { text: "Gallery", to: "/gallery" },
       { text: "Blogs", to: "/blog" },
-      { text: "Window Tinting Simulator", to: "/window-tinting-simulator" },
-      {
-        text: "Paint Protection Film Simulator",
-        to: "/paint-protection-simulator",
-      },
-      {
-        text: "Commercial Tinting Simulator",
-        to: "/tinting-simulator",
-      },
+      { text: "Vehicle Window Tint Viewer", to: "/window-tinting-simulator" },
+      { text: "Paint Protection Film Viewer", to: "/paint-protection-simulator" },
+      { text: "Commercial Window Film Viewer", to: "/tinting-simulator" },
+      { text: "Residential Window Film Viewer", to: "/tinting-simulator" },
+      { text: "Residential Window Film Viewer", to: "/tinting-simulator" },
     ],
   },
 ];
@@ -74,21 +57,6 @@ const QuickLinks = () => {
         px: { xs: 2, md: 6 },
       }}
     >
-      {/* <Typography
-        variant={isMobile ? "h4" : "h2"}
-        fontWeight="bold"
-        sx={{ mb: 2 }}
-      >
-        Explore
-      </Typography> */}
-      {/* <Typography
-        variant="subtitle1"
-        sx={{ mb: 3, color: "rgba(255,255,255,0.7)" }}
-      >
-        Discover our top offerings and resources tailored for your automotive
-        needs.
-      </Typography> */}
-
       <Grid container spacing={4} justifyContent="center">
         {quickLinksData.map((column, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
@@ -102,6 +70,8 @@ const QuickLinks = () => {
                 elevation={4}
                 sx={{
                   p: 3,
+                  // Set a responsive minimum width on the Paper container
+                  minWidth: { xs: "320px", sm: "400px", md: "auto" },
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -111,10 +81,6 @@ const QuickLinks = () => {
                   backdropFilter: "blur(8px)",
                   boxShadow: "0 10px 25px rgba(0,0,0,0.35)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  // "&:hover": {
-                  //   transform: "translateY(-5px)",
-                  //   boxShadow: "0 14px 35px rgba(0,0,0,0.5)",
-                  // },
                 }}
               >
                 <Typography
@@ -134,8 +100,8 @@ const QuickLinks = () => {
                 {column.links.map((link, linkIndex) => (
                   <Link
                     key={linkIndex}
-                    component={RouterLink} // Use the router link component
-                    to={link.to} // Specify the destination path
+                    component={RouterLink}
+                    to={link.to}
                     underline="none"
                     sx={{
                       display: "flex",
@@ -145,8 +111,10 @@ const QuickLinks = () => {
                       fontWeight: 500,
                       color: "rgba(255,255,255,0.85)",
                       transition: "all 0.3s ease",
-                      wordBreak: "break-word", // NEW
-                      whiteSpace: "normal",    // Ensures wrapping happens naturally
+                      // Force links to remain on one line:
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                       lineHeight: 1.4,
                       "&:hover": {
                         color: "primary.main",
