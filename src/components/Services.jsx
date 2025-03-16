@@ -155,6 +155,10 @@ const Services = () => {
                     position: "relative",
                     cursor: "pointer",
                     backgroundColor: "black",
+                    "&:hover": {
+                      border: "5px solid #2794d2",
+                      transform: "scale(1.02)",
+                    }
                   }}
                   onClick={() => handleServiceClick(service.id)}
                 >

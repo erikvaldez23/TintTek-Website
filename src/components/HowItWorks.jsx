@@ -11,6 +11,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   IconButton,
 } from "@mui/material";
 import Slider from "react-slick"; // Import Slider
@@ -437,29 +438,29 @@ const HowItWorks = ({ serviceId }) => {
                 >
                   Learn More
                 </Button> */}
-                        <Button
-                          component={motion.a}
-                          initial={{ scale: 0.9 }}
-                          animate={{ scale: 1 }}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                          sx={{
-                            mt: 3,
-                            backgroundColor: "#2794d2",
-                            color: "#000",
-                            fontWeight: "bold",
-                            px: isMobile ? 3 : 4,
-                            py: isMobile ? 1.2 : 1.5,
-                            borderRadius: "30px",
-                            textTransform: "uppercase",
-                            fontSize: isMobile ? "1rem" : "1.1rem",
-                            width: isMobile ? "100%" : "auto",
-                          }}
-                          onClick={() => handleLearnMoreClick(step)}
-                        >
-                          VIEW MORE REVIEWS
-                        </Button>
+                <Button
+                  component={motion.a}
+                  initial={{ scale: 0.9 }}
+                  animate={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  sx={{
+                    mt: 3,
+                    backgroundColor: "#2794d2",
+                    color: "#000",
+                    fontWeight: "bold",
+                    px: isMobile ? 3 : 4,
+                    py: isMobile ? 1.2 : 1.5,
+                    borderRadius: "30px",
+                    textTransform: "uppercase",
+                    fontSize: isMobile ? "1rem" : "1.1rem",
+                    width: isMobile ? "100%" : "auto",
+                  }}
+                  onClick={() => handleLearnMoreClick(step)}
+                >
+                  LEARN MORE
+                </Button>
               </Paper>
             </Box>
           ))}
@@ -528,28 +529,28 @@ const HowItWorks = ({ serviceId }) => {
                   Learn More
                 </Button> */}
                 <Button
-                          component={motion.a}
-                          initial={{ scale: 0.9 }}
-                          animate={{ scale: 1 }}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                          sx={{
-                            mt: 3,
-                            backgroundColor: "#2794d2",
-                            color: "#000",
-                            fontWeight: "bold",
-                            px: isMobile ? 3 : 4,
-                            py: isMobile ? 1.2 : 1,
-                            borderRadius: "30px",
-                            textTransform: "uppercase",
-                            fontSize: isMobile ? "1rem" : "1.2rem",
-                            width: isMobile ? "100%" : "auto",
-                          }}
-                          onClick={() => handleLearnMoreClick(step)}
-                        >
-                          Learn More
-                        </Button>
+                  component={motion.a}
+                  initial={{ scale: 0.9 }}
+                  animate={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  sx={{
+                    mt: 3,
+                    backgroundColor: "#2794d2",
+                    color: "#000",
+                    fontWeight: "bold",
+                    px: isMobile ? 3 : 4,
+                    py: isMobile ? 1.2 : 1,
+                    borderRadius: "30px",
+                    textTransform: "uppercase",
+                    fontSize: isMobile ? "1rem" : "1.2rem",
+                    width: isMobile ? "100%" : "auto",
+                  }}
+                  onClick={() => handleLearnMoreClick(step)}
+                >
+                  Learn More
+                </Button>
               </Paper>
             </Grid>
           ))}
@@ -605,58 +606,56 @@ const HowItWorks = ({ serviceId }) => {
 
       {/* Modal Dialog for Learn More */}
       <Dialog
-  open={openModal}
-  onClose={handleCloseModal}
-  maxWidth="sm"
-  PaperProps={{
-    sx: {
-      width: 500,
-      height: 300,
-      borderRadius: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.9)",
-      p: 2,
-    },
-  }}
->
-  <DialogTitle
-    sx={{
-      textAlign: "center",
-      color: "#fff",
-      m: 0,
-      p: 1,
-      fontSize: "1.5rem",
-      position: "relative", // Ensure the title is positioned relatively
-    }}
-  >
-    {selectedStep?.title}
-    <IconButton
-      onClick={handleCloseModal}
-      sx={{
-        position: "absolute",
-        top: 8,
-        right: 8,
-        color: "#fff",
-      }}
-    >
-      <CloseIcon />
-    </IconButton>
-  </DialogTitle>
-  <DialogContent
-    sx={{
-      textAlign: "center",
-      color: "#fff",
-      flex: 1,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-    }}
-  >
-    <Typography variant="body1">
-      {selectedStep?.detailedDescription}
-    </Typography>
-  </DialogContent>
-</Dialog>
-
+        open={openModal}
+        onClose={handleCloseModal}
+        maxWidth="sm"
+        PaperProps={{
+          sx: {
+            borderRadius: 4,
+            padding: 3,
+            backgroundColor: "#f5f5f5",
+          },
+        }}
+      >
+        <DialogTitle
+          sx={{
+            textAlign: "center",
+            color: "#000",
+            m: 0,
+            p: 1,
+            fontSize: "1.5rem",
+            position: "relative", // Ensure the title is positioned relatively
+          }}
+        >
+          {selectedStep?.title}
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              color: "#000",
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <Divider sx={{ mb: 2 }} />
+        <DialogContent
+          sx={{
+            textAlign: "center",
+            color: "#000",
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="body1">
+            {selectedStep?.detailedDescription}
+          </Typography>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };

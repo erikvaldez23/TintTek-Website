@@ -66,7 +66,7 @@ const Blog = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "30vh", md: "25vh" },
+          height: { xs: "35vh", md: "35vh" },
           overflow: "hidden",
           backgroundColor: "#000",
         }}

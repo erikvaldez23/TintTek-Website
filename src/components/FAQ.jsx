@@ -161,7 +161,7 @@ export default function FAQ() {
       <Box
         sx={{
           width: "100%",
-          height: { xs: "30vh", md: "25vh" },
+          height: { xs: "35vh", md: "35vh" },
           background: "#000",
           display: "flex",
           justifyContent: "center",

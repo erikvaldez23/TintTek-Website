@@ -24,6 +24,7 @@ import FAQSection from "./FAQSection";
 import TintPackages from "./TintPackages";
 import TeslaTintingSimulator from "./TeslaTintingSimulator";
 import QuickLinks from "./QuickLinks";
+import TeslaTintPackages from "./TeslaTintPackages";
 
 // Define service details for each page
 const serviceDetails = {
@@ -567,7 +568,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           paddingTop: 5,
-          height: { xs: "30vh", md: "25vh" },
+          height: { xs: "35vh", md: "35vh" },
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -607,9 +608,8 @@ const ServicePage = () => {
         </Typography>
       </Box>
 
-      {/* <Commercial /> */}
-
-      {serviceId === "commercial-window-tinting" && (
+      {/* COMMERCIAL WINDOW TINT VIEWER */}
+      {/* {serviceId === "commercial-window-tinting" && (
         <Box sx={{ width: "100vw", height: "800px", overflow: "hidden" }}>
           <object
             data="https://llumar.com/na/en/architectural/interactive-window-film-tools/solar-decorative-film-viewer/dealer-commercial-solar-and-decorative/"
@@ -619,9 +619,10 @@ const ServicePage = () => {
             title="Llumar Interactive Viewer"
           />
         </Box>
-      )}
+      )} */}
 
-      {serviceId === "residential-window-tinting" && (
+      {/* RESIDENTIAL WINDOW TINT VIEWER */}
+      {/* {serviceId === "residential-window-tinting" && (
         <Box sx={{ width: "100vw", height: "75vh", overflow: "hidden" }}>
           <object
             data="https://llumar.com/na/en/architectural/interactive-window-film-tools/viewer-for-home/dealer-home-solar-and-decorative/"
@@ -631,7 +632,7 @@ const ServicePage = () => {
             title="Llumar Interactive Viewer"
           />
         </Box>
-      )}
+      )} */}
 
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
       {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
@@ -656,8 +657,8 @@ const ServicePage = () => {
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
 
-      {(serviceId === "vehicle-window-tinting" ||
-        serviceId === "tesla-window-tinting") && <TintPackages />}
+    {serviceId === "vehicle-window-tinting" && <TintPackages />}
+    {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
 
       <FAQSection />
 
