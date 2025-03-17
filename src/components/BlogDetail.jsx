@@ -9,10 +9,10 @@ import {
   CardMedia,
   CardContent,
 } from "@mui/material";
-import Topbar from "./Topbar";
-import CallToAction from "./CallToAction";
-import Footer from "./Footer";
-import Contact from "./Contact";
+import Topbar from "./key-components/Topbar";
+import CallToAction from "./key-components/CallToAction";
+import Footer from "./key-components/Footer";
+import Contact from "./key-components/Contact";
 
 const blogPosts = [
   {

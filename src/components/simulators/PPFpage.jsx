@@ -9,10 +9,10 @@ import {
   useTheme,
 } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import CallToAction from "../CallToAction";
-import Contact from "../Contact";
-import QuickLinks from "../QuickLinks";
-import Footer from "../Footer";
+import CallToAction from "../key-components/CallToAction";
+import Contact from "../key-components/Contact";
+import QuickLinks from "../key-components/QuickLinks";
+import Footer from "../key-components/Footer";
 
 // Define PPF Options with Images, Prices, and Descriptions
 const ppfOptions = {

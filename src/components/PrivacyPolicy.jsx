@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Typography, Divider, Box } from "@mui/material";
-import Footer from "./Footer";
-import CallToAction from "./CallToAction";
-import Contact from "./Contact";
+import Footer from "./key-components/Footer";
+import CallToAction from "./key-components/CallToAction";
+import Contact from "./key-components/Contact";
 
 const PrivacyPolicy = () => {
   // ✅ Updated Privacy Policy Data Structure

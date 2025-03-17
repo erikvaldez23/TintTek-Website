@@ -9,21 +9,21 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import PricingComponent from "./Pricing"; // Import Pricing model
-import Contact from "./Contact"; // Import Contact component
-import Topbar from "./Topbar";
-import Footer from "./Footer";
+import Contact from "./key-components/Contact"; // Import Contact component
+import Topbar from "./key-components/Topbar";
+import Footer from "./key-components/Footer";
 import BenefitsSection from "./BenefitsSection";
 import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
 import { motion } from "framer-motion";
-import CallToAction from "./CallToAction";
+import CallToAction from "./key-components/CallToAction";
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector";
 import Commercial from "./commercial";
 import FAQSection from "./FAQSection";
 import TintPackages from "./TintPackages";
 import TeslaTintingSimulator from "./TeslaTintingSimulator";
-import QuickLinks from "./QuickLinks";
+import QuickLinks from "./key-components/QuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
 

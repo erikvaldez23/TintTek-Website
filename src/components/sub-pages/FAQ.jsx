@@ -11,10 +11,10 @@ import {
   Container,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Footer from "./Footer";
-import CallToAction from "./CallToAction";
-import Contact from "./Contact";
-import QuickLinks from "./QuickLinks";
+import Footer from "../key-components/Footer";
+import CallToAction from "../key-components/CallToAction";
+import Contact from "../key-components/Contact";
+import QuickLinks from "../key-components/QuickLinks";
 
 // Define sections with 5 questions each
 const faqSections = [

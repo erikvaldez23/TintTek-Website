@@ -25,7 +25,7 @@ import {
 } from "react-icons/fa"; // ✅ Import Icons
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
-import logo from "../../public/tinttek-logo1.png"; // Ensure correct path
+import logo from "../../../public/tinttek-logo1.png"; // Ensure correct path
 
 const NavbarContainer = styled(Box)({
   width: "100%",

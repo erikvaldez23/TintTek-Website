@@ -1,6 +1,6 @@
 import React from "react";
 import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
-import "./Sub-icons.css"
+import "./css/Sub-icons.css"
 
 const SubIcons = () => {
   return (

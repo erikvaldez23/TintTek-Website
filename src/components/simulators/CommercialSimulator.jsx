@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import CallToAction from "../CallToAction";
-import Contact from "../Contact";
-import QuickLinks from "../QuickLinks";
-import Footer from "../Footer";
+import CallToAction from "../key-components/CallToAction";
+import Contact from "../key-components/Contact";
+import QuickLinks from "../key-components/QuickLinks";
+import Footer from "../key-components/Footer";
 
 const CommercialSimulator = () => {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import Topbar from "./Topbar";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import CallToAction from "./CallToAction";
-import QuickLinks from "./QuickLinks";
+import Topbar from "./key-components/Topbar";
+import Contact from "./key-components/Contact";
+import Footer from "./key-components/Footer";
+import CallToAction from "./key-components/CallToAction";
+import QuickLinks from "./key-components/QuickLinks";
 
 const NotFound = () => {
   return (

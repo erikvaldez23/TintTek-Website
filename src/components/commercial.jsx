@@ -1,4 +1,3 @@
-// BenefitsSection.jsx
 import React from 'react';
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import SavingsIcon from '@mui/icons-material/Savings';

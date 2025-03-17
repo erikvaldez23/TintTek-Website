@@ -24,6 +24,7 @@
 .business-info-overlay svg {
     font-size: 1.2rem;
     margin-right: 6px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 /* Ensures items adjust properly */
@@ -34,6 +35,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effects for the business info items */
+.business-info-item:hover {
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.3); /* Subtle dark background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Change icon color or add a small rotation on hover */
+.business-info-item:hover svg {
+    color: #2794d2;
+    transform: rotate(5deg);
 }
 
 /* ✅ Hide the component on smaller screens */

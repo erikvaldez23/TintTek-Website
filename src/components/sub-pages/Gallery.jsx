@@ -13,10 +13,10 @@ import {
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useSwipeable } from "react-swipeable"; // For mobile gestures
 import { motion } from "framer-motion";
-import Footer from "../components/Footer";
-import Contact from "../components/Contact";
-import CallToAction from "../components/CallToAction";
-import QuickLinks from "./QuickLinks";
+import Footer from "../key-components/Footer";
+import Contact from "../key-components/Contact";
+import CallToAction from "../key-components/CallToAction";
+import QuickLinks from "../key-components/QuickLinks";
 
 const images = [
   "/TintTek-Website/Tint Tek-2.jpeg",

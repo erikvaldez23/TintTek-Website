@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Hero.css";
+import "./css/Hero.css";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
 import BusinessInfo from "./BusinessInfo"; // Import BusinessInfo
 import Subhero from "./Subhero"; // Import Subhero
-import video from "../../public/compressed-output.mp4";
+import video from "../../../public/compressed-output.mp4";
 import SubIcons from './SubIcons'
 
 const Hero = () => {
