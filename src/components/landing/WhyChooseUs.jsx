@@ -119,7 +119,7 @@ export default function WhyChooseUs() {
                     }}
                   >
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      <CheckCircleIcon sx={{ fontSize: 32, color: hoveredIndex === index ? "black" : "white" }} />
+                      <CheckCircleIcon sx={{ fontSize: 32, color: hoveredIndex === index ? "black" : "#2794d2" }} />
                       <Typography variant="h6" fontWeight="bold">
                         {feature.text}
                       </Typography>

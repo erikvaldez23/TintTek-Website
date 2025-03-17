@@ -116,7 +116,7 @@ const Testimonials = () => {
           variant={isMobile ? "h4" : "h2"}
           sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
         >
-          What Our Customers Say?
+          USER REVIEWS
         </Typography>
 
         {isMobile ? (
@@ -324,7 +324,7 @@ const Testimonials = () => {
             borderRadius: "30px",
             textTransform: "uppercase",
             fontSize: isMobile ? "1rem" : "1.1rem",
-            width: isMobile ? "100%" : "auto",
+            width: isMobile ? "80%" : "auto",
           }}
           href={GOOGLE_REVIEWS_URL}
           target="_blank"

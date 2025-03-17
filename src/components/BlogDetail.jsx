@@ -217,7 +217,7 @@ const BlogDetail = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: "25vh", // Adjust height as needed
+          height: "35vh", // Adjust height as needed
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",

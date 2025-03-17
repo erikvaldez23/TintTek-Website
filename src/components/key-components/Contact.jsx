@@ -64,38 +64,38 @@ const Contact = () => {
   };
 
   // Animation variants
-  // const headerVariant = {
-  //   hidden: { opacity: 0, y: -20 },
-  //   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  // };
+  const headerVariant = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
-  // const leftVariant = {
-  //   hidden: { opacity: 0, x: -50 },
-  //   visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } },
-  // };
+  const leftVariant = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } },
+  };
 
-  // const rightVariant = {
-  //   hidden: { opacity: 0, x: 50 },
-  //   visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.5 } },
-  // };
+  const rightVariant = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.5 } },
+  };
 
   return (
     <Box sx={{ backgroundColor: "#EEEEFF", width: "100%", py: 2 }}>
       <Box sx={{ padding: "20px", maxWidth: "1200px", margin: "auto" }} id="contact">
         {/* Contact Header */}
-        {/* <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={headerVariant}> */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={headerVariant}>
           <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}>
             CONTACT US
           </Typography>
           <Typography variant="body1" sx={{ textAlign: "center", marginBottom: 4 }}>
             Let us know how we can help by sending us a message below. Looking forward to chatting!
           </Typography>
-        {/* </motion.div> */}
+        </motion.div>
 
         <Grid container spacing={4} alignItems="stretch">
           {/* Left Side - Contact Info */}
           <Grid item xs={12} md={5} sx={{ display: "flex" }}>
-            {/* <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={leftVariant} style={{ width: "100%" }}> */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={leftVariant} style={{ width: "100%" }}>
               <Card sx={{ backgroundColor: "#f8f9fa", padding: "20px", flexGrow: 1 }}>
                 <CardContent
                   sx={{
@@ -145,12 +145,12 @@ const Contact = () => {
                   </Box>
                 </CardContent>
               </Card>
-            {/* </motion.div> */}
+            </motion.div>
           </Grid>
 
           {/* Right Side - Contact Form */}
           <Grid item xs={12} md={7} sx={{ display: "flex" }}>
-            {/* <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={rightVariant} style={{ width: "100%" }}> */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={rightVariant} style={{ width: "100%" }}>
               <Box
                 component="form"
                 sx={{
@@ -236,7 +236,7 @@ const Contact = () => {
                   Send Message
                 </Button>
               </Box>
-            {/* </motion.div> */}
+            </motion.div>
           </Grid>
         </Grid>
       </Box>

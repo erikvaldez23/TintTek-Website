@@ -82,23 +82,29 @@ const Topbar = ({ notFound }) => {
     setDrawerOpen(false);
   };
 
-  useEffect(() => {
-    const handleScroll = () => setScrolling(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Remove duplicate scroll listener
+  // useEffect(() => {
+  //   const handleScroll = () => setScrolling(window.scrollY > 50);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  const handleServicesClick = (event) => {
-    setAnchorEl(event.currentTarget); // Open dropdown
+  // Handlers for hover-only dropdown (desktop)
+  const handleServicesMouseEnter = (e) => {
+    if (!isMobile) {
+      setAnchorEl(e.currentTarget);
+    }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null); // Close dropdown
+  const handleServicesMouseLeave = () => {
+    if (!isMobile) {
+      setAnchorEl(null);
+    }
   };
 
   const handleServiceSelect = (servicePath) => {
     navigate(`/services/${servicePath}`);
-    handleClose();
+    setAnchorEl(null);
   };
 
   // 🏆 Handlers for Modal
@@ -163,134 +169,137 @@ const Topbar = ({ notFound }) => {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <Box display="flex" gap={4}>
-                {/* Services Button with Dropdown */}
-                <Button
-                  color="inherit"
-                  onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
-                  onClick={handleServicesClick} // optional for mobile support
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    fontSize: "22px",
-                    fontWeight: 600,
-                    letterSpacing: "1.5px",
-                    textTransform: "uppercase",
-                    padding: "10px 2px",
-                    paddingLeft: "20px",
-                    color: scrolling ? "#fff" : "#fff",
-                    transition: "all 0.3s ease-in-out",
-                    ...(anchorEl && {
-                      color: "#2794d2",
-                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
-                    }),
-                    "&:hover": {
-                      color: "#2794d2",
-                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
-                      "&:after": { width: "100%" },
-                    },
-                    "&:after": {
-                      content: '""',
-                      position: "absolute",
-                      width: "0%",
-                      height: "3px",
-                      bottom: "0",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      background: "#2794d2",
-                      transition: "width 0.4s ease-in-out",
-                      borderRadius: "2px",
-                    },
-                  }}
+              <Box display="flex" gap={4} alignItems="center">
+                {/* Wrap the Services button and Menu in a container */}
+                <Box
+                  onMouseEnter={handleServicesMouseEnter}
+                  onMouseLeave={handleServicesMouseLeave}
+                  sx={{ position: "relative" }}
                 >
-                  Services <span style={{ fontSize: "14px" }}>▾</span>
-                </Button>
-
-                {/* Dropdown Menu for Services */}
-                <Menu
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                  // This ensures the menu will close when the mouse leaves the dropdown area
-                  MenuListProps={{
-                    onMouseLeave: handleClose,
-                  }}
-                  sx={{
-                    "& .MuiPaper-root": {
-                      background: "#EEEEFF", // Glass effect
-                      borderRadius: "35px",
-                      minWidth: "220px",
-                      transition: "all 0.3s ease-in-out", // Smooth transition
-                    },
-                    "& .MuiMenuItem-root": {
-                      fontWeight: 500,
-                      fontSize: "16px",
-                      padding: "12px 20px",
-                      borderRadius: "6px",
-                      transition: "all 0.2s ease-in-out",
-                      color: "#333",
+                  <Button
+                    color="inherit"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "22px",
+                      fontWeight: 600,
+                      letterSpacing: "1.5px",
+                      textTransform: "uppercase",
+                      padding: "10px 2px",
+                      paddingLeft: "20px",
+                      color: scrolling ? "#fff" : "#fff",
+                      transition: "all 0.3s ease-in-out",
+                      ...(anchorEl && {
+                        color: "#2794d2",
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
+                      }),
                       "&:hover": {
-                        background: "#2794d2", // Modern blue gradient
-                        color: "white",
-                        transform: "scale(1.05)", // Slight scale effect
+                        color: "#2794d2",
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
+                        "&:after": { width: "100%" },
                       },
-                    },
-                  }}
-                >
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("vehicle-window-tinting")
-                    }
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "3px",
+                        bottom: "0",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        background: "#2794d2",
+                        transition: "width 0.4s ease-in-out",
+                        borderRadius: "2px",
+                      },
+                    }}
                   >
-                    Vehicle Window Tinting
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => handleServiceSelect("tesla-window-tinting")}
+                    Services <span style={{ fontSize: "14px" }}>▾</span>
+                  </Button>
+
+                  {/* Dropdown Menu for Services */}
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={() => setAnchorEl(null)}
+                    MenuListProps={{
+                      onMouseLeave: () => setAnchorEl(null),
+                    }}
+                    sx={{
+                      "& .MuiPaper-root": {
+                        background: "#EEEEFF",
+                        borderRadius: "35px",
+                        minWidth: "220px",
+                        transition: "all 0.3s ease-in-out",
+                      },
+                      "& .MuiMenuItem-root": {
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        padding: "12px 20px",
+                        borderRadius: "6px",
+                        transition: "all 0.2s ease-in-out",
+                        color: "#333",
+                        "&:hover": {
+                          background: "#2794d2",
+                          color: "white",
+                          transform: "scale(1.05)",
+                        },
+                      },
+                    }}
                   >
-                    Tesla Window Tinting
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("commercial-window-tinting")
-                    }
-                  >
-                    Commercial Window Tinting
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("residential-window-tinting")
-                    }
-                  >
-                    Residential Window Tinting
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("vehicle-paint-correction")
-                    }
-                  >
-                    Vehicle Paint Correction
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("vehicle-paint-protection")
-                    }
-                  >
-                    Vehicle Paint Protection
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => handleServiceSelect("headlight-services")}
-                  >
-                    Headlight Services
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("windshield-protection-film")
-                    }
-                  >
-                    Windshield Protection Film
-                  </MenuItem>
-                </Menu>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("vehicle-window-tinting")
+                      }
+                    >
+                      Vehicle Window Tinting
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => handleServiceSelect("tesla-window-tinting")}
+                    >
+                      Tesla Window Tinting
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("commercial-window-tinting")
+                      }
+                    >
+                      Commercial Window Tinting
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("residential-window-tinting")
+                      }
+                    >
+                      Residential Window Tinting
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("vehicle-paint-correction")
+                      }
+                    >
+                      Vehicle Paint Correction
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("vehicle-paint-protection")
+                      }
+                    >
+                      Vehicle Paint Protection
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => handleServiceSelect("headlight-services")}
+                    >
+                      Headlight Services
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() =>
+                        handleServiceSelect("windshield-protection-film")
+                      }
+                    >
+                      Windshield Protection Film
+                    </MenuItem>
+                  </Menu>
+                </Box>
 
                 {/* Other Navigation Links */}
                 {["About", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
@@ -305,7 +314,7 @@ const Topbar = ({ notFound }) => {
                       textTransform: "uppercase",
                       position: "relative",
                       padding: "10px 20px",
-                      color: scrolling ? "#fff" : "#fff", // Dynamic text color
+                      color: scrolling ? "#fff" : "#fff",
                       transition: "all 0.3s ease-in-out",
                       "&:after": {
                         content: '""',
@@ -315,14 +324,14 @@ const Topbar = ({ notFound }) => {
                         bottom: "0",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        background: "#2794d2", // Gradient underline
+                        background: "#2794d2",
                         transition: "width 0.4s ease-in-out",
                         borderRadius: "2px",
                       },
                       "&:hover": {
-                        color: "#2794d2", // Bright hover color
-                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
-                        "&:after": { width: "100%" }, // Underline expands
+                        color: "#2794d2",
+                        textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
+                        "&:after": { width: "100%" },
                       },
                     }}
                   >
@@ -396,11 +405,11 @@ const Topbar = ({ notFound }) => {
         <List
           sx={{
             textAlign: "center",
-            flexGrow: 1, // ✅ Forces links to take up space and push buttons down
+            flexGrow: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center", // ✅ Centers links perfectly
-            gap: "15px", // ✅ Adds consistent spacing between links
+            justifyContent: "center",
+            gap: "15px",
           }}
         >
           {["Services", "Reviews", "Gallery", "Blog", "FAQ", "Contact"].map(
@@ -414,12 +423,12 @@ const Topbar = ({ notFound }) => {
                   primary={item}
                   primaryTypographyProps={{
                     sx: {
-                      fontFamily: "NoizeSport, sans-serif", // ✅ Apply NoizeSport font
+                      fontFamily: "NoizeSport, sans-serif",
                       fontWeight: "bold",
                       color: "white",
                       textTransform: "uppercase",
                       textAlign: "center",
-                      fontSize: "clamp(30px, 4vw, 50px)", // Responsive size
+                      fontSize: "clamp(30px, 4vw, 50px)",
                       lineHeight: "1.2",
                       "&:hover": { color: "#2794d2", cursor: "pointer" },
                     },
@@ -430,15 +439,15 @@ const Topbar = ({ notFound }) => {
           )}
         </List>
 
-        {/* Buttons & Social Icons in a Tightly Packed Layout */}
+        {/* Buttons & Social Icons */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "10px", // ✅ Prevents space between buttons and nav links
+            gap: "10px",
             width: "100%",
-            paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)", // ✅ Ensures spacing for iPhones
+            paddingBottom: "calc(env(safe-area-inset-bottom, 10px) + 10px)",
           }}
         >
           {/* Get a Quote Button */}
@@ -497,8 +506,8 @@ const Topbar = ({ notFound }) => {
             sx={{
               display: "flex",
               gap: 4,
-              mt: "5px", // ✅ Ensures no large gap between buttons & icons
-              mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)", // ✅ Accounts for iPhone bottom navbar
+              mt: "5px",
+              mb: "calc(env(safe-area-inset-bottom, 10px) + 5px)",
             }}
           >
             {[FaFacebook, FaInstagram].map((Icon, index) => (
