@@ -32,11 +32,11 @@ const quickLinksData = [
       { text: "Frequently Asked Questions", to: "/faq" },
       { text: "Gallery", to: "/gallery" },
       { text: "Blogs", to: "/blog" },
-      { text: "Vehicle Window Tint Viewer", to: "/window-tinting-simulator" },
+      { text: "Vehicle Window Tint Viewer", to: "/vehicle-tinting-simulator" },
+      { text: "Tesla Window Tint Viewer", to: "/tesla-tinting-simulator" },
       { text: "Paint Protection Film Viewer", to: "/paint-protection-simulator" },
       { text: "Commercial Window Film Viewer", to: "/commercial-tinting-simulator" },
       { text: "Residential Window Film Viewer", to: "/residential-tinting-simulator" },
-      { text: "Residential Window Film Viewer", to: "/tinting-simulator" },
     ],
   },
 ];

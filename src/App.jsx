@@ -23,8 +23,11 @@ import PricingComponent from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import QuickLinks from "./components/QuickLinks";
 import FAQSection from "./components/FAQSection";
-import CommercialSimulator from "./components/CommercialSimulator";
-import ResidentialSimulator from "./components/ResidentialSimulator";
+import CommercialSimulator from "./components/simulators/CommercialSimulator";
+import ResidentialSimulator from "./components/simulators/ResidentialSimulator";
+import TeslaTintingPage from "./components/simulators/TeslaSimulatorPage";
+import VehicleTintingPage from "./components/simulators/VehicleSimulatorPage";
+import PPFpage from "./components/simulators/PPFpage";
 
 // Theme Config
 const theme = createTheme({
@@ -93,6 +96,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/commercial-tinting-simulator" element={<CommercialSimulator/>}/>
           <Route path="/residential-tinting-simulator" element={<ResidentialSimulator/>}/>
+          <Route path="/tesla-tinting-simulator" element={<TeslaTintingPage/>}/>
+          <Route path="/vehicle-tinting-simulator" element={<VehicleTintingPage/>}/>
+          <Route path="/paint-protection-simulator" element={<PPFpage/>}/>
         </Routes>
         <Chatbot />
       </Router>

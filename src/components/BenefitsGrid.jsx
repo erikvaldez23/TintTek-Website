@@ -64,13 +64,45 @@ const benefitsData = {
       description: "Window tinting helps preserve the beauty of your home by preventing sun damage to furniture, flooring, and artwork. It acts as a protective shield, reducing fading and wear from UV rays and solar heat.",
     },
   ],
-  // Add additional service keys as needed.
+  "windshield-protection-film": [
+    {
+      title: "Impact Resistance",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description: "ExoShield GT3 is engineered to deliver superior abrasion resistance, durability, and weatherability. It boasts a thickness of five mils—about 2.5 times that of a human hair—providing robust protection against chips and cracks caused by road debris. Designed to give you 6X more impact protection, GT3+ is truly made to save your glass.",
+    },
+    {
+      title: "Advanced Nanocoating Technology",
+      icon: <SecurityIcon fontSize="large" />,
+      description: "Incorporating second-generation Endurance Class nanocoatings, ExoShield GT3 ensures a strong bond between layers, preventing delamination and extending the film's lifespan.",
+    },
+    {
+      title: "Optical Clarity",
+      icon: <VisibilityIcon fontSize="large" />,
+      description: "As one of the most optically clear films on the market, ExoShield GT3 is virtually invisible once installed, maintaining the natural appearance of your vehicle while providing robust protection.",
+    },
+    {
+      title: "UV & Heat Rejection",
+      icon: <HomeWorkIcon fontSize="large" />,
+      description: "The film blocks up to 99% of harmful UV rays, reducing interior heat buildup and protecting your vehicle's interior from sun damage. ",
+    },
+    {
+      title: "Long Term Durability",
+      icon: <ColorLensIcon fontSize="large" />,
+      description: "Designed to withstand various driving conditions, ExoShield GT3 is weather-resistant and maintains its protective qualities over time, ensuring lasting windshield protection. ",
+    },
+    {
+      title: "Made in The USA",
+      icon: <ColorLensIcon fontSize="large" />,
+      description: "Your windshield protection film is only as good as the materials it's made with. We use the highest quality PET (Polyethylene Terephthalate) combined with our own proprietary coatings tech to deliver you the best quality.",
+    },
+  ],
 };
 
 // Titles for each service benefits section
 const titles = {
   "commercial-window-tinting": "Why Choose LLumar®",
   "residential-window-tinting": "Why Choose LLumar®",
+  "windshield-protection-film": "Why Choose ExoShield GT3",
 };
 
 const BenefitsGrid = () => {

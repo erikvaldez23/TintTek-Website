@@ -623,6 +623,7 @@ const ServicePage = () => {
       )} */}
 
       {(serviceId === "commercial-window-tinting" ||
+       serviceId === "windshield-protection-film" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}

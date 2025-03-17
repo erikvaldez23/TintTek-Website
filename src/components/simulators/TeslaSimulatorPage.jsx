@@ -9,6 +9,10 @@ import {
   useTheme,
 } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
+import CallToAction from "../CallToAction";
+import Contact from "../Contact";
+import QuickLinks from "../QuickLinks";
+import Footer from "../Footer";
 
 // Define Tint Options with Images
 const tintOptions = {
@@ -39,7 +43,7 @@ const tintOptions = {
   },
 };
 
-const TeslaTintingSimulator = () => {
+const TeslaTintingPage = () => {
   const [selectedTint, setSelectedTint] = useState("5%"); // Default tint selection
 
   const theme = useTheme();
@@ -51,6 +55,51 @@ const TeslaTintingSimulator = () => {
   };
 
   return (
+      <>
+          {/* Header Section with 35vh height */}
+          <Box
+            sx={{
+                position: "relative",
+                width: "100%",
+                height: { xs: "35vh", md: "35vh" },
+                overflow: "hidden",
+                backgroundColor: "#000",
+              }}
+          >
+               <Box
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        textAlign: "center",
+                        color: "white",
+                        px: 2,
+                      }}
+                    >
+                  <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: "bold",
+                  color: "#fff",
+                  textAlign: "center",
+                  fontSize: {
+                    xs: "2.5rem",
+                    sm: "2.5rem",
+                    md: "3.5rem",
+                    lg: "4rem",
+                  },
+                }}
+              >
+                TESLA WINDOW TINT VIEWER
+              </Typography>
+          </Box>
+          </Box>
     <Box>
       {/* Navigation Tabs for Larger Screens */}
       {!isMobile ? (
@@ -229,7 +278,13 @@ const TeslaTintingSimulator = () => {
         </AnimatePresence>
       </Box>
     </Box>
+
+    <CallToAction />
+    <Contact />
+    <QuickLinks />
+    <Footer />
+    </>
   );
 };
 
-export default TeslaTintingSimulator;
+export default TeslaTintingPage;
