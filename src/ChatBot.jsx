@@ -69,7 +69,7 @@ export default function Chatbot() {
           sx={{
             bgcolor: "#2794d2",
             color: "white",
-            "&:hover": { bgcolor: "primary.dark" },
+            "&:hover": { bgcolor: "#000" },
           }}
         >
           <ChatIcon />

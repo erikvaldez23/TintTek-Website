@@ -23,8 +23,10 @@ import PricingComponent from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import QuickLinks from "./components/QuickLinks";
 import FAQSection from "./components/FAQSection";
+import CommercialSimulator from "./components/CommercialSimulator";
+import ResidentialSimulator from "./components/ResidentialSimulator";
 
-// Theme Configuration
+// Theme Config
 const theme = createTheme({
   palette: {
     primary: {
@@ -33,7 +35,7 @@ const theme = createTheme({
   },
 });
 
-// Scroll Handler for navigating to specific sections on the homepage
+// Scroll Handler
 const ScrollHandler = () => {
   const location = useLocation();
 
@@ -48,7 +50,7 @@ const ScrollHandler = () => {
             targetSection.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
-      }, 100); // Delay to ensure DOM is ready
+      }, 100);
     }
   }, [location]);
 
@@ -63,8 +65,6 @@ function App() {
         <ScrollToTop />
         <ScrollHandler />
         <Topbar />
-
-        {/* Define routes for different pages */}
         <Routes>
           <Route
             path="/"
@@ -78,11 +78,10 @@ function App() {
                 <CallToAction />
                 <Contact />
                 <QuickLinks />
-                <Footer />
+                <Footer /> 
               </>
             }
           />
-          {/* Dynamic Route for Service Details */}
           <Route path="/services/:serviceId" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<PricingComponent />} />
           <Route path="/services/:serviceId" element={<FAQSection />} />
@@ -91,10 +90,10 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
-          {/* Catch-All Route for 404 Page */}
           <Route path="*" element={<NotFound />} />
+          <Route path="/commercial-tinting-simulator" element={<CommercialSimulator/>}/>
+          <Route path="/residential-tinting-simulator" element={<ResidentialSimulator/>}/>
         </Routes>
-        {/* Persistent Chatbot across all pages */}
         <Chatbot />
       </Router>
     </ThemeProvider>

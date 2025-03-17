@@ -34,8 +34,8 @@ const quickLinksData = [
       { text: "Blogs", to: "/blog" },
       { text: "Vehicle Window Tint Viewer", to: "/window-tinting-simulator" },
       { text: "Paint Protection Film Viewer", to: "/paint-protection-simulator" },
-      { text: "Commercial Window Film Viewer", to: "/tinting-simulator" },
-      { text: "Residential Window Film Viewer", to: "/tinting-simulator" },
+      { text: "Commercial Window Film Viewer", to: "/commercial-tinting-simulator" },
+      { text: "Residential Window Film Viewer", to: "/residential-tinting-simulator" },
       { text: "Residential Window Film Viewer", to: "/tinting-simulator" },
     ],
   },
@@ -49,7 +49,7 @@ const QuickLinks = () => {
     <Box
       id="quick-links"
       sx={{
-        width: "100vw",
+        width: "100%",
         textAlign: "center",
         background: "#000",
         color: "#fff",

@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams} from "react-router-dom";
 import {
   Box,
   Container,
@@ -25,6 +25,7 @@ import TintPackages from "./TintPackages";
 import TeslaTintingSimulator from "./TeslaTintingSimulator";
 import QuickLinks from "./QuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
+import BenefitsGrid from "./BenefitsGrid";
 
 // Define service details for each page
 const serviceDetails = {
@@ -168,8 +169,7 @@ const serviceDetails = {
       },
       {
         benefit: "Enhances building appearance",
-        detail:
-          "Gives your building a modern and professional look.",
+        detail: "Gives your building a modern and professional look.",
         stat: "A sleek façade can significantly boost curb appeal and property value.",
       },
       {
@@ -256,8 +256,7 @@ const serviceDetails = {
       },
       {
         benefit: "Enhances gloss and clarity",
-        detail:
-          "Boosts shine and clarity for a polished, showroom appearance.",
+        detail: "Boosts shine and clarity for a polished, showroom appearance.",
         stat: "Gloss levels improve dramatically as reported by 95% of our clients.",
       },
       {
@@ -315,8 +314,7 @@ const serviceDetails = {
       },
       {
         benefit: "Easy maintenance and cleaning",
-        detail:
-          "Simplifies upkeep with a surface that repels dirt and stains.",
+        detail: "Simplifies upkeep with a surface that repels dirt and stains.",
         stat: "Users report up to 50% less cleaning time.",
       },
       {
@@ -401,8 +399,7 @@ const serviceDetails = {
       },
       {
         benefit: "Provides a high-gloss, durable finish",
-        detail:
-          "Delivers a long-lasting protective layer that enhances shine.",
+        detail: "Delivers a long-lasting protective layer that enhances shine.",
         stat: "High durability ensures performance even in harsh conditions.",
       },
       {
@@ -434,11 +431,14 @@ const serviceDetails = {
   },
 };
 
-
 const ServicePage = () => {
   const { serviceId } = useParams();
   const service = serviceDetails[serviceId];
   const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // ✅ Handle "Service Not Found" with Full Layout
   if (!service) {
@@ -520,7 +520,7 @@ const ServicePage = () => {
             <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
               <img
                 src="/TintTek-Website/dog.jpeg" // Replace with your desired image
-                alt="Funny Dog"
+                alt="Dog"
                 style={{
                   maxWidth: "100%",
                   height: "auto",
@@ -622,6 +622,9 @@ const ServicePage = () => {
         </Box>
       )} */}
 
+      {(serviceId === "commercial-window-tinting" ||
+        serviceId === "residential-window-tinting") && <BenefitsGrid />}
+
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
       {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
@@ -634,9 +637,11 @@ const ServicePage = () => {
           </Box>
         )}
 
-      <BenefitsSection benefits={service.benefits} />
+      {(serviceId !== "commercial-window-tinting" && 
+        serviceId !== "residential-window-tinting") && (
+        <BenefitsSection benefits={service.benefits} />
+      )}
 
-      {/* ✅ How It Works Section (Only for Non-Commercial/Residential Services) */}
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (
           <HowItWorks serviceId={serviceId} />
@@ -645,8 +650,8 @@ const ServicePage = () => {
       {/* ✅ Services We Offer Section */}
       <ServicesOffered serviceId={serviceId} />
 
-    {serviceId === "vehicle-window-tinting" && <TintPackages />}
-    {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
+      {serviceId === "vehicle-window-tinting" && <TintPackages />}
+      {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
 
       <FAQSection />
 

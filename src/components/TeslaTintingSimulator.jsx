@@ -5,10 +5,10 @@ import {
   Button,
   Select,
   MenuItem,
-  Fade,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Define Tint Options with Images
 const tintOptions = {
@@ -39,20 +39,15 @@ const tintOptions = {
   },
 };
 
-const TeslaTintingSimulator = () => {
+const TintingSimulator = () => {
   const [selectedTint, setSelectedTint] = useState("5%"); // Default tint selection
-  const [fade, setFade] = useState(true); // State for fade effect
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
 
-  // Handle Tint Selection with Smooth Transition
+  // Handle Tint Selection with animation trigger
   const handleSelection = (tintKey) => {
-    setFade(false); // Start fade-out
-    setTimeout(() => {
-      setSelectedTint(tintKey); // Change tint selection
-      setFade(true); // Fade-in effect
-    }, 200);
+    setSelectedTint(tintKey);
   };
 
   return (
@@ -96,11 +91,11 @@ const TeslaTintingSimulator = () => {
         // Dropdown for Mobile Screens
         <Box
           sx={{
-            backgroundColor: "#2E2E2E", // Force black background
+            backgroundColor: "#2E2E2E",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center", // Center content
-            padding: "20px", // Add padding to prevent cutoff
+            justifyContent: "center",
+            padding: "20px",
           }}
         >
           <Box sx={{ width: "90%", mx: "auto" }}>
@@ -112,26 +107,26 @@ const TeslaTintingSimulator = () => {
               MenuProps={{
                 PaperProps: {
                   sx: {
-                    backgroundColor: "#444", // Grey background for dropdown menu
-                    color: "#fff", // White text inside the dropdown
+                    backgroundColor: "#444",
+                    color: "#fff",
                   },
                 },
               }}
               sx={{
-                background: "#000", // Black background for the select field itself
-                backdropFilter: "blur(12px)", // Frosted background effect
-                border: "1px solid #ccc", // Light border to make it visible
+                background: "#000",
+                backdropFilter: "blur(12px)",
+                border: "1px solid #ccc",
                 borderRadius: "30px",
-                color: "#fff", // White text for contrast
+                color: "#fff",
                 fontWeight: "500",
                 fontSize: "16px",
                 textTransform: "uppercase",
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
+                  background: "rgba(255, 255, 255, 0.2)",
                 },
                 "& .MuiSelect-icon": {
-                  color: "#2794d2", // Custom dropdown arrow color
+                  color: "#2794d2",
                 },
                 "& .MuiSelect-select": {
                   padding: "14px 18px",
@@ -152,12 +147,13 @@ const TeslaTintingSimulator = () => {
                     padding: "12px",
                     borderRadius: "8px",
                     transition: "all 0.3s ease",
-                    backgroundColor: "#444", // Grey background for dropdown menu items
-                    color: "#fff", // White text for contrast
+                    backgroundColor: "#444",
+                    color: "#fff",
                     "&:hover": {
-                      background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
+                      background:
+                        "linear-gradient(90deg, #2794d2, #1a78c2)",
                       color: "#fff",
-                      transform: "scale(1.03)", // Subtle scale effect
+                      transform: "scale(1.03)",
                     },
                   }}
                 >
@@ -174,7 +170,7 @@ const TeslaTintingSimulator = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "50vh" : "60vh", // Increased height for proper spacing
+          height: isMobile ? "50vh" : "60vh",
           background: "#2e2e2e",
           display: "flex",
           flexDirection: "column",
@@ -187,14 +183,14 @@ const TeslaTintingSimulator = () => {
         <Box
           sx={{
             position: "absolute",
-            top: isMobile ? "2%" : "5%", // Moves text closer to navigation buttons
+            top: isMobile ? "2%" : "5%",
             left: "50%",
-            transform: "translateX(-50%)", // Center horizontally
+            transform: "translateX(-50%)",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center", // Center text items
+            alignItems: "center",
             textAlign: "center",
-            zIndex: 3, // Ensures it's above the image
+            zIndex: 3,
           }}
         >
           <Typography
@@ -212,24 +208,28 @@ const TeslaTintingSimulator = () => {
           </Typography>
         </Box>
 
-        {/* Image Display with Fade Effect */}
-        <Fade in={fade} timeout={500}>
-          <Box
-            component="img"
+        {/* Animated Image Transition */}
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={selectedTint}
             src={tintOptions[selectedTint].image}
             alt={tintOptions[selectedTint].name}
-            sx={{
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            style={{
               width: isMobile ? "100%" : "80%",
               height: isMobile ? "45vh" : "35vh",
               objectFit: "contain",
               zIndex: 2,
-              marginTop: isMobile ? "5vh" : "10vh", // Moves image lower to prevent overlap
+              marginTop: isMobile ? "5vh" : "10vh",
             }}
           />
-        </Fade>
+        </AnimatePresence>
       </Box>
     </Box>
   );
 };
 
-export default TeslaTintingSimulator;
+export default TintingSimulator;

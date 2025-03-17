@@ -76,28 +76,27 @@ const serviceOptions = {
   "commercial-window-tinting": {
     title: "Commercial Window Tinting Services",
     list: [
-      "Decorative Tints and Films",
-      "Privacy Window Tinting",
-      "Skylight Window Tinting",
-      "Enhanced Security & Design",
-      "Solar/UV Blocking Window Tint",
-      "Thermal Rejection Window Tint",
+      "Office Window Tinting",
+      "Storefront Window Tinting",
+      "Skyscraper Window Tinting",
+      "Conference Room Tinting",
+      "Custom Business Tinting Solutions",
     ],
     filmTypes: [
       {
-        name: "Llumar Frosted Film",
+        name: "Solar Control Film",
         description:
-          "Provides privacy while allowing natural light, perfect for office and commercial spaces.",
+          "Reduces heat and glare while allowing natural light to enter, improving energy efficiency.",
       },
       {
-        name: "Llumar Reflective Film",
+        name: "Decorative Film",
         description:
-          "Reduces glare and heat, offering both privacy and energy savings for large buildings.",
+          "Offers privacy and style while reducing glare and heat.",
       },
       {
-        name: "Llumar Dual-Reflective Film",
+        name: "Security Film (Coming Soon!)",
         description:
-          "Balances interior visibility with exterior privacy and superior UV protection.",
+          "Strengthens windows, offering protection against break-ins and accidents by preventing shattering.",
       },
     ],
   },
