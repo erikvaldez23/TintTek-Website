@@ -49,7 +49,7 @@ const CallToAction = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           color: "white",
-          padding: isMobile ? "3rem 1.5rem" : "2rem",
+          padding: isMobile ? "3rem 1.5rem" : "1rem",
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
           overflow: "hidden",
         }}

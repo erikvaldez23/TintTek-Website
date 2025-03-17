@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
@@ -17,7 +15,6 @@ import {
 } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 const servicesData = [
   {
@@ -37,14 +34,14 @@ const servicesData = [
   {
     id: "commercial-window-tinting",
     title: "COMMERCIAL WINDOW TINTING",
-    description:
-      "Enhance energy savings, privacy, and security.",  
+    description: "Enhance energy savings, privacy, and security.",
     image: "/TintTek-Website/commercial.jpg",
   },
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
-    description: "Lower your energy costs, get UV protection, enhance privacy and security.",
+    description:
+      "Lower your energy costs, get UV protection, enhance privacy and security.",
     image: "/TintTek-Website/residential-tint.png",
   },
   {
@@ -56,7 +53,8 @@ const servicesData = [
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
-    description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
+    description:
+      "Shields paint from scratches, chips, stains, UV damage, and wear.",
     image: "/TintTek-Website/paint-protection1.jpg",
   },
   {
@@ -75,10 +73,10 @@ const servicesData = [
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.5 },
   },
 };
 
@@ -127,8 +125,6 @@ const Services = () => {
     centerMode: true, // Center the active slide
     centerPadding: "15%", // Adjust this value to show equal portions of adjacent slides
   };
-  
-  
 
   // Desktop layout with staggered animations for each card
   const desktopContent = (
@@ -155,20 +151,34 @@ const Services = () => {
                     position: "relative",
                     cursor: "pointer",
                     backgroundColor: "black",
+                    // On hover, scale the image and fade the overlay
+                    "&:hover .cardMedia": {
+                      transform: "scale(1.1)",
+                    },
+                    "&:hover .cardOverlay": {
+                      background: "rgba(0, 0, 0, 0.1)",
+                    },
+                    // Optional: add a subtle shadow on hover
                     "&:hover": {
+                      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.3)",
                       border: "5px solid #2794d2",
-                      transform: "scale(1.02)",
-                    }
+
+                    },
                   }}
                   onClick={() => handleServiceClick(service.id)}
                 >
                   <CardMedia
                     component="img"
+                    className="cardMedia"
                     height="450"
                     image={service.image}
                     alt={service.title}
+                    sx={{
+                      transition: "transform 0.5s ease",
+                    }}
                   />
                   <CardContent
+                    className="cardOverlay"
                     sx={{
                       position: "absolute",
                       top: 0,
@@ -182,6 +192,7 @@ const Services = () => {
                       justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
+                      transition: "background 0.5s ease",
                     }}
                   >
                     <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -205,7 +216,11 @@ const Services = () => {
       <Slider {...(isMobile ? mobileSliderSettings : sliderSettings)}>
         {servicesData.map((service) => (
           <Box key={service.id} sx={{ px: 2 }}>
-            <motion.div variants={cardVariants} initial="hidden" animate="visible">
+            <motion.div
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <Card
                 sx={{
                   width: "65vw", // Adjust as needed
@@ -279,9 +294,6 @@ const Services = () => {
       </Slider>
     </Box>
   );
-  
-  
-  
 
   return (
     <Box

@@ -247,6 +247,50 @@ const serviceSteps = {
       "/TintTek-Website/paint-correction3.jpeg",
     ],
   },
+  "headlight-services": {
+    title: "Headlight Services",
+    steps: [
+      {
+        title: "Consulation",
+        description:
+          "Discuss your desired tint tone and assess your vehicle's lighting.",
+        detailedDescription:
+          "tbd",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Preparation",
+        description:
+          "Clean the headlight and taillight surfaces to ensure optimal adhesion.",
+        detailedDescription:
+          "tbd",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Application",
+        description:
+          "Carefully apply the chosen STEK LPF, ensuring a smooth and bubble-free finish.",
+        detailedDescription:
+          "tbd",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Curing",
+        description:
+          "Allow the film to set, ensuring durability and longevity.",
+        detailedDescription:
+          "tbd",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+    ],
+    finalDescription:
+      "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
+    images: [
+      "/TintTek-Website/paint-protection1.jpeg",
+      "/TintTek-Website/paint-protection2.jpeg",
+      "/TintTek-Website/paint-protection3.jpeg",
+    ],
+  },
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection",
     steps: [
@@ -283,6 +327,42 @@ const serviceSteps = {
       "/TintTek-Website/paint-protection3.jpeg",
     ],
   },
+  // "vehicle-paint-protection": {
+  //   title: "Vehicle Paint Protection",
+  //   steps: [
+  //     {
+  //       title: "Preparation",
+  //       description:
+  //         "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
+  //       detailedDescription:
+  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+  //       icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+  //     },
+  //     {
+  //       title: "Film Application",
+  //       description:
+  //         "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
+  //       detailedDescription:
+  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+  //       icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+  //     },
+  //     {
+  //       title: "Final Inspection",
+  //       description:
+  //         "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
+  //       detailedDescription:
+  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+  //       icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+  //     },
+  //   ],
+  //   finalDescription:
+  //     "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
+  //   images: [
+  //     "/TintTek-Website/paint-protection1.jpeg",
+  //     "/TintTek-Website/paint-protection2.jpeg",
+  //     "/TintTek-Website/paint-protection3.jpeg",
+  //   ],
+  // },
 };
 
 const HowItWorks = ({ serviceId }) => {

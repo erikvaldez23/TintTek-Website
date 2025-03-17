@@ -178,6 +178,64 @@ const serviceOptions = {
       },
     ],
   },
+  "headlight-services": {
+    title: "Headlight Services",
+    list: [
+      "Headlight Tint",
+      "Taillight Tint",
+      "Reflectors",
+    ],
+    filmTypes: [
+      {
+        name: "DYNOshade",
+        description:
+          "Description",
+      },
+      {
+        name: "DYNOshadow",
+        description:
+          "Description",
+      },
+      {
+        name: "DYNOsmoke",
+        description:
+          "Description",
+      },
+      {
+        name: "DYNOstorm",
+        description:
+          "Description",
+      },
+      {
+        name: "DYNOyellow",
+        description:
+          "Description",
+      },
+    ],
+  },
+  // "vehicle-paint-protection": {
+  //   title: "Vehicle Paint Protection Services",
+  //   list: [
+  //     "Front End PPF",
+  //     "Extended PPF",
+  //     "Track Package PPF",
+  //     "Full Car PPF",
+  //     "Color Change PPF",
+  //     "Stealth/Matte PPF",
+  //   ],
+  //   filmTypes: [
+  //     {
+  //       name: "Llumar Paint Protection Film",
+  //       description:
+  //         "Invisible shield that protects your car from chips, scratches, and road debris.",
+  //     },
+  //     {
+  //       name: "STEK PPF",
+  //       description:
+  //         "High-quality, protective film that guards your car’s paint against chips, scratches, stains, and road debris while preserving its appearance.",
+  //     },
+  //   ],
+  // },
 };
 
 const ServicesOffered = ({ serviceId }) => {
@@ -257,7 +315,8 @@ const ServicesOffered = ({ serviceId }) => {
                 <Box
                   component="img"
                   src={
-                    serviceId === "vehicle-paint-protection"
+                    serviceId === "vehicle-paint-protection" ||
+                    serviceId === "headlight-services"
                       ? "/TintTek-Website/stek-logo.png" // ✅ STEK logo
                       : "/TintTek-Website/llumar-logo.png"
                   } // ✅ Default Llumar logo
@@ -269,7 +328,8 @@ const ServicesOffered = ({ serviceId }) => {
                     width: 70,
                     height: "auto",
                     filter:
-                      serviceId === "vehicle-paint-protection"
+                      serviceId === "vehicle-paint-protection" ||
+                      serviceId === "headlight-services"
                         ? "invert(1)"
                         : "none", // ✅ Apply inversion only for STEK
                   }}

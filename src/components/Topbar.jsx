@@ -122,7 +122,7 @@ const Topbar = ({ notFound }) => {
             ? "#000"
             : "transparent",
           backdropFilter: scrolling && !notFound ? "blur(10px)" : "none",
-          color: notFound || scrolling ? "#000" : "#EEEEFF",
+          color: notFound || scrolling ? "#EEEEFF" : "#EEEEFF",
           boxShadow:
             scrolling && !notFound ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
           transition: "all 0.3s ease-in-out",
@@ -167,12 +167,12 @@ const Topbar = ({ notFound }) => {
                 {/* Services Button with Dropdown */}
                 <Button
                   color="inherit"
-                  onClick={handleServicesClick}
+                  onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
+                  onClick={handleServicesClick} // optional for mobile support
                   sx={{
-                    display: "flex", // Ensures text and arrow are in one line
-                    alignItems: "center", // Aligns items vertically
-                    gap: "5px", // Adds space between text and arrow
-
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
                     fontSize: "22px",
                     fontWeight: 600,
                     letterSpacing: "1.5px",
@@ -181,6 +181,15 @@ const Topbar = ({ notFound }) => {
                     paddingLeft: "20px",
                     color: scrolling ? "#fff" : "#fff",
                     transition: "all 0.3s ease-in-out",
+                    ...(anchorEl && {
+                      color: "#2794d2",
+                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
+                    }),
+                    "&:hover": {
+                      color: "#2794d2",
+                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)",
+                      "&:after": { width: "100%" },
+                    },
                     "&:after": {
                       content: '""',
                       position: "absolute",
@@ -189,14 +198,9 @@ const Topbar = ({ notFound }) => {
                       bottom: "0",
                       left: "50%",
                       transform: "translateX(-50%)",
-                      background: "#2794d2", // Gradient underline
+                      background: "#2794d2",
                       transition: "width 0.4s ease-in-out",
                       borderRadius: "2px",
-                    },
-                    "&:hover": {
-                      color: "#2794d2", // Bright hover color
-                      textShadow: "0 0 8px rgba(0, 198, 255, 0.8)", // Glowing text
-                      "&:after": { width: "100%" }, // Underline expands
                     },
                   }}
                 >
@@ -208,6 +212,10 @@ const Topbar = ({ notFound }) => {
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
+                  // This ensures the menu will close when the mouse leaves the dropdown area
+                  MenuListProps={{
+                    onMouseLeave: handleClose,
+                  }}
                   sx={{
                     "& .MuiPaper-root": {
                       background: "#EEEEFF", // Glass effect
@@ -271,9 +279,7 @@ const Topbar = ({ notFound }) => {
                     Vehicle Paint Protection
                   </MenuItem>
                   <MenuItem
-                    onClick={() =>
-                      handleServiceSelect("headlight-services")
-                    }
+                    onClick={() => handleServiceSelect("headlight-services")}
                   >
                     Headlight Services
                   </MenuItem>

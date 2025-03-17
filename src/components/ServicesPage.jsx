@@ -348,40 +348,28 @@ const serviceDetails = {
     details: "Placeholder",
     benefits: [
       {
-        benefit: "Protects from chips, scratches, and road debris",
+        benefit: "Durable protection",
         detail:
-          "Headlight services safeguard your lenses against everyday hazards.",
-        stat: "Improves longevity by reducing damage incidents by 60%.",
+          "Safeguards against rock chips, cracks, scratches, and other road hazards.",
+        stat: "",
       },
       {
-        benefit: "Maintains your car’s showroom finish",
+        benefit: "Enhanced aesthetics",
         detail:
-          "Keeps your headlights clear and polished for optimal performance.",
-        stat: "Ensures clarity and performance for extended periods.",
+          "Adds a customized tint to your headlights and taillights, complementing your vehicle's style.",
+        stat: "",
       },
       {
-        benefit: "Provides a high-gloss, durable finish",
+        benefit: "Hyrdrophobic properties",
         detail:
-          "Enhances the look of your headlights while adding durability.",
-        stat: "Maintains a glossy finish over time as confirmed by customer reviews.",
+          "Repels water, making your lights easier to clean and maintain.",
+        stat: "",
       },
       {
-        benefit: "Easy maintenance and cleaning",
+        benefit: "Self-healing",
         detail:
-          "Simplifies upkeep with a protective coating that repels dirt.",
-        stat: "Customers experience up to a 40% reduction in cleaning frequency.",
-      },
-      {
-        benefit: "Customizes vehicle appearance",
-        detail:
-          "Tailors your headlights to complement your vehicle’s overall design.",
-        stat: "Adds a personalized touch that enhances style.",
-      },
-      {
-        benefit: "Prevents UV damage and fading",
-        detail:
-          "Helps maintain clarity and performance by blocking harmful UV rays.",
-        stat: "Blocks nearly 100% of UV rays, reducing yellowing over time.",
+          "The film's advanced technology allows minor scratches to heal with heat, maintaining a smooth surface.",
+        stat: "",
       },
     ],
     servicesOffered: [
