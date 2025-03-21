@@ -19,13 +19,8 @@ const serviceOptions = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting Services",
     list: [
-      "Full SUV Tinting",
-      "Full Sedan Tinting",
-      "Full Coupe Tinting",
-      "2 Windows Only",
-      "Front Windshield and Sunroof",
-      "Front Windshield Only",
-      "Sunroof/Panoramic Roof",
+      "Front Windsheield",
+      "Sunroof / Panoramic Roof",
       "Visor Strips",
     ],
     filmTypes: [
@@ -111,19 +106,39 @@ const serviceOptions = {
     ],
     filmTypes: [
       {
-        name: "Llumar UVShield",
+        name: "Reflective Window Film",
         description:
-          "Blocks harmful UV rays to protect your furniture and flooring from fading.",
+          "Needs description",
       },
       {
-        name: "Llumar Energy-Saving Film",
+        name: "Dual-Reflective Window Film",
         description:
-          "Improves home energy efficiency by reducing heat gain and loss.",
+          "Needs description",
       },
       {
-        name: "Llumar Decorative Film",
+        name: "Neutral Window Film",
         description:
-          "Adds aesthetic appeal while offering privacy for bathrooms and living spaces.",
+          "Needs description",
+      },
+      {
+        name: "Specialty Window Film",
+        description:
+          "Needs description",
+      },
+      {
+        name: "Ceramic Window Film",
+        description:
+          "Needs description",
+      },
+      {
+        name: "Harmony Window Film",
+        description:
+          "Needs description",
+      },
+      {
+        name: "Spectrally Selective Window Film",
+        description:
+          "Needs description",
       },
     ],
   },

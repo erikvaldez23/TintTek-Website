@@ -182,7 +182,7 @@ const Topbar = ({ notFound }) => {
                       display: "flex",
                       alignItems: "center",
                       gap: "5px",
-                      fontSize: "22px",
+                      fontSize: "27px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",
@@ -308,7 +308,7 @@ const Topbar = ({ notFound }) => {
                     color="inherit"
                     onClick={() => scrollToSection(item.toLowerCase())}
                     sx={{
-                      fontSize: "22px",
+                      fontSize: "27px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
                       textTransform: "uppercase",

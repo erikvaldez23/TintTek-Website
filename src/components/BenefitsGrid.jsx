@@ -188,7 +188,7 @@ const BenefitsGrid = () => {
                   <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}>
                     {benefit.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#fff" }}>
+                  <Typography variant="body1" sx={{ color: "#fff" }}>
                     {benefit.description}
                   </Typography>
                 </CardContent>

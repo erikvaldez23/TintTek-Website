@@ -26,6 +26,8 @@ import TeslaTintingSimulator from "./TeslaTintingSimulator";
 import QuickLinks from "./key-components/QuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
+import CommercialCTA from "./CommercialCTA";
+import ResidentialCTA from "./ResidentialCTA";
 
 // Define service details for each page
 const serviceDetails = {
@@ -629,9 +631,13 @@ const ServicePage = () => {
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
       {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+      {serviceId === "commercial-window-tinting" && <CommercialCTA />}
+      {serviceId === "residential-window-tinting" && <ResidentialCTA />}
 
       {/* ✅ Pricing Section (Only for Non-Paint Services) */}
       {serviceId !== "vehicle-paint-correction" &&
+      serviceId !== "commercial-window-tinting" &&
+      serviceId !== "residential-window-tinting" &&
         serviceId !== "vehicle-paint-protection" && (
           <Box sx={{ width: "100vw" }}>
             <PricingComponent />

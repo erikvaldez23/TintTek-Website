@@ -46,11 +46,8 @@ const CallToAction = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          backgroundColor: "#000",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundColor: "#2794d2",
           color: "white",
-          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
           overflow: "hidden",
         }}
       >
@@ -65,11 +62,10 @@ const CallToAction = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
             zIndex: 1,
           }}
         />
-  
+
         {/* Content Section */}
         <Box
           sx={{
@@ -89,9 +85,9 @@ const CallToAction = () => {
               textTransform: "uppercase",
             }}
           >
-            DO YOU NEED WINDOW TINT?
+            Why Choose Tint Tek Plus for Residential Window Tinting?
           </Typography>
-  
+
           <Typography
             variant="body1"
             component={motion.p}
@@ -105,12 +101,15 @@ const CallToAction = () => {
               px: isMobile ? 0 : 0,
             }}
           >
-            Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? 
-            Window tinting is the solution! At TintTek+, we offer top-tier heat and UV protection, including tinting for windshields and sunroofs, 
-            to keep you comfortable and shielded from the harsh Dallas heat. With our advanced tinting options, you can enjoy cooler temperatures, 
-            a more private ride, and longer-lasting protection for your vehicle’s interior.
+            At Tint Tek Plus, we offer the highest-quality LLumar American Made
+            window films that enhance your comfort, save on energy costs, boost
+            privacy, and protect your health and home. Our films improve your
+            living environment by reducing glare, blocking harmful UV rays, and
+            lowering energy bills. Plus, we provide a Lifetime Warranty on all
+            residential window tinting jobs, so you can enjoy peace of mind
+            knowing that your investment is protected for years to come.
           </Typography>
-  
+          {/* 
           <Typography
             variant="body1"
             component={motion.p}
@@ -124,9 +123,10 @@ const CallToAction = () => {
               px: isMobile ? 0 : 0,
             }}
           >
-            Join thousands of satisfied customers who trust our expert technicians for flawless and long-lasting window tinting.
-          </Typography>
-  
+            Join thousands of satisfied customers who trust our expert
+            technicians for flawless and long-lasting window tinting.
+          </Typography> */}
+
           {/* CTA Button with hover and tap animations */}
           <Button
             component={motion.button}
@@ -137,8 +137,8 @@ const CallToAction = () => {
             transition={{ type: "spring", stiffness: 300 }}
             sx={{
               mt: 3,
-              backgroundColor: "#2794d2",
-              color: "#000",
+              backgroundColor: "#000",
+              color: "#fff",
               fontWeight: "bold",
               px: isMobile ? 3 : 4,
               py: isMobile ? 1.2 : 1.5,

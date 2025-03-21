@@ -230,7 +230,7 @@ const FAQSection = () => {
                 <Typography variant="h6">{faq.question}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                <Typography variant="body1" dangerouslySetInnerHTML={{ __html: faq.answer }} />
               </AccordionDetails>
             </Accordion>
           ))

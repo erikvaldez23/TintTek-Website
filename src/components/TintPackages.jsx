@@ -61,12 +61,23 @@ const TintPackages = () => {
         align="center"
         sx={{
           color: "#fff",
-          mb: 4,
+          mb: 1,
           fontWeight: "bold",
           textTransform: "uppercase",
         }}
       >
-        Ceramic Window Tint Film Packages
+        Standard Package Pricing
+      </Typography>
+      <Typography
+        variant={isMobile ? "h6" : "h5"}
+        align="center"
+        sx={{
+          color: "#ccc",
+          mb: 4,
+          fontWeight: "bold",
+        }}
+      >
+        **All Side Windows and Back Glass are Included in Standard Package**
       </Typography>
 
       {/* Card Grid */}

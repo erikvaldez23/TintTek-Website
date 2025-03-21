@@ -46,11 +46,8 @@ const CallToAction = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          backgroundColor: "#000",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundColor: "#2794d2",
           color: "white",
-          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
           overflow: "hidden",
         }}
       >
@@ -65,11 +62,10 @@ const CallToAction = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
             zIndex: 1,
           }}
         />
-  
+
         {/* Content Section */}
         <Box
           sx={{
@@ -89,9 +85,9 @@ const CallToAction = () => {
               textTransform: "uppercase",
             }}
           >
-            DO YOU NEED WINDOW TINT?
+            Transform Your Space with Tint Tek Plus and LLumar® Window Films
           </Typography>
-  
+
           <Typography
             variant="body1"
             component={motion.p}
@@ -105,12 +101,16 @@ const CallToAction = () => {
               px: isMobile ? 0 : 0,
             }}
           >
-            Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? 
-            Window tinting is the solution! At TintTek+, we offer top-tier heat and UV protection, including tinting for windshields and sunroofs, 
-            to keep you comfortable and shielded from the harsh Dallas heat. With our advanced tinting options, you can enjoy cooler temperatures, 
-            a more private ride, and longer-lasting protection for your vehicle’s interior.
+            The glass in your office, retail, or residential building should be
+            an asset, not a source of discomfort or excessive cost. At Tint Tek
+            Plus, we offer high-quality LLumar® window films, designed to solve
+            a wide range of glass-related issues: high energy costs, tenant
+            complaints, glare, fading furnishings, privacy concerns, security
+            risks, and more. Whether you're improving an existing property or
+            designing a new one, LLumar® provides the perfect solution to meet
+            your needs.
           </Typography>
-  
+{/* 
           <Typography
             variant="body1"
             component={motion.p}
@@ -124,9 +124,10 @@ const CallToAction = () => {
               px: isMobile ? 0 : 0,
             }}
           >
-            Join thousands of satisfied customers who trust our expert technicians for flawless and long-lasting window tinting.
-          </Typography>
-  
+            Join thousands of satisfied customers who trust our expert
+            technicians for flawless and long-lasting window tinting.
+          </Typography> */}
+
           {/* CTA Button with hover and tap animations */}
           <Button
             component={motion.button}
@@ -137,8 +138,8 @@ const CallToAction = () => {
             transition={{ type: "spring", stiffness: 300 }}
             sx={{
               mt: 3,
-              backgroundColor: "#2794d2",
-              color: "#000",
+              backgroundColor: "#000",
+              color: "#fff",
               fontWeight: "bold",
               px: isMobile ? 3 : 4,
               py: isMobile ? 1.2 : 1.5,
