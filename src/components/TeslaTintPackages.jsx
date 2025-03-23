@@ -34,13 +34,13 @@ const tintPackages = [
     description:
       "A full-tint windshield package for optimal UV and heat rejection.",
   },
-  {
-    title: "Full Vehicle Surround",
-    price: "Starting at $399",
-    image: "/TintTek-Website/tesla-full-vehicle.png",
-    description:
-      "Complete tint coverage for maximum privacy, comfort, and style.",
-  },
+  // {
+  //   title: "Full Vehicle Surround",
+  //   price: "Starting at $399",
+  //   image: "/TintTek-Website/tesla-full-vehicle.png",
+  //   description:
+  //     "Complete tint coverage for maximum privacy, comfort, and style.",
+  // },
   {
     title: "Full Sunroof",
     price: "Starting at $399",
@@ -77,15 +77,10 @@ const TeslaTintPackages = () => {
       </Typography>
 
       {/* Card Grid */}
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        maxWidth="1800px"
-        margin="0 auto"
-      >
-        {tintPackages.map((pkg, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+      <Box sx={{ maxWidth: "1200px", mx: "auto", px: 2 }}>
+        <Grid container spacing={3} justifyContent="center">
+          {tintPackages.map((pkg, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
             <Card
               sx={{
                 backgroundColor: "#111", // Slightly lighter than the background
@@ -108,7 +103,7 @@ const TeslaTintPackages = () => {
                 image={pkg.image}
                 alt={pkg.title}
                 sx={{
-                  objectFit: "cover",
+                  objectFit: "contain",
                 }}
               />
 
@@ -191,6 +186,7 @@ const TeslaTintPackages = () => {
           </Grid>
         ))}
       </Grid>
+    </Box>
     </Box>
   );
 };

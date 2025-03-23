@@ -111,7 +111,7 @@ const CallToAction = () => {
             a more private ride, and longer-lasting protection for your vehicle’s interior.
           </Typography>
   
-          <Typography
+          {/* <Typography
             variant="body1"
             component={motion.p}
             variants={fadeSlideVariant}
@@ -125,7 +125,7 @@ const CallToAction = () => {
             }}
           >
             Join thousands of satisfied customers who trust our expert technicians for flawless and long-lasting window tinting.
-          </Typography>
+          </Typography> */}
   
           {/* CTA Button with hover and tap animations */}
           <Button

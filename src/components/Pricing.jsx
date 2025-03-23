@@ -46,17 +46,14 @@ const pricingConfig = {
   "tesla-window-tinting": {
     title: "PRICING",
     pricingData: {
-      MODEL3: { ATC: "$199.00", CTX: "$259.00", IRX: "$319.00" },
-      MODELX: { ATC: "$249.00", CTX: "$299.00", IRX: "$359.00" },
-      "MODEL S": { ATC: "$229.00", CTX: "$279.00", IRX: "$339.00" },
+      "MODEL S": { CTX: "$329.00", IRX: "$529.00" },
+      "MODEL 3": { CTX: "$449.00", IRX: "$589.00" },
+      "MODEL X": { CTX: "$589.00", IRX: "$749.00" },
+      "MODEL Y": { CTX: "$389.00", IRX: "$589.00" },
+      "CYBER TRUCK": { CTX: "$399.00", IRX: "$599.00" },
     },
-    pricingOptions: ["MODEL3", "MODELX", "MODEL S"],
+    pricingOptions: ["MODEL S", "MODEL 3","MODEL X", "MODEL Y", "CYBER TRUCK"],
     descriptions: {
-      ATC: [
-        "Entry-level Tesla tinting",
-        "Reduces glare & improves privacy",
-        "Blocks 99% of UV rays",
-      ],
       CTX: [
         "Mid-range ceramic tint",
         "Superior heat rejection",
