@@ -61,7 +61,7 @@ const TintingSimulator = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "35vh", md: "35vh" },
+          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "20vh" },
           overflow: "hidden",
           backgroundColor: "#000",
         }}

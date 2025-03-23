@@ -8,8 +8,8 @@ import {
   Grid,
   useMediaQuery,
 } from "@mui/material";
-import PricingComponent from "./Pricing"; // Import Pricing model
-import Contact from "./key-components/Contact"; // Import Contact component
+import PricingComponent from "./Pricing"; 
+import Contact from "./key-components/Contact";
 import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
 import BenefitsSection from "./BenefitsSection";
@@ -243,43 +243,37 @@ const serviceDetails = {
     image: "/TintTek-Website/paint-correction.jpg",
     details:
       "We offer multi-stage paint correction to remove swirls, scratches, and oxidation, leaving your vehicle looking brand new.",
-    benefits: [
-      {
-        benefit: "Restores original paint finish",
-        detail:
-          "Eliminates surface imperfections to bring back your vehicle's factory shine.",
-        stat: "Results in a finish that's over 90% similar to the original.",
-      },
-      {
-        benefit: "Removes swirl marks and scratches",
-        detail:
-          "Gently corrects minor defects for a flawless, mirror-like finish.",
-        stat: "Reduces visible imperfections by up to 80%.",
-      },
-      {
-        benefit: "Enhances gloss and clarity",
-        detail: "Boosts shine and clarity for a polished, showroom appearance.",
-        stat: "Gloss levels improve dramatically as reported by 95% of our clients.",
-      },
-      {
-        benefit: "Protects paint from further damage",
-        detail:
-          "Prepares your car for protective coatings by correcting surface defects.",
-        stat: "Enhances long-term durability and resistance to wear.",
-      },
-      {
-        benefit: "Increases vehicle resale value",
-        detail:
-          "A corrected paint job can significantly boost your car’s market value.",
-        stat: "Often results in up to a 10% increase in resale price.",
-      },
-      {
-        benefit: "Prepares car surface for protective coatings",
-        detail:
-          "Optimizes the surface for additional layers of protection, ensuring longevity.",
-        stat: "Creates a smooth base that improves coating adhesion.",
-      },
-    ],
+      benefits: [
+        {
+          benefit: "Restores Paint to Its Original Beauty",
+          detail:
+            "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
+          stat: "Can reduce damage incidents by up to 70%.",
+        },
+        {
+          benefit: "Eliminates Swirl Marks & Scratches",
+          detail:
+            "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
+          stat: "Helps maintain aesthetics and resale value over time.",
+        },
+        {
+          benefit: "Enhances Gloss & Clarity",
+          detail:
+            "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
+          stat: "Results in a finish that remains vibrant for years.",
+        },
+        {
+          benefit: "Prepares Your Car for Protective Coatings",
+          detail: "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
+          stat: "Users report up to 50% less cleaning time.",
+        },
+        {
+          benefit: "Boosts Resale Value",
+          detail:
+            "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
+          stat: "UV technology blocks up to 99% of damaging rays.",
+        },
+      ],
     servicesOffered: [
       "Single-Stage Paint Correction",
       "Multi-Stage Paint Correction",
@@ -297,38 +291,32 @@ const serviceDetails = {
       "Our paint protection services include vinyl wraps, clear bras, and ceramic coatings to keep your car looking pristine.",
     benefits: [
       {
-        benefit: "Protects from chips, scratches, and road debris",
+        benefit: "Restores Paint to Its Original Beauty",
         detail:
-          "Shield your vehicle’s paint with durable protective films that absorb impact.",
+          "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
         stat: "Can reduce damage incidents by up to 70%.",
       },
       {
-        benefit: "Maintains your car’s showroom finish",
+        benefit: "Eliminates Swirl Marks & Scratches",
         detail:
-          "Keeps your vehicle looking new by preserving the original paint quality.",
+          "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
         stat: "Helps maintain aesthetics and resale value over time.",
       },
       {
-        benefit: "Provides a high-gloss, durable finish",
+        benefit: "Enhances Gloss & Clarity",
         detail:
-          "Adds an extra layer of shine while ensuring long-lasting durability.",
+          "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
         stat: "Results in a finish that remains vibrant for years.",
       },
       {
-        benefit: "Easy maintenance and cleaning",
-        detail: "Simplifies upkeep with a surface that repels dirt and stains.",
+        benefit: "Prepares Your Car for Protective Coatings",
+        detail: "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
         stat: "Users report up to 50% less cleaning time.",
       },
       {
-        benefit: "Customizes vehicle appearance",
+        benefit: "Boosts Resale Value",
         detail:
-          "Offers a wide range of finishes and customization options to match your style.",
-        stat: "Enhances overall vehicle aesthetics and personalization.",
-      },
-      {
-        benefit: "Prevents UV damage and fading",
-        detail:
-          "Protects your paint from harmful UV rays, preventing discoloration over time.",
+          "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
         stat: "UV technology blocks up to 99% of damaging rays.",
       },
     ],
@@ -558,7 +546,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           paddingTop: 5,
-          height: { xs: "35vh", md: "35vh" },
+          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "25vh" },
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",

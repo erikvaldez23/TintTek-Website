@@ -75,7 +75,7 @@ const BenefitsSection = ({ benefits }) => {
                       padding: isMobile ? 2 : 3,
                       borderRadius: 2,
                       backgroundColor: "#000",
-                      height: isMobile ? "260px" : "200px", // Uniform height
+                      height: isMobile ? "260px" : "260px", // Uniform height
                       transition: "all 0.3s ease-in-out",
                     }}
                   >

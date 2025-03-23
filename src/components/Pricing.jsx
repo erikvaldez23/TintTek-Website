@@ -202,6 +202,17 @@ const PricingComponent = () => {
         <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}>
           {service.title}
         </Typography>
+             <Typography
+                variant={isMobile ? "h6" : "h5"}
+                align="center"
+                sx={{
+                  color: "#ccc",
+                  mb: 4,
+                  fontWeight: "bold",
+                }}
+              >
+                **All Side Windows and Back Glass are Included in Standard Package**
+              </Typography>
 
         {/* ✅ Show Tabs on Desktop | Show Dropdown on Mobile */}
         {isMobile ? (

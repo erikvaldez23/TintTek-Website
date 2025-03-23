@@ -170,7 +170,13 @@ const TintingSimulator = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "50vh" : "60vh",
+          height: {
+            xs: "50vh", // Extra-small screens (mobile)
+            sm: "60vh", // Small screens
+            md: "60vh", // Medium desktop screens
+            lg: "60vh", // Large desktop screens
+            xl: "60vh", // Extra-large screens
+          },
           background: "#2e2e2e",
           display: "flex",
           flexDirection: "column",

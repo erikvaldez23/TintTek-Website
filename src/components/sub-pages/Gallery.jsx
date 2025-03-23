@@ -110,7 +110,7 @@ const Gallery = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "35vh", md: "35vh" },
+          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "25vh" },
           overflow: "hidden",
           backgroundColor: "#000",
         }}
@@ -230,7 +230,7 @@ const Gallery = () => {
             sx={{
               mt: 3,
               backgroundColor: "#2794d2",
-              color: "#fff",
+              color: "#000",
               fontWeight: "bold",
               borderRadius: "40px",
               textTransform: "uppercase",

@@ -105,7 +105,7 @@ const Vision = () => {
             variant={isMobile ? "body2" : "body1"}
             sx={{
               mb: 5,
-              fontSize: isMobile ? "1rem" : "1.3rem",
+              fontSize: isMobile ? "1rem" : "1.4rem",
               color: "#000",
               lineHeight: 1.6,
               maxWidth: "900px",
@@ -198,7 +198,7 @@ const Vision = () => {
                         py: 4,
                         px: 2,
                         borderRadius: 3,
-                        minHeight: "220px",
+                        height: "220px",
                         background: "#121212",
                         color: "#fff",
                         width: "100%",
@@ -212,10 +212,10 @@ const Vision = () => {
                     >
                       <CardContent>
                         <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-                        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                           {point.title}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
+                        <Typography variant="body1" sx={{ color: "#ccc", mt: 1 }}>
                           {point.description}
                         </Typography>
                       </CardContent>

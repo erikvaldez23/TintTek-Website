@@ -181,11 +181,6 @@ const faqConfig = {
       answer:
         "The application of ExoShield GT3 typically takes about 2 to 3 hours, depending on the vehicle and condition of the windshield. The process is quick, and our technicians ensure the coating is applied flawlessly.",
     },
-    {
-      question: "Can ExoShield GT3 be applied to any vehicle?",
-      answer:
-        "Yes, ExoShield GT3 can be applied to most vehicles and works on both new and existing windshields.",
-    },
   ],
 };
 

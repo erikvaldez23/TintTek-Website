@@ -19,7 +19,7 @@ const BusinessInfo = () => {
   // Address click opens Google Maps in a new tab
   const handleAddressClick = () => {
     window.open(
-      "https://www.google.com/maps/search/?api=1&query=2518+West+Kingsley+Rd",
+      "https://www.google.com/maps/place/Tint+Tek+Plus/@32.8783221,-96.6691041,17z/data=!3m1!4b1!4m6!3m5!1s0x864ea153db5dd237:0xe54143946793a9e6!8m2!3d32.8783221!4d-96.6665292!16s%2Fg%2F11w46vds7d?entry=ttu&g_ep=EgoyMDI1MDMxOS4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D",
       "_blank"
     );
   };
