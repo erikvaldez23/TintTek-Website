@@ -39,20 +39,6 @@ const ppfOptions = {
     description: "Complete vehicle protection with hydrophobic properties.",
     price: "$$$",
   },
-  "color-change": {
-    name: "Color Change PPF",
-    image: "/images/select-black.jpg",
-    description:
-      "Transform your car's look while maintaining superior protection.",
-    price: "$$$",
-  },
-  "stealth-matte": {
-    name: "Stealth/Matte PPF",
-    image: "/images/select-black.jpg",
-    description:
-      "Gives your car a sleek matte finish while shielding against damage.",
-    price: "$$$",
-  },
 };
 
 const PPFSelector = () => {

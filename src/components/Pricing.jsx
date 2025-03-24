@@ -18,7 +18,7 @@ const pricingConfig = {
   "vehicle-window-tinting": {
     title: "PRICING",
     pricingData: {
-      COUPE: { ATC: "$179.00", CTX: "$279.00", IRX: "$529.00" },
+      COUPE: { ATC: "$179.00", CTX: "$279.00", IRX: "$379.00" },
       SEDAN: { ATC: "$199.00", CTX: "$329.00", IRX: "$529.00" },
       TRUCK: { ATC: "$249.00", CTX: "$349.00", IRX: "$549.00" },
       "FULL SUV": { ATC: "$289.00", CTX: "$389.00", IRX: "$589.00" },

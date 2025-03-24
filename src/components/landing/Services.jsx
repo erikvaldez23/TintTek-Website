@@ -22,20 +22,20 @@ const servicesData = [
     title: "VEHICLE WINDOW TINTING",
     description:
       "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    image: "/TintTek-Website/v-window-tint.jpg",
+    image: "/TintTek-Website/vehicle-window-tint.JPEG",
   },
   {
     id: "tesla-window-tinting",
     title: "TESLA WINDOW TINTING",
     description:
       "Extend battery life, reduce heat in cabin, and enhance privacy.",
-    image: "/TintTek-Website/tesla.jpg",
+    image: "/TintTek-Website/tesla-service.jpg",
   },
   {
     id: "commercial-window-tinting",
     title: "COMMERCIAL WINDOW TINTING",
     description: "Enhance energy savings, privacy, and security.",
-    image: "/TintTek-Website/commercial.jpg",
+    image: "/TintTek-Website/Tint Tek-146.jpg",
   },
   {
     id: "residential-window-tinting",
@@ -48,7 +48,7 @@ const servicesData = [
     id: "vehicle-paint-correction",
     title: "VEHICLE PAINT CORRECTION",
     description: "Restore your vehicle’s original shine.",
-    image: "/TintTek-Website/paint-correction.jpeg",
+    image: "/TintTek-Website/paint-correction1.JPG",
   },
   {
     id: "vehicle-paint-protection",
@@ -59,14 +59,20 @@ const servicesData = [
   },
   {
     id: "headlight-services",
-    title: "HEADLIGHT SERVICES",
-    description: "Filler Quote",
-    image: "/TintTek-Website/paint-protection.jpg",
+    title: "HEADLIGHT & TAILLIGHT SERVICES",
+    description: "Headlight and Taillight Description",
+    image: "/TintTek-Website/tailLight-services2.JPG",
   },
   {
     id: "windshield-protection-film",
     title: "WINDSHIELD PROTECTION FILM",
-    description: "Filler Quote",
+    description: "Windshield Protection Film Description",
+    image: "/TintTek-Website/windshield-protection.jpg",
+  },
+  {
+    id: "ceramic-coating",
+    title: "CERAMIC COATING",
+    description: "Ceramic Coating Description",
     image: "/TintTek-Website/windshield-protection.jpg",
   },
 ];
@@ -141,28 +147,33 @@ const Services = () => {
           alignItems="stretch"
         >
           {servicesData.map((service) => (
-            <Grid item key={service.id} xs={12} sm={6} md={3}>
+            <Grid item key={service.id} xs={12} sm={6} md={4}>
               <motion.div variants={cardVariants}>
                 <Card
                   sx={{
-                    maxWidth: 350,
+                    maxWidth: 400,
                     borderRadius: 5,
                     overflow: "hidden",
                     position: "relative",
                     cursor: "pointer",
                     backgroundColor: "black",
-                    // On hover, scale the image and fade the overlay
+                    transition: "all 0.3s ease", 
+                    border: "5px solid transparent",
+                    "& .cardMedia": {
+                      transition: "transform 0.3s ease", 
+                    },
+                    "& .cardOverlay": {
+                      transition: "background 0.3s ease", 
+                    },
                     "&:hover .cardMedia": {
                       transform: "scale(1.1)",
                     },
                     "&:hover .cardOverlay": {
                       background: "rgba(0, 0, 0, 0.1)",
                     },
-                    // Optional: add a subtle shadow on hover
                     "&:hover": {
                       boxShadow: "0 10px 20px rgba(0, 0, 0, 0.3)",
                       border: "5px solid #2794d2",
-
                     },
                   }}
                   onClick={() => handleServiceClick(service.id)}
@@ -170,7 +181,7 @@ const Services = () => {
                   <CardMedia
                     component="img"
                     className="cardMedia"
-                    height="450"
+                    height="350"
                     image={service.image}
                     alt={service.title}
                     sx={{

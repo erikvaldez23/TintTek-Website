@@ -113,9 +113,9 @@ const serviceSteps = {
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
     images: [
-      "/TintTek-Website/Tint Tek-6.jpeg",
-      "/TintTek-Website/Tint Tek-46.jpeg",
-      "/TintTek-Website/Tint Tek-102.jpeg",
+      "/TintTek-Website/tesla-service.jpg",
+      "/TintTek-Website/tesla-service1.jpg",
+      "/TintTek-Website/tesla-service2.JPG",
     ],
   },
   "commercial-window-tinting": {
@@ -207,35 +207,35 @@ const serviceSteps = {
     title: "Vehicle Paint Correction",
     steps: [
       {
-        title: "Washing & Claying",
+        title: "Decontamination",
         description:
-          "We wash and clay the car to remove dirt, dust, and contaminants, prepping the paint for polishing.",
+          "Removing surface contaminants allows us to safely polish the paint without scratching or further damaging the clear coat.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "We begin by thoroughly washing and claying your vehicle to remove any dirt, dust, tar, or other contaminants on the surface. This ensures that the paint is clean and smooth before we begin the correction process.",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Compounding",
+        description:
+          "Compounding eliminates the top layer of damaged paint to reveal a smooth, more uniform surface.",
+        detailedDescription:
+          "Using a machine polisher and a specially formulated cutting compound, we remove deeper imperfections such as swirl marks, scratches, and oxidation by gently leveling the surface of the paint.",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Polishing",
         description:
-          "Using a machine polisher, we eliminate swirl marks, scratches, and oxidation for a smooth finish.",
+          "Polishing restores the glossy, high-shine finish your car deserves, bringing out the richness and vibrancy of the paint.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-      },
-      {
-        title: "Inspecting, Finishing, & Sealing",
-        description:
-          "We inspect for imperfections, refine the gloss, and apply a sealant for lasting protection.",
-        detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "After compounding, we use a finer polishing compound with a softer pad to refine the finish. This step removes any haze left behind from the compounding process and enhances the clarity and depth of the paint.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Detailing Touch-ups",
+        title: "Finishing",
         description:
-          "We detail hard-to-reach areas, ensuring a uniform, clean look that restores the car's appearance.",
+          "This process gives the paint a deep, rich gloss, ensuring your car looks like it just rolled off the showroom floor.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "For the ultimate shine, we apply a finishing polish with a soft pad. This step refines the paint even further, creating a mirror-like, flawless finish.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -254,41 +254,37 @@ const serviceSteps = {
         title: "Consulation",
         description:
           "Discuss your desired tint tone and assess your vehicle's lighting.",
-        detailedDescription:
-          "tbd",
+        detailedDescription: "tbd",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
         description:
           "Clean the headlight and taillight surfaces to ensure optimal adhesion.",
-        detailedDescription:
-          "tbd",
+        detailedDescription: "tbd",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Application",
         description:
           "Carefully apply the chosen STEK LPF, ensuring a smooth and bubble-free finish.",
-        detailedDescription:
-          "tbd",
+        detailedDescription: "tbd",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Curing",
         description:
           "Allow the film to set, ensuring durability and longevity.",
-        detailedDescription:
-          "tbd",
+        detailedDescription: "tbd",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
       "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
     images: [
-      "/TintTek-Website/paint-protection1.jpeg",
-      "/TintTek-Website/paint-protection2.jpeg",
-      "/TintTek-Website/paint-protection3.jpeg",
+      "/TintTek-Website/tailLight-services.JPEG",
+      "/TintTek-Website/tailLIght-services1.JPG",
+      "/TintTek-Website/tailLight-services2.JPG",
     ],
   },
   "vehicle-paint-protection": {
@@ -437,7 +433,7 @@ const HowItWorks = ({ serviceId }) => {
       sx={{
         py: isMobile ? 4 : 6,
         px: isMobile ? 2 : 4,
-        backgroundColor: "#000",
+        backgroundColor: "#EEEEFF",
         width: "100vw",
       }}
     >
@@ -446,7 +442,7 @@ const HowItWorks = ({ serviceId }) => {
         sx={{
           mb: isMobile ? 1.5 : 2,
           fontWeight: "bold",
-          color: "#fff",
+          color: "#000",
           textAlign: "center",
         }}
       >
@@ -460,7 +456,7 @@ const HowItWorks = ({ serviceId }) => {
           textAlign="center"
           sx={{
             mt: isMobile ? 2 : 0,
-            color: "#fff",
+            color: "#000",
             fontSize: isMobile ? "1.1rem" : "1.5rem",
             maxWidth: "1200px",
             mx: "auto",
@@ -487,7 +483,7 @@ const HowItWorks = ({ serviceId }) => {
                   marginTop: "20px",
                   borderRadius: 2,
                   height: "250px", // Fixed height for uniformity
-                  backgroundColor: "#292929",
+                  backgroundColor: "#000",
                   color: "#fff",
                   mx: "auto",
                   transition: "all 0.3s ease-in-out",
@@ -573,11 +569,10 @@ const HowItWorks = ({ serviceId }) => {
                   marginTop: "20px",
                   height: "100%",
                   maxWidth: "300px",
-                  backgroundColor: "#292929",
+                  backgroundColor: "#000",
                   color: "#fff",
                   transition: "all 0.3s ease-in-out",
                   "&:hover": {
-                    transform: "scale(1.05)",
                     boxShadow: "0px 0px 15px #2794d2",
                     backgroundColor: "#333",
                   },
@@ -658,7 +653,12 @@ const HowItWorks = ({ serviceId }) => {
                   <img
                     src={image}
                     alt="Tinting Process"
-                    style={{ width: "100%", height: "auto", display: "block" }}
+                    style={{
+                      width: "100%",
+                      height: "300px", // Fixed height for all images
+                      objectFit: "cover", // Ensures the image fills the container while maintaining aspect ratio
+                      display: "block",
+                    }}
                   />
                 </Paper>
               </Box>
@@ -675,7 +675,12 @@ const HowItWorks = ({ serviceId }) => {
                   <img
                     src={image}
                     alt="Tinting Process"
-                    style={{ width: "100%", height: "auto", display: "block" }}
+                    style={{
+                      width: "100%",
+                      height: "300px", // Fixed height for all images
+                      objectFit: "cover", // Ensures the image fills the container while maintaining aspect ratio
+                      display: "block",
+                    }}
                   />
                 </Paper>
               </Grid>

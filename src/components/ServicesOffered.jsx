@@ -135,11 +135,6 @@ const serviceOptions = {
         description:
           "Needs description",
       },
-      {
-        name: "Spectrally Selective Window Film",
-        description:
-          "Needs description",
-      },
     ],
   },
   "vehicle-paint-correction": {
@@ -269,24 +264,24 @@ const ServicesOffered = ({ serviceId }) => {
       sx={{
         py: 6,
         px: 4,
-        backgroundColor: "#EEEEFF",
-        color: "#000",
+        backgroundColor: "#000",
+        color: "#fff",
         width: "100vw",
       }}
     >
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
         <Typography
           variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}
+          sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
         >
-          SERVICES WE OFFER
+          FILM TYPES
         </Typography>
 
         {/* Service List */}
-        <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+        {/* <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
           {service.title}
-        </Typography>
-        <List>
+        </Typography> */}
+        {/* <List>
           {service.list.map((item, index) => (
             <ListItem
               key={index}
@@ -300,10 +295,10 @@ const ServicesOffered = ({ serviceId }) => {
               <ListItemText primary={item} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
 
         {/* Film Types Section */}
-        <Typography variant="h6" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
+        <Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
           The <strong>main types of film</strong> we use:
         </Typography>
         <Grid container spacing={3}>
@@ -314,10 +309,11 @@ const ServicesOffered = ({ serviceId }) => {
                   position: "relative", // ✅ Needed for absolute positioning of the logo
                   backgroundColor: "#000",
                   color: "#fff",
-                  borderRadius: 2,
+                  borderRadius: 5,
                   boxShadow: 3,
                   height: "100%",
                   transition: "all 0.3s ease-in-out",
+                  border: "3px solid #fff", 
                   "&:hover": {
                     transform: "scale(1.05)",
                     boxShadow: "0px 0px 15px #2794d2",
@@ -361,7 +357,7 @@ const ServicesOffered = ({ serviceId }) => {
                   <Typography variant="h6" fontWeight="bold">
                     {film.name}
                   </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Typography variant="body1" sx={{ mt: 1 }}>
                     {film.description}
                   </Typography>
                 </CardContent>

@@ -195,7 +195,7 @@ const FAQSection = () => {
   const faqs = faqConfig[path] || [];
 
   return (
-    <Box sx={{ py: 5, backgroundColor: "#1f1f1f" }}>
+    <Box sx={{ py: 5, backgroundColor: "#292929" }}>
       <Container maxWidth="lg">
         <Typography
           variant={isMobile ? "h4" : "h2"}
@@ -222,10 +222,10 @@ const FAQSection = () => {
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">{faq.question}</Typography>
+                <Typography variant="h5" fontWeight="bold">{faq.question}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography variant="body1" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                <Typography variant="h6" dangerouslySetInnerHTML={{ __html: faq.answer }} />
               </AccordionDetails>
             </Accordion>
           ))

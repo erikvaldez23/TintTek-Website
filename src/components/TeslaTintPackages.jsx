@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Box,
   Grid,
@@ -9,27 +9,30 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Dialog,
+  IconButton
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 
 const tintPackages = [
   {
     title: "Window Strip",
-    price: "Starting at $125",
+    price: "Starting at $60",
     image: "/TintTek-Website/tesla-window-strip.png",
     description:
       "A narrow strip across the top of the windshield to block excessive glare.",
   },
   {
     title: "Front 2 Window Match",
-    price: "Starting at $149",
+    price: "Starting at $119",
     image: "/TintTek-Website/tesla-front-two.png",
     description:
       "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Full Windshield",
-    price: "Starting at $275",
+    price: "Starting at $249",
     image: "/TintTek-Website/tesla-full-windshield.png",
     description:
       "A full-tint windshield package for optimal UV and heat rejection.",
@@ -43,7 +46,7 @@ const tintPackages = [
   // },
   {
     title: "Full Sunroof",
-    price: "Starting at $399",
+    price: "Starting at $200",
     image: "/TintTek-Website/tesla-sunroof.png",
     description:
       "Complete tint coverage for maximum privacy, comfort, and style.",
@@ -53,13 +56,23 @@ const tintPackages = [
 const TeslaTintPackages = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [openModal, setOpenModal] = useState(false)
+
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <Box
       sx={{
         py: 6,
         px: 2,
-        backgroundColor: "#000", // Dark background
+        backgroundColor: "#EEEEFF", // Dark background
       }}
     >
       {/* Section Title */}
@@ -67,13 +80,13 @@ const TeslaTintPackages = () => {
         variant={isMobile ? "h4" : "h2"}
         align="center"
         sx={{
-          color: "#fff",
+          color: "#000",
           mb: 4,
           fontWeight: "bold",
           textTransform: "uppercase",
         }}
       >
-        Ceramic Window Tint Film Packages
+        Additional Services We Offer
       </Typography>
 
       {/* Card Grid */}
@@ -177,7 +190,7 @@ const TeslaTintPackages = () => {
                     fontSize: isMobile ? "1rem" : "1.1rem",
                     width: isMobile ? "100%" : "auto",
                   }}
-                  onClick={() => handleLearnMoreClick(step)}
+                  onClick={handleOpenModal}
                 >
                   Get an Estimate
                 </Button>
@@ -187,6 +200,39 @@ const TeslaTintPackages = () => {
         ))}
       </Grid>
     </Box>
+    <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        fullWidth
+        maxWidth="lg"
+      >
+        <Box sx={{ position: "relative" }}>
+          {/* Close Button */}
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              color: "#fff",
+              backgroundColor: "rgba(0,0,0,0.5)",
+              zIndex: 1,
+              "&:hover": {
+                backgroundColor: "rgba(0,0,0,0.7)",
+              },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+          <iframe
+            src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+            width="100%"
+            height="800px"
+            style={{ border: "none" }}
+            title="Fast Quote"
+          ></iframe>
+        </Box>
+      </Dialog>
     </Box>
   );
 };

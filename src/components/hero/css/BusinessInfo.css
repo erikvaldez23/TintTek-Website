@@ -1,6 +1,6 @@
 .business-info-overlay {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Container,
@@ -8,7 +8,7 @@ import {
   Grid,
   useMediaQuery,
 } from "@mui/material";
-import PricingComponent from "./Pricing"; 
+import PricingComponent from "./Pricing";
 import Contact from "./key-components/Contact";
 import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
@@ -28,6 +28,8 @@ import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
 import CommercialCTA from "./CommercialCTA";
 import ResidentialCTA from "./ResidentialCTA";
+import PaintCorrectionServices from "./PaintCorrectionServices";
+import CommercialVideo from "./CommercialVideo"
 
 // Define service details for each page
 const serviceDetails = {
@@ -42,7 +44,7 @@ const serviceDetails = {
       {
         benefit: "Blocks 99% of harmful UV rays",
         detail:
-          "Our premium window films reduce UV exposure for passengers and help prevent interior fading.",
+          "Our premium window filmcs reduce UV exposure for passengers and help prevent interior fading.",
         stat: "Scientifically proven to block 99.9% of UVA/UVB rays.",
       },
       {
@@ -243,37 +245,38 @@ const serviceDetails = {
     image: "/TintTek-Website/paint-correction.jpg",
     details:
       "We offer multi-stage paint correction to remove swirls, scratches, and oxidation, leaving your vehicle looking brand new.",
-      benefits: [
-        {
-          benefit: "Restores Paint to Its Original Beauty",
-          detail:
-            "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
-          stat: "Can reduce damage incidents by up to 70%.",
-        },
-        {
-          benefit: "Eliminates Swirl Marks & Scratches",
-          detail:
-            "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
-          stat: "Helps maintain aesthetics and resale value over time.",
-        },
-        {
-          benefit: "Enhances Gloss & Clarity",
-          detail:
-            "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
-          stat: "Results in a finish that remains vibrant for years.",
-        },
-        {
-          benefit: "Prepares Your Car for Protective Coatings",
-          detail: "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
-          stat: "Users report up to 50% less cleaning time.",
-        },
-        {
-          benefit: "Boosts Resale Value",
-          detail:
-            "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
-          stat: "UV technology blocks up to 99% of damaging rays.",
-        },
-      ],
+    benefits: [
+      {
+        benefit: "Restores Paint to Its Original Beauty",
+        detail:
+          "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
+        stat: "Can reduce damage incidents by up to 70%.",
+      },
+      {
+        benefit: "Eliminates Swirl Marks & Scratches",
+        detail:
+          "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
+        stat: "Helps maintain aesthetics and resale value over time.",
+      },
+      {
+        benefit: "Enhances Gloss & Clarity",
+        detail:
+          "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
+        stat: "Results in a finish that remains vibrant for years.",
+      },
+      {
+        benefit: "Prepares Your Car for Protective Coatings",
+        detail:
+          "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
+        stat: "Users report up to 50% less cleaning time.",
+      },
+      {
+        benefit: "Boosts Resale Value",
+        detail:
+          "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
+        stat: "UV technology blocks up to 99% of damaging rays.",
+      },
+    ],
     servicesOffered: [
       "Single-Stage Paint Correction",
       "Multi-Stage Paint Correction",
@@ -310,7 +313,8 @@ const serviceDetails = {
       },
       {
         benefit: "Prepares Your Car for Protective Coatings",
-        detail: "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
+        detail:
+          "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
         stat: "Users report up to 50% less cleaning time.",
       },
       {
@@ -612,42 +616,58 @@ const ServicePage = () => {
         </Box>
       )} */}
 
-      {(serviceId === "commercial-window-tinting" ||
-       serviceId === "windshield-protection-film" ||
-        serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
-      {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
-      {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
-      {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+      {/* {serviceId === "commercial-window-tinting" && <CommercialVideo />} */}
       {serviceId === "commercial-window-tinting" && <CommercialCTA />}
       {serviceId === "residential-window-tinting" && <ResidentialCTA />}
 
+  
+      {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
+      {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
+      {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+
+
       {/* ✅ Pricing Section (Only for Non-Paint Services) */}
       {serviceId !== "vehicle-paint-correction" &&
-      serviceId !== "commercial-window-tinting" &&
-      serviceId !== "residential-window-tinting" &&
+        serviceId !== "commercial-window-tinting" &&
+        serviceId !== "residential-window-tinting" &&
         serviceId !== "vehicle-paint-protection" && (
           <Box sx={{ width: "100vw" }}>
             <PricingComponent />
           </Box>
         )}
 
-      {(serviceId !== "commercial-window-tinting" && 
-        serviceId !== "residential-window-tinting") && (
-        <BenefitsSection benefits={service.benefits} />
+      {serviceId === "vehicle-window-tinting" && <TintPackages />}
+      {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
+
+      
+      {/* <ServicesOffered serviceId={serviceId} /> */}
+      {serviceId !== "vehicle-paint-correction" && (
+        <ServicesOffered serviceId={serviceId} />
       )}
+
+      {/* {serviceId !== "commercial-window-tinting" &&
+        serviceId !== "residential-window-tinting" && (
+          <BenefitsSection benefits={service.benefits} />
+        )} */}
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (
           <HowItWorks serviceId={serviceId} />
         )}
 
+      {serviceId === "paint-correction-services" && (
+      <PaintCorrectionServices />
+      )}
+      
+      {(serviceId === "vehicle-window-tinting" ||
+        serviceId === "tesla-window-tinting" ||
+        serviceId === "commercial-window-tinting" ||
+        serviceId === "windshield-protection-film" ||
+        serviceId === "vehicle-paint-correction" ||
+        serviceId === "residential-window-tinting") && <BenefitsGrid />}
+
       {/* ✅ Services We Offer Section */}
-      <ServicesOffered serviceId={serviceId} />
-
-      {serviceId === "vehicle-window-tinting" && <TintPackages />}
-      {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
-
       <FAQSection />
 
       {/* <Box

@@ -47,7 +47,7 @@ const CallToAction = () => {
           justifyContent: "center",
           textAlign: "center",
           backgroundColor: "#2794d2",
-          color: "white",
+          color: "#000",
           overflow: "hidden",
         }}
       >

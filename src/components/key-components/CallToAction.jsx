@@ -46,10 +46,10 @@ const CallToAction = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          backgroundColor: "#000",
+          backgroundColor: "#2794d2",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          color: "white",
+          color: "#000",
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
           overflow: "hidden",
         }}
@@ -65,7 +65,6 @@ const CallToAction = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
             zIndex: 1,
           }}
         />
@@ -137,8 +136,8 @@ const CallToAction = () => {
             transition={{ type: "spring", stiffness: 300 }}
             sx={{
               mt: 3,
-              backgroundColor: "#2794d2",
-              color: "#000",
+              backgroundColor: "#000",
+              color: "#fff",
               fontWeight: "bold",
               px: isMobile ? 3 : 4,
               py: isMobile ? 1.2 : 1.5,
