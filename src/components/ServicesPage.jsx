@@ -617,8 +617,8 @@ const ServicePage = () => {
       )} */}
 
 
-      {/* {serviceId === "commercial-window-tinting" && <CommercialVideo />} */}
-      {serviceId === "commercial-window-tinting" && <CommercialCTA />}
+      {serviceId === "commercial-window-tinting" && <CommercialVideo />}
+      {/* {serviceId === "commercial-window-tinting" && <CommercialCTA />} */}
       {serviceId === "residential-window-tinting" && <ResidentialCTA />}
 
   

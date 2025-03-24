@@ -18,11 +18,7 @@ import LayersIcon from "@mui/icons-material/Layers";
 const serviceOptions = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting Services",
-    list: [
-      "Front Windsheield",
-      "Sunroof / Panoramic Roof",
-      "Visor Strips",
-    ],
+    list: ["Front Windsheield", "Sunroof / Panoramic Roof", "Visor Strips"],
     filmTypes: [
       {
         name: "Llumar ATC",
@@ -85,8 +81,7 @@ const serviceOptions = {
       },
       {
         name: "Decorative Film",
-        description:
-          "Offers privacy and style while reducing glare and heat.",
+        description: "Offers privacy and style while reducing glare and heat.",
       },
       {
         name: "Security Film (Coming Soon!)",
@@ -107,33 +102,27 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "Reflective Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
       {
         name: "Dual-Reflective Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
       {
         name: "Neutral Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
       {
         name: "Specialty Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
       {
         name: "Ceramic Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
       {
         name: "Harmony Window Film",
-        description:
-          "Needs description",
+        description: "Needs description",
       },
     ],
   },
@@ -189,36 +178,27 @@ const serviceOptions = {
   },
   "headlight-services": {
     title: "Headlight Services",
-    list: [
-      "Headlight Tint",
-      "Taillight Tint",
-      "Reflectors",
-    ],
+    list: ["Headlight Tint", "Taillight Tint", "Reflectors"],
     filmTypes: [
       {
         name: "DYNOshade",
-        description:
-          "Description",
+        description: "Description",
       },
       {
         name: "DYNOshadow",
-        description:
-          "Description",
+        description: "Description",
       },
       {
         name: "DYNOsmoke",
-        description:
-          "Description",
+        description: "Description",
       },
       {
         name: "DYNOstorm",
-        description:
-          "Description",
+        description: "Description",
       },
       {
         name: "DYNOyellow",
-        description:
-          "Description",
+        description: "Description",
       },
     ],
   },
@@ -274,28 +254,37 @@ const ServicesOffered = ({ serviceId }) => {
           variant={isMobile ? "h4" : "h2"}
           sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
         >
-          FILM TYPES
+          {serviceId === "commercial-window-tinting"
+            ? "Commercial Window Tinting Services"
+            : serviceId === "residential-window-tinting"
+            ? "Residential Window Tinting Services"
+            : "Film Types"}
         </Typography>
 
-        {/* Service List */}
-        {/* <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
-          {service.title}
-        </Typography> */}
-        {/* <List>
-          {service.list.map((item, index) => (
-            <ListItem
-              key={index}
-              sx={{
-                transition: "all 0.3s ease-in-out",
-              }}
-            >
-              <ListItemIcon>
-                <CheckCircleIcon sx={{ color: "#2794d2" }} />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItem>
-          ))}
-        </List> */}
+        {(serviceId === "commercial-window-tinting" ||
+          serviceId === "residential-window-tinting") && (
+          <>
+            {/* Service List */}
+            {/* <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+              {service.title}
+            </Typography> */}
+            <List>
+              {service.list.map((item, index) => (
+                <ListItem
+                  key={index}
+                  sx={{
+                    transition: "all 0.3s ease-in-out",
+                  }}
+                >
+                  <ListItemIcon>
+                    <CheckCircleIcon sx={{ color: "#2794d2" }} />
+                  </ListItemIcon>
+                  <ListItemText primary={item} />
+                </ListItem>
+              ))}
+            </List>
+          </>
+        )}
 
         {/* Film Types Section */}
         <Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
@@ -313,7 +302,7 @@ const ServicesOffered = ({ serviceId }) => {
                   boxShadow: 3,
                   height: "100%",
                   transition: "all 0.3s ease-in-out",
-                  border: "3px solid #fff", 
+                  border: "3px solid #fff",
                   "&:hover": {
                     transform: "scale(1.05)",
                     boxShadow: "0px 0px 15px #2794d2",

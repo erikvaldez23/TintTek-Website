@@ -22,64 +22,64 @@ const benefitsData = {
     {
       title: "Blocks 99% of Harmful UV Rays",
       icon: <HomeWorkIcon fontSize="large" />,
-      description: "Description",
+      description: "Window tinting provides a powerful shield against ultraviolet (UV) radiation, blocking up to 99% of harmful UV rays. This not only protects your skin from potential damage during extended drives but also safeguards your vehicle’s interior by preventing the fading and deterioration of upholstery, leather, dashboards, and other surfaces.",
     },
     {
       title: "Heat Rejection",
       icon: <SecurityIcon fontSize="large" />,
-      description: "Description",
+      description: "High-quality window film significantly reduces the amount of solar heat that enters your vehicle, helping to maintain a cooler cabin environment. This makes your driving experience more comfortable, especially during hot summer months, while also reducing the need for excessive air conditioning—improving fuel efficiency or battery range in electric vehicles.",
     },
     {
       title: "Improved Privacy & Security",
       icon: <VisibilityIcon fontSize="large" />,
-      description: "Description",
+      description: "Tinted windows add a layer of privacy by making it more difficult for outsiders to see inside your vehicle. This helps protect valuables from theft, offers greater peace of mind, and enhances the security of your car whether parked or in motion.",
     },
     {
       title: "Reduces Glare from the Sun & Headlights",
       icon: <WbSunnyIcon fontSize="large" />,
-      description: "Description",
+      description: "Window tinting reduces the harsh glare caused by direct sunlight and bright headlights at night. This not only improves your visibility and comfort while driving but also reduces eye strain and fatigue during long trips, making driving safer and more enjoyable.",
     },
     {
       title: "Protects Interior from Fading",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Description",
+      description: "Direct sunlight can cause your vehicle’s interior materials to fade, crack, or deteriorate over time. Window film acts as a barrier against this damage by filtering out the sun’s harmful rays, helping preserve the color, texture, and quality of your seats, dash, and interior trim for years to come.",
     },
     {
       title: "Elevate Overall Appearannce",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Description",
+      description: "Tinted windows provide a sleek, professional, and stylish finish to any vehicle. It enhances the exterior aesthetics, giving your car a refined and modern look while complementing the overall design. This subtle upgrade adds a touch of sophistication and boosts your car’s visual appeal.",
     },
   ],
   "tesla-window-tinting": [
     {
       title: "Increased mileage per battery charge",
       icon: <HomeWorkIcon fontSize="large" />,
-      description: "Description",
+      description: "By reducing the amount of heat entering the cabin, tinted windows decrease the need for constant air conditioning use. This lowers the strain on the battery, ultimately helping to conserve energy and extend your driving range—giving you more miles per charge and better overall efficiency.",
     },
     {
       title: "Heat reduction in cabin",
       icon: <SecurityIcon fontSize="large" />,
-      description: "Description",
+      description: "Tesla window tinting offers advanced solar heat rejection technology that significantly reduces interior temperatures, even on the hottest days. This results in a cooler, more comfortable driving experience for both the driver and passengers, without over-reliance on climate control systems.",
     },
     {
       title: "Blocks 99% of harmful UV rays",
       icon: <VisibilityIcon fontSize="large" />,
-      description: "Description",
+      description: "Tinted film acts as a powerful barrier against UV radiation, blocking up to 99% of harmful rays. This not only helps protect your skin but also prevents long-term damage to your Tesla’s premium interior surfaces, including leather seats, dashboard, and trim.",
     },
     {
       title: "Reduces glare from the sun & headlights",
       icon: <WbSunnyIcon fontSize="large" />,
-      description: "Description",
+      description: "Tinting helps minimize disruptive glare from the sun and headlights, enhancing visibility and reducing strain on your eyes. Whether you're driving in broad daylight or at night, this added clarity ensures a safer, more relaxed driving experience.",
     },
     {
       title: "Provides increased privacy",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Description",
+      description: "Tesla window tinting enhances your personal privacy by making it more difficult for outsiders to see inside the cabin. It not only deters unwanted attention but also protects any belongings stored in your vehicle from curious eyes.",
     },
     {
       title: "Prevents unnecessary battery drainage",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Description",
+      description: "By lowering the interior temperature and reducing the use of air conditioning, window tinting minimizes battery consumption caused by climate control systems. This contributes to better battery health and improved long-term energy management for your Tesla.",
     },
   ],
   "commercial-window-tinting": [
@@ -225,9 +225,9 @@ const benefitsData = {
 
 // Titles for each service benefits section
 const titles = {
-  "vehicle-window-tinting": "Vehicle Header",
+  "vehicle-window-tinting": "Benefits of Vehicle Window Tinting",
   "tesla-window-tinting": "Tesla Header",
-  "commercial-window-tinting": "Why Choose LLumar®",
+  "commercial-window-tinting": "Why Choose LLumar® Window Films?",
   "residential-window-tinting": "Why Choose LLumar®",
   "windshield-protection-film": "Why Choose ExoShield GT3",
 };
@@ -243,14 +243,15 @@ const BenefitsGrid = () => {
   const title = titles[serviceId] || "Our Benefits";
 
   return (
-    <Box sx={{ backgroundColor: "#000" }}>
+    <Box sx={{ backgroundColor: serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000" }}>
+
       <Box
         sx={{
-          background: "#000",
+          backgroundColor: serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
           py: 6,
           px: 2,
-          color: "#fff",
-          m: "auto",
+          color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
+          m: "auto", 
           maxWidth: "1500px",
         }}
       >
@@ -260,9 +261,9 @@ const BenefitsGrid = () => {
           sx={{
             fontWeight: "bold",
             mb: 4,
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
             letterSpacing: 1.5,
-            color: "#fff",
+            color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
           }}
         >
           {title}
@@ -281,13 +282,13 @@ const BenefitsGrid = () => {
                   component={motion.div}
                   whileHover={{ scale: 1.03 }}
                   sx={{
-                    backgroundColor: "#292929",
+                    backgroundColor: serviceId === "commercial-window-tinting" ? "#000" : "#292929",
                     backdropFilter: "blur(8px)",
                     borderRadius: 3,
-                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
+                    height: "300px",
                     p: 3,
                     boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
                     transition: "transform 0.3s ease",
