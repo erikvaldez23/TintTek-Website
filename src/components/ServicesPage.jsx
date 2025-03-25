@@ -617,7 +617,11 @@ const ServicePage = () => {
       )} */}
 
 
-      {serviceId === "commercial-window-tinting" && <CommercialVideo />}
+      {(serviceId === "commercial-window-tinting" ||
+      serviceId === "windshield-protection-film")
+        && <CommercialVideo />}
+
+      
       {/* {serviceId === "commercial-window-tinting" && <CommercialCTA />} */}
       {serviceId === "residential-window-tinting" && <ResidentialCTA />}
 

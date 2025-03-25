@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Slider from "react-slick";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -22,6 +23,7 @@ export default function CombinedVideoCTA() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const { serviceId } = useParams();
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -129,7 +131,11 @@ export default function CombinedVideoCTA() {
             >
               <video
                 ref={videoRef}
-                src="/TintTek-Website/commercial-video1.mov"
+                src={
+                  serviceId === "commercial-window-tinting"
+                    ? "/TintTek-Website/commercial-video1.mov"
+                    : "/TintTek-Website/Windshield-Film.mov"
+                }
                 autoPlay
                 muted={isMuted}
                 loop

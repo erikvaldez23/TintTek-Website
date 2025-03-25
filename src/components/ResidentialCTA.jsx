@@ -32,10 +32,10 @@ const CallToAction = () => {
   };
 
   const images = [
-    "/TintTek-Website/carousel1.jpg",
-    "/TintTek-Website/carousel2.jpg",
-    "/TintTek-Website/carousel3.jpg",
-    "/TintTek-Website/carousel4.jpg",
+    "/TintTek-Website/residential-1.png",
+    "/TintTek-Website/residential-2.png",
+    "/TintTek-Website/residential-3.png",
+    "/TintTek-Website/residential-4.png",
   ];
 
   const sliderSettings = {
@@ -105,7 +105,7 @@ const CallToAction = () => {
           }}
         >
           {/* Image Carousel */}
-          {/* <Box sx={{ mb: 4 }}>
+          <Box sx={{ mb: 4 }}>
             <Slider {...sliderSettings}>
               {images.map((src, index) => (
                 <Box
@@ -119,18 +119,24 @@ const CallToAction = () => {
                     component="img"
                     src={src}
                     alt={`Slide ${index + 1}`}
+                    className="carousel-img"
                     sx={{
                       width: "100%",
-                      borderRadius: "16px",
-                      boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
-                      maxHeight: isMobile ? "200px" : "300px",
+                      maxHeight: isMobile ? "300px" : "350px",
                       objectFit: "cover",
+                      borderRadius: "24px",
+                      transition: "all 0.4s ease",
+                      boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                      "&:hover": {
+                        cursor: "pointer",
+                        transform: "scale(1.02)",
+                      },
                     }}
                   />
                 </Box>
               ))}
             </Slider>
-          </Box> */}
+          </Box>
 
           <Typography
             variant={isMobile ? "h4" : "h2"}
