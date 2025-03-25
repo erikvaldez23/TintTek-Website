@@ -7,6 +7,9 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const CallToAction = () => {
   const theme = useTheme();
@@ -28,8 +31,34 @@ const CallToAction = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
+  const images = [
+    "/TintTek-Website/carousel1.jpg",
+    "/TintTek-Website/carousel2.jpg",
+    "/TintTek-Website/carousel3.jpg",
+    "/TintTek-Website/carousel4.jpg",
+  ];
+
+  const sliderSettings = {
+    centerMode: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
+    infinite: true,
+    speed: 500,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "40px",
+        },
+      },
+    ],
+  };
+
   return (
-    // Wrap the entire section so the animations trigger on scroll
     <motion.div
       initial="hidden"
       whileInView="visible"
@@ -75,6 +104,34 @@ const CallToAction = () => {
             width: "100%",
           }}
         >
+          {/* Image Carousel */}
+          {/* <Box sx={{ mb: 4 }}>
+            <Slider {...sliderSettings}>
+              {images.map((src, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    px: 2,
+                  }}
+                  className="carousel-slide"
+                >
+                  <Box
+                    component="img"
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    sx={{
+                      width: "100%",
+                      borderRadius: "16px",
+                      boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+                      maxHeight: isMobile ? "200px" : "300px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
+              ))}
+            </Slider>
+          </Box> */}
+
           <Typography
             variant={isMobile ? "h4" : "h2"}
             component={motion.h3}
@@ -110,25 +167,7 @@ const CallToAction = () => {
             that are quickly and professionally installed, delivering lasting
             lifestyle benefits without breaking the bank.
           </Typography>
-          {/* 
-          <Typography
-            variant="body1"
-            component={motion.p}
-            variants={fadeSlideVariant}
-            transition={{ delay: 0.5 }}
-            sx={{
-              mt: 1.5,
-              fontSize: isMobile ? "1rem" : "1.1rem",
-              fontStyle: "italic",
-              opacity: 0.9,
-              px: isMobile ? 0 : 0,
-            }}
-          >
-            Join thousands of satisfied customers who trust our expert
-            technicians for flawless and long-lasting window tinting.
-          </Typography> */}
 
-          {/* CTA Button with hover and tap animations */}
           <Button
             component={motion.button}
             initial={{ scale: 0.9 }}

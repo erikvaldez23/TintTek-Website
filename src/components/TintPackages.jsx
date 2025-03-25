@@ -37,7 +37,13 @@ const tintPackages = [
     description:
       "A full-tint windshield package for optimal UV and heat rejection.",
   },
-  // Additional packages if needed...
+  {
+    title: "Full Sunroof",
+    price: "Starting at $$$",
+    image: "/TintTek-Website/sunroof.png",
+    description:
+      "A full-tint sunroof package for optimal UV and heat rejection.",
+  },
 ];
 
 const TintPackages = () => {
@@ -73,7 +79,7 @@ const TintPackages = () => {
       <Box sx={{ maxWidth: "1200px", mx: "auto", px: 2 }}>
         <Grid container spacing={3} justifyContent="center">
           {tintPackages.map((pkg, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
                 sx={{
                   backgroundColor: "#111",
