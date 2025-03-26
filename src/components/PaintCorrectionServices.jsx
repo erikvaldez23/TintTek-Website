@@ -79,7 +79,7 @@ export default function PaintCorrectionTabs() {
       sx={{
         background: "#000",
         py: { xs: 4, sm: 6 },
-        px: { xs: 2, sm: 4 },
+        px: { xs: 2, sm: 4},
       }}
     >
       <Typography
@@ -92,10 +92,10 @@ export default function PaintCorrectionTabs() {
           mb: 5
         }}
       >
-        What Are the Different Stages of a Paint Correction?
+        What are the Different Stages of Paint Corrections?
       </Typography>
 
-      <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
+      <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
         {isMobile ? (
           <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
             <InputLabel
@@ -142,7 +142,7 @@ export default function PaintCorrectionTabs() {
                 color: "#fff",
                 textTransform: "none",
                 fontWeight: "bold",
-                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.6rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.8rem" },
                 transition: "color 0.3s ease, transform 0.3s ease",
                 "&:hover": {
                   color: "#2794d2",
@@ -182,10 +182,10 @@ export default function PaintCorrectionTabs() {
               {currentStage === index && (
                 <>
                   <Typography
-                    variant="body1"
+                    variant="h6"
                     sx={{
                       mb: 2,
-                      fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.4rem" },
+                      fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.8rem" },
                     }}
                   >
                     {stage.description}
@@ -196,7 +196,7 @@ export default function PaintCorrectionTabs() {
                     fontWeight="bold"
                     sx={{
                       mt: 2,
-                      fontSize: { xs: "1.4rem", sm: "1.6rem", md: "1.8rem" },
+                      fontSize: { xs: "1.4rem", sm: "1.6rem", md: "2rem" },
                     }}
                   >
                     What to Expect:
@@ -228,7 +228,7 @@ export default function PaintCorrectionTabs() {
                     fontWeight="bold"
                     sx={{
                       mt: 2,
-                      fontSize: { xs: "1.4rem", sm: "1.6rem", md: "1.8rem" },
+                      fontSize: { xs: "1.4rem", sm: "1.6rem", md: "2rem" },
                     }}
                   >
                     Perfect For:

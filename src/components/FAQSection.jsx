@@ -94,7 +94,8 @@ const faqConfig = {
         "Yes! We offer a lifetime warranty on our residential window tinting services. Our high-quality films are designed to last, and we guarantee that your windows will remain in great condition without issues like bubbling, peeling, or fading.",
     },
     {
-      question: "Does window film increase privacy at night if interior lights are on?",
+      question:
+        "Does window film increase privacy at night if interior lights are on?",
       answer:
         "No, window tinting or window film generally does not provide increased privacy at night if your interior lights are on. At night, when it's darker outside than inside, light from your home can make it easier for people to see inside. However, darker or more reflective films may offer some degree of privacy during the day. For maximum nighttime privacy, we recommend using dual-reflective films or privacy films that are designed to reduce visibility both day and night.",
     },
@@ -116,7 +117,8 @@ const faqConfig = {
         "The duration of paint correction depends on the vehicle's condition, size, and the level of correction required. It can take anywhere from 1 to 3 days. Our professionals will assess your vehicle and provide a detailed quotation during your meeting, ensuring the process meets your specific needs.",
     },
     {
-      question: "Do I need to apply a protective coating after paint correction?",
+      question:
+        "Do I need to apply a protective coating after paint correction?",
       answer:
         "After paint correction, applying a protective coating such as a wax, sealant, or ceramic coating is highly recommended. This will help protect the newly corrected paint from environmental elements, dirt, and scratches, keeping your vehicle looking great for longer.",
     },
@@ -145,19 +147,25 @@ const faqConfig = {
   ],
   "headlight-services": [
     {
-      question: "Question",
+      question: "What is Stek Light Protection Film (PPF)?",
       answer:
-        "Answer",
+        "Stek Light Protection Film is a high-quality, transparent protective film designed specifically for automotive taillights. It helps shield taillights from scratches, chips, and fading caused by UV exposure, road debris, and environmental elements.",
     },
     {
-      question: "Question",
+      question: "How does Stek PPF protect my taillights?",
       answer:
-        "Answer",
+        "Stek PPF provides a durable, self-healing layer that prevents damage to your taillights. It absorbs impacts from rocks, debris, and other particles while preserving the clarity and brightness of your lights. It also blocks UV rays that can cause discoloration over time.",
     },
     {
-      question: "Question",
+      question:
+        "Will Stek Light Protection Film affect the brightness of my taillights?",
       answer:
-        "Answer",
+        "No, the PPF is designed to be optically clear or lightly tinted, ensuring that your taillights remain fully functional and visible, even in low light conditions. The film does not obstruct the light output or brightness.",
+    },
+    {
+      question: "How durable is Vinyl Wrap VS PPF for taillights?",
+      answer:
+        "Vinyl Wrap is less durable compared to PPF. It can fade, peel, and crack quicker, especially when exposed to UV rays and harsh conditions.",
     },
   ],
   "windshield-protection-film": [
@@ -180,6 +188,32 @@ const faqConfig = {
       question: "How long does the application process take?",
       answer:
         "The application of ExoShield GT3 typically takes about 2 to 3 hours, depending on the vehicle and condition of the windshield. The process is quick, and our technicians ensure the coating is applied flawlessly.",
+    },
+  ],
+  "ceramic-coating": [
+    {
+      question: "Will ceramic coating prevent all scratches?",
+      answer:
+        "Ceramic coating adds a layer of protection against light scratches and swirl marks, but it cannot prevent all types of damage, especially deep scratches from sharp objects or accidents. It significantly reduces the risk of surface-level abrasions, though. PPF (Paint Protection Film)  is a great addition to fully protect your vehicle.",
+    },
+    {
+      question: "How soon can I drive my car after the coating is applied?",
+      answer:
+        "For best results, it's recommended to wait at least 24-48 hours after application before exposing the vehicle to water or driving in rain. This allows the coating to cure fully and bond to the surface.",
+    },
+    {
+      question: "How do I maintain my ceramic-coated vehicle?",
+      answer: `Maintaining a ceramic-coated vehicle involves simple care:
+        <ul>
+          <li> Regularly wash with a pH-neutral shampoo to avoid degrading the coating. </li>
+          <li> Use a microfiber towel to dry. </li>
+          <li> Consider using a maintenance spray to boost the hydrophobic properties every few months. </li>
+        </ul>`,
+    },
+    {
+      question: "How long does ceramic coating last?",
+      answer:
+        "The longevity of ceramic coatings depends on the product and maintenance. Most high-quality coatings last anywhere from 2 to 5 years. Proper care and regular maintenance can extend the protection significantly.",
     },
   ],
 };
@@ -222,10 +256,15 @@ const FAQSection = () => {
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h5" fontWeight="bold">{faq.question}</Typography>
+                <Typography variant="h5" fontWeight="bold">
+                  {faq.question}
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography variant="h6" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                <Typography
+                  variant="h6"
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
               </AccordionDetails>
             </Accordion>
           ))

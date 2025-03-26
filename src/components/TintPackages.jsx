@@ -19,21 +19,21 @@ const tintPackages = [
   {
     title: "Window Strip",
     price: "Starting at $60",
-    image: "/TintTek-Website/window-strip1.png",
+    image: "/TintTek-Website/visor-strip.png",
     description:
       "A narrow strip across the top of the windshield to block excessive glare.",
   },
   {
     title: "Front 2 Window Match",
     price: "Starting at $85",
-    image: "/TintTek-Website/front-two1.png",
+    image: "/TintTek-Website/front-windows.png",
     description:
       "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Full Windshield",
     price: "Starting at $249",
-    image: "/TintTek-Website/full-windshield1.png",
+    image: "/TintTek-Website/full-windshield.png",
     description:
       "A full-tint windshield package for optimal UV and heat rejection.",
   },

@@ -37,391 +37,54 @@ const serviceDetails = {
     title: "Vehicle Window Tinting",
     description:
       "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    image: "/TintTek-Website/tint",
-    details:
-      "We use high-quality films to protect your car windows and provide maximum UV protection.",
-    benefits: [
-      {
-        benefit: "Blocks 99% of harmful UV rays",
-        detail:
-          "Our premium window filmcs reduce UV exposure for passengers and help prevent interior fading.",
-        stat: "Scientifically proven to block 99.9% of UVA/UVB rays.",
-      },
-      {
-        benefit: "Heat rejection",
-        detail:
-          "Keeps your vehicle cooler and reduces reliance on air conditioning.",
-        stat: "Can reduce interior temperatures by up to 15°F.",
-      },
-      {
-        benefit: "Improved privacy and security",
-        detail:
-          "Tinted windows obscure interior views, deterring theft and protecting your valuables.",
-        stat: "Studies indicate a 60% reduction in break-in rates.",
-      },
-      {
-        benefit: "Reduces glare from the sun and headlights",
-        detail:
-          "Enhances driving comfort and visibility during bright conditions.",
-        stat: "Glare reduction can improve visual comfort by up to 50%.",
-      },
-      {
-        benefit: "Protects interiors from fading",
-        detail:
-          "Helps preserve upholstery and dashboard quality by minimizing UV damage.",
-        stat: "Interior lifespan can be extended by 2-3 years with quality tints.",
-      },
-      {
-        benefit: "Elevate overall appearance",
-        detail:
-          "Gives your vehicle a sleek, modern look that enhances curb appeal.",
-        stat: "Over 70% of car owners report increased resale interest after tinting.",
-      },
-    ],
-    servicesOffered: [
-      "Full SUV Tinting",
-      "Full Sedan Tinting",
-      "Full Coupe Tinting",
-      "2 Windows Only",
-      "Front Windshield and Sunroof",
-    ],
-  },
+    },
+
   "tesla-window-tinting": {
     title: "Tesla Window Tinting",
     description:
       "Specialized tinting for Tesla models, ensuring perfect heat rejection and premium clarity.",
-    image: "/TintTek-Website/cybertruck.jpg",
-    details:
-      "High-quality window tinting designed specifically for Tesla vehicles.",
-    benefits: [
-      {
-        benefit: "Increased mileage per battery charge",
-        detail:
-          "Our specialized tint reduces heat build-up and battery drain, extending your Tesla's range.",
-        stat: "Reports indicate up to a 5% improvement in battery efficiency.",
-      },
-      {
-        benefit: "Heat reduction in cabin",
-        detail:
-          "Keeps the interior cooler, enhancing comfort during long drives.",
-        stat: "Can lower interior temperatures by up to 10°F.",
-      },
-      {
-        benefit: "Blocks 99% of harmful UV rays",
-        detail:
-          "Ensures maximum UV protection while maintaining clarity for Tesla models.",
-        stat: "Blocks nearly all harmful UV rays, preserving interior quality.",
-      },
-      {
-        benefit: "Reduces glare from the sun and headlights",
-        detail:
-          "Improves driver visibility and reduces eye strain under bright conditions.",
-        stat: "Glare reduction can improve visual comfort by up to 50%.",
-      },
-      {
-        benefit: "Provides increased privacy",
-        detail:
-          "Specialized tinting enhances privacy by limiting the view from outside.",
-        stat: "Customer feedback indicates significantly improved privacy.",
-      },
-      {
-        benefit: "Prevents unnecessary battery drainage",
-        detail:
-          "Lowers the workload on the AC system, resulting in better energy management.",
-        stat: "Studies show a 3-5% reduction in energy consumption.",
-      },
-    ],
-    servicesOffered: [
-      "Full Model S window tinting, windshield, pano sunroof, single sunroof",
-      "Full Model 3 window tinting, windshield, sunroof",
-      "Full Model X window tinting, windshield",
-      "Full Model Y window tinting, windshield, pano sunroof, single sunroof",
-      "Full Cybertruck window tinting, windshield",
-    ],
   },
+
   "commercial-window-tinting": {
     title: "Commercial Window Tinting",
     description:
       "Protect your building's windows from UV rays, reduce glare, and improve energy efficiency.",
-    image: "/TintTek-Website/commercial-tint.jpg",
-    details:
-      "Our commercial window tinting services provide superior heat rejection and protection from environmental damage.",
-    benefits: [
-      {
-        benefit: "Energy savings by reducing cooling costs",
-        detail:
-          "Helps lower interior temperatures in large office spaces, reducing air conditioning expenses.",
-        stat: "Can cut cooling costs by up to 20% in commercial settings.",
-      },
-      {
-        benefit: "Blocks 99% of harmful UV rays",
-        detail:
-          "Prevents UV damage to interiors and protects employees from excessive sun exposure.",
-        stat: "Meets industry standards by blocking nearly 100% of UV rays.",
-      },
-      {
-        benefit: "Reduces glare in office spaces",
-        detail:
-          "Minimizes glare on screens and work surfaces, creating a more comfortable environment.",
-        stat: "Glare reduction is linked to a 15% boost in productivity.",
-      },
-      {
-        benefit: "Protects interiors from fading",
-        detail:
-          "Helps preserve the color and quality of furnishings and artwork.",
-        stat: "Studies show up to 80% less fading over time.",
-      },
-      {
-        benefit: "Enhances building appearance",
-        detail: "Gives your building a modern and professional look.",
-        stat: "A sleek façade can significantly boost curb appeal and property value.",
-      },
-      {
-        benefit: "Improves privacy for employees",
-        detail:
-          "Maintains a balance between natural light and visual privacy in workspaces.",
-        stat: "Results in improved employee satisfaction and security.",
-      },
-    ],
-    servicesOffered: [
-      "Office Window Tinting",
-      "Storefront Window Tinting",
-      "Skyscraper Window Tinting",
-      "Conference Room Tinting",
-      "Custom Business Tinting Solutions",
-    ],
   },
+
   "residential-window-tinting": {
     title: "Residential Window Tinting",
     description:
       "Long-lasting protection for your home’s windows against dirt, heat, and UV rays.",
-    image: "/TintTek-Website/residential-tint.png",
-    details:
-      "Keep your home cool, protect your furniture from fading, and improve privacy with our residential tinting services.",
-    benefits: [
-      {
-        benefit: "Energy Efficiency & Cost Savings",
-        detail:
-          "Window tinting is an easy and effective way to reduce your energy costs. By blocking a significant amount of heat from entering your home, it helps maintain a more comfortable indoor temperature year-round.",
-        stat: "According to the U.S. Department of Energy, window tinting can reduce cooling costs by 30% to 50%, making your home more energy-efficient and reducing reliance on air conditioning.",
-      },
-      {
-        benefit: "UV Protection & Skin Health",
-        detail:
-          "Window tints block up to 99% of harmful ultraviolet (UV) rays that contribute to skin damage, aging, and even skin cancer, protecting your health while indoors.",
-        stat: "The Skin Cancer Foundation reports that up to 53% of UV rays that cause skin cancer enter through windows. Window tinting helps significantly reduce this exposure, ensuring a safer and healthier environment.",
-      },
-      {
-        benefit: "Improved Comfort & Glare Reduction",
-        detail:
-          "With tinted windows, you can enjoy natural sunlight without the uncomfortable glare from the sun, which is especially important near TVs, computers, or workstations. It creates a more comfortable and pleasant living space.",
-        stat: "Window tinting can reduce glare by up to 80%, allowing you to benefit from natural light without the strain or irritation caused by intense sunlight.",
-      },
-      {
-        benefit: "Enhanced Privacy & Security",
-        detail:
-          "Tinted windows make it more difficult for people to see inside your home, offering you increased privacy while still letting natural light in. They also make your home a less attractive target for burglars.",
-        stat: "The National Window Film Association (NWFA) found that homes with window film experience a 20% reduction in break-ins due to increased privacy and difficulty in spotting valuable items from the outside.",
-      },
-      {
-        benefit: "Protection for Furnishings & Interiors",
-        detail:
-          "Window tinting helps preserve the beauty of your home by preventing sun damage to furniture, flooring, and artwork. It acts as a protective shield, reducing fading and wear from UV rays and solar heat.",
-        stat: "Tinted windows can block up to 99% of UV rays, helping to extend the life of your furnishings, carpets, and artwork by preventing discoloration and fading caused by sun exposure.",
-      },
-    ],
-    servicesOffered: [
-      "Full Home Window Tinting",
-      "Single Room Window Tinting",
-      "Sunroom Tinting",
-      "Patio Door Tinting",
-      "Custom Home Tinting Solutions",
-    ],
   },
+
   "vehicle-paint-correction": {
     title: "Vehicle Paint Correction",
     description:
       "Restore your vehicle’s original shine and remove imperfections with our professional paint correction services.",
-    image: "/TintTek-Website/paint-correction.jpg",
-    details:
-      "We offer multi-stage paint correction to remove swirls, scratches, and oxidation, leaving your vehicle looking brand new.",
-    benefits: [
-      {
-        benefit: "Restores Paint to Its Original Beauty",
-        detail:
-          "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
-        stat: "Can reduce damage incidents by up to 70%.",
-      },
-      {
-        benefit: "Eliminates Swirl Marks & Scratches",
-        detail:
-          "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
-        stat: "Helps maintain aesthetics and resale value over time.",
-      },
-      {
-        benefit: "Enhances Gloss & Clarity",
-        detail:
-          "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
-        stat: "Results in a finish that remains vibrant for years.",
-      },
-      {
-        benefit: "Prepares Your Car for Protective Coatings",
-        detail:
-          "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
-        stat: "Users report up to 50% less cleaning time.",
-      },
-      {
-        benefit: "Boosts Resale Value",
-        detail:
-          "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
-        stat: "UV technology blocks up to 99% of damaging rays.",
-      },
-    ],
-    servicesOffered: [
-      "Single-Stage Paint Correction",
-      "Multi-Stage Paint Correction",
-      "Swirl Mark Removal",
-      "Scratch Removal",
-      "Gloss Enhancement",
-    ],
   },
+
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection",
     description:
       "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
-    image: "/TintTek-Website/ppf.jpg",
-    details:
-      "Our paint protection services include vinyl wraps, clear bras, and ceramic coatings to keep your car looking pristine.",
-    benefits: [
-      {
-        benefit: "Restores Paint to Its Original Beauty",
-        detail:
-          "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
-        stat: "Can reduce damage incidents by up to 70%.",
-      },
-      {
-        benefit: "Eliminates Swirl Marks & Scratches",
-        detail:
-          "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
-        stat: "Helps maintain aesthetics and resale value over time.",
-      },
-      {
-        benefit: "Enhances Gloss & Clarity",
-        detail:
-          "Achieve a high-gloss, mirror-like shine that enhances the depth and clarity of your car's color. Paint correction brings out the natural brilliance of your vehicle’s paint, making it look fresh and polished.",
-        stat: "Results in a finish that remains vibrant for years.",
-      },
-      {
-        benefit: "Prepares Your Car for Protective Coatings",
-        detail:
-          "After the paint is corrected, the surface is ready for protective coatings like ceramic coatings or sealants. This ensures a longer-lasting finish and adds an extra layer of protection against environmental elements.",
-        stat: "Users report up to 50% less cleaning time.",
-      },
-      {
-        benefit: "Boosts Resale Value",
-        detail:
-          "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
-        stat: "UV technology blocks up to 99% of damaging rays.",
-      },
-    ],
-    servicesOffered: [
-      "Single-Stage Paint Correction",
-      "Multi-Stage Paint Correction",
-      "Swirl Mark Removal",
-      "Scratch Removal",
-      "Gloss Enhancement",
-    ],
   },
+
   "headlight-services": {
-    title: "Headlight Services",
+    title: "Headlight & Taillight Services",
     description:
       "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
-    image: "/TintTek-Website/ppf.jpg",
-    details: "Placeholder",
-    benefits: [
-      {
-        benefit: "Durable protection",
-        detail:
-          "Safeguards against rock chips, cracks, scratches, and other road hazards.",
-        stat: "",
-      },
-      {
-        benefit: "Enhanced aesthetics",
-        detail:
-          "Adds a customized tint to your headlights and taillights, complementing your vehicle's style.",
-        stat: "",
-      },
-      {
-        benefit: "Hyrdrophobic properties",
-        detail:
-          "Repels water, making your lights easier to clean and maintain.",
-        stat: "",
-      },
-      {
-        benefit: "Self-healing",
-        detail:
-          "The film's advanced technology allows minor scratches to heal with heat, maintaining a smooth surface.",
-        stat: "",
-      },
-    ],
-    servicesOffered: [
-      "Single-Stage Paint Correction",
-      "Multi-Stage Paint Correction",
-      "Swirl Mark Removal",
-      "Scratch Removal",
-      "Gloss Enhancement",
-    ],
   },
+
   "windshield-protection-film": {
     title: "Windshield Protection Film",
     description:
       "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
-    image: "/TintTek-Website/ppf.jpg",
-    details: "Placeholder",
-    benefits: [
-      {
-        benefit: "Protects from chips, scratches, and road debris",
-        detail:
-          "Provides robust protection for your windshield against everyday hazards.",
-        stat: "Minimizes damage incidents by over 70%.",
-      },
-      {
-        benefit: "Maintains your car’s showroom finish",
-        detail:
-          "Keeps your windshield clear and pristine, preserving overall aesthetics.",
-        stat: "Ensures a consistently high-quality look.",
-      },
-      {
-        benefit: "Provides a high-gloss, durable finish",
-        detail: "Delivers a long-lasting protective layer that enhances shine.",
-        stat: "High durability ensures performance even in harsh conditions.",
-      },
-      {
-        benefit: "Easy maintenance and cleaning",
-        detail:
-          "Simplifies cleaning with a surface that repels dirt and grime.",
-        stat: "Reduces maintenance efforts by up to 50%.",
-      },
-      {
-        benefit: "Customizes vehicle appearance",
-        detail:
-          "Enhances your vehicle's look with a tailored protective finish.",
-        stat: "Customer feedback confirms improved aesthetics.",
-      },
-      {
-        benefit: "Prevents UV damage and fading",
-        detail:
-          "Protects your windshield from harmful UV rays, keeping it clear and durable.",
-        stat: "Blocks nearly 100% of UV rays, preventing discoloration.",
-      },
-    ],
-    servicesOffered: [
-      "Single-Stage Paint Correction",
-      "Multi-Stage Paint Correction",
-      "Swirl Mark Removal",
-      "Scratch Removal",
-      "Gloss Enhancement",
-    ],
+  },
+
+  "ceramic-coating": {
+    title: "Ceramic Coating",
+    description:
+      "Tbd",
   },
 };
 
@@ -590,40 +253,21 @@ const ServicePage = () => {
         </Typography>
       </Box>
 
-      {/* COMMERCIAL WINDOW TINT VIEWER */}
-      {/* {serviceId === "commercial-window-tinting" && (
-        <Box sx={{ width: "100vw", height: "800px", overflow: "hidden" }}>
-          <object
-            data="https://llumar.com/na/en/architectural/interactive-window-film-tools/solar-decorative-film-viewer/dealer-commercial-solar-and-decorative/"
-            width="100%"
-            height="800px"
-            style={{ border: "none" }}
-            title="Llumar Interactive Viewer"
-          />
-        </Box>
-      )} */}
-
-      {/* RESIDENTIAL WINDOW TINT VIEWER */}
-      {/* {serviceId === "residential-window-tinting" && (
-        <Box sx={{ width: "100vw", height: "75vh", overflow: "hidden" }}>
-          <object
-            data="https://llumar.com/na/en/architectural/interactive-window-film-tools/viewer-for-home/dealer-home-solar-and-decorative/"
-            width="100%"
-            height="1000px"
-            style={{ border: "none" }}
-            title="Llumar Interactive Viewer"
-          />
-        </Box>
-      )} */}
-
-
       {(serviceId === "commercial-window-tinting" ||
+      serviceId === "vehicle-window-tinting" ||
+      serviceId === "tesla-window-tinting" ||
+      serviceId === "vehicle-paint-protection" ||
+      serviceId === "headlight-services" ||
+      serviceId === "ceramic-coating" ||
       serviceId === "windshield-protection-film")
         && <CommercialVideo />}
 
       
       {/* {serviceId === "commercial-window-tinting" && <CommercialCTA />} */}
-      {serviceId === "residential-window-tinting" && <ResidentialCTA />}
+      {(serviceId === "residential-window-tinting" ||
+      serviceId === "vehicle-paint-correction") && <ResidentialCTA />}
+
+      {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}
 
   
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
@@ -635,6 +279,8 @@ const ServicePage = () => {
       {serviceId !== "vehicle-paint-correction" &&
         serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" &&
+        serviceId !== "windshield-protection-film" &&
+        serviceId !== "ceramic-coating" &&
         serviceId !== "vehicle-paint-protection" && (
           <Box sx={{ width: "100vw" }}>
             <PricingComponent />
@@ -649,11 +295,6 @@ const ServicePage = () => {
       {serviceId !== "vehicle-paint-correction" && (
         <ServicesOffered serviceId={serviceId} />
       )}
-
-      {/* {serviceId !== "commercial-window-tinting" &&
-        serviceId !== "residential-window-tinting" && (
-          <BenefitsSection benefits={service.benefits} />
-        )} */}
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (
@@ -671,62 +312,7 @@ const ServicePage = () => {
         serviceId === "vehicle-paint-correction" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
-      {/* ✅ Services We Offer Section */}
       <FAQSection />
-
-      {/* <Box
-        sx={{
-          width: "100vw",
-          backgroundColor: "#2794d2",
-          textAlign: "center",
-          color: "white",
-        }}
-      > */}
-      {/* <Box sx={{ py: 6, px: 4, maxWidth: "1200px", mx: "auto" }}>
-          <Typography
-            variant={isMobile ? "h4" : "h2"}
-            sx={{
-              mb: 2,
-              fontWeight: "bold",
-              color: "#fff",
-              textAlign: "center",
-            }}
-          >
-            Do You Need Window Tint?
-          </Typography>
-          <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
-            If you want to reduce the heat that comes into your vehicle, protect
-            yourself and your car's interior from harmful UV rays, or just want
-            more privacy, window tint might be a good option for you. At
-            TintTek+, we provide comprehensive heat and UV protection, including
-            tinting for windshields and sunroofs, to ensure optimal heat
-            rejection, especially in the intense Dallas heat.
-          </Typography>
-          <Button
-            component={motion.button}
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            sx={{
-              mt: 3,
-              backgroundColor: "#000",
-              color: "#fff",
-              fontWeight: "bold",
-              px: isMobile ? 3 : 4, // Adjust padding for mobile
-              py: isMobile ? 1.2 : 1.5,
-              borderRadius: "30px",
-              textTransform: "uppercase",
-              fontSize: isMobile ? "1rem" : "1.1rem",
-              width: isMobile ? "100%" : "auto", // Make button full width on mobile
-            }}
-            href="/quote"
-          >
-            Get a Free Quote
-          </Button>
-        </Box> */}
-      {/* </Box> */}
-
       <CallToAction />
 
       {/* ✅ Contact Section */}

@@ -16,6 +16,49 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CloseIcon from "@mui/icons-material/Close";
 
+const videoContent = {
+  "vehicle-window-tinting": {
+    title: "Premium automotive care to enhance, protect, and maintain your vehicle.",
+    description: `Drive in comfort, privacy, and style with LLumar® automotive window tinting. Whether you're looking to reduce interior heat, block harmful UV rays, or upgrade your car’s appearance, Tint Tek Plus offers precision installation with premium film technology. Our professional-grade tints not only protect your interior and passengers, but also deliver a sleek, high-end look that turns heads — all while keeping you cool on the road. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
+    video: "/TintTek-Website/",
+  },
+  "tesla-window-tinting": {
+    title: "Elevate Your Tesla with Premium Window Film",
+    description: `Your Tesla deserves the best — and so do you. At Tint Tek Plus, we specialize in Tesla window tinting using precision-cut LLumar® films that perfectly match your vehicle’s design. Our tints offer advanced heat rejection, UV protection, enhanced privacy, and a refined look that complements Tesla’s futuristic aesthetic. Enjoy a cooler cabin, reduced glare, and preserved interior — all without sacrificing signal performance or style. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
+    video: "/TintTek-Website/",
+  },
+  "residential-window-tinting": {
+    title: "Enhance Your Home with Premium Residential Window Tinting",
+    description: `If you're feeling uncomfortable or dissatisfied with your home, start with your windows. Tint Tek Plus offers smart residential window film solutions using LLumar American Made products to address what may be bothering you—whether it’s the hot spots in a room, high cooling costs, or even the afternoon glare on your TV.  Our Team has over 10+ years of experience, we provide a variety of window films that are quickly and professionally installed, delivering lasting lifestyle benefits without breaking the bank.`,
+    video: "/TintTek-Website/Windshield-Film.mov",
+  },
+  "commercial-window-tinting": {
+    title: "Transform Your Business with LLumar® Commercial Films",
+    description: `The glass in your office, retail, or residential building should be an asset, not a source of discomfort or excessive cost. At Tint Tek Plus, we offer high-quality LLumar® window films, designed to solve a wide range of glass-related issues: high energy costs, tenant complaints, glare, fading furnishings, privacy concerns, security risks, and more. Whether you're improving an existing property or designing a new one, LLumar® provides the perfect solution to meet your needs.`,
+    video: "/TintTek-Website/commercial-video1.mov",
+  },
+  "vehicle-paint-correction": {
+    title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
+    description: `Eliminate scratches, swirls, and oxidation to bring back that showroom finish. Our multi-stage correction process ensures a mirror-like gloss.`,
+    video: "/TintTek-Website/paint-correction.mov",
+  },
+  "vehicle-paint-protection": {
+    title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
+    description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
+    video: "/TintTek-Website/",
+  },
+  "headlight-services": {
+    title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
+    description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.`,
+    video: "/TintTek-Website/",
+  },
+  "ceramic-coating": {
+    title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
+    description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,
+    video: "/TintTek-Website/ceramic-coating.mov",
+  },
+};
+
 export default function CombinedVideoCTA() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -24,6 +67,9 @@ export default function CombinedVideoCTA() {
   const [isMuted, setIsMuted] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const { serviceId } = useParams();
+
+  const content =
+    videoContent[serviceId] || videoContent["residential-window-tinting"];
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -131,11 +177,7 @@ export default function CombinedVideoCTA() {
             >
               <video
                 ref={videoRef}
-                src={
-                  serviceId === "commercial-window-tinting"
-                    ? "/TintTek-Website/commercial-video1.mov"
-                    : "/TintTek-Website/Windshield-Film.mov"
-                }
+                src={content.video}
                 autoPlay
                 muted={isMuted}
                 loop
@@ -204,7 +246,7 @@ export default function CombinedVideoCTA() {
                 mb: 2,
               }}
             >
-              Transform Your Space with Tint Tek Plus and LLumar® Window Films
+              {content.title}
             </Typography>
 
             <Typography
@@ -218,12 +260,7 @@ export default function CombinedVideoCTA() {
                 opacity: 0.9,
               }}
             >
-              The glass in your office, retail, or residential building should
-              be an asset, not a source of discomfort or excessive cost. At Tint
-              Tek Plus, we offer high-quality LLumar® window films, designed to
-              solve a wide range of glass-related issues: high energy costs,
-              tenant complaints, glare, fading furnishings, privacy concerns,
-              security risks, and more.
+              {content.description}
             </Typography>
 
             <Button

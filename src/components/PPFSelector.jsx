@@ -21,7 +21,7 @@ const ppfOptions = {
   },
   extended: {
     name: "Extended PPF",
-    image: "/images/platinum-gloss.jpg",
+    image: "/TintTek-Website/extended.png",
     description:
       "Covers additional areas for enhanced protection and longevity.",
     price: "$$$",

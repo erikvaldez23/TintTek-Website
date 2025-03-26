@@ -289,7 +289,12 @@ const Topbar = ({ notFound }) => {
                     <MenuItem
                       onClick={() => handleServiceSelect("headlight-services")}
                     >
-                      Headlight Services
+                      Headlight & Taillight Services
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => handleServiceSelect("ceramic-coating")}
+                    >
+                      Ceramic Coating
                     </MenuItem>
                     <MenuItem
                       onClick={() =>

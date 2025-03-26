@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -11,11 +12,47 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// Dynamic content for different services
+const callToActionData = {
+  "residential-window-tinting": {
+    title: "Transform Your Home with Tint Tek Plus and LLumar® Window Film",
+    description: `If you're feeling uncomfortable or dissatisfied with your home,
+    start with your windows. Tint Tek Plus offers smart residential
+    window film solutions using LLumar American Made products to address
+    what may be bothering you—whether it’s the hot spots in a room, high
+    cooling costs, or even the afternoon glare on your TV. Our team has
+    over 10+ years of experience and provides a variety of window films
+    that are quickly and professionally installed, delivering lasting
+    lifestyle benefits without breaking the bank.`,
+    images: [
+      "/TintTek-Website/residential-1.png",
+      "/TintTek-Website/residential-2.png",
+      "/TintTek-Website/residential-3.png",
+      "/TintTek-Website/residential-4.png",
+    ],
+  },
+  "vehicle-paint-correction": {
+    title: "Restore Your Vehicle's Shine with Professional Paint Correction",
+    description: `At Tint Tek Plus, we specialize in restoring and enhancing your vehicle’s paint, bringing back its original shine and clarity. Whether you’re dealing with swirl marks, scratches, oxidation, or just want to boost the appearance of your car, our professional paint correction services will restore your vehicle’s exterior to a showroom-quality finish..
+    Our commercial films are smart, sleek, and built to last. Perfect for offices, retail spaces, and buildings looking to improve energy efficiency.`,
+    images: [
+      "/TintTek-Website/commercial-1.png",
+      "/TintTek-Website/commercial-2.png",
+    ],
+  },
+};
+
 const CallToAction = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { serviceId } = useParams();
+  const currentData =
+    callToActionData[serviceId] ||
+    callToActionData["residential-window-tinting"];
 
-  // Variants for staggering children (title, paragraphs, button)
+  const { title, description, images } = currentData;
+
+  // Framer Motion animation variants
   const containerVariants = {
     hidden: {},
     visible: {
@@ -25,18 +62,10 @@ const CallToAction = () => {
     },
   };
 
-  // Variant for fading and sliding in each element
   const fadeSlideVariant = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
-
-  const images = [
-    "/TintTek-Website/residential-1.png",
-    "/TintTek-Website/residential-2.png",
-    "/TintTek-Website/residential-3.png",
-    "/TintTek-Website/residential-4.png",
-  ];
 
   const sliderSettings = {
     centerMode: true,
@@ -68,7 +97,6 @@ const CallToAction = () => {
       <Box
         sx={{
           position: "relative",
-          height: isMobile ? "auto" : "auto",
           py: 5,
           display: "flex",
           flexDirection: "column",
@@ -76,11 +104,10 @@ const CallToAction = () => {
           justifyContent: "center",
           textAlign: "center",
           backgroundColor: "#2794d2",
-          color: "white",
+          color: "#000",
           overflow: "hidden",
         }}
       >
-        {/* Animate the dark overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
@@ -95,7 +122,6 @@ const CallToAction = () => {
           }}
         />
 
-        {/* Content Section */}
         <Box
           sx={{
             position: "relative",
@@ -108,13 +134,7 @@ const CallToAction = () => {
           <Box sx={{ mb: 4 }}>
             <Slider {...sliderSettings}>
               {images.map((src, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    px: 2,
-                  }}
-                  className="carousel-slide"
-                >
+                <Box key={index} sx={{ px: 2 }} className="carousel-slide">
                   <Box
                     component="img"
                     src={src}
@@ -148,7 +168,7 @@ const CallToAction = () => {
               textTransform: "uppercase",
             }}
           >
-            Transform Your Home with Tint Tek Plus and LLumar® Window Film
+            {title}
           </Typography>
 
           <Typography
@@ -161,17 +181,9 @@ const CallToAction = () => {
               fontSize: isMobile ? "1rem" : "1.2rem",
               lineHeight: "1.6",
               opacity: 0.9,
-              px: isMobile ? 0 : 0,
             }}
           >
-            If you're feeling uncomfortable or dissatisfied with your home,
-            start with your windows. Tint Tek Plus offers smart residential
-            window film solutions using LLumar American Made products to address
-            what may be bothering you—whether it’s the hot spots in a room, high
-            cooling costs, or even the afternoon glare on your TV. Our Team has
-            over 10+ years of experience, we provide a variety of window films
-            that are quickly and professionally installed, delivering lasting
-            lifestyle benefits without breaking the bank.
+            {description}
           </Typography>
 
           <Button
