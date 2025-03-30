@@ -295,7 +295,7 @@ const serviceSteps = {
         description:
           "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "TBD",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
@@ -303,7 +303,7 @@ const serviceSteps = {
         description:
           "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+        "TBD",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
@@ -311,7 +311,7 @@ const serviceSteps = {
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+         "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
@@ -319,7 +319,23 @@ const serviceSteps = {
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+         "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Final Inspection",
+        description:
+          "We conduct a thorough inspection to confirm that the PPF has been applied flawlessly, ensuring full protection for your vehicle.",
+        detailedDescription:
+         "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Two-Week Check-Up",
+        description:
+          "Two-week complimentary check-up after your PPF installation. This allows us to inspect the film, ensuring it's securely bonded to your vehicle and that no issues arise early on.",
+        detailedDescription:
+         "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -331,42 +347,65 @@ const serviceSteps = {
       "/TintTek-Website/paint-protection3.jpeg",
     ],
   },
-  // "vehicle-paint-protection": {
-  //   title: "Vehicle Paint Protection",
-  //   steps: [
-  //     {
-  //       title: "Preparation",
-  //       description:
-  //         "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
-  //       detailedDescription:
-  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
-  //       icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-  //     },
-  //     {
-  //       title: "Film Application",
-  //       description:
-  //         "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
-  //       detailedDescription:
-  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
-  //       icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-  //     },
-  //     {
-  //       title: "Final Inspection",
-  //       description:
-  //         "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
-  //       detailedDescription:
-  //         "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
-  //       icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-  //     },
-  //   ],
-  //   finalDescription:
-  //     "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
-  //   images: [
-  //     "/TintTek-Website/paint-protection1.jpeg",
-  //     "/TintTek-Website/paint-protection2.jpeg",
-  //     "/TintTek-Website/paint-protection3.jpeg",
-  //   ],
-  // },
+  "ceramic-coating": {
+    steps: [
+      {
+        title: "Consultation & Selection ",
+        description:
+          "We’ll discuss your needs and help you choose the right coating for your vehicle, whether you prefer standard ceramic or cutting-edge graphene protection.",
+        detailedDescription:
+          "TBD",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Preparation",
+        description:
+          "Your vehicle is thoroughly cleaned and decontaminated to ensure the coating bonds perfectly with the surface. This step is crucial for optimal results.",
+        detailedDescription:
+          "TBD",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Application",
+        description:
+          "Our trained experts carefully apply the coating, ensuring a flawless, even coverage across your car’s paintwork.",
+        detailedDescription:
+          "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Curing",
+        description:
+          "After application, the coating needs time to cure, forming a long-lasting, protective layer that’s as tough as it is beautiful.",
+        detailedDescription:
+          "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Final Inspection",
+        description:
+          "We inspect the vehicle to make sure the coating is perfect and your car is ready to face the elements with superior protection.",
+        detailedDescription:
+          "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Yearly Maintenance Check",
+        description:
+          "For just $225, we offer an annual maintenance check to ensure the coating is performing at its best and touch-up any areas that may need attention.",
+        detailedDescription:
+          "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+    ],
+    finalDescription:
+      "Our Ceramic & Graphene Coating Process:",
+    images: [
+      "/TintTek-Website/paint-protection1.jpeg",
+      "/TintTek-Website/paint-protection2.jpeg",
+      "/TintTek-Website/paint-protection3.jpeg",
+    ],
+  },
 };
 
 const HowItWorks = ({ serviceId }) => {

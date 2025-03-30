@@ -130,19 +130,69 @@ const faqConfig = {
   ],
   "vehicle-paint-protection": [
     {
-      question: "What does a ULTRA level protection offer?",
-      answer:
-        "The ULTRA level protection features premium self-healing film for superior scratch resistance and a long-term warranty.",
+      question: "What is Paint Protection Film (PPF)?",
+      answer: `Stek PPF is a transparent, durable thermoplastic urethane film that is professionally applied to your vehicle’s painted surfaces. Once installed, it forms a strong protective barrier that absorbs impact and prevents damage from environmental hazards. Not only does it safeguard your vehicle from physical harm, but it also preserves the original look of your car, keeping it pristine and as bright as the day you drove it off the lot. </br>
+      But protection is only part of the story—Stek PPF also enhances your vehicle’s appearance by maintaining its glossy finish and giving it a cleaner, sleeker look that’s resistant to staining and discoloration.`,
     },
     {
-      question: "Can I choose protection for only part of my vehicle?",
-      answer:
-        "Yes, you can opt for either hood protection or full body protection depending on your needs.",
+      question: "Why Choose Stek Paint Protection Film?",
+      answer: `Installation duration varies based on the selected coverage:
+      <ul>
+        <li><strong>Exceptional Durability: </strong>Stek PPF is engineered to withstand the toughest conditions, including road debris, gravel, and weathering elements. It prevents chips, scratches, and swirl marks that can diminish your vehicle's paintwork.</li>
+        <li><strong>Self-Healing Technology: </strong> Stek PPF features advanced self-healing properties. Light scratches and swirl marks disappear when exposed to heat, keeping your car looking as fresh as the day it was protected.</li>
+        <li><strong>Hydrophobic Properties: </strong> Stek PPF is designed to repel water, dirt, and contaminants. This makes cleaning easier and reduces the frequency of washes, helping to maintain your vehicle's pristine appearance longer.</li>
+        <li><strong>Invisible Shield: </strong> The film is nearly invisible and doesn’t alter your car’s color or finish. You get all the protection with none of the visual compromise, maintaining that flawless, high-gloss or matte finish.</li>
+        <li><strong>UV Protection: </strong> Stek PPF shields your vehicle’s paint from harmful UV rays, which helps prevent fading and oxidation, ensuring that your car’s color stays vibrant for years.</li>
+        <li><strong>Scratch & Impact Protection: </strong> Protect your vehicle from minor abrasions, stone chips, and scratches caused by road debris. Stek PPF is tough enough to absorb impacts, keeping your car looking like new.</li>
+      </ul>`,
     },
     {
-      question: "Is the tint legal in all states?",
+      question: "Why Stek Is the Best PPF on the Market?",
+      answer: `Stek has long been recognized as a leader in the PPF industry for several reasons:
+      <ul>
+        <li><strong>Innovative Technology: </strong>Stek PPF offers cutting-edge technology like self-healing capabilities and advanced hydrophobic properties that set it apart from other films on the market. This ensures lasting protection, superior appearance, and ease of maintenance.</li>
+        <li><strong>Durability: </strong> Stek is known for producing one of the thickest, most durable films available, offering superior protection against scratches, abrasions, and environmental damage. It holds up exceptionally well against rock chips, road debris, and other hazards.</li>
+        <li><strong>Clear, Glossy Finish: </strong> Stek PPF doesn’t alter the appearance of your vehicle’s paint. It maintains a clear, glossy, or matte finish depending on your preference, preserving your vehicle's original look while providing unmatched protection.</li>
+        <li><strong>Long-Term Protection: </strong> Stek’s commitment to long-lasting protection is evident in their warranties, offering up to 10 years for many of their films. This ensures your vehicle stays protected for years, with minimal maintenance needed.</li>
+      </ul>`,
+    },
+    {
+      question: "How long does it take to install Paint Protection Film on my vehicle?",
+      answer: `Installation duration varies based on the selected coverage:
+      <ul>
+        <li><strong>Partial Front Coverage: </strong> Approximately 1 to 2 days.</li>
+        <li><strong>Full Vehicle Coverage: </strong> Between 3 to 6 days.</li>
+      </ul>
+      These estimates ensure meticulous application and curing time.`,
+    },
+    {
+      question: "How long does Paint Protection Film last?",
       answer:
-        "Yes, our tint complies with most state regulations. However, it’s a good idea to check your local laws to ensure compliance.",
+        "Stek PPF offers a 10-year warranty, covering defects like cracking, yellowing, and bubbling. ",
+    },
+    {
+      question: "Can I add Paint Protection Film if my car has been painted? ",
+      answer:
+        "If your car has been repainted, please let us know before we apply a Paint Protection Film (PPF). The paint must be fully cured, typically requiring at least 30 days. If the paint is of poor quality or improperly applied, there's a risk that the PPF may not adhere properly, or it could cause the paint to peel when removed. Proper preparation and timing are key to achieving the best results, so consulting with a professional installer is important to ensure your vehicle is ready for PPF.",
+    },
+    {
+      question: "How should I maintain my vehicle after PPF installation?",
+      answer: `To ensure longevity:
+      <ul>
+        <li>Avoid pressure washing for the first 24 hours.</li>
+        <li>Use pH-neutral soaps and a microfiber mitt for cleaning.</li>
+        <li>Regular washing every two weeks is recommended.</li>
+      </ul>`,
+    },
+    {
+      question: "Can Paint Protection Film be removed or replaced if damaged?",
+      answer:
+        "Yes, PPF can be professionally removed or replaced if damaged, restoring your vehicle's protection and appearance.",
+    },
+    {
+      question: "How much does Paint Protection Film cost?",
+      answer:
+        "Costs vary based on coverage area, vehicle size, and chosen PPF brand. At Tint Tek Plus, we offer competitive pricing and can provide a personalized quote based on your specific requirements",
     },
   ],
   "headlight-services": [

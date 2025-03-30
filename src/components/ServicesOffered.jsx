@@ -170,10 +170,25 @@ const serviceOptions = {
       //     "Invisible shield that protects your car from chips, scratches, and road debris.",
       // },
       {
-        name: "STEK PPF",
+        name: "DYNOshield",
         description:
-          "High-quality, protective film that guards your car’s paint against chips, scratches, stains, and road debris while preserving its appearance.",
+          "The most popular option for high-gloss finishes. It provides exceptional durability, hydrophobic protection, and a sleek shine, backed by a 10-year warranty.",
       },
+      {
+        name: "DYNOmatte",
+        description:
+          "Perfect for matte and satin finishes. It preserves the subtle beauty of matte paint while providing excellent protection and a smooth, self-healing surface.",
+      },
+      {
+        name: "DYNOmight",
+        description:
+          "For those who demand extra durability, DYNOmight is 25% thicker than regular PPF, offering superior protection for off-road vehicles and high-performance sports cars.",
+      },
+      // {
+      //   name: "Color Change PPF",
+      //   description:
+      //     "Premium paint protection film that not only protects your vehicle's paint but also allows you to change its color or finish. This innovative product offers a unique combination of style and protection, making it an ideal solution for those who want to personalize their car’s look while safeguarding its paint from damage",
+      // },
     ],
   },
   "headlight-services": {
@@ -202,29 +217,6 @@ const serviceOptions = {
       },
     ],
   },
-  // "vehicle-paint-protection": {
-  //   title: "Vehicle Paint Protection Services",
-  //   list: [
-  //     "Front End PPF",
-  //     "Extended PPF",
-  //     "Track Package PPF",
-  //     "Full Car PPF",
-  //     "Color Change PPF",
-  //     "Stealth/Matte PPF",
-  //   ],
-  //   filmTypes: [
-  //     {
-  //       name: "Llumar Paint Protection Film",
-  //       description:
-  //         "Invisible shield that protects your car from chips, scratches, and road debris.",
-  //     },
-  //     {
-  //       name: "STEK PPF",
-  //       description:
-  //         "High-quality, protective film that guards your car’s paint against chips, scratches, stains, and road debris while preserving its appearance.",
-  //     },
-  //   ],
-  // },
 };
 
 const ServicesOffered = ({ serviceId }) => {
@@ -258,6 +250,8 @@ const ServicesOffered = ({ serviceId }) => {
             ? "Commercial Window Tinting Services"
             : serviceId === "residential-window-tinting"
             ? "Residential Window Tinting Services"
+            : serviceId === "vehicle-paint-protection"
+            ? "Stek PPF Options"
             : "Film Types"}
         </Typography>
 
@@ -268,18 +262,29 @@ const ServicesOffered = ({ serviceId }) => {
             {/* <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
               {service.title}
             </Typography> */}
-            <List>
+            <List
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                justifyContent: { xs: "flex-start", sm: "center" },
+              }}
+            >
               {service.list.map((item, index) => (
                 <ListItem
                   key={index}
                   sx={{
-                    transition: "all 0.3s ease-in-out",
+                    width: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                    m: 0,
+                    p: 0,
                   }}
                 >
-                  <ListItemIcon>
+                  <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
                     <CheckCircleIcon sx={{ color: "#2794d2" }} />
                   </ListItemIcon>
-                  <ListItemText primary={item} />
+                  <ListItemText primary={item} sx={{ m: 0 }} />
                 </ListItem>
               ))}
             </List>

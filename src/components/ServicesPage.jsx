@@ -256,7 +256,7 @@ const ServicePage = () => {
       {(serviceId === "commercial-window-tinting" ||
       serviceId === "vehicle-window-tinting" ||
       serviceId === "tesla-window-tinting" ||
-      serviceId === "vehicle-paint-protection" ||
+      // serviceId === "vehicle-paint-protection" ||
       serviceId === "headlight-services" ||
       serviceId === "ceramic-coating" ||
       serviceId === "windshield-protection-film")
@@ -265,6 +265,7 @@ const ServicePage = () => {
       
       {/* {serviceId === "commercial-window-tinting" && <CommercialCTA />} */}
       {(serviceId === "residential-window-tinting" ||
+      serviceId === "vehicle-paint-protection" || 
       serviceId === "vehicle-paint-correction") && <ResidentialCTA />}
 
       {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}
