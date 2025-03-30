@@ -197,23 +197,23 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "DYNOshade",
-        description: "Description",
+        description: "Provides a subtle shaded effect, offering 45% light transmittance.",
       },
       {
         name: "DYNOshadow",
-        description: "Description",
+        description: "Delivers a medium charcoal tone with 34% light transmittance.",
       },
       {
         name: "DYNOsmoke",
-        description: "Description",
+        description: "The darkest option at 30% light transmittance, ideal for a stealthy look.",
       },
       {
         name: "DYNOstorm",
-        description: "Description",
+        description: "A neutral gray with 50% light transmittance, giving a sleek appearance.",
       },
       {
         name: "DYNOyellow",
-        description: "Description",
+        description: "Inspired by racing culture, offering a classic yellow tint.",
       },
     ],
   },

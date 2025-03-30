@@ -27,9 +27,10 @@ const videoContent = {
     description: `Your Tesla deserves the best — and so do you. At Tint Tek Plus, we specialize in Tesla window tinting using precision-cut LLumar® films that perfectly match your vehicle’s design. Our tints offer advanced heat rejection, UV protection, enhanced privacy, and a refined look that complements Tesla’s futuristic aesthetic. Enjoy a cooler cabin, reduced glare, and preserved interior — all without sacrificing signal performance or style. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
     video: "/TintTek-Website/",
   },
+  // THIS IS WINDHSIELD PROTECTION FILM FOR SOME REASON
   "residential-window-tinting": {
-    title: "Enhance Your Home with Premium Residential Window Tinting",
-    description: `If you're feeling uncomfortable or dissatisfied with your home, start with your windows. Tint Tek Plus offers smart residential window film solutions using LLumar American Made products to address what may be bothering you—whether it’s the hot spots in a room, high cooling costs, or even the afternoon glare on your TV.  Our Team has over 10+ years of experience, we provide a variety of window films that are quickly and professionally installed, delivering lasting lifestyle benefits without breaking the bank.`,
+    title: "Superior Protection for Texas Roads. Clarity. Durability. Safety.",
+    description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
     video: "/TintTek-Website/Windshield-Film.mov",
   },
   "commercial-window-tinting": {
@@ -96,25 +97,6 @@ export default function CombinedVideoCTA() {
     if (!video) return;
     video.muted = !video.muted;
     setIsMuted(video.muted);
-  };
-
-  const images = [
-    "/TintTek-Website/Tint Tek-146.jpg",
-    "/TintTek-Website/commercial2.jpg",
-    "/TintTek-Website/commercial3.jpg",
-    "/TintTek-Website/commercial4.jpg",
-    "/TintTek-Website/commercial5.jpg",
-  ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
   };
 
   const containerVariants = {

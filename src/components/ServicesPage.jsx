@@ -282,6 +282,7 @@ const ServicePage = () => {
         serviceId !== "residential-window-tinting" &&
         serviceId !== "windshield-protection-film" &&
         serviceId !== "ceramic-coating" &&
+        serviceId !== "headlight-services" &&
         serviceId !== "vehicle-paint-protection" && (
           <Box sx={{ width: "100vw" }}>
             <PricingComponent />
@@ -311,6 +312,7 @@ const ServicePage = () => {
         serviceId === "commercial-window-tinting" ||
         serviceId === "windshield-protection-film" ||
         serviceId === "vehicle-paint-correction" ||
+        serviceId === "headlight-services" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
       <FAQSection />

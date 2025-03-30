@@ -219,6 +219,18 @@ const faqConfig = {
     },
   ],
   "windshield-protection-film": [
+    // {
+    //   question: "Why Choose ExoShield GT3 for Your Windshield?",
+    //   answer: `Installation duration varies based on the selected coverage:
+    //   <ul>
+    //     <li><strong>Exceptional Impact Resistance: </strong>ExoShield GT3 is engineered to deliver superior abrasion resistance, durability, and weatherability. It boasts a thickness of five mils—about 2.5 times that of a human hair—providing robust protection against chips and cracks caused by road debris. Designed to give you 6X more impact protection, GT3+ is truly made to save your glass.</li>
+    //     <li><strong>Advanced Nanocoating Technology: </strong>Incorporating second-generation Endurance Class nanocoatings, ExoShield GT3 ensures a strong bond between layers, preventing delamination and extending the film's lifespan. </li>
+    //     <li><strong>Unmatched Optical Clarity: </strong>As one of the most optically clear films on the market, ExoShield GT3 is virtually invisible once installed, maintaining the natural appearance of your vehicle while providing robust protection. </li>
+    //     <li><strong>Comprehensive UV and Heat Rejection: </strong>The film blocks up to 99% of harmful UV rays, reducing interior heat buildup and protecting your vehicle's interior from sun damage.</li>
+    //     <li><strong>Long-Term Durability: </strong>Designed to withstand various driving conditions, ExoShield GT3 is weather-resistant and maintains its protective qualities over time, ensuring lasting windshield protection.</li>
+    //     <li><strong>Proudly made in the USA: </strong>Your windshield protection film is only as good as the materials it's made with. We use the highest quality PET (Polyethylene Terephthalate) combined with our own proprietary coatings tech to deliver you the best quality.</li>
+    //   </ul>`,
+    // },
     {
       question: "Does ExoShield GT3 protect against all types of damage?",
       answer:

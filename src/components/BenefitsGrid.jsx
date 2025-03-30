@@ -216,6 +216,32 @@ const benefitsData = {
         "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
     },
   ],
+  "headlight-services": [
+    {
+      title: "Durable Protection",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Safeguards against rock chips, cracks, scratches, and other road hazards.",
+    },
+    {
+      title: "Enhanced Aesthetics",
+      icon: <SecurityIcon fontSize="large" />,
+      description:
+        "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
+    },
+    {
+      title: "Hydrophobic Properties",
+      icon: <VisibilityIcon fontSize="large" />,
+      description:
+        "Repels water, making your lights easier to clean and maintain.",
+    },
+    {
+      title: "Self-Healing",
+      icon: <HomeWorkIcon fontSize="large" />,
+      description:
+        "The film's advanced technology allows minor scratches to heal with heat, maintaining a smooth surface.",
+    },
+  ],
 };
 
 // Titles for each service benefits section
