@@ -38,8 +38,8 @@ const tintPackages = [
       "A full-tint windshield package for optimal UV and heat rejection.",
   },
   {
-    title: "Full Sunroof",
-    price: "Starting at $$$",
+    title: "Single Pane Sunroof",
+    price: "Starting at $100",
     image: "/TintTek-Website/sunroof.png",
     description:
       "A full-tint sunroof package for optimal UV and heat rejection.",

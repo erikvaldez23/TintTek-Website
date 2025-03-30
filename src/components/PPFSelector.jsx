@@ -17,27 +17,27 @@ const ppfOptions = {
     image: "/TintTek-Website/front-ppf1.png",
     description:
       "Provides essential front-end protection against road debris and scratches.",
-    price: "$$$",
+    price: "$1750",
   },
   extended: {
     name: "Extended PPF",
     image: "/TintTek-Website/extended.png",
     description:
       "Covers additional areas for enhanced protection and longevity.",
-    price: "$$$",
+    price: "$2500",
   },
-  "track-package": {
-    name: "Track Package PPF",
-    image: "/TintTek-Website/track-package1.png",
-    description:
-      "Designed for track performance with maximum coverage and durability.",
-    price: "$$$",
-  },
+  // "track-package": {
+  //   name: "Track Package PPF",
+  //   image: "/TintTek-Website/track-package1.png",
+  //   description:
+  //     "Designed for track performance with maximum coverage and durability.",
+  //   price: "$$$",
+  // },
   "full-car": {
     name: "Full Car PPF",
     image: "/TintTek-Website/full-ppf1.png",
     description: "Complete vehicle protection with hydrophobic properties.",
-    price: "$$$",
+    price: "**Call For Pricing**",
   },
 };
 

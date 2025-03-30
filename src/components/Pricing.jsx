@@ -200,7 +200,7 @@ const PricingComponent = () => {
           {service.title}
         </Typography>
              <Typography
-                variant={isMobile ? "h6" : "h5"}
+                variant={isMobile ? "body1" : "h5"}
                 align="center"
                 sx={{
                   color: "#ccc",

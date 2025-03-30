@@ -164,11 +164,11 @@ const serviceOptions = {
       "Stealth/Matte PPF",
     ],
     filmTypes: [
-      {
-        name: "Llumar Paint Protection Film",
-        description:
-          "Invisible shield that protects your car from chips, scratches, and road debris.",
-      },
+      // {
+      //   name: "Llumar Paint Protection Film",
+      //   description:
+      //     "Invisible shield that protects your car from chips, scratches, and road debris.",
+      // },
       {
         name: "STEK PPF",
         description:

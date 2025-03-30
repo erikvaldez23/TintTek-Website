@@ -113,8 +113,8 @@ const serviceSteps = {
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
     images: [
-      "/TintTek-Website/tesla-service.jpg",
-      "/TintTek-Website/tesla-service1.jpg",
+      "/TintTek-Website/tesla-service.png",
+      "/TintTek-Website/Tint Tek-170.jpg",
       "/TintTek-Website/tesla-service2.JPG",
     ],
   },
@@ -291,7 +291,7 @@ const serviceSteps = {
     title: "Vehicle Paint Protection",
     steps: [
       {
-        title: "Preparation",
+        title: "Consultation & Assesment",
         description:
           "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
         detailedDescription:
@@ -299,7 +299,7 @@ const serviceSteps = {
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Film Application",
+        title: "Preparation",
         description:
           "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
         detailedDescription:
@@ -307,7 +307,15 @@ const serviceSteps = {
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
-        title: "Final Inspection",
+        title: "Installation",
+        description:
+          "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
+        detailedDescription:
+          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Curing",
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription:

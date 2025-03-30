@@ -215,30 +215,23 @@ const benefitsData = {
       description:
         "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
     },
-    {
-      title: "",
-      icon: <ColorLensIcon fontSize="large" />,
-      description: "",
-    },
   ],
 };
 
 // Titles for each service benefits section
 const titles = {
   "vehicle-window-tinting": "Benefits of Vehicle Window Tinting",
-  "tesla-window-tinting": "Tesla Header",
+  "tesla-window-tinting": "Benefits of Tesla Window Tinting",
   "commercial-window-tinting": "Why Choose LLumar® Window Films?",
   "residential-window-tinting": "Why Choose LLumar®",
   "windshield-protection-film": "Why Choose ExoShield GT3",
 };
 
 const BenefitsGrid = () => {
-  // Get the service ID from the URL (e.g., "commercial-window-tinting" or "residential-window-tinting")
   const { serviceId } = useParams();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Use the benefits data and title based on serviceId; fallback to an empty array and default title if not found
   const benefits = benefitsData[serviceId] || [];
   const title = titles[serviceId] || "Our Benefits";
 

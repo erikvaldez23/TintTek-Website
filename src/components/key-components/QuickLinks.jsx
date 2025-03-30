@@ -22,7 +22,7 @@ const quickLinksData = [
       { text: "Residential Window Tinting", to: "/services/residential-window-tinting" },
       { text: "Vehicle Paint Correction", to: "/services/vehicle-paint-correction" },
       { text: "Vehicle Paint Protection", to: "/services/vehicle-paint-protection" },
-      { text: "Headlight Services", to: "/services/headlight-services" },
+      { text: "Headlight & Tailight Services", to: "/services/headlight-services" },
       { text: "Windshield Protection Film", to: "/services/windshield-protection-film" },
     ],
   },

@@ -29,7 +29,7 @@ const servicesData = [
     title: "TESLA WINDOW TINTING",
     description:
       "Extend battery life, reduce heat in cabin, and enhance privacy.",
-    image: "/TintTek-Website/tesla-service.jpg",
+    image: "/TintTek-Website/Tint Tek-181.jpg",
   },
   {
     id: "commercial-window-tinting",
@@ -42,7 +42,7 @@ const servicesData = [
     title: "RESIDENTIAL WINDOW TINTING",
     description:
       "Lower your energy costs, get UV protection, enhance privacy and security.",
-    image: "/TintTek-Website/residential-tint.png",
+    image: "/TintTek-Website/residential-service.png",
   },
   {
     id: "vehicle-paint-correction",
@@ -55,7 +55,7 @@ const servicesData = [
     title: "VEHICLE PAINT PROTECTION",
     description:
       "Shields paint from scratches, chips, stains, UV damage, and wear.",
-    image: "/TintTek-Website/paint-protection1.jpg",
+    image: "/TintTek-Website/ppf-service.png",
   },
   {
     id: "headlight-services",
@@ -67,7 +67,7 @@ const servicesData = [
     id: "windshield-protection-film",
     title: "WINDSHIELD PROTECTION FILM",
     description: "Windshield Protection Film Description",
-    image: "/TintTek-Website/windshield-protection.jpg",
+    image: "/TintTek-Website/windshield-service.png",
   },
   {
     id: "ceramic-coating",
@@ -196,7 +196,7 @@ const Services = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "rgba(0, 0, 0, 0.3)",
+                      background: "rgba(0, 0, 0, 0.55)",
                       color: "white",
                       display: "flex",
                       flexDirection: "column",
@@ -206,10 +206,10 @@ const Services = () => {
                       transition: "background 0.5s ease",
                     }}
                   >
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                       {service.title}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body1">
                       {service.description}
                     </Typography>
                   </CardContent>

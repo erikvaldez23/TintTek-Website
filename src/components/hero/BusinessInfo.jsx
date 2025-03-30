@@ -42,7 +42,7 @@ const BusinessInfo = () => {
           style={{ cursor: "pointer" }}
         >
           <FaPhone className="business-icon" />
-          <Typography variant="body1" className="business-text">
+          <Typography variant="h6" className="business-text">
             +1 (972) 362-8468
           </Typography>
         </Box>
@@ -52,7 +52,7 @@ const BusinessInfo = () => {
           style={{ cursor: "pointer" }}
         >
           <FaEnvelope className="business-icon" />
-          <Typography variant="body1" className="business-text">
+          <Typography variant="h6" className="business-text">
             info@tinttekplus.com
           </Typography>
         </Box>
@@ -62,7 +62,7 @@ const BusinessInfo = () => {
           style={{ cursor: "pointer" }}
         >
           <FaMapMarkerAlt className="business-icon" />
-          <Typography variant="body1" className="business-text">
+          <Typography variant="h6" className="business-text">
             2518 West Kingsley Rd
           </Typography>
         </Box>
@@ -72,7 +72,7 @@ const BusinessInfo = () => {
           style={{ cursor: "pointer" }}
         >
           <FaClock className="business-icon" />
-          <Typography variant="body1" className="business-text">
+          <Typography variant="h6" className="business-text">
             Mon - Sat, 9am - 6pm
           </Typography>
         </Box>

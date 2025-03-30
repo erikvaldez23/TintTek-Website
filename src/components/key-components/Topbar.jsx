@@ -26,6 +26,8 @@ import {
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
 import logo from "../../../public/tinttek-logo1.png"; // Ensure correct path
+import { Collapse } from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const NavbarContainer = styled(Box)({
   width: "100%",
@@ -42,6 +44,7 @@ const Topbar = ({ notFound }) => {
   const [scrolling, setScrolling] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 1300px)");
   const navigate = useNavigate();
   const location = useLocation();
@@ -254,7 +257,9 @@ const Topbar = ({ notFound }) => {
                       Vehicle Window Tinting
                     </MenuItem>
                     <MenuItem
-                      onClick={() => handleServiceSelect("tesla-window-tinting")}
+                      onClick={() =>
+                        handleServiceSelect("tesla-window-tinting")
+                      }
                     >
                       Tesla Window Tinting
                     </MenuItem>
@@ -417,31 +422,141 @@ const Topbar = ({ notFound }) => {
             gap: "15px",
           }}
         >
-          {["Services", "Reviews", "Gallery", "Blog", "FAQ", "Contact"].map(
-            (item) => (
-              <ListItem
-                button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+          {/* Services with dropdown */}
+          <ListItem
+            button
+            disableGutters
+            onClick={() => setServicesOpen(!servicesOpen)}
+            sx={{
+              py: "10px",
+              px: "24px",
+              marginLeft: "5px",
+              minHeight: "70px",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center", // center the container
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
+                maxWidth: "175px", // 👈 keeps layout from stretching edge to edge
+              }}
+            >
+              <Box
+                sx={{
+                  fontWeight: "bold",
+                  color: "white",
+                  textTransform: "uppercase",
+                  fontSize: "clamp(30px, 4vw, 50px)",
+                  lineHeight: 1,
+                }}
               >
-                <ListItemText
-                  primary={item}
-                  primaryTypographyProps={{
-                    sx: {
-                      fontFamily: "NoizeSport, sans-serif",
+                Services
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "32px", // 👈 fixed width so icon stays in place
+                }}
+              >
+                {servicesOpen ? (
+                  <ExpandLess sx={{ color: "white", fontSize: "32px" }} />
+                ) : (
+                  <ExpandMore sx={{ color: "white", fontSize: "32px" }} />
+                )}
+              </Box>
+            </Box>
+          </ListItem>
+
+          <Collapse in={servicesOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {[
+                {
+                  label: "Vehicle Window Tinting",
+                  path: "vehicle-window-tinting",
+                },
+                { label: "Tesla Window Tinting", path: "tesla-window-tinting" },
+                {
+                  label: "Commercial Window Tinting",
+                  path: "commercial-window-tinting",
+                },
+                {
+                  label: "Residential Window Tinting",
+                  path: "residential-window-tinting",
+                },
+                {
+                  label: "Vehicle Paint Correction",
+                  path: "vehicle-paint-correction",
+                },
+                {
+                  label: "Vehicle Paint Protection",
+                  path: "vehicle-paint-protection",
+                },
+                {
+                  label: "Headlight & Taillight Services",
+                  path: "headlight-services",
+                },
+                { label: "Ceramic Coating", path: "ceramic-coating" },
+                {
+                  label: "Windshield Protection Film",
+                  path: "windshield-protection-film",
+                },
+              ].map(({ label, path }) => (
+                <ListItem
+                  key={label}
+                  button
+                  onClick={() => {
+                    handleServiceSelect(path);
+                    setDrawerOpen(false);
+                  }}
+                  sx={{
+                    paddingLeft: "40px",
+                    "& .MuiListItemText-primary": {
+                      fontSize: "15px",
                       fontWeight: "bold",
-                      color: "white",
-                      textTransform: "uppercase",
-                      textAlign: "center",
-                      fontSize: "clamp(30px, 4vw, 50px)",
-                      lineHeight: "1.2",
-                      "&:hover": { color: "#2794d2", cursor: "pointer" },
+                      color: "#fff",
+                      textTransform: "none",
+                    },
+                    "&:hover": {
+                      backgroundColor: "#2794d2",
                     },
                   }}
-                />
-              </ListItem>
-            )
-          )}
+                >
+                  <ListItemText primary={label} />
+                </ListItem>
+              ))}
+            </List>
+          </Collapse>
+
+          {["Reviews", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
+            <ListItem
+              button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+            >
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontFamily: "NoizeSport, sans-serif",
+                    fontWeight: "bold",
+                    color: "white",
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                    fontSize: "clamp(30px, 4vw, 50px)",
+                    lineHeight: "1.2",
+                    "&:hover": { color: "#2794d2", cursor: "pointer" },
+                  },
+                }}
+              />
+            </ListItem>
+          ))}
         </List>
 
         {/* Buttons & Social Icons */}

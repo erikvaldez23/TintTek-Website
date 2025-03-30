@@ -27,7 +27,7 @@ const callToActionData = {
     images: [
       "/TintTek-Website/residential-1.png",
       "/TintTek-Website/residential-2.png",
-      "/TintTek-Website/residential-3.png",
+      // "/TintTek-Website/residential-3.png",
       "/TintTek-Website/residential-4.png",
     ],
   },

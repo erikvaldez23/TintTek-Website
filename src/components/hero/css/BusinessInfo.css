@@ -15,7 +15,7 @@
     background: transparent;
     z-index: 10;
     font-family: "Poppins", sans-serif;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 500;
     gap: 10px;
 }
@@ -52,6 +52,8 @@
     color: #2794d2;
     transform: rotate(5deg);
 }
+
+
 
 /* ✅ Hide the component on smaller screens */
 @media (max-width: 768px) {
