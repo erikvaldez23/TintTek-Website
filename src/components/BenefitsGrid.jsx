@@ -8,6 +8,8 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Avatar,
+  Divider,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
@@ -15,6 +17,7 @@ import SecurityIcon from "@mui/icons-material/Security";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 // Data for benefits per service
 const benefitsData = {
@@ -264,142 +267,324 @@ const titles = {
   "residential-window-tinting": "Why Choose LLumar®",
   "windshield-protection-film": "Why Choose ExoShield GT3",
 };
+
+// Add custom color schemes per service
+const colorSchemes = {
+  "vehicle-window-tinting": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#43a7e0"
+  },
+  "tesla-window-tinting": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#ff4b50"
+  },
+  "commercial-window-tinting": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "#fff",
+    textColor: "#000",
+    bgColor: "#EEEEFF",
+    accentColor: "#43a7e0"
+  },
+  "residential-window-tinting": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#43a7e0"
+  },
+  "windshield-protection-film": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#43a7e0"
+  },
+  "vehicle-paint-correction": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#43a7e0"
+  },
+  "headlight-services": {
+    primary: "#2794d2",
+    secondary: "#134d6b",
+    cardBg: "rgba(25, 25, 25, 0.9)",
+    textColor: "#fff",
+    bgColor: "#000",
+    accentColor: "#ffdc7a"
+  },
+};
+
 const BenefitsGrid = () => {
   const { serviceId } = useParams();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
 
   const benefits = benefitsData[serviceId] || [];
   const title = titles[serviceId] || "Our Benefits";
+  
+  // Get color scheme for this service, default to vehicle window tinting colors
+  const colors = colorSchemes[serviceId] || colorSchemes["vehicle-window-tinting"];
+
+  // Animation variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.7, ease: "easeOut" } 
+    },
+  };
 
   const renderBenefitCard = (benefit, index) => {
-    const cardContent = (
-      <Card
-        component={motion.div}
-        whileHover={!isMobile ? { scale: 1.03 } : false}
-        sx={{
-          backgroundColor:
-            serviceId === "commercial-window-tinting" ? "#000" : "#292929",
-          backdropFilter: "blur(8px)",
-          borderRadius: 3,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          height: isMobile ? "400px" : "300px", // 👈 Mobile height change
-          p: 3,
-          transition: "transform 0.3s ease",
+    return (
+      <motion.div
+        variants={cardVariants}
+        whileHover={{ 
+          y: -10,
+          boxShadow: `0 10px 25px rgba(${colors.primary.replace('#', '').match(/../g).map(x => parseInt(x, 16)).join(',')}, 0.2)` 
         }}
+        style={{ height: "100%" }}
       >
-        <Box
+        <Card
           sx={{
-            width: 60,
-            aspectRatio: "1", // Ensures it’s a perfect circle
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #2794d2, #1a7ca1)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0, // Prevents it from shrinking in flex containers
+            height: "100%",
+            backgroundColor: colors.cardBg,
+            borderRadius: "16px",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+            overflow: "hidden",
+            position: "relative",
+            border: `1px solid ${colors.primary}25`, // 25 = 15% opacity in hex
+            transition: "all 0.3s ease",
+            "&:hover": {
+              borderColor: `${colors.primary}`,
+            },
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "4px",
+              background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+            },
           }}
         >
-          {React.isValidElement(benefit.icon) &&
-            React.cloneElement(benefit.icon, {
-              sx: { color: "#fff", fontSize: 30 },
-            })}
-        </Box>
-
-        <CardContent sx={{ textAlign: "center" }}>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}
-          >
-            {benefit.title}
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#fff" }}>
-            {benefit.description}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-
-    return !isMobile ? (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1, duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        {cardContent}
+          <CardContent sx={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            height: "100%", 
+            p: 3 
+          }}>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+              <Avatar
+                sx={{
+                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                  width: 56,
+                  height: 56,
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                }}
+              >
+                {React.isValidElement(benefit.icon) &&
+                  React.cloneElement(benefit.icon, {
+                    sx: { color: "#fff", fontSize: 28 },
+                  })}
+              </Avatar>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  ml: 2,
+                  color: colors.textColor,
+                  fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+                }}
+              >
+                {benefit.title}
+              </Typography>
+            </Box>
+            
+            <Divider sx={{ 
+              my: 2, 
+              opacity: 0.2, 
+              backgroundImage: `linear-gradient(to right, transparent, ${colors.accentColor}, transparent)` 
+            }} />
+            
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: colors.textColor,
+                opacity: 0.85,
+                fontSize: { xs: "0.875rem", md: "0.95rem" },
+                flexGrow: 1,
+              }}
+            >
+              {benefit.description}
+            </Typography>
+          </CardContent>
+        </Card>
       </motion.div>
-    ) : (
-      <>{cardContent}</>
     );
   };
 
   return (
     <Box
       sx={{
-        backgroundColor:
-          serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
+        backgroundColor: colors.bgColor,
+        backgroundImage: colors.bgColor === "#000" 
+          ? "radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.5) 0%, rgba(10, 10, 10, 0.5) 90%)"
+          : "radial-gradient(circle at 10% 20%, rgba(220, 220, 220, 0.5) 0%, rgba(240, 240, 240, 0.5) 90%)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Background elements for visual interest */}
       <Box
         sx={{
-          backgroundColor:
-            serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
-          py: 6,
-          px: 2,
-          color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
+          position: "absolute",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${colors.primary}30 0%, transparent 70%)`,
+          top: "-150px",
+          left: "-150px",
+          zIndex: 0,
+        }}
+      />
+      
+      <Box
+        sx={{
+          position: "absolute",
+          width: "400px",
+          height: "400px",
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${colors.secondary}20 0%, transparent 70%)`,
+          bottom: "-200px",
+          right: "-200px",
+          zIndex: 0,
+        }}
+      />
+
+      <Box
+        sx={{
+          py: { xs: 6, md: 10 },
+          px: { xs: 2, md: 4 },
+          position: "relative",
+          zIndex: 1,
           m: "auto",
           maxWidth: "1500px",
         }}
       >
-        <Typography
-          variant={isMobile ? "h4" : "h2"}
-          align="center"
-          sx={{
-            fontWeight: "bold",
-            mb: 4,
-            letterSpacing: 1.5,
-            color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
-          }}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
         >
-          {title}
-        </Typography>
+          <motion.div variants={titleVariants}>
+            <Typography
+              variant={isMobile ? "h4" : "h2"}
+              align="center"
+              sx={{
+                fontWeight: "800",
+                mb: { xs: 4, md: 5 },
+                letterSpacing: 1.5,
+                color: colors.textColor,
+                position: "relative",
+                display: "inline-block",
+                left: "50%",
+                transform: "translateX(-50%)",
+                // "&::after": {
+                //   content: '""',
+                //   position: "absolute",
+                //   bottom: "-10px",
+                //   left: "50%",
+                //   transform: "translateX(-50%)",
+                //   width: "80px",
+                //   height: "4px",
+                //   background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+                //   borderRadius: "2px",
+                // },
+              }}
+            >
+              {title}
+            </Typography>
+          </motion.div>
 
-        {isMobile ? (
-          <Box
-            sx={{
-              display: "flex",
-              overflowX: "auto",
-              gap: 2,
-              scrollSnapType: "x mandatory",
-              paddingBottom: 2,
-              "&::-webkit-scrollbar": { display: "none" },
-            }}
-          >
-            {benefits.map((benefit, index) => (
-              <Box
-                key={index}
-                sx={{
-                  flex: "0 0 85%",
-                  minWidth: "85%",
-                  scrollSnapAlign: "center",
-                }}
-              >
-                {renderBenefitCard(benefit, index)}
-              </Box>
-            ))}
-          </Box>
-        ) : (
-          <Grid container spacing={3} justifyContent="center">
-            {benefits.map((benefit, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                {renderBenefitCard(benefit, index)}
-              </Grid>
-            ))}
-          </Grid>
-        )}
+          {isMobile ? (
+            <Box
+              sx={{
+                display: "flex",
+                overflowX: "auto",
+                gap: 3,
+                pb: 3,
+                scrollSnapType: "x mandatory",
+                "&::-webkit-scrollbar": { display: "none" },
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
+              }}
+            >
+              {benefits.map((benefit, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    flex: "0 0 85%",
+                    minWidth: "85%",
+                    scrollSnapAlign: "center",
+                    pr: index === benefits.length - 1 ? 3 : 0,
+                  }}
+                >
+                  {renderBenefitCard(benefit, index)}
+                </Box>
+              ))}
+            </Box>
+          ) : (
+            <Grid 
+              container 
+              spacing={4} 
+              justifyContent="center"
+            >
+              {benefits.map((benefit, index) => (
+                <Grid 
+                  item 
+                  xs={12} 
+                  sm={isMedium ? 6 : 4} 
+                  key={index}
+                >
+                  {renderBenefitCard(benefit, index)}
+                </Grid>
+              ))}
+            </Grid>
+          )}
+        </motion.div>
       </Box>
     </Box>
   );

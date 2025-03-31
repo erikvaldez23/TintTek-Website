@@ -305,29 +305,71 @@ const FAQSection = () => {
         {faqs.length > 0 ? (
           faqs.map((faq, index) => (
             <Accordion
-              key={index}
-              sx={{
-                borderRadius: "8px",
-                backgroundColor: "#fff",
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)",
-                transition: "all 0.3s ease-in-out",
-                marginBottom: "8px",
-                "&:hover": {
-                  transform: "scale(1.02)",
-                },
-              }}
-            >
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant={isMobile ? "body1" : "h5"} fontWeight="bold">
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  variant={isMobile ? "body1" : "h5"} 
-                  dangerouslySetInnerHTML={{ __html: faq.answer }}
-                />
-              </AccordionDetails>
+  key={index}
+  sx={{
+    borderRadius: "12px",
+    background: "linear-gradient(135deg, #1e1e1e 0%, #2e2e2e 100%)",
+    color: "#fff",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+    boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",
+    backdropFilter: "blur(4px)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    my: 2,
+    "&:hover": {
+      transform: "scale(1.02)",
+      boxShadow: "0px 12px 30px rgba(0,0,0,0.3)",
+    },
+    "&::before": {
+      display: "none",
+    },
+  }}
+>
+
+<AccordionSummary
+  expandIcon={
+    <ExpandMoreIcon sx={{ color: "#00BFFF", fontSize: "1.8rem" }} />
+  }
+  sx={{
+    "& .MuiAccordionSummary-content": {
+      alignItems: "center",
+      gap: 1,
+    },
+    "& .Mui-expanded": {
+      margin: 0,
+    },
+  }}
+>
+  <Typography
+    variant={isMobile ? "body1" : "h5"}
+    fontWeight="bold"
+    sx={{
+      color: "#fff",
+      fontSize: { xs: "1rem", sm: "1.25rem", md: "1.4rem" },
+    }}
+  >
+    {faq.question}
+  </Typography>
+</AccordionSummary>
+<AccordionDetails
+  sx={{
+    borderRadius: "8px",
+    mt: 1,
+    px: 2,
+    py: 1.5,
+  }}
+>
+  <Typography
+    variant="body1"
+    component="div"
+    sx={{
+      color: "rgba(255, 255, 255, 0.85)",
+      fontSize: { xs: "0.95rem", sm: "1.05rem" },
+      lineHeight: 1.7,
+    }}
+    dangerouslySetInnerHTML={{ __html: faq.answer }}
+  />
+</AccordionDetails>
+
             </Accordion>
           ))
         ) : (

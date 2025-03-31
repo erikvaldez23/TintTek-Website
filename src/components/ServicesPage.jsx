@@ -213,7 +213,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           paddingTop: 5,
-          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "25vh" },
+          height: { xs: "35vh", md: "35vh", lg: "30vh", xl: "30vh" },
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -224,7 +224,7 @@ const ServicePage = () => {
           color: "white",
           textAlign: "center",
           textShadow: "2px 2px 10px rgba(0, 0, 0, 0.7)",
-          px: 2,
+          px: { xs: 1, sm: 2, md: 2 },
         }}
       >
         <Typography

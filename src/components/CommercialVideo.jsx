@@ -131,7 +131,7 @@ export default function CombinedVideoCTA() {
             alignItems: "stretch",
             maxWidth: "1500px",
             mx: "auto",
-            px: 2,
+            px: { xs: 1, sm: 2, md: 2 },
             py: 4,
           }}
         >
@@ -214,7 +214,7 @@ export default function CombinedVideoCTA() {
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
-              px: 3,
+              px: { xs: 1, sm: 2, md: 3 },
             }}
           >
             <Typography
