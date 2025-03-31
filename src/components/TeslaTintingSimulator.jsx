@@ -14,27 +14,27 @@ import { AnimatePresence, motion } from "framer-motion";
 const tintOptions = {
   "5%": {
     name: "5% Tint",
-    image: "/TintTek-Website/tesla-5.png",
+    image: "/TintTek-Website/tesla-tint-model/tesla-5.webp",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
   "20%": {
     name: "20% Tint",
-    image: "/TintTek-Website/tesla-20.png",
+    image: "/TintTek-Website/tesla-tint-model/tesla-20.webp",
     description: "Provides a balance of privacy and visibility.",
   },
   "35%": {
     name: "35% Tint",
-    image: "/TintTek-Website/tesla-35.png",
+    image: "/TintTek-Website/tesla-tint-model/tesla-35.webp",
     description: "A medium tint that maintains a sleek, stylish look.",
   },
   "50%": {
     name: "50% Tint",
-    image: "/TintTek-Website/tesla-50.png",
+    image: "/TintTek-Website/tesla-tint-model/tesla-50.webp",
     description: "Allows more visibility while still reducing glare and heat.",
   },
   "70%": {
     name: "70% Tint",
-    image: "/TintTek-Website/tesla-70.png",
+    image: "/TintTek-Website/tesla-tint-model/tesla-70.webp",
     description: "A light tint for UV protection with high visibility.",
   },
 };

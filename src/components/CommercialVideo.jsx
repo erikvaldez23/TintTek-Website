@@ -37,12 +37,12 @@ const videoContent = {
   "commercial-window-tinting": {
     title: "Transform Your Business with LLumar® Commercial Films",
     description: `The glass in your office, retail, or residential building should be an asset, not a source of discomfort or excessive cost. At Tint Tek Plus, we offer high-quality LLumar® window films, designed to solve a wide range of glass-related issues: high energy costs, tenant complaints, glare, fading furnishings, privacy concerns, security risks, and more. Whether you're improving an existing property or designing a new one, LLumar® provides the perfect solution to meet your needs.`,
-    video: "/TintTek-Website/commercial-video1.mov",
+    video: "/TintTek-Website/videos/commercial-video1.mov",
   },
   "vehicle-paint-correction": {
     title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
     description: `Eliminate scratches, swirls, and oxidation to bring back that showroom finish. Our multi-stage correction process ensures a mirror-like gloss.`,
-    video: "/TintTek-Website/paint-correction.mov",
+    video: "/TintTek-Website/videos/paint-correction.mov",
   },
   "vehicle-paint-protection": {
     title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
@@ -57,7 +57,7 @@ const videoContent = {
   "ceramic-coating": {
     title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
     description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,
-    video: "/TintTek-Website/ceramic-coating.mov",
+    video: "/TintTek-Website/videos/ceramic-coating.mov",
   },
 };
 

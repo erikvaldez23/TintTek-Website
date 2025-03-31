@@ -69,9 +69,9 @@ const serviceSteps = {
     finalDescription:
       "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
     images: [
-      "/TintTek-Website/Tint Tek-6.jpeg",
-      "/TintTek-Website/Tint Tek-46.jpeg",
-      "/TintTek-Website/Tint Tek-102.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-6.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-46.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-102.jpeg",
     ],
   },
   "tesla-window-tinting": {
@@ -113,9 +113,9 @@ const serviceSteps = {
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
     images: [
-      "/TintTek-Website/tesla-service.png",
-      "/TintTek-Website/Tint Tek-170.jpg",
-      "/TintTek-Website/tesla-service2.JPG",
+      "/TintTek-Website/tesla/tesla3.webp",
+      "/TintTek-Website/gallery/Tint Tek-170.jpg",
+      "/TintTek-Website/tesla/tesla2.webp",
     ],
   },
   "commercial-window-tinting": {
@@ -282,9 +282,9 @@ const serviceSteps = {
     finalDescription:
       "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
     images: [
-      "/TintTek-Website/tailLight-services.JPEG",
-      "/TintTek-Website/tailLIght-services1.JPG",
-      "/TintTek-Website/tailLight-services2.JPG",
+      "/TintTek-Website/headlight/taillight1.webp",
+      "/TintTek-Website/headlight/taillight2.webp",
+      "/TintTek-Website/headlight/taillight3.webp",
     ],
   },
   "vehicle-paint-protection": {

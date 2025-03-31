@@ -13,7 +13,6 @@ import Topbar from "./key-components/Topbar";
 import CallToAction from "./key-components/CallToAction";
 import Contact from "./key-components/Contact";
 import Footer from "./key-components/Footer";
-import Video from "../../public/compressed-output.mp4"; // Import the video file
 import QuickLinks from "./key-components/QuickLinks";
 
 const blogPosts = [

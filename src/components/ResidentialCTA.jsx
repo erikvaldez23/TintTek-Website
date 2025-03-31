@@ -25,10 +25,10 @@ const callToActionData = {
     that are quickly and professionally installed, delivering lasting
     lifestyle benefits without breaking the bank.`,
     images: [
-      "/TintTek-Website/residential-1.png",
-      "/TintTek-Website/residential-2.png",
+      "/TintTek-Website/residential/residential-1.png",
+      "/TintTek-Website/residential/residential-2.png",
       // "/TintTek-Website/residential-3.png",
-      "/TintTek-Website/residential-4.png",
+      "/TintTek-Website/residential/residential-4.png",
     ],
   },
   "vehicle-paint-correction": {

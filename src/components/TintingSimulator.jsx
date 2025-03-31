@@ -14,27 +14,27 @@ import { AnimatePresence, motion } from "framer-motion";
 const tintOptions = {
   "5%": {
     name: "5% Tint",
-    image: "/TintTek-Website/5-tint.png",
+    image: "/TintTek-Website/tint-viewer/5-tint.webp",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
   "20%": {
     name: "20% Tint",
-    image: "/TintTek-Website/20-tint.png",
+    image: "/TintTek-Website/tint-viewer/20-tint.webp",
     description: "Provides a balance of privacy and visibility.",
   },
   "35%": {
     name: "35% Tint",
-    image: "/TintTek-Website/35-tint.png",
+    image: "/TintTek-Website/tint-viewer/35-tint.webp",
     description: "A medium tint that maintains a sleek, stylish look.",
   },
   "50%": {
     name: "50% Tint",
-    image: "/TintTek-Website/50-tint.png",
+    image: "/TintTek-Website/tint-viewer/50-tint.webp",
     description: "Allows more visibility while still reducing glare and heat.",
   },
   "70%": {
     name: "70% Tint",
-    image: "/TintTek-Website/70-tint.png",
+    image: "/TintTek-Website/tint-viewer/70-tint.webp",
     description: "A light tint for UV protection with high visibility.",
   },
 };

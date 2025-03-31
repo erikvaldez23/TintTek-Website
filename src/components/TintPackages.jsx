@@ -19,28 +19,28 @@ const tintPackages = [
   {
     title: "Window Strip",
     price: "Starting at $60",
-    image: "/TintTek-Website/visor-strip.png",
+    image: "/TintTek-Website/v-window-tint/v-visor-strip.webp",
     description:
       "A narrow strip across the top of the windshield to block excessive glare.",
   },
   {
     title: "Front 2 Window Match",
     price: "Starting at $85",
-    image: "/TintTek-Website/front-windows.png",
+    image: "/TintTek-Website/v-window-tint/v-front-two.webp",
     description:
       "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Full Windshield",
     price: "Starting at $249",
-    image: "/TintTek-Website/full-windshield.png",
+    image: "/TintTek-Website/v-window-tint/v-windshield.webp",
     description:
       "A full-tint windshield package for optimal UV and heat rejection.",
   },
   {
     title: "Single Pane Sunroof",
     price: "Starting at $100",
-    image: "/TintTek-Website/sunroof.png",
+    image: "/TintTek-Website/v-window-tint/v-sunroof.webp",
     description:
       "A full-tint sunroof package for optimal UV and heat rejection.",
   },
