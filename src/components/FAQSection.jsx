@@ -318,13 +318,13 @@ const FAQSection = () => {
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h5" fontWeight="bold">
+              <Typography variant={isMobile ? "body1" : "h5"} fontWeight="bold">
                   {faq.question}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography
-                  variant="h6"
+                  variant={isMobile ? "body1" : "h5"} 
                   dangerouslySetInnerHTML={{ __html: faq.answer }}
                 />
               </AccordionDetails>

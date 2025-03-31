@@ -2,7 +2,6 @@ import {
   Box,
   Typography,
   Grid,
-  Paper,
   List,
   ListItem,
   ListItemIcon,
@@ -221,7 +220,7 @@ const serviceOptions = {
 
 const ServicesOffered = ({ serviceId }) => {
   const service = serviceOptions[serviceId];
-  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   if (!service) {
     return (
@@ -230,6 +229,68 @@ const ServicesOffered = ({ serviceId }) => {
       </Typography>
     );
   }
+
+  const renderFilmCard = (film, index) => (
+    <Card
+      key={index}
+      sx={{
+        position: "relative",
+        backgroundColor: "#000",
+        color: "#fff",
+        borderRadius: 5,
+        boxShadow: 3,
+        height: "100%",
+        transition: "all 0.3s ease-in-out",
+        border: "3px solid #fff",
+        "&:hover": {
+          transform: "scale(1.05)",
+          boxShadow: "0px 0px 15px #2794d2",
+          backgroundColor: "#333",
+        },
+      }}
+    >
+      {/* Film Logo */}
+      <Box
+        component="img"
+        src={
+          serviceId === "vehicle-paint-protection" ||
+          serviceId === "headlight-services"
+            ? "/TintTek-Website/stek-logo.png"
+            : "/TintTek-Website/llumar-logo.png"
+        }
+        alt="Film Type Logo"
+        sx={{
+          position: "absolute",
+          top: 8,
+          right: 8,
+          width: 70,
+          height: "auto",
+          filter:
+            serviceId === "vehicle-paint-protection" ||
+            serviceId === "headlight-services"
+              ? "invert(1)"
+              : "none",
+        }}
+      />
+
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
+        <Typography variant="h6" fontWeight="bold">
+          {film.name}
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>
+          {film.description}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 
   return (
     <Box
@@ -257,108 +318,72 @@ const ServicesOffered = ({ serviceId }) => {
 
         {(serviceId === "commercial-window-tinting" ||
           serviceId === "residential-window-tinting") && (
-          <>
-            {/* Service List */}
-            {/* <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
-              {service.title}
-            </Typography> */}
-            <List
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 2,
-                justifyContent: { xs: "flex-start", sm: "center" },
-              }}
-            >
-              {service.list.map((item, index) => (
-                <ListItem
-                  key={index}
-                  sx={{
-                    width: "auto",
-                    display: "flex",
-                    alignItems: "center",
-                    m: 0,
-                    p: 0,
-                  }}
-                >
-                  <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
-                    <CheckCircleIcon sx={{ color: "#2794d2" }} />
-                  </ListItemIcon>
-                  <ListItemText primary={item} sx={{ m: 0 }} />
-                </ListItem>
-              ))}
-            </List>
-          </>
+          <List
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+              justifyContent: { xs: "flex-start", sm: "center" },
+            }}
+          >
+            {service.list.map((item, index) => (
+              <ListItem
+                key={index}
+                sx={{
+                  width: "auto",
+                  display: "flex",
+                  alignItems: "center",
+                  m: 0,
+                  p: 0,
+                }}
+              >
+                <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
+                  <CheckCircleIcon sx={{ color: "#2794d2" }} />
+                </ListItemIcon>
+                <ListItemText primary={item} sx={{ m: 0 }} />
+              </ListItem>
+            ))}
+          </List>
         )}
 
-        {/* Film Types Section */}
         <Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
           The <strong>main types of film</strong> we use:
         </Typography>
-        <Grid container spacing={3}>
-          {service.filmTypes.map((film, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
+
+        {/* Responsive Layout: Carousel on mobile, grid on desktop */}
+        {isMobile ? (
+          <Box
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              gap: 2,
+              py: 2,
+              scrollSnapType: "x mandatory",
+              "&::-webkit-scrollbar": { display: "none" },
+            }}
+          >
+            {service.filmTypes.map((film, index) => (
+              <Box
+                key={index}
                 sx={{
-                  position: "relative", // ✅ Needed for absolute positioning of the logo
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  borderRadius: 5,
-                  boxShadow: 3,
-                  height: "100%",
-                  transition: "all 0.3s ease-in-out",
-                  border: "3px solid #fff",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 0px 15px #2794d2",
-                    backgroundColor: "#333",
-                  },
+                  flex: "0 0 85%",
+                  minWidth: "85%",
+                  scrollSnapAlign: "center",
                 }}
               >
-                {/* ✅ Horizontal Logo at Top-Right */}
-                <Box
-                  component="img"
-                  src={
-                    serviceId === "vehicle-paint-protection" ||
-                    serviceId === "headlight-services"
-                      ? "/TintTek-Website/stek-logo.png" // ✅ STEK logo
-                      : "/TintTek-Website/llumar-logo.png"
-                  } // ✅ Default Llumar logo
-                  alt="Film Type Logo"
-                  sx={{
-                    position: "absolute",
-                    top: 8,
-                    right: 8,
-                    width: 70,
-                    height: "auto",
-                    filter:
-                      serviceId === "vehicle-paint-protection" ||
-                      serviceId === "headlight-services"
-                        ? "invert(1)"
-                        : "none", // ✅ Apply inversion only for STEK
-                  }}
-                />
-
-                <CardContent
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
-                  <Typography variant="h6" fontWeight="bold">
-                    {film.name}
-                  </Typography>
-                  <Typography variant="body1" sx={{ mt: 1 }}>
-                    {film.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                {renderFilmCard(film, index)}
+              </Box>
+            ))}
+          </Box>
+        ) : (
+          <Grid container spacing={3}>
+            {service.filmTypes.map((film, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                {renderFilmCard(film, index)}
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </Box>
   );

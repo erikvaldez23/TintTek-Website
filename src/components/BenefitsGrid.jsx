@@ -22,64 +22,76 @@ const benefitsData = {
     {
       title: "Blocks 99% of Harmful UV Rays",
       icon: <HomeWorkIcon fontSize="large" />,
-      description: "Window tinting provides a powerful shield against ultraviolet (UV) radiation, blocking up to 99% of harmful UV rays. This not only protects your skin from potential damage during extended drives but also safeguards your vehicle’s interior by preventing the fading and deterioration of upholstery, leather, dashboards, and other surfaces.",
+      description:
+        "Window tinting provides a powerful shield against ultraviolet (UV) radiation, blocking up to 99% of harmful UV rays. This not only protects your skin from potential damage during extended drives but also safeguards your vehicle’s interior by preventing the fading and deterioration of upholstery, leather, dashboards, and other surfaces.",
     },
     {
       title: "Heat Rejection",
       icon: <SecurityIcon fontSize="large" />,
-      description: "High-quality window film significantly reduces the amount of solar heat that enters your vehicle, helping to maintain a cooler cabin environment. This makes your driving experience more comfortable, especially during hot summer months, while also reducing the need for excessive air conditioning—improving fuel efficiency or battery range in electric vehicles.",
+      description:
+        "High-quality window film significantly reduces the amount of solar heat that enters your vehicle, helping to maintain a cooler cabin environment. This makes your driving experience more comfortable, especially during hot summer months, while also reducing the need for excessive air conditioning—improving fuel efficiency or battery range in electric vehicles.",
     },
     {
       title: "Improved Privacy & Security",
       icon: <VisibilityIcon fontSize="large" />,
-      description: "Tinted windows add a layer of privacy by making it more difficult for outsiders to see inside your vehicle. This helps protect valuables from theft, offers greater peace of mind, and enhances the security of your car whether parked or in motion.",
+      description:
+        "Tinted windows add a layer of privacy by making it more difficult for outsiders to see inside your vehicle. This helps protect valuables from theft, offers greater peace of mind, and enhances the security of your car whether parked or in motion.",
     },
     {
       title: "Reduces Glare from the Sun & Headlights",
       icon: <WbSunnyIcon fontSize="large" />,
-      description: "Window tinting reduces the harsh glare caused by direct sunlight and bright headlights at night. This not only improves your visibility and comfort while driving but also reduces eye strain and fatigue during long trips, making driving safer and more enjoyable.",
+      description:
+        "Window tinting reduces the harsh glare caused by direct sunlight and bright headlights at night. This not only improves your visibility and comfort while driving but also reduces eye strain and fatigue during long trips, making driving safer and more enjoyable.",
     },
     {
       title: "Protects Interior from Fading",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Direct sunlight can cause your vehicle’s interior materials to fade, crack, or deteriorate over time. Window film acts as a barrier against this damage by filtering out the sun’s harmful rays, helping preserve the color, texture, and quality of your seats, dash, and interior trim for years to come.",
+      description:
+        "Direct sunlight can cause your vehicle’s interior materials to fade, crack, or deteriorate over time. Window film acts as a barrier against this damage by filtering out the sun’s harmful rays, helping preserve the color, texture, and quality of your seats, dash, and interior trim for years to come.",
     },
     {
       title: "Elevate Overall Appearannce",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Tinted windows provide a sleek, professional, and stylish finish to any vehicle. It enhances the exterior aesthetics, giving your car a refined and modern look while complementing the overall design. This subtle upgrade adds a touch of sophistication and boosts your car’s visual appeal.",
+      description:
+        "Tinted windows provide a sleek, professional, and stylish finish to any vehicle. It enhances the exterior aesthetics, giving your car a refined and modern look while complementing the overall design. This subtle upgrade adds a touch of sophistication and boosts your car’s visual appeal.",
     },
   ],
   "tesla-window-tinting": [
     {
       title: "Increased mileage per battery charge",
       icon: <HomeWorkIcon fontSize="large" />,
-      description: "By reducing the amount of heat entering the cabin, tinted windows decrease the need for constant air conditioning use. This lowers the strain on the battery, ultimately helping to conserve energy and extend your driving range—giving you more miles per charge and better overall efficiency.",
+      description:
+        "By reducing the amount of heat entering the cabin, tinted windows decrease the need for constant air conditioning use. This lowers the strain on the battery, ultimately helping to conserve energy and extend your driving range—giving you more miles per charge and better overall efficiency.",
     },
     {
       title: "Heat reduction in cabin",
       icon: <SecurityIcon fontSize="large" />,
-      description: "Tesla window tinting offers advanced solar heat rejection technology that significantly reduces interior temperatures, even on the hottest days. This results in a cooler, more comfortable driving experience for both the driver and passengers, without over-reliance on climate control systems.",
+      description:
+        "Tesla window tinting offers advanced solar heat rejection technology that significantly reduces interior temperatures, even on the hottest days. This results in a cooler, more comfortable driving experience for both the driver and passengers, without over-reliance on climate control systems.",
     },
     {
       title: "Blocks 99% of harmful UV rays",
       icon: <VisibilityIcon fontSize="large" />,
-      description: "Tinted film acts as a powerful barrier against UV radiation, blocking up to 99% of harmful rays. This not only helps protect your skin but also prevents long-term damage to your Tesla’s premium interior surfaces, including leather seats, dashboard, and trim.",
+      description:
+        "Tinted film acts as a powerful barrier against UV radiation, blocking up to 99% of harmful rays. This not only helps protect your skin but also prevents long-term damage to your Tesla’s premium interior surfaces, including leather seats, dashboard, and trim.",
     },
     {
       title: "Reduces glare from the sun & headlights",
       icon: <WbSunnyIcon fontSize="large" />,
-      description: "Tinting helps minimize disruptive glare from the sun and headlights, enhancing visibility and reducing strain on your eyes. Whether you're driving in broad daylight or at night, this added clarity ensures a safer, more relaxed driving experience.",
+      description:
+        "Tinting helps minimize disruptive glare from the sun and headlights, enhancing visibility and reducing strain on your eyes. Whether you're driving in broad daylight or at night, this added clarity ensures a safer, more relaxed driving experience.",
     },
     {
       title: "Provides increased privacy",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "Tesla window tinting enhances your personal privacy by making it more difficult for outsiders to see inside the cabin. It not only deters unwanted attention but also protects any belongings stored in your vehicle from curious eyes.",
+      description:
+        "Tesla window tinting enhances your personal privacy by making it more difficult for outsiders to see inside the cabin. It not only deters unwanted attention but also protects any belongings stored in your vehicle from curious eyes.",
     },
     {
       title: "Prevents unnecessary battery drainage",
       icon: <ColorLensIcon fontSize="large" />,
-      description: "By lowering the interior temperature and reducing the use of air conditioning, window tinting minimizes battery consumption caused by climate control systems. This contributes to better battery health and improved long-term energy management for your Tesla.",
+      description:
+        "By lowering the interior temperature and reducing the use of air conditioning, window tinting minimizes battery consumption caused by climate control systems. This contributes to better battery health and improved long-term energy management for your Tesla.",
     },
   ],
   "commercial-window-tinting": [
@@ -252,7 +264,6 @@ const titles = {
   "residential-window-tinting": "Why Choose LLumar®",
   "windshield-protection-film": "Why Choose ExoShield GT3",
 };
-
 const BenefitsGrid = () => {
   const { serviceId } = useParams();
   const theme = useTheme();
@@ -261,16 +272,85 @@ const BenefitsGrid = () => {
   const benefits = benefitsData[serviceId] || [];
   const title = titles[serviceId] || "Our Benefits";
 
-  return (
-    <Box sx={{ backgroundColor: serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000" }}>
+  const renderBenefitCard = (benefit, index) => {
+    const cardContent = (
+      <Card
+        component={motion.div}
+        whileHover={!isMobile ? { scale: 1.03 } : false}
+        sx={{
+          backgroundColor:
+            serviceId === "commercial-window-tinting" ? "#000" : "#292929",
+          backdropFilter: "blur(8px)",
+          borderRadius: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          height: isMobile ? "400px" : "300px", // 👈 Mobile height change
+          p: 3,
+          transition: "transform 0.3s ease",
+        }}
+      >
+        <Box
+          sx={{
+            width: 60,
+            aspectRatio: "1", // Ensures it’s a perfect circle
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #2794d2, #1a7ca1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0, // Prevents it from shrinking in flex containers
+          }}
+        >
+          {React.isValidElement(benefit.icon) &&
+            React.cloneElement(benefit.icon, {
+              sx: { color: "#fff", fontSize: 30 },
+            })}
+        </Box>
 
+        <CardContent sx={{ textAlign: "center" }}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}
+          >
+            {benefit.title}
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#fff" }}>
+            {benefit.description}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+
+    return !isMobile ? (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        {cardContent}
+      </motion.div>
+    ) : (
+      <>{cardContent}</>
+    );
+  };
+
+  return (
+    <Box
+      sx={{
+        backgroundColor:
+          serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
+      }}
+    >
       <Box
         sx={{
-          backgroundColor: serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
+          backgroundColor:
+            serviceId === "commercial-window-tinting" ? "#f4f4f4" : "#000",
           py: 6,
           px: 2,
           color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
-          m: "auto", 
+          m: "auto",
           maxWidth: "1500px",
         }}
       >
@@ -280,7 +360,6 @@ const BenefitsGrid = () => {
           sx={{
             fontWeight: "bold",
             mb: 4,
-            // textTransform: "uppercase",
             letterSpacing: 1.5,
             color: serviceId === "commercial-window-tinting" ? "#000" : "#fff",
           }}
@@ -288,68 +367,39 @@ const BenefitsGrid = () => {
           {title}
         </Typography>
 
-        <Grid container spacing={3} justifyContent="center">
-          {benefits.map((benefit, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
+        {isMobile ? (
+          <Box
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              gap: 2,
+              scrollSnapType: "x mandatory",
+              paddingBottom: 2,
+              "&::-webkit-scrollbar": { display: "none" },
+            }}
+          >
+            {benefits.map((benefit, index) => (
+              <Box
+                key={index}
+                sx={{
+                  flex: "0 0 85%",
+                  minWidth: "85%",
+                  scrollSnapAlign: "center",
+                }}
               >
-                <Card
-                  component={motion.div}
-                  whileHover={{ scale: 1.03 }}
-                  sx={{
-                    backgroundColor: serviceId === "commercial-window-tinting" ? "#000" : "#292929",
-                    backdropFilter: "blur(8px)",
-                    borderRadius: 3,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "300px",
-                    p: 3,
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                    transition: "transform 0.3s ease",
-                    "&:hover": {
-                      boxShadow: "0 15px 25px rgba(0,0,0,0.5)",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 60,
-                      height: 60,
-                      borderRadius: "50%",
-                      background: "linear-gradient(135deg, #2794d2, #1a7ca1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mb: 2,
-                    }}
-                  >
-                    {React.isValidElement(benefit.icon) &&
-                      React.cloneElement(benefit.icon, {
-                        sx: { color: "#fff", fontSize: 30 },
-                      })}
-                  </Box>
-
-                  <CardContent sx={{ textAlign: "center" }}>
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: "bold", mb: 1, color: "#fff" }}
-                    >
-                      {benefit.title}
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: "#fff" }}>
-                      {benefit.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+                {renderBenefitCard(benefit, index)}
+              </Box>
+            ))}
+          </Box>
+        ) : (
+          <Grid container spacing={3} justifyContent="center">
+            {benefits.map((benefit, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                {renderBenefitCard(benefit, index)}
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </Box>
   );
