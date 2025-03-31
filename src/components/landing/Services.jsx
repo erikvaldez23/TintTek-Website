@@ -20,13 +20,15 @@ const servicesData = [
   {
     id: "vehicle-window-tinting",
     title: "VEHICLE WINDOW TINTING",
-    description: "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
+    description:
+      "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
     image: "/TintTek-Website/v-window-tint/vehicle-window-tint.webp",
   },
   {
     id: "tesla-window-tinting",
     title: "TESLA WINDOW TINTING",
-    description: "Extend battery life, reduce heat in cabin, and enhance privacy.",
+    description:
+      "Extend battery life, reduce heat in cabin, and enhance privacy.",
     image: "/TintTek-Website/gallery/Tint Tek-181.jpg",
   },
   {
@@ -38,7 +40,8 @@ const servicesData = [
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
-    description: "Lower your energy costs, get UV protection, enhance privacy and security.",
+    description:
+      "Lower your energy costs, get UV protection, enhance privacy and security.",
     image: "/TintTek-Website/residential/residential-service.png",
   },
   {
@@ -50,19 +53,22 @@ const servicesData = [
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
-    description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
+    description:
+      "Shields paint from scratches, chips, stains, UV damage, and wear.",
     image: "/TintTek-Website/ppf/ppf-service.webp",
   },
   {
     id: "headlight-services",
     title: "HEADLIGHT & TAILLIGHT SERVICES",
-    description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    description:
+      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
     image: "/TintTek-Website/headlight/taillight1.webp",
   },
   {
     id: "windshield-protection-film",
     title: "WINDSHIELD PROTECTION FILM",
-    description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    description:
+      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
     image: "/TintTek-Website/windshield/windshield-service.webp",
   },
   {
@@ -99,18 +105,21 @@ const Services = () => {
     navigate(`/services/${serviceId}`);
   };
 
-  const sliderSettings = useMemo(() => ({
-    dots: false,
-    infinite: !isMobile,
-    speed: 500,
-    slidesToShow: isMobile ? 1 : 1.2,
-    slidesToScroll: 1,
-    arrows: false,
-    centerMode: true,
-    centerPadding: isMobile ? "15%" : "0px",
-  }), [isMobile]);
+  const sliderSettings = useMemo(
+    () => ({
+      dots: false,
+      infinite: !isMobile,
+      speed: 500,
+      slidesToShow: isMobile ? 1 : 1.2,
+      slidesToScroll: 1,
+      arrows: false,
+      centerMode: true,
+      centerPadding: isMobile ? "15%" : "0px",
+    }),
+    [isMobile]
+  );
 
-  const ServiceCard = ({ service }) => (
+  const ServiceCard = React.memo(({ service }) => (
     <motion.div variants={cardVariants}>
       <Card
         sx={{
@@ -146,57 +155,55 @@ const Services = () => {
             },
           }}
         />
-       <Box
-  sx={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: isMobile ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-    color: "#fff",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: isMobile ? "flex-end" : "center", // 👈 key change
-    textAlign: "center",
-    padding: 0,
-  }}
->
-  <Box
-    sx={{
-      width: "100%",
-      padding: 2,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      background: "transparent",
-    }}
-  >
-    <Typography variant={isMobile ? "h6" : "h5"} fontWeight="bold">
-      {service.title}
-    </Typography>
-    <Typography variant="body1">{service.description}</Typography>
-    {isMobile && (
-      <Button
-        variant="contained"
-        sx={{
-          mt: 2,
-          backgroundColor: "rgba(255,255,255,0.2)",
-          color: "#fff",
-          width: "90%",
-          borderRadius: 50,
-        }}
-      >
-        See Details
-      </Button>
-    )}
-  </Box>
-</Box>
-
-
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: isMobile ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
+            color: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: isMobile ? "flex-end" : "center", // 👈 key change
+            textAlign: "center",
+            padding: 0,
+          }}
+        >
+          <Box
+            sx={{
+              width: "100%",
+              padding: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              background: "transparent",
+            }}
+          >
+            <Typography variant={isMobile ? "h6" : "h5"} fontWeight="bold">
+              {service.title}
+            </Typography>
+            <Typography variant="body1">{service.description}</Typography>
+            {isMobile && (
+              <Button
+                variant="contained"
+                sx={{
+                  mt: 2,
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                  color: "#fff",
+                  width: "90%",
+                  borderRadius: 50,
+                }}
+              >
+                See Details
+              </Button>
+            )}
+          </Box>
+        </Box>
       </Card>
     </motion.div>
-  );
+  ));
 
   return (
     <Box
@@ -237,6 +244,7 @@ const Services = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <Grid container spacing={2} justifyContent="center">
               {servicesData.map((service) => (
