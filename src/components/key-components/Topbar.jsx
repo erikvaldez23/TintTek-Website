@@ -312,7 +312,7 @@ const Topbar = ({ notFound }) => {
                 </Box>
 
                 {/* Other Navigation Links */}
-                {["About", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
+                {["About", "Gallery", "FAQ", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -481,7 +481,8 @@ const Topbar = ({ notFound }) => {
                   label: "Vehicle Window Tinting",
                   path: "vehicle-window-tinting",
                 },
-                { label: "Tesla Window Tinting", path: "tesla-window-tinting" },
+                { label: "Tesla Window Tinting", 
+                  path: "tesla-window-tinting" },
                 {
                   label: "Commercial Window Tinting",
                   path: "commercial-window-tinting",
@@ -502,7 +503,8 @@ const Topbar = ({ notFound }) => {
                   label: "Headlight & Taillight Services",
                   path: "headlight-services",
                 },
-                { label: "Ceramic Coating", path: "ceramic-coating" },
+                { label: "Ceramic Coating", 
+                  path: "ceramic-coating" },
                 {
                   label: "Windshield Protection Film",
                   path: "windshield-protection-film",
@@ -534,7 +536,7 @@ const Topbar = ({ notFound }) => {
             </List>
           </Collapse>
 
-          {["Reviews", "Gallery", "Blog", "FAQ", "Contact"].map((item) => (
+          {["Reviews", "Gallery", "FAQ", "Contact"].map((item) => (
             <ListItem
               button
               key={item}
