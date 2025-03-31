@@ -409,6 +409,41 @@ const serviceSteps = {
       "/TintTek-Website/paint-protection3.jpeg",
     ],
   },
+  "windshield-protection-film": {
+    steps: [
+      {
+        title: "Professional Installation",
+        description:
+          "Our team of installers ensures precise application of ExoShield GT3, tailored to fit your vehicle's specific windshield curvature.",
+        detailedDescription:
+          "TBD",
+        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Comprehensive Warranty",
+        description:
+          "We stand behind the quality of our products and services. ExoShield GT3 comes with a 3-year transferable warranty, providing you with peace of mind and assurance of long-term protection. ",
+        detailedDescription:
+          "TBD",
+        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+      {
+        title: "Competitive Pricing",
+        description:
+          "Protecting your windshield is an investment. We offer competitive pricing to ensure you receive exceptional value without compromising on quality.",
+        detailedDescription:
+          "TBD",
+        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+      },
+    ],
+    finalDescription:
+      "Windshield protection film provides superior defense against road debris, rock chips, and everyday wear extending the life of your windshield while preserving clarity and safety. We follow three key steps to ensure a flawless and long-lasting protection:",
+    images: [
+      "/TintTek-Website/paint-protection1.jpeg",
+      "/TintTek-Website/paint-protection2.jpeg",
+      "/TintTek-Website/paint-protection3.jpeg",
+    ],
+  },
 };
 
 const HowItWorks = ({ serviceId }) => {

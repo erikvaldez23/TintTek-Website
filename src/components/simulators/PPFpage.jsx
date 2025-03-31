@@ -18,44 +18,30 @@ import Footer from "../key-components/Footer";
 const ppfOptions = {
   "front-end": {
     name: "Front End PPF",
-    image: "/TintTek-Website/front-ppf1.png",
+    image: "/TintTek-Website/ppf-model/ppf-front.webp",
     description:
       "Provides essential front-end protection against road debris and scratches.",
-    price: "$$$",
+    price: "$1750",
   },
   extended: {
     name: "Extended PPF",
-    image: "/images/platinum-gloss.jpg",
+    image: "/TintTek-Website/ppf-model/ppf-extended.webp",
     description:
       "Covers additional areas for enhanced protection and longevity.",
-    price: "$$$",
+    price: "$2500",
   },
-  "track-package": {
-    name: "Track Package PPF",
-    image: "/TintTek-Website/track-package1.png",
-    description:
-      "Designed for track performance with maximum coverage and durability.",
-    price: "$$$",
-  },
+  // "track-package": {
+  //   name: "Track Package PPF",
+  //   image: "/TintTek-Website/track-package1.png",
+  //   description:
+  //     "Designed for track performance with maximum coverage and durability.",
+  //   price: "$$$",
+  // },
   "full-car": {
     name: "Full Car PPF",
-    image: "/TintTek-Website/full-ppf1.png",
+    image: "/TintTek-Website/ppf-model/ppf-full.webp",
     description: "Complete vehicle protection with hydrophobic properties.",
-    price: "$$$",
-  },
-  "color-change": {
-    name: "Color Change PPF",
-    image: "/images/select-black.jpg",
-    description:
-      "Transform your car's look while maintaining superior protection.",
-    price: "$$$",
-  },
-  "stealth-matte": {
-    name: "Stealth/Matte PPF",
-    image: "/images/select-black.jpg",
-    description:
-      "Gives your car a sleek matte finish while shielding against damage.",
-    price: "$$$",
+    price: "**Call For Pricing**",
   },
 };
 

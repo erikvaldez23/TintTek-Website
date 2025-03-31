@@ -294,7 +294,8 @@ const ServicePage = () => {
 
       
       {/* <ServicesOffered serviceId={serviceId} /> */}
-      {serviceId !== "vehicle-paint-correction" && (
+      {serviceId !== "vehicle-paint-correction" ||
+      serviceId !== "windshield-protection-film" && (
         <ServicesOffered serviceId={serviceId} />
       )}
 

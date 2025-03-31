@@ -94,11 +94,11 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/commercial-tinting-simulator" element={<CommercialSimulator/>}/>
-          <Route path="/residential-tinting-simulator" element={<ResidentialSimulator/>}/>
-          <Route path="/tesla-tinting-simulator" element={<TeslaTintingPage/>}/>
-          <Route path="/vehicle-tinting-simulator" element={<VehicleTintingPage/>}/>
-          <Route path="/paint-protection-simulator" element={<PPFpage/>}/>
+          <Route path="/simulators/commercial-tinting-simulator" element={<CommercialSimulator/>}/>
+          <Route path="/simulators/residential-tinting-simulator" element={<ResidentialSimulator/>}/>
+          <Route path="/simulators/tesla-tinting-simulator" element={<TeslaTintingPage/>}/>
+          <Route path="/simulators/vehicle-tinting-simulator" element={<VehicleTintingPage/>}/>
+          <Route path="/simulators/paint-protection-simulator" element={<PPFpage/>}/>
         </Routes>
         <Chatbot />
       </Router>

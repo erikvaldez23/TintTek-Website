@@ -10,7 +10,6 @@ import {
   CardContent,
   useMediaQuery,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LayersIcon from "@mui/icons-material/Layers";
 
