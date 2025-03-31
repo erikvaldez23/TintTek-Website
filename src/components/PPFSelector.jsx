@@ -58,7 +58,7 @@ const PPFSelector = () => {
         textAlign: "center",
         width: "100vw",
         overflowX: "hidden",
-        backgroundColor: "#000",
+        backgroundColor: "#2e2e2e",
       }}
     >
       {/* Navigation Tabs for Larger Screens */}
@@ -69,7 +69,7 @@ const PPFSelector = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            background: "rgba(255,255,255,0.1)",
+            background: "#2e2e2e",
           }}
         >
           {Object.entries(ppfOptions).map(([key, option]) => (
@@ -157,7 +157,6 @@ const PPFSelector = () => {
       <Box
         sx={{
           py: 2,
-          background: "rgba(255,255,255,0.1)",
           color: "#fff",
         }}
       >
@@ -178,7 +177,6 @@ const PPFSelector = () => {
           position: "relative",
           width: "100%",
           height: isMobile ? "40vh" : "40vh",
-          background: "rgba(255,255,255,0.1)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

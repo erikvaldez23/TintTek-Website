@@ -18,7 +18,8 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const videoContent = {
   "vehicle-window-tinting": {
-    title: "Premium automotive care to enhance, protect, and maintain your vehicle.",
+    title:
+      "Premium automotive care to enhance, protect, and maintain your vehicle.",
     description: `Drive in comfort, privacy, and style with LLumar® automotive window tinting. Whether you're looking to reduce interior heat, block harmful UV rays, or upgrade your car’s appearance, Tint Tek Plus offers precision installation with premium film technology. Our professional-grade tints not only protect your interior and passengers, but also deliver a sleek, high-end look that turns heads — all while keeping you cool on the road. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
     video: "/TintTek-Website/",
   },
@@ -64,7 +65,7 @@ export default function CombinedVideoCTA() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const { serviceId } = useParams();
@@ -139,10 +140,11 @@ export default function CombinedVideoCTA() {
           {/* Left Column: Video in Modern Frame */}
           <Box
             sx={{
-              width: isMobile ? "100%" : "25%",
+              width: isMobile ? "90%" : "25%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              m: "auto",
               p: 2,
             }}
           >
@@ -160,10 +162,13 @@ export default function CombinedVideoCTA() {
               <video
                 ref={videoRef}
                 src={content.video}
-                autoPlay
                 muted={isMuted}
-                loop
                 playsInline
+                controls={false}
+                onEnded={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                poster="/TintTek-Website/Tint Tek-107.jpg" // <- Add this
                 style={{
                   width: "100%",
                   height: "100%",
