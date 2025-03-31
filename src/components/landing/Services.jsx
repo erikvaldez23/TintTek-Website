@@ -21,7 +21,7 @@ const servicesData = [
     id: "vehicle-window-tinting",
     title: "VEHICLE WINDOW TINTING",
     description: "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    image: "/TintTek-Website/vehicle-window-tint.JPEG",
+    image: "/TintTek-Website/v-window-tint/vehicle-window-tint.webp",
   },
   {
     id: "tesla-window-tinting",
@@ -45,13 +45,13 @@ const servicesData = [
     id: "vehicle-paint-correction",
     title: "VEHICLE PAINT CORRECTION",
     description: "Restore your vehicle’s original shine.",
-    image: "/TintTek-Website/paint-correction1.JPG",
+    image: "/TintTek-Website/paint-correction/paint-correction1.webp",
   },
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
     description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
-    image: "/TintTek-Website/ppf-service.png",
+    image: "/TintTek-Website/ppf/ppf-service.webp",
   },
   {
     id: "headlight-services",
@@ -69,7 +69,7 @@ const servicesData = [
     id: "ceramic-coating",
     title: "CERAMIC COATING",
     description: "Ceramic Coating Description",
-    image: "/TintTek-Website/windshield-protection.jpg",
+    image: "/TintTek-Website/windshield/windshield-protection.jpg",
   },
 ];
 
