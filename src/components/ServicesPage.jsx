@@ -31,6 +31,7 @@ import ResidentialCTA from "./ResidentialCTA";
 import PaintCorrectionServices from "./PaintCorrectionServices";
 import CommercialVideo from "./CommercialVideo"
 import HeadlightPackages from "./HeadlightPackages";
+import PPFVision from "./PPF-Vision"
 
 // Define service details for each page
 const serviceDetails = {
@@ -314,6 +315,8 @@ const ServicePage = () => {
         serviceId === "vehicle-paint-protection" ||
         serviceId === "headlight-services" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
+
+      {serviceId === "vehicle-paint-protection" && <PPFVision/>}
 
       <FAQSection />
       <CallToAction />
