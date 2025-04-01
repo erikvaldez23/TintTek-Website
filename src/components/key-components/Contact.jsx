@@ -85,7 +85,7 @@ const Contact = () => {
         {/* Contact Header */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={headerVariant}>
           <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}>
-            CONTACT US
+            Contact Us
           </Typography>
           <Typography variant="body1" sx={{ textAlign: "center", marginBottom: 4 }}>
             Let us know how we can help by sending us a message below. Looking forward to chatting!

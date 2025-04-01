@@ -31,6 +31,10 @@ const CallToAction = () => {
     ? "Professional Installation for Seamless Results"
     : serviceId === "windshield-protection-film"
     ? "Get Started Today!"
+    : serviceId === "headlight-services"
+    ? "ENHANCE AND PROTECT YOUR VEHICLE TODAY!"
+    : serviceId === "vehicle-paint-protection"
+    ? "GET STARTED TODAY!"
     : "DO YOU NEED WINDOW TINT?";
 
 
@@ -39,6 +43,10 @@ const CallToAction = () => {
       ? "At Tint Tek Plus, our certified professionals are experts in recommending and installing the right LLumar® film for your glass type and design preferences. We ensure a smooth, efficient installation with minimal disruption to your daily operations. Contact Tint Tek Plus today to discover how LLumar® window films can transform your commercial or residential space, combining energy efficiency, comfort, and style."
       : serviceId === "windshield-protection-film"
       ? "Don't let the harsh Texas roads take a toll on your windshield. Choose ExoShield GT3 at Tint Tek Plus to protect your vehicle from chips, cracks, and other damage caused by road debris. Contact us today to schedule your installation and experience the ultimate in windshield protection."
+      : serviceId === "headlight-services"
+      ? "Contact Tint Tek Plus to schedule an appointment or consultation. Let us help you customize your vehicle's lighting with STEK Light Protection Films, combining style and protection in one seamless solution."
+      : serviceId === "vehicle-paint-protection"
+      ? "Ready to protect your vehicle with the best in paint protection? At Tint Tek Plus, we specialize in Stek PPF installations designed to keep your vehicle looking new and protected for years to come. Contact us today to schedule your consultation or request a personalized quote. Protect your car, preserve its beauty, and enjoy the peace of mind that comes with Stek PPF!"
       : "Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? Window tinting is the solution! At TintTek+, we offer top-tier heat and UV protection, including tinting for windshields and sunroofs, to keep you comfortable and shielded from the harsh Dallas heat. With our advanced tinting options, you can enjoy cooler temperatures, a more private ride, and longer-lasting protection for your vehicle’s interior.";
 
   // Animation variants...

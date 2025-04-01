@@ -30,6 +30,7 @@ import BenefitsGrid from "./BenefitsGrid";
 import ResidentialCTA from "./ResidentialCTA";
 import PaintCorrectionServices from "./PaintCorrectionServices";
 import CommercialVideo from "./CommercialVideo"
+import HeadlightPackages from "./HeadlightPackages";
 
 // Define service details for each page
 const serviceDetails = {
@@ -254,17 +255,14 @@ const ServicePage = () => {
       </Box>
 
       {(serviceId === "commercial-window-tinting" ||
-      serviceId === "vehicle-window-tinting" ||
-      serviceId === "tesla-window-tinting" ||
-      // serviceId === "vehicle-paint-protection" ||
-      serviceId === "headlight-services" ||
       serviceId === "ceramic-coating" ||
       serviceId === "windshield-protection-film")
         && <CommercialVideo />}
 
-      
-      {/* {serviceId === "commercial-window-tinting" && <CommercialCTA />} */}
-      {(serviceId === "residential-window-tinting" ||
+    {(serviceId === "vehicle-window-tinting" ||
+      serviceId === "tesla-window-tinting" || 
+      serviceId === "residential-window-tinting" || 
+      serviceId === "headlight-services" || 
       serviceId === "vehicle-paint-protection" || 
       serviceId === "vehicle-paint-correction") && <ResidentialCTA />}
 
@@ -291,10 +289,10 @@ const ServicePage = () => {
 
       {serviceId === "vehicle-window-tinting" && <TintPackages />}
       {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
+      {serviceId === "headlight-services" && <HeadlightPackages />}
 
       
-      {/* <ServicesOffered serviceId={serviceId} /> */}
-      {serviceId !== "vehicle-paint-correction" ||
+      {serviceId !== "vehicle-paint-correction" &&
       serviceId !== "windshield-protection-film" && (
         <ServicesOffered serviceId={serviceId} />
       )}
@@ -313,6 +311,7 @@ const ServicePage = () => {
         serviceId === "commercial-window-tinting" ||
         serviceId === "windshield-protection-film" ||
         serviceId === "vehicle-paint-correction" ||
+        serviceId === "vehicle-paint-protection" ||
         serviceId === "headlight-services" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 

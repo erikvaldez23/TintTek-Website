@@ -297,48 +297,42 @@ const serviceSteps = {
         title: "Consultation & Assesment",
         description:
           "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
         description:
           "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
-        detailedDescription:
-        "TBD",
+        detailedDescription: "TBD",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Installation",
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
-        detailedDescription:
-         "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Curing",
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
-        detailedDescription:
-         "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "We conduct a thorough inspection to confirm that the PPF has been applied flawlessly, ensuring full protection for your vehicle.",
-        detailedDescription:
-         "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Two-Week Check-Up",
         description:
           "Two-week complimentary check-up after your PPF installation. This allows us to inspect the film, ensuring it's securely bonded to your vehicle and that no issues arise early on.",
-        detailedDescription:
-         "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -356,53 +350,46 @@ const serviceSteps = {
         title: "Consultation & Selection ",
         description:
           "We’ll discuss your needs and help you choose the right coating for your vehicle, whether you prefer standard ceramic or cutting-edge graphene protection.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
         description:
           "Your vehicle is thoroughly cleaned and decontaminated to ensure the coating bonds perfectly with the surface. This step is crucial for optimal results.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Application",
         description:
           "Our trained experts carefully apply the coating, ensuring a flawless, even coverage across your car’s paintwork.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Curing",
         description:
           "After application, the coating needs time to cure, forming a long-lasting, protective layer that’s as tough as it is beautiful.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "We inspect the vehicle to make sure the coating is perfect and your car is ready to face the elements with superior protection.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Yearly Maintenance Check",
         description:
           "For just $225, we offer an annual maintenance check to ensure the coating is performing at its best and touch-up any areas that may need attention.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
-    finalDescription:
-      "Our Ceramic & Graphene Coating Process:",
+    finalDescription: "Our Ceramic & Graphene Coating Process:",
     images: [
       "/TintTek-Website/paint-protection1.jpeg",
       "/TintTek-Website/paint-protection2.jpeg",
@@ -415,29 +402,26 @@ const serviceSteps = {
         title: "Professional Installation",
         description:
           "Our team of installers ensures precise application of ExoShield GT3, tailored to fit your vehicle's specific windshield curvature.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Comprehensive Warranty",
         description:
           "We stand behind the quality of our products and services. ExoShield GT3 comes with a 3-year transferable warranty, providing you with peace of mind and assurance of long-term protection. ",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Competitive Pricing",
         description:
           "Protecting your windshield is an investment. We offer competitive pricing to ensure you receive exceptional value without compromising on quality.",
-        detailedDescription:
-          "TBD",
+        detailedDescription: "TBD",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
-      "Windshield protection film provides superior defense against road debris, rock chips, and everyday wear extending the life of your windshield while preserving clarity and safety. We follow three key steps to ensure a flawless and long-lasting protection:",
+      "At Tint Tek Plus, we are committed to delivering exceptional value and peace of mind to our customers. In addition to our top-quality windshield protection services, we offer a $1,000 insurance coverage for your windshield protection film. This coverage ensures that if your windshield film is damaged due to road debris or other hazards, the cost of repair or replacement is covered, providing you with added security and confidence in your investment.",
     images: [
       "/TintTek-Website/paint-protection1.jpeg",
       "/TintTek-Website/paint-protection2.jpeg",
@@ -531,7 +515,7 @@ const HowItWorks = ({ serviceId }) => {
           textAlign: "center",
         }}
       >
-        HOW IT WORKS
+        How It Works
       </Typography>
 
       {/* Service Unique Description */}

@@ -99,7 +99,8 @@ ${userMessage}
       messages: [
         {
           role: "system",
-          content: "You are a helpful customer support assistant.",
+          content: "You are a helpful customer support assistant. With all of the information that you need given to you in training_data.json.\
+          If you do not know the answe to a users questiont then just say that you do not know and then route the user to contact a live agent.",
         },
         { role: "user", content: prompt },
       ],

@@ -231,6 +231,40 @@ const benefitsData = {
         "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
     },
   ],
+  "vehicle-paint-protection": [
+    {
+      title: "Exceptional Durability",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Stek PPF is engineered to withstand the toughest conditions, including road debris, gravel, and weathering elements. It prevents chips, scratches, and swirl marks that can diminish your vehicle's paintwork.",
+    },
+    {
+      title: "Self-Healing Technology",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Stek PPF features advanced self-healing properties. Light scratches and swirl marks disappear when exposed to heat, keeping your car looking as fresh as the day it was protected.",
+    },    {
+      title: "Hydrophobic Properties",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Stek PPF is designed to repel water, dirt, and contaminants. This makes cleaning easier and reduces the frequency of washes, helping to maintain your vehicle's pristine appearance longer.",
+    },    {
+      title: "Invisible Shield",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "The film is nearly invisible and doesn’t alter your car’s color or finish. You get all the protection with none of the visual compromise, maintaining that flawless, high-gloss or matte finish.",
+    },    {
+      title: "UV Protection",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Stek PPF shields your vehicle’s paint from harmful UV rays, which helps prevent fading and oxidation, ensuring that your car’s color stays vibrant for years.",
+    },    {
+      title: "Scratch & Impact Protection",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Protect your vehicle from minor abrasions, stone chips, and scratches caused by road debris. Stek PPF is tough enough to absorb impacts, keeping your car looking like new.",
+    },
+  ],
   "headlight-services": [
     {
       title: "Durable Protection",
@@ -265,7 +299,10 @@ const titles = {
   "tesla-window-tinting": "Benefits of Tesla Window Tinting",
   "commercial-window-tinting": "Why Choose LLumar® Window Films?",
   "residential-window-tinting": "Why Choose LLumar®",
-  "windshield-protection-film": "Why Choose ExoShield GT3",
+  "windshield-protection-film": "Why Choose ExoShield GT3?",
+  "ceramic-coating": "Why Choose Ceramic Coating?",
+  "vehicle-paint-correction": "Top Benefits",  
+  "vehicle-paint-protection": "Why Choose Stek PPF? ",  
 };
 
 // Add custom color schemes per service

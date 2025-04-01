@@ -313,6 +313,8 @@ const ServicesOffered = ({ serviceId }) => {
             ? "Residential Window Tinting Services"
             : serviceId === "vehicle-paint-protection"
             ? "Stek PPF Options"
+            : serviceId === "headlight-services"
+            ? "Available Tones:"
             : "Film Types"}
         </Typography>
 
