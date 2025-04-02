@@ -158,7 +158,7 @@ export default function CombinedVideoCTA() {
                 width: "100%",
                 borderRadius: "20px",
                 overflow: "hidden",
-                background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)", // modern frame look
+                background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)", 
                 boxShadow:
                   "0 10px 25px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.1)",
               }}
@@ -172,7 +172,7 @@ export default function CombinedVideoCTA() {
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                poster="/TintTek-Website/Tint Tek-107.jpg" // <- Add this
+                poster="/TintTek-Website/gallery/Tint Tek-107.jpg" 
                 style={{
                   width: "100%",
                   height: "100%",

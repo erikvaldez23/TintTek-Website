@@ -294,6 +294,7 @@ const ServicePage = () => {
 
       
       {serviceId !== "vehicle-paint-correction" &&
+      serviceId !== "ceramic-coating" && 
       serviceId !== "windshield-protection-film" && (
         <ServicesOffered serviceId={serviceId} />
       )}
@@ -313,10 +314,12 @@ const ServicePage = () => {
         serviceId === "windshield-protection-film" ||
         serviceId === "vehicle-paint-correction" ||
         serviceId === "vehicle-paint-protection" ||
+        serviceId === "ceramic-coating" ||
         serviceId === "headlight-services" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
-      {serviceId === "vehicle-paint-protection" && <PPFVision/>}
+      {serviceId === "vehicle-paint-protection" ||
+      serviceId === "ceramic-coating" && <PPFVision/>}
 
       <FAQSection />
       <CallToAction />

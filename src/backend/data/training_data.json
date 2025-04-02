@@ -102,5 +102,25 @@
   {
     "question": "Can you tint your front windshield?",
     "answer": "Texas DPS States - A clear (un-tinted) UV film is allowed anywhere on the front windshield without a medical exemption being required. Since the windshield or possibly a panoramic sunroof are the largest entry points for solar heat, we recommend you apply UV/IR blocking film on those areas."
+  },
+  {
+    "question": "Where are you located?",
+    "answer": "We are located at 2518 West Kingsley Rd, Garland, TX 75041."
+  },
+  {
+    "question": "What are your business hours?",
+    "answer": "Our shop is open Monday through Saturday from 9:00 AM to 6:00 PM, and we are closed on sundays."
+  },
+  {
+    "question": "How can I contact you?",
+    "answer": "You can call us at (972) 362-8468 or email us at info@tinttekplus.com. You can also send us a message through the contact form on our website!"
+  },
+  {
+    "question": "Do I need to make an appointment?",
+    "answer": "Appointments are highly recommended to ensure prompt service, but we also accept walk-ins depending on availability."
+  },
+  {
+    "question": "What types of vehicles do you service?",
+    "answer": "We service all vehicle types including sedans, trucks, SUVs, and Teslas. We also offer residential and commercial window tinting."
   }
 ]

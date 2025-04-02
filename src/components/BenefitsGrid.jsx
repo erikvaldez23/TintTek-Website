@@ -291,6 +291,38 @@ const benefitsData = {
         "The film's advanced technology allows minor scratches to heal with heat, maintaining a smooth surface.",
     },
   ],
+  "ceramic-coating": [
+    {
+      title: "Hydrophobic Protection",
+      icon: <WbSunnyIcon fontSize="large" />,
+      description:
+        "Our ceramic coatings are designed to repel water like never before. Water beads up and rolls off the surface, reducing water spots and keeping your car cleaner for longer.",
+    },
+    {
+      title: "Scratch & Swirl Resistance",
+      icon: <SecurityIcon fontSize="large" />,
+      description:
+        "The protective layer helps guard against light scratches and swirl marks, ensuring your paint stays smooth and free of imperfections.",
+    },
+    {
+      title: "UV Protection",
+      icon: <VisibilityIcon fontSize="large" />,
+      description:
+        "Ceramic coatings create a barrier that protects your paint from harmful UV rays, preventing oxidation and fading over time. Keep your car looking new for years!",
+    },
+    {
+      title: "Enhanced Gloss",
+      icon: <HomeWorkIcon fontSize="large" />,
+      description:
+        "Enjoy a brilliant, glossy finish that makes your vehicle shine with a depth and clarity that traditional waxes simply can’t match.",
+    },
+    {
+      title: "Low Maintenance",
+      icon: <HomeWorkIcon fontSize="large" />,
+      description:
+        "With ceramic protection, dirt, water, and other contaminants have a harder time sticking to the surface, making your car much easier to clean.",
+    },
+  ],
 };
 
 // Titles for each service benefits section

@@ -35,6 +35,8 @@ const CallToAction = () => {
     ? "ENHANCE AND PROTECT YOUR VEHICLE TODAY!"
     : serviceId === "vehicle-paint-protection"
     ? "GET STARTED TODAY!"
+    : serviceId === "ceramic-coating"
+    ? "GET IN TOUCH TODAY"
     : "DO YOU NEED WINDOW TINT?";
 
 
@@ -47,11 +49,13 @@ const CallToAction = () => {
       ? "Contact Tint Tek Plus to schedule an appointment or consultation. Let us help you customize your vehicle's lighting with STEK Light Protection Films, combining style and protection in one seamless solution."
       : serviceId === "vehicle-paint-protection"
       ? "Ready to protect your vehicle with the best in paint protection? At Tint Tek Plus, we specialize in Stek PPF installations designed to keep your vehicle looking new and protected for years to come. Contact us today to schedule your consultation or request a personalized quote. Protect your car, preserve its beauty, and enjoy the peace of mind that comes with Stek PPF!"
+      : serviceId === "ceramic-coating"
+      ? "Ready to take your vehicle’s protection to the next level? At Tint Tek Plus, we offer premium ceramic and graphene coating services designed to keep your car looking its best for years to come. Contact us today to schedule your service and give your car the protection it deserves!"
       : "Looking to block out intense heat, protect your car’s interior from UV damage, or add some extra privacy? Window tinting is the solution! At TintTek+, we offer top-tier heat and UV protection, including tinting for windshields and sunroofs, to keep you comfortable and shielded from the harsh Dallas heat. With our advanced tinting options, you can enjoy cooler temperatures, a more private ride, and longer-lasting protection for your vehicle’s interior.";
 
   // Animation variants...
   const containerVariants = {
-    hidden: {},
+    hidden: {}, 
     visible: {
       transition: {
         staggerChildren: 0.2,

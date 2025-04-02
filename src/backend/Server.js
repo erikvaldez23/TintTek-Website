@@ -100,7 +100,7 @@ ${userMessage}
         {
           role: "system",
           content: "You are a helpful customer support assistant. With all of the information that you need given to you in training_data.json.\
-          If you do not know the answe to a users questiont then just say that you do not know and then route the user to contact a live agent.",
+          If you do not know the answer to a users question then just say that you do not know and then route the user to contact a live agent.",
         },
         { role: "user", content: prompt },
       ],
@@ -139,11 +139,11 @@ app.post("/chat", async (req, res) => {
 
       return res.json({
         reply:
-        "Oops! Something went wrong.\n\n" +
-        "Need Immediate Help? Contact us:\n\n" +
-        "Phone: (123) 456-7890\n" +
-        "Email: support@windowtinting.com\n\n" +
-        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
+        "Hmm, looks like I couldn’t find a good answer to that.\n" +
+        "But don’t worry — we’ve got your back!\n" +
+        "Need immediate help? You can reach us at:\n" +
+        "Phone: (972) 362-8468\n" +
+        "Email: info@tinttekplus.com\n",
       });
     }
 
@@ -167,11 +167,11 @@ app.post("/chat", async (req, res) => {
 
       return res.json({
         reply:
-        "Oops! Something went wrong.\n\n" +
-        "Need Immediate Help? Contact us:\n\n" +
-        "Phone: (123) 456-7890\n" +
-        "Email: support@windowtinting.com\n\n" +
-        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
+        "Hmm, looks like I couldn’t find a good answer to that.\n" +
+        "But don’t worry — we’ve got your back!\n" +
+        "Need immediate help? You can reach us at:\n" +
+        "Phone: (972) 362-8468\n" +
+        "Email: info@tinttekplus.com\n",
       });
     }
 
@@ -183,11 +183,11 @@ app.post("/chat", async (req, res) => {
     // ✅ Step 6: If an Unexpected Error Occurs, Show Contact Info
     return res.json({
       reply:
-        "Oops! Something went wrong.\n\n" +
-        "Need Immediate Help? Contact us:\n\n" +
-        "Phone: (123) 456-7890\n" +
-        "Email: support@windowtinting.com\n\n" +
-        "Live Chat:Visit our website (https://www.tinttekplus.com) for instant assistance.",
+      "Hmm, looks like I couldn’t find a good answer to that.\n" +
+      "But don’t worry — we’ve got your back!\n" +
+      "Need immediate help? You can reach us at:\n" +
+      "Phone: (972) 362-8468\n" +
+      "Email: info@tinttekplus.com\n",
     });
   }
 });
