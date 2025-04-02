@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LayersIcon from "@mui/icons-material/Layers";
+import { Link } from "react-router-dom";
+
 
 // Define service-specific content
 const serviceOptions = {
@@ -196,23 +198,28 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "DYNOshade",
-        description: "Provides a subtle shaded effect, offering 45% light transmittance.",
+        description:
+          "Provides a subtle shaded effect, offering 45% light transmittance.",
       },
       {
         name: "DYNOshadow",
-        description: "Delivers a medium charcoal tone with 34% light transmittance.",
+        description:
+          "Delivers a medium charcoal tone with 34% light transmittance.",
       },
       {
         name: "DYNOsmoke",
-        description: "The darkest option at 30% light transmittance, ideal for a stealthy look.",
+        description:
+          "The darkest option at 30% light transmittance, ideal for a stealthy look.",
       },
       {
         name: "DYNOstorm",
-        description: "A neutral gray with 50% light transmittance, giving a sleek appearance.",
+        description:
+          "A neutral gray with 50% light transmittance, giving a sleek appearance.",
       },
       {
         name: "DYNOyellow",
-        description: "Inspired by racing culture, offering a classic yellow tint.",
+        description:
+          "Inspired by racing culture, offering a classic yellow tint.",
       },
     ],
   },
@@ -386,6 +393,123 @@ const ServicesOffered = ({ serviceId }) => {
             ))}
           </Grid>
         )}
+
+        {/* Call to Action - Tint Viewer */}
+{/* Call to Action - Tint Viewer */}
+<Box
+  sx={{
+    mt: 6,
+    textAlign: "center",
+    background: "linear-gradient(135deg, #121212 0%, #1a1a1a 100%)",
+    py: 5,
+    px: 3,
+    borderRadius: 4,
+    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+    position: "relative",
+    overflow: "hidden",
+    border: "1px solid rgba(255,255,255,0.05)",
+  }}
+>
+  {/* Abstract shape for visual interest */}
+  <Box
+    sx={{
+      position: "absolute",
+      top: -30,
+      right: -30,
+      width: 150,
+      height: 150,
+      borderRadius: "50%",
+      background: "radial-gradient(circle, rgba(39,148,210,0.2) 0%, rgba(39,148,210,0) 70%)",
+      zIndex: 0,
+    }}
+  />
+  
+  <Box
+    sx={{
+      position: "absolute",
+      bottom: -40,
+      left: -40,
+      width: 200,
+      height: 200,
+      borderRadius: "50%",
+      background: "radial-gradient(circle, rgba(39,148,210,0.1) 0%, rgba(39,148,210,0) 70%)",
+      zIndex: 0,
+    }}
+  />
+  
+  <Box sx={{ position: "relative", zIndex: 1 }}>
+    <Typography 
+      variant="h5" 
+      fontWeight="bold" 
+      sx={{ 
+        mb: 1,
+        background: "linear-gradient(90deg, #fff 0%, #bfdfff 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        display: "inline-block"
+      }}
+    >
+      Experience Your Tints Before Installation
+    </Typography>
+    
+    <Typography 
+      variant="body1" 
+      sx={{ 
+        mb: 4, 
+        color: "rgba(255,255,255,0.7)",
+        maxWidth: 600,
+        mx: "auto",
+        fontSize: "1.1rem"
+      }}
+    >
+      Our interactive simulator shows you exactly how each shade will transform your view.
+    </Typography>
+    
+    <Link
+  to={`/simulators/${serviceId}`}
+  style={{ textDecoration: "none" }}
+>
+  <Box
+    sx={{
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 1.5,
+      px: 4,
+      py: 1.5,
+      fontSize: "1rem",
+      fontWeight: "600",
+      color: "#fff",
+      background: "linear-gradient(90deg, #2794d2 0%, #1b6fa5 100%)",
+      borderRadius: 50,
+      transition: "all 0.3s ease-in-out",
+      boxShadow: "0 4px 15px rgba(39,148,210,0.3)",
+      "&:hover": {
+        transform: "translateY(-3px)",
+        boxShadow: "0 6px 20px rgba(39,148,210,0.4)",
+      },
+      "&:active": {
+        transform: "translateY(1px)",
+      }
+    }}
+  >
+    <Box component="span">Launch Tint Viewer</Box>
+    <Box 
+      component="span"
+      sx={{ 
+        display: "inline-block", 
+        transform: "translateX(0)", 
+        transition: "transform 0.2s ease-in-out",
+        ".MuiBox-root:hover &": { transform: "translateX(3px)" } 
+      }}
+    >
+      →
+    </Box>
+  </Box>
+</Link>
+
+  </Box>
+</Box>
       </Box>
     </Box>
   );

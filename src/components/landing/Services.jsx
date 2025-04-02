@@ -6,10 +6,9 @@ import {
   Box,
   Card,
   CardMedia,
-  CardContent,
+  Typography,
   Container,
   Grid,
-  Typography,
   Button,
   useMediaQuery,
 } from "@mui/material";
@@ -29,20 +28,20 @@ const servicesData = [
     title: "TESLA WINDOW TINTING",
     description:
       "Extend battery life, reduce heat in cabin, and enhance privacy.",
-    image: "/TintTek-Website/gallery/Tint Tek-181.jpg",
+    image: "/TintTek-Website/gallery/Tint Tek-181.webp",
   },
   {
     id: "commercial-window-tinting",
     title: "COMMERCIAL WINDOW TINTING",
     description: "Enhance energy savings, privacy, and security.",
-    image: "/TintTek-Website/gallery/Tint Tek-146.jpg",
+    image: "/TintTek-Website/gallery/Tint Tek-146.webp",
   },
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
     description:
       "Lower your energy costs, get UV protection, enhance privacy and security.",
-    image: "/TintTek-Website/residential/residential-service.png",
+    image: "/TintTek-Website/residential/residential-service.webp",
   },
   {
     id: "vehicle-paint-correction",
@@ -80,10 +79,9 @@ const servicesData = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: { duration: 0.5 },
   },
 };
@@ -136,6 +134,7 @@ const Services = () => {
           "&:hover": {
             border: isMobile ? "none" : "5px solid #2794d2",
             boxShadow: isMobile ? "none" : "0 10px 20px rgba(0, 0, 0, 0.3)",
+            transform: isMobile ? "none" : "scale(1.05)",
           },
         }}
         onClick={() => handleServiceClick(service.id)}
@@ -144,7 +143,9 @@ const Services = () => {
           component="img"
           image={service.image}
           alt={service.title}
-          loading="lazy"
+          loading={service.id === "commercial-window-tinting" ? "eager" : "lazy"} // ✅ No lazy loading for LCP
+          width="400"
+          height="400"
           sx={{
             width: "100%",
             height: "100%",
@@ -166,7 +167,7 @@ const Services = () => {
             color: "#fff",
             display: "flex",
             flexDirection: "column",
-            justifyContent: isMobile ? "flex-end" : "center", // 👈 key change
+            justifyContent: isMobile ? "flex-end" : "center",
             textAlign: "center",
             padding: 0,
           }}
