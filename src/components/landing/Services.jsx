@@ -6,9 +6,10 @@ import {
   Box,
   Card,
   CardMedia,
-  Typography,
+  CardContent,
   Container,
   Grid,
+  Typography,
   Button,
   useMediaQuery,
 } from "@mui/material";
@@ -41,7 +42,7 @@ const servicesData = [
     title: "RESIDENTIAL WINDOW TINTING",
     description:
       "Lower your energy costs, get UV protection, enhance privacy and security.",
-    image: "/TintTek-Website/residential/residential-service.webp",
+    image: "/TintTek-Website/residential/residential-service.png",
   },
   {
     id: "vehicle-paint-correction",
@@ -79,9 +80,10 @@ const servicesData = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
+    y: 0,
     transition: { duration: 0.5 },
   },
 };
@@ -143,9 +145,7 @@ const Services = () => {
           component="img"
           image={service.image}
           alt={service.title}
-          loading={service.id === "commercial-window-tinting" ? "eager" : "lazy"} // ✅ No lazy loading for LCP
-          width="400"
-          height="400"
+          loading="lazy"
           sx={{
             width: "100%",
             height: "100%",
@@ -167,7 +167,7 @@ const Services = () => {
             color: "#fff",
             display: "flex",
             flexDirection: "column",
-            justifyContent: isMobile ? "flex-end" : "center",
+            justifyContent: isMobile ? "flex-end" : "center", // 👈 key change
             textAlign: "center",
             padding: 0,
           }}
