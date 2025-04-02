@@ -161,7 +161,7 @@ export default function PaintCorrectionTabs() {
               // },
             }}
           >
-            Paint Correction
+            Paint Correction Stages
           </Typography>
           {/* <Typography
             variant="h6"
