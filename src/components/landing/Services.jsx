@@ -1,34 +1,28 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import Slider from "react-slick";
 import { motion } from "framer-motion";
 import {
   Box,
   Card,
   CardMedia,
-  CardContent,
   Container,
   Grid,
   Typography,
   Button,
   useMediaQuery,
 } from "@mui/material";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const servicesData = [
   {
     id: "vehicle-window-tinting",
     title: "VEHICLE WINDOW TINTING",
-    description:
-      "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
+    description: "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
     image: "/TintTek-Website/v-window-tint/vehicle-window-tint.webp",
   },
   {
     id: "tesla-window-tinting",
     title: "TESLA WINDOW TINTING",
-    description:
-      "Extend battery life, reduce heat in cabin, and enhance privacy.",
+    description: "Extend battery life, reduce heat in cabin, and enhance privacy.",
     image: "/TintTek-Website/gallery/Tint Tek-181.webp",
   },
   {
@@ -40,8 +34,7 @@ const servicesData = [
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
-    description:
-      "Lower your energy costs, get UV protection, enhance privacy and security.",
+    description: "Lower your energy costs, get UV protection, enhance privacy and security.",
     image: "/TintTek-Website/residential/residential-service.png",
   },
   {
@@ -53,22 +46,19 @@ const servicesData = [
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
-    description:
-      "Shields paint from scratches, chips, stains, UV damage, and wear.",
+    description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
     image: "/TintTek-Website/ppf/ppf-service.webp",
   },
   {
     id: "headlight-services",
     title: "HEADLIGHT & TAILLIGHT SERVICES",
-    description:
-      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
     image: "/TintTek-Website/headlight/taillight1.webp",
   },
   {
     id: "windshield-protection-film",
     title: "WINDSHIELD PROTECTION FILM",
-    description:
-      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+    description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
     image: "/TintTek-Website/windshield/windshield-service.webp",
   },
   {
@@ -105,25 +95,11 @@ const Services = () => {
     navigate(`/services/${serviceId}`);
   };
 
-  const sliderSettings = useMemo(
-    () => ({
-      dots: false,
-      infinite: !isMobile,
-      speed: 500,
-      slidesToShow: isMobile ? 1 : 1.2,
-      slidesToScroll: 1,
-      arrows: false,
-      centerMode: true,
-      centerPadding: isMobile ? "15%" : "0px",
-    }),
-    [isMobile]
-  );
-
   const ServiceCard = React.memo(({ service }) => (
     <motion.div variants={cardVariants}>
       <Card
         sx={{
-          width: isMobile ? "65vw" : "100%",
+          width: isMobile ? "80vw" : "100%",
           height: 400,
           borderRadius: 5,
           overflow: "hidden",
@@ -145,10 +121,10 @@ const Services = () => {
           component="img"
           image={service.image}
           alt={service.title}
+          width="350"
+          height="400"
           loading="lazy"
           sx={{
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             transition: "transform 0.3s ease",
             "&:hover": {
@@ -167,7 +143,7 @@ const Services = () => {
             color: "#fff",
             display: "flex",
             flexDirection: "column",
-            justifyContent: isMobile ? "flex-end" : "center", // 👈 key change
+            justifyContent: isMobile ? "flex-end" : "center",
             textAlign: "center",
             padding: 0,
           }}
@@ -230,14 +206,27 @@ const Services = () => {
       </Typography>
 
       {isMobile ? (
-        <Box sx={{ position: "relative" }}>
-          <Slider {...sliderSettings}>
-            {servicesData.map((service) => (
-              <Box key={service.id} sx={{ px: 2 }}>
-                <ServiceCard service={service} />
-              </Box>
-            ))}
-          </Slider>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            overflowX: "auto",
+            gap: 2,
+            px: 2,
+            scrollSnapType: "x mandatory",
+          }}
+        >
+          {servicesData.map((service) => (
+            <Box
+              key={service.id}
+              sx={{
+                flex: "0 0 80%",
+                scrollSnapAlign: "center",
+              }}
+            >
+              <ServiceCard service={service} />
+            </Box>
+          ))}
         </Box>
       ) : (
         <Container maxWidth="lg">
