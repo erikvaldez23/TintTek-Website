@@ -95,7 +95,7 @@ const Services = () => {
     navigate(`/services/${serviceId}`);
   };
 
-  const ServiceCard = React.memo(({ service, index }) => (
+  const ServiceCard = React.memo(({ service }) => (
     // <motion.div variants={cardVariants}>
       <Card
         sx={{
@@ -123,7 +123,7 @@ const Services = () => {
           alt={service.title}
           width="350"
           height="400"
-          loading={index === 0 ? "eager" : "lazy"} // 👈 preload only the first card
+          loading="lazy"
           sx={{
             objectFit: "cover",
             transition: "transform 0.3s ease",
