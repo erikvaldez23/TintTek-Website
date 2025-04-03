@@ -423,9 +423,9 @@ const serviceSteps = {
     finalDescription:
       "At Tint Tek Plus, we are committed to delivering exceptional value and peace of mind to our customers. In addition to our top-quality windshield protection services, we offer a $1,000 insurance coverage for your windshield protection film. This coverage ensures that if your windshield film is damaged due to road debris or other hazards, the cost of repair or replacement is covered, providing you with added security and confidence in your investment.",
     images: [
-      "/TintTek-Website/paint-protection1.jpeg",
-      "/TintTek-Website/paint-protection2.jpeg",
-      "/TintTek-Website/paint-protection3.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-6.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-25.jpeg",
+      "/TintTek-Website/gallery/Tint Tek-32.jpeg",
     ],
   },
 };
@@ -615,14 +615,17 @@ const HowItWorks = ({ serviceId }) => {
           container
           spacing={3}
           justifyContent="center"
-          sx={{ maxWidth: "1200px", mx: "auto" }}
+          sx={{
+            maxWidth: service.steps.length > 4 ? "1000px" : "1200px",
+            mx: "auto",
+          }}
         >
           {service.steps.map((step, index) => (
             <Grid
               item
               xs={12}
               sm={6}
-              md={3}
+              md={service.steps.length > 4 ? 4 : 3} // 👈 Dynamic md value
               key={index}
               sx={{ display: "flex", justifyContent: "center" }}
             >

@@ -12,26 +12,23 @@ import PricingComponent from "./Pricing";
 import Contact from "./key-components/Contact";
 import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
-import BenefitsSection from "./BenefitsSection";
 import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
-import { motion } from "framer-motion";
 import CallToAction from "./key-components/CallToAction";
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector";
-import Commercial from "./commercial";
 import FAQSection from "./FAQSection";
 import TintPackages from "./TintPackages";
 import TeslaTintingSimulator from "./TeslaTintingSimulator";
 import QuickLinks from "./key-components/QuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
-// import CommercialCTA from "./CommercialCTA";
 import ResidentialCTA from "./ResidentialCTA";
 import PaintCorrectionServices from "./PaintCorrectionServices";
 import CommercialVideo from "./CommercialVideo"
 import HeadlightPackages from "./HeadlightPackages";
 import PPFVision from "./PPF-Vision"
+import ImageCarousel from "./ImageCarousel"
 
 // Define service details for each page
 const serviceDetails = {
@@ -298,6 +295,8 @@ const ServicePage = () => {
       serviceId !== "windshield-protection-film" && (
         <ServicesOffered serviceId={serviceId} />
       )}
+
+      {serviceId === "commercial-window-tinting" && <ImageCarousel/>}
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (

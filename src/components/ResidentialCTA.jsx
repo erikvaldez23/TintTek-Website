@@ -21,11 +21,11 @@ const callToActionData = {
       Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.
       `,
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/TintTek-Website/v-window-tint/Tint Tek-63.jpeg",
+      "/TintTek-Website/v-window-tint/Tint Tek-4.jpeg",
+      "/TintTek-Website/v-window-tint/Tint Tek-66.jpeg",
+      "/TintTek-Website/v-window-tint/Tint Tek-37.jpeg",
+      "/TintTek-Website/v-window-tint/Tint Tek-105.jpeg",
     ],
   },
   "tesla-window-tinting": {
@@ -206,6 +206,7 @@ const CallToAction = () => {
                     className="carousel-img"
                     sx={{
                       width: "100%",
+                      minHeight: isMobile ? "200px" : "300px",
                       maxHeight: isMobile ? "300px" : "350px",
                       objectFit: "cover",
                       borderRadius: "24px",
