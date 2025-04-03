@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import {
   Box,
   Card,
@@ -69,23 +69,23 @@ const servicesData = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
+// const cardVariants = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.5 },
+//   },
+// };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-};
+// const containerVariants = {
+//   hidden: {},
+//   visible: {
+//     transition: {
+//       staggerChildren: 0.3,
+//     },
+//   },
+// };
 
 const Services = () => {
   const navigate = useNavigate();
@@ -96,7 +96,7 @@ const Services = () => {
   };
 
   const ServiceCard = React.memo(({ service }) => (
-    <motion.div variants={cardVariants}>
+    // <motion.div variants={cardVariants}>
       <Card
         sx={{
           width: isMobile ? "80vw" : "100%",
@@ -179,7 +179,7 @@ const Services = () => {
           </Box>
         </Box>
       </Card>
-    </motion.div>
+    // </motion.div>
   ));
 
   return (
@@ -230,12 +230,12 @@ const Services = () => {
         </Box>
       ) : (
         <Container maxWidth="lg">
-          <motion.div
+          {/* <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             viewport={{ once: true, amount: 0.3 }}
-          >
+          > */}
             <Grid container spacing={2} justifyContent="center">
               {servicesData.map((service) => (
                 <Grid item key={service.id} xs={12} sm={6} md={4}>
@@ -243,7 +243,7 @@ const Services = () => {
                 </Grid>
               ))}
             </Grid>
-          </motion.div>
+          {/* </motion.div> */}
         </Container>
       )}
     </Box>
