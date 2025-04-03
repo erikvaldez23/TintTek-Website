@@ -305,4 +305,4 @@ const TintPackages = () => {
   );
 };
 
-export default TeslaTintPackages;
+export default TintPackages;
