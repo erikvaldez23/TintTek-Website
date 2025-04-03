@@ -223,6 +223,10 @@ const CallToAction = () => {
             </Slider>
           </Box>
 
+            <Box sx={{
+          px: { xs: 1, sm: 2, md: 3 },
+          
+            }}>
           <Typography
             variant={isMobile ? "h4" : "h2"}
             component={motion.h3}
@@ -275,6 +279,7 @@ const CallToAction = () => {
             Get a Free Quote
           </Button>
         </Box>
+      </Box>
       </Box>
     </motion.div>
   );

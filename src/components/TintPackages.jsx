@@ -63,7 +63,7 @@ const TintPackages = () => {
     <Box
       sx={{
         py: 6,
-        px: 2,
+        px: 1,
         backgroundColor: "#EEEEFF", // Dark background
       }}
     >
@@ -83,7 +83,7 @@ const TintPackages = () => {
 
       {/* Card Grid */}
 
-      <Box sx={{ maxWidth: "1200px", mx: "auto", px: 2 }}>
+      <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
         {isMobile ? (
           // 📱 MOBILE CAROUSEL
           <Box
@@ -92,7 +92,6 @@ const TintPackages = () => {
               overflowX: "auto",
               scrollSnapType: "x mandatory",
               gap: 2,
-              px: 1,
               pb: 3,
               "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar
             }}

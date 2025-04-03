@@ -70,7 +70,7 @@ const TeslaTintPackages = () => {
     <Box
       sx={{
         py: 6,
-        px: 2,
+        px: 1,
         backgroundColor: "#EEEEFF", // Dark background
       }}
     >
@@ -90,7 +90,7 @@ const TeslaTintPackages = () => {
 
       {/* Card Grid */}
 
-      <Box sx={{ maxWidth: "1200px", mx: "auto", px: 2 }}>
+      <Box sx={{ maxWidth: "1200px", mx: "auto"}}>
         {isMobile ? (
           // 📱 MOBILE CAROUSEL
           <Box
