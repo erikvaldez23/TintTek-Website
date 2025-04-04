@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
 import {
   Box,
   Card,
@@ -17,75 +16,59 @@ const servicesData = [
     id: "vehicle-window-tinting",
     title: "VEHICLE WINDOW TINTING",
     description: "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    image: "/TintTek-Website/v-window-tint/vehicle-window-tint.webp",
+    image: "/TintTek-Website/v-window-tint/vehicle-window-tint.jpg",
   },
   {
     id: "tesla-window-tinting",
     title: "TESLA WINDOW TINTING",
     description: "Extend battery life, reduce heat in cabin, and enhance privacy.",
-    image: "/TintTek-Website/gallery/Tint Tek-181.webp",
+    image: "/TintTek-Website/gallery/Tint Tek-181-2.jpg",
   },
   {
     id: "commercial-window-tinting",
     title: "COMMERCIAL WINDOW TINTING",
     description: "Enhance energy savings, privacy, and security.",
-    image: "/TintTek-Website/gallery/Tint Tek-146.webp",
+    image: "/TintTek-Website/gallery/Tint Tek-146-2.jpg",
   },
   {
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
     description: "Lower your energy costs, get UV protection, enhance privacy and security.",
-    image: "/TintTek-Website/residential/residential-service.png",
+    image: "/TintTek-Website/residential/residential-service1.jpg",
   },
   {
     id: "vehicle-paint-correction",
     title: "VEHICLE PAINT CORRECTION",
     description: "Restore your vehicle’s original shine.",
-    image: "/TintTek-Website/paint-correction/paint-correction1.webp",
+    image: "/TintTek-Website/paint-correction/paint-correction1.jpg",
   },
   {
     id: "vehicle-paint-protection",
     title: "VEHICLE PAINT PROTECTION",
     description: "Shields paint from scratches, chips, stains, UV damage, and wear.",
-    image: "/TintTek-Website/ppf/ppf-service.webp",
+    image: "/TintTek-Website/ppf/ppf-service.jpg",
   },
   {
     id: "headlight-services",
     title: "HEADLIGHT & TAILLIGHT SERVICES",
     description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
-    image: "/TintTek-Website/headlight/taillight1.webp",
+    image: "/TintTek-Website/headlight/taillight1.jpg",
   },
   {
     id: "windshield-protection-film",
     title: "WINDSHIELD PROTECTION FILM",
     description: "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
-    image: "/TintTek-Website/windshield/windshield-service.webp",
+    image: "/TintTek-Website/windshield/windshield-service.jpg",
   },
   {
     id: "ceramic-coating",
     title: "CERAMIC COATING",
     description: "Ceramic Coating Description",
-    image: "/TintTek-Website/windshield/windshield-protection.jpg",
+    image: "/TintTek-Website/gallery/Tint Tek-92.jpg",
   },
 ];
 
-// const cardVariants = {
-//   hidden: { opacity: 0, y: 50 },
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.5 },
-//   },
-// };
 
-// const containerVariants = {
-//   hidden: {},
-//   visible: {
-//     transition: {
-//       staggerChildren: 0.3,
-//     },
-//   },
-// };
 
 const Services = () => {
   const navigate = useNavigate();
@@ -96,7 +79,6 @@ const Services = () => {
   };
 
   const ServiceCard = React.memo(({ service }) => (
-    // <motion.div variants={cardVariants}>
       <Card
         sx={{
           width: isMobile ? "80vw" : "100%",
@@ -179,7 +161,6 @@ const Services = () => {
           </Box>
         </Box>
       </Card>
-    // </motion.div>
   ));
 
   return (
@@ -230,12 +211,6 @@ const Services = () => {
         </Box>
       ) : (
         <Container maxWidth="lg">
-          {/* <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          > */}
             <Grid container spacing={2} justifyContent="center">
               {servicesData.map((service) => (
                 <Grid item key={service.id} xs={12} sm={6} md={4}>
@@ -243,7 +218,6 @@ const Services = () => {
                 </Grid>
               ))}
             </Grid>
-          {/* </motion.div> */}
         </Container>
       )}
     </Box>

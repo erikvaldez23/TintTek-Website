@@ -285,7 +285,7 @@ const serviceSteps = {
     finalDescription:
       "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
     images: [
-      "/TintTek-Website/headlight/taillight1.webp",
+      "/TintTek-Website/headlight/taillight1.jpg",
       "/TintTek-Website/headlight/taillight2.webp",
       "/TintTek-Website/headlight/taillight3.webp",
     ],
