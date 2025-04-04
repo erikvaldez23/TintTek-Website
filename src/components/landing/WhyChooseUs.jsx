@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
     <Box
       id="about"
       sx={{
-        p: isMobile ? 4 : 4,
+        p: isMobile ? 2 : 4,
         textAlign: "center",
         background: "#EEEEFF",
         color: "white",

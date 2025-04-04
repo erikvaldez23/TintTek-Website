@@ -91,7 +91,7 @@ const TintingSimulator = () => {
         // Dropdown for Mobile Screens
         <Box
           sx={{
-            backgroundColor: "#2E2E2E",
+            backgroundColor: "#111",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

@@ -538,9 +538,29 @@ const HowItWorks = ({ serviceId }) => {
 
       {/* Steps Section */}
       {isMobile ? (
-        <Slider {...sliderSettings}>
+        <Box
+          sx={{
+            display: "flex",
+            overflowX: "auto",
+            gap: 2,
+            mt: 4,
+            pb: 2,
+            pl: 1,
+            pr: 1,
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
           {service.steps.map((step, index) => (
-            <Box key={index} sx={{ px: 2 }}>
+            <Box
+              key={index}
+              sx={{
+                flex: "0 0 90%",
+                scrollSnapAlign: "start",
+                minWidth: "90%",
+                maxWidth: "90%",
+              }}
+            >
               <Paper
                 elevation={3}
                 sx={{
@@ -549,13 +569,10 @@ const HowItWorks = ({ serviceId }) => {
                   alignItems: "center",
                   textAlign: "center",
                   p: 3,
-                  marginTop: "20px",
-                  borderRadius: 2,
-                  height: "250px", // Fixed height for uniformity
+                  height: "100%",
                   backgroundColor: "#000",
                   color: "#fff",
-                  mx: "auto",
-                  transition: "all 0.3s ease-in-out",
+                  borderRadius: 2,
                 }}
               >
                 {step.icon}
@@ -565,24 +582,7 @@ const HowItWorks = ({ serviceId }) => {
                 <Typography variant="body2" sx={{ mt: 1 }}>
                   {step.description}
                 </Typography>
-
                 <Box sx={{ flexGrow: 1 }} />
-
-                {/* <Button
-                  sx={{
-                    mt: "auto",
-                    borderRadius: "10px",
-                    backgroundColor: "#2794d2",
-                    color: "#fff",
-                    "&:hover": {
-                      backgroundColor: "#000",
-                      color: "#fff",
-                    },
-                  }}
-                  onClick={() => handleLearnMoreClick(step)}
-                >
-                  Learn More
-                </Button> */}
                 <Button
                   component={motion.a}
                   initial={{ scale: 0.9 }}
@@ -595,21 +595,20 @@ const HowItWorks = ({ serviceId }) => {
                     backgroundColor: "#2794d2",
                     color: "#000",
                     fontWeight: "bold",
-                    px: isMobile ? 3 : 4,
-                    py: isMobile ? 1.2 : 1.5,
+                    px: 3,
+                    py: 1.2,
                     borderRadius: "30px",
                     textTransform: "uppercase",
-                    fontSize: isMobile ? "1rem" : "1.1rem",
-                    width: isMobile ? "100%" : "auto",
+                    fontSize: "1rem",
                   }}
                   onClick={() => handleLearnMoreClick(step)}
                 >
-                  LEARN MORE
+                  Learn More
                 </Button>
               </Paper>
             </Box>
           ))}
-        </Slider>
+        </Box>
       ) : (
         <Grid
           container

@@ -248,6 +248,7 @@ const CallToAction = () => {
             transition={{ delay: 0.3 }}
             sx={{
               mt: 2,
+              px: { xs: 2, sm: 2, md: 3 },
               fontSize: isMobile ? "1rem" : "1.2rem",
               lineHeight: "1.6",
               opacity: 0.9,
