@@ -23,9 +23,9 @@ import TeslaTintingSimulator from "./TeslaTintingSimulator";
 import QuickLinks from "./key-components/QuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
-import ResidentialCTA from "./ResidentialCTA";
+import ImageCTA from "./ImageCTA";
 import PaintCorrectionServices from "./PaintCorrectionServices";
-import CommercialVideo from "./CommercialVideo"
+import VideoCTA from "./VideoCTA";
 import HeadlightPackages from "./HeadlightPackages";
 import PPFVision from "./PPF-Vision"
 import ImageCarousel from "./ImageCarousel"
@@ -255,14 +255,14 @@ const ServicePage = () => {
       {(serviceId === "commercial-window-tinting" ||
       serviceId === "ceramic-coating" ||
       serviceId === "windshield-protection-film")
-        && <CommercialVideo />}
+        && <VideoCTA />}
 
     {(serviceId === "vehicle-window-tinting" ||
       serviceId === "tesla-window-tinting" || 
       serviceId === "residential-window-tinting" || 
       serviceId === "headlight-services" || 
       serviceId === "vehicle-paint-protection" || 
-      serviceId === "vehicle-paint-correction") && <ResidentialCTA />}
+      serviceId === "vehicle-paint-correction") && <ImageCTA />}
 
       {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}
 

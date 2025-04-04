@@ -65,7 +65,7 @@ const videoContent = {
   },
 };
 
-export default function CombinedVideoCTA() {
+export default function VideoCTA() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const videoRef = useRef(null);

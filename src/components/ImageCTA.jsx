@@ -107,7 +107,7 @@ const callToActionData = {
   },
 };
 
-const CallToAction = () => {
+const ImageCTA = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { serviceId } = useParams();
@@ -287,4 +287,4 @@ const CallToAction = () => {
   );
 };
 
-export default CallToAction;
+export default ImageCTA;

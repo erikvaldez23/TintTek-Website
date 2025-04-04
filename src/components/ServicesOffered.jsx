@@ -450,7 +450,7 @@ const ServicesOffered = ({ serviceId }) => {
                   display: "inline-block",
                 }}
               >
-                Experience Your Tints Before Installation
+                {serviceId === "vehicle-paint-protection" ? "See how each paint protection film package covers your vehicle!" : "Experience Your Tints Before Installation"}
               </Typography>
 
               <Typography
@@ -463,8 +463,7 @@ const ServicesOffered = ({ serviceId }) => {
                   fontSize: "1.1rem",
                 }}
               >
-                Our interactive simulator shows you exactly how each shade will
-                transform your view.
+                {serviceId === "vehicle-paint-protection" ? "From bumpers to full body, our simulator shows what’s protected." : "Our interactive simulator shows you exactly how each shade will transform your view."}
               </Typography>
 
               <Link
@@ -496,7 +495,9 @@ const ServicesOffered = ({ serviceId }) => {
                     },
                   }}
                 >
-                  <Box component="span">Launch Tint Viewer</Box>
+                  <Box component="span">
+                    {serviceId === "vehicle-paint-protection" ? "Launch PPF Viewer" : "Launch Tint Viewer"}
+                  </Box>
                   <Box
                     component="span"
                     sx={{
