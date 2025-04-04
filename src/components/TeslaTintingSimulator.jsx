@@ -60,7 +60,7 @@ const TeslaTintingSimulator = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            background: "#2e2e2e",
+            background: "#111",
           }}
         >
           {Object.entries(tintOptions).map(([key, option]) => (
@@ -177,7 +177,7 @@ const TeslaTintingSimulator = () => {
       lg: "60vh", // Large desktop screens
       xl: "60vh", // Extra-large screens
     },
-    background: "#2e2e2e",
+    background: "#111",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

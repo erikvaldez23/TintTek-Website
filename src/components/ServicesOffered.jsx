@@ -394,8 +394,8 @@ const ServicesOffered = ({ serviceId }) => {
           </Grid>
         )}
 
-        {/* Call to Action - Tint Viewer */}
 {/* Call to Action - Tint Viewer */}
+{serviceId !== "headlight-services" && (
 <Box
   sx={{
     mt: 6,
@@ -510,6 +510,7 @@ const ServicesOffered = ({ serviceId }) => {
 
   </Box>
 </Box>
+)}
       </Box>
     </Box>
   );

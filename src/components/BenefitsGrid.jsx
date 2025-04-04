@@ -17,44 +17,55 @@ import SecurityIcon from "@mui/icons-material/Security";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
-import BoltIcon from "@mui/icons-material/Bolt";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import GppGoodIcon from "@mui/icons-material/GppGood";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import BatteryChargingFullIcon from "@mui/icons-material/BatteryChargingFull";
+import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
+import BlurOnIcon from "@mui/icons-material/BlurOn";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import FlashOnIcon from "@mui/icons-material/FlashOn";
+import ShieldIcon from "@mui/icons-material/Shield";
+import ScienceIcon from "@mui/icons-material/Science";
+import PaletteIcon from "@mui/icons-material/Palette";
+
 
 // Data for benefits per service
 const benefitsData = {
   "vehicle-window-tinting": [
     {
       title: "Blocks 99% of Harmful UV Rays",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <GppGoodIcon fontSize="large" />,
       description:
         "Window tinting provides a powerful shield against ultraviolet (UV) radiation, blocking up to 99% of harmful UV rays. This not only protects your skin from potential damage during extended drives but also safeguards your vehicle’s interior by preventing the fading and deterioration of upholstery, leather, dashboards, and other surfaces.",
     },
     {
       title: "Heat Rejection",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <LocalFireDepartmentIcon fontSize="large" />,
       description:
         "High-quality window film significantly reduces the amount of solar heat that enters your vehicle, helping to maintain a cooler cabin environment. This makes your driving experience more comfortable, especially during hot summer months, while also reducing the need for excessive air conditioning—improving fuel efficiency or battery range in electric vehicles.",
     },
     {
       title: "Improved Privacy & Security",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <PrivacyTipIcon fontSize="large" />,
       description:
         "Tinted windows add a layer of privacy by making it more difficult for outsiders to see inside your vehicle. This helps protect valuables from theft, offers greater peace of mind, and enhances the security of your car whether parked or in motion.",
     },
     {
       title: "Reduces Glare from the Sun & Headlights",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <LightModeIcon fontSize="large" />,
       description:
         "Window tinting reduces the harsh glare caused by direct sunlight and bright headlights at night. This not only improves your visibility and comfort while driving but also reduces eye strain and fatigue during long trips, making driving safer and more enjoyable.",
     },
     {
       title: "Protects Interior from Fading",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "Direct sunlight can cause your vehicle’s interior materials to fade, crack, or deteriorate over time. Window film acts as a barrier against this damage by filtering out the sun’s harmful rays, helping preserve the color, texture, and quality of your seats, dash, and interior trim for years to come.",
     },
     {
       title: "Elevate Overall Appearannce",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <PaletteIcon fontSize="large" />,
       description:
         "Tinted windows provide a sleek, professional, and stylish finish to any vehicle. It enhances the exterior aesthetics, giving your car a refined and modern look while complementing the overall design. This subtle upgrade adds a touch of sophistication and boosts your car’s visual appeal.",
     },
@@ -62,37 +73,37 @@ const benefitsData = {
   "tesla-window-tinting": [
     {
       title: "Increased mileage per battery charge",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <BatteryChargingFullIcon fontSize="large" />,
       description:
         "By reducing the amount of heat entering the cabin, tinted windows decrease the need for constant air conditioning use. This lowers the strain on the battery, ultimately helping to conserve energy and extend your driving range—giving you more miles per charge and better overall efficiency.",
     },
     {
       title: "Heat reduction in cabin",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <LocalFireDepartmentIcon fontSize="large" />,
       description:
         "Tesla window tinting offers advanced solar heat rejection technology that significantly reduces interior temperatures, even on the hottest days. This results in a cooler, more comfortable driving experience for both the driver and passengers, without over-reliance on climate control systems.",
     },
     {
       title: "Blocks 99% of harmful UV rays",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <GppGoodIcon fontSize="large" />,
       description:
         "Tinted film acts as a powerful barrier against UV radiation, blocking up to 99% of harmful rays. This not only helps protect your skin but also prevents long-term damage to your Tesla’s premium interior surfaces, including leather seats, dashboard, and trim.",
     },
     {
       title: "Reduces glare from the sun & headlights",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <LightModeIcon fontSize="large" />,
       description:
         "Tinting helps minimize disruptive glare from the sun and headlights, enhancing visibility and reducing strain on your eyes. Whether you're driving in broad daylight or at night, this added clarity ensures a safer, more relaxed driving experience.",
     },
     {
       title: "Provides increased privacy",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <VisibilityIcon fontSize="large" />,
       description:
         "Tesla window tinting enhances your personal privacy by making it more difficult for outsiders to see inside the cabin. It not only deters unwanted attention but also protects any belongings stored in your vehicle from curious eyes.",
     },
     {
       title: "Prevents unnecessary battery drainage",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <FlashOnIcon fontSize="large" />,
       description:
         "By lowering the interior temperature and reducing the use of air conditioning, window tinting minimizes battery consumption caused by climate control systems. This contributes to better battery health and improved long-term energy management for your Tesla.",
     },
@@ -112,7 +123,7 @@ const benefitsData = {
     },
     {
       title: "Glare Reduction & Comfort",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <LightModeIcon fontSize="large" />,
       description:
         "Tinted windows with LLumar® reduce glare by up to 80%, making spaces more comfortable for employees and customers, especially in areas with screens or displays.",
     },
@@ -132,31 +143,31 @@ const benefitsData = {
   "residential-window-tinting": [
     {
       title: "Energy Efficiency & Cost Savings",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <HomeWorkIcon fontSize="large" />,
       description:
         "Window tinting is an easy and effective way to reduce your energy costs. By blocking a significant amount of heat from entering your home, it helps maintain a more comfortable indoor temperature year-round.",
     },
     {
       title: "UV Protection & Skin Health",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <GppGoodIcon fontSize="large" />,
       description:
         "Window tints block up to 99% of harmful ultraviolet (UV) rays that contribute to skin damage, aging, and even skin cancer, protecting your health while indoors.",
     },
     {
       title: "Improved Comfort & Glare Reduction",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <LightModeIcon fontSize="large" />,
       description:
         "With tinted windows, you can enjoy natural sunlight without the uncomfortable glare from the sun, which is especially important near TVs, computers, or workstations. It creates a more comfortable and pleasant living space.",
     },
     {
       title: "Enhanced Privacy & Security",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <PrivacyTipIcon fontSize="large" />,
       description:
         "Tinted windows make it more difficult for people to see inside your home, offering you increased privacy while still letting natural light in. They also make your home a less attractive target for burglars.",
     },
     {
       title: "Protection for Furnishings & Interiors",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "Window tinting helps preserve the beauty of your home by preventing sun damage to furniture, flooring, and artwork. It acts as a protective shield, reducing fading and wear from UV rays and solar heat.",
     },
@@ -164,37 +175,37 @@ const benefitsData = {
   "windshield-protection-film": [
     {
       title: "Impact Resistance",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "ExoShield GT3 is engineered to deliver superior abrasion resistance, durability, and weatherability. It boasts a thickness of five mils—about 2.5 times that of a human hair—providing robust protection against chips and cracks caused by road debris. Designed to give you 6X more impact protection, GT3+ is truly made to save your glass.",
     },
     {
       title: "Advanced Nanocoating Technology",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <ScienceIcon fontSize="large" />,
       description:
         "Incorporating second-generation Endurance Class nanocoatings, ExoShield GT3 ensures a strong bond between layers, preventing delamination and extending the film's lifespan.",
     },
     {
       title: "Optical Clarity",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <BlurOnIcon fontSize="large" />,
       description:
         "As one of the most optically clear films on the market, ExoShield GT3 is virtually invisible once installed, maintaining the natural appearance of your vehicle while providing robust protection.",
     },
     {
       title: "UV & Heat Rejection",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <WbSunnyIcon fontSize="large" />,
       description:
         "The film blocks up to 99% of harmful UV rays, reducing interior heat buildup and protecting your vehicle's interior from sun damage. ",
     },
     {
       title: "Long Term Durability",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <FlashOnIcon fontSize="large" />,
       description:
         "Designed to withstand various driving conditions, ExoShield GT3 is weather-resistant and maintains its protective qualities over time, ensuring lasting windshield protection. ",
     },
     {
       title: "Made in The USA",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <HomeWorkIcon fontSize="large" />,
       description:
         "Your windshield protection film is only as good as the materials it's made with. We use the highest quality PET (Polyethylene Terephthalate) combined with our own proprietary coatings tech to deliver you the best quality.",
     },
@@ -202,7 +213,7 @@ const benefitsData = {
   "vehicle-paint-correction": [
     {
       title: "Restores Paint to Its Original Beauty",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <PaletteIcon fontSize="large" />,
       description:
         "Revitalize your vehicle’s paint, bringing back its glossy, vibrant finish. Paint correction removes imperfections that dull your car’s look, giving it a smooth, polished surface that looks brand new.",
     },
@@ -226,7 +237,7 @@ const benefitsData = {
     },
     {
       title: "Boosts Resale Value",
-      icon: <ColorLensIcon fontSize="large" />,
+      icon: <DirectionsCarIcon fontSize="large" />,
       description:
         "A well-maintained exterior can increase the resale value of your vehicle. Paint correction not only improves the appearance of your car but also preserves its value, making it more attractive to potential buyers.",
     },
@@ -234,13 +245,13 @@ const benefitsData = {
   "vehicle-paint-protection": [
     {
       title: "Exceptional Durability",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "Stek PPF is engineered to withstand the toughest conditions, including road debris, gravel, and weathering elements. It prevents chips, scratches, and swirl marks that can diminish your vehicle's paintwork.",
     },
     {
       title: "Self-Healing Technology",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <ScienceIcon fontSize="large" />,
       description:
         "Stek PPF features advanced self-healing properties. Light scratches and swirl marks disappear when exposed to heat, keeping your car looking as fresh as the day it was protected.",
     },    {
@@ -250,7 +261,7 @@ const benefitsData = {
         "Stek PPF is designed to repel water, dirt, and contaminants. This makes cleaning easier and reduces the frequency of washes, helping to maintain your vehicle's pristine appearance longer.",
     },    {
       title: "Invisible Shield",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "The film is nearly invisible and doesn’t alter your car’s color or finish. You get all the protection with none of the visual compromise, maintaining that flawless, high-gloss or matte finish.",
     },    {
@@ -260,7 +271,7 @@ const benefitsData = {
         "Stek PPF shields your vehicle’s paint from harmful UV rays, which helps prevent fading and oxidation, ensuring that your car’s color stays vibrant for years.",
     },    {
       title: "Scratch & Impact Protection",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <SecurityIcon fontSize="large" />,
       description:
         "Protect your vehicle from minor abrasions, stone chips, and scratches caused by road debris. Stek PPF is tough enough to absorb impacts, keeping your car looking like new.",
     },
@@ -268,25 +279,25 @@ const benefitsData = {
   "headlight-services": [
     {
       title: "Durable Protection",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "Safeguards against rock chips, cracks, scratches, and other road hazards.",
     },
     {
       title: "Enhanced Aesthetics",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <PaletteIcon fontSize="large" />,
       description:
         "Over time, swirl marks and scratches can make your car’s paint look worn. Our specialized process targets and eliminates these imperfections, leaving a flawless, smooth finish.",
     },
     {
       title: "Hydrophobic Properties",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <SecurityIcon fontSize="large" />,
       description:
         "Repels water, making your lights easier to clean and maintain.",
     },
     {
       title: "Self-Healing",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <ScienceIcon fontSize="large" />,
       description:
         "The film's advanced technology allows minor scratches to heal with heat, maintaining a smooth surface.",
     },
@@ -294,25 +305,25 @@ const benefitsData = {
   "ceramic-coating": [
     {
       title: "Hydrophobic Protection",
-      icon: <WbSunnyIcon fontSize="large" />,
+      icon: <SecurityIcon fontSize="large" />,
       description:
         "Our ceramic coatings are designed to repel water like never before. Water beads up and rolls off the surface, reducing water spots and keeping your car cleaner for longer.",
     },
     {
       title: "Scratch & Swirl Resistance",
-      icon: <SecurityIcon fontSize="large" />,
+      icon: <ShieldIcon fontSize="large" />,
       description:
         "The protective layer helps guard against light scratches and swirl marks, ensuring your paint stays smooth and free of imperfections.",
     },
     {
       title: "UV Protection",
-      icon: <VisibilityIcon fontSize="large" />,
+      icon: <WbSunnyIcon fontSize="large" />,
       description:
         "Ceramic coatings create a barrier that protects your paint from harmful UV rays, preventing oxidation and fading over time. Keep your car looking new for years!",
     },
     {
       title: "Enhanced Gloss",
-      icon: <HomeWorkIcon fontSize="large" />,
+      icon: <PaletteIcon fontSize="large" />,
       description:
         "Enjoy a brilliant, glossy finish that makes your vehicle shine with a depth and clarity that traditional waxes simply can’t match.",
     },
@@ -330,11 +341,12 @@ const titles = {
   "vehicle-window-tinting": "Benefits of Vehicle Window Tinting",
   "tesla-window-tinting": "Benefits of Tesla Window Tinting",
   "commercial-window-tinting": "Why Choose LLumar® Window Films?",
-  "residential-window-tinting": "Why Choose LLumar®",
+  "residential-window-tinting": "Why Choose LLumar® Window Films?",
   "windshield-protection-film": "Why Choose ExoShield GT3?",
   "ceramic-coating": "Why Choose Ceramic Coating?",
   "vehicle-paint-correction": "Top Benefits",  
-  "vehicle-paint-protection": "Why Choose Stek PPF? ",  
+  "vehicle-paint-protection": "Why Choose Stek PPF? ", 
+  "headlight-services": "Benefits of STEK Light Protection Film",
 };
 
 // Add custom color schemes per service
@@ -366,9 +378,9 @@ const colorSchemes = {
   "residential-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
-    textColor: "#fff",
-    bgColor: "#000",
+    cardBg: "#fff",
+    textColor: "#000",
+    bgColor: "#EEEEFF",
     accentColor: "#43a7e0"
   },
   "windshield-protection-film": {
@@ -564,7 +576,7 @@ const BenefitsGrid = () => {
 
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
+          py: { xs: 4, md: 6 },
           px: { xs: 2, md: 4 },
           position: "relative",
           zIndex: 1,

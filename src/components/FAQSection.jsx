@@ -36,11 +36,6 @@ const faqConfig = {
       answer:
         "While window tinting reduces glare and improves comfort, darker tints can make it harder to see at night. We offer a range of tint options to ensure a balance between privacy, UV protection, and clear visibility, even in low-light conditions.",
     },
-    {
-      question: "How long does window tinting last?",
-      answer:
-        "We offer a lifetime warranty on all our window tinting installations, ensuring long-lasting protection and peace of mind for you.",
-    },
   ],
   "tesla-window-tinting": [
     {
@@ -291,7 +286,7 @@ const FAQSection = () => {
   const faqs = faqConfig[path] || [];
 
   return (
-    <Box sx={{ py: 5, backgroundColor: "#292929" }}>
+    <Box sx={{ py: 5, backgroundColor: "#111" }}>
       <Container maxWidth="lg">
         <Typography
           variant={isMobile ? "h4" : "h2"}
