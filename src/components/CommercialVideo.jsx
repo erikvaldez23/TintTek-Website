@@ -172,7 +172,7 @@ export default function CombinedVideoCTA() {
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                poster="/TintTek-Website/gallery/Tint Tek-107.jpg" 
+                poster="/TintTek-Website/gallery/Tint Tek-107-2.jpg" 
                 style={{
                   width: "100%",
                   height: "100%",

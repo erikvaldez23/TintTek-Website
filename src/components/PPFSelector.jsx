@@ -35,7 +35,7 @@ const ppfOptions = {
   // },
   "full-car": {
     name: "Full Car PPF",
-    image: "/TintTek-Website/ppf-model/full.png",
+    image: "/TintTek-Website/ppf-model/ppf-full.webp",
     description: "Complete vehicle protection with hydrophobic properties.",
     price: "**Call For Pricing**",
   },
