@@ -140,8 +140,6 @@ export default function CombinedVideoCTA() {
             py: 4,
           }}
         >
-          {/* Left Column: Video (1/4 width) */}
-          {/* Left Column: Video in Modern Frame */}
           <Box
             sx={{
               width: isMobile ? "90%" : "25%",

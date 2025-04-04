@@ -544,7 +544,6 @@ const HowItWorks = ({ serviceId }) => {
             overflowX: "auto",
             gap: 2,
             mt: 4,
-            pb: 2,
             pl: 1,
             pr: 1,
             scrollSnapType: "x mandatory",
@@ -706,17 +705,16 @@ const HowItWorks = ({ serviceId }) => {
       {/* Images Section */}
       <Box
         sx={{
-          mt: isMobile ? 8 : 12, // Increased spacing to separate from steps
           maxWidth: "1200px", // Limit width
           width: "100%", // Ensure responsiveness
           margin: "0 auto", // Center the container
-          paddingTop: 8,
+          paddingTop: isMobile ? 4 : 8,
         }}
       >
         {isMobile ? (
           <Slider {...imageSliderSettings}>
             {service.images.map((image, index) => (
-              <Box key={index} sx={{ px: 2 }}>
+              <Box key={index} sx={{ px: 1 }}>
                 <Paper
                   elevation={3}
                   sx={{ borderRadius: 2, overflow: "hidden" }}
