@@ -83,7 +83,7 @@ const serviceDetails = {
   "ceramic-coating": {
     title: "Ceramic Coating",
     description:
-      "Tbd",
+      "Elevate Your Vehicle's Protection With Unrivaled Ceramic Coating",
   },
 };
 
@@ -291,8 +291,7 @@ const ServicePage = () => {
 
       
       {serviceId !== "vehicle-paint-correction" &&
-      serviceId !== "ceramic-coating" && 
-      serviceId !== "windshield-protection-film" && (
+      serviceId !== "ceramic-coating" && (
         <ServicesOffered serviceId={serviceId} />
       )}
 

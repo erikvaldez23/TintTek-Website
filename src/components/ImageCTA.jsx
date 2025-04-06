@@ -54,9 +54,11 @@ const callToActionData = {
     that are quickly and professionally installed, delivering lasting
     lifestyle benefits without breaking the bank.`,
     images: [
-      "/TintTek-Website/residential/residential-1.jpg",
-      "/TintTek-Website/residential/residential-2.jpg",
-      "/TintTek-Website/residential/residential-4.jpg",
+      // "/TintTek-Website/residential/residential1.jpg",
+      "/TintTek-Website/residential/residential2.jpg",
+      "/TintTek-Website/residential/residential3.jpg",
+      "/TintTek-Website/residential/residential4.jpg",
+      "/TintTek-Website/residential/residential5.jpg",
     ],
   },
   "vehicle-paint-correction": {
@@ -83,7 +85,7 @@ const callToActionData = {
     ],
   },
   "headlight-services": {
-    title: "Needs a Title!!!!!!!",
+    title: "Transform Your Vehicle With STEK Darkened Headlight & Taillight PPF",
     description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.
 `,
     images: [

@@ -102,27 +102,27 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "Reflective Window Film",
-        description: "Needs description",
+        description: "This film offers a sleek, mirrored finish that enhances privacy by reflecting light. It reduces heat and glare while providing excellent UV protection and increasing the overall comfort inside your vehicle.",
       },
       {
         name: "Dual-Reflective Window Film",
-        description: "Needs description",
+        description: "Designed for both exterior and interior benefits, this film offers a reflective finish on the outside for heat rejection and privacy, while maintaining a more neutral appearance on the inside to reduce mirror-like reflections.",
       },
       {
         name: "Neutral Window Film",
-        description: "Needs description",
+        description: "Neutral Window Film provides a balanced look without changing the color of your vehicle’s windows. It effectively blocks heat and UV rays while maintaining a natural, true-to-life view.",
       },
       {
         name: "Specialty Window Film",
-        description: "Needs description",
+        description: "Tailored for unique needs, this film offers specialized features like anti-graffiti, anti-scratch, or decorative options. It’s perfect for specific applications that require additional protection or aesthetic appeal.",
       },
       {
         name: "Ceramic Window Film",
-        description: "Needs description",
+        description: "Using advanced ceramic technology, this film provides superior heat rejection and UV protection without compromising visibility. It’s non-metallic, ensuring no interference with electronic devices, and offers long-lasting durability.",
       },
       {
         name: "Harmony Window Film",
-        description: "Needs description",
+        description: "Designed for a more uniform look, Harmony Window Film balances heat and glare rejection while maintaining a consistent tint throughout the vehicle. It enhances privacy and comfort without drastically altering the vehicle's appearance.",
       },
     ],
   },
@@ -184,11 +184,11 @@ const serviceOptions = {
         description:
           "For those who demand extra durability, DYNOmight is 25% thicker than regular PPF, offering superior protection for off-road vehicles and high-performance sports cars.",
       },
-      // {
-      //   name: "Color Change PPF",
-      //   description:
-      //     "Premium paint protection film that not only protects your vehicle's paint but also allows you to change its color or finish. This innovative product offers a unique combination of style and protection, making it an ideal solution for those who want to personalize their car’s look while safeguarding its paint from damage",
-      // },
+      {
+        name: "Color Change PPF",
+        description:
+          "Premium paint protection film that not only protects your vehicle's paint but also allows you to change its color or finish. This innovative product offers a unique combination of style and protection, making it an ideal solution for those who want to personalize their car’s look while safeguarding its paint from damage",
+      },
     ],
   },
   "headlight-services": {
@@ -222,6 +222,16 @@ const serviceOptions = {
       },
     ],
   },
+  "windshield-protection-film": {
+    title: "Headlight Services",
+    list: ["Headlight Tint", "Taillight Tint", "Reflectors"],
+    filmTypes: [
+      {
+        name: "GT3 Exo Shield",
+        description: "Description Needed",
+      },
+    ],
+  },
 };
 
 const ServicesOffered = ({ serviceId }) => {
@@ -236,67 +246,108 @@ const ServicesOffered = ({ serviceId }) => {
     );
   }
 
-  const renderFilmCard = (film, index) => (
-    <Card
-      key={index}
-      sx={{
-        position: "relative",
-        backgroundColor: "#000",
-        color: "#fff",
-        borderRadius: 5,
-        boxShadow: 3,
-        height: "100%",
-        transition: "all 0.3s ease-in-out",
-        border: "3px solid #fff",
-        "&:hover": {
-          transform: "scale(1.05)",
-          boxShadow: "0px 0px 15px #2794d2",
-          backgroundColor: "#333",
-        },
-      }}
-    >
-      {/* Film Logo */}
-      <Box
-        component="img"
-        src={
-          serviceId === "vehicle-paint-protection" ||
-          serviceId === "headlight-services"
-            ? "/TintTek-Website/stek-logo.png"
-            : "/TintTek-Website/llumar-logo.png"
-        }
-        alt="Film Type Logo"
-        sx={{
-          position: "absolute",
-          top: 8,
-          right: 8,
-          width: 70,
-          height: "auto",
-          filter:
-            serviceId === "vehicle-paint-protection" ||
-            serviceId === "headlight-services"
-              ? "invert(1)"
-              : "none",
-        }}
-      />
+  const renderFilmCard = (film, index) => {
+    const isColorChangePPF =
+      serviceId === "vehicle-paint-protection" &&
+      film.name === "Color Change PPF";
 
-      <CardContent
+    return (
+      <Card
+        key={index}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
+          position: "relative",
+          backgroundColor: "#000",
+          color: "#fff",
+          borderRadius: 5,
+          boxShadow: 3,
+          height: "100%",
+          transition: "all 0.3s ease-in-out",
+          border: "3px solid #fff",
+          "&:hover": {
+            transform: "scale(1.05)",
+            boxShadow: "0px 0px 15px #2794d2",
+            backgroundColor: "#333",
+          },
         }}
       >
-        <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
-        <Typography variant="h6" fontWeight="bold">
-          {film.name}
-        </Typography>
-        <Typography variant="body1" sx={{ mt: 1 }}>
-          {film.description}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+        {/* Film Logo */}
+        <Box
+          component="img"
+          src={
+            serviceId === "vehicle-paint-protection" ||
+            serviceId === "headlight-services"
+              ? "/TintTek-Website/stek-logo.png"
+              : "/TintTek-Website/llumar-logo.png"
+          }
+          alt="Film Type Logo"
+          sx={{
+            position: "absolute",
+            top: 8,
+            right: 8,
+            width: 70,
+            height: "auto",
+            filter:
+              serviceId === "vehicle-paint-protection" ||
+              serviceId === "headlight-services"
+                ? "invert(1)"
+                : "none",
+          }}
+        />
+
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
+          <Typography variant="h6" fontWeight="bold">
+            {film.name}
+          </Typography>
+          <Typography variant="body1" sx={{ mt: 1 }}>
+            {film.description}
+          </Typography>
+
+          {/* Special Button for Color Change PPF */}
+          {isColorChangePPF && (
+            <Link to="/color-change-options" style={{ textDecoration: "none" }}>
+              <Box
+                sx={{
+                  mt: 3,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 1.5,
+                  px: 4,
+                  py: 1.5,
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  color: "#fff",
+                  background:
+                    "linear-gradient(90deg, #2794d2 0%, #1b6fa5 100%)",
+                  borderRadius: 50,
+                  transition: "all 0.3s ease-in-out",
+                  boxShadow: "0 4px 15px rgba(39,148,210,0.3)",
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    boxShadow: "0 6px 20px rgba(39,148,210,0.4)",
+                  },
+                  "&:active": {
+                    transform: "translateY(1px)",
+                  },
+                }}
+              >
+                <span>Explore Color Options</span>
+                <span>→</span>
+              </Box>
+            </Link>
+          )}
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
     <Box
@@ -385,11 +436,25 @@ const ServicesOffered = ({ serviceId }) => {
           </Box>
         ) : (
           <Grid container spacing={3}>
-            {service.filmTypes.map((film, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                {renderFilmCard(film, index)}
-              </Grid>
-            ))}
+            {service.filmTypes.map((film, index) => {
+              const isColorChangePPF =
+                serviceId === "vehicle-paint-protection" &&
+                film.name === "Color Change PPF";
+
+              return (
+                <Grid
+                  item
+                  xs={12}
+                  key={index}
+                  sm={isColorChangePPF ? 12 : 6}
+                  md={isColorChangePPF ? 12 : 4}
+                >
+                  <Box sx={{ position: "relative" }}>
+                    {renderFilmCard(film, index)}
+                  </Box>
+                </Grid>
+              );
+            })}
           </Grid>
         )}
 
@@ -450,7 +515,9 @@ const ServicesOffered = ({ serviceId }) => {
                   display: "inline-block",
                 }}
               >
-                {serviceId === "vehicle-paint-protection" ? "See how each paint protection film package covers your vehicle!" : "Experience Your Tints Before Installation"}
+                {serviceId === "vehicle-paint-protection"
+                  ? "See how each paint protection film package covers your vehicle!"
+                  : "Experience Your Tints Before Installation"}
               </Typography>
 
               <Typography
@@ -463,7 +530,9 @@ const ServicesOffered = ({ serviceId }) => {
                   fontSize: "1.1rem",
                 }}
               >
-                {serviceId === "vehicle-paint-protection" ? "From bumpers to full body, our simulator shows what’s protected." : "Our interactive simulator shows you exactly how each shade will transform your view."}
+                {serviceId === "vehicle-paint-protection"
+                  ? "From bumpers to full body, our simulator shows what’s protected."
+                  : "Our interactive simulator shows you exactly how each shade will transform your view."}
               </Typography>
 
               <Link
@@ -496,7 +565,9 @@ const ServicesOffered = ({ serviceId }) => {
                   }}
                 >
                   <Box component="span">
-                    {serviceId === "vehicle-paint-protection" ? "Launch PPF Viewer" : "Launch Tint Viewer"}
+                    {serviceId === "vehicle-paint-protection"
+                      ? "Launch PPF Viewer"
+                      : "Launch Tint Viewer"}
                   </Box>
                   <Box
                     component="span"
