@@ -316,9 +316,6 @@ const ServicePage = () => {
         serviceId === "headlight-services" ||
         serviceId === "residential-window-tinting") && <BenefitsGrid />}
 
-      {serviceId === "vehicle-paint-protection" ||
-      serviceId === "ceramic-coating" && <PPFVision/>}
-
       <FAQSection />
       <CallToAction />
 

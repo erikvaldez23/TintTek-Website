@@ -36,11 +36,14 @@ const callToActionData = {
   },
   "commercial-window-tinting": {
     images: [
-      "/TintTek-Website/commercial/commercial2.jpg",
-      "/TintTek-Website/commercial/commercial3.jpg",
-      "/TintTek-Website/commercial/commercial4.jpg",
-      "/TintTek-Website/commercial/commercial5.jpg",
+      "/TintTek-Website/commercial/Tint Tek-116.jpg",
+      "/TintTek-Website/commercial/Tint Tek-121.jpg",
+      "/TintTek-Website/commercial/Tint Tek-125.jpg",
+      "/TintTek-Website/commercial/Tint Tek-128.jpg",
       "/TintTek-Website/commercial/Tint Tek-138.jpg",
+      "/TintTek-Website/commercial/Tint Tek-139.jpg",
+      "/TintTek-Website/commercial/Tint Tek-146.jpg",
+      "/TintTek-Website/commercial/Tint Tek-152.jpg",
     ],
   },
   "vehicle-paint-correction": {

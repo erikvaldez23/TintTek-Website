@@ -63,8 +63,8 @@ const servicesData = [
   {
     id: "ceramic-coating",
     title: "CERAMIC COATING",
-    description: "Ceramic Coating Description",
-    image: "/TintTek-Website/gallery/Tint Tek-92.jpg",
+    description: "Elevate Your Vehicle's Protection With Unrivaled Ceramic Coating",
+    image: "/TintTek-Website/ceramic/Tint Tek-111.jpg",
   },
 ];
 

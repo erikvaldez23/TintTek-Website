@@ -36,8 +36,12 @@ const callToActionData = {
     `,
     images: [
       "/TintTek-Website/tesla/tesla test.jpg",
-      "/TintTek-Website/tesla/tesla test.jpg",
-      "/TintTek-Website/tesla/tesla test.jpg",
+      "/TintTek-Website/tesla/Tint Tek-165.jpg",
+      "/TintTek-Website/tesla/Tint Tek-166.jpg",
+      "/TintTek-Website/tesla/Tint Tek-170.jpg",
+      "/TintTek-Website/tesla/Tint Tek-181.jpg",
+      "/TintTek-Website/tesla/Tint Tek-190.jpg",
+      "/TintTek-Website/tesla/Tint Tek-195.jpg",
     ],
   },
   "residential-window-tinting": {
