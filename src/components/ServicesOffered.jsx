@@ -312,7 +312,7 @@ const ServicesOffered = ({ serviceId }) => {
 
           {/* Special Button for Color Change PPF */}
           {isColorChangePPF && (
-            <Link to="/color-change-options" style={{ textDecoration: "none" }}>
+            <Link to="https://www.stek-usa.com/paint-protection-film/" style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   mt: 3,

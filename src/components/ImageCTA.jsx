@@ -35,9 +35,9 @@ const callToActionData = {
       Reduce heat, minimize glare, and preserve your interior—all while enhancing your Tesla’s style and performance.
     `,
     images: [
-      "/TintTek-Website/tesla/tesla1.jpg",
-      "/TintTek-Website/tesla/tesla1.jpg",
-      "/TintTek-Website/tesla/tesla1.jpg",
+      "/TintTek-Website/tesla/tesla test.jpg",
+      "/TintTek-Website/tesla/tesla test.jpg",
+      "/TintTek-Website/tesla/tesla test.jpg",
     ],
   },
   "residential-window-tinting": {
