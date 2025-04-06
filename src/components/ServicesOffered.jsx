@@ -28,12 +28,12 @@ const serviceOptions = {
       {
         name: "Llumar CTX",
         description:
-          "Experience the power of advanced ceramic technology with Llumar CTX. Offering exceptional heat rejection and 99% UV protection, this film keeps your car cooler and more comfortable year-round",
+          "CTX film combines advanced ceramic technology with excellent heat and UV protection. It blocks up to 60% of infrared heat while maintaining a clear, non-reflective appearance. Perfect for those seeking superior comfort and privacy without darkening windows too much, CTX is ideal for moderate climates where effective heat rejection and UV protection are key.",
       },
       {
         name: "Llumar IRX",
         description:
-          "Take comfort to the next level with Llumar IRX, featuring advanced nano-ceramic technology that blocks infrared heat for superior comfort. With 99% UV protection and remarkable heat rejection, this premium film not only keeps your interior cooler but also enhances your vehicle’s sleek, high-end look.",
+          " Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
       },
     ],
   },
@@ -55,12 +55,12 @@ const serviceOptions = {
       {
         name: "Llumar CTX",
         description:
-          "A durable non-metal tint with a mirror-free, reflective look optimized for Tesla windows.",
+          "CTX film combines advanced ceramic technology with excellent heat and UV protection. It blocks up to 60% of infrared heat while maintaining a clear, non-reflective appearance. Perfect for those seeking superior comfort and privacy without darkening windows too much, CTX is ideal for moderate climates where effective heat rejection and UV protection are key.",
       },
       {
         name: "Llumar IRX",
         description:
-          "The most premium option, featuring nano-ceramic construction for optimal heat rejection and infrared protection.",
+          " Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
       },
     ],
   },
@@ -102,27 +102,33 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "Reflective Window Film",
-        description: "This film offers a sleek, mirrored finish that enhances privacy by reflecting light. It reduces heat and glare while providing excellent UV protection and increasing the overall comfort inside your vehicle.",
+        description:
+          "This film offers a sleek, mirrored finish that enhances privacy by reflecting light. It reduces heat and glare while providing excellent UV protection and increasing the overall comfort inside your vehicle.",
       },
       {
         name: "Dual-Reflective Window Film",
-        description: "Designed for both exterior and interior benefits, this film offers a reflective finish on the outside for heat rejection and privacy, while maintaining a more neutral appearance on the inside to reduce mirror-like reflections.",
+        description:
+          "Designed for both exterior and interior benefits, this film offers a reflective finish on the outside for heat rejection and privacy, while maintaining a more neutral appearance on the inside to reduce mirror-like reflections.",
       },
       {
         name: "Neutral Window Film",
-        description: "Neutral Window Film provides a balanced look without changing the color of your vehicle’s windows. It effectively blocks heat and UV rays while maintaining a natural, true-to-life view.",
+        description:
+          "Neutral Window Film provides a balanced look without changing the color of your vehicle’s windows. It effectively blocks heat and UV rays while maintaining a natural, true-to-life view.",
       },
       {
         name: "Specialty Window Film",
-        description: "Tailored for unique needs, this film offers specialized features like anti-graffiti, anti-scratch, or decorative options. It’s perfect for specific applications that require additional protection or aesthetic appeal.",
+        description:
+          "Tailored for unique needs, this film offers specialized features like anti-graffiti, anti-scratch, or decorative options. It’s perfect for specific applications that require additional protection or aesthetic appeal.",
       },
       {
         name: "Ceramic Window Film",
-        description: "Using advanced ceramic technology, this film provides superior heat rejection and UV protection without compromising visibility. It’s non-metallic, ensuring no interference with electronic devices, and offers long-lasting durability.",
+        description:
+          "Using advanced ceramic technology, this film provides superior heat rejection and UV protection without compromising visibility. It’s non-metallic, ensuring no interference with electronic devices, and offers long-lasting durability.",
       },
       {
         name: "Harmony Window Film",
-        description: "Designed for a more uniform look, Harmony Window Film balances heat and glare rejection while maintaining a consistent tint throughout the vehicle. It enhances privacy and comfort without drastically altering the vehicle's appearance.",
+        description:
+          "Designed for a more uniform look, Harmony Window Film balances heat and glare rejection while maintaining a consistent tint throughout the vehicle. It enhances privacy and comfort without drastically altering the vehicle's appearance.",
       },
     ],
   },
@@ -228,7 +234,7 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "GT3 Exo Shield",
-        description: "Description Needed",
+        description: "ExoShield GT3 Windshield Protection offers top-tier protection for your vehicle’s windshield. This clear, durable film shields against chips, cracks, and road debris, ensuring your windshield stays intact longer. Designed for maximum clarity, it preserves your view while providing superior impact resistance—ideal for daily drivers and those who want to safeguard their investment.",
       },
     ],
   },
@@ -274,17 +280,20 @@ const ServicesOffered = ({ serviceId }) => {
         <Box
           component="img"
           src={
-            serviceId === "vehicle-paint-protection" ||
-            serviceId === "headlight-services"
+            serviceId === "windshield-protection-film"
+              ? "/TintTek-Website/windshield/exo.png"
+              : serviceId === "vehicle-paint-protection" ||
+                serviceId === "headlight-services"
               ? "/TintTek-Website/stek-logo.png"
               : "/TintTek-Website/llumar-logo.png"
           }
+          
           alt="Film Type Logo"
           sx={{
             position: "absolute",
             top: 8,
             right: 8,
-            width: 70,
+            width: 100,
             height: "auto",
             filter:
               serviceId === "vehicle-paint-protection" ||
@@ -312,7 +321,10 @@ const ServicesOffered = ({ serviceId }) => {
 
           {/* Special Button for Color Change PPF */}
           {isColorChangePPF && (
-            <Link to="https://www.stek-usa.com/fashion-film/?gad_source=1&gbraid=0AAAAApzm59nXMARmXUREslvQbkY3LkfAm&gclid=CjwKCAjwzMi_BhACEiwAX4YZUIGLt8C3CHDIZ12TlPt6DFznknS7D-da5PcSAv0J1-0yZK2qd-dw-BoCoPEQAvD_BwE" style={{ textDecoration: "none" }}>
+            <Link
+              to="https://www.stek-usa.com/fashion-film/?gad_source=1&gbraid=0AAAAApzm59nXMARmXUREslvQbkY3LkfAm&gclid=CjwKCAjwzMi_BhACEiwAX4YZUIGLt8C3CHDIZ12TlPt6DFznknS7D-da5PcSAv0J1-0yZK2qd-dw-BoCoPEQAvD_BwE"
+              style={{ textDecoration: "none" }}
+            >
               <Box
                 sx={{
                   mt: 3,
@@ -441,15 +453,18 @@ const ServicesOffered = ({ serviceId }) => {
                 serviceId === "vehicle-paint-protection" &&
                 film.name === "Color Change PPF";
 
+              const isSingleCard = service.filmTypes.length === 1;
+
               return (
                 <Grid
                   item
-                  xs={12}
                   key={index}
-                  sm={isColorChangePPF ? 12 : 6}
-                  md={isColorChangePPF ? 12 : 4}
+                  xs={12}
+                  sm={isSingleCard || isColorChangePPF ? 12 : 6}
+                  md={isSingleCard || isColorChangePPF ? 12 : 4}
+                  sx={{ display: "flex" }}
                 >
-                  <Box sx={{ position: "relative" }}>
+                  <Box sx={{ position: "relative", width: "100%" }}>
                     {renderFilmCard(film, index)}
                   </Box>
                 </Grid>
@@ -459,132 +474,135 @@ const ServicesOffered = ({ serviceId }) => {
         )}
 
         {/* Call to Action - Tint Viewer */}
-        {serviceId !== "headlight-services" && (
-          <Box
-            sx={{
-              mt: 6,
-              textAlign: "center",
-              background: "linear-gradient(135deg, #121212 0%, #1a1a1a 100%)",
-              py: 5,
-              px: 3,
-              borderRadius: 4,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-              position: "relative",
-              overflow: "hidden",
-              border: "1px solid rgba(255,255,255,0.05)",
-            }}
-          >
-            {/* Abstract shape for visual interest */}
+        {serviceId !== "headlight-services" &&
+          serviceId !== "windshield-protection-film" && (
             <Box
               sx={{
-                position: "absolute",
-                top: -30,
-                right: -30,
-                width: 150,
-                height: 150,
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle, rgba(39,148,210,0.2) 0%, rgba(39,148,210,0) 70%)",
-                zIndex: 0,
+                mt: 3,
+                textAlign: "center",
+                background: "linear-gradient(135deg, #121212 0%, #1a1a1a 100%)",
+                py: 5,
+                px: 3,
+                borderRadius: 4,
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                position: "relative",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.05)",
               }}
-            />
-
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: -40,
-                left: -40,
-                width: 200,
-                height: 200,
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle, rgba(39,148,210,0.1) 0%, rgba(39,148,210,0) 70%)",
-                zIndex: 0,
-              }}
-            />
-
-            <Box sx={{ position: "relative", zIndex: 1 }}>
-              <Typography
-                variant="h5"
-                fontWeight="bold"
+            >
+              {/* Abstract shape for visual interest */}
+              <Box
                 sx={{
-                  mb: 1,
-                  background: "linear-gradient(90deg, #fff 0%, #bfdfff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  display: "inline-block",
+                  position: "absolute",
+                  top: -30,
+                  right: -30,
+                  width: 150,
+                  height: 150,
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle, rgba(39,148,210,0.2) 0%, rgba(39,148,210,0) 70%)",
+                  zIndex: 0,
                 }}
-              >
-                {serviceId === "vehicle-paint-protection"
-                  ? "See how each paint protection film package covers your vehicle!"
-                  : "Experience Your Tints Before Installation"}
-              </Typography>
+              />
 
-              <Typography
-                variant="body1"
+              <Box
                 sx={{
-                  mb: 4,
-                  color: "rgba(255,255,255,0.7)",
-                  maxWidth: 600,
-                  mx: "auto",
-                  fontSize: "1.1rem",
+                  position: "absolute",
+                  bottom: -40,
+                  left: -40,
+                  width: 200,
+                  height: 200,
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle, rgba(39,148,210,0.1) 0%, rgba(39,148,210,0) 70%)",
+                  zIndex: 0,
                 }}
-              >
-                {serviceId === "vehicle-paint-protection"
-                  ? "From bumpers to full body, our simulator shows what’s protected."
-                  : "Our interactive simulator shows you exactly how each shade will transform your view."}
-              </Typography>
+              />
 
-              <Link
-                to={`/simulators/${serviceId}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Box
+              <Box sx={{ position: "relative", zIndex: 1 }}>
+                <Typography
+                  variant="h5"
+                  fontWeight="bold"
                   sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 1.5,
-                    px: 4,
-                    py: 1.5,
-                    fontSize: "1rem",
-                    fontWeight: "600",
-                    color: "#fff",
-                    background:
-                      "linear-gradient(90deg, #2794d2 0%, #1b6fa5 100%)",
-                    borderRadius: 50,
-                    transition: "all 0.3s ease-in-out",
-                    boxShadow: "0 4px 15px rgba(39,148,210,0.3)",
-                    "&:hover": {
-                      transform: "translateY(-3px)",
-                      boxShadow: "0 6px 20px rgba(39,148,210,0.4)",
-                    },
-                    "&:active": {
-                      transform: "translateY(1px)",
-                    },
+                    mb: 1,
+                    background: "linear-gradient(90deg, #fff 0%, #bfdfff 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    display: "inline-block",
                   }}
                 >
-                  <Box component="span">
-                    {serviceId === "vehicle-paint-protection"
-                      ? "Launch PPF Viewer"
-                      : "Launch Tint Viewer"}
-                  </Box>
+                  {serviceId === "vehicle-paint-protection"
+                    ? "See how each paint protection film package covers your vehicle!"
+                    : "Experience Your Tints Before Installation"}
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 4,
+                    color: "rgba(255,255,255,0.7)",
+                    maxWidth: 600,
+                    mx: "auto",
+                    fontSize: "1.1rem",
+                  }}
+                >
+                  {serviceId === "vehicle-paint-protection"
+                    ? "From bumpers to full body, our simulator shows what’s protected."
+                    : "Our interactive simulator shows you exactly how each shade will transform your view."}
+                </Typography>
+
+                <Link
+                  to={`/simulators/${serviceId}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <Box
-                    component="span"
                     sx={{
-                      display: "inline-block",
-                      transform: "translateX(0)",
-                      transition: "transform 0.2s ease-in-out",
-                      ".MuiBox-root:hover &": { transform: "translateX(3px)" },
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 1.5,
+                      px: 4,
+                      py: 1.5,
+                      fontSize: "1rem",
+                      fontWeight: "600",
+                      color: "#fff",
+                      background:
+                        "linear-gradient(90deg, #2794d2 0%, #1b6fa5 100%)",
+                      borderRadius: 50,
+                      transition: "all 0.3s ease-in-out",
+                      boxShadow: "0 4px 15px rgba(39,148,210,0.3)",
+                      "&:hover": {
+                        transform: "translateY(-3px)",
+                        boxShadow: "0 6px 20px rgba(39,148,210,0.4)",
+                      },
+                      "&:active": {
+                        transform: "translateY(1px)",
+                      },
                     }}
                   >
-                    →
+                    <Box component="span">
+                      {serviceId === "vehicle-paint-protection"
+                        ? "Launch PPF Viewer"
+                        : "Launch Tint Viewer"}
+                    </Box>
+                    <Box
+                      component="span"
+                      sx={{
+                        display: "inline-block",
+                        transform: "translateX(0)",
+                        transition: "transform 0.2s ease-in-out",
+                        ".MuiBox-root:hover &": {
+                          transform: "translateX(3px)",
+                        },
+                      }}
+                    >
+                      →
+                    </Box>
                   </Box>
-                </Box>
-              </Link>
+                </Link>
+              </Box>
             </Box>
-          </Box>
-        )}
+          )}
       </Box>
     </Box>
   );

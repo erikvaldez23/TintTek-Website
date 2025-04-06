@@ -19,21 +19,21 @@ const tintPackages = [
   {
     title: "Headlight Tint (2 Pair)",
     price: "$175",
-    // image: "/TintTek-Website/v-window-tint/v-visor-strip.webp",
+    image: "/TintTek-Website/headlight/headlight.webp",
     // description:
     //   "A narrow strip across the top of the windshield to block excessive glare.",
   },
   {
     title: "Taillight Tint (2 Pair)",
     price: "$175",
-    // image: "/TintTek-Website/v-window-tint/v-front-two.webp",
+    image: "/TintTek-Website/headlight/taillight.jpg",
     // description:
     //   "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Reflectors (2 Pair)",
     price: "$75",
-    // image: "/TintTek-Website/v-window-tint/v-windshield.webp",
+    image: "/TintTek-Website/headlight/reflector.jpg",
     // description:
     //   "A full-tint windshield package for optimal UV and heat rejection.",
   },
@@ -94,7 +94,7 @@ const HeadlightPackages = () => {
                   image={pkg.image}
                   alt={pkg.title}
                   sx={{
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
 

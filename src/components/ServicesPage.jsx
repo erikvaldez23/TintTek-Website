@@ -29,6 +29,7 @@ import VideoCTA from "./VideoCTA";
 import HeadlightPackages from "./HeadlightPackages";
 import PPFVision from "./PPF-Vision"
 import ImageCarousel from "./ImageCarousel"
+import TeslaCTA from "./TeslaCTA";
 
 // Define service details for each page
 const serviceDetails = {
@@ -65,7 +66,7 @@ const serviceDetails = {
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection",
     description:
-      "Customize and protect your vehicle’s paint with high-quality wraps and protective coatings.",
+      "Customize and protect your vehicle’s paint with high-quality Paint Protection Film.",
   },
 
   "headlight-services": {
@@ -254,13 +255,14 @@ const ServicePage = () => {
 
       {(serviceId === "commercial-window-tinting" ||
       serviceId === "ceramic-coating" ||
+      serviceId === "headlight-services" ||
       serviceId === "windshield-protection-film")
         && <VideoCTA />}
 
+    {serviceId === "tesla-window-tinting" && <TeslaCTA />}
+
     {(serviceId === "vehicle-window-tinting" ||
-      serviceId === "tesla-window-tinting" || 
       serviceId === "residential-window-tinting" || 
-      serviceId === "headlight-services" || 
       serviceId === "vehicle-paint-protection" || 
       serviceId === "vehicle-paint-correction") && <ImageCTA />}
 
@@ -295,7 +297,8 @@ const ServicePage = () => {
         <ServicesOffered serviceId={serviceId} />
       )}
 
-      {serviceId === "commercial-window-tinting" && <ImageCarousel/>}
+      {serviceId === "commercial-window-tinting" ||
+      serviceId === "tesla-window-tinting" && <ImageCarousel/>}
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (

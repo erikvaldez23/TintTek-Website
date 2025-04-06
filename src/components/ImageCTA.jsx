@@ -86,7 +86,8 @@ const callToActionData = {
     ],
   },
   "headlight-services": {
-    title: "Transform Your Vehicle With STEK Darkened Headlight & Taillight PPF",
+    title:
+      "Transform Your Vehicle With STEK Darkened Headlight & Taillight PPF",
     description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.
 `,
     images: [
@@ -199,92 +200,95 @@ const ImageCTA = () => {
           }}
         >
           {/* Image Carousel */}
-          <Box sx={{ mb: 4 }}>
-            <Slider {...sliderSettings}>
-              {images.map((src, index) => (
-                <Box key={index} sx={{ px: 2 }} className="carousel-slide">
-                  <Box
-                    component="img"
-                    src={src}
-                    alt={`Slide ${index + 1}`}
-                    className="carousel-img"
-                    sx={{
-                      width: "100%",
-                      minHeight: isMobile ? "200px" : "300px",
-                      maxHeight: isMobile ? "300px" : "350px",
-                      objectFit: "cover",
-                      borderRadius: "24px",
-                      transition: "all 0.4s ease",
-                      boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-                      "&:hover": {
-                        cursor: "pointer",
-                        transform: "scale(1.02)",
-                      },
-                    }}
-                  />
-                </Box>
-              ))}
-            </Slider>
+          {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-protection" && (
+            <Box sx={{ mb: 4 }}>
+              <Slider {...sliderSettings}>
+                {images.map((src, index) => (
+                  <Box key={index} sx={{ px: 2 }} className="carousel-slide">
+                    <Box
+                      component="img"
+                      src={src}
+                      alt={`Slide ${index + 1}`}
+                      className="carousel-img"
+                      sx={{
+                        width: "100%",
+                        minHeight: isMobile ? "200px" : "300px",
+                        maxHeight: isMobile ? "300px" : "350px",
+                        objectFit: "cover",
+                        borderRadius: "24px",
+                        transition: "all 0.4s ease",
+                        boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                        "&:hover": {
+                          cursor: "pointer",
+                          transform: "scale(1.02)",
+                        },
+                      }}
+                    />
+                  </Box>
+                ))}
+              </Slider>
+            </Box>
+          )}
+
+          <Box
+            sx={{
+              px: { xs: 1, sm: 2, md: 3 },
+            }}
+          >
+            <Typography
+              variant={isMobile ? "h4" : "h2"}
+              component={motion.h3}
+              variants={fadeSlideVariant}
+              sx={{
+                fontWeight: "bold",
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              }}
+            >
+              {title}
+            </Typography>
+
+            <Typography
+              variant="body1"
+              component={motion.p}
+              variants={fadeSlideVariant}
+              transition={{ delay: 0.3 }}
+              sx={{
+                mt: 2,
+                px: { xs: 2, sm: 2, md: 3 },
+                fontSize: isMobile ? "1rem" : "1.2rem",
+                lineHeight: "1.6",
+                opacity: 0.9,
+              }}
+            >
+              {description}
+            </Typography>
+
+            <Button
+              component={motion.button}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              sx={{
+                mt: 3,
+                backgroundColor: "#000",
+                color: "#fff",
+                fontWeight: "bold",
+                px: isMobile ? 3 : 4,
+                py: isMobile ? 1.2 : 1.5,
+                borderRadius: "30px",
+                textTransform: "uppercase",
+                fontSize: isMobile ? "1rem" : "1.1rem",
+                width: isMobile ? "100%" : "auto",
+              }}
+              href="/quote"
+            >
+              Get a Free Quote
+            </Button>
           </Box>
-
-            <Box sx={{
-          px: { xs: 1, sm: 2, md: 3 },
-          
-            }}>
-          <Typography
-            variant={isMobile ? "h4" : "h2"}
-            component={motion.h3}
-            variants={fadeSlideVariant}
-            sx={{
-              fontWeight: "bold",
-              letterSpacing: "1px",
-              textTransform: "uppercase",
-            }}
-          >
-            {title}
-          </Typography>
-
-          <Typography
-            variant="body1"
-            component={motion.p}
-            variants={fadeSlideVariant}
-            transition={{ delay: 0.3 }}
-            sx={{
-              mt: 2,
-              px: { xs: 2, sm: 2, md: 3 },
-              fontSize: isMobile ? "1rem" : "1.2rem",
-              lineHeight: "1.6",
-              opacity: 0.9,
-            }}
-          >
-            {description}
-          </Typography>
-
-          <Button
-            component={motion.button}
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            sx={{
-              mt: 3,
-              backgroundColor: "#000",
-              color: "#fff",
-              fontWeight: "bold",
-              px: isMobile ? 3 : 4,
-              py: isMobile ? 1.2 : 1.5,
-              borderRadius: "30px",
-              textTransform: "uppercase",
-              fontSize: isMobile ? "1rem" : "1.1rem",
-              width: isMobile ? "100%" : "auto",
-            }}
-            href="/quote"
-          >
-            Get a Free Quote
-          </Button>
         </Box>
-      </Box>
       </Box>
     </motion.div>
   );

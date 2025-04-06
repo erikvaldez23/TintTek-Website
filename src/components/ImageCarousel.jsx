@@ -20,11 +20,13 @@ const callToActionData = {
   },
   "tesla-window-tinting": {
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/TintTek-Website/tesla/Tint Tek-165.jpg",
+      "/TintTek-Website/tesla/Tint Tek-166.jpg",
+      "/TintTek-Website/tesla/Tint Tek-170.jpg",
+      "/TintTek-Website/tesla/Tint Tek-181.jpg",
+      "/TintTek-Website/tesla/Tint Tek-190.jpg",
+      "/TintTek-Website/tesla/Tint Tek-195.jpg",
+      "/TintTek-Website/tesla/tesla test.jpg",
     ],
   },
   "residential-window-tinting": {

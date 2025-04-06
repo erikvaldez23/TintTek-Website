@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 const tintPackages = [
   {
     title: "Window Strip",
-    price: "Starting at $60",
+    price: "Starting at $50",
     image: "/TintTek-Website/t-window-tint/t-visor-strip.webp",
     description:
       "A narrow strip across the top of the windshield to block excessive glare.",
@@ -113,7 +113,7 @@ const TeslaTintPackages = () => {
                 }}
               >
                 <Card
-                  sx={{
+                  sx={{ 
                     backgroundColor: "#111",
                     color: "#fff",
                     borderRadius: 2,

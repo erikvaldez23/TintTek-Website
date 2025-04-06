@@ -10,6 +10,7 @@ import {
   useTheme,
   Dialog,
 } from "@mui/material";
+
 import { PlayArrow, Pause, VolumeUp, VolumeOff } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
@@ -48,11 +49,11 @@ const videoContent = {
   //   description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
   //   video: "/TintTek-Website/",
   // },
-  // "headlight-services": {
-  //   title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
-  //   description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.`,
-  //   video: "/TintTek-Website/videos/Windshield-Film.mov",
-  // },
+  "headlight-services": {
+    title: "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
+    description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.`,
+    video: "/TintTek-Website/videos/headlight.mov",
+  },
   "ceramic-coating": {
     title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
     description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,

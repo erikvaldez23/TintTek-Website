@@ -36,6 +36,12 @@ const faqConfig = {
       answer:
         "While window tinting reduces glare and improves comfort, darker tints can make it harder to see at night. We offer a range of tint options to ensure a balance between privacy, UV protection, and clear visibility, even in low-light conditions.",
     },
+    {
+      question:
+        "Why is Llumar superior to other film manufacturers?",
+      answer:
+        "Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.",
+    },
   ],
   "tesla-window-tinting": [
     {
@@ -52,6 +58,12 @@ const faqConfig = {
       question: "Will window tinting improve my Tesla’s energy efficiency?",
       answer:
         "Yes, window tinting can help improve your Tesla’s energy efficiency by reducing the amount of heat that enters the cabin. This lowers the need for air conditioning, especially during hot days, which can help conserve battery life and improve overall energy use.",
+    },
+    {
+      question:
+        "Why is Llumar superior to other film manufacturers?",
+      answer:
+        "Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.",
     },
   ],
   "commercial-window-tinting": [

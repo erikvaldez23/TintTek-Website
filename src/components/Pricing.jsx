@@ -50,7 +50,7 @@ const pricingConfig = {
       "MODEL 3": { CTX: "$449.00", IRX: "$589.00" },
       "MODEL X": { CTX: "$589.00", IRX: "$749.00" },
       "MODEL Y": { CTX: "$389.00", IRX: "$589.00" },
-      "CYBER TRUCK": { CTX: "$399.00", IRX: "$599.00" },
+      "CYBER TRUCK": { CTX: "$485.00", IRX: "$685.00" },
     },
     pricingOptions: ["MODEL S", "MODEL 3","MODEL X", "MODEL Y", "CYBER TRUCK"],
     descriptions: {

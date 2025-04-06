@@ -28,6 +28,66 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
+
+const CustomIcons = {
+  paintCorrection1: (
+    <Box
+      component="img"
+      src="/TintTek-Website/paint-correction/decontamination.png"
+      alt="Paint Correction"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  paintCorrection2: (
+    <Box
+      component="img"
+      src="/TintTek-Website/paint-correction/compounding.png"
+      alt="Paint Correction"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  paintCorrection3: (
+    <Box
+      component="img"
+      src="/TintTek-Website/paint-correction/polishing.png"
+      alt="Paint Correction"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  paintCorrection4: (
+    <Box
+      component="img"
+      src="/TintTek-Website/paint-correction/finishing.png"
+      alt="Paint Correction"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  ceramicCoating1: (
+    <Box
+      component="img"
+      src="/TintTek-Website/ceramic/application.png"
+      alt="Ceramic Coating"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  ceramicCoating2: (
+    <Box
+      component="img"
+      src="/TintTek-Website/ceramic/check.png"
+      alt="Ceramic Coating"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+  ceramicCoating3: (
+    <Box
+      component="img"
+      src="/TintTek-Website/ceramic/prep.png"
+      alt="Ceramic Coating"
+      sx={{ width: 40, height: 40 }}
+    />
+  ),
+};
+
 const serviceSteps = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting",
@@ -215,7 +275,7 @@ const serviceSteps = {
           "Removing surface contaminants allows us to safely polish the paint without scratching or further damaging the clear coat.",
         detailedDescription:
           "We begin by thoroughly washing and claying your vehicle to remove any dirt, dust, tar, or other contaminants on the surface. This ensures that the paint is clean and smooth before we begin the correction process.",
-        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: CustomIcons.paintCorrection1,
       },
       {
         title: "Compounding",
@@ -223,7 +283,7 @@ const serviceSteps = {
           "Compounding eliminates the top layer of damaged paint to reveal a smooth, more uniform surface.",
         detailedDescription:
           "Using a machine polisher and a specially formulated cutting compound, we remove deeper imperfections such as swirl marks, scratches, and oxidation by gently leveling the surface of the paint.",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+          icon: CustomIcons.paintCorrection2,
       },
       {
         title: "Polishing",
@@ -231,7 +291,7 @@ const serviceSteps = {
           "Polishing restores the glossy, high-shine finish your car deserves, bringing out the richness and vibrancy of the paint.",
         detailedDescription:
           "After compounding, we use a finer polishing compound with a softer pad to refine the finish. This step removes any haze left behind from the compounding process and enhances the clarity and depth of the paint.",
-        icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+          icon: CustomIcons.paintCorrection3,
       },
       {
         title: "Finishing",
@@ -239,7 +299,7 @@ const serviceSteps = {
           "This process gives the paint a deep, rich gloss, ensuring your car looks like it just rolled off the showroom floor.",
         detailedDescription:
           "For the ultimate shine, we apply a finishing polish with a soft pad. This step refines the paint even further, creating a mirror-like, flawless finish.",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+          icon: CustomIcons.paintCorrection4,
       },
     ],
     finalDescription:
@@ -358,14 +418,14 @@ const serviceSteps = {
         description:
           "Your vehicle is thoroughly cleaned and decontaminated to ensure the coating bonds perfectly with the surface. This step is crucial for optimal results.",
         detailedDescription: "TBD",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: CustomIcons.ceramicCoating3,
       },
       {
         title: "Application",
         description:
           "Our trained experts carefully apply the coating, ensuring a flawless, even coverage across your car’s paintwork.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: CustomIcons.ceramicCoating1,
       },
       {
         title: "Curing",
@@ -386,7 +446,7 @@ const serviceSteps = {
         description:
           "For just $225, we offer an annual maintenance check to ensure the coating is performing at its best and touch-up any areas that may need attention.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: CustomIcons.ceramicCoating2,
       },
     ],
     finalDescription: "Our Ceramic & Graphene Coating Process:",
@@ -423,12 +483,14 @@ const serviceSteps = {
     finalDescription:
       "At Tint Tek Plus, we are committed to delivering exceptional value and peace of mind to our customers. In addition to our top-quality windshield protection services, we offer a $1,000 insurance coverage for your windshield protection film. This coverage ensures that if your windshield film is damaged due to road debris or other hazards, the cost of repair or replacement is covered, providing you with added security and confidence in your investment.",
     images: [
-      "/TintTek-Website/gallery/Tint Tek-6.jpeg",
-      "/TintTek-Website/gallery/Tint Tek-25.jpeg",
-      "/TintTek-Website/gallery/Tint Tek-32.jpeg",
+      "/TintTek-Website/windshield/windshield1.png",
+      "/TintTek-Website/windshield/windshield2.jpg",
+      "/TintTek-Website/windshield/windshield3.jpg",
     ],
   },
 };
+
+
 
 const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
@@ -703,6 +765,7 @@ const HowItWorks = ({ serviceId }) => {
       )}
 
       {/* Images Section */}
+      {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-correction" && (
       <Box
         sx={{
           maxWidth: "1200px", // Limit width
@@ -757,6 +820,7 @@ const HowItWorks = ({ serviceId }) => {
           </Grid>
         )}
       </Box>
+      )}
 
       {/* Modal Dialog for Learn More */}
       <Dialog
