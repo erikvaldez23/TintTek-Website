@@ -1,16 +1,25 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import {
+  Box,
+  Typography,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Typography,
-  List,
-  ListItemButton,
-  Paper,
-  Box,
+  Grid,
   Container,
+  Paper,
+  Select,
+  MenuItem,
+  useMediaQuery,
+  Tabs,
+  Tab,
+  Fade,
+  Chip,
+  Card,
+  CardContent,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Contact from "../key-components/Contact";
@@ -279,7 +288,6 @@ const faqConfig = {
   ],
 };
 
-// Define sections with 5 questions each
 const faqSections = Object.entries(faqConfig).map(([key, questions]) => ({
   id: key,
   title: key
@@ -293,147 +301,295 @@ const faqSections = Object.entries(faqConfig).map(([key, questions]) => ({
   })),
 }));
 
-export default function FAQ() {
+const FAQ = () => {
   const [expanded, setExpanded] = useState(false);
-  const sectionRefs = useRef({});
+  const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
+  const currentSection = faqSections[selectedServiceIndex];
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const isTablet = useMediaQuery("(max-width:1024px)");
 
-  // Scroll to section
-  const handleScroll = (id) => {
-    sectionRefs.current[id]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+  const handleServiceSelect = (index) => {
+    setSelectedServiceIndex(index);
+    setExpanded(false);
+  };
+
+  const handleTabChange = (event, newValue) => {
+    setSelectedServiceIndex(newValue);
+    setExpanded(false);
   };
 
   return (
-    <div style={{ backgroundColor: "#EEEEFF" }}>
-      {/* Hero Section */}
+    <Box sx={{ backgroundColor: "#111" }}>
+      {/* Hero Header */}
       <Box
         sx={{
+          position: "relative",
           width: "100%",
-          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "25vh" },
+          height: { xs: "35vh", md: "35vh", lg: "35vh", xl: "35vh" },
           background: "#000",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           color: "white",
-          textAlign: "center",
-          padding: "20px",
-          boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+          overflow: "hidden",
         }}
       >
-        <Container>
+        {/* Abstract background shapes */}
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Typography
             variant="h2"
             sx={{
-              mt: 4,
-              mb: 2,
-              fontWeight: "bold",
+              fontWeight: 800,
               color: "#fff",
               textAlign: "center",
               fontSize: {
                 xs: "2.5rem",
-                sm: "2.5rem",
-                md: "3.5rem",
-                lg: "4rem",
+                sm: "3rem",
+                md: "4rem",
+                lg: "4.5rem",
               },
+              textShadow: "0px 2px 4px rgba(0,0,0,0.3)",
+              mb: 2,
             }}
           >
-            FREQUENTLY ASKED QUESTIONS
+            Frequently Asked Questions
           </Typography>
-          {/* <Typography variant="h6" sx={{ opacity: 0.9 }}>
-            Find answers to common questions or contact us for support.
-          </Typography> */}
         </Container>
       </Box>
 
-      <Container sx={{ maxWidth: "800px", paddingY: 4 }}>
-        {/* Table of Contents */}
-        <Paper
-          elevation={3}
+      {/* Service Selector Section */}
+      <Container sx={{ py: { xs: 4, md: 6 }, maxWidth: "1400px" }}>
+        <Typography 
+          variant="h4" 
+          fontWeight="700" 
+          mb={4} 
+          textAlign="center"
           sx={{
-            padding: 3,
-            marginBottom: 4,
-            borderRadius: "12px",
-            backgroundColor: "#fff", // ✅ Changed to solid white
-            backdropFilter: "none", // ✅ Remove glass effect (optional)
-            boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.15)",
+            position: "relative",
+            display: "inline-block",
+            color: "#fff",
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         >
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
-            Table of Contents
-          </Typography>
-          <List>
-            {faqSections.map(({ id, title }) => (
-              <ListItemButton
-                key={id}
-                onClick={() => handleScroll(id)}
-                sx={{
-                  borderRadius: "8px",
-                  transition: "all 0.3s ease-in-out",
-                  "&:hover": {
-                    backgroundColor: "#2794d2",
-                    color: "#fff",
-                    transform: "scale(1.02)",
-                  },
-                }}
-              >
-                <Typography sx={{ fontWeight: "500" }}>{title}</Typography>
-              </ListItemButton>
-            ))}
-          </List>
-        </Paper>
+          Browse by Service
+        </Typography>
 
-        {/* FAQ Sections */}
-        {faqSections.map(({ id, title, questions }) => (
-          <div key={id} ref={(el) => (sectionRefs.current[id] = el)}>
+        {isMobile ? (
+          <Select
+            fullWidth
+            value={selectedServiceIndex}
+            onChange={(e) => handleServiceSelect(Number(e.target.value))}
+            sx={{
+              mb: 4,
+              backgroundColor: "#fff",
+              borderRadius: 2,
+              fontWeight: "bold",
+              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+              "& .MuiSelect-select": {
+                p: 2,
+              },
+            }}
+          >
+            {faqSections.map((section, index) => (
+              <MenuItem key={section.id} value={index}>
+                {section.title}
+              </MenuItem>
+            ))}
+          </Select>
+        ) : isTablet ? (
+          <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 4 }}>
+            <Tabs
+              value={selectedServiceIndex}
+              onChange={handleTabChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="service tabs"
+              sx={{
+                "& .MuiTab-root": {
+                  textTransform: "none",
+                  fontWeight: 600,
+                  fontSize: "1rem",
+                },
+                "& .Mui-selected": {
+                  color: "#3f51b5",
+                },
+                "& .MuiTabs-indicator": {
+                  backgroundColor: "#3f51b5",
+                  height: 3,
+                },
+              }}
+            >
+              {faqSections.map((section) => (
+                <Tab key={section.id} label={section.title} />
+              ))}
+            </Tabs>
+          </Box>
+        ) : (
+          <Grid container spacing={3} justifyContent="center">
+            {faqSections.map((section, index) => (
+              <Grid item xs={12} sm={6} md={4} key={section.id}>
+                <Paper
+                  elevation={selectedServiceIndex === index ? 8 : 1}
+                  onClick={() => handleServiceSelect(index)}
+                  sx={{
+                    p: 3,
+                    textAlign: "center",
+                    cursor: "pointer",
+                    borderRadius: 2,
+                    backgroundColor: "#fff",
+                    border: selectedServiceIndex === index ? "3px solid #2794d2" : "1px solid #eee",
+                    color: selectedServiceIndex === index ? "#2794d2" : "#333",
+                    fontWeight: "600",
+                    transition: "all 0.3s ease",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "100px",
+                    "&:hover": {
+                      transform: "translateY(-5px)",
+                      boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                      backgroundColor: selectedServiceIndex === index ? "#fff" : "#f8f9fa",
+                    },
+                  }}
+                >
+                  <Typography variant="h6">{section.title}</Typography>
+                  <Chip 
+                    size="small" 
+                    label={`${section.questions.length} questions`}
+                    sx={{ 
+                      mt: 1, 
+                      backgroundColor: selectedServiceIndex === index ? "rgba(63, 81, 181, 0.1)" : "rgba(0, 0, 0, 0.05)",
+                      color: selectedServiceIndex === index ? "#2794d2" : "#666"
+                    }}
+                  />
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Container>
+
+      {/* FAQ Accordion Section */}
+      <Box sx={{ backgroundColor: "#EEEEFF", py: 6 }}>
+        <Container sx={{ maxWidth: "1000px" }}>
+          <Box sx={{ textAlign: "center", mb: 5 }}>
             <Typography
               variant="h4"
-              fontWeight="bold"
-              sx={{ marginTop: 6, marginBottom: 1 }}
+              fontWeight="700"
+              mb={2}
+              color="#333"
+              sx={{
+                position: "relative",
+                display: "inline-block",
+              }}
             >
-              {title}
+              {currentSection.title}
             </Typography>
-            {questions.map(({ id, question, answer }) => (
-              <Accordion
-                key={id}
-                expanded={expanded === id}
-                onChange={() => setExpanded(expanded === id ? false : id)}
-                sx={{
-                  borderRadius: "8px",
-                  backgroundColor: "#fff",
-                  boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)",
-                  transition: "all 0.3s ease-in-out",
-                  marginBottom: "8px",
-                  "&:hover": {
-                    transform: "scale(1.02)",
-                  },
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon sx={{ color: "#000" }} />}
-                >
-                  <Typography variant="h6" fontWeight="bold">
-                    {question}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography
-                    sx={{ fontSize: "1rem", color: "#333" }}
-                    component="div"
-                    dangerouslySetInnerHTML={{ __html: answer }}
-                  />
-                </AccordionDetails>
-              </Accordion>
+            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: "700px", mx: "auto" }}>
+              Find answers to common questions about {currentSection.title.toLowerCase()}. 
+              Can't find what you're looking for? Contact our support team.
+            </Typography>
+          </Box>
+
+          <Grid container spacing={3}>
+            {currentSection.questions.map(({ id, question, answer }, index) => (
+              <Grid item xs={12} key={id}>
+                <Fade in={true} style={{ transitionDelay: `${index * 100}ms` }}>
+                  <Card
+                    elevation={expanded === id ? 4 : 1}
+                    sx={{
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      transition: "all 0.3s ease",
+                      border: expanded === id ? "1px solid #2794d2" : "1px solid #eee",
+                      "&:hover": {
+                        boxShadow: expanded === id ? "0 8px 16px rgba(0,0,0,0.1)" : "0 4px 8px rgba(0,0,0,0.05)",
+                      },
+                    }}
+                  >
+                    <Accordion
+                      expanded={expanded === id}
+                      onChange={() => setExpanded(expanded === id ? false : id)}
+                      disableGutters
+                      elevation={0}
+                      sx={{
+                        backgroundColor: "transparent",
+                        "&:before": {
+                          display: "none",
+                        },
+                      }}
+                    >
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon sx={{ color: expanded === id ? "#2794d2" : "#666" }} />}
+                        sx={{
+                          "& .MuiAccordionSummary-content": {
+                            display: "flex",
+                            alignItems: "center",
+                          },
+                          p: 2,
+                        }}
+                      >
+                        <HelpOutlineIcon sx={{ 
+                          mr: 2, 
+                          color: expanded === id ? "#2794d2" : "#666",
+                          fontSize: "1.25rem" 
+                        }} />
+                        <Typography 
+                          variant="h6" 
+                          fontWeight="600"
+                          sx={{ 
+                            color: expanded === id ? "#2794d2" : "#333",
+                            fontSize: { xs: "1rem", md: "1.125rem" }
+                          }}
+                        >
+                          {question}
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails sx={{ p: 3, pt: 0, pb: 4 }}>
+                        <Box 
+                          sx={{ 
+                            borderLeft: "4px solid #2794d2", 
+                            pl: 2,
+                            ml: { xs: 0, sm: 6 },
+                          }}
+                        >
+                          <Typography
+                            component="div"
+                            sx={{ 
+                              color: "#555",
+                              lineHeight: 1.8,
+                              "& ul": {
+                                pl: 2,
+                                "& li": {
+                                  mb: 1,
+                                }
+                              },
+                              "& strong": {
+                                color: "#333",
+                                fontWeight: 600,
+                              }
+                            }}
+                            dangerouslySetInnerHTML={{ __html: answer }}
+                          />
+                        </Box>
+                      </AccordionDetails>
+                    </Accordion>
+                  </Card>
+                </Fade>
+              </Grid>
             ))}
-          </div>
-        ))}
-      </Container>
+          </Grid>
+        </Container>
+      </Box>
 
       <CallToAction />
       <Contact />
       <QuickLinks />
       <Footer />
-    </div>
+    </Box>
   );
-}
+};
+
+export default FAQ;
