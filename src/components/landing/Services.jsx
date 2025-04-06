@@ -34,7 +34,7 @@ const servicesData = [
     id: "residential-window-tinting",
     title: "RESIDENTIAL WINDOW TINTING",
     description: "Lower your energy costs, get UV protection, enhance privacy and security.",
-    image: "/TintTek-Website/residential/residential-service1.jpg",
+    image: "/TintTek-Website/residential/residential-house.jpeg",
   },
   {
     id: "vehicle-paint-correction",
