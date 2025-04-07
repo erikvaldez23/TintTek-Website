@@ -128,6 +128,9 @@ const Services = () => {
             justifyContent: isMobile ? "flex-end" : "center",
             textAlign: "center",
             padding: 0,
+            "&:hover":{
+              background: isMobile ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.1)",
+            }
           }}
         >
           <Box
@@ -180,7 +183,6 @@ const Services = () => {
           mb: 4,
           fontWeight: "bold",
           color: "#fff",
-          fontFamily: "'NoizeSport', sans-serif",
         }}
       >
         SERVICES
