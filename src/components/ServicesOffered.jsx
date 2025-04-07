@@ -293,7 +293,7 @@ const ServicesOffered = ({ serviceId }) => {
             position: "absolute",
             top: 8,
             right: 8,
-            width: 100,
+            width: 80,
             height: "auto",
             filter:
               serviceId === "vehicle-paint-protection" ||
