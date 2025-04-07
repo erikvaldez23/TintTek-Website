@@ -62,52 +62,6 @@ const faqConfig = {
       </ul>`,
     },
   ],
-  "commercial-window-tinting": [
-    {
-      question: "How long does commercial window tinting last?",
-      answer:
-        "All of our commercial window tinting comes with a 15 years manufactory warranty. We offer warranties for added peace of mind, ensuring that your investment is protected for years to come.",
-    },
-    {
-      question:
-        "How can commercial window tinting help my business save on energy costs?",
-      answer:
-        "Commercial window tinting can significantly reduce your business's energy consumption by blocking a large portion of solar heat, making it easier to regulate the indoor temperature. With less reliance on air conditioning, your business can save on energy costs, especially during hot months. Additionally, window tinting helps improve HVAC efficiency, which could lead to long-term savings.",
-    },
-    {
-      question: "Do you charge for quotes or estimates?",
-      answer:
-        "No! We offer free quotes for all of our commercial window tinting services. Simply reach out to us with the details of your project, and we’ll provide an accurate, no-obligation estimate to help you make an informed decision.",
-    },
-  ],
-  "residential-window-tinting": [
-    {
-      question: "Will window tinting make my home dark?",
-      answer:
-        "Not necessarily. We offer a variety of tint options that allow natural light to flow into your home while reducing glare and heat. You can choose the level of tint that suits your preferences and needs, from lightly tinted windows that maintain a bright interior to darker tints for enhanced privacy and heat reduction.",
-    },
-    {
-      question: "Does residential window tinting improve energy efficiency?",
-      answer:
-        "Yes, window tinting helps your home become more energy-efficient by blocking solar heat. This reduces the need for air conditioning during the summer and helps retain warmth during the winter, ultimately lowering your energy bills year-round.",
-    },
-    {
-      question: "Do you offer a warranty on residential window tinting?",
-      answer:
-        "Yes! We offer a lifetime warranty on our residential window tinting services. Our high-quality films are designed to last, and we guarantee that your windows will remain in great condition without issues like bubbling, peeling, or fading.",
-    },
-    {
-      question:
-        "Does window film increase privacy at night if interior lights are on?",
-      answer:
-        "No, window tinting or window film generally does not provide increased privacy at night if your interior lights are on. At night, when it's darker outside than inside, light from your home can make it easier for people to see inside. However, darker or more reflective films may offer some degree of privacy during the day. For maximum nighttime privacy, we recommend using dual-reflective films or privacy films that are designed to reduce visibility both day and night.",
-    },
-    {
-      question: "Do you charge for quotes or estimates?",
-      answer:
-        "No, we offer free quotes for all of our residential window tinting services. Simply contact us with the details of your project, and we’ll provide you with a no-obligation, accurate estimate.",
-    },
-  ],
   "paint-correction": [
     {
       question: "What is Paint Correction?",
@@ -187,29 +141,6 @@ const faqConfig = {
       </br> As a result, Tint Tek Plus cannot be held responsible for any damage caused to repainted surfaces or factory paint during installation or when the film is removed later. This includes any peeling of paint, removal of existing clear bra, emblems, or vinyl that might be necessary for the installation. By proceeding with the service, you agree to release us from all liability related to peeling paint or clear coat damage.</br>
       </br> To minimize any risks, we highly recommend ensuring your paint is in good condition before applying PPF or vinyl wrap. If your vehicle has been repainted, it’s best to check the quality of the paint job and confirm it’s fully cured and bonded to avoid any potential issues.</br>
       `
-    },
-  ],
-  "headlight-services": [
-    {
-      question: "What is Stek Light Protection Film (PPF)?",
-      answer:
-        "Stek Light Protection Film is a high-quality, transparent protective film designed specifically for automotive taillights. It helps shield taillights from scratches, chips, and fading caused by UV exposure, road debris, and environmental elements.",
-    },
-    {
-      question: "How does Stek PPF protect my taillights?",
-      answer:
-        "Stek PPF provides a durable, self-healing layer that prevents damage to your taillights. It absorbs impacts from rocks, debris, and other particles while preserving the clarity and brightness of your lights. It also blocks UV rays that can cause discoloration over time.",
-    },
-    {
-      question:
-        "Will Stek Light Protection Film affect the brightness of my taillights?",
-      answer:
-        "No, the PPF is designed to be optically clear or lightly tinted, ensuring that your taillights remain fully functional and visible, even in low light conditions. The film does not obstruct the light output or brightness.",
-    },
-    {
-      question: "How durable is Vinyl Wrap VS PPF for taillights?",
-      answer:
-        "Vinyl Wrap is less durable compared to PPF. It can fade, peel, and crack quicker, especially when exposed to UV rays and harsh conditions.",
     },
   ],
   "windshield-protection": [
