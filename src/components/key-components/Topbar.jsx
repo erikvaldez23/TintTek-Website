@@ -57,7 +57,7 @@ const Topbar = ({ notFound }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["gallery", "privacy-policy", "blog", "faq"]; // Add more subpages here if needed
+    const subPages = ["gallery", "privacy-policy", "blog", "support"]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
@@ -312,7 +312,7 @@ const Topbar = ({ notFound }) => {
                 </Box>
 
                 {/* Other Navigation Links */}
-                {["About", "Gallery", "FAQ", "Contact"].map((item) => (
+                {["About", "Gallery", "Support", "Contact"].map((item) => (
                   <Button
                     key={item}
                     color="inherit"
@@ -536,7 +536,7 @@ const Topbar = ({ notFound }) => {
             </List>
           </Collapse>
 
-          {["Reviews", "Gallery", "FAQ", "Contact"].map((item) => (
+          {["Reviews", "Gallery", "Support", "Contact"].map((item) => (
             <ListItem
               button
               key={item}

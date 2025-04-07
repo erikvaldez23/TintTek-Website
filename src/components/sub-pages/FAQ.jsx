@@ -26,27 +26,13 @@ import Contact from "../key-components/Contact";
 import QuickLinks from "../key-components/QuickLinks";
 
 const faqConfig = {
-  "vehicle-window-tinting": [
+  "window-tint": [
     {
-      question: "Is window tinting legal in Texas?",
-      answer: `Yes, but it must meet specific regulations:
-      <ul>
-        <li><strong>Windshield:</strong> Tinting allowed only on the top 5 inches.</li>
-        <li><strong>Front Side Windows:</strong> Must allow at least 25% of visible light to pass through.</li>
-        <li><strong>Back Side and Rear Windows:</strong> Can be tinted to any darkness.</li>
-        <li><strong>Prohibited Colors:</strong> Red, amber, and blue tints are not permitted.</li>
-      </ul>`,
-    },
-    {
-      question: "How long does window tinting last?",
-      answer:
-        "We offer a lifetime warranty on all our window tinting installations, ensuring long-lasting protection and peace of mind for you.",
-    },
-    {
-      question:
-        "Will window tinting affect the clarity of my windows or impair visibility, especially at night?",
-      answer:
-        "While window tinting reduces glare and improves comfort, darker tints can make it harder to see at night. We offer a range of tint options to ensure a balance between privacy, UV protection, and clear visibility, even in low-light conditions.",
+      question: "What makes Llumar window film superior to other brands?",
+      answer: `<ul>
+          <li>At Tint Tek Plus, we exclusively offer LLumar window films! American made and manufactured, known for their exceptional quality and performance. Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.</li>
+          <li>LLumar films effectively block infrared heat, keeping your vehicle cooler without requiring overly dark tints. Plus, they block 99% of harmful UV rays, protecting you from skin cancer, premature aging, and skin cell damage. When you choose LLumar at Tint Tek Plus, you're choosing products that offer real, reliable protection and comfort for your vehicle.</li>
+        </ul>`,
     },
     {
       question: "How is Window Film installed? ",
@@ -59,11 +45,10 @@ const faqConfig = {
         "At Tint Tek Plus, we use a precise installation process for our window tint. The tint film is first carefully shrunk to fit on the exterior of your vehicle's windows, allowing it to conform to the natural curves of the glass. Once perfectly shaped, the film is then installed on the inside of the glass using its own specialized adhesive. This ensures a seamless, smooth finish that not only looks great but also provides long-lasting durability.",
     },
     {
-      question: "What makes Llumar window film superior to other brands?",
-      answer: `<ul>
-          <li>At Tint Tek Plus, we exclusively offer LLumar window films, known for their exceptional quality and performance. Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.</li>
-          <li>LLumar films effectively block infrared heat, keeping your vehicle cooler without requiring overly dark tints. Plus, they block 99% of harmful UV rays, protecting you from skin cancer, premature aging, and skin cell damage. When you choose LLumar at Tint Tek Plus, you're choosing products that offer real, reliable protection and comfort for your vehicle.</li>
-        </ul>`,
+      question:
+        "Will window tinting affect the clarity of my windows or impair visibility, especially at night?",
+      answer:
+        "While window tinting reduces glare and improves comfort, darker tints can make it harder to see at night. We offer a range of tint options to ensure a balance between privacy, UV protection, and clear visibility, even in low-light conditions.",
     },
     {
       question: "How to clean windows once tinted?",
@@ -75,23 +60,6 @@ const faqConfig = {
         <li><strong> Wipe gently in circular motions</strong> to avoid damaging the tint.</li>
         <li><strong> Dry with a clean cloth</strong> to prevent water spots.</li>
       </ul>`,
-    },
-  ],
-  "tesla-window-tinting": [
-    {
-      question: "Does tinting affect my Tesla’s sensors or electronics?",
-      answer:
-        "No, the high-quality ceramic films we use are designed to be safe for all Tesla models, including those with advanced sensors and cameras. Our films are non-metallic, ensuring they won’t interfere with your vehicle’s electronics, GPS, or signal reception.",
-    },
-    {
-      question: "What type of film is best for my Tesla?",
-      answer:
-        "We recommend ceramic tint for your Tesla. Ceramic films provide excellent heat rejection and UV protection without compromising signal quality or visibility. They are the most advanced option for maintaining comfort, preserving your interior, and keeping your car’s electronics safe.",
-    },
-    {
-      question: "Will window tinting improve my Tesla’s energy efficiency?",
-      answer:
-        "Yes, window tinting can help improve your Tesla’s energy efficiency by reducing the amount of heat that enters the cabin. This lowers the need for air conditioning, especially during hot days, which can help conserve battery life and improve overall energy use.",
     },
   ],
   "commercial-window-tinting": [
@@ -140,7 +108,7 @@ const faqConfig = {
         "No, we offer free quotes for all of our residential window tinting services. Simply contact us with the details of your project, and we’ll provide you with a no-obligation, accurate estimate.",
     },
   ],
-  "vehicle-paint-correction": [
+  "paint-correction": [
     {
       question: "What is Paint Correction?",
       answer:
@@ -171,35 +139,14 @@ const faqConfig = {
       answer:
         "Absolutely! Even new cars can benefit from paint correction to remove any imperfections caused during the manufacturing process or from transportation. In fact, many car owners opt for paint correction shortly after purchasing their vehicle to ensure it looks its best from day one.",
     },
-    {
-      question: "Will paint correction remove all scratches and imperfections?",
-      answer:
-        "While paint correction can remove most swirl marks, light scratches, and other imperfections, it may not be able to eliminate very deep or severe scratches. The results depend on the depth of the defect and the condition of the paint. Our professionals will assess your vehicle and determine the best approach for optimal results.",
-    },
-    {
-      question: "How long does paint correction take?",
-      answer:
-        "The duration of paint correction depends on the vehicle's condition, size, and the level of correction required. It can take anywhere from 1 to 3 days. Our professionals will assess your vehicle and provide a detailed quotation during your meeting, ensuring the process meets your specific needs.",
-    },
-    {
-      question:
-        "Do I need to apply a protective coating after paint correction?",
-      answer:
-        "After paint correction, applying a protective coating such as a wax, sealant, or ceramic coating is highly recommended. This will help protect the newly corrected paint from environmental elements, dirt, and scratches, keeping your vehicle looking great for longer.",
-    },
-    {
-      question: "How often should I get paint correction done?",
-      answer:
-        "Paint correction is typically done when the vehicle’s paint shows significant imperfections that can't be corrected by regular washing or detailing. It’s not something that needs to be done regularly, but it can be a good idea if you notice defects in your paint or want to maintain the overall appearance of your vehicle.",
-    },
   ],
-  "vehicle-paint-protection": [
+  "paint-protection": [
     {
       question: "What is Paint Protection Film (PPF)?",
       answer: "PPF is made from a durable, clear urethane material. This advanced polymer film is engineered to protect a vehicle’s paint from scratches, stone chips, UV damage, and contaminants. The film is designed to be both flexible and tough, allowing it to conform seamlessly to the contours of the vehicle. The key feature of STEk PPF is its self-healing technology, which allows light scratches or swirl marks to disappear when exposed to heat, either from sunlight or a warm surface. This unique ability helps maintain the film’s smooth, flawless appearance over time.",
     },
     {
-      question: "How much Coverage do I receive with Paint Protection Film?",
+      question: "How much coverage do I receive with Paint Protection Film?",
       answer: `
       While we aim for 99%+ coverage with our Paint Protection Films and it's important to note that these materials are not paint, and achieving 100% perfect coverage is not always possible. Minor imperfections such as slight lifting on sharp curves, rivets, seams, or edges—even on flat surfaces—can occasionally occur. These are natural characteristics of the material, and some flaws are to be expected. </br>
       </br> We carefully place seams in the material to reduce issues like bubbling or lifting as much as possible, but some areas may still show minor signs. To ensure you're comfortable with the final result, we encourage you to ask a Tint Tek Plus team member to give you a better understanding of how your vehicle will look once PPF is applied.
@@ -233,71 +180,13 @@ const faqConfig = {
       answer: "Yes, we schedule a post-installation check-up to ensure everything is perfect. After the PPF is applied, we carefully inspect the entire vehicle to make sure the film is properly adhered and that any bubbles, wrinkles, or imperfections are minimized. If any adjustments are needed, we take care of them promptly. We also provide guidance on proper care and maintenance, ensuring your PPF continues to protect and enhance your vehicle for years to come. Your satisfaction is our pr",
     },
     {
-      question: "Why Choose Stek Paint Protection Film?",
-      answer: `Installation duration varies based on the selected coverage:
-      <ul>
-        <li><strong>Exceptional Durability: </strong>Stek PPF is engineered to withstand the toughest conditions, including road debris, gravel, and weathering elements. It prevents chips, scratches, and swirl marks that can diminish your vehicle's paintwork.</li>
-        <li><strong>Self-Healing Technology: </strong> Stek PPF features advanced self-healing properties. Light scratches and swirl marks disappear when exposed to heat, keeping your car looking as fresh as the day it was protected.</li>
-        <li><strong>Hydrophobic Properties: </strong> Stek PPF is designed to repel water, dirt, and contaminants. This makes cleaning easier and reduces the frequency of washes, helping to maintain your vehicle's pristine appearance longer.</li>
-        <li><strong>Invisible Shield: </strong> The film is nearly invisible and doesn’t alter your car’s color or finish. You get all the protection with none of the visual compromise, maintaining that flawless, high-gloss or matte finish.</li>
-        <li><strong>UV Protection: </strong> Stek PPF shields your vehicle’s paint from harmful UV rays, which helps prevent fading and oxidation, ensuring that your car’s color stays vibrant for years.</li>
-        <li><strong>Scratch & Impact Protection: </strong> Protect your vehicle from minor abrasions, stone chips, and scratches caused by road debris. Stek PPF is tough enough to absorb impacts, keeping your car looking like new.</li>
-      </ul>`,
-    },
-    {
-      question: "Why Stek Is the Best PPF on the Market?",
-      answer: `Stek has long been recognized as a leader in the PPF industry for several reasons:
-      <ul>
-        <li><strong>Innovative Technology: </strong>Stek PPF offers cutting-edge technology like self-healing capabilities and advanced hydrophobic properties that set it apart from other films on the market. This ensures lasting protection, superior appearance, and ease of maintenance.</li>
-        <li><strong>Durability: </strong> Stek is known for producing one of the thickest, most durable films available, offering superior protection against scratches, abrasions, and environmental damage. It holds up exceptionally well against rock chips, road debris, and other hazards.</li>
-        <li><strong>Clear, Glossy Finish: </strong> Stek PPF doesn’t alter the appearance of your vehicle’s paint. It maintains a clear, glossy, or matte finish depending on your preference, preserving your vehicle's original look while providing unmatched protection.</li>
-        <li><strong>Long-Term Protection: </strong> Stek’s commitment to long-lasting protection is evident in their warranties, offering up to 10 years for many of their films. This ensures your vehicle stays protected for years, with minimal maintenance needed.</li>
-      </ul>`,
-    },
-    {
-      question:
-        "How long does it take to install Paint Protection Film on my vehicle?",
-      answer: `Installation duration varies based on the selected coverage:
-      <ul>
-        <li><strong>Partial Front Coverage: </strong> Approximately 1 to 2 days.</li>
-        <li><strong>Full Vehicle Coverage: </strong> Between 3 to 6 days.</li>
-      </ul>
-      These estimates ensure meticulous application and curing time.`,
-    },
-    {
-      question: "How long does Paint Protection Film last?",
-      answer:
-        "Stek PPF offers a 10-year warranty, covering defects like cracking, yellowing, and bubbling. ",
-    },
-    {
       question: "Can I PPF my car after a collision or having it repainted? ",
       answer:`
       While we always strive for perfection and take every precaution during installation, it’s important to understand that Paint Protection Film (PPF) can potentially cause damage to certain surfaces, especially if the vehicle has had previous aftermarket repairs, such as repainting, Bondo, dent repair, or work involving carbon fiber or fiberglass. During installation, the film is often aligned multiple times on the painted panel, and the strong adhesive on the back of the film can sometimes lift paint or clear coat—this can happen even with factory paint. </br>
       </br> We make every effort to avoid this, but if your vehicle has been repainted or has existing damage like chips, there’s a chance that the film could pull up the paint or clear coat during installation or removal, particularly in areas where the paint or clear coat is not well bonded or has been poorly applied. </br>
       </br> As a result, Tint Tek Plus cannot be held responsible for any damage caused to repainted surfaces or factory paint during installation or when the film is removed later. This includes any peeling of paint, removal of existing clear bra, emblems, or vinyl that might be necessary for the installation. By proceeding with the service, you agree to release us from all liability related to peeling paint or clear coat damage.</br>
       </br> To minimize any risks, we highly recommend ensuring your paint is in good condition before applying PPF or vinyl wrap. If your vehicle has been repainted, it’s best to check the quality of the paint job and confirm it’s fully cured and bonded to avoid any potential issues.</br>
-
-
       `
-    },
-    {
-      question: "How should I maintain my vehicle after PPF installation?",
-      answer: `To ensure longevity:
-      <ul>
-        <li>Avoid pressure washing for the first 24 hours.</li>
-        <li>Use pH-neutral soaps and a microfiber mitt for cleaning.</li>
-        <li>Regular washing every two weeks is recommended.</li>
-      </ul>`,
-    },
-    {
-      question: "Can Paint Protection Film be removed or replaced if damaged?",
-      answer:
-        "Yes, PPF can be professionally removed or replaced if damaged, restoring your vehicle's protection and appearance.",
-    },
-    {
-      question: "How much does Paint Protection Film cost?",
-      answer:
-        "Costs vary based on coverage area, vehicle size, and chosen PPF brand. At Tint Tek Plus, we offer competitive pricing and can provide a personalized quote based on your specific requirements",
     },
   ],
   "headlight-services": [
@@ -323,7 +212,7 @@ const faqConfig = {
         "Vinyl Wrap is less durable compared to PPF. It can fade, peel, and crack quicker, especially when exposed to UV rays and harsh conditions.",
     },
   ],
-  "windshield-protection-film": [
+  "windshield-protection": [
     {
       question: "What is ExoShield GT3 Windshield Protection Film?",
       answer:
@@ -355,21 +244,6 @@ const faqConfig = {
         "ExoShield GT3 significantly reduces the risk of damage from road debris, such as rocks, gravel, and other hazards. However, it is not a guarantee against all types of damage, such as large impacts or severe accidents. It provides additional protection but doesn't replace the need for careful driving.",
     },
     {
-      question: "How do I maintain my windshield after applying ExoShield GT3?",
-      answer:
-        "ExoShield GT3 requires minimal maintenance. Regular washing is recommended to remove dirt and debris, but the hydrophobic properties of the coating make cleaning much easier. Avoid harsh chemicals or abrasives when cleaning the windshield.",
-    },
-    {
-      question: "Can ExoShield GT3 be applied to any vehicle?",
-      answer:
-        "Yes, ExoShield GT3 can be applied to most vehicles. Whether your vehicle is new or has an existing windshield, the protective coating can be applied professionally to ensure maximum performance.",
-    },
-    {
-      question: "How long does the application process take?",
-      answer:
-        "The application of ExoShield GT3 typically takes about 2 to 3 hours, depending on the vehicle and condition of the windshield. The process is quick, and our technicians ensure the coating is applied flawlessly.",
-    },
-    {
       question: "Can Windshield Wipers Damage My Windshield?",
       answer: `Yes, windshield wipers can damage your windshield in several ways:
        <ul>
@@ -396,8 +270,7 @@ const faqConfig = {
       question: "Can I Wash My Car Normally After a Ceramic Coating?",
       answer:`
         Yes! But never use an automated car wash. The harsh chemicals, brushes, or cloths used in automated car washes can degrade the coating and cause micro-scratching. </br>
-        </br> <strong>Best Practice: </strong>Always hand wash your vehicle using pH-neutral car shampoo and soft microfiber towels or a wash mitt to gently remove dirt. Avoid using any abrasive materials that could damage the coating.
-s        `,
+        </br> <strong>Best Practice: </strong>Always hand wash your vehicle using pH-neutral car shampoo and soft microfiber towels or a wash mitt to gently remove dirt. Avoid using any abrasive materials that could damage the coating.        `,
     },
     {
       question: "How Should I Protect My Vehicle from Contaminants?",
@@ -422,16 +295,6 @@ s        `,
         <ul>
           <li><strong>Tip: </strong> Always avoid contact with harsh or abrasive materials on the surface, and regularly clean your vehicle to prevent damage from debris.</li>
         </ul>`,
-    },
-    {
-      question: "How soon can I drive my car after the coating is applied?",
-      answer:
-        "For best results, it's recommended to wait at least 24-48 hours after application before exposing the vehicle to water or driving in rain. This allows the coating to cure fully and bond to the surface.",
-    },
-    {
-      question: "How long does ceramic coating last?",
-      answer:
-        "The longevity of ceramic coatings depends on the product and maintenance. Most high-quality coatings last anywhere from 2 to 5 years. Proper care and regular maintenance can extend the protection significantly.",
     },
   ],
   "paint-disclosure": [

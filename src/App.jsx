@@ -90,7 +90,7 @@ function App() {
           <Route path="/services/:serviceId" element={<FAQSection />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/faq" element={<FAQ />} />
+          <Route path="/support" element={<FAQ />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
