@@ -419,7 +419,7 @@ const FAQ = () => {
               mb: 2,
             }}
           >
-            Frequently Asked Questions
+            USER ESSENTIALS & WARRANTIES
           </Typography>
         </Container>
       </Box>
