@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -7,23 +7,24 @@ import {
   AccordionDetails,
   Grid,
   Container,
-  Paper,
   Select,
   MenuItem,
   useMediaQuery,
-  Tabs,
-  Tab,
   Fade,
-  Chip,
   Card,
-  CardContent,
+  IconButton,
+  Chip,
+  Divider
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Contact from "../key-components/Contact";
 import QuickLinks from "../key-components/QuickLinks";
+
 
 const faqConfig = {
   "window-tint": [
@@ -371,37 +372,72 @@ const faqSections = Object.entries(faqConfig).map(([key, questions]) => ({
 const FAQ = () => {
   const [expanded, setExpanded] = useState(false);
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState(0);
+  const [animateIn, setAnimateIn] = useState(true);
+  
   const currentSection = faqSections[selectedServiceIndex];
   const isMobile = useMediaQuery("(max-width:768px)");
   const isTablet = useMediaQuery("(max-width:1024px)");
 
   const handleServiceSelect = (index) => {
-    setSelectedServiceIndex(index);
-    setExpanded(false);
+    setAnimateIn(false);
+    
+    // Add a small delay for the animation effect
+    setTimeout(() => {
+      setSelectedServiceIndex(index);
+      setExpanded(false);
+      setAnimateIn(true);
+    }, 300);
   };
 
-  const handleTabChange = (event, newValue) => {
-    setSelectedServiceIndex(newValue);
-    setExpanded(false);
+  const navigateSection = (direction) => {
+    const newIndex = direction === 'next' 
+      ? (selectedServiceIndex + 1) % faqSections.length
+      : (selectedServiceIndex - 1 + faqSections.length) % faqSections.length;
+      
+    handleServiceSelect(newIndex);
   };
 
   return (
-    <Box sx={{ backgroundColor: "#111" }}>
+    <Box sx={{ 
+      backgroundColor: "#0f0f13", 
+      color: "#fff",
+    }}>
       {/* Hero Header */}
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "35vh", md: "35vh", lg: "35vh", xl: "35vh" },
-          background: "#000",
+          height: { xs: "40vh", md: "40vh" },
+          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           color: "white",
           overflow: "hidden",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.4)",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "radial-gradient(circle at 30% 70%, rgba(45, 60, 136, 0.15), transparent 50%)",
+            zIndex: 1
+          },
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            background: "radial-gradient(circle at 70% 30%, rgba(66, 135, 245, 0.08), transparent 50%)",
+            zIndex: 1
+          }
         }}
       >
-        {/* Abstract background shapes */}
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Typography
             variant="h2"
@@ -415,32 +451,99 @@ const FAQ = () => {
                 md: "4rem",
                 lg: "4.5rem",
               },
-              textShadow: "0px 2px 4px rgba(0,0,0,0.3)",
-              mb: 2,
+              textShadow: "0px 2px 10px rgba(0,0,0,0.3)",
+              mb: 1,
+              letterSpacing: "-0.02em"
             }}
           >
-            USER ESSENTIALS & WARRANTIES
+            USER ESSENTIALS
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "rgba(255,255,255,0.8)",
+              textAlign: "center",
+              fontSize: {
+                xs: "1.25rem",
+                sm: "1.5rem",
+                md: "1.75rem",
+              },
+              maxWidth: "800px",
+              mx: "auto",
+              fontWeight: "bold"
+            }}
+          >
+            Everything you need to know about our services & warranties
           </Typography>
         </Container>
       </Box>
 
       {/* Service Selector Section */}
-      <Container sx={{ py: { xs: 4, md: 6 }, maxWidth: "1400px" }}>
-        <Typography
-          variant="h4"
-          fontWeight="700"
-          mb={4}
-          textAlign="center"
+      <Container sx={{ 
+        py: { xs: 5, md: 8 }, 
+        maxWidth: "1400px", 
+        position: "relative"
+      }}>
+        <Box 
           sx={{
-            position: "relative",
-            display: "inline-block",
-            color: "#fff",
-            left: "50%",
-            transform: "translateX(-50%)",
+            display: "flex", 
+            justifyContent: "space-between", 
+            alignItems: "center",
+            mb: 6
           }}
         >
-          Browse by Service
-        </Typography>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              color: "#fff",
+              fontSize: { xs: "1.75rem", md: "2.25rem" },
+              position: "relative",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                bottom: "-12px",
+                left: 0,
+                width: "290px",
+                height: "4px",
+                background: "#2794d2",
+                borderRadius: "2px"
+              }
+            }}
+          >
+            Browse by Service
+          </Typography>
+          
+          {!isMobile && (
+            <Box>
+              <IconButton 
+                onClick={() => navigateSection('prev')}
+                sx={{ 
+                  color: "#fff", 
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  mr: 1,
+                  "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                  }
+                }}
+              >
+                <ArrowBackIosNewIcon fontSize="small" />
+              </IconButton>
+              <IconButton 
+                onClick={() => navigateSection('next')}
+                sx={{ 
+                  color: "#fff", 
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                  }
+                }}
+              >
+                <ArrowForwardIosIcon fontSize="small" />
+              </IconButton>
+            </Box>
+          )}
+        </Box>
 
         {isMobile ? (
           <Select
@@ -449,13 +552,24 @@ const FAQ = () => {
             onChange={(e) => handleServiceSelect(Number(e.target.value))}
             sx={{
               mb: 4,
-              backgroundColor: "#fff",
+              backgroundColor: "rgba(255,255,255,0.06)",
+              color: "#fff",
               borderRadius: 2,
-              fontWeight: "bold",
-              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+              fontWeight: "600",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
               "& .MuiSelect-select": {
                 p: 2,
               },
+              "& .MuiOutlinedInput-notchedOutline": {
+                border: "none"
+              },
+              "& .MuiSelect-icon": {
+                color: "rgba(255,255,255,0.7)"
+              },
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.1)",
+              }
             }}
           >
             {faqSections.map((section, index) => (
@@ -464,215 +578,215 @@ const FAQ = () => {
               </MenuItem>
             ))}
           </Select>
-        ) : isTablet ? (
-          <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 4 }}>
-            <Tabs
-              value={selectedServiceIndex}
-              onChange={handleTabChange}
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="service tabs"
-              sx={{
-                "& .MuiTab-root": {
-                  textTransform: "none",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                },
-                "& .Mui-selected": {
-                  color: "#3f51b5",
-                },
-                "& .MuiTabs-indicator": {
-                  backgroundColor: "#3f51b5",
-                  height: 3,
-                },
-              }}
-            >
-              {faqSections.map((section) => (
-                <Tab key={section.id} label={section.title} />
-              ))}
-            </Tabs>
-          </Box>
         ) : (
-          <Grid container spacing={3} justifyContent="center">
+          <Grid container spacing={2} mb={6}>
             {faqSections.map((section, index) => (
-              <Grid item xs={12} sm={6} md={4} key={section.id}>
-                <Paper
-                  elevation={selectedServiceIndex === index ? 8 : 1}
+              <Grid item key={section.id}>
+                <Box
                   onClick={() => handleServiceSelect(index)}
                   sx={{
-                    p: 3,
-                    textAlign: "center",
+                    py: 1.5,
+                    px: 3,
                     cursor: "pointer",
-                    borderRadius: 2,
-                    backgroundColor: "#fff",
-                    border:
-                      selectedServiceIndex === index
-                        ? "3px solid #2794d2"
-                        : "1px solid #eee",
-                    color: selectedServiceIndex === index ? "#2794d2" : "#333",
-                    fontWeight: "600",
-                    transition: "all 0.3s ease",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    minHeight: "100px",
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    color: selectedServiceIndex === index ? "#fff" : "#fff",
+                    border: selectedServiceIndex === index 
+                      ? "1px solid #2794d2" 
+                      : "1px solid rgba(255,255,255,0.1)",
+                    backgroundColor: selectedServiceIndex === index 
+                      ? "rgba(58, 98, 242, 0.15)" 
+                      : "rgba(255,255,255,0.03)",
                     "&:hover": {
-                      transform: "translateY(-5px)",
-                      boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
-                      backgroundColor:
-                        selectedServiceIndex === index ? "#fff" : "#f8f9fa",
+                      backgroundColor: selectedServiceIndex === index 
+                        ? "rgba(58, 98, 242, 0.2)" 
+                        : "rgba(255,255,255,0.06)",
+                      transform: "translateY(-2px)",
                     },
+                    transition: "all 0.2s ease",
                   }}
                 >
-                  <Typography variant="h6">{section.title}</Typography>
-                  <Chip
-                    size="small"
-                    label={`${section.questions.length} questions`}
-                    sx={{
-                      mt: 1,
-                      backgroundColor:
-                        selectedServiceIndex === index
-                          ? "rgba(63, 81, 181, 0.1)"
-                          : "rgba(0, 0, 0, 0.05)",
-                      color:
-                        selectedServiceIndex === index ? "#2794d2" : "#666",
-                    }}
-                  />
-                </Paper>
+                  {section.title}
+                </Box>
               </Grid>
             ))}
           </Grid>
         )}
+        
+        {/* Current section display chip */}
+        {/* <Chip 
+          label={currentSection.title}
+          sx={{
+            backgroundColor: "rgba(58, 98, 242, 0.15)",
+            color: "#fff",
+            borderRadius: "4px",
+            fontWeight: 600,
+            fontSize: "0.9rem",
+            mb: 2
+          }}
+        /> */}
       </Container>
 
       {/* FAQ Accordion Section */}
-      <Box sx={{ backgroundColor: "#EEEEFF", py: 6 }}>
+      <Box sx={{ 
+        backgroundColor: "#0f0f13", 
+        py: 8, 
+        position: "relative",
+      }}>
         <Container sx={{ maxWidth: "1000px" }}>
           <Box sx={{ textAlign: "center", mb: 5 }}>
             <Typography
               variant="h4"
               fontWeight="700"
               mb={2}
-              color="#333"
+              color="#fff"
               sx={{
                 position: "relative",
                 display: "inline-block",
               }}
             >
-              {currentSection.title}
+              Frequently Asked Questions
             </Typography>
             <Typography
               variant="body1"
-              color="text.secondary"
-              sx={{ maxWidth: "700px", mx: "auto" }}
+              color="rgba(255,255,255,0.7)"
+              sx={{ maxWidth: "700px", mx: "auto", fontSize: "1.1rem" }}
             >
-              Find answers to common questions about{" "}
-              {currentSection.title.toLowerCase()}. Can't find what you're
-              looking for? Contact our support team.
+              Find answers to common questions about {currentSection.title.toLowerCase()}. 
+              Can't find what you're looking for? Contact our support team.
             </Typography>
           </Box>
 
-          <Grid container spacing={3}>
-            {currentSection.questions.map(({ id, question, answer }, index) => (
-              <Grid item xs={12} key={id}>
-                <Fade in={true} style={{ transitionDelay: `${index * 100}ms` }}>
-                  <Card
-                    elevation={expanded === id ? 4 : 1}
-                    sx={{
-                      borderRadius: "12px",
-                      overflow: "hidden",
-                      transition: "all 0.3s ease",
-                      border:
-                        expanded === id
-                          ? "1px solid #2794d2"
-                          : "1px solid #eee",
-                      "&:hover": {
-                        boxShadow:
-                          expanded === id
-                            ? "0 8px 16px rgba(0,0,0,0.1)"
-                            : "0 4px 8px rgba(0,0,0,0.05)",
-                      },
-                    }}
-                  >
-                    <Accordion
-                      expanded={expanded === id}
-                      onChange={() => setExpanded(expanded === id ? false : id)}
-                      disableGutters
-                      elevation={0}
+          <Fade in={animateIn} timeout={500}>
+            <Grid container spacing={3}>
+              {currentSection.questions.map(({ id, question, answer }, index) => (
+                <Grid item xs={12} key={id}>
+                  <Fade in={true} style={{ transitionDelay: `${index * 100}ms` }}>
+                    <Card
+                      elevation={expanded === id ? 4 : 0}
                       sx={{
-                        backgroundColor: "transparent",
-                        "&:before": {
-                          display: "none",
+                        borderRadius: "16px",
+                        overflow: "hidden",
+                        transition: "all 0.3s ease",
+                        backgroundColor: expanded === id ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.015)",
+                        backdropFilter: "blur(10px)",
+                        border: expanded === id 
+                          ? "1px solid #2794d2" 
+                          : "1px solid rgba(255,255,255,0.06)",
+                        "&:hover": {
+                          backgroundColor: expanded === id 
+                            ? "rgba(255,255,255,0.04)" 
+                            : "rgba(255,255,255,0.025)",
+                          transform: expanded === id ? "translateY(-2px)" : "none",
+                          boxShadow: expanded === id 
+                            ? "0 8px 25px rgba(0,0,0,0.15)" 
+                            : "0 4px 15px rgba(0,0,0,0.05)",
                         },
                       }}
                     >
-                      <AccordionSummary
-                        expandIcon={
-                          <ExpandMoreIcon
-                            sx={{ color: expanded === id ? "#2794d2" : "#666" }}
-                          />
-                        }
+                      <Accordion
+                        expanded={expanded === id}
+                        onChange={() => setExpanded(expanded === id ? false : id)}
+                        disableGutters
+                        elevation={0}
                         sx={{
-                          "& .MuiAccordionSummary-content": {
-                            display: "flex",
-                            alignItems: "center",
+                          backgroundColor: "transparent",
+                          "&:before": {
+                            display: "none",
                           },
-                          p: 2,
                         }}
                       >
-                        <HelpOutlineIcon
+                        <AccordionSummary
+                          expandIcon={
+                            <ExpandMoreIcon
+                              sx={{ 
+                                color: expanded === id ? "#3a62f2" : "rgba(255,255,255,0.7)",
+                                transition: "transform 0.3s ease",
+                                transform: expanded === id ? "rotate(180deg)" : "rotate(0deg)",
+                              }}
+                            />
+                          }
                           sx={{
-                            mr: 2,
-                            color: expanded === id ? "#2794d2" : "#666",
-                            fontSize: "1.25rem",
-                          }}
-                        />
-                        <Typography
-                          variant="h6"
-                          fontWeight="600"
-                          sx={{
-                            color: expanded === id ? "#2794d2" : "#333",
-                            fontSize: { xs: "1rem", md: "1.125rem" },
-                          }}
-                        >
-                          {question}
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails sx={{ p: 3, pt: 0, pb: 4 }}>
-                        <Box
-                          sx={{
-                            borderLeft: "4px solid #2794d2",
-                            pl: 2,
-                            ml: { xs: 0, sm: 6 },
+                            "& .MuiAccordionSummary-content": {
+                              display: "flex",
+                              alignItems: "center",
+                            },
+                            p: 2.5,
                           }}
                         >
-                          <Typography
-                            component="div"
+                          <QuestionAnswerOutlinedIcon
                             sx={{
-                              color: "#555",
-                              lineHeight: 1.8,
-                              "& ul": {
-                                pl: 2,
-                                "& li": {
-                                  mb: 1,
-                                },
-                              },
-                              "& strong": {
-                                color: "#333",
-                                fontWeight: 600,
-                              },
+                              mr: 2,
+                              color: expanded === id ? "#2794d2" : "rgba(255,255,255,0.6)",
+                              fontSize: "1.25rem",
                             }}
-                            dangerouslySetInnerHTML={{ __html: answer }}
                           />
-                        </Box>
-                      </AccordionDetails>
-                    </Accordion>
-                  </Card>
-                </Fade>
-              </Grid>
-            ))}
-          </Grid>
+                          <Typography
+                            variant="h6"
+                            fontWeight="600"
+                            sx={{
+                              color: expanded === id ? "#fff" : "rgba(255,255,255,0.9)",
+                              fontSize: { xs: "1rem", md: "1.125rem" },
+                              lineHeight: 1.4,
+                              letterSpacing: "-0.01em",
+                            }}
+                          >
+                            {question}
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails sx={{ p: 3, pt: 0, pb: 4 }}>
+                          <Divider sx={{ 
+                            mb: 3, 
+                            backgroundColor: "rgba(255,255,255,0.1)",
+                            opacity: 0.6
+                          }} />
+                          <Box
+                            sx={{
+                              borderLeft: "3px solid #2794d2",
+                              pl: 3,
+                              ml: { xs: 0, sm: 6 },
+                              position: "relative",
+                              "&::before": {
+                                content: '""',
+                                position: "absolute",
+                                top: 0,
+                                left: -3,
+                                width: 3,
+                                height: "100%",
+                                background: "#2794d2",
+                                borderRadius: "3px"
+                              }
+                            }}
+                          >
+                            <Typography
+                              component="div"
+                              sx={{
+                                color: "rgba(255,255,255,0.8)",
+                                lineHeight: 1.8,
+                                fontSize: "1rem",
+                                "& ul": {
+                                  pl: 2,
+                                  "& li": {
+                                    mb: 1.5,
+                                  },
+                                },
+                                "& strong": {
+                                  color: "#fff",
+                                  fontWeight: 600,
+                                },
+                              }}
+                              dangerouslySetInnerHTML={{ __html: answer }}
+                            />
+                          </Box>
+                        </AccordionDetails>
+                      </Accordion>
+                    </Card>
+                  </Fade>
+                </Grid>
+              ))}
+            </Grid>
+          </Fade>
         </Container>
       </Box>
 

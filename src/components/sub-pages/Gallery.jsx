@@ -102,7 +102,7 @@ const Gallery = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        backgroundColor: "#EEEEFF",
+        backgroundColor: "#0f0f13",
       }}
     >
       {/* Hero Video Section */}
@@ -110,9 +110,9 @@ const Gallery = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "35vh", md: "35vh", lg: "25vh", xl: "25vh" },
+          height: { xs: "40vh", md: "40vh" },
           overflow: "hidden",
-          backgroundColor: "#000",
+          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
         }}
       >
         {/* Title & Subheader Overlay */}

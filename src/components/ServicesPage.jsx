@@ -213,7 +213,7 @@ const ServicePage = () => {
           position: "relative",
           width: "100vw",
           paddingTop: 5,
-          height: { xs: "35vh", md: "35vh", lg: "30vh", xl: "30vh" },
+          height: { xs: "40vh", md: "40vh" },
           backgroundColor: "#000",
           backgroundSize: "cover",
           backgroundPosition: "center",

@@ -128,7 +128,7 @@ const PrivacyPolicy = () => {
       sx={{
         width: "100vw",
         minHeight: "100vh",
-        backgroundColor: "#EEEEFF", // Black background
+        backgroundColor: "#0f0f13", // Black background
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -139,8 +139,8 @@ const PrivacyPolicy = () => {
       <Box
         sx={{
           width: "100%",
-          minHeight: "300px",
-          backgroundColor: "#000",
+          height: { xs: "40vh", md: "40vh" },
+          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -169,7 +169,7 @@ const PrivacyPolicy = () => {
           justifyContent: "center",
           alignItems: "flex-start",
           paddingY: "40px",
-          color: "#000",
+          color: "#fff",
           overflowY: "auto",
         }}
       >

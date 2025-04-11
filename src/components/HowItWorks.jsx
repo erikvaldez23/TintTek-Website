@@ -719,23 +719,7 @@ const HowItWorks = ({ serviceId }) => {
                 </Typography>
 
                 <Box sx={{ flexGrow: 1 }} />
-
                 {/* <Button
-                  sx={{
-                    mt: "auto",
-                    borderRadius: "10px",
-                    backgroundColor: "#2794d2",
-                    color: "#fff",
-                    "&:hover": {
-                      backgroundColor: "#000",
-                      color: "#fff",
-                    },
-                  }}
-                  onClick={() => handleLearnMoreClick(step)}
-                >
-                  Learn More
-                </Button> */}
-                <Button
                   component={motion.a}
                   initial={{ scale: 0.9 }}
                   animate={{ scale: 1 }}
@@ -757,7 +741,7 @@ const HowItWorks = ({ serviceId }) => {
                   onClick={() => handleLearnMoreClick(step)}
                 >
                   Learn More
-                </Button>
+                </Button> */}
               </Paper>
             </Grid>
           ))}
