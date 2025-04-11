@@ -130,7 +130,7 @@ ${userMessage}
 
 // ✅ Define Similarity Thresholds
 const HIGH_SIMILARITY_THRESHOLD = 0.95; // Strong match
-const LOW_SIMILARITY_THRESHOLD = 0.1; // Too far from training data
+const LOW_SIMILARITY_THRESHOLD = 0.0; // Too far from training data
 
 app.post("/chat", async (req, res) => {
   try {

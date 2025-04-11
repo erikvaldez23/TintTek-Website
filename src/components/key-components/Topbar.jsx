@@ -524,6 +524,7 @@ const Topbar = ({ notFound }) => {
                       fontWeight: "bold",
                       color: "#fff",
                       textTransform: "none",
+                      textAlign: "center",
                     },
                     "&:hover": {
                       backgroundColor: "#2794d2",
