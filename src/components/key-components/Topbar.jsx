@@ -520,7 +520,7 @@ const Topbar = ({ notFound }) => {
                   sx={{
                     paddingLeft: "40px",
                     "& .MuiListItemText-primary": {
-                      fontSize: "15px",
+                      fontSize: "20px",
                       fontWeight: "bold",
                       color: "#fff",
                       textTransform: "none",

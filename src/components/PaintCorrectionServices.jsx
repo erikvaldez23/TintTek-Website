@@ -23,14 +23,17 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import StarIcon from "@mui/icons-material/Star";
-import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+
 
 const stages = [
   {
     label: "Single-Stage Correction",
-    icon: <SettingsIcon sx={{ color: "#2794d2" }} />,
+    icon: <BuildCircleIcon sx={{ color: "#2794d2" }} />,
     description:
       "Involves polishing the paint with a single level of abrasiveness to remove light imperfections.",
     whatToExpect: [
@@ -64,7 +67,7 @@ const stages = [
   },
   {
     label: "Three-Stage Correction",
-    icon: <StarIcon sx={{ color: "#2794d2" }} />,
+    icon: <WorkspacePremiumIcon sx={{ color: "#2794d2" }} />,
     description:
       "Incorporates compounding, polishing, and finishing to tackle severe paint defects, resulting in a pristine finish.",
     whatToExpect: [
@@ -246,7 +249,17 @@ export default function PaintCorrectionTabs() {
               {stages.map((stage, index) => (
                 <Tab
                   key={index}
-                  label={stage.label}
+                  label={
+                    <span
+                      style={{
+                        color: currentStage === index ? "#fff" : "rgba(255,255,255,0.6)",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {stage.label}
+                    </span>
+                  }
+                  
                   icon={React.cloneElement(stage.icon, {
                     sx: {
                       color: currentStage === index ? "#fff" : "#2794d2",

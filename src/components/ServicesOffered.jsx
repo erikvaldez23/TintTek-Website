@@ -234,7 +234,8 @@ const serviceOptions = {
     filmTypes: [
       {
         name: "GT3 Exo Shield",
-        description: "ExoShield GT3 Windshield Protection offers top-tier protection for your vehicle’s windshield. This clear, durable film shields against chips, cracks, and road debris, ensuring your windshield stays intact longer. Designed for maximum clarity, it preserves your view while providing superior impact resistance—ideal for daily drivers and those who want to safeguard their investment.",
+        description:
+          "ExoShield GT3 Windshield Protection offers top-tier protection for your vehicle’s windshield. This clear, durable film shields against chips, cracks, and road debris, ensuring your windshield stays intact longer. Designed for maximum clarity, it preserves your view while providing superior impact resistance—ideal for daily drivers and those who want to safeguard their investment.",
       },
     ],
   },
@@ -287,7 +288,6 @@ const ServicesOffered = ({ serviceId }) => {
               ? "/TintTek-Website/stek-logo.png"
               : "/TintTek-Website/llumar-logo.png"
           }
-          
           alt="Film Type Logo"
           sx={{
             position: "absolute",
@@ -309,6 +309,8 @@ const ServicesOffered = ({ serviceId }) => {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
+            justifyContent: "space-between",
+            height: "100%", // Ensures card takes up full height
           }}
         >
           <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
@@ -352,6 +354,45 @@ const ServicesOffered = ({ serviceId }) => {
                 }}
               >
                 <span>Explore Color Options</span>
+                <span>→</span>
+              </Box>
+            </Link>
+          )}
+
+          {serviceId === "windshield-protection-film" && (
+            <Link
+              to="https://cdn.prod.website-files.com/5c870322e90205bd3137c6df/65b9089bb070e4995e0fec67_2%20-%20GT3%2B%20Limited%20Product%20Warranty%20%5BConsumer%5D.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <Box
+                sx={{
+                  mt: 2,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 1.5,
+                  px: 4,
+                  py: 1.5,
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  color: "#fff",
+                  background:
+                    "linear-gradient(90deg, #2794d2 0%, #1b6fa5 100%)",
+                  borderRadius: 50,
+                  transition: "all 0.3s ease-in-out",
+                  boxShadow: "0 4px 15px rgba(39,148,210,0.3)",
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    boxShadow: "0 6px 20px rgba(39,148,210,0.4)",
+                  },
+                  "&:active": {
+                    transform: "translateY(1px)",
+                  },
+                }}
+              >
+                <span>See Warranty Coverage</span>
                 <span>→</span>
               </Box>
             </Link>

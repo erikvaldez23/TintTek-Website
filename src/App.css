@@ -30,7 +30,32 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Redob";
+  src: url("/src/assets/fonts/Modera.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Vibrant";
+  src: url("/src/assets/fonts/vibrant.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("/src/assets/fonts/orbitron.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 .slick-dots li.slick-active div {
   background-color: #fff !important; /* Change active dot color */
+}
+
+.noize-sentence {
+  font-family: "Orbitron" !important;
 }
