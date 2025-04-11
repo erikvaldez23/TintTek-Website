@@ -14,7 +14,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 // ✅ Load FAQ Data from JSON
 const FAQ_PATH = __dirname + "/data/training_data.json";
 
-let faqData = [];
+let faqEmbeddings = [];
 
 const loadFAQData = () => {
   try {
@@ -26,14 +26,24 @@ const loadFAQData = () => {
   }
 };
 
-// Load FAQ Data at Startup
-loadFAQData();
+const preloadEmbeddings = async () => {
+  for (const faq of faqData) {
+    const embedding = await getEmbedding(faq.question);
+    if (embedding) {
+      faqEmbeddings.push({ ...faq, embedding });
+    }
+  }
+  console.log("✅ Preloaded FAQ Embeddings");
+};
+
+
+
 
 // ✅ Get Embedding for a Given Text
 const getEmbedding = async (text) => {
   try {
     const response = await openai.embeddings.create({
-      model: "text-embedding-ada-002",
+      model: "text-embedding-3-small",
       input: text,
     });
     return response.data[0].embedding;
@@ -42,6 +52,8 @@ const getEmbedding = async (text) => {
     return null;
   }
 };
+
+
 
 // ✅ Compute Cosine Similarity
 const cosineSimilarity = (vecA, vecB) => {
@@ -59,12 +71,8 @@ const findBestMatchAI = async (userMessage) => {
   let bestMatch = null;
   let highestSimilarity = -1;
 
-  for (const faq of faqData) {
-    const faqEmbedding = await getEmbedding(faq.question);
-    if (!faqEmbedding) continue;
-
-    const similarity = cosineSimilarity(userEmbedding, faqEmbedding);
-
+  for (const faq of faqEmbeddings) {
+    const similarity = cosineSimilarity(userEmbedding, faq.embedding);
     if (similarity > highestSimilarity) {
       highestSimilarity = similarity;
       bestMatch = faq;
@@ -73,6 +81,12 @@ const findBestMatchAI = async (userMessage) => {
 
   return { bestMatch, similarityScore: highestSimilarity };
 };
+
+
+// Load FAQ Data at Startup
+loadFAQData();
+preloadEmbeddings(); // async call
+
 
 // ✅ Generate AI-Based Answer Using GPT-4
 const generateAIResponse = async (userMessage) => {
@@ -95,7 +109,7 @@ ${userMessage}
 `;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",

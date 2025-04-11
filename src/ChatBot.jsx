@@ -45,7 +45,11 @@ export default function Chatbot() {
     setTyping(true);
   
     try {
-      const { data } = await axios.post("http://localhost:5001/chat", { message: input });
+      // DEV ENVIRONMENT
+      // const { data } = await axios.post("http://localhost:5001/chat", { message: input });
+
+      // Public API
+      const { data } = await axios.post("https://tinttek-website.onrender.com/chat", { message: input });
 
       setTimeout(() => {
         setTyping(false);
