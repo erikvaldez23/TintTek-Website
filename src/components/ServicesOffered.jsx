@@ -33,7 +33,7 @@ const serviceOptions = {
       {
         name: "Llumar IRX",
         description:
-          " Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
+          "Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
       },
     ],
   },
@@ -60,7 +60,7 @@ const serviceOptions = {
       {
         name: "Llumar IRX",
         description:
-          " Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
+          "Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
       },
     ],
   },
@@ -170,11 +170,6 @@ const serviceOptions = {
       "Stealth/Matte PPF",
     ],
     filmTypes: [
-      // {
-      //   name: "Llumar Paint Protection Film",
-      //   description:
-      //     "Invisible shield that protects your car from chips, scratches, and road debris.",
-      // },
       {
         name: "DYNOshield",
         description:
@@ -239,6 +234,15 @@ const serviceOptions = {
       },
     ],
   },
+};
+
+// Helper function to split an array into chunks of a specific size
+const chunkArray = (arr, chunkSize) => {
+  const chunks = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    chunks.push(arr.slice(i, i + chunkSize));
+  }
+  return chunks;
 };
 
 const ServicesOffered = ({ serviceId }) => {
@@ -488,33 +492,45 @@ const ServicesOffered = ({ serviceId }) => {
             ))}
           </Box>
         ) : (
-          <Grid container spacing={3}>
-            {service.filmTypes.map((film, index) => {
-              const isColorChangePPF =
-                serviceId === "vehicle-paint-protection" &&
-                film.name === "Color Change PPF";
+          // For desktop, chunk the filmTypes into rows of 3 and center the last row if incomplete
+          chunkArray(service.filmTypes, 3).map((filmRow, rowIndex, allRows) => (
+            <Grid
+              container
+              spacing={3}
+              key={rowIndex}
+              justifyContent={
+                filmRow.length < 3 && rowIndex === allRows.length - 1
+                  ? "center"
+                  : "flex-start"
+              }
+              sx={{ mb: rowIndex !== allRows.length - 1 ? 3 : 0 }}
+            >
+              {filmRow.map((film, index) => {
+                const isColorChangePPF =
+                  serviceId === "vehicle-paint-protection" &&
+                  film.name === "Color Change PPF";
+                const isSingleCard = service.filmTypes.length === 1;
 
-              const isSingleCard = service.filmTypes.length === 1;
-
-              return (
-                <Grid
-                  item
-                  key={index}
-                  xs={12}
-                  sm={isSingleCard || isColorChangePPF ? 12 : 6}
-                  md={isSingleCard || isColorChangePPF ? 12 : 4}
-                  sx={{ display: "flex" }}
-                >
-                  <Box sx={{ position: "relative", width: "100%" }}>
-                    {renderFilmCard(film, index)}
-                  </Box>
-                </Grid>
-              );
-            })}
-          </Grid>
+                return (
+                  <Grid
+                    item
+                    key={index}
+                    xs={12}
+                    sm={isSingleCard || isColorChangePPF ? 12 : 6}
+                    md={isSingleCard || isColorChangePPF ? 12 : 4}
+                    sx={{ display: "flex" }}
+                  >
+                    <Box sx={{ position: "relative", width: "100%" }}>
+                      {renderFilmCard(film, index)}
+                    </Box>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          ))
         )}
 
-        {/* Call to Action - Tint Viewer */}
+        {/* Call to Action - Tint/PPF Viewer */}
         {serviceId !== "headlight-services" &&
           serviceId !== "windshield-protection-film" && (
             <Box
@@ -545,7 +561,6 @@ const ServicesOffered = ({ serviceId }) => {
                   zIndex: 0,
                 }}
               />
-
               <Box
                 sx={{
                   position: "absolute",
@@ -559,7 +574,6 @@ const ServicesOffered = ({ serviceId }) => {
                   zIndex: 0,
                 }}
               />
-
               <Box sx={{ position: "relative", zIndex: 1 }}>
                 <Typography
                   variant="h5"
@@ -576,7 +590,6 @@ const ServicesOffered = ({ serviceId }) => {
                     ? "See how each paint protection film package covers your vehicle!"
                     : "Experience Your Tints Before Installation"}
                 </Typography>
-
                 <Typography
                   variant="body1"
                   sx={{
@@ -591,7 +604,6 @@ const ServicesOffered = ({ serviceId }) => {
                     ? "From bumpers to full body, our simulator shows what’s protected."
                     : "Our interactive simulator shows you exactly how each shade will transform your view."}
                 </Typography>
-
                 <Link
                   to={`/simulators/${serviceId}`}
                   style={{ textDecoration: "none" }}

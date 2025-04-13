@@ -23,10 +23,19 @@ import "slick-carousel/slick/slick-theme.css";
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import LayersIcon from "@mui/icons-material/Layers";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
+import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import CloseIcon from "@mui/icons-material/Close";
+import GppGoodIcon from "@mui/icons-material/GppGood";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { SupportAgent } from "@mui/icons-material";
 
 
 const CustomIcons = {
@@ -318,28 +327,28 @@ const serviceSteps = {
         description:
           "Discuss your desired tint tone and assess your vehicle's lighting.",
         detailedDescription: "tbd",
-        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <SupportAgentIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
         description:
           "Clean the headlight and taillight surfaces to ensure optimal adhesion.",
         detailedDescription: "tbd",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <CleaningServicesIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Application",
         description:
           "Carefully apply the chosen STEK LPF, ensuring a smooth and bubble-free finish.",
         detailedDescription: "tbd",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Curing",
         description:
           "Allow the film to set, ensuring durability and longevity.",
         detailedDescription: "tbd",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <HourglassTopIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
@@ -358,42 +367,42 @@ const serviceSteps = {
         description:
           "We begin by cleaning and preparing your vehicle’s surface to ensure a smooth, contaminant-free application.",
         detailedDescription: "TBD",
-        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <SupportAgentIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
         description:
           "Our experts apply the clear bra or vinyl wrap, creating an invisible layer that protects your car from scratches, chips, and other damages.",
         detailedDescription: "TBD",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <CleaningServicesIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Installation",
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Curing",
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <HourglassTopIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "We conduct a thorough inspection to confirm that the PPF has been applied flawlessly, ensuring full protection for your vehicle.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <FactCheckIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Two-Week Check-Up",
         description:
           "Two-week complimentary check-up after your PPF installation. This allows us to inspect the film, ensuring it's securely bonded to your vehicle and that no issues arise early on.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <EventAvailableIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:
@@ -411,7 +420,7 @@ const serviceSteps = {
         description:
           "We’ll discuss your needs and help you choose the right coating for your vehicle, whether you prefer standard ceramic or cutting-edge graphene protection.",
         detailedDescription: "TBD",
-        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <SupportAgentIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Preparation",
@@ -432,14 +441,14 @@ const serviceSteps = {
         description:
           "After application, the coating needs time to cure, forming a long-lasting, protective layer that’s as tough as it is beautiful.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <HourglassTopIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Final Inspection",
         description:
           "We inspect the vehicle to make sure the coating is perfect and your car is ready to face the elements with superior protection.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <FactCheckIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Yearly Maintenance Check",
@@ -463,21 +472,21 @@ const serviceSteps = {
         description:
           "Our team of installers ensures precise application of ExoShield GT3, tailored to fit your vehicle's specific windshield curvature.",
         detailedDescription: "TBD",
-        icon: <BuildIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Comprehensive Warranty",
         description:
           "We stand behind the quality of our products and services. ExoShield GT3 comes with a 3-year transferable warranty, providing you with peace of mind and assurance of long-term protection. ",
         detailedDescription: "TBD",
-        icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <GppGoodIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Competitive Pricing",
         description:
           "Protecting your windshield is an investment. We offer competitive pricing to ensure you receive exceptional value without compromising on quality.",
         detailedDescription: "TBD",
-        icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: <AttachMoneyIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
     finalDescription:

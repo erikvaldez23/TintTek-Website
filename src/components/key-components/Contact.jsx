@@ -1,219 +1,221 @@
-import React, { useState } from "react";
-import {
-  Grid,
-  Box,
-  TextField,
-  Button,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  useMediaQuery,
-} from "@mui/material";
+import React from "react";
+import { Box, Typography, Card, Grid, useMediaQuery } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    year: "",
-    make: "",
-    model: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState({});
-
-  // Handle input change
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // Form validation function
-  const validateForm = () => {
-    let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    return newErrors;
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = validateForm();
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      alert("Form submitted successfully!");
-      setFormData({
-        name: "",
-        phone: "",
-        year: "",
-        make: "",
-        model: "",
-        message: "",
-      });
-      setErrors({});
-    }
-  };
 
   return (
-    <Box sx={{ backgroundColor: "#EEEEFF", width: "100%", py: 2 }}>
-      <Box sx={{ padding: "20px", maxWidth: "1200px", margin: "auto" }} id="contact">
+    <Box 
+      sx={{ 
+        background: "#EEEEFF",
+        width: "100%", 
+        py: 3
+      }}
+    >
+      <Box 
+        sx={{ 
+          padding: { xs: "20px", md: "40px" }, 
+          maxWidth: "1200px", 
+          margin: "auto" 
+        }} 
+        id="contact"
+      >
         {/* Contact Header */}
-          <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#000", textAlign: "center" }}>
-            Contact Us
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: "center", marginBottom: 4 }}>
-            Let us know how we can help by sending us a message below. Looking forward to chatting!
-          </Typography>
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
+          sx={{ 
+            mb: 1, 
+            fontWeight: 700, 
+            color: "#000", 
+            textAlign: "center",
+            letterSpacing: "-0.5px"
+          }}
+        >
+          Contact Us
+        </Typography>
+        
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            textAlign: "center", 
+            mb: 6, 
+            color: "#5a6a85",
+            maxWidth: "600px",
+            mx: "auto",
+            fontSize: "1.1rem"
+          }}
+        >
+          Let us know how we can help by sending us a message below
+        </Typography>
 
         <Grid container spacing={4} alignItems="stretch">
           {/* Left Side - Contact Info */}
           <Grid item xs={12} md={5} sx={{ display: "flex" }}>
-              <Card sx={{ backgroundColor: "#f8f9fa", padding: "20px", flexGrow: 1 }}>
-                <CardContent
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <FaMapMarkerAlt size={24} style={{ marginRight: 10, color: "#2794d2" }} />
-                    <Box>
-                      <Typography variant="h6">Location</Typography>
-                      <Typography variant="body2">2518 West Kingsley Rd</Typography>
-                      <Typography variant="body2">Garland, TX</Typography>
-                    </Box>
-                  </Box>
-
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <FaPhone size={24} style={{ marginRight: 10, color: "#2794d2" }} />
-                    <Box>
-                      <Typography variant="h6">Call Us</Typography>
-                      <Typography variant="body2">+1 (972) 362-8468</Typography>
-                    </Box>
-                  </Box>
-
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                    <FaEnvelope size={24} style={{ marginRight: 10, color: "#2794d2" }} />
-                    <Box>
-                      <Typography variant="h6">Email Us</Typography>
-                      <Typography variant="body2">info@tinttekplus.com</Typography>
-                    </Box>
-                  </Box>
-
-                  {/* Google Map Embed */}
-                  <Box sx={{ marginTop: 2 }}>
-                    <iframe
-                      title="Google Map"
-                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3350.75026088151!2d-96.6714001!3d32.8783265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864ea153db5dd237%3A0xe54143946793a9e6!2sTint%20Tek%20Plus!5e0!3m2!1sen!2sus!4v1738297786523!5m2!1sen!2sus"
-                      width="100%"
-                      height="250"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </Box>
-                </CardContent>
-              </Card>
-          </Grid>
-
-          {/* Right Side - Contact Form */}
-          <Grid item xs={12} md={7} sx={{ display: "flex" }}>
+            <Card 
+              elevation={0}
+              sx={{ 
+                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                borderRadius: 3,
+                padding: { xs: "20px", md: "30px" }, 
+                flexGrow: 1,
+                border: "1px solid rgba(0,0,0,0.08)",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                }
+              }}
+            >
               <Box
-                component="form"
                 sx={{
+                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 2,
-                  backgroundColor: "#fff",
-                  padding: "20px",
-                  boxShadow: 3,
-                  borderRadius: 2,
-                  flexGrow: 1,
+                  justifyContent: "space-between",
                 }}
-                onSubmit={handleSubmit}
               >
-                <TextField
-                  label="Your Name *"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  error={!!errors.name}
-                  helperText={errors.name}
-                  fullWidth
-                />
+                <Box>
+                  <Typography 
+                    variant="h5" 
+                    sx={{ 
+                      mb: 4, 
+                      fontWeight: 600, 
+                      color: "#1a2b47",
+                      position: "relative",
+                      paddingBottom: "10px",
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        width: "40px",
+                        height: "3px",
+                        background: "#2794d2",
+                        borderRadius: "3px"
+                      }
+                    }}
+                  >
+                    Get In Touch
+                  </Typography>
 
-                <TextField
-                  label="Phone Number *"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  error={!!errors.phone}
-                  helperText={errors.phone}
-                  fullWidth
-                />
+                  <Box sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}>
+                    <Box 
+                      sx={{ 
+                        backgroundColor: "rgba(39, 148, 210, 0.1)", 
+                        p: 1.5, 
+                        borderRadius: 2,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mr: 2,
+                        color: "#2794d2"
+                      }}
+                    >
+                      <FaMapMarkerAlt size={20} />
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Location</Typography>
+                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>2518 West Kingsley Rd</Typography>
+                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>Garland, TX</Typography>
+                    </Box>
+                  </Box>
 
-                <TextField
-                  label="Vehicle Year (Optional)"
-                  name="year"
-                  value={formData.year}
-                  onChange={handleChange}
-                  fullWidth
-                />
+                  <Box sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}>
+                    <Box 
+                      sx={{ 
+                        backgroundColor: "rgba(39, 148, 210, 0.1)", 
+                        p: 1.5, 
+                        borderRadius: 2,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mr: 2,
+                        color: "#2794d2"
+                      }}
+                    >
+                      <FaPhone size={20} />
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Call Us</Typography>
+                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>+1 (972) 362-8468</Typography>
+                    </Box>
+                  </Box>
 
-                <TextField
-                  label="Vehicle Make (Optional)"
-                  name="make"
-                  value={formData.make}
-                  onChange={handleChange}
-                  fullWidth
-                />
+                  <Box sx={{ display: "flex", alignItems: "flex-start", mb: 4 }}>
+                    <Box 
+                      sx={{ 
+                        backgroundColor: "rgba(39, 148, 210, 0.1)", 
+                        p: 1.5, 
+                        borderRadius: 2,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mr: 2,
+                        color: "#2794d2"
+                      }}
+                    >
+                      <FaEnvelope size={20} />
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Email Us</Typography>
+                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>info@tinttekplus.com</Typography>
+                    </Box>
+                  </Box>
+                </Box>
 
-                <TextField
-                  label="Vehicle Model (Optional)"
-                  name="model"
-                  value={formData.model}
-                  onChange={handleChange}
-                  fullWidth
-                />
-
-                <TextField
-                  label="Message *"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  error={!!errors.message}
-                  helperText={errors.message}
-                  multiline
-                  rows={4}
-                  fullWidth
-                />
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#2794d2",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "#000",
-                      color: "#fff",
-                    },
+                {/* Google Map Embed with rounded corners and subtle shadow */}
+                <Box 
+                  sx={{ 
+                    mt: 2, 
+                    borderRadius: 3, 
+                    overflow: "hidden",
+                    boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                    height: "250px"
                   }}
                 >
-                  Send Message
-                </Button>
+                  <iframe
+                    title="Google Map"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3350.75026088151!2d-96.6714001!3d32.8783265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864ea153db5dd237%3A0xe54143946793a9e6!2sTint%20Tek%20Plus!5e0!3m2!1sen!2sus!4v1738297786523!5m2!1sen!2sus"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </Box>
               </Box>
+            </Card>
+          </Grid>
+
+          {/* Right Side - Embedded External Form */}
+          <Grid item xs={12} md={7} sx={{ display: "flex" }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                backgroundColor: "#fff",
+                borderRadius: 3,
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                border: "1px solid rgba(0,0,0,0.05)",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.12)",
+                }
+              }}
+            >
+              <iframe
+                title="TintWiz Contact Form"
+                src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                style={{
+                  width: "100%",
+                  height: isMobile ? "650px" : "650px",
+                  border: 0,
+                }}
+              ></iframe>
+            </Box>
           </Grid>
         </Grid>
       </Box>

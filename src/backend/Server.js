@@ -137,74 +137,22 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
     console.log("📩 User Input:", message);
 
-    // ✅ Step 1: Try to find the best matching FAQ answer
-    const { bestMatch, similarityScore } = await findBestMatchAI(message);
-
-    if (bestMatch && similarityScore > HIGH_SIMILARITY_THRESHOLD) {
-      console.log("✅ Strong FAQ Match Found:", bestMatch);
-      return res.json({ reply: bestMatch.answer });
-    }
-
-    console.log("⚡ No Strong FAQ Match - Checking Similarity Score");
-
-    // ✅ Step 2: If the similarity score is below LOW_SIMILARITY_THRESHOLD, suggest live support
-    if (!bestMatch || similarityScore < LOW_SIMILARITY_THRESHOLD) {
-      console.log("⚠ Too Personal or Unrelated - Redirecting to Live Support.");
-
-      return res.json({
-        reply:
-        "Hmm, looks like I couldn’t find a good answer to that.\n" +
-        "But don’t worry — we’ve got your back!\n" +
-        "Need immediate help? You can reach us at:\n" +
-        "Phone: (972) 362-8468\n" +
-        "Email: info@tinttekplus.com\n",
-      });
-    }
-
-    console.log("⚡ No strong FAQ match - Generating AI Response");
-
-    // ✅ Step 3: Try AI-Generated Response
     const aiGeneratedResponse = await generateAIResponse(message);
 
-    // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
-    // ✅ Step 4: If AI Response is Empty or Useless, Suggest Live Support
-    if (
-      !aiGeneratedResponse ||
-      aiGeneratedResponse.trim() === "" ||
-      aiGeneratedResponse.includes("I don't know") ||
-      aiGeneratedResponse.includes("I'm sorry") ||
-      aiGeneratedResponse.includes("doesn't contain information")
-    ) {
-      console.log(
-        "⚠ AI generated a vague response - Replacing with live support message."
-      );
-
-      return res.json({
-        reply:
-        "Hmm, looks like I couldn’t find a good answer to that.\n" +
-        "But don’t worry — we’ve got your back!\n" +
-        "Need immediate help? You can reach us at:\n" +
-        "Phone: (972) 362-8468\n" +
-        "Email: info@tinttekplus.com\n",
-      });
-    }
-
-    // ✅ Step 5: Return AI Response if it's Valid
+    // Return AI response as-is
     return res.json({ reply: aiGeneratedResponse });
   } catch (error) {
     console.error("❌ Error in chatbot:", error);
 
-    // ✅ Step 6: If an Unexpected Error Occurs, Show Contact Info
+    // Return a basic error message only if the AI call fails entirely
     return res.json({
       reply:
-      "Hmm, looks like I couldn’t find a good answer to that.\n" +
-      "But don’t worry — we’ve got your back!\n" +
-      "Need immediate help? You can reach us at:\n" +
-      "Phone: (972) 362-8468\n" +
-      "Email: info@tinttekplus.com\n",
+        "Oops! Something went wrong on our end. Please try again later or contact us at (972) 362-8468.",
     });
   }
 });
+
+
 
 // ✅ Start Server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

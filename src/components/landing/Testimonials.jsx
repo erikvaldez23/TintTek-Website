@@ -114,9 +114,9 @@ const Testimonials = () => {
       <Container maxWidth="xl">
         <Typography
           variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
+          sx={{ mb: 4, fontWeight: "bold", color: "#fff" }}
         >
-          USER REVIEWS
+          User Reviews
         </Typography>
 
         {isMobile ? (

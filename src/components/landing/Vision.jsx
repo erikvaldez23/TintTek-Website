@@ -90,7 +90,7 @@ const Vision = () => {
               width: "100%",
             }}
           >
-            OUR VISION
+            Our Vision
           </Typography>
         </motion.div>
 

@@ -15,7 +15,7 @@ const CommercialSimulator = () => {
           width: "100%",
           height: { xs: "35vh", md: "35vh" },
           overflow: "hidden",
-          backgroundColor: "#000",
+          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
         }}
       >
         <Box

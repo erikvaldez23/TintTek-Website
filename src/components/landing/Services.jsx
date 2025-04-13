@@ -170,7 +170,7 @@ const Services = () => {
     <Box
       id="services"
       sx={{
-        py: 4,
+        py: 6,
         textAlign: "center",
         backgroundColor: "#000",
         color: "#EEEEFF",
@@ -185,7 +185,7 @@ const Services = () => {
           color: "#fff",
         }}
       >
-        SERVICES
+        Services
       </Typography>
 
       {isMobile ? (
