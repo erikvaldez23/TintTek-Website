@@ -749,7 +749,7 @@ const HowItWorks = ({ serviceId }) => {
       )}
 
       {/* Images Section */}
-      {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-protection" && (
+      {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-protection" && serviceId !== "ceramic-coating" && (
       <Box
         sx={{
           maxWidth: "1200px", // Limit width

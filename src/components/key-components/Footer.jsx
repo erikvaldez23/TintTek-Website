@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok } from "react-icons/fa";
 import logo from "../../../public/tinttek-logo1.png"; // Ensure correct path
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -78,7 +78,7 @@ const Footer = () => {
                 transition: "color 0.3s",
                 "&:hover": { color: "#2794d2" }, // Blue color on hover
               }}
-              href="https://facebook.com"
+              href="https://www.facebook.com/people/Tinttekplus/61561991193951/"
               target="_blank"
             >
               <FaFacebook size={isMobile ? 22 : 24} />
@@ -90,24 +90,23 @@ const Footer = () => {
                 transition: "color 0.3s",
                 "&:hover": { color: "#2794d2" },
               }}
-              href="https://instagram.com"
+              href="https://www.instagram.com/tinttekplus/"
               target="_blank"
             >
               <FaInstagram size={isMobile ? 22 : 24} />
             </IconButton>
 
-            {/* Uncomment when needed */}
-            {/* <IconButton
+            <IconButton
               color="inherit"
               sx={{
                 transition: "color 0.3s",
-                "&:hover": { color: "#007bff" },
+                "&:hover": { color: "#2794d2" },
               }}
-              href="https://linkedin.com"
+              href="https://www.tiktok.com/@tinttekplus"
               target="_blank"
             >
-              <FaLinkedin size={isMobile ? 22 : 24} />
-            </IconButton> */}
+              <FaTiktok size={isMobile ? 22 : 24} />
+            </IconButton>
 
             {/* <IconButton
               color="inherit"
