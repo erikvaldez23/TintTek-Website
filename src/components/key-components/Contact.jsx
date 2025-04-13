@@ -89,7 +89,7 @@ const Contact = () => {
                         position: "absolute",
                         bottom: 0,
                         left: 0,
-                        width: "40px",
+                        width: "130px",
                         height: "3px",
                         background: "#2794d2",
                         borderRadius: "3px"
