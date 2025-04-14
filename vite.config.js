@@ -10,7 +10,7 @@ export default defineConfig({
       }
     }
   },
-  base: '/', // your base URL
+  base: '/TintTek-Website/', // your base URL
   server: {
     historyApiFallback: true,  // This will catch refresh errors and redirect to index.html
   },
