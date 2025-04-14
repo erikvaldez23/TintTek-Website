@@ -5,7 +5,7 @@ import { useState, Suspense } from "react";
 import { Box, Button, Typography, Grid } from "@mui/material";
 
 function CarModel({ tintOpacity }) {
-    const gltf = useLoader(GLTFLoader, "/TintTek-Website/car-model.glb");
+    const gltf = useLoader(GLTFLoader, "/car-model.glb");
 
     if (!gltf || !gltf.scene) {
         console.error("Error: 3D model failed to load.");
