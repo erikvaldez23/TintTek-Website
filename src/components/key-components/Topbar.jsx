@@ -38,7 +38,7 @@ const NavbarContainer = styled(Box)({
   margin: "0 auto",
 });
 
-const Topbar = ({ notFound }) => {
+const Topbar = ({ notFound, handleOpenChatbot }) => {
   // Accepting `notFound` prop
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
@@ -481,8 +481,7 @@ const Topbar = ({ notFound }) => {
                   label: "Vehicle Window Tinting",
                   path: "vehicle-window-tinting",
                 },
-                { label: "Tesla Window Tinting", 
-                  path: "tesla-window-tinting" },
+                { label: "Tesla Window Tinting", path: "tesla-window-tinting" },
                 {
                   label: "Commercial Window Tinting",
                   path: "commercial-window-tinting",
@@ -503,8 +502,7 @@ const Topbar = ({ notFound }) => {
                   label: "Headlight & Taillight Services",
                   path: "headlight-services",
                 },
-                { label: "Ceramic Coating", 
-                  path: "ceramic-coating" },
+                { label: "Ceramic Coating", path: "ceramic-coating" },
                 {
                   label: "Windshield Protection Film",
                   path: "windshield-protection-film",
@@ -518,7 +516,7 @@ const Topbar = ({ notFound }) => {
                     setDrawerOpen(false);
                   }}
                   sx={{
-                    paddingLeft: "40px",
+                    paddingLeft: "20px",
                     "& .MuiListItemText-primary": {
                       fontSize: "20px",
                       fontWeight: "bold",
@@ -547,7 +545,6 @@ const Topbar = ({ notFound }) => {
                 primary={item}
                 primaryTypographyProps={{
                   sx: {
-                    fontFamily: "NoizeSport, sans-serif",
                     fontWeight: "bold",
                     color: "white",
                     textTransform: "uppercase",
@@ -602,6 +599,10 @@ const Topbar = ({ notFound }) => {
           {/* Ask a Question Button */}
           <Button
             variant="contained"
+            onClick={() => {
+              if (handleOpenChatbot) handleOpenChatbot();
+              setDrawerOpen(false); // Close drawer
+            }}
             sx={{
               backgroundColor: "#222",
               color: "white",

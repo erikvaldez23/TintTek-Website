@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Topbar from "./components/key-components/Topbar";
 import Hero from "./components/hero/Hero";
@@ -48,7 +48,7 @@ const ScrollHandler = () => {
       setTimeout(() => {
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
-          const offset = 100; // Adjust this if your Topbar height changes
+          const offset = 100;
           const targetPosition =
             targetSection.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
@@ -61,13 +61,22 @@ const ScrollHandler = () => {
 };
 
 function App() {
+  // ✅ Chatbot state
+  const [chatbotOpen, setChatbotOpen] = useState(false);
+
+  const handleOpenChatbot = () => setChatbotOpen(true);
+  const handleCloseChatbot = () => setChatbotOpen(false);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <ScrollToTop />
         <ScrollHandler />
-        <Topbar />
+        
+        {/* ✅ Pass handleOpenChatbot to Topbar */}
+        <Topbar handleOpenChatbot={handleOpenChatbot} />
+
         <Routes>
           <Route
             path="/"
@@ -86,21 +95,21 @@ function App() {
             }
           />
           <Route path="/services/:serviceId" element={<ServicesPage />} />
-          <Route path="/services/:serviceId" element={<PricingComponent />} />
-          <Route path="/services/:serviceId" element={<FAQSection />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/support" element={<FAQ />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/simulators/commercial-window-tinting" element={<CommercialSimulator/>}/>
-          <Route path="/simulators/residential-window-tinting" element={<ResidentialSimulator/>}/>
-          <Route path="/simulators/tesla-window-tinting" element={<TeslaTintingPage/>}/>
-          <Route path="/simulators/vehicle-window-tinting" element={<VehicleTintingPage/>}/>
-          <Route path="/simulators/vehicle-paint-protection" element={<PPFpage/>}/>
+          <Route path="/simulators/commercial-window-tinting" element={<CommercialSimulator />} />
+          <Route path="/simulators/residential-window-tinting" element={<ResidentialSimulator />} />
+          <Route path="/simulators/tesla-window-tinting" element={<TeslaTintingPage />} />
+          <Route path="/simulators/vehicle-window-tinting" element={<VehicleTintingPage />} />
+          <Route path="/simulators/vehicle-paint-protection" element={<PPFpage />} />
         </Routes>
-        <Chatbot />
+
+        {/* ✅ Show chatbot based on state */}
+        <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
       </Router>
     </ThemeProvider>
   );

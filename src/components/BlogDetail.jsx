@@ -48,7 +48,7 @@ const blogPosts = [
         </Typography>
       </>
     ),
-    image: "/TintTek-Website/paint-correction.jpg",
+    image: "/paint-correction.jpg",
     date: "February 16, 2025",
     category: "Automotive Tinting",
   },
@@ -85,7 +85,7 @@ const blogPosts = [
         </Typography>
       </>
     ),
-    image: "/TintTek-Website/background.jpg",
+    image: "/background.jpg",
     date: "February 10, 2025",
     category: "Legal",
   },
@@ -126,7 +126,7 @@ const blogPosts = [
         </Typography>
       </>
     ),
-    image: "/TintTek-Website/cybertruck.jpg",
+    image: "/cybertruck.jpg",
     date: "March 1, 2025",
     category: "Car Protection",
   },
