@@ -14,6 +14,37 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 // ✅ Load FAQ Data from JSON
 const FAQ_PATH = __dirname + "/data/training_data.json";
 
+const USER_MESSAGES_PATH = __dirname + "/data/user_messages.json";
+
+// ✅ Function to store user input and bot reply
+const storeUserMessage = (userMessage, botReply) => {
+  const newEntry = {
+    timestamp: new Date().toISOString(),
+    userMessage,
+    botReply,
+  };
+
+  let currentData = [];
+
+  try {
+    if (fs.existsSync(USER_MESSAGES_PATH)) {
+      const raw = fs.readFileSync(USER_MESSAGES_PATH, "utf8");
+      currentData = JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error("❌ Error reading user messages file:", err);
+  }
+
+  currentData.push(newEntry);
+
+  try {
+    fs.writeFileSync(USER_MESSAGES_PATH, JSON.stringify(currentData, null, 2));
+    console.log("📝 Stored user message.");
+  } catch (err) {
+    console.error("❌ Error writing user message:", err);
+  }
+};
+
 let faqData = [];
 let faqEmbeddings = [];
 
@@ -138,6 +169,9 @@ app.post("/chat", async (req, res) => {
 
     const aiGeneratedResponse = await generateAIResponse(message);
 
+    // ✅ Store user message + AI response
+    storeUserMessage(message, aiGeneratedResponse);
+
     return res.json({ reply: aiGeneratedResponse });
   } catch (error) {
     console.error("❌ Error in chatbot:", error);
@@ -146,3 +180,4 @@ app.post("/chat", async (req, res) => {
     });
   }
 });
+
