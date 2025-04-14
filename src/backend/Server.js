@@ -2,7 +2,9 @@ require("dotenv").config({ path: require("path").resolve(__dirname, "../../.env"
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
+const mongoose = require("mongoose");
 const { OpenAI } = require("openai");
+const Message = require("./models/Message"); // Message model
 
 const app = express();
 app.use(cors());
@@ -11,13 +13,17 @@ app.use(express.json());
 const PORT = process.env.PORT || 5001;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// ✅ Load FAQ Data from JSON
-const FAQ_PATH = __dirname + "/data/training_data.json";
+// ✅ MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("✅ Connected to MongoDB Atlas"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
+// ✅ File paths
+const FAQ_PATH = __dirname + "/data/training_data.json";
 const USER_MESSAGES_PATH = __dirname + "/data/user_messages.json";
 
-// ✅ Function to store user input and bot reply
-const storeUserMessage = (userMessage, botReply) => {
+// ✅ Store in JSON file (optional local backup)
+const storeUserMessageToFile = (userMessage, botReply) => {
   const newEntry = {
     timestamp: new Date().toISOString(),
     userMessage,
@@ -39,12 +45,13 @@ const storeUserMessage = (userMessage, botReply) => {
 
   try {
     fs.writeFileSync(USER_MESSAGES_PATH, JSON.stringify(currentData, null, 2));
-    console.log("📝 Stored user message.");
+    console.log("📝 Stored user message to file.");
   } catch (err) {
-    console.error("❌ Error writing user message:", err);
+    console.error("❌ Error writing user message file:", err);
   }
 };
 
+// ✅ Load FAQ JSON
 let faqData = [];
 let faqEmbeddings = [];
 
@@ -54,15 +61,15 @@ const loadFAQData = () => {
     faqData = JSON.parse(data);
     console.log("✅ Loaded FAQ Data:", faqData.length, "entries");
   } catch (error) {
-    console.error("❌ Error loading training data:", error);
+    console.error("❌ Error loading FAQ data:", error);
   }
 };
 
-// ✅ Get Embedding for a Given Text
+// ✅ Get Embedding
 const getEmbedding = async (text) => {
   try {
     const response = await openai.embeddings.create({
-      model: "text-embedding-ada-002", // ✅ valid model
+      model: "text-embedding-ada-002",
       input: text,
     });
     return response.data[0].embedding;
@@ -72,7 +79,7 @@ const getEmbedding = async (text) => {
   }
 };
 
-// ✅ Preload Embeddings for FAQ Questions
+// ✅ Preload all FAQ Embeddings
 const preloadEmbeddings = async () => {
   for (const faq of faqData) {
     const embedding = await getEmbedding(faq.question);
@@ -83,7 +90,7 @@ const preloadEmbeddings = async () => {
   console.log("✅ Preloaded FAQ Embeddings");
 };
 
-// ✅ Compute Cosine Similarity
+// ✅ Cosine Similarity
 const cosineSimilarity = (vecA, vecB) => {
   const dotProduct = vecA.reduce((sum, a, i) => sum + a * vecB[i], 0);
   const magnitudeA = Math.sqrt(vecA.reduce((sum, a) => sum + a * a, 0));
@@ -91,7 +98,7 @@ const cosineSimilarity = (vecA, vecB) => {
   return dotProduct / (magnitudeA * magnitudeB);
 };
 
-// ✅ Find Best Match Using Embeddings
+// ✅ Find Best Match
 const findBestMatchAI = async (userMessage) => {
   const userEmbedding = await getEmbedding(userMessage);
   if (!userEmbedding) return null;
@@ -110,7 +117,7 @@ const findBestMatchAI = async (userMessage) => {
   return { bestMatch, similarityScore: highestSimilarity };
 };
 
-// ✅ Generate AI-Based Answer Using GPT
+// ✅ Generate Response
 const generateAIResponse = async (userMessage) => {
   try {
     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
@@ -154,7 +161,7 @@ ${userMessage}
   }
 };
 
-// ✅ Load FAQ and Embeddings at Startup
+// ✅ Load and Start Server
 loadFAQData();
 
 preloadEmbeddings().then(() => {
@@ -167,17 +174,22 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
     console.log("📩 User Input:", message);
 
-    const aiGeneratedResponse = await generateAIResponse(message);
+    const botReply = await generateAIResponse(message);
 
-    // ✅ Store user message + AI response
-    storeUserMessage(message, aiGeneratedResponse);
+    // ✅ Store to MongoDB
+    await Message.create({
+      userMessage: message,
+      botReply,
+    });
 
-    return res.json({ reply: aiGeneratedResponse });
+    // ✅ Store to file (optional)
+    storeUserMessageToFile(message, botReply);
+
+    res.json({ reply: botReply });
   } catch (error) {
-    console.error("❌ Error in chatbot:", error);
-    return res.json({
+    console.error("❌ Error in /chat endpoint:", error);
+    res.status(500).json({
       reply: "Oops! Something went wrong. Please contact us at (972) 362-8468.",
     });
   }
 });
-
