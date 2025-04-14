@@ -495,24 +495,40 @@
     "question": "What services do y'all offer for tesla window tinting?",
     "answer": "Window strip: Starting at $50, Front two window match: Starting at $119, Full windshield: Starting at $249, Single pane sunroof: Starting at $200"
   },
-{
-  "question": "Tesla Model S Tinting prices",
-  "answer": "CTX: $329, IRX: $529"
-},
-{
-  "question": "Tesla Model 3 Tinting prices",
-  "answer": "CTX: $449, IRX: $589"
-},
-{
-  "question": "Tesla Model X Tinting prices",
-  "answer": "CTX: $589, IRX: $749"
-},
-{
-  "question": "Tesla Model Y Tinting prices",
-  "answer": "CTX: $389, IRX: $589"
-},
-{
-  "question": "Tesla Cyber Truck Tinting prices",
-  "answer": "CTX: $485, IRX: $685"
-}
+  {
+    "question": "Tesla Model S Tinting prices",
+    "answer": "CTX: $329, IRX: $529"
+  },
+  {
+    "question": "Tesla Model 3 Tinting prices",
+    "answer": "CTX: $449, IRX: $589"
+  },
+  {
+    "question": "Tesla Model X Tinting prices",
+    "answer": "CTX: $589, IRX: $749"
+  },
+  {
+    "question": "Tesla Model Y Tinting prices",
+    "answer": "CTX: $389, IRX: $589"
+  },
+  {
+    "question": "Tesla Cyber Truck Tinting prices",
+    "answer": "CTX: $485, IRX: $685"
+  },
+  {
+    "question": "What films are used for tesla window tinting?",
+    "answer": "Llumar CTX: CTX film combines advanced ceramic technology with excellent heat and UV protection. It blocks up to 60% of infrared heat while maintaining a clear, non-reflective appearance. Perfect for those seeking superior comfort and privacy without darkening windows too much, CTX is ideal for moderate climates where effective heat rejection and UV protection are key. Llumar IRX:Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style. "
+  },
+  {
+    "question": "How can I visually see the tint before I purchase?",
+    "answer": "We have simulators where the user can visually see what the tint would like for vehicle window tinting, tesla window tinting, paint protection film, commercial window tinting, residential window tinting"
+  },
+  {
+    "question": "What films are used for commercial window tinting?",
+    "answer": "Solar Control film:Reduces heat and glare while allowing natural light to enter, improving energy efficiency. Decorative Film:Offers privacy and style while reducing glare and heat. Security Film (Coming Soon!):Strengthens windows, offering protection against break-ins and accidents by preventing shattering."
+  },
+  {
+    "question": "What films are used for residential window tinting?",
+    "answer": "Reflective Window Film, Dual-Relfective Window Film, Neutral Window Film, Specialty Window Film, Ceramic Window Film, Harmony Window Film"
+  }
 ]
