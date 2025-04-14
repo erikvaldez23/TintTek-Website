@@ -286,11 +286,11 @@ const ServicesOffered = ({ serviceId }) => {
           component="img"
           src={
             serviceId === "windshield-protection-film"
-              ? "/TintTek-Website/windshield/exo.png"
+              ? "/windshield/exo.png"
               : serviceId === "vehicle-paint-protection" ||
                 serviceId === "headlight-services"
-              ? "/TintTek-Website/stek-logo.png"
-              : "/TintTek-Website/llumar-logo.png"
+              ? "/stek-logo.png"
+              : "/llumar-logo.png"
           }
           alt="Film Type Logo"
           sx={{

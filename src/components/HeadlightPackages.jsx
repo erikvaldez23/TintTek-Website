@@ -19,21 +19,21 @@ const tintPackages = [
   {
     title: "Headlight Tint (2 Pair)",
     price: "$175",
-    image: "/TintTek-Website/headlight/headlight.webp",
+    image: "/headlight/headlight.webp",
     // description:
     //   "A narrow strip across the top of the windshield to block excessive glare.",
   },
   {
     title: "Taillight Tint (2 Pair)",
     price: "$175",
-    image: "/TintTek-Website/headlight/taillight.jpg",
+    image: "/headlight/taillight.jpg",
     // description:
     //   "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Reflectors (2 Pair)",
     price: "$75",
-    image: "/TintTek-Website/headlight/reflector.jpg",
+    image: "/headlight/reflector.jpg",
     // description:
     //   "A full-tint windshield package for optimal UV and heat rejection.",
   },

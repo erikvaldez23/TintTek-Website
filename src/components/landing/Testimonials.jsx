@@ -17,7 +17,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Google Reviews URL and logo
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9";
-const GOOGLE_LOGO = "/TintTek-Website/google-logo.png";
+const GOOGLE_LOGO = "/google-logo.png";
 
 const reviews = [
   {

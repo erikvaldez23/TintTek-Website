@@ -14,28 +14,28 @@ import { AnimatePresence, motion } from "framer-motion";
 const ppfOptions = {
   "front-end": {
     name: "Front End PPF",
-    image: "/TintTek-Website/ppf-model/ppf-front.webp",
+    image: "/ppf-model/ppf-front.webp",
     description:
       "Provides essential front-end protection against road debris and scratches.",
     price: "$1750",
   },
   extended: {
     name: "Extended PPF",
-    image: "/TintTek-Website/ppf-model/ppf-extended.webp",
+    image: "/ppf-model/ppf-extended.webp",
     description:
       "Covers additional areas for enhanced protection and longevity.",
     price: "$2500",
   },
   // "track-package": {
   //   name: "Track Package PPF",
-  //   image: "/TintTek-Website/track-package1.png",
+  //   image: "/track-package1.png",
   //   description:
   //     "Designed for track performance with maximum coverage and durability.",
   //   price: "$$$",
   // },
   "full-car": {
     name: "Full Car PPF",
-    image: "/TintTek-Website/ppf-model/ppf-full.webp",
+    image: "/ppf-model/ppf-full.webp",
     description: "Complete vehicle protection with hydrophobic properties.",
     price: "**Call For Pricing**",
   },

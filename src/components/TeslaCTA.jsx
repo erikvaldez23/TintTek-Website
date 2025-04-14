@@ -18,7 +18,7 @@ const callToActionData = {
       Imagine driving your Tesla with enhanced privacy, a cooler interior, and a sleek, customized look—all while protecting your vehicle from harmful UV rays. At Tint Tek Plus, we specialize in premium LLumar® window films tailored specifically for Tesla models. Our expert installation ensures your vehicle not only looks great but also offers superior comfort and protection.
       Reduce heat, minimize glare, and preserve your interior—all while enhancing your Tesla’s style and performance.
     `,
-    video: "/TintTek-Website/videos/tesla-video.mov",
+    video: "/videos/tesla-video.mov",
   },
 };
 
@@ -119,7 +119,7 @@ const TeslaCTA = () => {
               muted={isMuted}
               loop
               playsInline
-              poster="/TintTek-Website/gallery/Tint Tek-108.jpg"
+              poster="/gallery/Tint Tek-108.jpg"
               onEnded={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}

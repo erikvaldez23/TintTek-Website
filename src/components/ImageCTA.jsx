@@ -21,11 +21,11 @@ const callToActionData = {
       Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.
       `,
     images: [
-      "/TintTek-Website/v-window-tint/Tint Tek-63.jpeg",
-      "/TintTek-Website/v-window-tint/Tint Tek-4.jpeg",
-      "/TintTek-Website/v-window-tint/Tint Tek-66.jpeg",
-      "/TintTek-Website/v-window-tint/Tint Tek-37.jpeg",
-      "/TintTek-Website/v-window-tint/Tint Tek-105.jpeg",
+      "/v-window-tint/Tint Tek-63.jpeg",
+      "/v-window-tint/Tint Tek-4.jpeg",
+      "/v-window-tint/Tint Tek-66.jpeg",
+      "/v-window-tint/Tint Tek-37.jpeg",
+      "/v-window-tint/Tint Tek-105.jpeg",
     ],
   },
   "tesla-window-tinting": {
@@ -35,13 +35,13 @@ const callToActionData = {
       Reduce heat, minimize glare, and preserve your interior—all while enhancing your Tesla’s style and performance.
     `,
     images: [
-      "/TintTek-Website/tesla/tesla test.jpg",
-      "/TintTek-Website/tesla/Tint Tek-165.jpg",
-      "/TintTek-Website/tesla/Tint Tek-166.jpg",
-      "/TintTek-Website/tesla/Tint Tek-170.jpg",
-      "/TintTek-Website/tesla/Tint Tek-181.jpg",
-      "/TintTek-Website/tesla/Tint Tek-190.jpg",
-      "/TintTek-Website/tesla/Tint Tek-195.jpg",
+      "/tesla/tesla test.jpg",
+      "/tesla/Tint Tek-165.jpg",
+      "/tesla/Tint Tek-166.jpg",
+      "/tesla/Tint Tek-170.jpg",
+      "/tesla/Tint Tek-181.jpg",
+      "/tesla/Tint Tek-190.jpg",
+      "/tesla/Tint Tek-195.jpg",
     ],
   },
   "residential-window-tinting": {
@@ -55,11 +55,11 @@ const callToActionData = {
     that are quickly and professionally installed, delivering lasting
     lifestyle benefits without breaking the bank.`,
     images: [
-      // "/TintTek-Website/residential/residential1.jpg",
-      "/TintTek-Website/residential/residential2.jpg",
-      "/TintTek-Website/residential/residential3.jpg",
-      "/TintTek-Website/residential/residential4.jpg",
-      "/TintTek-Website/residential/residential5.jpg",
+      // "/residential/residential1.jpg",
+      "/residential/residential2.jpg",
+      "/residential/residential3.jpg",
+      "/residential/residential4.jpg",
+      "/residential/residential5.jpg",
     ],
   },
   "vehicle-paint-correction": {
@@ -67,22 +67,22 @@ const callToActionData = {
     description: `At Tint Tek Plus, we specialize in restoring and enhancing your vehicle’s paint, bringing back its original shine and clarity. Whether you’re dealing with swirl marks, scratches, oxidation, or just want to boost the appearance of your car, our professional paint correction services will restore your vehicle’s exterior to a showroom-quality finish..
     Our commercial films are smart, sleek, and built to last. Perfect for offices, retail spaces, and buildings looking to improve energy efficiency.`,
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/",
+      "/",
+      "/",
+      "/",
+      "/",
     ],
   },
   "vehicle-paint-protection": {
     title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/",
+      "/",
+      "/",
+      "/",
+      "/",
     ],
   },
   "headlight-services": {
@@ -91,22 +91,22 @@ const callToActionData = {
     description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.
 `,
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/",
+      "/",
+      "/",
+      "/",
+      "/",
     ],
   },
   "windshield-protection-film": {
     title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     images: [
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
-      "/TintTek-Website/",
+      "/",
+      "/",
+      "/",
+      "/",
+      "/",
     ],
   },
 };

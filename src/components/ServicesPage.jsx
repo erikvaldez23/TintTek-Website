@@ -176,7 +176,7 @@ const ServicePage = () => {
             {/* Image Section */}
             <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
               <img
-                src="/TintTek-Website/dog.jpeg" // Replace with your desired image
+                src="/dog.jpeg" // Replace with your desired image
                 alt="Dog"
                 style={{
                   maxWidth: "100%",

@@ -22,47 +22,47 @@ const videoContent = {
   //   title:
   //     "Premium automotive care to enhance, protect, and maintain your vehicle.",
   //   description: `Drive in comfort, privacy, and style with LLumar® automotive window tinting. Whether you're looking to reduce interior heat, block harmful UV rays, or upgrade your car’s appearance, Tint Tek Plus offers precision installation with premium film technology. Our professional-grade tints not only protect your interior and passengers, but also deliver a sleek, high-end look that turns heads — all while keeping you cool on the road. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
-  //   video: "/TintTek-Website/",
+  //   video: "/",
   // },
   // "tesla-window-tinting": {
   //   title: "Elevate Your Tesla with Premium Window Film",
   //   description: `Your Tesla deserves the best — and so do you. At Tint Tek Plus, we specialize in Tesla window tinting using precision-cut LLumar® films that perfectly match your vehicle’s design. Our tints offer advanced heat rejection, UV protection, enhanced privacy, and a refined look that complements Tesla’s futuristic aesthetic. Enjoy a cooler cabin, reduced glare, and preserved interior — all without sacrificing signal performance or style. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
-  //   video: "/TintTek-Website/",
+  //   video: "/",
   // },
   "residential-window-tinting": {
     title: "Superior Protection for Texas Roads. Clarity. Durability. Safety.",
     description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
-    video: "/TintTek-Website/videos/Windshield-Film.mov",
+    video: "/videos/Windshield-Film.mov",
   },
   "commercial-window-tinting": {
     title: "Transform Your Business with LLumar® Commercial Films",
     description: `The glass in your office, retail, or residential building should be an asset, not a source of discomfort or excessive cost. At Tint Tek Plus, we offer high-quality LLumar® window films, designed to solve a wide range of glass-related issues: high energy costs, tenant complaints, glare, fading furnishings, privacy concerns, security risks, and more. Whether you're improving an existing property or designing a new one, LLumar® provides the perfect solution to meet your needs.`,
-    video: "/TintTek-Website/videos/commercial-video1.mov",
+    video: "/videos/commercial-video1.mov",
   },
   // "vehicle-paint-correction": {
   //   title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
   //   description: `Eliminate scratches, swirls, and oxidation to bring back that showroom finish. Our multi-stage correction process ensures a mirror-like gloss.`,
-  //   video: "/TintTek-Website/videos/paint-correction.mov",
+  //   video: "/videos/paint-correction.mov",
   // },
   // "vehicle-paint-protection": {
   //   title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
   //   description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
-  //   video: "/TintTek-Website/",
+  //   video: "/",
   // },
   "headlight-services": {
     title: "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
     description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.`,
-    video: "/TintTek-Website/videos/headlight.mov",
+    video: "/videos/headlight.mov",
   },
   "ceramic-coating": {
     title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
     description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,
-    video: "/TintTek-Website/videos/ceramic-coating.mov",
+    video: "/videos/ceramic-coating.mov",
   },
   "windshield-protection-film": {
     title: "Drive Texas Roads with Confidence: Experience Superior Protection, Clarity, and Durability.",
     description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
-    video: "/TintTek-Website/videos/Windshield-Film.mov",
+    video: "/videos/Windshield-Film.mov",
   },
 };
 
@@ -171,7 +171,7 @@ export default function VideoCTA() {
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                poster="/TintTek-Website/gallery/Tint Tek-107-2.jpg" 
+                poster="/gallery/Tint Tek-107-2.jpg" 
                 style={{
                   width: "100%",
                   height: "100%",
