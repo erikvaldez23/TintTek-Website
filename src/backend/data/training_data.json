@@ -462,5 +462,57 @@
   {
     "question": "Who is the best window tinting company in Dallas?",
     "answer": "Tint Tek + obviously!"
-  }
+  },
+  {
+    "question": "Vehicle window tinting pricing for a coupe; ",
+    "answer": "ATC: $179, CTX: $279, IRX: $379"
+  },
+  {
+    "question": "Vehicle window tinting pricing for a sedan; ",
+    "answer": "ATC: $199, CTX: $329, IRX: $529"
+  },
+  {
+    "question": "Vehicle window tinting pricing for a truck; ",
+    "answer": "ATC: $249, CTX: $349, IRX: $549"
+  },
+  {
+    "question": "Vehicle window tinting pricing for a full suv; ",
+    "answer": "ATC: $289, CTX: $389, IRX: $589"
+  },
+  {
+    "question": "Vehicle window tinting pricing for 2 windows",
+    "answer": "ATC: $85, CTX: $119, IRX: $149"
+  },
+  {
+    "question": "Where to find more specific pricing information about vehicle window tinting",
+    "answer": "Under services click vehicle window tinting"
+  },
+  {
+    "question": "What services do y'all offer for vehicle window tinting?",
+    "answer": "Window strip: Starting at $50, Front two window match: Starting at $85, Full windshield: Starting at $249, Single pane sunroof: Starting at $100"
+  },
+  {
+    "question": "What services do y'all offer for tesla window tinting?",
+    "answer": "Window strip: Starting at $50, Front two window match: Starting at $119, Full windshield: Starting at $249, Single pane sunroof: Starting at $200"
+  },
+{
+  "question": "Tesla Model S Tinting prices",
+  "answer": "CTX: $329, IRX: $529"
+},
+{
+  "question": "Tesla Model 3 Tinting prices",
+  "answer": "CTX: $449, IRX: $589"
+},
+{
+  "question": "Tesla Model X Tinting prices",
+  "answer": "CTX: $589, IRX: $749"
+},
+{
+  "question": "Tesla Model Y Tinting prices",
+  "answer": "CTX: $389, IRX: $589"
+},
+{
+  "question": "Tesla Cyber Truck Tinting prices",
+  "answer": "CTX: $485, IRX: $685"
+}
 ]

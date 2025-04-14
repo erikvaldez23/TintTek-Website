@@ -14,6 +14,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 // ✅ Load FAQ Data from JSON
 const FAQ_PATH = __dirname + "/data/training_data.json";
 
+let faqData = [];
 let faqEmbeddings = [];
 
 const loadFAQData = () => {
@@ -26,6 +27,21 @@ const loadFAQData = () => {
   }
 };
 
+// ✅ Get Embedding for a Given Text
+const getEmbedding = async (text) => {
+  try {
+    const response = await openai.embeddings.create({
+      model: "text-embedding-ada-002", // ✅ valid model
+      input: text,
+    });
+    return response.data[0].embedding;
+  } catch (error) {
+    console.error("❌ Error generating embedding:", error);
+    return null;
+  }
+};
+
+// ✅ Preload Embeddings for FAQ Questions
 const preloadEmbeddings = async () => {
   for (const faq of faqData) {
     const embedding = await getEmbedding(faq.question);
@@ -36,25 +52,6 @@ const preloadEmbeddings = async () => {
   console.log("✅ Preloaded FAQ Embeddings");
 };
 
-
-
-
-// ✅ Get Embedding for a Given Text
-const getEmbedding = async (text) => {
-  try {
-    const response = await openai.embeddings.create({
-      model: "text-embedding-3-small",
-      input: text,
-    });
-    return response.data[0].embedding;
-  } catch (error) {
-    console.error("❌ Error generating embedding:", error);
-    return null;
-  }
-};
-
-
-
 // ✅ Compute Cosine Similarity
 const cosineSimilarity = (vecA, vecB) => {
   const dotProduct = vecA.reduce((sum, a, i) => sum + a * vecB[i], 0);
@@ -63,7 +60,7 @@ const cosineSimilarity = (vecA, vecB) => {
   return dotProduct / (magnitudeA * magnitudeB);
 };
 
-// ✅ Find Best FAQ Match Using AI
+// ✅ Find Best Match Using Embeddings
 const findBestMatchAI = async (userMessage) => {
   const userEmbedding = await getEmbedding(userMessage);
   if (!userEmbedding) return null;
@@ -82,22 +79,20 @@ const findBestMatchAI = async (userMessage) => {
   return { bestMatch, similarityScore: highestSimilarity };
 };
 
-
-// Load FAQ Data at Startup
-loadFAQData();
-preloadEmbeddings(); // async call
-
-
-// ✅ Generate AI-Based Answer Using GPT-4
+// ✅ Generate AI-Based Answer Using GPT
 const generateAIResponse = async (userMessage) => {
   try {
-    const context = faqData
-      .map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`)
-      .join("\n\n");
+    const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
+
+    if (!bestMatch || similarityScore < 0.75) {
+      return "I'm not totally sure about that – for the most accurate answer, feel free to give us a call at (972) 362-8468 or check the Services page!";
+    }
+
+    const context = `Q: ${bestMatch.question}\nA: ${bestMatch.answer}`;
 
     const prompt = `
-You are a helpful FAQ assistant. Answer the following user question using the provided FAQ data. 
-Keep the response under 3 sentences and concise. Avoid unnecessary details.
+You are a helpful FAQ assistant. Use the FAQ data below to answer the user's question.
+Keep it under 3 sentences. Be clear, professional, and concise.
 
 ### FAQ Data:
 ${context}
@@ -105,7 +100,7 @@ ${context}
 ### User Question:
 ${userMessage}
 
-### Answer (Max 3 sentences):
+### Answer:
 `;
 
     const completion = await openai.chat.completions.create({
@@ -113,25 +108,29 @@ ${userMessage}
       messages: [
         {
           role: "system",
-          content: "You are a helpful customer support assistant. With all of the information that you need given to you in training_data.json.\
-          If you do not know the answer to a users question then just say that you do not know and then route the user to contact a live agent.",
+          content:
+            "You are a helpful customer support assistant. If no relevant FAQ is available, direct users to contact support. Answer clearly based on the FAQ context provided.",
         },
         { role: "user", content: prompt },
       ],
-      max_tokens: 200,
+      max_tokens: 300,
     });
 
     return completion.choices[0].message.content.trim();
   } catch (error) {
     console.error("❌ Error generating AI response:", error);
-    return "I'm sorry, I couldn't generate an answer at this moment.";
+    return "Oops! Something went wrong. Please try again later or contact us directly.";
   }
 };
 
-// ✅ Define Similarity Thresholds
-const HIGH_SIMILARITY_THRESHOLD = 0.95; // Strong match
-const LOW_SIMILARITY_THRESHOLD = 0.0; // Too far from training data
+// ✅ Load FAQ and Embeddings at Startup
+loadFAQData();
 
+preloadEmbeddings().then(() => {
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+});
+
+// ✅ Chat Endpoint
 app.post("/chat", async (req, res) => {
   try {
     const { message } = req.body;
@@ -139,20 +138,11 @@ app.post("/chat", async (req, res) => {
 
     const aiGeneratedResponse = await generateAIResponse(message);
 
-    // Return AI response as-is
     return res.json({ reply: aiGeneratedResponse });
   } catch (error) {
     console.error("❌ Error in chatbot:", error);
-
-    // Return a basic error message only if the AI call fails entirely
     return res.json({
-      reply:
-        "Oops! Something went wrong on our end. Please try again later or contact us at (972) 362-8468.",
+      reply: "Oops! Something went wrong. Please contact us at (972) 362-8468.",
     });
   }
 });
-
-
-
-// ✅ Start Server
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
