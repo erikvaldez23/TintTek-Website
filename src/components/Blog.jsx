@@ -21,7 +21,7 @@ const blogPosts = [
     title: "Top Benefits of Window Tinting for Your Car",
     summary:
       "Learn how window tinting can enhance your driving experience by reducing heat, glare, and UV exposure.",
-    image: "/TintTek-Website/paint-correction.jpg",
+    image: "/paint-correction.jpg",
     date: "February 16, 2025",
     category: ["Automotive Tinting", "Web"],
   },
@@ -30,7 +30,7 @@ const blogPosts = [
     title: "How Dark Can Your Tint Be? Legal Tint Laws Explained",
     summary:
       "Discover the legal window tint limits in your state and avoid unnecessary fines.",
-    image: "/TintTek-Website/background.jpg",
+    image: "/background.jpg",
     date: "February 10, 2025",
     category: ["Legal", "Other"],
   },
@@ -39,7 +39,7 @@ const blogPosts = [
     title: "The Science Behind Ceramic Coatings: Is It Worth It?",
     summary:
       "Discover how ceramic coatings protect your car’s paint, enhance gloss, and provide long-term durability.",
-    image: "/TintTek-Website/ppf.jpg",
+    image: "/ppf.jpg",
     date: "March 1, 2025",
     category: ["Automotive Tinting"],
   },
@@ -48,7 +48,7 @@ const blogPosts = [
     title: "The Pros and Cons of PPF (Paint Protection Film) for Your Car",
     summary:
       "Is PPF worth it? Learn about the advantages and disadvantages of paint protection film.",
-    image: "/TintTek-Website/cybertruck.jpg",
+    image: "/cybertruck.jpg",
     date: "March 8, 2025",
     category: ["Other"],
   },
