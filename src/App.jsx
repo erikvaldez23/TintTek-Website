@@ -1,6 +1,13 @@
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { useState, useEffect } from "react";
+import { Box, IconButton } from "@mui/material";
+import ChatIcon from "@mui/icons-material/Chat";
 import "./App.css";
 import Topbar from "./components/key-components/Topbar";
 import Hero from "./components/hero/Hero";
@@ -15,7 +22,7 @@ import WhyChooseUs from "./components/landing/WhyChooseUs";
 import Gallery from "./components/sub-pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import NotFound from "./components/NotFound";  
+import NotFound from "./components/NotFound";
 import CallToAction from "./components/key-components/CallToAction";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
@@ -73,7 +80,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <ScrollHandler />
-        
+
         {/* ✅ Pass handleOpenChatbot to Topbar */}
         <Topbar handleOpenChatbot={handleOpenChatbot} />
 
@@ -90,7 +97,7 @@ function App() {
                 <CallToAction />
                 <Contact />
                 <QuickLinks />
-                <Footer /> 
+                <Footer />
               </>
             }
           />
@@ -101,15 +108,54 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/simulators/commercial-window-tinting" element={<CommercialSimulator />} />
-          <Route path="/simulators/residential-window-tinting" element={<ResidentialSimulator />} />
-          <Route path="/simulators/tesla-window-tinting" element={<TeslaTintingPage />} />
-          <Route path="/simulators/vehicle-window-tinting" element={<VehicleTintingPage />} />
-          <Route path="/simulators/vehicle-paint-protection" element={<PPFpage />} />
+          <Route
+            path="/simulators/commercial-window-tinting"
+            element={<CommercialSimulator />}
+          />
+          <Route
+            path="/simulators/residential-window-tinting"
+            element={<ResidentialSimulator />}
+          />
+          <Route
+            path="/simulators/tesla-window-tinting"
+            element={<TeslaTintingPage />}
+          />
+          <Route
+            path="/simulators/vehicle-window-tinting"
+            element={<VehicleTintingPage />}
+          />
+          <Route
+            path="/simulators/vehicle-paint-protection"
+            element={<PPFpage />}
+          />
         </Routes>
-
-        {/* ✅ Show chatbot based on state */}
         <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
+        {!chatbotOpen && (
+          <Box
+            sx={{
+              position: "fixed",
+              bottom: 20,
+              right: 20,
+              zIndex: (theme) => theme.zIndex.modal + 5,
+            }}
+          >
+            <IconButton
+              onClick={handleOpenChatbot}
+              sx={{
+                backgroundColor: "#2794d2",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#1976c9",
+                },
+                width: 50,
+                height: 50,
+                boxShadow: "0px 4px 12px rgba(0,0,0,0.3)",
+              }}
+            >
+              <ChatIcon />
+            </IconButton>
+          </Box>
+        )}
       </Router>
     </ThemeProvider>
   );
