@@ -122,23 +122,24 @@ const generateAIResponse = async (userMessage) => {
   try {
     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
 
-    if (!bestMatch || similarityScore < 0.75) {
-      return "I'm not totally sure about that – for the most accurate answer, feel free to give us a call at (972) 362-8468 or check the Services page!";
+    let context;
+    if (bestMatch && similarityScore >= 0.75) {
+      context = `Q: ${bestMatch.question}\nA: ${bestMatch.answer}`;
+    } else {
+      context = `There is no relevant FAQ available for this question.`;
     }
 
-    const context = `Q: ${bestMatch.question}\nA: ${bestMatch.answer}`;
-
     const prompt = `
-You are a helpful FAQ assistant. Use the FAQ data below to answer the user's question.
-Keep it under 3 sentences. Be clear, professional, and concise.
+You are a helpful customer support assistant for a window tinting company.
 
-### FAQ Data:
 ${context}
 
-### User Question:
-${userMessage}
+User Question:
+"${userMessage}"
 
-### Answer:
+If FAQ data is not available, write a brief, friendly response that acknowledges the user's question and encourages them to reach out to live support. End your message by saying: "Feel free to give us a call at (972) 362-8468 or check out our Services page!"
+
+Your answer should be clear, under 3 sentences, and sound like a real person who cares.
 `;
 
     const completion = await openai.chat.completions.create({
@@ -147,7 +148,7 @@ ${userMessage}
         {
           role: "system",
           content:
-            "You are a helpful customer support assistant. If no relevant FAQ is available, direct users to contact support. Answer clearly based on the FAQ context provided.",
+            "You are a helpful assistant for a tinting business. Use FAQ data if it's available. If not, give a warm, personalized response and direct the user to contact support.",
         },
         { role: "user", content: prompt },
       ],
@@ -160,6 +161,7 @@ ${userMessage}
     return "Oops! Something went wrong. Please try again later or contact us directly.";
   }
 };
+
 
 // ✅ Load and Start Server
 loadFAQData();
