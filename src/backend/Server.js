@@ -123,7 +123,7 @@ const generateAIResponse = async (userMessage) => {
     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
 
     let context;
-    if (bestMatch && similarityScore >= 0.75) {
+    if (bestMatch && similarityScore >= 0.5) {
       context = `Q: ${bestMatch.question}\nA: ${bestMatch.answer}`;
     } else {
       context = `There is no relevant FAQ available for this question.`;

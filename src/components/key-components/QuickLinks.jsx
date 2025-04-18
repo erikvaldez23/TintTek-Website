@@ -29,9 +29,9 @@ const quickLinksData = [
   {
     title: "Quick Links",
     links: [
-      { text: "Frequently Asked Questions", to: "/faq" },
+      { text: "Frequently Asked Questions", to: "/support" },
       { text: "Gallery", to: "/gallery" },
-      { text: "Blogs", to: "/blog" },
+      { text: "Blogs (Coming Soon!)", to: "/blogs" },
       { text: "Vehicle Window Tint Viewer", to: "/simulators/vehicle-window-tinting" },
       { text: "Tesla Window Tint Viewer", to: "/simulators/tesla-window-tinting" },
       { text: "Paint Protection Film Viewer", to: "/simulators/vehicle-paint-protection" },
