@@ -40,8 +40,8 @@ export default function FullPageChatbot() {
     setTyping(true);
 
     try {
-      // const { data } = await axios.post("https://tinttek-website.onrender.com/chat", {
-        const { data } = await axios.post("http://localhost:5001/chat", {
+      const { data } = await axios.post("https://tinttek-website.onrender.com/chat", {
+        // const { data } = await axios.post("http://localhost:5001/chat", {
         message: input,
       });
 
