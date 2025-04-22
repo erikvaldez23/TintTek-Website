@@ -83,7 +83,7 @@ export default function FullPageChatbot() {
       }}
     >
       {/* Header */}
-      <Box
+      {/* <Box
         sx={{
           p: 2,
           bgcolor: "#000",
@@ -93,11 +93,11 @@ export default function FullPageChatbot() {
           alignItems: "center",
           borderBottom: "1px solid rgba(255,255,255,0.1)",
         }}
-      >
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+      > */}
+        {/* <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           Tint Tek + Virtual Assistant
-        </Typography>
-      </Box>
+        </Typography> */}
+      {/* </Box> */}
 
       {/* Messages */}
       <Box
