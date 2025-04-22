@@ -21,6 +21,8 @@ mongoose.connect(process.env.MONGODB_URI)
 // ✅ File paths
 const FAQ_PATH = __dirname + "/data/training_data.json";
 const USER_MESSAGES_PATH = __dirname + "/data/user_messages.json";
+const conversationHistory = []; // Stores an array of messages [{ role: "user", content: "..." }, ...]
+
 
 // ✅ Store in JSON file (optional local backup)
 const storeUserMessageToFile = (userMessage, botReply) => {
@@ -118,40 +120,30 @@ const findBestMatchAI = async (userMessage) => {
 };
 
 // ✅ Generate Response
-const generateAIResponse = async (userMessage) => {
+const generateAIResponse = async (userMessage, history = []) => {
   try {
     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
 
-    let context;
+    const systemMessage = {
+      role: "system",
+      content:
+        "You are a helpful assistant for a tinting business. Use the FAQ when available. If there's no FAQ match, do your best to respond and include a warm suggestion to contact support at (972) 362-8468.",
+    };
+
+    const messages = [systemMessage, ...history];
+
     if (bestMatch && similarityScore >= 0.5) {
-      context = `Q: ${bestMatch.question}\nA: ${bestMatch.answer}`;
-    } else {
-      context = `There is no relevant FAQ available for this question.`;
+      messages.push({
+        role: "assistant",
+        content: `Here is a FAQ that might help:\nQ: ${bestMatch.question}\nA: ${bestMatch.answer}`,
+      });
     }
 
-    const prompt = `
-You are a helpful customer support assistant for a window tinting company.
-
-${context}
-
-User Question:
-"${userMessage}"
-
-If FAQ data is not available, write a brief, friendly response that acknowledges the user's question and encourages them to reach out to live support. End your message by saying: "Feel free to give us a call at (972) 362-8468 or check out our Services page!"
-
-Your answer should be clear, under 3 sentences, and sound like a real person who cares.
-`;
+    messages.push({ role: "user", content: userMessage });
 
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a helpful assistant for a tinting business. Use FAQ data if it's available. If not, give a warm, personalized response and direct the user to contact support.",
-        },
-        { role: "user", content: prompt },
-      ],
+      messages,
       max_tokens: 300,
     });
 
@@ -161,6 +153,7 @@ Your answer should be clear, under 3 sentences, and sound like a real person who
     return "Oops! Something went wrong. Please try again later or contact us directly.";
   }
 };
+
 
 
 // ✅ Load and Start Server
@@ -176,15 +169,17 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
     console.log("📩 User Input:", message);
 
-    const botReply = await generateAIResponse(message);
+    // Add user message to memory
+    conversationHistory.push({ role: "user", content: message });
 
-    // ✅ Store to MongoDB
-    await Message.create({
-      userMessage: message,
-      botReply,
-    });
+    // Get AI reply using previous conversation context
+    const botReply = await generateAIResponse(message, conversationHistory);
 
-    // ✅ Store to file (optional)
+    // Add assistant reply to memory
+    conversationHistory.push({ role: "assistant", content: botReply });
+
+    // Store message
+    await Message.create({ userMessage: message, botReply });
     storeUserMessageToFile(message, botReply);
 
     res.json({ reply: botReply });
