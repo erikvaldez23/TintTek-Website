@@ -37,7 +37,7 @@ const BusinessInfo = () => {
     <>
       <Box className="business-info-overlay">
         <Box
-          className="business-info-item"
+          className="business-info-item phone-only"
           onClick={handlePhoneClick}
           style={{ cursor: "pointer" }}
         >
@@ -47,7 +47,7 @@ const BusinessInfo = () => {
           </Typography>
         </Box>
         <Box
-          className="business-info-item"
+          className="business-info-item email-only"
           onClick={handleEmailClick}
           style={{ cursor: "pointer" }}
         >
@@ -101,7 +101,11 @@ const BusinessInfo = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="h6" component="h2" sx={{ fontWeight: "bold", mb: 2 }}>
+          <Typography
+            variant="h6"
+            component="h2"
+            sx={{ fontWeight: "bold", mb: 2 }}
+          >
             Business Hours
           </Typography>
           <Typography sx={{ mt: 1 }}>Monday: 9am - 6pm</Typography>
@@ -111,7 +115,11 @@ const BusinessInfo = () => {
           <Typography sx={{ mt: 1 }}>Friday: 9am - 6pm</Typography>
           <Typography sx={{ mt: 1 }}>Saturday: 9am - 6pm</Typography>
           <Typography sx={{ mt: 1, mb: 2 }}>Sunday: Closed</Typography>
-          <Button onClick={handleCloseModal} variant="contained" sx={{ borderRadius: 2, background: "#2794d2" }}>
+          <Button
+            onClick={handleCloseModal}
+            variant="contained"
+            sx={{ borderRadius: 2, background: "#2794d2" }}
+          >
             Close
           </Button>
         </Box>

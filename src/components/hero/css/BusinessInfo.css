@@ -58,6 +58,36 @@
 /* ✅ Hide the component on smaller screens */
 @media (max-width: 768px) {
     .business-info-overlay {
-        display: none; /* Hides the component completely */
+      justify-content: center;
+      padding: 10px;
+      font-size: 1rem;
+      flex-direction: row; /* Ensure horizontal layout */
+      gap: 12px;
+      flex-wrap: wrap; /* Optional: allow wrap if screen is very narrow */
     }
-}
+  
+    .business-info-item {
+      display: none; /* Hide all by default */
+    }
+  
+    .business-info-item.phone-only,
+    .business-info-item.email-only {
+      display: flex;
+      font-size: 0.95rem;
+      padding: 6px 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      align-items: center;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+  
+    .business-info-item svg {
+      font-size: 1rem;
+      margin-right: 6px;
+    }
+  
+    .business-text {
+      font-size: 0.8rem;
+    }
+  }
+  
