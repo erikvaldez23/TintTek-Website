@@ -127,7 +127,7 @@ const generateAIResponse = async (userMessage, history = []) => {
     const systemMessage = {
       role: "system",
       content:
-        "You are a helpful assistant for a tinting business. Use the FAQ when available. If there's no FAQ match, do your best to respond and include a warm suggestion to contact support at (972) 362-8468.",
+        "You are a helpful assistant for a tinting business. Use the FAQ when available. If there's no FAQ match, do your best to respond and include a warm suggestion to contact our tinting experts at (972) 362-8468.",
     };
 
     const messages = [systemMessage, ...history];
