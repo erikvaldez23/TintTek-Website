@@ -18,12 +18,12 @@ import "slick-carousel/slick/slick-theme.css";
 import CloseIcon from "@mui/icons-material/Close";
 
 const videoContent = {
-  // "vehicle-window-tinting": {
-  //   title:
-  //     "Premium automotive care to enhance, protect, and maintain your vehicle.",
-  //   description: `Drive in comfort, privacy, and style with LLumar® automotive window tinting. Whether you're looking to reduce interior heat, block harmful UV rays, or upgrade your car’s appearance, Tint Tek Plus offers precision installation with premium film technology. Our professional-grade tints not only protect your interior and passengers, but also deliver a sleek, high-end look that turns heads — all while keeping you cool on the road. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
-  //   video: "/",
-  // },
+  "vehicle-window-tinting": {
+    title:
+      "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
+    description: `At Tint Tek Plus, we specialize in transforming your vehicle’s appearance and functionality with high-quality LLumar® window films. Whether you’re looking to improve privacy, reduce interior heat, block harmful UV rays, or simply enhance the look of your car, our professional vehicle window tinting services will provide the perfect solution. Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.`,
+    video: "/videos/v-window-tint.mp4",
+  },
   // "tesla-window-tinting": {
   //   title: "Elevate Your Tesla with Premium Window Film",
   //   description: `Your Tesla deserves the best — and so do you. At Tint Tek Plus, we specialize in Tesla window tinting using precision-cut LLumar® films that perfectly match your vehicle’s design. Our tints offer advanced heat rejection, UV protection, enhanced privacy, and a refined look that complements Tesla’s futuristic aesthetic. Enjoy a cooler cabin, reduced glare, and preserved interior — all without sacrificing signal performance or style. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,

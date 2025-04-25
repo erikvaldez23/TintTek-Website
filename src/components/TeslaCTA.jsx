@@ -7,9 +7,11 @@ import {
   useMediaQuery,
   useTheme,
   IconButton,
+  Dialog,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { PlayArrow, Pause, VolumeUp, VolumeOff } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const callToActionData = {
   "tesla-window-tinting": {
@@ -20,11 +22,19 @@ const callToActionData = {
     `,
     video: "/videos/tesla-video.mov",
   },
+  "vehicle-window-tinting": {
+    title: "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
+    description: `
+     At Tint Tek Plus, we specialize in transforming your vehicle’s appearance and functionality with high-quality LLumar® window films. Whether you’re looking to improve privacy, reduce interior heat, block harmful UV rays, or simply enhance the look of your car, our professional vehicle window tinting services will provide the perfect solution. Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.
+    `,
+    video: "/videos/v-window-tint2.mp4",
+  },
 };
 
 const TeslaCTA = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [openModal, setOpenModal] = useState(false);
   const { serviceId } = useParams();
   const currentData =
     callToActionData[serviceId] || callToActionData["tesla-window-tinting"];
@@ -52,6 +62,14 @@ const TeslaCTA = () => {
     if (!video) return;
     video.muted = !video.muted;
     setIsMuted(video.muted);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   const containerVariants = {
@@ -214,10 +232,43 @@ const TeslaCTA = () => {
                 fontSize: isMobile ? "1rem" : "1.1rem",
                 width: isMobile ? "100%" : "auto",
               }}
-              href="/quote"
+              onClick={handleOpenModal}
             >
               Get a Free Quote
             </Button>
+            <Dialog
+              open={openModal}
+              onClose={handleCloseModal}
+              fullWidth
+              maxWidth="lg"
+            >
+              <Box sx={{ position: "relative" }}>
+                {/* Close Button */}
+                <IconButton
+                  onClick={handleCloseModal}
+                  sx={{
+                    position: "absolute",
+                    top: 8,
+                    right: 8,
+                    color: "#fff",
+                    backgroundColor: "rgba(0,0,0,0.5)",
+                    zIndex: 1,
+                    "&:hover": {
+                      backgroundColor: "rgba(0,0,0,0.7)",
+                    },
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+                <iframe
+                  src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                  width="100%"
+                  height="800px"
+                  style={{ border: "none" }}
+                  title="Fast Quote"
+                ></iframe>
+              </Box>
+            </Dialog>
           </Box>
         </Box>
       </Box>

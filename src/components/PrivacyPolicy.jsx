@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
     {
       title: "Online Privacy Policy Agreement",
       content: [
-        "At Tint Tek + , we are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect any information you provide while using our website.",
+        "At Tint Tek +, we are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect any information you provide while using our website.",
         [
           "1. What personally identifiable information is collected from you through our website;",
           "2. Why we collect personally identifiable information and the legal basis for such collection;",

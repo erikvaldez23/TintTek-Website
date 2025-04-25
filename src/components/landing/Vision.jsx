@@ -140,17 +140,6 @@ const Vision = () => {
                 key={point.id}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6 }}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    width: "100%",
-                  }}
-                >
                   <Card
                     sx={{
                       textAlign: "center",
@@ -162,8 +151,6 @@ const Vision = () => {
                       color: "#fff",
                       width: "80vw", // Ensures card takes up 80% of viewport width
                       maxWidth: "350px", // Prevents it from becoming too large on bigger mobile screens
-                      transition:
-                        "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                     }}
                   >
                     <CardContent>
@@ -176,7 +163,6 @@ const Vision = () => {
                       </Typography>
                     </CardContent>
                   </Card>
-                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -198,7 +184,7 @@ const Vision = () => {
                         py: 4,
                         px: 2,
                         borderRadius: 3,
-                        height: "220px",
+                        height: "250px",
                         background: "#121212",
                         color: "#fff",
                         width: "100%",

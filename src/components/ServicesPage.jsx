@@ -27,8 +27,8 @@ import ImageCTA from "./ImageCTA";
 import PaintCorrectionServices from "./PaintCorrectionServices";
 import VideoCTA from "./VideoCTA";
 import HeadlightPackages from "./HeadlightPackages";
-import PPFVision from "./PPF-Vision"
-import ImageCarousel from "./ImageCarousel"
+import PPFVision from "./PPF-Vision";
+import ImageCarousel from "./ImageCarousel";
 import TeslaCTA from "./TeslaCTA";
 
 // Define service details for each page
@@ -37,7 +37,7 @@ const serviceDetails = {
     title: "Vehicle Window Tinting",
     description:
       "Enhance privacy, reduce glare, and protect your vehicle’s interior.",
-    },
+  },
 
   "tesla-window-tinting": {
     title: "Tesla Window Tinting",
@@ -254,25 +254,22 @@ const ServicePage = () => {
       </Box>
 
       {(serviceId === "commercial-window-tinting" ||
-      serviceId === "ceramic-coating" ||
-      serviceId === "headlight-services" ||
-      serviceId === "windshield-protection-film")
-        && <VideoCTA />}
+        serviceId === "ceramic-coating" ||
+        serviceId === "headlight-services" ||
+        serviceId === "windshield-protection-film") && <VideoCTA />}
 
-    {serviceId === "tesla-window-tinting" && <TeslaCTA />}
+      {(serviceId === "tesla-window-tinting" ||
+      serviceId === "vehicle-window-tinting") && <TeslaCTA />}
 
-    {(serviceId === "vehicle-window-tinting" ||
-      serviceId === "residential-window-tinting" || 
-      serviceId === "vehicle-paint-protection" || 
-      serviceId === "vehicle-paint-correction") && <ImageCTA />}
+      {(serviceId === "residential-window-tinting" ||
+        serviceId === "vehicle-paint-protection" ||
+        serviceId === "vehicle-paint-correction") && <ImageCTA />}
 
       {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}
 
-  
       {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
       {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
       {serviceId === "vehicle-paint-protection" && <PPFSelector />}
-
 
       {/* ✅ Pricing Section (Only for Non-Paint Services) */}
       {serviceId !== "vehicle-paint-correction" &&
@@ -291,24 +288,21 @@ const ServicePage = () => {
       {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
       {serviceId === "headlight-services" && <HeadlightPackages />}
 
-      
       {serviceId !== "vehicle-paint-correction" &&
-      serviceId !== "ceramic-coating" && (
-        <ServicesOffered serviceId={serviceId} />
-      )}
+        serviceId !== "ceramic-coating" && (
+          <ServicesOffered serviceId={serviceId} />
+        )}
 
       {serviceId === "commercial-window-tinting" ||
-      serviceId === "tesla-window-tinting" && <ImageCarousel/>}
+        (serviceId === "tesla-window-tinting" && <ImageCarousel />)}
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (
           <HowItWorks serviceId={serviceId} />
         )}
 
-      {serviceId === "paint-correction-services" && (
-      <PaintCorrectionServices />
-      )}
-      
+      {serviceId === "paint-correction-services" && <PaintCorrectionServices />}
+
       {(serviceId === "vehicle-window-tinting" ||
         serviceId === "tesla-window-tinting" ||
         serviceId === "commercial-window-tinting" ||
