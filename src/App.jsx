@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import "./App.css";
@@ -35,21 +35,43 @@ import TeslaTintingPage from "./components/simulators/TeslaSimulatorPage";
 import VehicleTintingPage from "./components/simulators/VehicleSimulatorPage";
 import PPFpage from "./components/simulators/PPFpage";
 import FullPageChatbot from "./components/FullPageChatbot";
+import ChatbotPopup from "./components/ChatbotPopup"; // Import the new component
 
 // Theme Config
 const theme = createTheme({
   palette: {
-    primary: { main: "#007bff" },
+    primary: { main: "#2794d2" },
   },
 });
 
 function AppContent() {
   const location = useLocation();
   const [chatbotOpen, setChatbotOpen] = useState(false);
-  const handleOpenChatbot = () => setChatbotOpen(true);
-  const handleCloseChatbot = () => setChatbotOpen(false);
-
+  const [showPopup, setShowPopup] = useState(false);
+  const isHomePage = location.pathname === "/";
   const isChatPage = location.pathname === "/chat";
+
+  // Show popup on home page after a small delay
+  useEffect(() => {
+    let popupTimer;
+    if (isHomePage) {
+      popupTimer = setTimeout(() => {
+        setShowPopup(true);
+      }, 1500); // Delay before showing popup
+    }
+    
+    return () => {
+      clearTimeout(popupTimer);
+    };
+  }, [isHomePage]);
+
+  const handleOpenChatbot = () => {
+    setShowPopup(false);
+    setChatbotOpen(true);
+  };
+  
+  const handleCloseChatbot = () => setChatbotOpen(false);
+  const handleClosePopup = () => setShowPopup(false);
 
   return (
     <>
@@ -77,7 +99,7 @@ function AppContent() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/support" element={<FAQ />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blogs" element={<Blog />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/chat" element={<FullPageChatbot />} />
         <Route
@@ -105,7 +127,7 @@ function AppContent() {
       {/* chatbot drawer */}
       <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
 
-      {/* floating icon: only if closed AND not on /chat */}
+      {/* floating chat icon: only if closed AND not on /chat */}
       {!chatbotOpen && !isChatPage && (
         <Box
           sx={{
@@ -129,6 +151,14 @@ function AppContent() {
             <ChatIcon />
           </IconButton>
         </Box>
+      )}
+
+      {/* Chatbot popup - only shown on homepage and when conditions are met */}
+      {showPopup && isHomePage && !chatbotOpen && (
+        <ChatbotPopup 
+          onClose={handleClosePopup}
+          onOpenChatbot={handleOpenChatbot}
+        />
       )}
     </>
   );

@@ -399,84 +399,126 @@ const FAQ = () => {
   };
 
   return (
-    <Box sx={{ 
-      backgroundColor: "#0f0f13", 
-      color: "#fff",
-    }}>
-      {/* Hero Header */}
+    <Box
+    sx={{
+      backgroundColor: "#0a0a10",
+      color: "#FFFFFF",
+      minHeight: "100vh",
+    }}
+  >
+    {/* Hero Section with Parallax Effect */}
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: { xs: "50vh", md: "60vh" },
+        overflow: "hidden",
+        background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
+      }}
+    >
+      {/* Background Pattern */}
       <Box
         sx={{
-          position: "relative",
+          position: "absolute",
+          top: 0,
+          left: 0,
           width: "100%",
-          height: { xs: "40vh", md: "40vh" },
-          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          overflow: "hidden",
-          boxShadow: "0 4px 30px rgba(0,0,0,0.4)",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "radial-gradient(circle at 30% 70%, rgba(45, 60, 136, 0.15), transparent 50%)",
-            zIndex: 1
+          height: "100%",
+          opacity: 0.1,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Animated Gradient Overlay */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
+          animation: "gradientShift 10s ease infinite",
+          "@keyframes gradientShift": {
+            "0%": { opacity: 0.4 },
+            "50%": { opacity: 0.7 },
+            "100%": { opacity: 0.4 },
           },
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            background: "radial-gradient(circle at 70% 30%, rgba(66, 135, 245, 0.08), transparent 50%)",
-            zIndex: 1
-          }
+        }}
+      />
+
+      {/* Content Container */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          zIndex: 2,
         }}
       >
-        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+        {/* Text Content */}
+        <Box
+          sx={{
+            maxWidth: { xs: "100%", md: "70%" },
+            animation: "fadeInUp 1s ease-out",
+            "@keyframes fadeInUp": {
+              "0%": {
+                opacity: 0,
+                transform: "translateY(20px)",
+              },
+              "100%": {
+                opacity: 1,
+                transform: "translateY(0)",
+              },
+            },
+          }}
+        >
+          <Typography
+            variant="overline"
+            sx={{
+              color: "#2794d2",
+              fontWeight: 600,
+              letterSpacing: 2,
+              mb: 1,
+              display: "block",
+            }}
+          >
+            TINT TEK + INSIGHTS
+          </Typography>
+
           <Typography
             variant="h2"
             sx={{
               fontWeight: 800,
               color: "#fff",
-              textAlign: "center",
-              fontSize: {
-                xs: "2.5rem",
-                sm: "3rem",
-                md: "4rem",
-                lg: "4.5rem",
-              },
-              textShadow: "0px 2px 10px rgba(0,0,0,0.3)",
-              mb: 1,
-              letterSpacing: "-0.02em"
+              mb: 2,
+              fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
+              lineHeight: 1.1,
             }}
           >
             USER ESSENTIALS
           </Typography>
+
           <Typography
-            variant="h4"
+            variant="h6"
             sx={{
               color: "rgba(255,255,255,0.8)",
-              textAlign: "center",
-              fontSize: {
-                xs: "1.25rem",
-                sm: "1.5rem",
-                md: "1.75rem",
-              },
-              maxWidth: "800px",
-              mx: "auto",
-              fontWeight: "bold"
+              maxWidth: "600px",
+              mb: 4,
+              fontSize: { xs: "1rem", md: "1.1rem" },
+              fontWeight: 400,
+              lineHeight: 1.5,
             }}
           >
             Everything you need to know about our services & warranties
           </Typography>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
+    </Box>
 
       {/* Service Selector Section */}
       <Container sx={{ 
