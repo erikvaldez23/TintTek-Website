@@ -5,6 +5,21 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const handlePhoneClick = () => {
+    window.location.href = "tel:+19723628468";
+  }
+
+    const handleEmailClick = () => {
+    window.location.href = "mailto:info@tinttekplus.com";
+  };
+
+    const handleAddressClick = () => {
+    window.open(
+      "https://www.google.com/maps/place/Tint+Tek+Plus/@32.8783221,-96.6691041,17z/data=!3m1!4b1!4m6!3m5!1s0x864ea153db5dd237:0xe54143946793a9e6!8m2!3d32.8783221!4d-96.6665292!16s%2Fg%2F11w46vds7d?entry=ttu&g_ep=EgoyMDI1MDMxOS4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D",
+      "_blank"
+    );
+  };
+
   return (
     <Box 
       sx={{ 
@@ -138,7 +153,7 @@ const Contact = () => {
                     </Box>
                     <Box>
                       <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Call Us</Typography>
-                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>+1 (972) 362-8468</Typography>
+                      <Typography variant="body2" onClick={handlePhoneClick} sx={{ color: "#5a6a85", "&:hover": { cursor: 'pointer', textDecoration: "underline" }}}>+1 (972) 362-8468</Typography>
                     </Box>
                   </Box>
 
@@ -159,7 +174,7 @@ const Contact = () => {
                     </Box>
                     <Box>
                       <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Email Us</Typography>
-                      <Typography variant="body2" sx={{ color: "#5a6a85" }}>info@tinttekplus.com</Typography>
+                      <Typography variant="body2" onClick={handleEmailClick} sx={{ color: "#5a6a85", "&:hover": { cursor: 'pointer', textDecoration: "underline" } }}>info@tinttekplus.com</Typography>
                     </Box>
                   </Box>
                 </Box>

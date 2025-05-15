@@ -133,7 +133,7 @@ const ChatbotPopup = ({ onClose, onOpenChatbot }) => {
                 mb: 3,
               }}
             >
-              Have any questions? I'm here to help with anything you need! From service details to general inquiries or getting started with your project.
+              Have any questions? I'm here to help with anything you need! From service details to general inquiries or getting started with your project!
             </Typography>
 
             {/* CTA Button */}
