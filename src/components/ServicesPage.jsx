@@ -30,6 +30,7 @@ import HeadlightPackages from "./HeadlightPackages";
 import PPFVision from "./PPF-Vision";
 import ImageCarousel from "./ImageCarousel";
 import TeslaCTA from "./TeslaCTA";
+import BusinessInfo from "./hero/BusinessInfo"
 
 // Define service details for each page
 const serviceDetails = {
@@ -227,6 +228,7 @@ const ServicePage = () => {
           px: { xs: 1, sm: 2, md: 2 },
         }}
       >
+        <BusinessInfo />
         <Typography
           variant="h2"
           sx={{
