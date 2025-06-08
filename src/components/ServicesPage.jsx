@@ -31,6 +31,7 @@ import PPFVision from "./PPF-Vision";
 import ImageCarousel from "./ImageCarousel";
 import TeslaCTA from "./TeslaCTA";
 import BusinessInfo from "./hero/BusinessInfo"
+import F1Banner from "./f1-banner"
 
 // Define service details for each page
 const serviceDetails = {

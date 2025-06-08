@@ -18,15 +18,15 @@ const pricingConfig = {
   "vehicle-window-tinting": {
     title: "PRICING",
     pricingData: {
-      COUPE: { ATC: "$179.00", CTX: "$279.00", IRX: "$379.00" },
-      SEDAN: { ATC: "$199.00", CTX: "$329.00", IRX: "$529.00" },
-      TRUCK: { ATC: "$249.00", CTX: "$349.00", IRX: "$549.00" },
-      "FULL SUV": { ATC: "$289.00", CTX: "$389.00", IRX: "$589.00" },
-      "2 WINDOWS": { ATC: "$85.00", CTX: "$119.00", IRX: "$149.00" },
+      COUPE: { CLASSIC: "$189.00", CTX: "$289.00", PINNACLE: "$389.00" },
+      SEDAN: { CLASSIC: "$199.00", CTX: "$329.00", PINNACLE: "$529.00" },
+      TRUCK: { CLASSIC: "$249.00", CTX: "$349.00", PINNACLE: "$549.00" },
+      "FULL SUV": { CLASSIC: "$289.00", CTX: "$389.00", PINNACLE: "$589.00" },
+      "2 WINDOWS": { CLASSIC: "$85.00", CTX: "$119.00", PINNACLE: "$149.00" },
     },
     pricingOptions: ["COUPE", "SEDAN", "TRUCK", "FULL SUV", "2 WINDOWS"],
     descriptions: {
-      ATC: [
+      CLASSIC: [
         "Budget-friendly dyed tint",
         "Blocks 99% of UV rays",
         "Adds privacy & reduces glare",
@@ -36,7 +36,7 @@ const pricingConfig = {
         "99% UV ray block",
         "Reduces heat from sun",
       ],
-      IRX: [
+      PINNACLE: [
         "Nano-ceramic construction",
         "Best heat reduction",
         "Superior clarity & comfort",
@@ -46,11 +46,11 @@ const pricingConfig = {
   "tesla-window-tinting": {
     title: "PRICING",
     pricingData: {
-      "MODEL S": { CTX: "$329.00", IRX: "$529.00" },
-      "MODEL 3": { CTX: "$449.00", IRX: "$589.00" },
-      "MODEL X": { CTX: "$589.00", IRX: "$749.00" },
-      "MODEL Y": { CTX: "$389.00", IRX: "$589.00" },
-      "CYBER TRUCK": { CTX: "$485.00", IRX: "$685.00" },
+      "MODEL S": { CTX: "$329.00", PINNACLE: "$529.00" },
+      "MODEL 3": { CTX: "$449.00", PINNACLE: "$589.00" },
+      "MODEL X": { CTX: "$589.00", PINNACLE: "$749.00" },
+      "MODEL Y": { CTX: "$389.00", PINNACLE: "$589.00" },
+      "CYBER TRUCK": { CTX: "$485.00", PINNACLE: "$685.00" },
     },
     pricingOptions: ["MODEL S", "MODEL 3","MODEL X", "MODEL Y", "CYBER TRUCK"],
     descriptions: {
@@ -59,7 +59,7 @@ const pricingConfig = {
         "Superior heat rejection",
         "99% UV ray protection",
       ],
-      IRX: [
+      PINNACLE: [
         "Premium nano-ceramic tint",
         "Best clarity & heat reduction",
         "Advanced infrared blocking",
@@ -118,7 +118,7 @@ const pricingConfig = {
     descriptions: {
       BASIC: [
         "Light paint correction",
-        "Removes minor scratches",
+        "Removes minor scrCLASSIChes",
         "Enhances gloss",
       ],
       PRO: [
@@ -143,7 +143,7 @@ const pricingConfig = {
     descriptions: {
       BASIC: [
         "Basic paint protection film",
-        "Prevents minor scratches",
+        "Prevents minor scrCLASSIChes",
         "1-year warranty",
       ],
       PRO: [
@@ -153,7 +153,7 @@ const pricingConfig = {
       ],
       ULTRA: [
         "Premium self-healing PPF",
-        "Best scratch resistance",
+        "Best scrCLASSICh resistance",
         "5-year warranty",
       ],
     },
@@ -261,7 +261,7 @@ const PricingComponent = () => {
                padding: "12px",
                borderRadius: "8px",
                transition: "all 0.3s ease",
-               backgroundColor: "#444", // Grey background to match first dropdown
+               backgroundColor: "#444", // Grey background to mCLASSICh first dropdown
                color: "#fff", // White text for contrast
                "&:hover": {
                  background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
