@@ -36,38 +36,19 @@ const blogPosts = [
     estimate: "4-5 Minute",
     date: "May 2, 2025",
     category: ["Automotive Tinting"],
+    featured: false,
+  },
+  {
+    id: 2,
+    title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
+    summary:
+      "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
+    image: "/blog2.png",
+    estimate: "4-5 Minute",
+    date: "June 22, 2025",
+    category: ["Automotive Tinting"],
     featured: true,
   },
-  // {
-  //   id: 2,
-  //   title: "How Dark Can Your Tint Be? Legal Tint Laws Explained",
-  //   summary:
-  //     "Discover the legal window tint limits in your state and avoid unnecessary fines. Our comprehensive guide covers everything you need to know before getting your windows tinted.",
-  //   image: "/background.jpg",
-  //   estimate: "3-4 Minutes",
-  //   date: "February 10, 2025",
-  //   category: ["Legal", "Guides"],
-  // },
-  // {
-  //   id: 3,
-  //   title: "The Science Behind Ceramic Coatings: Is It Worth It?",
-  //   summary:
-  //     "Discover how ceramic coatings protect your car's paint, enhance gloss, and provide long-term durability. We explore the technology and benefits of this premium paint protection.",
-  //   image: "/ppf.jpg",
-  //   estimate: "5-6 Minutes",
-  //   date: "March 1, 2025",
-  //   category: ["Automotive Tinting", "Car Protection"],
-  // },
-  // {
-  //   id: 4,
-  //   title: "The Pros and Cons of PPF (Paint Protection Film) for Your Car",
-  //   summary:
-  //     "Is PPF worth it? Learn about the advantages and disadvantages of paint protection film and how it compares to other protective treatments for your vehicle.",
-  //   image: "/cybertruck.jpg",
-  //   estimate: "4-5 Minutes",
-  //   date: "March 8, 2025",
-  //   category: ["Car Protection", "Guides"],
-  // },
 ];
 
 // Extract all unique categories
@@ -421,9 +402,6 @@ const Blog = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   transition: "transform 0.5s ease",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
                 }}
               />
               <Box
@@ -615,9 +593,6 @@ const Blog = () => {
                       "&:hover": {
                         transform: "translateY(-5px)",
                         boxShadow: "0 15px 40px rgba(0, 0, 0, 0.3)",
-                      },
-                      "&:hover .blog-image": {
-                        transform: "scale(1.05)",
                       },
                     }}
                   >

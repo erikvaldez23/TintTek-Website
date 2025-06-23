@@ -287,9 +287,13 @@ const ServicePage = () => {
           </Box>
         )}
 
+
       {serviceId === "vehicle-window-tinting" && <TintPackages />}
       {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
       {serviceId === "headlight-services" && <HeadlightPackages />}
+
+      {/* <F1Banner /> */}
+
 
       {serviceId !== "vehicle-paint-correction" &&
         serviceId !== "ceramic-coating" && (
@@ -298,6 +302,7 @@ const ServicePage = () => {
 
       {serviceId === "commercial-window-tinting" ||
         (serviceId === "tesla-window-tinting" && <ImageCarousel />)}
+
 
       {serviceId !== "commercial-window-tinting" &&
         serviceId !== "residential-window-tinting" && (

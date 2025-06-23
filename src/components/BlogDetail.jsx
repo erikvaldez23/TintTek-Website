@@ -133,6 +133,91 @@ const blogPosts = [
     date: "May 2, 2025",
     category: "Window Tint Comparison",
   },
+  {
+  id: 2,
+  title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
+  summary:
+    "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
+  content: (
+    <>
+      <Typography variant="h5" className="blog-section-title">
+        1. Texas Heat? No Sweat.
+      </Typography>
+      <Typography className="blog-paragraph">
+        Dallas summers are brutal — temperatures often soar past 100°F. Without tint, your car can feel like an oven. Our{" "}
+        <strong>ceramic window tint</strong> options (like Llumar CTX) reject up to{" "}
+        <strong>60% of heat</strong>, making your vehicle dramatically cooler even after hours in the sun.
+      </Typography>
+      <Typography variant="body1" className="blog-highlight" sx={{ fontStyle: "italic" }}>
+        Less heat means less A/C use, better fuel economy, and a more comfortable drive year-round.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        2. Block Harmful UV Rays
+      </Typography>
+      <Typography className="blog-paragraph">
+        UV rays don’t just burn your skin — they also <strong>fade your seats, crack your dashboard, and damage your interior</strong> over time. High-quality window tint blocks <strong>99% of UV radiation</strong>, preserving your interior and protecting your skin on long drives.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        3. Privacy + Protection
+      </Typography>
+      <Typography className="blog-paragraph">
+        Window tint gives you the privacy and peace of mind you want in a busy city like Dallas:
+      </Typography>
+      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+        <li>Keeps valuables out of sight</li>
+        <li>Makes it harder for thieves to peek inside</li>
+        <li>Adds a sleek, premium look</li>
+      </Box>
+      <Typography className="blog-paragraph">
+        <strong>15% or 20% tint shades</strong> offer just the right balance of style, privacy, and Texas legal compliance.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        4. Eliminate Annoying Glare
+      </Typography>
+      <Typography className="blog-paragraph">
+        That late afternoon Texas sun isn’t just hot — it’s <strong>blinding</strong>. Window tint cuts down glare from the road and other vehicles, helping you:
+      </Typography>
+      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+        <li>Drive more comfortably</li>
+        <li>Stay focused during rush hour</li>
+        <li>Avoid squinting and eye strain</li>
+      </Box>
+
+      <Typography variant="h5" className="blog-section-title">
+        5. Look Better, Drive Smarter
+      </Typography>
+      <Typography className="blog-paragraph">
+        There’s no denying it — tint just <strong>makes your car look cleaner, sharper, and more high-end</strong>. Whether you want a subtle enhancement or a bold blackout look, <strong>Tint Tek Plus</strong> has a shade and style to match. We follow <strong>Texas tint laws</strong>, so you never have to worry about tickets or inspections.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        Why Choose Tint Tek Plus in Dallas?
+      </Typography>
+      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+        <li>Top-tier films like <strong>Llumar AIR 80, CTX, and FormulaOne</strong></li>
+        <li>Trusted by exotic car owners, fleets, and everyday drivers</li>
+        <li>Fast, clean installs — done right the first time</li>
+        <li>Local, family-run shop with hundreds of happy customers</li>
+      </Box>
+
+      <Typography variant="h5" className="blog-section-title">
+        📍 Come See Us
+      </Typography>
+      <Typography className="blog-paragraph">
+        <strong>Tint Tek Plus – Dallas, TX</strong><br />
+        📍 2518 W. Kingsley Rd, Garland, TX (Serving all of Dallas)<br />
+        📞 Call/Text: <strong>972-362-8468</strong><br />
+        🌐 <a href="https://www.tinttekplus.com" target="_blank" rel="noopener noreferrer">www.tinttekplus.com</a>
+      </Typography>
+    </>
+  ),
+  image: "/blog2.png",
+  date: "June 22, 2025",
+  category: "Car Tinting in Texas",
+}
 ];
 
 const BlogDetail = () => {
