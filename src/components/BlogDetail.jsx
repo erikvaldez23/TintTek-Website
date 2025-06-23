@@ -214,7 +214,7 @@ const blogPosts = [
       </Typography>
     </>
   ),
-  image: "/blog2.png",
+  image: "/blog2-min.png",
   date: "June 22, 2025",
   category: "Car Tinting in Texas",
 }

@@ -43,7 +43,7 @@ const blogPosts = [
     title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
     summary:
       "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
-    image: "/blog2.png",
+    image: "/blog2-min.png",
     estimate: "4-5 Minute",
     date: "June 22, 2025",
     category: ["Automotive Tinting"],
