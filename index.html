@@ -17,6 +17,18 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-M93ZKCLX");
     </script>
+
+    <script type="text/javascript">
+      (function () {
+        var path = window.location.pathname;
+        var hasExtension = path.split("/").pop().includes(".");
+
+        if (!hasExtension && path !== "/") {
+          window.location.replace("/#" + path);
+        }
+      })();
+    </script>
+
     <!-- End Google Tag Manager -->
 
     <!-- Title with Localized Keywords -->

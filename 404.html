@@ -7,6 +7,12 @@
     <script>
       window.location.replace("/");
     </script>
+    <script>
+      // Redirect manually for better control
+      const redirectTo = "/" + location.pathname + location.search + location.hash;
+      sessionStorage.redirect = redirectTo;
+      window.location.replace("/");
+    </script>
   </head>
   <body>
     <h1>Redirecting...</h1>
