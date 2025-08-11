@@ -60,7 +60,7 @@ function AppContent() {
         setShowPopup(true);
       }, 1500); // Delay before showing popup
     }
-    
+
     return () => {
       clearTimeout(popupTimer);
     };
@@ -70,9 +70,15 @@ function AppContent() {
     setShowPopup(false);
     setChatbotOpen(true);
   };
-  
+
   const handleCloseChatbot = () => setChatbotOpen(false);
   const handleClosePopup = () => setShowPopup(false);
+
+  const redirect = sessionStorage.getItem("redirect");
+  if (redirect) {
+    history.replaceState(null, "", redirect);
+    sessionStorage.removeItem("redirect");
+  }
 
   return (
     <>
@@ -157,7 +163,7 @@ function AppContent() {
 
       {/* Chatbot popup - only shown on homepage and when conditions are met */}
       {showPopup && isHomePage && !chatbotOpen && (
-        <ChatbotPopup 
+        <ChatbotPopup
           onClose={handleClosePopup}
           onOpenChatbot={handleOpenChatbot}
         />
