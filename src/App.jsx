@@ -1,3 +1,4 @@
+// src/App.jsx
 import {
   BrowserRouter as Router,
   Routes,
@@ -35,10 +36,10 @@ import TeslaTintingPage from "./components/simulators/TeslaSimulatorPage";
 import VehicleTintingPage from "./components/simulators/VehicleSimulatorPage";
 import PPFpage from "./components/simulators/PPFpage";
 import FullPageChatbot from "./components/FullPageChatbot";
-import ChatbotPopup from "./components/ChatbotPopup"; // Import the new component
+import ChatbotPopup from "./components/ChatbotPopup";
 import Mockup from "./components/landing-pages/Mockup";
 
-// Theme Config
+// ---- Theme ----
 const theme = createTheme({
   palette: {
     primary: { main: "#2794d2" },
@@ -49,36 +50,28 @@ function AppContent() {
   const location = useLocation();
   const [chatbotOpen, setChatbotOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+
   const isHomePage = location.pathname === "/";
   const isChatPage = location.pathname === "/chat";
 
-  // Show popup on home page after a small delay
+  // Show chatbot teaser on home after a short delay
   useEffect(() => {
     let popupTimer;
     if (isHomePage) {
-      popupTimer = setTimeout(() => {
-        setShowPopup(true);
-      }, 1500); // Delay before showing popup
+      popupTimer = setTimeout(() => setShowPopup(true), 1500);
     }
-
-    return () => {
-      clearTimeout(popupTimer);
-    };
+    return () => clearTimeout(popupTimer);
   }, [isHomePage]);
 
   const handleOpenChatbot = () => {
     setShowPopup(false);
     setChatbotOpen(true);
   };
-
   const handleCloseChatbot = () => setChatbotOpen(false);
   const handleClosePopup = () => setShowPopup(false);
 
-  const redirect = sessionStorage.getItem("redirect");
-  if (redirect) {
-    history.replaceState(null, "", redirect);
-    sessionStorage.removeItem("redirect");
-  }
+  // IMPORTANT: Do NOT restore deep links here.
+  // We handle ?redirect=... in index.html before React mounts.
 
   return (
     <>
@@ -101,15 +94,22 @@ function AppContent() {
             </>
           }
         />
+
+        {/* Service detail pages */}
         <Route path="/services/:serviceId" element={<ServicesPage />} />
+
+        {/* Blog list + detail (list at /blog) */}
+        <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
+
+        {/* Other pages */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/support" element={<FAQ />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/blogs" element={<Blog />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/chat" element={<FullPageChatbot />} />
         <Route path="/mockup" element={<Mockup />} />
+
+        {/* Simulators */}
         <Route
           path="/simulators/commercial-window-tinting"
           element={<CommercialSimulator />}
@@ -130,19 +130,22 @@ function AppContent() {
           path="/simulators/vehicle-paint-protection"
           element={<PPFpage />}
         />
+
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* chatbot drawer */}
+      {/* Chatbot drawer */}
       <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
 
-      {/* floating chat icon: only if closed AND not on /chat */}
+      {/* Floating chat button (not on /chat) */}
       {!chatbotOpen && !isChatPage && (
         <Box
           sx={{
             position: "fixed",
             bottom: 20,
             right: 20,
-            zIndex: (theme) => theme.zIndex.modal + 5,
+            zIndex: (t) => t.zIndex.modal + 5,
           }}
         >
           <IconButton
@@ -161,7 +164,7 @@ function AppContent() {
         </Box>
       )}
 
-      {/* Chatbot popup - only shown on homepage and when conditions are met */}
+      {/* Homepage chatbot teaser */}
       {showPopup && isHomePage && !chatbotOpen && (
         <ChatbotPopup
           onClose={handleClosePopup}
@@ -176,7 +179,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+      {/* For custom domain, import.meta.env.BASE_URL will be '/' */}
+      <Router basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <AppContent />
       </Router>
