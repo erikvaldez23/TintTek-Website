@@ -99,7 +99,7 @@ function AppContent() {
         <Route path="/services/:serviceId" element={<ServicesPage />} />
 
         {/* Blog list + detail (list at /blog) */}
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blogs" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
 
         {/* Other pages */}

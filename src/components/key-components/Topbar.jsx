@@ -57,7 +57,7 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const subPages = ["gallery", "privacy-policy", "blog", "support", "blogs"]; // Add more subpages here if needed
+    const subPages = ["gallery", "privacy-policy", "blogs", "support",]; // Add more subpages here if needed
 
     if (subPages.includes(sectionId)) {
       // Navigate to the subpage instead of scrolling
