@@ -2,7 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Deep-link restore: handles 404.html -> /index.html?redirect=... -->
+    <script>
+      (function () {
+        try {
+          var q = new URLSearchParams(window.location.search);
+          var r = q.get("redirect");
+          if (r) history.replaceState(null, "", r);
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -19,24 +34,19 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Title with Localized Keywords -->
-    <title>
-      Premium Window Tinting Services in Garland, TX | Tint Tek Plus
-    </title>
-
-    <!-- Meta Description (Improve Click-through Rate) -->
+    <!-- Base title/description (route-specific ones will be set by react-helmet-async) -->
+    <title>Premium Window Tinting Services in Garland, TX | Tint Tek Plus</title>
     <meta
       name="description"
       content="Tint Tek Plus offers high-quality auto, residential, and commercial window tinting services in Garland, TX. Protect your vehicle and home from heat and UV rays. Contact us today!"
     />
-
-    <!-- Keywords (SEO - Ensure They Are Relevant) -->
     <meta
       name="keywords"
       content="window tinting, auto window tint, residential window tint, commercial window tint, Garland TX, UV protection, car tint, heat rejection tint"
     />
+    <meta name="robots" content="index, follow" />
 
-    <!-- Open Graph (For Social Media Sharing) -->
+    <!-- Open Graph -->
     <meta
       property="og:title"
       content="Professional Window Tinting in Garland, TX | Tint Tek Plus"
@@ -49,52 +59,15 @@
     <meta property="og:url" content="https://tinttekplus.com" />
     <meta property="og:type" content="business.business" />
 
-    <!-- Local Business Schema Markup (Helps Google Understand Your Business) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Tint Tek Plus",
-        "image": "https://tinttekplus.com/logo.png",
-        "@id": "",
-        "url": "https://tinttekplus.com",
-        "telephone": "+1-972-362-8468",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "2518 West Kingsley Rd",
-          "addressLocality": "Garland",
-          "addressRegion": "TX",
-          "postalCode": "75040",
-          "addressCountry": "US"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 32.9126,
-          "longitude": -96.6389
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
-            ],
-            "opens": "09:00",
-            "closes": "18:00"
-          }
-        ],
-        "sameAs": "https://www.tinttekplus.com/"
-      }
-    </script>
+    <!-- Canonical (react-helmet can override per-route if needed) -->
+    <link rel="canonical" href="https://tinttekplus.com" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.jpg" />
 
-    <!-- Preload Fonts for Faster Performance -->
+    <!-- Performance: preconnects + font preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -105,15 +78,39 @@
       rel="stylesheet"
     />
 
-    <!-- Canonical Tag to Prevent Duplicate Content Issues -->
-    <link rel="canonical" href="https://tinttekplus.com" />
+    <!-- Optional: preload a hero asset (swap to a commonly-seen image/video) -->
+    <link rel="preload" as="image" href="/v-window-tint/vehicle-window-tint.webp" />
+    <!-- <link rel="preload" as="video" href="/videos/v-window-tint2.mp4" /> -->
 
-    <link
-      rel="preload"
-      as="image"
-      href="/v-window-tint/vehicle-window-tint.webp"
-    />
+    <!-- Local Business JSON-LD (static baseline; per-route schema can be added via Helmet) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Tint Tek Plus",
+        "image": "https://tinttekplus.com/logo.png",
+        "url": "https://tinttekplus.com",
+        "telephone": "+1-972-362-8468",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2518 West Kingsley Rd",
+          "addressLocality": "Garland",
+          "addressRegion": "TX",
+          "postalCode": "75040",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 32.9126, "longitude": -96.6389 },
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }],
+        "sameAs": ["https://www.tinttekplus.com/"]
+      }
+    </script>
   </head>
+
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -127,7 +124,10 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="root"></div>
+
+    <!-- Your app bundles -->
     <script type="module" src="/src/main.jsx"></script>
+    <!-- If you’re prerendering certain routes, keep this (safe to leave if you use it) -->
     <script type="module" data-prerender src="/src/prerender.jsx"></script>
   </body>
 </html>
