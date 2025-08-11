@@ -1,12 +1,17 @@
+<!-- public/404.html -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
     <script>
-      // Save the path the user tried to visit
-      sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
-      // Redirect to index.html (your SPA entry)
-      location.replace(location.origin + '/');
+      // Custom domain: no repo base path to strip.
+      (function(l) {
+        var target = l.pathname + l.search + l.hash;
+        // Send to index.html with original target encoded as ?redirect=...
+        l.replace('/index.html?redirect=' + encodeURIComponent(target));
+      })(window.location);
     </script>
   </head>
   <body></body>
