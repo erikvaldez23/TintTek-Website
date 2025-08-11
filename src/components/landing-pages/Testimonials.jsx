@@ -86,27 +86,27 @@ const CTAButton = styled(Button, {
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Miguel R.",
-      role: "Model Y Owner",
+      name: "User 1",
+      role: "Car Make/Model/Year",
       rating: 5,
       quote:
-        "Night-and-day difference. The cabin stays cooler and the glare is gone. Install looks OEM.",
+        "Testimonial",
       avatar: "/avatars/miguel.jpg",
     },
     {
-      name: "Aubrey L.",
-      role: "Audi S5 Owner",
+      name: "User 2",
+      role: "Car Make/Model/Year",
       rating: 5,
       quote:
-        "Flawless edges and zero bubbles. The ceramic film made my commute so much more comfortable.",
+        "Testimonial",
       avatar: "/avatars/aubrey.jpg",
     },
     {
-      name: "Jordan P.",
-      role: "F-150 Owner",
+      name: "User 3",
+      role: "Car Make/Model/Year",
       rating: 5,
       quote:
-        "Booked online, in and out fast, and the results are unreal. Would recommend to anyone.",
+        "Testimonial",
       avatar: "/avatars/jordan.jpg",
     },
   ];

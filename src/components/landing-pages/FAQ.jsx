@@ -85,28 +85,28 @@ const FAQ = () => {
 
   const faqs = [
     {
-      q: 'What tint levels do you offer?',
-      a: 'We carry multiple VLT options (e.g., 5%, 15%, 20%, 30%, 35%, 50%, 70%) across dyed, ceramic, and premium ceramic lines. We can recommend the ideal shade based on your goals and state regulations.',
+      q: 'Question 1',
+      a: 'Answer',
     },
     {
-      q: 'Will ceramic tint interfere with my signals?',
-      a: 'No—our ceramic films are signal-friendly and will not interfere with GPS, Bluetooth, cellular, or keyless entry systems.',
+      q: 'Question 2',
+      a: 'Answer',
     },
     {
-      q: 'How long does the install take?',
-      a: 'Most full vehicle installs take 1.5–3 hours depending on the vehicle and package. We use a climate-controlled, dust-managed bay for a clean result.',
+      q: 'Question 3',
+      a: 'Answer',
     },
     {
-      q: 'Do you offer a warranty?',
-      a: 'Yes. All installations include a lifetime warranty against peeling, bubbling, discoloration, and adhesive failure. Ask us for the written warranty details.',
+      q: 'Question 4',
+      a: 'Answer',
     },
     {
-      q: 'How do I care for new tint?',
-      a: 'Avoid rolling down windows for 48–72 hours. Clean with ammonia-free products and soft microfiber. Slight haze during curing is normal and clears as moisture evaporates.',
+      q: 'Question 5',
+      a: 'Answer',
     },
     {
-      q: 'What’s the difference between dyed and ceramic film?',
-      a: 'Dyed film is budget-friendly and improves privacy; ceramic film adds substantial heat rejection and UV protection with superior clarity and color stability.',
+      q: 'Question 6',
+      a: 'Answer',
     },
   ];
 

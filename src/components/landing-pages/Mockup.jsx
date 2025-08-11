@@ -1,3 +1,4 @@
+// src/components/landing-pages/Mockup.jsx
 import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
@@ -21,6 +22,11 @@ import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Testimonials from "../landing-pages/Testimonials";
 import FAQ from "../landing-pages/FAQ";
+import { Helmet } from "react-helmet-async";
+
+/** —— SITE / ROUTE SETTINGS —— */
+const SITE = "https://tinttekplus.com";
+const PATH = "/mockup"; // ← set to the route where this page is served
 
 // ===== Video hero styles =====
 const VideoSection = styled(Box)(({ theme }) => ({
@@ -47,7 +53,7 @@ const VideoOverlay = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "flex-end",
   justifyContent: "center",
-  pointerEvents: "none", // let clicks pass through EXCEPT our controls
+  pointerEvents: "none",
 }));
 
 const SwipeIndicator = styled(motion.div)(({ theme }) => ({
@@ -78,7 +84,7 @@ const ControlBar = styled(Box)(({ theme }) => ({
   border: "1px solid rgba(255,255,255,0.25)",
   backdropFilter: "blur(6px)",
   boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-  pointerEvents: "auto", // enable clicking
+  pointerEvents: "auto",
 }));
 
 const ControlButton = styled(IconButton)(({ theme }) => ({
@@ -140,8 +146,6 @@ const Metric = styled(Box)(({ theme }) => ({
   boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
   position: "relative",
   overflow: "hidden",
-
-  // Soft gradient overlay
   "&::before": {
     content: '""',
     position: "absolute",
@@ -151,8 +155,6 @@ const Metric = styled(Box)(({ theme }) => ({
     pointerEvents: "none",
     zIndex: 0,
   },
-
-  // Inner glow effect
   "&::after": {
     content: '""',
     position: "absolute",
@@ -163,12 +165,7 @@ const Metric = styled(Box)(({ theme }) => ({
     pointerEvents: "none",
     zIndex: 0,
   },
-
-  // Ensure content is above overlays
-  "& > *": {
-    position: "relative",
-    zIndex: 1,
-  },
+  "& > *": { position: "relative", zIndex: 1 },
 }));
 
 const BenefitCard = styled(motion.div)(({ theme }) => ({
@@ -241,6 +238,7 @@ const StyledImage = styled("img")(({ theme }) => ({
   boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
   border: "1px solid rgba(39, 148, 210, 0.2)",
   [theme.breakpoints.up("md")]: { height: "450px" },
+  loading: "lazy",
 }));
 
 const StyledFrame = styled("iframe")(({ theme }) => ({
@@ -250,11 +248,10 @@ const StyledFrame = styled("iframe")(({ theme }) => ({
   borderRadius: "20px",
   boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
   background: "transparent",
-  // Remove default iframe border
   outline: "none",
-  // Make sure scrolling works nicely for long forms
   overflow: "auto",
   [theme.breakpoints.up("md")]: { height: "650px" },
+  loading: "lazy",
 }));
 
 const Mockup = () => {
@@ -286,37 +283,28 @@ const Mockup = () => {
 
   // --- Video + audio handling ---
   const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true); // autoplay starts playing
-  const [isMuted, setIsMuted] = useState(true); // autoplay must be muted
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   const play = async () => {
     try {
       await videoRef.current?.play();
       setIsPlaying(true);
-    } catch (e) {
-      // ignored: browser may still require user gesture
-    }
+    } catch {}
   };
-
   const pause = () => {
     videoRef.current?.pause();
     setIsPlaying(false);
   };
-
   const togglePlay = () => (isPlaying ? pause() : play());
-
   const toggleMute = async () => {
     const v = videoRef.current;
     if (!v) return;
     v.muted = !v.muted;
     setIsMuted(v.muted);
-    if (!v.muted && v.paused) {
-      // if unmuting and paused, try to resume
-      await play();
-    }
+    if (!v.muted && v.paused) await play();
   };
 
-  // keep React state in sync with actual video element (e.g., if OS/media controls change it)
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -328,7 +316,6 @@ const Mockup = () => {
     v.addEventListener("pause", onPause);
     v.addEventListener("volumechange", onVolume);
 
-    // initialize desired flags for autoplay
     v.muted = true;
     v.loop = true;
     play();
@@ -356,7 +343,7 @@ const Mockup = () => {
   const onTouchEnd = (e) => {
     const t = e.changedTouches?.[0];
     if (!t) return;
-    const dy = touchStart.y - t.clientY; // positive if user swiped up
+    const dy = touchStart.y - t.clientY;
     const dx = Math.abs(touchStart.x - t.clientX);
     if (dy > 70 && dx < 60) scrollToContent();
   };
@@ -388,10 +375,74 @@ const Mockup = () => {
     },
   ];
 
+  // —— SEO: Helmet + JSON-LD —— //
+  const pageTitle =
+    "Premium Window Tinting in Dallas | Heat & UV Protection | Tint Tek Plus";
+  const pageDesc =
+    "Professional ceramic window tinting in Dallas–Fort Worth. Up to 60% heat rejection, 99% UV protection, lifetime warranty. Get a free quote today.";
+  const canonical = `${SITE}${PATH}`;
+  const videoUrl = `${SITE}/videos/v-window-tint2.mp4`;
+  const videoThumb = `${SITE}/background.jpg`; // swap to a real poster image if you have one
+
+  const webPageLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Premium Window Tinting",
+    url: canonical,
+    description: pageDesc,
+    inLanguage: "en-US",
+  };
+
+  const videoLd = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "Window Tinting Highlights",
+    description:
+      "See premium ceramic window tinting results from Tint Tek Plus in Dallas.",
+    thumbnailUrl: [videoThumb],
+    contentUrl: videoUrl,
+    embedUrl: videoUrl,
+    uploadDate: "2025-01-01", // optional; set real ISO date if known
+    publisher: {
+      "@type": "Organization",
+      name: "Tint Tek Plus",
+      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
+    },
+  };
+
+  const breadcrumbsLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Window Tinting", item: canonical },
+    ],
+  };
+
   return (
     <>
+      {/* HEAD */}
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={canonical} />
+        <meta name="robots" content="index, follow" />
+        {/* Social cards */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:url" content={canonical} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* Preload hero video (helps LCP on fast connections) */}
+        <link rel="preload" as="video" href="/videos/v-window-tint2.mp4" />
+        {/* JSON-LD */}
+        <script type="application/ld+json">{JSON.stringify(webPageLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(videoLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbsLd)}</script>
+      </Helmet>
+
       {/* ===== Video Hero at the very top ===== */}
-      <VideoSection onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <VideoSection onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} aria-label="Hero video section showcasing window tinting">
         <BackgroundVideo
           autoPlay
           muted
@@ -400,9 +451,9 @@ const Mockup = () => {
           preload="auto"
           ref={videoRef}
           onCanPlay={() => videoRef.current?.play?.().catch(() => {})}
+          aria-label="Tint Tek Plus window tinting video"
         >
           <source src="/videos/v-window-tint2.mp4" type="video/mp4" />
-          {/* <source src="/hero-video.webm" type="video/webm" /> */}
         </BackgroundVideo>
 
         <VideoOverlay>
@@ -413,9 +464,7 @@ const Mockup = () => {
             transition={{ duration: 1.6, repeat: Infinity }}
           >
             <IconButton
-              aria-label={
-                isMobile ? "Swipe up for details" : "Click to continue"
-              }
+              aria-label={isMobile ? "Swipe up for details" : "Click to continue"}
               onClick={!isMobile ? scrollToContent : undefined}
               sx={{
                 backgroundColor: "rgba(255,255,255,0.1)",
@@ -433,7 +482,7 @@ const Mockup = () => {
           </SwipeIndicator>
 
           {/* Custom controls */}
-          <ControlBar>
+          <ControlBar aria-label="Video controls">
             <Tooltip title={isPlaying ? "Pause" : "Play"}>
               <ControlButton
                 aria-label={isPlaying ? "Pause video" : "Play video"}
@@ -485,11 +534,7 @@ const Mockup = () => {
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
           {/* Hero Section */}
           <Box sx={{ py: { xs: 8, md: 25 } }}>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
               <Grid container spacing={6} alignItems="center">
                 <Grid item xs={12} lg={6}>
                   <motion.div variants={itemVariants}>
@@ -538,8 +583,12 @@ const Mockup = () => {
                         perfection, designed for luxury.
                       </Typography>
                       <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-                        <CTAButton variant="large">Get Free Quote</CTAButton>
-                        <CTAButton variant="outline">View Gallery</CTAButton>
+                        <CTAButton variant="large" component="a" href="/quote">
+                          Get Free Quote
+                        </CTAButton>
+                        <CTAButton variant="outline" component="a" href="/gallery">
+                          View Gallery
+                        </CTAButton>
                       </Box>
                       <Box sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
@@ -550,21 +599,14 @@ const Mockup = () => {
                               transition={{ duration: 0.5 }}
                               viewport={{ once: true }}
                             >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
+                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
                                 60%+
                               </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
+                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
                                 Heat Rejection
                               </Typography>
                             </Metric>
                           </Grid>
-
                           <Grid item xs={12} sm={4}>
                             <Metric
                               initial={{ opacity: 0, y: 16 }}
@@ -572,21 +614,14 @@ const Mockup = () => {
                               transition={{ duration: 0.5, delay: 0.05 }}
                               viewport={{ once: true }}
                             >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
+                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
                                 99%
                               </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
+                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
                                 UV Protection
                               </Typography>
                             </Metric>
                           </Grid>
-
                           <Grid item xs={12} sm={4}>
                             <Metric
                               initial={{ opacity: 0, y: 16 }}
@@ -594,16 +629,10 @@ const Mockup = () => {
                               transition={{ duration: 0.5, delay: 0.1 }}
                               viewport={{ once: true }}
                             >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
+                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
                                 Lifetime
                               </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
+                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
                                 Warranty Included
                               </Typography>
                             </Metric>
@@ -615,11 +644,7 @@ const Mockup = () => {
                 </Grid>
 
                 <Grid item xs={12} lg={6}>
-                  <motion.div
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                  >
+                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
                     <ImageContainer>
                       <StyledFrame
                         src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
@@ -698,24 +723,15 @@ const Mockup = () => {
                     >
                       <Typography
                         variant="h3"
-                        sx={{
-                          fontSize: "2.5rem",
-                          mb: 2,
-                          filter: "grayscale(0.3)",
-                        }}
+                        sx={{ fontSize: "2.5rem", mb: 2, filter: "grayscale(0.3)" }}
+                        aria-hidden="true"
                       >
                         {benefit.icon}
                       </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: 700, mb: 2, color: "#fff" }}
-                      >
+                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: "#fff" }}>
                         {benefit.title}
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}
-                      >
+                      <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}>
                         {benefit.description}
                       </Typography>
                     </BenefitCard>
@@ -813,14 +829,7 @@ const Mockup = () => {
                           "Superior heat rejection up to 60%",
                           "Signal-friendly, no interference",
                         ].map((t, i) => (
-                          <Box
-                            key={i}
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: i < 2 ? 2 : 0,
-                            }}
-                          >
+                          <Box key={i} sx={{ display: "flex", alignItems: "center", mb: i < 2 ? 2 : 0 }}>
                             <Box
                               sx={{
                                 width: 8,
@@ -836,7 +845,7 @@ const Mockup = () => {
                           </Box>
                         ))}
                       </Box>
-                      <CTAButton>Schedule Service</CTAButton>
+                      <CTAButton component="a" href="/book">Schedule Service</CTAButton>
                     </Box>
                   </motion.div>
                 </Grid>
@@ -911,14 +920,7 @@ const Mockup = () => {
                           "Dust-free, climate-controlled environment",
                           "Lifetime warranty on all services",
                         ].map((t, i) => (
-                          <Box
-                            key={i}
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: i < 2 ? 2 : 0,
-                            }}
-                          >
+                          <Box key={i} sx={{ display: "flex", alignItems: "center", mb: i < 2 ? 2 : 0 }}>
                             <Box
                               sx={{
                                 width: 8,
@@ -934,7 +936,7 @@ const Mockup = () => {
                           </Box>
                         ))}
                       </Box>
-                      <CTAButton>Schedule Service</CTAButton>
+                      <CTAButton component="a" href="/book">Schedule Service</CTAButton>
                     </Box>
                   </motion.div>
                 </Grid>
@@ -962,6 +964,7 @@ const Mockup = () => {
               </Grid>
             </motion.div>
           </Box>
+
           <Testimonials />
           <FAQ />
         </Container>
