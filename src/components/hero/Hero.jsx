@@ -40,7 +40,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="hero-content">
         <h1>
-          Enhance your Home, Ride or Business with <br />
+          Enhance your Ride, Home or Business with <br />
           Precision Tinting and Protection
         </h1>
         <button className="learn-more-btn" onClick={handleOpen}>

@@ -1,7 +1,12 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { vitePrerenderPlugin } from 'vite-prerender-plugin'
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/', // Change this to '/' for the custom domain
-});
+  // You have a custom domain (tinttekplus.com), so:
+  base: '/', // if using username.github.io/repo, set base: '/<REPO>/'
+  plugins: [
+    react(),
+  ]
+})

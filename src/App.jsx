@@ -1,5 +1,5 @@
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
@@ -36,6 +36,7 @@ import VehicleTintingPage from "./components/simulators/VehicleSimulatorPage";
 import PPFpage from "./components/simulators/PPFpage";
 import FullPageChatbot from "./components/FullPageChatbot";
 import ChatbotPopup from "./components/ChatbotPopup"; // Import the new component
+import Mockup from "./components/landing-pages/Mockup";
 
 // Theme Config
 const theme = createTheme({
@@ -102,6 +103,7 @@ function AppContent() {
         <Route path="/blogs" element={<Blog />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/chat" element={<FullPageChatbot />} />
+        <Route path="/mockup" element={<Mockup />} />
         <Route
           path="/simulators/commercial-window-tinting"
           element={<CommercialSimulator />}

@@ -1,4 +1,6 @@
-require("dotenv").config({ path: require("path").resolve(__dirname, "../../.env") });
+require("dotenv").config({
+  path: require("path").resolve(__dirname, "../../.env"),
+});
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
@@ -14,7 +16,8 @@ const PORT = process.env.PORT || 5001;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // ✅ MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
@@ -22,7 +25,6 @@ mongoose.connect(process.env.MONGODB_URI)
 const FAQ_PATH = __dirname + "/data/training_data.json";
 const USER_MESSAGES_PATH = __dirname + "/data/user_messages.json";
 const conversationHistory = []; // Stores an array of messages [{ role: "user", content: "..." }, ...]
-
 
 // ✅ Store in JSON file (optional local backup)
 const storeUserMessageToFile = (userMessage, botReply) => {
@@ -119,9 +121,173 @@ const findBestMatchAI = async (userMessage) => {
   return { bestMatch, similarityScore: highestSimilarity };
 };
 
+const tintPricing = {
+  tesla_model_s: {
+    ctx: "$329",
+    pinnacle: "$529",
+  },
+  tesla_model_3: {
+    ctx: "$449",
+    pinnacle: "$589",
+  },
+  tesla_model_x: {
+    ctx: "$589",
+    pinnacle: "$749",
+  },
+  tesla_model_y: {
+    ctx: "$389",
+    pinnacle: "$589",
+  },
+  tesla_cybertruck: {
+    ctx: "$485",
+    pinnacle: "$685",
+  },
+  truck: {
+    classic: "$249",
+    ctx: "$349",
+    pinnacle: "$549",
+  },
+  full_suv: {
+    classic: "$289",
+    ctx: "$389",
+    pinnacle: "$589",
+  },
+  mid_suv: {
+    classic: "$249",
+    ctx: "$349",
+    pinnacle: "$549",
+  },
+  sedan: {
+    classic: "$199",
+    ctx: "$329",
+    pinnacle: "$529",
+  },
+  coupe: {
+    classic: "$189",
+    ctx: "$289",
+    pinnacle: "$389",
+  },
+  two_windows: {
+    classic: "$85",
+    ctx: "$119",
+    pinnacle: "$149",
+  },
+};
+
 // ✅ Generate Response
+// const generateAIResponse = async (userMessage, history = []) => {
+//   try {
+//     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
+
+//     const systemMessage = {
+//       role: "system",
+//       content:
+//         "You are a helpful assistant for a tinting business. Use the FAQ when available. If there's no FAQ match, do your best to respond and include a warm suggestion to contact our tinting experts at (972) 362-8468.",
+//     };
+
+//     const messages = [systemMessage, ...history];
+
+//     if (bestMatch && similarityScore >= 0.5) {
+//       messages.push({
+//         role: "assistant",
+//         content: `Here is a FAQ that might help:\nQ: ${bestMatch.question}\nA: ${bestMatch.answer}`,
+//       });
+//     }
+
+//     messages.push({ role: "user", content: userMessage });
+
+//     const completion = await openai.chat.completions.create({
+//       model: "gpt-3.5-turbo",
+//       messages,
+//       max_tokens: 300,
+//     });
+
+//     return completion.choices[0].message.content.trim();
+//   } catch (error) {
+//     console.error("❌ Error generating AI response:", error);
+//     return "Oops! Something went wrong. Please try again later or contact us directly.";
+//   }
+// };
+
 const generateAIResponse = async (userMessage, history = []) => {
   try {
+    const isPriceQuestion =
+      /price|cost|how much/i.test(userMessage) && /tint/i.test(userMessage);
+
+    if (isPriceQuestion) {
+      const categorizationPrompt = `
+        You are a car expert working for a tinting business. From the following user input, extract:
+        1. The full vehicle description (e.g., "2022 Ford F-150")
+        2. The vehicle category for pricing purposes. Valid categories are:
+           - coupe, sedan, full_suv, mid_suv, truck, two_windows
+           - tesla_model_s, tesla_model_3, tesla_model_x, tesla_model_y, tesla_cybertruck
+
+        Respond in the format:
+        Vehicle: <description>
+        Category: <one of the categories above>
+
+        User: "${userMessage}"
+      `;
+
+      const categoryResponse = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You categorize vehicles and extract their names for pricing purposes.",
+          },
+          { role: "user", content: categorizationPrompt },
+        ],
+        max_tokens: 100,
+      });
+
+      const replyText = categoryResponse.choices[0].message.content.trim();
+      const vehicleMatch = replyText.match(/Vehicle:\s*(.*)/i);
+      const categoryMatch = replyText.match(/Category:\s*(.*)/i);
+
+      const vehicleDescription = vehicleMatch
+        ? vehicleMatch[1].trim()
+        : "your vehicle";
+      const carCategory = categoryMatch
+        ? categoryMatch[1].trim().toLowerCase()
+        : null;
+
+      if (tintPricing[carCategory]) {
+        const prices = tintPricing[carCategory];
+        const readableCategory = carCategory.replace(/_/g, " ").toUpperCase();
+        // Build price message without showing unavailable films
+        const buildPriceMessage = (vehicleDescription, prices) => {
+          const lines = [];
+
+          // Only include Classic if it's actually offered for this category
+          if (
+            Object.prototype.hasOwnProperty.call(prices, "classic") &&
+            prices.classic
+          ) {
+            lines.push(`• F1 Classic Series: ${prices.classic}`);
+          }
+
+          if (prices.ctx) lines.push(`• Llumar CTX: ${prices.ctx}`);
+          if (prices.pinnacle) lines.push(`• F1 Pinnacle Series:: ${prices.pinnacle}`);
+
+          // If somehow nothing is available, fall back to a friendly note
+          const body = lines.length
+            ? lines.join("\n")
+            : "Pricing for this configuration is custom. Please call us for a quick quote.";
+
+          return (
+            `Based on your ${vehicleDescription}, here are the following tinting prices for all side windows and back glass:\n\n` +
+            `${body}\n\n` +
+            `Need help choosing? Call us at (972) 362-8468!`
+          );
+        };
+
+        return buildPriceMessage(vehicleDescription, prices);
+      }
+    }
+
+    // ✅ Fallback to FAQ
     const { bestMatch, similarityScore } = await findBestMatchAI(userMessage);
 
     const systemMessage = {
@@ -153,8 +319,6 @@ const generateAIResponse = async (userMessage, history = []) => {
     return "Oops! Something went wrong. Please try again later or contact us directly.";
   }
 };
-
-
 
 // ✅ Load and Start Server
 loadFAQData();

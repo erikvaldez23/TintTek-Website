@@ -198,5 +198,230 @@
     "timestamp": "2025-04-22T04:27:20.344Z",
     "userMessage": "What tinting packages could I get for my car? ",
     "botReply": "I apologize for the inconvenience. We offer two main tinting packages for most cars: CTX (Ceramic Film) and IRX (Nano Ceramic Film). The CTX package starts at $XXX and includes tinting for the side windows and back glass. The IRX package starts at $XXX and offers enhanced heat rejection and UV protection. For specific pricing and more details tailored to your car, please contact our support team at (972) 362-8468. They will be happy to assist you further."
+  },
+  {
+    "timestamp": "2025-08-04T02:23:17.638Z",
+    "userMessage": "Hello",
+    "botReply": "Hello! How can I assist you today with your tinting needs? If you have any questions or would like to learn more about our services, feel free to ask. And remember, you can always reach out to our tinting experts at (972) 362-8468 for personalized assistance."
+  },
+  {
+    "timestamp": "2025-08-04T02:23:30.381Z",
+    "userMessage": "How much would it cost to tint my tesla model 3? ",
+    "botReply": "Based on your vehicle category **TESLA**, here are the tinting prices:\n\n• Full Tint: $499\n• Front Windows Only: $199\n• Windshield: $149\n\nNeed help choosing? Give us a call at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:26:25.372Z",
+    "userMessage": "How much to tint a tesla model 3?",
+    "botReply": "Based on your TESLA, Here are the following tinting prices:\n\n• Full Tint: $499\n• Front Windows Only: $199\n• Windshield: $149\n\nNeed help choosing? Give us a call at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:27:03.827Z",
+    "userMessage": "How much to tint an acura rdx 2010? ",
+    "botReply": "For the Acura RDX 2010, here are the estimated tinting prices:\n\n• Full Tint: $399\n• Front Windows Only: $149\n• Windshield: $129\n\nFor a more accurate quote and to discuss your specific needs, feel free to reach out to our tinting experts at (972) 362-8468. They will be more than happy to assist you!"
+  },
+  {
+    "timestamp": "2025-08-04T02:27:38.657Z",
+    "userMessage": "How about a toyota sequoia ",
+    "botReply": "For the Toyota Sequoia, here are the estimated tinting prices:\n\n• Full Tint: $449\n• Front Windows Only: $179\n• Windshield: $139\n\nFor a more accurate quote and to discuss your specific needs, feel free to contact our tinting experts at (972) 362-8468. They can provide you with detailed information and assist you further."
+  },
+  {
+    "timestamp": "2025-08-04T02:29:27.082Z",
+    "userMessage": "\"Can you give me a quote on a Hyundai Sonata 2025?\"",
+    "botReply": "I see you're interested in tinting your Hyundai Sonata 2025. Here are some estimated pricing options for your vehicle:\n- ATC tint: $199\n- CTX tint: $329\n- IRX tint: $529\n\nFor a more accurate quote and to discuss your specific needs, feel free to contact our tinting experts at (972) 362-8468. They can provide you with detailed information and assistance tailored to your Hyundai Sonata 2025."
+  },
+  {
+    "timestamp": "2025-08-04T02:29:52.192Z",
+    "userMessage": "How much for 2 windows?",
+    "botReply": "For tinting two windows, the estimated pricing is as follows:\n- ATC tint: $85\n- CTX tint: $119\n- IRX tint: $149\n\nIf you have any specific requirements or would like a more tailored quote, please feel free to contact our tinting experts at (972) 362-8468. They will be happy to provide further assistance."
+  },
+  {
+    "timestamp": "2025-08-04T02:39:04.741Z",
+    "userMessage": "Hello how much would it cost to tint my tesla model y?",
+    "botReply": "Based on your tesla_model_y, Here are the following tinting prices:\n\n• Full Tint: undefined\n• Front Windows Only: undefined\n• Windshield: undefined\n\nNeed help choosing? Give us a call at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:40:58.440Z",
+    "userMessage": "How much to tint my tesla model 3?",
+    "botReply": "Oops! Something went wrong. Please try again later or contact us directly."
+  },
+  {
+    "timestamp": "2025-08-04T02:41:10.390Z",
+    "userMessage": "hello",
+    "botReply": "Hello! How can I assist you today? If you have any questions about tinting services for your vehicle, feel free to ask. If you need immediate assistance, you can contact our tinting experts at (972) 362-8468."
+  },
+  {
+    "timestamp": "2025-08-04T02:41:20.102Z",
+    "userMessage": "how much to tint my tesla model 3",
+    "botReply": "Oops! Something went wrong. Please try again later or contact us directly."
+  },
+  {
+    "timestamp": "2025-08-04T02:41:48.301Z",
+    "userMessage": "how much to tint my tesla model 3",
+    "botReply": "Oops! Something went wrong. Please try again later or contact us directly."
+  },
+  {
+    "timestamp": "2025-08-04T02:43:13.410Z",
+    "userMessage": "how much to tint my tesla model 3",
+    "botReply": "Based on your tesla, Here are the following tinting prices:\n\n• Full Tint: $499\n• Front Windows Only: $199\n• Windshield: $149\n\nNeed help choosing? Give us a call at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:46:09.723Z",
+    "userMessage": "How much to tint my acura rdx 2010?",
+    "botReply": "Here’s the pricing for a SUV:\n\n• Full Tint: $449\n• Front Windows Only: $189\n• Windshield: $139\n\nNeed help deciding? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:46:31.220Z",
+    "userMessage": "How much to tint my 2004 camry?",
+    "botReply": "Here’s the pricing for a SEDAN:\n\n• Full Tint: $349\n• Front Windows Only: $169\n• Windshield: $119\n\nNeed help deciding? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:46:50.562Z",
+    "userMessage": "how much to tint a lamborghini",
+    "botReply": "For a high-end vehicle like a Lamborghini, the price for tinting can vary. It's recommended to contact our tinting experts at (972) 362-8468 for a personalized quote and to discuss the specific requirements for tinting a Lamborghini. They will be able to provide you with detailed information based on the type of vehicle and your preferences."
+  },
+  {
+    "timestamp": "2025-08-04T02:47:24.717Z",
+    "userMessage": "pricing",
+    "botReply": "For pricing information, please feel free to contact our tinting experts directly at (972) 362-8468. They will be able to provide you with detailed pricing based on your specific vehicle and tinting needs. It's always best to get a personalized quote to ensure accuracy and to discuss any additional services or options you may require."
+  },
+  {
+    "timestamp": "2025-08-04T02:51:14.456Z",
+    "userMessage": "how much to tint my acura rdx 2010?",
+    "botReply": "Based on your **Acura RDX 2010** (categorized as a **SUV**), here are the tinting prices:\n\n• Full Tint: $449\n• Front Windows Only: $189\n• Windshield: $139\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:51:47.625Z",
+    "userMessage": "How much to tint my truck?",
+    "botReply": "Based on your **truck** (categorized as a **TRUCK**), here are the tinting prices:\n\n• Full Tint: $399\n• Front Windows Only: $179\n• Windshield: $129\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:56:05.790Z",
+    "userMessage": "How much to tint my two windows?",
+    "botReply": "Based on your **two windows** (categorized as a **TWO WINDOWS**), here are the available tint packages:\n\n• **Classic**: $85.00 — Budget-friendly dyed tint\n• **CTX**: $119.00 — Ceramic automotive tint (99% UV block)\n• **Pinnacle**: $149.00 — Nano-ceramic construction with best heat rejection\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-04T02:56:23.177Z",
+    "userMessage": "How much to tint my 2010 acura rdx ",
+    "botReply": "To provide an accurate quote for tinting your 2010 Acura RDX, it would be best to contact our tinting experts directly at (972) 362-8468. They can discuss the available tint packages, pricing, and any specific requirements you might have for your vehicle. Feel free to reach out for a personalized quote and expert advice on the best tinting options for your Acura RDX."
+  },
+  {
+    "timestamp": "2025-08-05T02:53:42.012Z",
+    "userMessage": "How much to tint an acura rdx 2010?",
+    "botReply": "Based on your Acura RDX 2010, here are the following tinting prices:\n\n• Full Tint: $449\n• Front Windows Only: $189\n• Windshield: $139\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T16:39:26.451Z",
+    "userMessage": "How much to tint my acura rdx 2010?",
+    "botReply": "Based on your Acura RDX 2010, here are the following tinting prices:\n\n• Full Tint: $449\n• Front Windows Only: $189\n• Windshield: $139\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T16:50:40.462Z",
+    "userMessage": "How much to tint my acura rdx 2010?",
+    "botReply": "Based on your 2010 Acura RDX, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $289\n• CTX: $389\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T16:50:58.985Z",
+    "userMessage": "How much to tint my camry 2021?",
+    "botReply": "Based on your 2021 Toyota Camry, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $199\n• CTX: $329\n• Pinnacle: $529\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T16:51:50.493Z",
+    "userMessage": "How much to tint my chevy silverado",
+    "botReply": "Based on your Chevy Silverado, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $249\n• CTX: $349\n• Pinnacle: $549\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T17:23:51.712Z",
+    "userMessage": "What are the differences between those options?",
+    "botReply": "The three main types of window tint options we offer are:\n\n1. Classic: This is a dyed film that provides basic UV protection and heat rejection. It is a cost-effective option for tinting windows.\n\n2. CTX: This is a high-performance hybrid film that combines dyed and metalized technologies for better heat rejection and UV protection. It offers a balance between performance and price.\n\n3. Pinnacle: This is a top-of-the-line ceramic film that provides superior heat rejection, UV protection, and clarity. It is the most advanced option for those looking for the best in performance and longevity.\n\nIf you would like more information or help choosing the best option for your needs, please reach out to our tinting experts at (972) 362-8468."
+  },
+  {
+    "timestamp": "2025-08-08T17:28:29.324Z",
+    "userMessage": "how much to tint tesla model 3",
+    "botReply": "Based on your Tesla Model 3, here are the following tinting prices for all side windows and back glass:\n\n• Classic: N/A\n• CTX: $449\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-08T17:31:15.728Z",
+    "userMessage": "how much to tint my tesla model 3",
+    "botReply": "Based on your Tesla Model 3, here are the following tinting prices for all side windows and back glass:\n\n• Classic: Not offered\n• CTX: $449\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:20:56.730Z",
+    "userMessage": "How much to tint acura rdx 2010? ",
+    "botReply": "Based on your Acura RDX 2010, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $289\n• CTX: $389\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:25:34.907Z",
+    "userMessage": "How much to tint my acura rdx 2010?",
+    "botReply": "Based on your 2010 Acura RDX, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $289\n• CTX: $389\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:26:28.891Z",
+    "userMessage": "How much to tint tesla model S? ",
+    "botReply": "Based on your Tesla Model S, here are the following tinting prices for all side windows and back glass:\n\n• Classic: N/A\n• CTX: $329\n• Pinnacle: $529\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:26:58.113Z",
+    "userMessage": "What are the differences",
+    "botReply": "If you're inquiring about the differences in the tinting options provided:\n\n1. Classic Tint: Offers basic UV protection and privacy at an affordable price point.\n2. CTX Tint: Provides enhanced heat rejection compared to Classic Tint and offers better UV protection.\n3. Pinnacle Tint: Premium option with superior heat rejection, maximum UV protection, and increased durability.\n\nFor more detailed information or assistance in choosing the best option for your needs, feel free to contact our tinting experts at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:27:39.484Z",
+    "userMessage": "How much to tint a chevy trax",
+    "botReply": "Based on your Chevy Trax, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $289\n• CTX: $389\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T18:44:39.573Z",
+    "userMessage": "How much to tint Chevy Trax",
+    "botReply": "For a Chevy Trax, the price for window tinting can vary depending on the type of film used and the number of windows being tinted. Our pricing typically ranges from $200 to $400 for a full vehicle tint. For a more accurate quote and to discuss your specific needs, I recommend reaching out to our tinting experts at (972) 362-8468. They will be happy to provide you with more detailed information and options tailored to your Chevy Trax."
+  },
+  {
+    "timestamp": "2025-08-10T18:45:01.458Z",
+    "userMessage": "How much to tint acura rdx 1020",
+    "botReply": "It seems there might have been a typo in your message. If you meant to ask about tinting a 2020 Acura RDX, the price for window tinting on this vehicle can vary based on the type of film chosen and the number of windows being tinted. Our pricing typically ranges from $250 to $450 for a complete tint on a 2020 Acura RDX.\n\nFor a more accurate quote and to discuss your specific preferences and needs for your Acura RDX, I recommend contacting our tinting experts at (972) 362-8468. They will be able to provide you with detailed pricing information, discuss available options, and answer any questions you may have about tinting your Acura RDX."
+  },
+  {
+    "timestamp": "2025-08-10T18:48:53.381Z",
+    "userMessage": "How much to tint chevy trax",
+    "botReply": "Based on your Chevy Trax, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $249\n• CTX: $349\n• Pinnacle: $549\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T20:12:42.861Z",
+    "userMessage": "How much to tint a chevy trax",
+    "botReply": "Based on your Chevy Trax, here are the following tinting prices for all side windows and back glass:\n\n• Classic: $249\n• CTX: $349\n• Pinnacle: $549\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T20:12:52.218Z",
+    "userMessage": "How much to tint tesla model 3",
+    "botReply": "Based on your Tesla Model 3, here are the following tinting prices for all side windows and back glass:\n\n• CTX: $449\n• Pinnacle: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T20:15:25.364Z",
+    "userMessage": "How much to tint tesla model 3? ",
+    "botReply": "Based on your Tesla Model 3, here are the following tinting prices for all side windows and back glass:\n\n• Llumar CTX: $449\n• F1 Pinnacle Series:: $589\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T20:15:36.830Z",
+    "userMessage": "How much to tint acura rdx 2010",
+    "botReply": "Based on your Acura RDX 2010, here are the following tinting prices for all side windows and back glass:\n\n• F1 Classic Series: $249\n• Llumar CTX: $349\n• F1 Pinnacle Series:: $549\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T23:37:15.272Z",
+    "userMessage": "How much to tint a camry 2021",
+    "botReply": "Based on your Camry 2021, here are the following tinting prices for all side windows and back glass:\n\n• F1 Classic Series: $199\n• Llumar CTX: $329\n• F1 Pinnacle Series:: $529\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T23:57:16.599Z",
+    "userMessage": "How much to tint an acura rdx 2010",
+    "botReply": "Based on your Acura RDX 2010, here are the following tinting prices for all side windows and back glass:\n\n• F1 Classic Series: $249\n• Llumar CTX: $349\n• F1 Pinnacle Series:: $549\n\nNeed help choosing? Call us at (972) 362-8468!"
+  },
+  {
+    "timestamp": "2025-08-10T23:57:30.215Z",
+    "userMessage": "What are the main differences between these tints",
+    "botReply": "When it comes to different types of window tints, there are mainly three popular options available: dyed, metallic, and ceramic. \n\n1. Dyed Tint: Dyed tint is the most budget-friendly option. It provides basic UV protection and can help reduce glare. However, it is not as effective at heat rejection compared to other types.\n\n2. Metallic Tint: Metallic tint contains tiny metallic particles that reflect heat away from the vehicle. It offers better heat rejection than dyed tint but may interfere with electronic devices like GPS, radio, and cell phone signals.\n\n3. Ceramic Tint: Ceramic tint is a premium option known for its superior heat rejection and UV protection. It does not contain any metal additives, so it does not interfere with electronics. Ceramic tint is durable, offers excellent clarity, and is fade-resistant.\n\nEach type of tint has its own benefits and price points. If you need further assistance in choosing the right tint for your vehicle, feel free to contact our tinting experts at (972) 362-8468."
+  },
+  {
+    "timestamp": "2025-08-10T23:57:41.689Z",
+    "userMessage": "Are these prices final",
+    "botReply": "Our pricing reflects the quality of materials and professional service we provide. However, we understand that each situation is unique, so we are open to discussing your specific needs and finding a solution that works for you. For further assistance or to discuss pricing options, please feel free to contact our tinting experts at (972) 362-8468."
   }
 ]

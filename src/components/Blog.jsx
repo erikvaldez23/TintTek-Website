@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   Typography,
   Card,
-  Button,
   Grid,
   Container,
   Chip,
-  InputBase,
-  IconButton,
   Tabs,
   Tab,
   useMediaQuery,
   useTheme,
+  CardActionArea,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Topbar from "./key-components/Topbar";
 import CallToAction from "./key-components/CallToAction";
 import Contact from "./key-components/Contact";
 import Footer from "./key-components/Footer";
 import QuickLinks from "./key-components/QuickLinks";
+import { Helmet } from "react-helmet-async";
 
-// Sample blog posts data - expanded for demo purposes
+// ---- SITE SETTINGS ----
+const SITE = "https://tinttekplus.com"; // use your live domain
+
+// Sample blog posts data
 const blogPosts = [
   {
     id: 1,
@@ -58,49 +58,41 @@ const allCategories = Array.from(
 
 const Blog = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("all");
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
   const [featuredPost, setFeaturedPost] = useState(
     blogPosts.find((post) => post.featured)
   );
 
-  // Filter posts based on search term and active tab
-  useEffect(() => {
+  // Derived / filtered posts
+  const filteredPosts = useMemo(() => {
     let filtered = blogPosts;
 
-    // Filter by search term
     if (searchTerm) {
+      const query = searchTerm.toLowerCase();
       filtered = filtered.filter(
         (post) =>
-          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.category.some((cat) =>
-            cat.toLowerCase().includes(searchTerm.toLowerCase())
-          )
+          post.title.toLowerCase().includes(query) ||
+          post.summary.toLowerCase().includes(query) ||
+          post.category.some((cat) => cat.toLowerCase().includes(query))
       );
     }
-
-    // Filter by category tab
     if (activeTab !== "all") {
       filtered = filtered.filter((post) => post.category.includes(activeTab));
     }
-
-    setFilteredPosts(filtered);
+    return filtered;
   }, [searchTerm, activeTab]);
 
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
+  const handleTabChange = (_e, newValue) => setActiveTab(newValue);
 
-  // Animation for cards when they appear
+  // Animate cards on appear
   useEffect(() => {
     const cards = document.querySelectorAll(".blog-card");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -112,27 +104,64 @@ const Blog = () => {
       },
       { threshold: 0.1 }
     );
-
-    cards.forEach((card) => {
-      observer.observe(card);
-    });
-
-    return () => {
-      cards.forEach((card) => {
-        observer.unobserve(card);
-      });
-    };
+    cards.forEach((card) => observer.observe(card));
+    return () => cards.forEach((card) => observer.unobserve(card));
   }, [filteredPosts]);
 
+  // -------- Helmet (SEO) --------
+  const { title, description, canonical, blogLd } = useMemo(() => {
+    const url = `${SITE}/blog`;
+    const metaTitle = "Blog | Window Tinting Tips & PPF Guides | Tint Tek Plus";
+    const metaDesc =
+      "Expert articles on window tinting, paint protection film (PPF), ceramic coatings, and automotive care—written by the Tint Tek Plus team in Dallas–Fort Worth.";
+    const blogPostLd = blogPosts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      description: p.summary,
+      image: `${SITE}${p.image.startsWith("/") ? p.image : `/${p.image}`}`,
+      datePublished: p.date,
+      url: `${SITE}/blog/${p.id}`,
+    }));
+    const ld = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      url,
+      name: "Tint Tek + Insights",
+      description: metaDesc,
+      blogPost: blogPostLd,
+      inLanguage: "en-US",
+      publisher: {
+        "@type": "Organization",
+        name: "Tint Tek Plus",
+        url: SITE,
+        telephone: "+1-972-362-8468",
+      },
+    };
+    return {
+      title: metaTitle,
+      description: metaDesc,
+      canonical: url,
+      blogLd: ld,
+    };
+  }, []);
+
   return (
-    <Box
-      sx={{
-        backgroundColor: "#0a0a10",
-        color: "#FFFFFF",
-        minHeight: "100vh",
-      }}
-    >
-      {/* Hero Section with Parallax Effect */}
+    <Box sx={{ backgroundColor: "#0a0a10", color: "#FFFFFF", minHeight: "100vh" }}>
+      {/* HEAD */}
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(blogLd)}</script>
+      </Helmet>
+
+      {/* Hero Section */}
       <Box
         sx={{
           position: "relative",
@@ -154,7 +183,6 @@ const Blog = () => {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
-
         {/* Animated Gradient Overlay */}
         <Box
           sx={{
@@ -173,8 +201,7 @@ const Blog = () => {
             },
           }}
         />
-
-        {/* Content Container */}
+        {/* Content */}
         <Container
           maxWidth="lg"
           sx={{
@@ -186,20 +213,13 @@ const Blog = () => {
             zIndex: 2,
           }}
         >
-          {/* Text Content */}
           <Box
             sx={{
               maxWidth: { xs: "100%", md: "70%" },
               animation: "fadeInUp 1s ease-out",
               "@keyframes fadeInUp": {
-                "0%": {
-                  opacity: 0,
-                  transform: "translateY(20px)",
-                },
-                "100%": {
-                  opacity: 1,
-                  transform: "translateY(0)",
-                },
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
               },
             }}
           >
@@ -244,39 +264,6 @@ const Blog = () => {
               Stay updated with the latest trends in window tinting, paint
               protection, and automotive care from our expert team.
             </Typography>
-
-            {/* Search Bar */}
-            {/* <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                backgroundColor: "rgba(255,255,255,0.1)",
-                borderRadius: "50px",
-                padding: "4px 16px",
-                maxWidth: "450px",
-                border: "1px solid rgba(255,255,255,0.1)",
-                transition: "all 0.3s ease",
-                "&:hover, &:focus-within": {
-                  backgroundColor: "rgba(255,255,255,0.15)",
-                  boxShadow: "0 0 15px rgba(39, 148, 210, 0.3)",
-                  border: "1px solid rgba(39, 148, 210, 0.3)",
-                },
-              }}
-            >
-              <InputBase
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                sx={{
-                  color: "#fff",
-                  flex: 1,
-                  "& ::placeholder": { color: "rgba(255,255,255,0.6)" },
-                }}
-              />
-              <IconButton sx={{ color: "#2794d2" }}>
-                <SearchIcon />
-              </IconButton>
-            </Box> */}
           </Box>
         </Container>
       </Box>
@@ -292,12 +279,8 @@ const Blog = () => {
             border: "1px solid rgba(255, 255, 255, 0.05)",
             padding: { xs: 2, md: 3 },
             overflowX: "auto",
-            "&::-webkit-scrollbar": {
-              height: "4px",
-            },
-            "&::-webkit-scrollbar-track": {
-              backgroundColor: "rgba(255,255,255,0.05)",
-            },
+            "&::-webkit-scrollbar": { height: "4px" },
+            "&::-webkit-scrollbar-track": { backgroundColor: "rgba(255,255,255,0.05)" },
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: "rgba(39, 148, 210, 0.5)",
               borderRadius: "4px",
@@ -311,9 +294,7 @@ const Blog = () => {
             scrollButtons="auto"
             sx={{
               minHeight: "48px",
-              "& .MuiTabs-indicator": {
-                backgroundColor: "#2794d2",
-              },
+              "& .MuiTabs-indicator": { backgroundColor: "#2794d2" },
               "& .MuiTab-root": {
                 minWidth: "auto",
                 minHeight: "48px",
@@ -322,10 +303,7 @@ const Blog = () => {
                 fontSize: "0.9rem",
                 textTransform: "capitalize",
                 mr: 1,
-                "&.Mui-selected": {
-                  color: "#fff",
-                  fontWeight: 600,
-                },
+                "&.Mui-selected": { color: "#fff", fontWeight: 600 },
               },
             }}
           >
@@ -337,7 +315,7 @@ const Blog = () => {
         </Box>
       </Container>
 
-      {/* Featured Post Section */}
+      {/* Featured Post (kept as fully clickable card) */}
       {featuredPost && (
         <Container maxWidth="lg" sx={{ mt: 6, mb: 4 }}>
           <Typography
@@ -375,172 +353,149 @@ const Blog = () => {
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
               opacity: 0,
               transform: "translateY(20px)",
-              "&.appear": {
-                opacity: 1,
-                transform: "translateY(0)",
-              },
+              "&.appear": { opacity: 1, transform: "translateY(0)" },
               "&:hover": {
                 transform: "translateY(-5px)",
                 boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
               },
+              textDecoration: "none",
             }}
           >
-            {/* Featured Image */}
-            <Box
+            <CardActionArea
+              component={Link}
+              to={`/blog/${featuredPost.id}`}
+              aria-label={`Read article: ${featuredPost.title}`}
               sx={{
-                width: { xs: "100%", md: "50%" },
-                height: { xs: "250px", md: "auto" },
-                overflow: "hidden",
-                position: "relative",
-              }}
-            >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(${featuredPost.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  transition: "transform 0.5s ease",
-                }}
-              />
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "16px",
-                  left: "16px",
-                  backgroundColor: "#2794d2",
-                  color: "white",
-                  padding: "4px 12px",
-                  borderRadius: "4px",
-                  fontWeight: "bold",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.5px",
-                  textTransform: "uppercase",
-                }}
-              >
-                Featured
-              </Box>
-            </Box>
-
-            {/* Content */}
-            <Box
-              sx={{
-                width: { xs: "100%", md: "50%" },
-                padding: 4,
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: { xs: "column", md: "row" },
+                alignItems: "stretch",
               }}
             >
-              {/* Categories */}
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
-                {featuredPost.category.map((cat) => (
-                  <Chip
-                    key={cat}
-                    label={cat}
-                    size="small"
-                    sx={{
-                      backgroundColor: "rgba(39, 148, 210, 0.1)",
-                      color: "#2794d2",
-                      fontWeight: 500,
-                      borderRadius: "4px",
-                    }}
-                  />
-                ))}
-              </Box>
-
-              {/* Title */}
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 700,
-                  mb: 2,
-                  color: "#fff",
-                  fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
-                  lineHeight: 1.3,
-                }}
-              >
-                {featuredPost.title}
-              </Typography>
-
-              {/* Summary */}
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "rgba(255,255,255,0.7)",
-                  mb: 3,
-                  lineHeight: 1.6,
-                  fontSize: "1rem",
-                  flex: 1,
-                }}
-              >
-                {featuredPost.summary}
-              </Typography>
-
-              {/* Date and Read Time */}
+              {/* Featured Image */}
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mt: "auto",
-                  flexWrap: "wrap",
-                  gap: 2,
+                  width: { xs: "100%", md: "50%" },
+                  height: { xs: "250px", md: "auto" },
+                  overflow: "hidden",
+                  position: "relative",
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    <CalendarTodayIcon
-                      sx={{
-                        fontSize: "0.9rem",
-                        color: "rgba(255,255,255,0.6)",
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "rgba(255,255,255,0.6)" }}
-                    >
-                      {featuredPost.date}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    <AccessTimeIcon
-                      sx={{
-                        fontSize: "0.9rem",
-                        color: "rgba(255,255,255,0.6)",
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "rgba(255,255,255,0.6)" }}
-                    >
-                      {featuredPost.estimate} Read
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Button
-                  variant="outlined"
-                  endIcon={<ArrowForwardIcon />}
-                  onClick={() => navigate(`/blog/${featuredPost.id}`)}
+                <Box
+                  role="img"
+                  aria-label={featuredPost.title}
                   sx={{
-                    color: "#2794d2",
-                    borderColor: "rgba(39, 148, 210, 0.5)",
-                    "&:hover": {
-                      borderColor: "#2794d2",
-                      backgroundColor: "rgba(39, 148, 210, 0.1)",
-                    },
+                    width: "100%",
+                    height: "100%",
+                    backgroundImage: `url(${featuredPost.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    transition: "transform 0.5s ease",
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "16px",
+                    left: "16px",
+                    backgroundColor: "#2794d2",
+                    color: "white",
+                    padding: "4px 12px",
+                    borderRadius: "4px",
+                    fontWeight: "bold",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
                   }}
                 >
-                  Read Article
-                </Button>
+                  Featured
+                </Box>
               </Box>
-            </Box>
+
+              {/* Content */}
+              <Box sx={{ width: { xs: "100%", md: "50%" }, p: 4, display: "flex", flexDirection: "column" }}>
+                {/* Categories */}
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
+                  {featuredPost.category.map((cat) => (
+                    <Chip
+                      key={cat}
+                      label={cat}
+                      size="small"
+                      sx={{
+                        backgroundColor: "rgba(39, 148, 210, 0.1)",
+                        color: "#2794d2",
+                        fontWeight: 500,
+                        borderRadius: "4px",
+                      }}
+                    />
+                  ))}
+                </Box>
+
+                {/* Title */}
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: "#fff",
+                    fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+                    lineHeight: 1.3,
+                    textDecoration: "none",
+                  }}
+                >
+                  {featuredPost.title}
+                </Typography>
+
+                {/* Summary */}
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "rgba(255,255,255,0.7)",
+                    mb: 3,
+                    lineHeight: 1.6,
+                    fontSize: "1rem",
+                    flex: 1,
+                  }}
+                >
+                  {featuredPost.summary}
+                </Typography>
+
+                {/* Meta */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    mt: "auto",
+                    flexWrap: "wrap",
+                    gap: 2,
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                      <CalendarTodayIcon sx={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)" }} />
+                      <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.6)" }}>
+                        {featuredPost.date}
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                      <AccessTimeIcon sx={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)" }} />
+                      <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.6)" }}>
+                        {featuredPost.estimate} Read
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  {/* Chevron to indicate clickability (optional) */}
+                  <ArrowForwardIcon sx={{ color: "rgba(255,255,255,0.5)" }} />
+                </Box>
+              </Box>
+            </CardActionArea>
           </Card>
         </Container>
       )}
 
-      {/* Blog Listing */}
+      {/* Blog Listing — entire card clickable, no Read button */}
       <Container maxWidth="lg" sx={{ py: 4, mb: 8 }}>
         {filteredPosts.length > 0 ? (
           <>
@@ -562,7 +517,7 @@ const Blog = () => {
                 },
               }}
             >
-              {activeTab === "all" ? "All Articles" : activeTab + " Articles"}
+              {activeTab === "all" ? "All Articles" : `${activeTab} Articles`}
             </Typography>
 
             <Grid container spacing={3}>
@@ -570,7 +525,7 @@ const Blog = () => {
                 <Grid item xs={12} sm={6} md={4} key={post.id}>
                   <Card
                     className="blog-card"
-                    onClick={() => navigate(`/blog/${post.id}`)}
+                    component="article"
                     sx={{
                       borderRadius: "12px",
                       overflow: "hidden",
@@ -581,127 +536,107 @@ const Blog = () => {
                       backdropFilter: "blur(10px)",
                       border: "1px solid rgba(255, 255, 255, 0.05)",
                       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-                      cursor: "pointer",
                       transition: "all 0.3s ease",
                       opacity: 0,
                       transform: "translateY(20px)",
                       transitionDelay: `${index * 0.1}s`,
-                      "&.appear": {
-                        opacity: 1,
-                        transform: "translateY(0)",
-                      },
-                      "&:hover": {
-                        transform: "translateY(-5px)",
-                        boxShadow: "0 15px 40px rgba(0, 0, 0, 0.3)",
-                      },
+                      "&.appear": { opacity: 1, transform: "translateY(0)" },
+                      "&:hover": { transform: "translateY(-5px)", boxShadow: "0 15px 40px rgba(0, 0, 0, 0.3)" },
                     }}
                   >
-                    {/* Image Container */}
-                    <Box
-                      sx={{
-                        position: "relative",
-                        height: "200px",
-                        overflow: "hidden",
-                      }}
+                    <CardActionArea
+                      component={Link}
+                      to={`/blog/${post.id}`}
+                      aria-label={`Read article: ${post.title}`}
+                      sx={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "stretch" }}
                     >
-                      <Box
-                        className="blog-image"
-                        sx={{
-                          width: "100%",
-                          height: "100%",
-                          backgroundImage: `url(${post.image})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          transition: "transform 0.5s ease-in-out",
-                        }}
-                      />
-
-                      {/* Category Badge */}
-                      {post.category && post.category[0] && (
-                        <Chip
-                          label={post.category[0]}
-                          size="small"
+                      {/* Image */}
+                      <Box sx={{ position: "relative", height: "200px", width: "100%", overflow: "hidden" }}>
+                        <Box
+                          className="blog-image"
+                          role="img"
+                          aria-label={post.title}
                           sx={{
-                            position: "absolute",
-                            top: "12px",
-                            left: "12px",
-                            backgroundColor: "rgba(39, 148, 210, 0.9)",
-                            color: "white",
-                            fontWeight: 500,
-                            fontSize: "0.7rem",
+                            width: "100%",
+                            height: "100%",
+                            backgroundImage: `url(${post.image})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            transition: "transform 0.5s ease-in-out",
                           }}
                         />
-                      )}
-                    </Box>
+                        {post.category && post.category[0] && (
+                          <Chip
+                            label={post.category[0]}
+                            size="small"
+                            sx={{
+                              position: "absolute",
+                              top: "12px",
+                              left: "12px",
+                              backgroundColor: "rgba(39, 148, 210, 0.9)",
+                              color: "white",
+                              fontWeight: 500,
+                              fontSize: "0.7rem",
+                            }}
+                          />
+                        )}
+                      </Box>
 
-                    {/* Content */}
-                    <Box
-                      sx={{
-                        p: 3,
-                        display: "flex",
-                        flexDirection: "column",
-                        flex: 1,
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontWeight: 700,
-                          mb: 1.5,
-                          color: "#fff",
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {post.title}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "rgba(255,255,255,0.7)",
-                          mb: 2,
-                          flex: 1,
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                        }}
-                      >
-                        {post.summary}
-                      </Typography>
-
-                      {/* Meta Info */}
-                      <Box
-                        sx={{
-                          mt: "auto",
-                          pt: 2,
-                          borderTop: "1px solid rgba(255,255,255,0.05)",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
+                      {/* Content */}
+                      <Box sx={{ p: 3, display: "flex", flexDirection: "column", flex: 1, width: "100%" }}>
+                        {/* Title */}
                         <Typography
-                          variant="caption"
+                          variant="h6"
+                          component="h3"
+                          sx={{ fontWeight: 700, mb: 1.5, color: "#fff", lineHeight: 1.3 }}
+                        >
+                          {post.title}
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
                           sx={{
-                            color: "rgba(255,255,255,0.6)",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 0.5,
+                            color: "rgba(255,255,255,0.7)",
+                            mb: 2,
+                            flex: 1,
+                            overflow: "hidden",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
                           }}
                         >
-                          <AccessTimeIcon sx={{ fontSize: "0.9rem" }} />
-                          {post.estimate}
+                          {post.summary}
                         </Typography>
 
-                        <Typography
-                          variant="caption"
-                          sx={{ color: "rgba(255,255,255,0.6)" }}
+                        {/* Meta */}
+                        <Box
+                          sx={{
+                            mt: "auto",
+                            pt: 2,
+                            borderTop: "1px solid rgba(255,255,255,0.05)",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            width: "100%",
+                          }}
                         >
-                          {post.date}
-                        </Typography>
+                          <Typography
+                            variant="caption"
+                            sx={{ color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "center", gap: 0.5 }}
+                          >
+                            <AccessTimeIcon sx={{ fontSize: "0.9rem" }} />
+                            {post.estimate}
+                          </Typography>
+
+                          <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.6)" }}>
+                            {post.date}
+                          </Typography>
+
+                          {/* Optional visual affordance */}
+                          <ArrowForwardIcon sx={{ color: "rgba(255,255,255,0.5)" }} />
+                        </Box>
                       </Box>
-                    </Box>
+                    </CardActionArea>
                   </Card>
                 </Grid>
               ))}
@@ -720,141 +655,29 @@ const Blog = () => {
             <Typography variant="h5" sx={{ color: "#fff", mb: 2 }}>
               No articles found
             </Typography>
-            <Typography
-              variant="body1"
-              sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}
-            >
+            <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}>
               Try adjusting your search criteria or browse all articles.
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                setSearchTerm("");
-                setActiveTab("all");
-              }}
+            <Box
+              component={Link}
+              to="/blog"
               sx={{
+                display: "inline-block",
+                px: 3,
+                py: 1.25,
+                borderRadius: "8px",
                 backgroundColor: "#2794d2",
-                "&:hover": {
-                  backgroundColor: "#1a7bb0",
-                },
+                color: "#fff",
+                textDecoration: "none",
+                fontWeight: 600,
+                "&:hover": { backgroundColor: "#1a7bb0" },
               }}
             >
               View All Articles
-            </Button>
+            </Box>
           </Box>
         )}
       </Container>
-
-      {/* Newsletter Subscription */}
-      {/* <Box
-        sx={{ 
-          backgroundColor: "#111122",
-          py: 6,
-        }}
-      >
-        <Container maxWidth="md">
-          <Box
-            sx={{
-              backgroundColor: "rgba(39, 148, 210, 0.1)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              overflow: "hidden",
-              position: "relative",
-              padding: { xs: 3, md: 5 },
-              textAlign: "center",
-              border: "1px solid rgba(39, 148, 210, 0.2)",
-              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
-            }}
-          >
-            <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                opacity: 0.05,
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            />
-            
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 700,
-                mb: 2,
-                color: "#fff",
-                position: "relative",
-              }}
-            >
-              Stay in the Know
-            </Typography>
-            
-            <Typography
-              variant="body1"
-              sx={{
-                color: "rgba(255,255,255,0.7)",
-                mb: 4,
-                maxWidth: "600px",
-                mx: "auto",
-                position: "relative",
-              }}
-            >
-              Subscribe to our newsletter for exclusive automotive care tips,
-              early access to promotions, and the latest industry news.
-            </Typography>
-            
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column", sm: "row" },
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 2,
-                maxWidth: "500px",
-                mx: "auto",
-                position: "relative",
-              }}
-            >
-              <InputBase
-                placeholder="Your email address"
-                sx={{
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderRadius: "30px",
-                  padding: "12px 24px",
-                  color: "#fff",
-                  flex: 1,
-                  width: { xs: "100%", sm: "auto" },
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  transition: "all 0.3s ease",
-                  "&:hover, &:focus": {
-                    backgroundColor: "rgba(255,255,255,0.15)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "30px",
-                  backgroundColor: "#2794d2",
-                  color: "#fff",
-                  fontWeight: 600,
-                  padding: "12px 30px",
-                  width: { xs: "100%", sm: "auto" },
-                  "&:hover": {
-                    backgroundColor: "#1a7bb0",
-                  },
-                }}
-              >
-                Subscribe
-              </Button>
-            </Box>
-          </Box>
-        </Container>
-      </Box> */}
 
       {/* Call to Action & Footer */}
       <CallToAction />

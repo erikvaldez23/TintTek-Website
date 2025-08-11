@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// src/components/gallery/Gallery.jsx
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import {
   Grid,
   Card,
@@ -12,12 +13,17 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useSwipeable } from "react-swipeable"; // For mobile gestures
+import { useSwipeable } from "react-swipeable";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+
 import Footer from "../key-components/Footer";
 import Contact from "../key-components/Contact";
 import CallToAction from "../key-components/CallToAction";
 import QuickLinks from "../key-components/QuickLinks";
+
+// ---- SITE SETTINGS ----
+const SITE = "https://tinttekplus.com";
 
 const images = [
   "/gallery/Tint Tek-2.jpeg",
@@ -46,180 +52,177 @@ const images = [
   "/gallery/Tint Tek-104.jpeg",
 ];
 
-// const containerVariants = {
-//   hidden: {},
-//   visible: {
-//     transition: {
-//       staggerChildren: 0.2, // Stagger each card's animation
-//     },
-//   },
-// };
-
-// const cardVariants = {
-//   hidden: { opacity: 0, y: 20 },
-//   visible: { 
-//     opacity: 1, 
-//     y: 0, 
-//     transition: { duration: 0.5 } 
-//   },
-// };
-
-// const modalVariants = {
-//   hidden: { opacity: 0, scale: 0.95 },
-//   visible: { 
-//     opacity: 1, 
-//     scale: 1, 
-//     transition: { duration: 0.3 } 
-//   },
-// };
-
 const Gallery = () => {
   const [open, setOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isMobile = useMediaQuery("(max-width:600px)");
+  const isDialogFull = useMediaQuery("(max-width:900px)");
 
   const handleImageClick = (index) => {
     setCurrentImageIndex(index);
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
-  const handleNext = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  const handleNext = useCallback(
+    () => setCurrentImageIndex((i) => (i + 1) % images.length),
+    []
+  );
+  const handlePrev = useCallback(
+    () => setCurrentImageIndex((i) => (i - 1 + images.length) % images.length),
+    []
+  );
 
-  const handlePrev = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
+  // Keyboard nav inside dialog
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "Escape") handleClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, handleNext, handlePrev]);
+
+  // Swipe handlers (mobile)
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    trackMouse: true,
+    preventScrollOnSwipe: true,
+  });
+
+  // -------- Helmet (SEO) --------
+  const { title, description, canonical, ldJson } = useMemo(() => {
+    const url = `${SITE}/gallery`;
+    const metaTitle = "Gallery | Window Tint, PPF & Detailing Work | Tint Tek Plus";
+    const metaDesc =
+      "Browse our photo gallery of window tint, paint protection film (PPF), ceramic coating, and detailing projects completed by Tint Tek Plus in Dallas–Fort Worth.";
+    const imageObjs = images.map((src) => ({
+      "@type": "ImageObject",
+      contentUrl: `${SITE}${src.startsWith("/") ? src : `/${src}`}`,
+      url: `${SITE}${src.startsWith("/") ? src : `/${src}`}`,
+      description: "Tint Tek Plus project photo",
+    }));
+    const ld = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      url,
+      name: "Tint Tek Plus Gallery",
+      description: metaDesc,
+      hasPart: imageObjs,
+    };
+    return { title: metaTitle, description: metaDesc, canonical: url, ldJson: ld };
+  }, []);
 
   return (
-    <Box
-    sx={{
-      backgroundColor: "#0a0a10",
-      color: "#FFFFFF",
-      minHeight: "100vh",
-    }}
-  >
-    {/* Hero Section with Parallax Effect */}
-    <Box
-      sx={{
-        position: "relative",
-        width: "100%",
-        height: { xs: "50vh", md: "60vh" },
-        overflow: "hidden",
-        background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
-      }}
-    >
-      {/* Background Pattern */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          opacity: 0.1,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
+    <Box sx={{ backgroundColor: "#0a0a10", color: "#FFFFFF", minHeight: "100vh" }}>
+      {/* HEAD */}
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta name="robots" content="index, follow" />
+        {/* Social */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* JSON-LD */}
+        <script type="application/ld+json">{JSON.stringify(ldJson)}</script>
+      </Helmet>
 
-      {/* Animated Gradient Overlay */}
+      {/* Hero */}
       <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background:
-            "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
-          animation: "gradientShift 10s ease infinite",
-          "@keyframes gradientShift": {
-            "0%": { opacity: 0.4 },
-            "50%": { opacity: 0.7 },
-            "100%": { opacity: 0.4 },
-          },
-        }}
-      />
-
-      {/* Content Container */}
-      <Container
-        maxWidth="lg"
         sx={{
           position: "relative",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          zIndex: 2,
+          width: "100%",
+          height: { xs: "50vh", md: "60vh" },
+          overflow: "hidden",
+          background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
         }}
+        aria-label="Tint Tek Plus project gallery"
       >
-        {/* Text Content */}
+        {/* Background Pattern */}
         <Box
           sx={{
-            maxWidth: { xs: "100%", md: "70%" },
-            animation: "fadeInUp 1s ease-out",
-            "@keyframes fadeInUp": {
-              "0%": {
-                opacity: 0,
-                transform: "translateY(20px)",
-              },
-              "100%": {
-                opacity: 1,
-                transform: "translateY(0)",
-              },
+            position: "absolute",
+            inset: 0,
+            opacity: 0.1,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+        {/* Animated Gradient Overlay */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
+            animation: "gradientShift 10s ease infinite",
+            "@keyframes gradientShift": {
+              "0%": { opacity: 0.4 },
+              "50%": { opacity: 0.7 },
+              "100%": { opacity: 0.4 },
             },
           }}
+        />
+
+        {/* Content */}
+        <Container
+          maxWidth="lg"
+          sx={{
+            position: "relative",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            zIndex: 2,
+          }}
         >
-          <Typography
-            variant="overline"
+          <Box
             sx={{
-              color: "#2794d2",
-              fontWeight: 600,
-              letterSpacing: 2,
-              mb: 1,
-              display: "block",
+              maxWidth: { xs: "100%", md: "70%" },
+              animation: "fadeInUp 1s ease-out",
+              "@keyframes fadeInUp": {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
             }}
           >
-            TINT TEK + INSIGHTS
-          </Typography>
+            <Typography
+              variant="overline"
+              sx={{
+                color: "#2794d2",
+                fontWeight: 600,
+                letterSpacing: 2,
+                mb: 1,
+                display: "block",
+              }}
+            >
+              TINT TEK + PROJECTS
+            </Typography>
 
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              color: "#fff",
-              mb: 2,
-              fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
-              lineHeight: 1.1,
-            }}
-          >
-            OUR GALLERY
-          </Typography>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
+                color: "#fff",
+                mb: 2,
+                fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
+                lineHeight: 1.1,
+              }}
+            >
+              Our Gallery
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
 
-          {/* <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255,255,255,0.8)",
-              maxWidth: "600px",
-              mb: 4,
-              fontSize: { xs: "1rem", md: "1.1rem" },
-              fontWeight: 400,
-              lineHeight: 1.5,
-            }}
-          >
-            See our work in action!
-          </Typography> */}
-        </Box>
-      </Container>
-    </Box>
-
-      {/* Gallery Content */}
+      {/* Gallery Grid */}
       <Box
         sx={{
           flex: "1",
@@ -227,61 +230,57 @@ const Gallery = () => {
           margin: "0 auto",
           padding: 2,
           mt: "20px",
-          paddingBottom: 10,
+          pb: 10,
         }}
       >
-        {/* Wrap grid container with motion.div to stagger animations */}
-        {/* <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-        > */}
-          <Grid container spacing={2}>
-            {images.map((image, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                {/* <motion.div variants={cardVariants}> */}
-                  <Card
-                    sx={{
-                      boxShadow: 3,
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "100%",
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      image={image}
-                      alt={`Gallery image ${index + 1}`}
-                      sx={{
-                        width: "100%",
-                        height: 250,
-                        objectFit: "cover",
-                        borderRadius: "5px",
-                        "&:hover": {
-                          transform: "scale(1.05)",
-                          cursor: "pointer",
-                          opacity: 0.8,
-                        },
-                      }}
-                      onClick={() => handleImageClick(index)}
-                    />
-                  </Card>
-                {/* </motion.div> */}
-              </Grid>
-            ))}
-          </Grid>
-        {/* </motion.div> */}
+        <Grid container spacing={2}>
+          {images.map((image, index) => (
+            <Grid item xs={12} sm={6} md={4} key={image}>
+              <Card
+                sx={{
+                  boxShadow: 3,
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  bgcolor: "rgba(20, 20, 30, 0.5)",
+                  border: "1px solid rgba(255,255,255,0.05)",
+                }}
+                aria-label={`Gallery thumbnail ${index + 1}`}
+                onClick={() => handleImageClick(index)}
+              >
+                <CardMedia
+                  component="img"
+                  image={image}
+                  alt={`Tint Tek Plus project ${index + 1}`}
+                  loading="lazy"
+                  sx={{
+                    width: "100%",
+                    height: 250,
+                    objectFit: "cover",
+                    borderRadius: "5px",
+                    transition: "transform 0.25s ease, opacity 0.25s ease",
+                    "&:hover": {
+                      transform: "scale(1.03)",
+                      cursor: "pointer",
+                      opacity: 0.9,
+                    },
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
 
-        {/* See More Button */}
-        <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
-        >
+        {/* CTA to Instagram */}
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
           <Button
-            component={motion.button}
-            initial={{ scale: 0.9 }}
+            component={motion.a}
+            href="https://www.instagram.com/tinttekplus"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             sx={{
               mt: 3,
@@ -290,13 +289,12 @@ const Gallery = () => {
               fontWeight: "bold",
               borderRadius: "40px",
               textTransform: "uppercase",
-              fontSize: "1.2rem",
-              padding: "10px",
-              width: "100%",
-              maxWidth: "400px",
+              fontSize: "1.1rem",
+              px: 4,
+              py: 1.5,
             }}
           >
-            SEE MORE ON INSTAGRAM
+            See More on Instagram
           </Button>
         </Box>
       </Box>
@@ -312,59 +310,76 @@ const Gallery = () => {
       </Box>
 
       <QuickLinks />
-
-      {/* Footer Section */}
       <Footer />
 
-      {/* Image Modal */}
-      <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
-        {/* Animate modal content */}
-        {/* <motion.div
-          variants={modalVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        > */}
-          <Box sx={{ position: "relative", padding: 0 }}>
-            <img
-              src={images[currentImageIndex]}
-              alt={`Enlarged gallery image`}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-                margin: 0,
-              }}
-            />
-            {/* Left Arrow */}
-            <IconButton
-              onClick={handlePrev}
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: "10px",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-              }}
-            >
-              <ChevronLeft sx={{ color: "white", fontSize: 50 }} />
-            </IconButton>
-            {/* Right Arrow */}
-            <IconButton
-              onClick={handleNext}
-              sx={{
-                position: "absolute",
-                top: "50%",
-                right: "10px",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-              }}
-            >
-              <ChevronRight sx={{ color: "white", fontSize: 50 }} />
-            </IconButton>
-          </Box>
-        {/* </motion.div> */}
+      {/* Lightbox / Image Modal */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="lg"
+        fullWidth
+        fullScreen={isDialogFull}
+        PaperProps={{ sx: { backgroundColor: "black" } }}
+      >
+        <Box
+          {...swipeHandlers}
+          sx={{
+            position: "relative",
+            p: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: isDialogFull ? "100vh" : 600,
+          }}
+          aria-label="Image lightbox viewer"
+        >
+          <img
+            src={images[currentImageIndex]}
+            alt={`Project image ${currentImageIndex + 1} of ${images.length}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxHeight: isDialogFull ? "100vh" : "calc(100vh - 120px)",
+              objectFit: "contain",
+              display: "block",
+              margin: 0,
+            }}
+          />
+
+          {/* Left Arrow */}
+          <IconButton
+            onClick={handlePrev}
+            aria-label="Previous image"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: 10,
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              bgcolor: "rgba(255,255,255,0.15)",
+              "&:hover": { bgcolor: "rgba(255,255,255,0.3)" },
+            }}
+          >
+            <ChevronLeft sx={{ color: "white", fontSize: 44 }} />
+          </IconButton>
+
+          {/* Right Arrow */}
+          <IconButton
+            onClick={handleNext}
+            aria-label="Next image"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              right: 10,
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              bgcolor: "rgba(255,255,255,0.15)",
+              "&:hover": { bgcolor: "rgba(255,255,255,0.3)" },
+            }}
+          >
+            <ChevronRight sx={{ color: "white", fontSize: 44 }} />
+          </IconButton>
+        </Box>
       </Dialog>
     </Box>
   );

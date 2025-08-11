@@ -21,9 +21,9 @@ const serviceOptions = {
     list: ["Front Windsheield", "Sunroof / Panoramic Roof", "Visor Strips"],
     filmTypes: [
       {
-        name: "Llumar ATC",
+        name: "FormulaOne Classic Series",
         description:
-          "Enjoy 99% UV protection and significant heat reduction with the Llumar ATC film. Perfect for those looking to upgrade their vehicle or property’s appearance, this budget-friendly, dyed film offers sleek styling while protecting both you and your interior from the sun’s harmful effects.",
+          "FormulaOne Classic is a premium dyed film that delivers a sleek, factory-tinted charcoal appearance—perfect for drivers who want style, privacy, and essential UV protection without breaking the bank. It reduces glare and helps keep your interior cooler, all while preserving the clean, understated look many drivers love.",
       },
       {
         name: "Llumar CTX",
@@ -31,9 +31,9 @@ const serviceOptions = {
           "CTX film combines advanced ceramic technology with excellent heat and UV protection. It blocks up to 60% of infrared heat while maintaining a clear, non-reflective appearance. Perfect for those seeking superior comfort and privacy without darkening windows too much, CTX is ideal for moderate climates where effective heat rejection and UV protection are key.",
       },
       {
-        name: "Llumar IRX",
+        name: "FormulaOne Pinnacle Series",
         description:
-          "Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
+          "FormulaOne Pinnacle takes things further with advanced nano-ceramic technology. Unlike dyed films, it offers excellent infrared heat rejection—helping to keep your vehicle cooler, even on the hottest days. Pinnacle also significantly reduces glare and provides the same 99%+ UV protection, protecting both your passengers and interior.",
       },
     ],
   },
@@ -240,6 +240,27 @@ const chunkArray = (arr, chunkSize) => {
   return chunks;
 };
 
+const LOGOS = {
+  llumar: "/llumar-logo.png",
+  formulaOne: "/f1-3.png", // <-- add this asset
+  stek: "/stek-logo.png",
+  exo: "/windshield/exo.png",
+};
+
+const getFilmLogo = (serviceId, filmName) => {
+  // Product families that always use a single brand
+  if (serviceId === "windshield-protection-film") return LOGOS.exo;
+  if (
+    serviceId === "vehicle-paint-protection" ||
+    serviceId === "headlight-services"
+  )
+    return LOGOS.stek;
+
+  // Window tinting families (vehicle/tesla/commercial/residential)
+  if (/formulaone/i.test(filmName)) return LOGOS.formulaOne; // Classic / Pinnacle
+  return LOGOS.llumar; // CTX, IRX, etc.
+};
+
 const ServicesOffered = ({ serviceId }) => {
   const service = serviceOptions[serviceId];
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -279,26 +300,22 @@ const ServicesOffered = ({ serviceId }) => {
         {/* Film Logo */}
         <Box
           component="img"
-          src={
-            serviceId === "windshield-protection-film"
-              ? "/windshield/exo.png"
-              : serviceId === "vehicle-paint-protection" ||
-                serviceId === "headlight-services"
-              ? "/stek-logo.png"
-              : "/llumar-logo.png"
-          }
+          src={getFilmLogo(serviceId, film.name)}
           alt="Film Type Logo"
           sx={{
             position: "absolute",
             top: 8,
             right: 8,
-            width: 80,
-            height: "auto",
-            filter:
-              serviceId === "vehicle-paint-protection" ||
-              serviceId === "headlight-services"
-                ? "invert(1)"
-                : "none",
+            width:
+              getFilmLogo(serviceId, film.name) === LOGOS.formulaOne ? 130 : 80, // width stays the same
+            height:
+              getFilmLogo(serviceId, film.name) === LOGOS.formulaOne
+                ? 40
+                : "auto", // taller for F1
+            objectFit: "contain",
+            filter: [LOGOS.stek].includes(getFilmLogo(serviceId, film.name))
+              ? "invert(1)"
+              : "none",
           }}
         />
 
@@ -457,7 +474,15 @@ const ServicesOffered = ({ serviceId }) => {
           </List>
         )}
 
-        <Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2, textAlign: serviceId === "tesla-window-tinting"? "center" : "left" }}>
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          sx={{
+            mt: 4,
+            mb: 2,
+            textAlign: serviceId === "tesla-window-tinting" ? "center" : "left",
+          }}
+        >
           The <strong>main types of film</strong> we use:
         </Typography>
 
