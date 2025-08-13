@@ -8,18 +8,6 @@
     />
     <meta name="theme-color" content="#000000" />
 
-    <!-- Deep-link restore: handles 404.html -> /index.html?redirect=... -->
-    <script>
-      (function () {
-        try {
-          var q = new URLSearchParams(window.location.search);
-          var r = q.get("redirect");
-          if (r) history.replaceState(null, "", r);
-        } catch (e) {}
-      })();
-    </script>
-    
-
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
