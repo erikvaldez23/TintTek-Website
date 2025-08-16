@@ -127,7 +127,7 @@ const FAQ = () => {
             FAQs
           </Typography>
           <Typography variant="h3" sx={{ fontWeight: 800, mt: 1, mb: 1, fontSize: { xs: '2rem', md: '2.5rem' } }}>
-            Common Questions, Clear Answers
+            FREQUENTLY ASKED QUESTIONS
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.7)', maxWidth: 720, mx: 'auto' }}>
             Everything you need to know about our films, process, and care.
