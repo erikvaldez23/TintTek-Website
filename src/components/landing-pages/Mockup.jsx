@@ -22,7 +22,7 @@ import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Testimonials from "../landing-pages/Testimonials";
 import FAQ from "../landing-pages/FAQ";
-import Contact from "../key-components/Contact"
+// import Contact from "../key-components/Contact"
 import { Helmet } from "react-helmet-async";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -354,32 +354,6 @@ const Mockup = () => {
     if (dy > 70 && dx < 60) scrollToContent();
   };
 
-  const benefits = [
-    {
-      title: "Heat & UV Rejection",
-      description:
-        "Advanced ceramic technology blocks up to 99% of harmful UV rays and reduces interior heat by 60%.",
-      icon: "☀️",
-    },
-    {
-      title: "Enhanced Privacy & Security",
-      description:
-        "Premium tinting provides discretion and protection while maintaining optimal visibility.",
-      icon: "🔒",
-    },
-    {
-      title: "Improved Aesthetic Appeal",
-      description:
-        "Transform your vehicle with a sleek, sophisticated look that turns heads everywhere.",
-      icon: "✨",
-    },
-    {
-      title: "Lifetime Warranty",
-      description:
-        "Comprehensive lifetime warranty on all installations with professional service guarantee.",
-      icon: "🛡️",
-    },
-  ];
 
   // —— SEO: Helmet + JSON-LD —— //
   const pageTitle =
@@ -1305,7 +1279,7 @@ const Mockup = () => {
           <FAQ />
         </Container>
       </Box>
-      <Contact />
+      {/* <Contact /> */}
       <CallToAction />
       <QuickLinks />
       <Footer />
