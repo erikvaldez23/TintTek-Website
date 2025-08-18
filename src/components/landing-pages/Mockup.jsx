@@ -22,13 +22,12 @@ import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Testimonials from "../landing-pages/Testimonials";
 import FAQ from "../landing-pages/FAQ";
-// import Contact from "../key-components/Contact"
+import Contact from "../key-components/Contact";
 import { Helmet } from "react-helmet-async";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-
 
 /** —— SITE / ROUTE SETTINGS —— */
 const SITE = "https://tinttekplus.com";
@@ -354,7 +353,6 @@ const Mockup = () => {
     if (dy > 70 && dx < 60) scrollToContent();
   };
 
-
   // —— SEO: Helmet + JSON-LD —— //
   const pageTitle =
     "Premium Window Tinting in Dallas | Heat & UV Protection | Tint Tek Plus";
@@ -395,7 +393,12 @@ const Mockup = () => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE },
-      { "@type": "ListItem", position: 2, name: "Window Tinting", item: canonical },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Window Tinting",
+        item: canonical,
+      },
     ],
   };
 
@@ -418,11 +421,17 @@ const Mockup = () => {
         {/* JSON-LD */}
         <script type="application/ld+json">{JSON.stringify(webPageLd)}</script>
         <script type="application/ld+json">{JSON.stringify(videoLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(breadcrumbsLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbsLd)}
+        </script>
       </Helmet>
 
       {/* ===== Video Hero at the very top ===== */}
-      <VideoSection onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} aria-label="Hero video section showcasing window tinting">
+      <VideoSection
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        aria-label="Hero video section showcasing window tinting"
+      >
         <BackgroundVideo
           autoPlay
           muted
@@ -444,7 +453,9 @@ const Mockup = () => {
             transition={{ duration: 1.6, repeat: Infinity }}
           >
             <IconButton
-              aria-label={isMobile ? "Swipe up for details" : "Click to continue"}
+              aria-label={
+                isMobile ? "Swipe up for details" : "Click to continue"
+              }
               onClick={!isMobile ? scrollToContent : undefined}
               sx={{
                 backgroundColor: "rgba(255,255,255,0.1)",
@@ -513,8 +524,12 @@ const Mockup = () => {
 
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
           {/* Hero Section */}
-          <Box sx={{ py: { xs: 8, md: 25 } }}>
-            <motion.div variants={containerVariants} initial="hidden" animate="visible">
+          <Box sx={{ py: { xs: 8, md: 15 } }}>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <Grid container spacing={6} alignItems="center">
                 <Grid item xs={12} lg={6}>
                   <motion.div variants={itemVariants}>
@@ -530,43 +545,63 @@ const Mockup = () => {
                           display: "block",
                         }}
                       >
-                        PREMIUM WINDOW TINTING
+                        250+ 5 STAR REVIEWS (ADD STARS!!)
                       </Typography>
-                      <GradientText
+                      <Typography
                         variant="h2"
                         sx={{
+                          color: "#fff",
                           fontWeight: 800,
                           fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
                           lineHeight: 1.1,
                           mb: 3,
                         }}
                       >
-                        Transform Your Drive with
+                        Block 88% Of Heat.
                         <br />
-                        <Box component="span" sx={{ color: "#2794d2" }}>
-                          Professional Tinting
+                        <Box component="span" sx={{ color: "#fff" }}>
+                          Drive Cooler In
                         </Box>
-                      </GradientText>
+                        <br />
+                        <Box component="span" sx={{ color: "#fff" }}>
+                          3 Hours!
+                        </Box>
+                      </Typography>
                       <Typography
                         variant="h6"
                         sx={{
-                          color: "rgba(255,255,255,0.8)",
+                          color: "#fff",
                           fontSize: { xs: "1.1rem", md: "1.25rem" },
                           lineHeight: 1.6,
                           maxWidth: "500px",
                           mb: 4,
-                          fontWeight: 400,
+                          fontWeight: 1000,
                         }}
                       >
-                        Experience unmatched comfort, style, and protection with
-                        our premium window tinting solutions. Engineered for
-                        perfection, designed for luxury.
+                        ✅ Superior Heat Rejection <br />
+                        Stay cool and save your AC — block up to 89% of heat
+                        with advanced nano-ceramic tech.
+                        <br />
+                        ✅ Reduce Glare + Boost Safety
+                        <br />
+                        Cut harsh glare for clearer vision and safer driving,
+                        day or night.
+                        <br />
+                        ✅ Privacy + Style Upgrade
+                        <br />
+                        Give your car a sleek, modern look while keeping prying
+                        eyes out.
+                        <br />
                       </Typography>
                       <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
                         <CTAButton variant="large" component="a" href="/quote">
                           Get Free Quote
                         </CTAButton>
-                        <CTAButton variant="outline" component="a" href="/gallery">
+                        <CTAButton
+                          variant="outline"
+                          component="a"
+                          href="/gallery"
+                        >
                           View Gallery
                         </CTAButton>
                       </Box>
@@ -579,10 +614,16 @@ const Mockup = () => {
                               transition={{ duration: 0.5 }}
                               viewport={{ once: true }}
                             >
-                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                              <Typography
+                                variant="h4"
+                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
+                              >
                                 60%+
                               </Typography>
-                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                              <Typography
+                                variant="body2"
+                                sx={{ color: "rgba(255,255,255,0.8)" }}
+                              >
                                 Heat Rejection
                               </Typography>
                             </Metric>
@@ -594,10 +635,16 @@ const Mockup = () => {
                               transition={{ duration: 0.5, delay: 0.05 }}
                               viewport={{ once: true }}
                             >
-                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                              <Typography
+                                variant="h4"
+                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
+                              >
                                 99%
                               </Typography>
-                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                              <Typography
+                                variant="body2"
+                                sx={{ color: "rgba(255,255,255,0.8)" }}
+                              >
                                 UV Protection
                               </Typography>
                             </Metric>
@@ -609,10 +656,16 @@ const Mockup = () => {
                               transition={{ duration: 0.5, delay: 0.1 }}
                               viewport={{ once: true }}
                             >
-                              <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                              <Typography
+                                variant="h4"
+                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
+                              >
                                 Lifetime
                               </Typography>
-                              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                              <Typography
+                                variant="body2"
+                                sx={{ color: "rgba(255,255,255,0.8)" }}
+                              >
                                 Warranty Included
                               </Typography>
                             </Metric>
@@ -624,10 +677,15 @@ const Mockup = () => {
                 </Grid>
 
                 <Grid item xs={12} lg={6}>
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+                  <motion.div
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
+                  >
                     <ImageContainer>
                       <StyledFrame
-                        src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                        // src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                        src="https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3"
                         title="Get Your Free Quote"
                         loading="lazy"
                         allow="encrypted-media; clipboard-read; clipboard-write; fullscreen; geolocation"
@@ -640,419 +698,333 @@ const Mockup = () => {
             </motion.div>
           </Box>
 
-         {/* Benefits Section (Why Choose Us) */}
-<Box sx={{ py: { xs: 4, md: 6 } }}>
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-  >
-    {/* Header */}
-    <Box sx={{ textAlign: "center", mb: 8 }}>
-      <Typography
-        variant="overline"
-        sx={{
-          color: "#2794d2",
-          fontSize: "0.9rem",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          mb: 2,
-          display: "block",
-        }}
-      >
-        WHY CHOOSE US?
-      </Typography>
-
-      <Typography
-        variant="h3"
-        sx={{
-          fontWeight: 800,
-          fontSize: { xs: "2.2rem", md: "3rem" },
-          mb: 2,
-          textTransform: "uppercase",
-          letterSpacing: { xs: 0, md: "0.02em" },
-        }}
-      >
-        Premium Quality, Guaranteed Results
-      </Typography>
-
-      <Typography
-        variant="h6"
-        sx={{
-          color: "rgba(255,255,255,0.72)",
-          maxWidth: "980px",
-          mx: "auto",
-          fontWeight: 400,
-        }}
-      >
-        Our expert team delivers exceptional results with industry-leading
-        materials and techniques
-      </Typography>
-    </Box>
-
-    {/* 4 Columns */}
-<Grid container spacing={0}>
-  {[
-    {
-      icon: <WbSunnyOutlinedIcon sx={{ fontSize: 44 }} />,
-      title: "Heat & UV Rejection",
-      body:
-        "Advanced ceramic technology blocks up to 99% of harmful UV rays and reduces interior heat by 60%.",
-    },
-    {
-      icon: <LockOutlinedIcon sx={{ fontSize: 44 }} />,
-      title: "Enhanced Privacy & Security",
-      body:
-        "Premium tinting provides discretion and protection while maintaining optimal visibility.",
-    },
-    {
-      icon: <GradeOutlinedIcon sx={{ fontSize: 44 }} />,
-      title: "Improved Aesthetic Appeal",
-      body:
-        "Transform your vehicle with a sleek, sophisticated look that turns heads everywhere.",
-    },
-    {
-      icon: <ShieldOutlinedIcon sx={{ fontSize: 44 }} />,
-      title: "Lifetime Warranty",
-      body:
-        "Comprehensive lifetime warranty on all installations with professional service guarantee.",
-    },
-  ].map((item, idx) => (
-    <Grid
-      item
-      xs={12}
-      md={3}
-      key={idx}
-      sx={{
-        // layout + padding
-        px: { xs: 2, md: 4 },
-        py: { xs: 5, md: 7 },
-        textAlign: { xs: "left", md: "left" },
-        position: "relative",
-        // blue vertical split line between items (md+ only)
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 24,
-          bottom: 24,
-          left: 0,
-          width: "2px",
-          background:
-            "linear-gradient(180deg, rgba(77,184,240,0.0), rgba(77,184,240,0.9), rgba(77,184,240,0.0))",
-          display: { xs: "none", md: idx === 0 ? "none" : "block" },
-          borderRadius: "2px",
-        },
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2.5 }}>
-        <Box
-          sx={{
-            color: "#2794d2",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 52,
-            height: 52,
-            borderRadius: "14px",
-            border: "1.5px solid rgba(77,184,240,0.5)",
-            background:
-              "linear-gradient(180deg, rgba(77,184,240,0.10), rgba(39,148,210,0.06))",
-            boxShadow: "0 8px 28px rgba(0,0,0,0.35)",
-            flexShrink: 0,
-          }}
-          aria-hidden="true"
-        >
-          {item.icon}
-        </Box>
-
-        <Box>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1, color: "#ffffff" }}>
-            {item.title}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.80)", lineHeight: 1.7 }}>
-            {item.body}
-          </Typography>
-        </Box>
-      </Box>
-    </Grid>
-  ))}
-</Grid>
-
-    {/* Centered CTA */}
-    <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>
-      <CTAButton
-        variant="large"
-        component="a"
-        href="/quote"
-        aria-label="Get a free quote"
-        sx={{ px: 5 }}
-      >
-        Get a Free Quote
-      </CTAButton>
-    </Box>
-  </motion.div>
-</Box>
+          <Testimonials />
 
 
-{/* CTA Section */}
-<Box sx={{ py: { xs: 6, md: 10 } }}>
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-  >
-    <Box
-      sx={{
-        background: "#1ea9ff",                // bright blue panel
-        borderRadius: { xs: 4, md: 6 },       // ~24px / ~32px
-        p: { xs: 3, md: 6 },
-        boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
-      }}
-    >
-      <Grid container spacing={{ xs: 3, md: 6 }} alignItems="center">
-        {/* Left: text */}
-        <Grid item xs={12} md={7}>
-          <Typography
-            variant="overline"
-            sx={{
-              color: "#e9f7ff",
-              fontWeight: 800,
-              letterSpacing: "0.12em",
-              mb: 1.5,
-              display: "block",
-            }}
-          >
-            EXPERT CRAFTSMANSHIP
-          </Typography>
-
-          <Typography
-            variant="h3"
-            sx={{
-              color: "#fff",
-              fontWeight: 900,
-              textTransform: "uppercase",
-              fontSize: { xs: "2rem", md: "3rem" },
-              mb: 3,
-              lineHeight: 1.1,
-            }}
-          >
-            Professional Installation
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255,255,255,0.95)",
-              lineHeight: 1.8,
-              fontWeight: 400,
-              mb: 3,
-              maxWidth: 900,
-            }}
-          >
-            Our certified technicians bring years of expertise and precision to every
-            installation. Using specialized tools and techniques, we ensure perfect
-            application with no bubbles, wrinkles, or imperfections. Each project is
-            backed by our comprehensive lifetime warranty for complete peace of mind.
-          </Typography>
-
-          {/* Bullets */}
-          <Box
-            component="ul"
-            sx={{
-              p: 0,
-              m: 0,
-              listStyle: "none",
-              color: "#fff",
-              "& li": {
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                mb: 2,
-              },
-            }}
-          >
-            {[
-              "Certified and experienced technicians",
-              "Dust-free, climate-controlled environment",
-              "Lifetime warranty on all services",
-            ].map((t) => (
-              <li key={t}>
-                <Box
+          {/* Benefits Section (Why Choose Us) */}
+          <Box sx={{ py: { xs: 4, md: 6 } }}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              {/* Header */}
+              <Box sx={{ textAlign: "center", mb: 8 }}>
+                <Typography
+                  variant="overline"
                   sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    backgroundColor: "#fff",
-                    flexShrink: 0,
+                    color: "#2794d2",
+                    fontSize: "0.9rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    mb: 2,
+                    display: "block",
                   }}
-                />
-                <Typography sx={{ color: "inherit" }}>{t}</Typography>
-              </li>
-            ))}
+                >
+                  WHY CHOOSE US?
+                </Typography>
+
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    fontSize: { xs: "2.2rem", md: "3rem" },
+                    mb: 2,
+                    textTransform: "uppercase",
+                    letterSpacing: { xs: 0, md: "0.02em" },
+                  }}
+                >
+                  Premium Quality, Guaranteed Results
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "rgba(255,255,255,0.72)",
+                    maxWidth: "980px",
+                    mx: "auto",
+                    fontWeight: 400,
+                  }}
+                >
+                  Our expert team delivers exceptional results with
+                  industry-leading materials and techniques
+                </Typography>
+              </Box>
+
+              {/* 4 Columns */}
+              <Grid container spacing={0}>
+                {[
+                  {
+                    icon: <WbSunnyOutlinedIcon sx={{ fontSize: 44 }} />,
+                    title: "Heat & UV Rejection",
+                    body: "Advanced ceramic technology blocks up to 99% of harmful UV rays and reduces interior heat by 60%.",
+                  },
+                  {
+                    icon: <LockOutlinedIcon sx={{ fontSize: 44 }} />,
+                    title: "Enhanced Privacy & Security",
+                    body: "Premium tinting provides discretion and protection while maintaining optimal visibility.",
+                  },
+                  {
+                    icon: <GradeOutlinedIcon sx={{ fontSize: 44 }} />,
+                    title: "Improved Aesthetic Appeal",
+                    body: "Transform your vehicle with a sleek, sophisticated look that turns heads everywhere.",
+                  },
+                  {
+                    icon: <ShieldOutlinedIcon sx={{ fontSize: 44 }} />,
+                    title: "Lifetime Warranty",
+                    body: "Comprehensive lifetime warranty on all installations with professional service guarantee.",
+                  },
+                ].map((item, idx) => (
+                  <Grid
+                    item
+                    xs={12}
+                    md={3}
+                    key={idx}
+                    sx={{
+                      // layout + padding
+                      px: { xs: 2, md: 4 },
+                      py: { xs: 5, md: 7 },
+                      textAlign: { xs: "left", md: "left" },
+                      position: "relative",
+                      // blue vertical split line between items (md+ only)
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 24,
+                        bottom: 24,
+                        left: 0,
+                        width: "2px",
+                        background:
+                          "linear-gradient(180deg, rgba(77,184,240,0.0), rgba(77,184,240,0.9), rgba(77,184,240,0.0))",
+                        display: {
+                          xs: "none",
+                          md: idx === 0 ? "none" : "block",
+                        },
+                        borderRadius: "2px",
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 2.5,
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          color: "#2794d2",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: 52,
+                          height: 52,
+                          borderRadius: "14px",
+                          boxShadow: "0 8px 28px rgba(0,0,0,0.35)",
+                          flexShrink: 0,
+                        }}
+                        aria-hidden="true"
+                      >
+                        {item.icon}
+                      </Box>
+
+                      <Box>
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ fontWeight: 700, mb: 1, color: "#ffffff" }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "rgba(255,255,255,0.80)",
+                            lineHeight: 1.7,
+                          }}
+                        >
+                          {item.body}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+
+              {/* Centered CTA */}
+              <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>
+                <CTAButton
+                  variant="large"
+                  component="a"
+                  href="/quote"
+                  aria-label="Get a free quote"
+                  sx={{ px: 5 }}
+                >
+                  Get a Free Quote
+                </CTAButton>
+              </Box>
+            </motion.div>
           </Box>
 
-          {/* CTA */}
-          <Button
-            href="/book"
-            variant="outlined"
-            sx={{
-              mt: 4,
-              px: 4,
-              py: 1.25,
-              borderRadius: 999,
-              borderWidth: 2,
-              color: "#fff",
-              borderColor: "#fff",
-              textTransform: "uppercase",
-              fontWeight: 800,
-              "&:hover": {
-                borderColor: "#fff",
-                backgroundColor: "rgba(255,255,255,0.12)",
-              },
-            }}
-          >
-            Schedule Call
-          </Button>
-        </Grid>
+          {/* CTA Section */}
+          <Box sx={{ py: { xs: 6, md: 10 } }}>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Box
+                sx={{
+                  background: "#1ea9ff", // bright blue panel
+                  borderRadius: { xs: 4, md: 6 }, // ~24px / ~32px
+                  p: { xs: 3, md: 6 },
+                  boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
+                }}
+              >
+                <Grid container spacing={{ xs: 3, md: 6 }} alignItems="center">
+                  {/* Left: text */}
+                  <Grid item xs={12} md={7}>
+                    <Typography
+                      variant="overline"
+                      sx={{
+                        color: "#e9f7ff",
+                        fontWeight: 800,
+                        letterSpacing: "0.12em",
+                        mb: 1.5,
+                        display: "block",
+                      }}
+                    >
+                      EXPERT CRAFTSMANSHIP
+                    </Typography>
 
-        {/* Right: photo with thick blue outline */}
-        <Grid item xs={12} md={5}>
-          <Box
-            sx={{
-              borderRadius: { xs: 3, md: 4 },
-              border: "8px solid rgba(255,255,255,0.9)",
-              outline: "10px solid #12a8ff",  // bold blue frame
-              overflow: "hidden",
-              boxShadow: "0 25px 80px rgba(0,0,0,0.45)",
-            }}
-          >
-            <Box
-              component="img"
-              src="/gallery/Tint Tek-85.jpeg" 
-              alt="Technician performing professional window tint installation"
-              onError={(e) => {
-                e.currentTarget.src =
-                  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkltYWdlPC90ZXh0Pgo8L3N2Zz4=";
-              }}
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "block",
-                objectFit: "cover",
-              }}
-            />
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 900,
+                        textTransform: "uppercase",
+                        fontSize: { xs: "2rem", md: "3rem" },
+                        mb: 3,
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      Professional Installation
+                    </Typography>
+
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: "rgba(255,255,255,0.95)",
+                        lineHeight: 1.8,
+                        fontWeight: 400,
+                        mb: 3,
+                        maxWidth: 900,
+                      }}
+                    >
+                      Our certified technicians bring years of expertise and
+                      precision to every installation. Using specialized tools
+                      and techniques, we ensure perfect application with no
+                      bubbles, wrinkles, or imperfections. Each project is
+                      backed by our comprehensive lifetime warranty for complete
+                      peace of mind.
+                    </Typography>
+
+                    {/* Bullets */}
+                    <Box
+                      component="ul"
+                      sx={{
+                        p: 0,
+                        m: 0,
+                        listStyle: "none",
+                        color: "#fff",
+                        "& li": {
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 2,
+                          mb: 2,
+                        },
+                      }}
+                    >
+                      {[
+                        "Certified and experienced technicians",
+                        "Dust-free, climate-controlled environment",
+                        "Lifetime warranty on all services",
+                      ].map((t) => (
+                        <li key={t}>
+                          <Box
+                            sx={{
+                              width: 8,
+                              height: 8,
+                              borderRadius: "50%",
+                              backgroundColor: "#fff",
+                              flexShrink: 0,
+                            }}
+                          />
+                          <Typography sx={{ color: "inherit" }}>{t}</Typography>
+                        </li>
+                      ))}
+                    </Box>
+
+                    {/* CTA */}
+                    <Button
+                      href="/book"
+                      variant="outlined"
+                      sx={{
+                        mt: 4,
+                        px: 4,
+                        py: 1.25,
+                        borderRadius: 999,
+                        borderWidth: 2,
+                        color: "#fff",
+                        borderColor: "#fff",
+                        textTransform: "uppercase",
+                        fontWeight: 800,
+                        "&:hover": {
+                          borderColor: "#fff",
+                          backgroundColor: "rgba(255,255,255,0.12)",
+                        },
+                      }}
+                    >
+                      Schedule Call
+                    </Button>
+                  </Grid>
+
+                  {/* Right: photo with thick blue outline */}
+                  <Grid item xs={12} md={5}>
+                    <Box
+                      sx={{
+                        borderRadius: { xs: 3, md: 4 },
+                        border: "8px solid rgba(255,255,255,0.9)",
+                        outline: "10px solid #12a8ff", // bold blue frame
+                        overflow: "hidden",
+                        boxShadow: "0 25px 80px rgba(0,0,0,0.45)",
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src="/gallery/Tint Tek-85.jpeg"
+                        alt="Technician performing professional window tint installation"
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkltYWdlPC90ZXh0Pgo8L3N2Zz4=";
+                        }}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "block",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Box>
+            </motion.div>
           </Box>
-        </Grid>
-      </Grid>
-    </Box>
-  </motion.div>
-</Box>
-
-
-{/* --- Our Recent Projects (Gallery) --- */}
-<Box sx={{ py: { xs: 8, md: 12 } }}>
-  {/* Header */}
-  <Box sx={{ textAlign: "center", mb: { xs: 5, md: 7 } }}>
-    <Typography
-      variant="overline"
-      sx={{
-        color: "#2794d2",
-        fontWeight: 800,
-        letterSpacing: "0.12em",
-        mb: 1,
-        display: "block",
-      }}
-    >
-      GALLERY
-    </Typography>
-    <Typography
-      variant="h3"
-      sx={{
-        fontWeight: 900,
-        textTransform: "uppercase",
-        fontSize: { xs: "2rem", md: "2.4rem" },
-      }}
-    >
-      Our Recent Projects
-    </Typography>
-  </Box>
-
-  {/* Grid */}
-  <Grid container spacing={{ xs: 2.5, md: 3 }}>
-    {[
-      { src: "/gallery/Tint Tek-2.jpeg", alt: "Tint installation—wash & prep" },
-      { src: "/gallery/Tint Tek-4.jpeg", alt: "Tint installation—wash & prep" },
-      { src: "/gallery/Tint Tek-6.jpeg", alt: "Tint installation—wash & prep" },
-      { src: "/gallery/Tint Tek-25.jpeg", alt: "Tint installation—wash & prep" },
-      { src: "/gallery/Tint Tek-28.jpeg", alt: "Tint installation—wash & prep" },
-      { src: "/gallery/Tint Tek-32.jpeg", alt: "Tint installation—wash & prep" },
-    ].map((img, i) => (
-      <Grid item xs={12} sm={6} md={4} key={i}>
-        <Box
-          component={motion.div}
-          whileHover={{ y: -4, scale: 1.01 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          sx={{
-            borderRadius: { xs: 3, md: 3 }, // ~12px
-            overflow: "hidden",
-            boxShadow: "0 12px 40px rgba(0,0,0,0.35)",
-            backgroundColor: "#0f1820",
-          }}
-        >
-          <Box
-            component="img"
-            src={img.src}
-            alt={img.alt}
-            loading="lazy"
-            onError={(e) => {
-              e.currentTarget.src =
-                "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDY0MCA0MjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiMxMTExMTEiLz48dGV4dCB4PSIyMDAiIHk9IjIxMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4Ij5Qcm9qZWN0IElNQTwvdGV4dD48L3N2Zz4=";
-            }}
-            sx={{
-              display: "block",
-              width: "100%",
-              height: { xs: 230, md: 260 },
-              objectFit: "cover",
-            }}
-          />
-        </Box>
-      </Grid>
-    ))}
-  </Grid>
-
-  {/* CTA */}
-  <Box sx={{ textAlign: "center", mt: { xs: 5, md: 7 } }}>
-    <Button
-      href="/projects"
-      aria-label="View our all projects"
-      sx={{
-        px: 4.5,
-        py: 1.25,
-        borderRadius: 999,
-        textTransform: "uppercase",
-        fontWeight: 800,
-        letterSpacing: "0.06em",
-        backgroundColor: "#2794d2",
-        color: "#fff",
-        boxShadow: "0 12px 30px rgba(39,148,210,0.35)",
-        "&:hover": {
-          backgroundColor: "#1f86bb",
-          boxShadow: "0 16px 40px rgba(39,148,210,0.45)",
-        },
-      }}
-    >
-      View Our All Projects
-    </Button>
-  </Box>
-</Box>
-
-
-
 
           {/* Advanced Technology Section */}
-          <Box sx={{ py: { xs: 8, md: 12 } }}>
+          {/* <Box sx={{ py: { xs: 8, md: 12 } }}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1139,7 +1111,14 @@ const Mockup = () => {
                           "Superior heat rejection up to 60%",
                           "Signal-friendly, no interference",
                         ].map((t, i) => (
-                          <Box key={i} sx={{ display: "flex", alignItems: "center", mb: i < 2 ? 2 : 0 }}>
+                          <Box
+                            key={i}
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: i < 2 ? 2 : 0,
+                            }}
+                          >
                             <Box
                               sx={{
                                 width: 8,
@@ -1155,7 +1134,9 @@ const Mockup = () => {
                           </Box>
                         ))}
                       </Box>
-                      <CTAButton component="a" href="/book">Schedule Service</CTAButton>
+                      <CTAButton component="a" href="/book">
+                        Schedule Service
+                      </CTAButton>
                     </Box>
                   </motion.div>
                 </Grid>
@@ -1163,7 +1144,6 @@ const Mockup = () => {
             </motion.div>
           </Box>
 
-          {/* Professional Installation Section */}
           <Box sx={{ py: { xs: 8, md: 12 } }}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -1230,7 +1210,14 @@ const Mockup = () => {
                           "Dust-free, climate-controlled environment",
                           "Lifetime warranty on all services",
                         ].map((t, i) => (
-                          <Box key={i} sx={{ display: "flex", alignItems: "center", mb: i < 2 ? 2 : 0 }}>
+                          <Box
+                            key={i}
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mb: i < 2 ? 2 : 0,
+                            }}
+                          >
                             <Box
                               sx={{
                                 width: 8,
@@ -1246,7 +1233,9 @@ const Mockup = () => {
                           </Box>
                         ))}
                       </Box>
-                      <CTAButton component="a" href="/book">Schedule Service</CTAButton>
+                      <CTAButton component="a" href="/book">
+                        Schedule Service
+                      </CTAButton>
                     </Box>
                   </motion.div>
                 </Grid>
@@ -1273,13 +1262,12 @@ const Mockup = () => {
                 </Grid>
               </Grid>
             </motion.div>
-          </Box>
+          </Box> */}
 
-          <Testimonials />
           <FAQ />
         </Container>
       </Box>
-      {/* <Contact /> */}
+      <Contact />
       <CallToAction />
       <QuickLinks />
       <Footer />

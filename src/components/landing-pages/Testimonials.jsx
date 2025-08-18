@@ -24,7 +24,8 @@ const TestimonialCard = styled(motion.div)(({ theme }) => ({
   height: "100%",
   borderRadius: 20,
   padding: theme.spacing(3),
-  background: "rgba(255,255,255,0.06)",
+  // background: "rgba(255,255,255,0.06)",
+  background: "#fff",
   border: "1px solid rgba(255,255,255,0.12)",
   backdropFilter: "blur(10px)",
   boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
@@ -40,7 +41,7 @@ const QuoteBadge = styled(Box)(({ theme }) => ({
   display: "grid",
   placeItems: "center",
   background: "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)", // brand blues
-  color: "#fff",
+  color: "#000",
   boxShadow: "0 10px 30px rgba(39,148,210,0.5)",
 }));
 
@@ -181,7 +182,7 @@ const Testimonials = () => {
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ color: "rgba(255,255,255,0.7)" }}
+                      sx={{ color: "#000" }}
                     >
                       {t.role}
                     </Typography>
@@ -197,7 +198,7 @@ const Testimonials = () => {
 
                 <Typography
                   variant="body1"
-                  sx={{ color: "rgba(255,255,255,0.9)", lineHeight: 1.7 }}
+                  sx={{ color: "#000", lineHeight: 1.7 }}
                 >
                   {t.quote}
                 </Typography>
