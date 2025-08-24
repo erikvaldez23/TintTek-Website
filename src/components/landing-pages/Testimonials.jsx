@@ -29,6 +29,7 @@ const TestimonialCard = styled(motion.div)(({ theme }) => ({
   border: "1px solid rgba(255,255,255,0.12)",
   backdropFilter: "blur(10px)",
   boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
+  color: "#000"
 }));
 
 const QuoteBadge = styled(Box)(({ theme }) => ({

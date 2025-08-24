@@ -28,12 +28,60 @@ import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import VideoCTA from "./VideoCTA";
+import VideoCTA2 from "./VideoCTA2";
+import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+import StarIcon from "@mui/icons-material/Star";
+
 
 /** —— SITE / ROUTE SETTINGS —— */
 const SITE = "https://tinttekplus.com";
 const PATH = "/mockup"; // ← set to the route where this page is served
 
 // ===== Video hero styles =====
+
+// ——— Hero checkmark styles ———
+const FeatureList = styled("ul")(({ theme }) => ({
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  display: "grid",
+  gap: 12,
+}));
+
+const FeatureItem = styled(motion.li)(({ theme }) => ({
+  display: "flex",
+  alignItems: "flex-start",
+  gap: 12,
+}));
+
+const CheckBadge = styled(Box)(({ theme }) => ({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 28,
+  height: 28,
+  borderRadius: 999,
+  background:
+    "linear-gradient(135deg, rgba(39,148,210,0.25), rgba(77,184,240,0.25))",
+  border: "1px solid rgba(77,184,240,0.35)",
+  boxShadow:
+    "0 8px 24px rgba(39,148,210,.35), inset 0 0 0 1px rgba(255,255,255,0.06)",
+  flexShrink: 0,
+}));
+
+const FeatureTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 800,
+  lineHeight: 1.2,
+  color: "#ffffff",
+}));
+
+const FeatureBody = styled(Typography)(({ theme }) => ({
+  color: "rgba(255,255,255,0.80)",
+  lineHeight: 1.6,
+  marginTop: 2,
+}));
+
 const VideoSection = styled(Box)(({ theme }) => ({
   position: "relative",
   height: "100vh",
@@ -524,181 +572,202 @@ const Mockup = () => {
 
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
           {/* Hero Section */}
-          <Box sx={{ py: { xs: 8, md: 15 } }}>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <Grid container spacing={6} alignItems="center">
-                <Grid item xs={12} lg={6}>
-                  <motion.div variants={itemVariants}>
-                    <Box sx={{ mb: 3 }}>
-                      <Typography
-                        variant="overline"
-                        sx={{
-                          color: "#2794d2",
-                          fontSize: "0.9rem",
-                          fontWeight: 600,
-                          letterSpacing: "0.1em",
-                          mb: 2,
-                          display: "block",
-                        }}
-                      >
-                        250+ 5 STAR REVIEWS (ADD STARS!!)
-                      </Typography>
-                      <Typography
-                        variant="h2"
-                        sx={{
-                          color: "#fff",
-                          fontWeight: 800,
-                          fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                          lineHeight: 1.1,
-                          mb: 3,
-                        }}
-                      >
-                        Block 88% Of Heat.
-                        <br />
-                        <Box component="span" sx={{ color: "#fff" }}>
-                          Drive Cooler In
-                        </Box>
-                        <br />
-                        <Box component="span" sx={{ color: "#fff" }}>
-                          3 Hours!
-                        </Box>
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: "#fff",
-                          fontSize: { xs: "1.1rem", md: "1.25rem" },
-                          lineHeight: 1.6,
-                          maxWidth: "500px",
-                          mb: 4,
-                          fontWeight: 1000,
-                        }}
-                      >
-                        ✅ Superior Heat Rejection <br />
-                        Stay cool and save your AC — block up to 89% of heat
-                        with advanced nano-ceramic tech.
-                        <br />
-                        ✅ Reduce Glare + Boost Safety
-                        <br />
-                        Cut harsh glare for clearer vision and safer driving,
-                        day or night.
-                        <br />
-                        ✅ Privacy + Style Upgrade
-                        <br />
-                        Give your car a sleek, modern look while keeping prying
-                        eyes out.
-                        <br />
-                      </Typography>
-                      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-                        <CTAButton variant="large" component="a" href="/quote">
-                          Get Free Quote
-                        </CTAButton>
-                        <CTAButton
-                          variant="outline"
-                          component="a"
-                          href="/gallery"
-                        >
-                          View Gallery
-                        </CTAButton>
-                      </Box>
-                      <Box sx={{ mt: 3 }}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={4}>
-                            <Metric
-                              initial={{ opacity: 0, y: 16 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5 }}
-                              viewport={{ once: true }}
-                            >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
-                                60%+
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
-                                Heat Rejection
-                              </Typography>
-                            </Metric>
-                          </Grid>
-                          <Grid item xs={12} sm={4}>
-                            <Metric
-                              initial={{ opacity: 0, y: 16 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5, delay: 0.05 }}
-                              viewport={{ once: true }}
-                            >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
-                                99%
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
-                                UV Protection
-                              </Typography>
-                            </Metric>
-                          </Grid>
-                          <Grid item xs={12} sm={4}>
-                            <Metric
-                              initial={{ opacity: 0, y: 16 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5, delay: 0.1 }}
-                              viewport={{ once: true }}
-                            >
-                              <Typography
-                                variant="h4"
-                                sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}
-                              >
-                                Lifetime
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                sx={{ color: "rgba(255,255,255,0.8)" }}
-                              >
-                                Warranty Included
-                              </Typography>
-                            </Metric>
-                          </Grid>
-                        </Grid>
-                      </Box>
-                    </Box>
-                  </motion.div>
-                </Grid>
+         {/* Hero Section */}
+<Box sx={{ py: { xs: 12, md: 20 } }}>
+  <motion.div variants={containerVariants} initial="hidden" animate="visible">
+    <Grid container spacing={8} alignItems="center">
+      {/* Left: text */}
+      <Grid item xs={12} lg={6}>
+        <motion.div variants={itemVariants}>
+          <Box sx={{ mb: { xs: 2, md: 4 } }}>
+            {/* Stars + review count */}
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+              {[...Array(5)].map((_, i) => (
+                <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 24 }} />
+              ))}
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "#2794d2",
+                  fontSize: "0.9rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  ml: 1,
+                }}
+              >
+                250+ 5 STAR REVIEWS
+              </Typography>
+            </Box>
 
-                <Grid item xs={12} lg={6}>
-                  <motion.div
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <ImageContainer>
-                      <StyledFrame
-                        // src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
-                        src="https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3"
-                        title="Get Your Free Quote"
-                        loading="lazy"
-                        allow="encrypted-media; clipboard-read; clipboard-write; fullscreen; geolocation"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                      />
-                    </ImageContainer>
-                  </motion.div>
-                </Grid>
+            {/* Headline */}
+            <Typography
+              variant="h2"
+              sx={{
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: { xs: "2.7rem", md: "3.8rem", lg: "4.2rem" },
+                lineHeight: 1.15,
+                mb: { xs: 3, md: 4 },
+              }}
+            >
+              Block 88% Of Heat.
+              <br />
+              <Box component="span" sx={{ color: "#fff" }}>
+                Drive Cooler In
+              </Box>
+              <br />
+              <Box component="span" sx={{ color: "#fff" }}>
+                3 Hours!
+              </Box>
+            </Typography>
+
+            {/* Feature list (restored) */}
+            <FeatureList aria-label="Key benefits" sx={{ mb: { xs: 3, md: 4 } }}>
+              <FeatureItem
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+                viewport={{ once: true }}
+              >
+                <CheckBadge>
+                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
+                </CheckBadge>
+                <Box>
+                  <FeatureTitle variant="subtitle1">
+                    Superior Heat Rejection
+                  </FeatureTitle>
+                  <FeatureBody variant="body2">
+                    Advanced nano-ceramic tech blocks up to 89% of heat so you
+                    stay cool and save your A/C.
+                  </FeatureBody>
+                </Box>
+              </FeatureItem>
+
+              <FeatureItem
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.06 }}
+                viewport={{ once: true }}
+              >
+                <CheckBadge>
+                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
+                </CheckBadge>
+                <Box>
+                  <FeatureTitle variant="subtitle1">
+                    Reduce Glare • Boost Safety
+                  </FeatureTitle>
+                  <FeatureBody variant="body2">
+                    Cut harsh glare for clearer vision and safer driving—day or
+                    night.
+                  </FeatureBody>
+                </Box>
+              </FeatureItem>
+
+              <FeatureItem
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                viewport={{ once: true }}
+              >
+                <CheckBadge>
+                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
+                </CheckBadge>
+                <Box>
+                  <FeatureTitle variant="subtitle1">
+                    Privacy + Style Upgrade
+                  </FeatureTitle>
+                  <FeatureBody variant="body2">
+                    A sleek, modern look that keeps prying eyes out without
+                    sacrificing clarity.
+                  </FeatureBody>
+                </Box>
+              </FeatureItem>
+            </FeatureList>
+
+            {/* CTAs */}
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: { xs: 3, md: 4 } }}>
+              <CTAButton variant="large" component="a" href="/quote">
+                Get Free Quote
+              </CTAButton>
+              <CTAButton variant="outline" component="a" href="/gallery">
+                View Gallery
+              </CTAButton>
+            </Box>
+
+            {/* Stats / Metrics (restored) */}
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={4}>
+                <Metric
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                    60%+
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                    Heat Rejection
+                  </Typography>
+                </Metric>
               </Grid>
-            </motion.div>
+              <Grid item xs={12} sm={4}>
+                <Metric
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                    99%
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                    UV Protection
+                  </Typography>
+                </Metric>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Metric
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
+                    Lifetime
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
+                    Warranty Included
+                  </Typography>
+                </Metric>
+              </Grid>
+            </Grid>
           </Box>
+        </motion.div>
+      </Grid>
+
+      {/* Right: embedded quote form (unchanged) */}
+      <Grid item xs={12} lg={6}>
+        <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+          <ImageContainer>
+            <StyledFrame
+              // src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+              src="https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3"
+              title="Get Your Free Quote"
+              loading="lazy"
+              allow="encrypted-media; clipboard-read; clipboard-write; fullscreen; geolocation"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </ImageContainer>
+        </motion.div>
+      </Grid>
+    </Grid>
+  </motion.div>
+</Box>
 
           <Testimonials />
+          <VideoCTA />
+          <VideoCTA2 />
 
 
           {/* Benefits Section (Why Choose Us) */}
