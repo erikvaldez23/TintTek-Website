@@ -387,10 +387,10 @@ const ServicePage = () => {
           serviceId === "windshield-protection-film") && <VideoCTA />}
 
         {(serviceId === "tesla-window-tinting" ||
+          serviceId === "vehicle-paint-protection" ||
           serviceId === "vehicle-window-tinting") && <TeslaCTA />}
 
         {(serviceId === "residential-window-tinting" ||
-          serviceId === "vehicle-paint-protection" ||
           serviceId === "vehicle-paint-correction") && <ImageCTA />}
 
         {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}

@@ -107,7 +107,7 @@ function AppContent() {
         <Route path="/support" element={<FAQ />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/chat" element={<FullPageChatbot />} />
-        <Route path="/mockup" element={<Mockup />} />
+        <Route path="/tint-landing-page" element={<Mockup />} />
 
         {/* Simulators */}
         <Route

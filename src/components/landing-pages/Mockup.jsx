@@ -12,11 +12,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import QuickLinks from "../key-components/QuickLinks";
 import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
@@ -30,15 +25,13 @@ import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import VideoCTA from "./VideoCTA";
 import VideoCTA2 from "./VideoCTA2";
+import Hero from "./Hero";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
-import StarIcon from "@mui/icons-material/Star";
 
 
 /** —— SITE / ROUTE SETTINGS —— */
 const SITE = "https://tinttekplus.com";
-const PATH = "/mockup"; // ← set to the route where this page is served
-
-// ===== Video hero styles =====
+const PATH = "/tint-landing-page"; // ← set to the route where this page is served
 
 // ——— Hero checkmark styles ———
 const FeatureList = styled("ul")(({ theme }) => ({
@@ -307,6 +300,12 @@ const StyledFrame = styled("iframe")(({ theme }) => ({
   loading: "lazy",
 }));
 
+const handleScrollTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
 const Mockup = () => {
   // --- Animation variants ---
   const containerVariants = {
@@ -474,74 +473,6 @@ const Mockup = () => {
         </script>
       </Helmet>
 
-      {/* ===== Video Hero at the very top ===== */}
-      <VideoSection
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-        aria-label="Hero video section showcasing window tinting"
-      >
-        <BackgroundVideo
-          autoPlay
-          muted
-          playsInline
-          loop
-          preload="auto"
-          ref={videoRef}
-          onCanPlay={() => videoRef.current?.play?.().catch(() => {})}
-          aria-label="Tint Tek Plus window tinting video"
-        >
-          <source src="/videos/v-window-tint2.mp4" type="video/mp4" />
-        </BackgroundVideo>
-
-        <VideoOverlay>
-          {/* Scroll hint */}
-          <SwipeIndicator
-            initial={{ y: 0, opacity: 0.9 }}
-            animate={{ y: [0, -8, 0], opacity: 1 }}
-            transition={{ duration: 1.6, repeat: Infinity }}
-          >
-            <IconButton
-              aria-label={
-                isMobile ? "Swipe up for details" : "Click to continue"
-              }
-              onClick={!isMobile ? scrollToContent : undefined}
-              sx={{
-                backgroundColor: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                backdropFilter: "blur(6px)",
-                "&:hover": { backgroundColor: "rgba(255,255,255,0.18)" },
-                color: "#fff",
-              }}
-            >
-              <KeyboardDoubleArrowUpIcon />
-            </IconButton>
-            <Typography variant="body2" sx={{ opacity: 0.9 }}>
-              {isMobile ? "Swipe up for details" : "Click to continue"}
-            </Typography>
-          </SwipeIndicator>
-
-          {/* Custom controls */}
-          <ControlBar aria-label="Video controls">
-            <Tooltip title={isPlaying ? "Pause" : "Play"}>
-              <ControlButton
-                aria-label={isPlaying ? "Pause video" : "Play video"}
-                onClick={togglePlay}
-              >
-                {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-              </ControlButton>
-            </Tooltip>
-            <Tooltip title={isMuted ? "Unmute" : "Mute"}>
-              <ControlButton
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-                onClick={toggleMute}
-              >
-                {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
-              </ControlButton>
-            </Tooltip>
-          </ControlBar>
-        </VideoOverlay>
-      </VideoSection>
-
       {/* ===== Landing content ===== */}
       <Box
         ref={contentRef}
@@ -571,204 +502,11 @@ const Mockup = () => {
         />
 
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
-          {/* Hero Section */}
-         {/* Hero Section */}
-<Box sx={{ py: { xs: 12, md: 20 } }}>
-  <motion.div variants={containerVariants} initial="hidden" animate="visible">
-    <Grid container spacing={8} alignItems="center">
-      {/* Left: text */}
-      <Grid item xs={12} lg={6}>
-        <motion.div variants={itemVariants}>
-          <Box sx={{ mb: { xs: 2, md: 4 } }}>
-            {/* Stars + review count */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-              {[...Array(5)].map((_, i) => (
-                <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 24 }} />
-              ))}
-              <Typography
-                variant="overline"
-                sx={{
-                  color: "#2794d2",
-                  fontSize: "0.9rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  ml: 1,
-                }}
-              >
-                250+ 5 STAR REVIEWS
-              </Typography>
-            </Box>
-
-            {/* Headline */}
-            <Typography
-              variant="h2"
-              sx={{
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: { xs: "2.7rem", md: "3.8rem", lg: "4.2rem" },
-                lineHeight: 1.15,
-                mb: { xs: 3, md: 4 },
-              }}
-            >
-              Block 88% Of Heat.
-              <br />
-              <Box component="span" sx={{ color: "#fff" }}>
-                Drive Cooler In
-              </Box>
-              <br />
-              <Box component="span" sx={{ color: "#fff" }}>
-                3 Hours!
-              </Box>
-            </Typography>
-
-            {/* Feature list (restored) */}
-            <FeatureList aria-label="Key benefits" sx={{ mb: { xs: 3, md: 4 } }}>
-              <FeatureItem
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45 }}
-                viewport={{ once: true }}
-              >
-                <CheckBadge>
-                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
-                </CheckBadge>
-                <Box>
-                  <FeatureTitle variant="subtitle1">
-                    Superior Heat Rejection
-                  </FeatureTitle>
-                  <FeatureBody variant="body2">
-                    Advanced nano-ceramic tech blocks up to 89% of heat so you
-                    stay cool and save your A/C.
-                  </FeatureBody>
-                </Box>
-              </FeatureItem>
-
-              <FeatureItem
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.06 }}
-                viewport={{ once: true }}
-              >
-                <CheckBadge>
-                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
-                </CheckBadge>
-                <Box>
-                  <FeatureTitle variant="subtitle1">
-                    Reduce Glare • Boost Safety
-                  </FeatureTitle>
-                  <FeatureBody variant="body2">
-                    Cut harsh glare for clearer vision and safer driving—day or
-                    night.
-                  </FeatureBody>
-                </Box>
-              </FeatureItem>
-
-              <FeatureItem
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                viewport={{ once: true }}
-              >
-                <CheckBadge>
-                  <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
-                </CheckBadge>
-                <Box>
-                  <FeatureTitle variant="subtitle1">
-                    Privacy + Style Upgrade
-                  </FeatureTitle>
-                  <FeatureBody variant="body2">
-                    A sleek, modern look that keeps prying eyes out without
-                    sacrificing clarity.
-                  </FeatureBody>
-                </Box>
-              </FeatureItem>
-            </FeatureList>
-
-            {/* CTAs */}
-            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: { xs: 3, md: 4 } }}>
-              <CTAButton variant="large" component="a" href="/quote">
-                Get Free Quote
-              </CTAButton>
-              <CTAButton variant="outline" component="a" href="/gallery">
-                View Gallery
-              </CTAButton>
-            </Box>
-
-            {/* Stats / Metrics (restored) */}
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={4}>
-                <Metric
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
-                    60%+
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
-                    Heat Rejection
-                  </Typography>
-                </Metric>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Metric
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
-                    99%
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
-                    UV Protection
-                  </Typography>
-                </Metric>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Metric
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Typography variant="h4" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
-                    Lifetime
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
-                    Warranty Included
-                  </Typography>
-                </Metric>
-              </Grid>
-            </Grid>
-          </Box>
-        </motion.div>
-      </Grid>
-
-      {/* Right: embedded quote form (unchanged) */}
-      <Grid item xs={12} lg={6}>
-        <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
-          <ImageContainer>
-            <StyledFrame
-              // src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
-              src="https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3"
-              title="Get Your Free Quote"
-              loading="lazy"
-              allow="encrypted-media; clipboard-read; clipboard-write; fullscreen; geolocation"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </ImageContainer>
-        </motion.div>
-      </Grid>
-    </Grid>
-  </motion.div>
-</Box>
+        <Hero />
 
           <Testimonials />
           <VideoCTA />
           <VideoCTA2 />
-
 
           {/* Benefits Section (Why Choose Us) */}
           <Box sx={{ py: { xs: 4, md: 6 } }}>
@@ -1000,44 +738,45 @@ const Mockup = () => {
                     </Typography>
 
                     {/* Bullets */}
-                    <Box
-                      component="ul"
-                      sx={{
-                        p: 0,
-                        m: 0,
-                        listStyle: "none",
-                        color: "#fff",
-                        "& li": {
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 2,
-                          mb: 2,
-                        },
-                      }}
-                    >
-                      {[
-                        "Certified and experienced technicians",
-                        "Dust-free, climate-controlled environment",
-                        "Lifetime warranty on all services",
-                      ].map((t) => (
-                        <li key={t}>
-                          <Box
-                            sx={{
-                              width: 8,
-                              height: 8,
-                              borderRadius: "50%",
-                              backgroundColor: "#fff",
-                              flexShrink: 0,
-                            }}
-                          />
-                          <Typography sx={{ color: "inherit" }}>{t}</Typography>
-                        </li>
-                      ))}
-                    </Box>
+                    <FeatureList aria-label="Professional installation benefits">
+  {[
+    {
+      title: "Certified & experienced technicians",
+      body:
+        "Trained for precision installs using pro-grade tools and methods.",
+    },
+    {
+      title: "Dust-free, climate-controlled environment",
+      body:
+        "Clean room prep reduces contamination for a flawless finish.",
+    },
+    {
+      title: "Lifetime warranty on all services",
+      body:
+        "Backed by clear, written coverage for long-term peace of mind.",
+    },
+  ].map((f, i) => (
+    <FeatureItem
+      key={f.title}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: i * 0.06 }}
+      viewport={{ once: true }}
+    >
+      <CheckBadge>
+        <TaskAltRoundedIcon sx={{ fontSize: 16, color: "#e9f7ff" }} />
+      </CheckBadge>
+      <Box>
+        <FeatureTitle variant="subtitle1">{f.title}</FeatureTitle>
+        <FeatureBody variant="body2">{f.body}</FeatureBody>
+      </Box>
+    </FeatureItem>
+  ))}
+</FeatureList>
+
 
                     {/* CTA */}
                     <Button
-                      href="/book"
                       variant="outlined"
                       sx={{
                         mt: 4,
@@ -1054,8 +793,9 @@ const Mockup = () => {
                           backgroundColor: "rgba(255,255,255,0.12)",
                         },
                       }}
+                      onClick={handleScrollTop}
                     >
-                      Schedule Call
+                      Get Free Quote
                     </Button>
                   </Grid>
 
@@ -1333,7 +1073,7 @@ const Mockup = () => {
             </motion.div>
           </Box> */}
 
-          <FAQ />
+          {/* <FAQ /> */}
         </Container>
       </Box>
       <Contact />

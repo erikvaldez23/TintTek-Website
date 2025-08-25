@@ -12,61 +12,59 @@ import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
-// ===== Wrapper uses the SAME background as Mockup content area =====
-const TestimonialsWrapper = styled(Box)(({ theme }) => ({
+/* ===== Compact styles ===== */
+const TestimonialsWrapper = styled(Box)({
   background: "transparent",
   color: "#fff",
   borderBottom: "1px solid rgba(255,255,255,0.06)",
-}));
+});
 
 const TestimonialCard = styled(motion.div)(({ theme }) => ({
   position: "relative",
   height: "100%",
-  borderRadius: 20,
-  padding: theme.spacing(3),
-  // background: "rgba(255,255,255,0.06)",
+  borderRadius: 16,
+  padding: theme.spacing(2), // was 3
   background: "#fff",
   border: "1px solid rgba(255,255,255,0.12)",
   backdropFilter: "blur(10px)",
-  boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-  color: "#000"
+  boxShadow: "0 14px 36px rgba(0,0,0,0.28)", // lighter
+  color: "#000",
 }));
 
-const QuoteBadge = styled(Box)(({ theme }) => ({
+const QuoteBadge = styled(Box)({
   position: "absolute",
-  top: -16,
-  right: 16,
-  width: 48,
-  height: 48,
+  top: -12, // was -16
+  right: 12,
+  width: 36,
+  height: 36,
   borderRadius: "50%",
   display: "grid",
   placeItems: "center",
-  background: "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)", // brand blues
+  background: "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)",
   color: "#000",
-  boxShadow: "0 10px 30px rgba(39,148,210,0.5)",
-}));
+  boxShadow: "0 8px 22px rgba(39,148,210,0.45)",
+});
 
 const AvatarRing = styled(Box)(({ theme }) => ({
-  width: 64,
-  height: 64,
+  width: 52, // was 64
+  height: 52,
   borderRadius: "50%",
   padding: 2,
   background:
-    "conic-gradient(from 0deg, rgba(39,148,210,0.85), rgba(77,184,240,0.85))", // brand blues
+    "conic-gradient(from 0deg, rgba(39,148,210,0.85), rgba(77,184,240,0.85))",
 }));
 
-// Match CTA styling in your Mockup (kept here for local use)
 const CTAButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "$style" && prop !== "$size",
-})(({ theme, ownerState }) => {
+})(({ ownerState }) => {
   const { $style, $size } = ownerState || {};
   return {
     fontWeight: 700,
-    padding: $size === "large" ? "16px 40px" : "12px 32px",
-    borderRadius: "50px",
-    fontSize: $size === "large" ? "1.1rem" : "1rem",
-    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    boxShadow: "0 8px 32px rgba(39,148,210,0.3)",
+    padding: $size === "large" ? "12px 26px" : "10px 22px", // smaller
+    borderRadius: 40,
+    fontSize: $size === "large" ? "1rem" : "0.95rem",
+    transition: "all 0.25s ease",
+    boxShadow: "0 6px 22px rgba(39,148,210,0.28)",
     background:
       $style === "outline"
         ? "transparent"
@@ -74,8 +72,8 @@ const CTAButton = styled(Button, {
     border: $style === "outline" ? "2px solid #2794d2" : "none",
     color: $style === "outline" ? "#2794d2" : "#fff",
     "&:hover": {
-      transform: "translateY(-3px)",
-      boxShadow: "0 12px 40px rgba(39,148,210,0.4)",
+      transform: "translateY(-2px)",
+      boxShadow: "0 10px 28px rgba(39,148,210,0.35)",
       background:
         $style === "outline"
           ? "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)"
@@ -85,89 +83,103 @@ const CTAButton = styled(Button, {
   };
 });
 
+const handleScrollTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "User 1",
-      role: "Car Make/Model/Year",
+      name: "Andrew Pham",
+      role: "Google Review",
       rating: 5,
       quote:
-        "Testimonial",
-      avatar: "/avatars/miguel.jpg",
+        "I had a fantastic experience with this tint company! Their timing was spot on, and they communicated with me every step of the way. They offer great prices on a variety of tint options, making it easy to find exactly what I needed.",
+      avatar: "https://via.placeholder.com/40",
     },
     {
-      name: "User 2",
-      role: "Car Make/Model/Year",
+      name: "Josue Chavez",
+      role: "Google Review",
       rating: 5,
       quote:
-        "Testimonial",
-      avatar: "/avatars/aubrey.jpg",
+        "Left my Tesla looking great! No problems whatsoever! Definitely recommend you bring your car here! Their customer service is top notch. I’ve never had a customer experience as good as this one!",
+      avatar: "https://via.placeholder.com/40",
     },
     {
-      name: "User 3",
-      role: "Car Make/Model/Year",
+      name: "Richanda Bryant",
+      role: "Google Review",
       rating: 5,
       quote:
-        "Testimonial",
-      avatar: "/avatars/jordan.jpg",
+        "I had a great experience at Tint Tek Plus! This is the first car I've had to purchase tint for as previous vehicles had it from the factory. I was very impressed with Ryan and team!",
+      avatar: "https://via.placeholder.com/40",
     },
   ];
 
   return (
-    <TestimonialsWrapper sx={{ py: { xs: 8, md: 12 } }}>
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
-        <Box sx={{ textAlign: "center", mb: 6 }}>
+    <TestimonialsWrapper sx={{ pt: { xs: 5, md: 12 }, pb: { xs: 5, md: 10} }}> {/* was 8/12 */}
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}> {/* narrower */}
+        {/* Header: tighter spacing & font sizes */}
+        <Box sx={{ textAlign: "center", mb: 4 }} id="testimonials">
           <Typography
             variant="overline"
             sx={{
               color: "#2794d2",
-              fontSize: "0.9rem",
+              fontSize: "0.8rem",
               fontWeight: 600,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.08em",
             }}
           >
             REAL RESULTS
           </Typography>
           <Typography
-            variant="h3"
+            variant="h4"
             sx={{
               fontWeight: 800,
-              mt: 1,
-              mb: 1,
-              fontSize: { xs: "2rem", md: "2.5rem" },
+              mt: 0.5,
+              mb: 0.5,
+              fontSize: { xs: "1.7rem", md: "2rem" }, // smaller
+              lineHeight: 1.2,
             }}
           >
             What Drivers Are Saying
           </Typography>
           <Typography
-            variant="h6"
-            sx={{ color: "rgba(255,255,255,0.7)", maxWidth: 700, mx: "auto" }}
+            variant="subtitle1"
+            sx={{
+              color: "rgba(255,255,255,0.72)",
+              maxWidth: 640,
+              mx: "auto",
+              fontSize: { xs: "0.95rem", md: "1rem" },
+            }}
           >
             Verified customer feedback on comfort, clarity, and craftsmanship.
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        {/* Cards: smaller gaps */}
+        <Grid container spacing={{ xs: 2.5, md: 3 }}>
           {testimonials.map((t, i) => (
-            <Grid item xs={12} md={4} key={i}>
+            <Grid item xs={12} sm={6} md={4} key={i}>
               <TestimonialCard
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                viewport={{ once: true, margin: "-60px" }}
+                whileHover={{ y: -4, transition: { duration: 0.18 } }}
               >
                 <QuoteBadge>
-                  <FormatQuoteIcon />
+                  <FormatQuoteIcon fontSize="small" />
                 </QuoteBadge>
 
                 <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 2,
-                    mb: 2,
-                    mt: 1,
+                    gap: 1.5,
+                    mb: 1.25,
+                    mt: 0.5,
                   }}
                 >
                   <AvatarRing>
@@ -178,12 +190,15 @@ const Testimonials = () => {
                     />
                   </AvatarRing>
                   <Box>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: 800, lineHeight: 1.1 }}
+                    >
                       {t.name}
                     </Typography>
                     <Typography
-                      variant="body2"
-                      sx={{ color: "#000" }}
+                      variant="caption"
+                      sx={{ color: "rgba(0,0,0,0.72)" }}
                     >
                       {t.role}
                     </Typography>
@@ -191,15 +206,23 @@ const Testimonials = () => {
                 </Box>
 
                 <Rating
+                  size="small"
                   value={t.rating}
                   precision={0.5}
                   readOnly
-                  sx={{ mb: 1, color: "#4db8f0" }} // brand blue
+                  sx={{ mb: 0.75 }}
                 />
 
                 <Typography
-                  variant="body1"
-                  sx={{ color: "#000", lineHeight: 1.7 }}
+                  variant="body2"
+                  sx={{
+                    color: "#000",
+                    lineHeight: 1.6,
+                    display: "-webkit-box",
+                    WebkitLineClamp: { xs: 6, md: 5 }, // clamp to keep height consistent
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                  }}
                 >
                   {t.quote}
                 </Typography>
@@ -208,20 +231,18 @@ const Testimonials = () => {
           ))}
         </Grid>
 
-        {/* CTA under testimonials */}
+        {/* Compact CTAs: closer to content & smaller */}
         <Box
           sx={{
-            mt: { xs: 6, md: 8 },
+            mt: { xs: 4, md: 5 }, // was 6/8
             display: "flex",
             justifyContent: "center",
-            gap: 2,
+            gap: 1.5,
             flexWrap: "wrap",
           }}
         >
-          <CTAButton ownerState={{ $size: "large" }}>
-            Get a Free Quote
-          </CTAButton>
-          <CTAButton ownerState={{ $style: "outline" }}>See Pricing</CTAButton>
+          <CTAButton ownerState={{ $size: "large" }} onClick={handleScrollTop}>Get Free Quote</CTAButton>
+          {/* <CTAButton ownerState={{ $style: "outline" }}>See Pricing</CTAButton> */}
         </Box>
       </Container>
     </TestimonialsWrapper>

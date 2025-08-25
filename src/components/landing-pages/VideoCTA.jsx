@@ -15,8 +15,10 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+import ScrollToTop from "../ScrollToTop";
 
-/* ---------- Styles (aligned to your Mockup.jsx palette) ---------- */
+/* ---------- Styles ---------- */
 
 const SectionWrap = styled(Box)(({ theme }) => ({
   background:
@@ -25,7 +27,7 @@ const SectionWrap = styled(Box)(({ theme }) => ({
   position: "relative",
 }));
 
-const Panel = styled(Box)(({ theme }) => ({
+const Panel = styled(Box)(() => ({
   borderRadius: 24,
   background:
     "radial-gradient(1200px 500px at -10% -40%, rgba(39,148,210,0.08) 0%, transparent 60%), #0f0f0f",
@@ -34,48 +36,106 @@ const Panel = styled(Box)(({ theme }) => ({
   overflow: "hidden",
 }));
 
-const VideoShell = styled(Box)(({ theme }) => ({
+/* ----- Left (Video Frame) ----- */
+const VideoFrame = styled(Box)(() => ({
   position: "relative",
   width: "100%",
-  backgroundColor: "#000",
   borderRadius: 20,
   overflow: "hidden",
-  border: "1px solid rgba(39,148,210,0.2)",
-  boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
+  boxShadow:
+    "0 30px 80px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04)",
+  background:
+    "radial-gradient(1200px 500px at -10% -40%, rgba(39,148,210,0.10) 0%, transparent 60%), #0a0a0a",
 }));
 
-const BGVideo = styled("video")(({ theme }) => ({
+const EdgeStroke = styled("div")(() => ({
+  pointerEvents: "none",
+  position: "absolute",
+  inset: 0,
+  borderRadius: 20,
+  padding: 1,
+  background:
+    "linear-gradient(135deg, rgba(39,148,210,0.45), rgba(255,255,255,0.06))",
+  WebkitMask:
+    "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+  WebkitMaskComposite: "xor",
+  maskComposite: "exclude",
+}));
+
+const BottomGradient = styled("div")(() => ({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: 0,
+  height: "26%",
+  background: "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0))",
+  pointerEvents: "none",
+  zIndex: 1,
+}));
+
+const BGVideo = styled("video")(() => ({
   position: "absolute",
   inset: 0,
   width: "100%",
   height: "100%",
 }));
 
-const ControlBar = styled(Box)(({ theme }) => ({
+const PosterBackplate = styled(Box)(() => ({
+  position: "absolute",
+  inset: 0,
+  filter: "blur(28px) saturate(120%)",
+  transform: "scale(1.12)",
+  opacity: 0.45,
+  zIndex: 0,
+}));
+
+const FloatingControls = styled(Box)(() => ({
   position: "absolute",
   left: "50%",
-  transform: "translateX(-50%)",
+  bottom: 18,
+  transform: "translateX(-50%) translateY(6px)",
   display: "flex",
   alignItems: "center",
-  gap: theme.spacing(1.25),
-  padding: theme.spacing(1, 1.5),
+  gap: 12,
+  padding: "8px 14px",
   borderRadius: 999,
   backgroundColor: "rgba(255,255,255,0.12)",
   border: "1px solid rgba(255,255,255,0.25)",
   backdropFilter: "blur(6px)",
   boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
+  opacity: 0,
+  transition: "opacity .25s ease, transform .25s ease",
+  ".video-hover:hover &, .video-hover:focus-within &": {
+    opacity: 1,
+    transform: "translateX(-50%) translateY(0)",
+  },
 }));
 
-const ControlButton = styled(IconButton)(({ theme }) => ({
+const ControlButton = styled(IconButton)(() => ({
   color: "#fff",
   border: "1px solid rgba(255,255,255,0.25)",
   backgroundColor: "rgba(255,255,255,0.08)",
   "&:hover": { backgroundColor: "rgba(255,255,255,0.18)" },
 }));
 
-const CTAButton = styled(Button)(({ theme, variant }) => ({
+/* ----- Right (Text) ----- */
+const Overline = styled(Typography)(() => ({
+  color: "#2794d2",
+  fontSize: "0.9rem",
   fontWeight: 800,
-  padding: variant === "large" ? "16px 40px" : "12px 28px",
+  letterSpacing: "0.12em",
+}));
+
+const GradientTitle = styled(Typography)(() => ({
+  background: "linear-gradient(135deg, #ffffff 0%, #2794d2 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+}));
+
+const CTAButton = styled(Button)(({ variant }) => ({
+  fontWeight: 800,
+  padding: variant === "large" ? "16px 30px" : "12px 28px",
   borderRadius: 999,
   fontSize: variant === "large" ? "1.05rem" : "1rem",
   textTransform: "uppercase",
@@ -99,58 +159,80 @@ const CTAButton = styled(Button)(({ theme, variant }) => ({
         : "linear-gradient(135deg, #4db8f0 0%, #2794d2 100%)",
     color: "#fff",
   },
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: "-100%",
-    width: "100%",
-    height: "100%",
-    background:
-      "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
-    transition: "left 0.6s",
-  },
-  "&:hover::before": { left: "100%" },
 }));
 
-const Overline = styled(Typography)(({ theme }) => ({
-  color: "#2794d2",
-  fontSize: "0.9rem",
+/* ----- Feature list (ported from Hero) ----- */
+const FeatureList = styled("ul")(() => ({
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  display: "grid",
+  gap: 12,
+}));
+
+const FeatureItem = styled(motion.li)(() => ({
+  display: "flex",
+  alignItems: "flex-start",
+  gap: 12,
+}));
+
+const CheckBadge = styled(Box)(() => ({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 28,
+  height: 28,
+  borderRadius: 999,
+  background:
+    "linear-gradient(135deg, rgba(39,148,210,0.25), rgba(77,184,240,0.25))",
+  border: "1px solid rgba(77,184,240,0.35)",
+  boxShadow:
+    "0 8px 24px rgba(39,148,210,.35), inset 0 0 0 1px rgba(255,255,255,0.06)",
+  flexShrink: 0,
+}));
+
+const FeatureTitle = styled(Typography)(() => ({
   fontWeight: 800,
-  letterSpacing: "0.12em",
+  lineHeight: 1.2,
+  color: "#ffffff",
 }));
 
-const GradientTitle = styled(Typography)(({ theme }) => ({
-  background: "linear-gradient(135deg, #ffffff 0%, #2794d2 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
+const FeatureBody = styled(Typography)(() => ({
+  color: "rgba(255,255,255,0.80)",
+  lineHeight: 1.6,
+  marginTop: 2,
 }));
+
+const handleScrollTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
 /* ---------- Component ---------- */
-
 export default function VideoCTA({
   videoSrc = "/videos/tesla-video.mov",
   poster = "/background.jpg",
   heading = "See the Difference in Minutes",
   subheading = "Premium Ceramic Tint • Faster, Cooler, Protected",
+  /**
+   * bullets can be:
+   * - string: "Title – Body" or "Title - Body" (smart split)
+   * - object: { title: string, body?: string }
+   */
   bullets = [
-    "Blocks 60%+ heat for instant comfort",
-    "99% UV protection to safeguard interiors & skin",
-    "Crystal-clear, signal-safe ceramic technology",
+    "Stay Cooler Instantly – Blocks up to 89%+ of heat so you drive in comfort, not sweat.",
+    "Protect What Matters Most – 99% UV rejection shields your skin, family, and interior from damage.",
+    "Built to Last – Premium Llumar ceramic films, tested and proven by 3rd-party labs.",
+    "Lifetime Peace of Mind – Warranty-backed protection against bubbling, fading, or peeling.",
   ],
   primary = { label: "Get Free Quote", href: "/quote" },
   secondary = { label: "View Gallery", href: "/gallery" },
-  dense = false, // tighter vertical spacing
 }) {
   const videoRef = useRef(null);
   const isNarrow = useMediaQuery("(max-width:900px)");
-
-  // Playback state
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-
-  // Orientation detection
   const [isPortrait, setIsPortrait] = useState(false);
 
   const play = async () => {
@@ -164,48 +246,61 @@ export default function VideoCTA({
     setIsPlaying(false);
   };
   const togglePlay = () => (isPlaying ? pause() : play());
-  const toggleMute = async () => {
+  const toggleMute = () => {
     const v = videoRef.current;
     if (!v) return;
     v.muted = !v.muted;
     setIsMuted(v.muted);
-    if (!v.muted && v.paused) await play();
+    if (!v.muted && v.paused) play();
   };
-
   const handleLoadedMetadata = () => {
     const v = videoRef.current;
     if (!v) return;
-    // Portrait if height > width
     setIsPortrait(v.videoHeight > v.videoWidth);
   };
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-    const onVolume = () => setIsMuted(v.muted);
-
-    v.addEventListener("play", onPlay);
-    v.addEventListener("pause", onPause);
-    v.addEventListener("volumechange", onVolume);
-
     v.muted = true;
     v.loop = true;
     play();
-
-    return () => {
-      v.removeEventListener("play", onPlay);
-      v.removeEventListener("pause", onPause);
-      v.removeEventListener("volumechange", onVolume);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // ---- Motion variants (for list) ----
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, delay: i * 0.06 },
+    }),
+  };
+
+  // ---- Normalize bullets into {title, body} ----
+  const normalize = (b) => {
+    if (typeof b === "object" && b?.title) return b;
+    if (typeof b === "string") {
+      // split by en dash OR hyphen surrounded by spaces
+      const parts =
+        b.split(" – ").length > 1
+          ? b.split(" – ")
+          : b.split(" — ").length > 1
+          ? b.split(" — ")
+          : b.split(" - ");
+      if (parts.length > 1) {
+        return { title: parts[0].trim(), body: parts.slice(1).join(" - ").trim() };
+      }
+      return { title: b.trim() };
+    }
+    return { title: String(b) };
+  };
+  const items = bullets.map(normalize);
+
   return (
-    <SectionWrap sx={{ py: { xs: dense ? 4 : 8, md: dense ? 6 : 12 } }}>
+    <SectionWrap sx={{ py: { xs: 6, md: 12 } }}>
       <Panel sx={{ p: { xs: 2.5, md: 4 } }}>
-        <Grid container spacing={{ xs: 3, md: 6 }} alignItems="center">
+        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
           {/* Left: Video */}
           <Grid item xs={12} md={6}>
             <motion.div
@@ -214,34 +309,25 @@ export default function VideoCTA({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <VideoShell
-                aria-label="Tint Tek Plus showcase video"
+              <VideoFrame
+                className="video-hover"
                 sx={{
-                  // Auto aspect: 9/16 for portrait, 16/9 otherwise
                   aspectRatio: isPortrait ? "9 / 16" : "16 / 9",
-                  // Give portrait videos a tasteful max height and narrower width
                   maxHeight: { xs: "75vh", md: "78vh" },
                   width: isPortrait ? { xs: "86%", md: "72%" } : "100%",
                   mx: "auto",
                 }}
               >
-                {/* Blurred poster pad for portrait to avoid harsh bars */}
+                <EdgeStroke />
+                <BottomGradient />
                 {isPortrait && (
-                  <Box
+                  <PosterBackplate
                     aria-hidden
                     sx={{
-                      position: "absolute",
-                      inset: 0,
-                      backgroundImage: `url(${poster})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      filter: "blur(28px) saturate(120%)",
-                      transform: "scale(1.12)",
-                      opacity: 0.45,
+                      background: `url(${poster}) center/cover no-repeat`,
                     }}
                   />
                 )}
-
                 <BGVideo
                   autoPlay
                   muted
@@ -250,7 +336,6 @@ export default function VideoCTA({
                   preload="auto"
                   ref={videoRef}
                   poster={poster}
-                  onCanPlay={() => videoRef.current?.play?.().catch(() => {})}
                   onLoadedMetadata={handleLoadedMetadata}
                   style={{
                     objectFit: isPortrait ? "contain" : "cover",
@@ -260,30 +345,19 @@ export default function VideoCTA({
                   <source src={videoSrc} type="video/mp4" />
                 </BGVideo>
 
-                <ControlBar
-                  aria-label="Video controls"
-                  sx={{ bottom: isPortrait ? 8 : 12 }}
-                >
+                <FloatingControls>
                   <Tooltip title={isPlaying ? "Pause" : "Play"}>
-                    <ControlButton
-                      aria-label={isPlaying ? "Pause video" : "Play video"}
-                      onClick={togglePlay}
-                      size={isPortrait && isNarrow ? "small" : "medium"}
-                    >
+                    <ControlButton onClick={togglePlay}>
                       {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                     </ControlButton>
                   </Tooltip>
                   <Tooltip title={isMuted ? "Unmute" : "Mute"}>
-                    <ControlButton
-                      aria-label={isMuted ? "Unmute video" : "Mute video"}
-                      onClick={toggleMute}
-                      size={isPortrait && isNarrow ? "small" : "medium"}
-                    >
+                    <ControlButton onClick={toggleMute}>
                       {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
                     </ControlButton>
                   </Tooltip>
-                </ControlBar>
-              </VideoShell>
+                </FloatingControls>
+              </VideoFrame>
             </motion.div>
           </Grid>
 
@@ -296,9 +370,7 @@ export default function VideoCTA({
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <Box sx={{ maxWidth: 640, ml: { md: 1 } }}>
-                <Overline variant="overline" component="div" sx={{ mb: 1.5 }}>
-                  PREMIUM WINDOW TINTING
-                </Overline>
+                <Overline sx={{ mb: 1.5 }}>PREMIUM WINDOW TINTING</Overline>
 
                 <GradientTitle
                   variant="h3"
@@ -317,50 +389,45 @@ export default function VideoCTA({
                   sx={{
                     color: "rgba(255,255,255,0.82)",
                     fontWeight: 500,
-                    mb: 2.5,
+                    mb: 3,
                   }}
                 >
                   {subheading}
                 </Typography>
 
-                <Box
-                  component="ul"
-                  sx={{
-                    listStyle: "none",
-                    pl: 0,
-                    mb: 3.5,
-                    "& li": {
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1.5,
-                      mb: 1.25,
-                      color: "rgba(255,255,255,0.9)",
-                    },
-                  }}
-                >
-                  {bullets.map((b, i) => (
-                    <li key={i}>
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: "50%",
-                          backgroundColor: "#2794d2",
-                          flexShrink: 0,
-                        }}
-                      />
-                      <Typography component="span">{b}</Typography>
-                    </li>
+                {/* --- Ported Feature List --- */}
+                <FeatureList aria-label="Key benefits" style={{ marginBottom: 16 }}>
+                  {items.map((it, i) => (
+                    <FeatureItem
+                      key={i}
+                      custom={i}
+                      variants={itemVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
+                      <CheckBadge aria-hidden="true">
+                        <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
+                      </CheckBadge>
+                      <Box>
+                        <FeatureTitle variant="subtitle1">
+                          {it.title}
+                        </FeatureTitle>
+                        {it.body && (
+                          <FeatureBody variant="body2">{it.body}</FeatureBody>
+                        )}
+                      </Box>
+                    </FeatureItem>
                   ))}
-                </Box>
+                </FeatureList>
 
-                <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+                {/* CTAs */}
+                <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mt: 2 }}>
                   {primary?.label && (
                     <CTAButton
                       variant="large"
                       component="a"
-                      href={primary.href || "#"}
-                      aria-label={primary.label}
+                      onClick={handleScrollTop}
                     >
                       {primary.label}
                     </CTAButton>
@@ -370,7 +437,6 @@ export default function VideoCTA({
                       variant="outline"
                       component="a"
                       href={secondary.href || "#"}
-                      aria-label={secondary.label}
                     >
                       {secondary.label}
                     </CTAButton>

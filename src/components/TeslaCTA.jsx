@@ -29,6 +29,11 @@ const callToActionData = {
     `,
     video: "/videos/v-window-tint2.mp4",
   },
+    "vehicle-paint-protection": {
+    title: "ULTIMATE PROTECTION. UNMATCHED CLARITY. LONG-LASTING RESULTS.",
+    description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
+    video: "/videos/ppf.mov",
+  },
 };
 
 const TeslaCTA = () => {

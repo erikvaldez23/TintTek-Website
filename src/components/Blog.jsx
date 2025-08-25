@@ -47,6 +47,17 @@ const blogPosts = [
     estimate: "4-5 Minute",
     date: "June 22, 2025",
     category: ["Automotive Tinting"],
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
+    summary:
+      "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
+    image: "/residential-blog.jpg",
+    estimate: "4-5 Minute",
+    date: "August 24, 2025",
+    category: ["Residential Tinting"],
     featured: true,
   },
 ];

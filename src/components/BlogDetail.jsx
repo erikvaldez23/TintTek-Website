@@ -229,6 +229,111 @@ const blogPosts = [
     date: "June 22, 2025",
     category: "Car Tinting in Texas",
   },
+  {
+  id: 3,
+  title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
+  summary:
+    "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
+  content: (
+    <>
+      <Typography className="blog-paragraph">
+        If you’re a homeowner in <strong>Dallas–Fort Worth (DFW)</strong>, you already know how intense the Texas sun can be. Blazing heat, high energy bills, and faded furniture are part of everyday life — but there’s a smarter way to protect your home: <strong>residential window tinting</strong>.
+      </Typography>
+      <Typography className="blog-paragraph">
+        At <strong>Tint Tek Plus</strong>, we specialize in installing <strong>LLumar Vista™ Window Films</strong> — premium residential window tints designed to maximize comfort, reduce energy costs, and add privacy while maintaining beautiful natural light.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        1. Lower Energy Bills 💡
+      </Typography>
+      <Typography className="blog-paragraph">
+        LLumar Vista films can block up to <strong>79% of solar heat</strong>, reducing your A/C usage and helping cut energy costs by <strong>15–30% each month</strong>. Over time, that means big savings on utility bills.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        2. UV Protection for Your Family & Furniture ☀️
+      </Typography>
+      <Typography className="blog-paragraph">
+        LLumar Vista films block <strong>99% of harmful UV rays</strong>, protecting your skin while preventing hardwood floors, furniture, artwork, and curtains from fading. Think of it as invisible sunscreen for your home.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        3. Increased Privacy Without Sacrificing Natural Light 🪟
+      </Typography>
+      <Typography className="blog-paragraph">
+        Our residential films give you <strong>daytime privacy</strong> from neighbors and passersby, all while keeping your home bright and welcoming. No more heavy blinds or sacrificing sunlight.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        4. Glare Reduction for Screens & Comfort 📺💻
+      </Typography>
+      <Typography className="blog-paragraph">
+        Whether you’re working from home or watching a movie, LLumar Vista tints cut glare so you can enjoy every room without squinting or straining your eyes.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        5. Added Safety & Security 🔒
+      </Typography>
+      <Typography className="blog-paragraph">
+        Specialty films help <strong>hold glass together</strong> in case of breakage, making windows harder to shatter from accidents, severe weather, or break-ins.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        6. Modern Look & Curb Appeal 🏡
+      </Typography>
+      <Typography className="blog-paragraph">
+        LLumar Vista films come in a range of subtle shades and finishes to match your home’s style. They instantly enhance curb appeal without the cost of replacing windows.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        7. Year-Round Comfort 🌡️
+      </Typography>
+      <Typography className="blog-paragraph">
+        From blocking heat in the summer to adding insulation during the winter, LLumar Vista films help stabilize indoor temperatures and keep your home more comfortable.
+      </Typography>
+
+      <Typography variant="h5" className="blog-section-title">
+        Why Choose Tint Tek Plus?
+      </Typography>
+      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+        <li>✔️ Professional installation backed by <strong>lifetime residential warranties</strong></li>
+        <li>✔️ Premium <strong>LLumar Vista™ films</strong> built for Texas heat</li>
+        <li>✔️ Custom shading and privacy levels for every home</li>
+        <li>✔️ Local DFW experts with 15+ years of combined experience</li>
+        <li>✔️ Friendly service and fast installation</li>
+      </Box>
+
+      <Typography variant="h5" className="blog-section-title">
+        About LLumar Vista™ Window Films
+      </Typography>
+      <Typography className="blog-paragraph">
+        <strong>Vista by LLumar</strong> is one of the most advanced home window film brands in the world. Known for clarity, performance, and durability, Vista films are engineered to:
+      </Typography>
+      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+        <li>🌞 Reject up to 79% of solar heat</li>
+        <li>🛡️ Block 99% of UV rays</li>
+        <li>🌎 Reduce energy consumption and your carbon footprint</li>
+        <li>🏠 Maintain natural light with virtually invisible films</li>
+      </Box>
+      <Typography className="blog-paragraph">
+        Vista films are so effective they’ve been <strong>recommended by the Skin Cancer Foundation</strong> for UV protection — making them a smart investment in your family’s health and your home’s long-term value.
+      </Typography>
+
+         <Typography variant="h5" className="blog-section-title">
+          📍 Come See Us
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Tint Tek Plus – Dallas, TX</strong><br />
+          📍 2518 W. Kingsley Rd, Garland, TX (Serving all of Dallas)<br />
+          📞 Call/Text: <strong>972-362-8468</strong><br />
+          🌐 <a href="https://www.tinttekplus.com" target="_blank" rel="noopener noreferrer">www.tinttekplus.com</a>
+        </Typography>
+    </>
+  ),
+  image: "/residential-blog.jpg",
+  date: "August 24, 2025",
+  category: "Residential Window Tinting",
+}
 ];
 
 const BlogDetail = () => {

@@ -1,5 +1,5 @@
 // components/LocalVideoCTA.jsx
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   Grid,
@@ -16,6 +16,10 @@ import PauseIcon from "@mui/icons-material/Pause";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+// New: to match hero checkmark vibe
+import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+
+/* --------------------- Base Styles --------------------- */
 
 const Wrapper = styled(Box)(() => ({
   color: "#fff",
@@ -26,7 +30,6 @@ const Wrapper = styled(Box)(() => ({
 }));
 
 const Glass = styled(Box)(() => ({
-  // background: "rgba(255,255,255,0.06)",
   border: "1px solid rgba(255,255,255,0.12)",
   backdropFilter: "blur(10px) saturate(130%)",
   WebkitBackdropFilter: "blur(10px) saturate(130%)",
@@ -50,6 +53,8 @@ const GradientHeadline = styled(Typography)(() => ({
   backgroundClip: "text",
 }));
 
+/* --------------------- Left: Phone Video --------------------- */
+
 const PhoneShell = styled(Box)(() => ({
   position: "relative",
   width: "100%",
@@ -67,14 +72,11 @@ const GlowWrap = styled(Box)(() => ({
   position: "relative",
   display: "inline-block",
   borderRadius: 28,
-  /* nice base shadow under the device */
   filter: "drop-shadow(0 12px 40px rgba(0,0,0,.55))",
-
-  /* OUTER BLUE GLOW - Primary layer */
   "&::before": {
     content: '""',
     position: "absolute",
-    inset: -32,                 // lets the glow extend outside
+    inset: -32,
     borderRadius: 44,
     pointerEvents: "none",
     background:
@@ -85,8 +87,6 @@ const GlowWrap = styled(Box)(() => ({
     animation: "pulseGlow 4s ease-in-out infinite",
     zIndex: -2,
   },
-
-  /* SECONDARY GLOW - Inner intense layer */
   "&::after": {
     content: '""',
     position: "absolute",
@@ -101,31 +101,26 @@ const GlowWrap = styled(Box)(() => ({
     animation: "innerGlow 3s ease-in-out infinite alternate",
     zIndex: -1,
   },
-
   "@keyframes pulseGlow": {
     "0%,100%": { opacity: 0.8, transform: "scale(1) rotate(0deg)" },
     "33%": { opacity: 1, transform: "scale(1.06) rotate(0.5deg)" },
     "66%": { opacity: 0.9, transform: "scale(1.03) rotate(-0.3deg)" },
   },
-
   "@keyframes innerGlow": {
     "0%": { opacity: 0.6, transform: "scale(0.98)" },
     "100%": { opacity: 0.9, transform: "scale(1.02)" },
   },
-
-  /* Enhanced hover effects */
-  "&:hover::before": { 
-    opacity: 1.1, 
+  "&:hover::before": {
+    opacity: 1.1,
     transform: "scale(1.08) rotate(1deg)",
     filter: "blur(42px)",
   },
-  "&:hover::after": { 
-    opacity: 1, 
+  "&:hover::after": {
+    opacity: 1,
     transform: "scale(1.04)",
     filter: "blur(24px)",
   },
 }));
-
 
 const VideoEl = styled("video")(() => ({
   position: "absolute",
@@ -134,17 +129,6 @@ const VideoEl = styled("video")(() => ({
   height: "100%",
   objectFit: "cover",
   backgroundColor: "#101010",
-}));
-
-const CTAOverlay = styled(Glass)(() => ({
-  position: "absolute",
-  left: 14,
-  bottom: 14,
-  padding: 14,
-  borderRadius: 18,
-  width: "min(92%, 360px)",
-  pointerEvents: "auto",
-  boxShadow: "0 18px 36px rgba(0,0,0,0.5)",
 }));
 
 const Controls = styled(Box)(() => ({
@@ -162,7 +146,8 @@ const CTAButton = styled(Button)(({ variant }) => ({
   borderRadius: 999,
   textTransform: "uppercase",
   letterSpacing: "0.04em",
-  transition: "transform .28s cubic-bezier(.175,.885,.32,1.275), box-shadow .28s",
+  transition:
+    "transform .28s cubic-bezier(.175,.885,.32,1.275), box-shadow .28s",
   background:
     variant === "outline"
       ? "transparent"
@@ -184,20 +169,88 @@ const CTAButton = styled(Button)(({ variant }) => ({
   },
 }));
 
-/**
- * Props:
- * - videoSrc: string (local file url or imported module)
- * - poster?: string (optional poster image)
- * - eyebrow, title, body
- * - primaryHref/primaryText, secondaryHref/secondaryText
- * - phoneMaxWidthMd, phoneMaxWidthLg (numbers in px)
- */
+/* --------------------- Right: Hero-Style Feature List --------------------- */
+
+const FeatureList = styled("ul")(() => ({
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  display: "grid",
+  gap: 12,
+}));
+
+const FeatureItem = styled(motion.li)(() => ({
+  display: "flex",
+  alignItems: "flex-start",
+  gap: 12,
+}));
+
+const CheckBadge = styled(Box)(() => ({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 28,
+  height: 28,
+  borderRadius: 999,
+  background:
+    "linear-gradient(135deg, rgba(39,148,210,0.25), rgba(77,184,240,0.25))",
+  border: "1px solid rgba(77,184,240,0.35)",
+  boxShadow:
+    "0 8px 24px rgba(39,148,210,.35), inset 0 0 0 1px rgba(255,255,255,0.06)",
+  flexShrink: 0,
+}));
+
+const FeatureTitle = styled(Typography)(() => ({
+  fontWeight: 800,
+  lineHeight: 1.2,
+  color: "#ffffff",
+}));
+
+const FeatureBody = styled(Typography)(() => ({
+  color: "rgba(255,255,255,0.80)",
+  lineHeight: 1.6,
+  marginTop: 2,
+}));
+
+/* Motion variants (staggered reveal for the list) */
+const listVariants = {
+  hidden: { opacity: 0, y: 8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.06, delayChildren: 0.04 },
+  },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.28 } },
+};
+
+const handleScrollTop = () => {
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
+
+/* --------------------- Component --------------------- */
+
 export default function LocalVideoCTA({
-  videoSrc = "/videos/ceramic-coating.mov", // if using /public/videos/reel.mp4
+  videoSrc = "/testimonial-videos/testimonial1.mov",
   poster,
   eyebrow = "REAL RESULTS",
   title = "See It In Action",
   body = "Watch a quick before/after and how our nano-ceramic film cuts glare and heat on real vehicles.",
+  /**
+   * bullets can be:
+   *  - string: "Title – Body" or "Title - Body"
+   *  - object: { title, detail? | body? }
+   */
+  bullets = [
+    "Llumar Certified Installers — Professionally trained and accredited for flawless results every time.",
+    "Customer Satisfaction Guaranteed — We stand behind every tint job with a no-hassle guarantee.",
+    "Lifetime Warranty Options — Coverage you can trust, backed by manufacturer support.",
+    "Fast, Clean Installation — Most jobs completed in under 3 hours with showroom-quality finish.",
+  ],
   primaryHref = "/quote",
   primaryText = "Get Free Quote",
   secondaryHref = "/gallery",
@@ -231,11 +284,38 @@ export default function LocalVideoCTA({
     setMuted(v.muted);
   };
 
+  // --- Normalize bullets into { title, body } ---
+  const normalize = (b) => {
+    if (typeof b === "object" && b) {
+      const title = b.title ?? "";
+      const body = b.detail ?? b.body ?? "";
+      return { title: String(title), body: body ? String(body) : "" };
+    }
+    if (typeof b === "string") {
+      // split by en dash, em dash, or " - "
+      const parts =
+        b.split(" – ").length > 1
+          ? b.split(" – ")
+          : b.split(" — ").length > 1
+          ? b.split(" — ")
+          : b.split(" - ");
+      if (parts.length > 1) {
+        return {
+          title: parts[0].trim(),
+          body: parts.slice(1).join(" - ").trim(),
+        };
+      }
+      return { title: b.trim(), body: "" };
+    }
+    return { title: String(b ?? ""), body: "" };
+  };
+  const items = bullets.map(normalize);
+
   return (
     <Wrapper sx={{ py: { xs: 8, md: 12 }, ...sx }}>
       <Box sx={{ maxWidth: 1280, mx: "auto", px: { xs: 2.5, md: 4 } }}>
         <Grid container spacing={{ xs: 5, md: 6 }} alignItems="center">
-          {/* Copy first on desktop */}
+          {/* Right (Copy) first on desktop for better scan pattern */}
           <Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -243,45 +323,79 @@ export default function LocalVideoCTA({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true, amount: 0.35 }}
             >
-               <Eyebrow component="span">REAL RESULTS</Eyebrow>
-<GradientHeadline
-  variant="h3"
-  sx={{ mt: 1, mb: 1.5, fontSize: { xs: "2rem", md: "2.8rem" } }}
->
-  See It In Action
-</GradientHeadline>
-<Typography variant="h6" sx={{ color: "rgba(255,255,255,0.85)", fontWeight: 400, lineHeight: 1.7 }}>
-  Watch how our nano-ceramic film transforms real vehicles:
-</Typography>
-<Box component="ul" sx={{ mt: 2, pl: 2, color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
-  <li>Rejects up to 99% of harmful UV rays</li>
-  <li>Reduces glare for safer, clearer driving</li>
-  <li>Keeps cabins cooler with advanced heat blocking</li>
-  <li>Maintains a sleek, factory-tinted look</li>
-</Box>
-<Typography variant="body2" sx={{ mt: 2, color: "#53b4eb", fontWeight: 500 }}>
-  Trusted by thousands of Dallas drivers ★★★★★
-</Typography>
+              <Eyebrow component="span">{eyebrow}</Eyebrow>
 
-                {mdUp && (
-                  <Box sx={{ display: "flex", gap: 1.5, flexWrap: "wrap", mt: 3 }}>
-                    <CTAButton component="a" href={primaryHref}>
-                      {primaryText}
-                    </CTAButton>
-                    <CTAButton
-                      variant="outline"
-                      component="a"
-                      href={secondaryHref}
-                      startIcon={<OpenInNewIcon />}
-                    >
-                      {secondaryText}
-                    </CTAButton>
-                  </Box>
-                )}
+              <GradientHeadline
+                variant="h3"
+                sx={{ mt: 1, mb: 1.25, fontSize: { xs: "2rem", md: "2.8rem" } }}
+              >
+                {title}
+              </GradientHeadline>
+
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "rgba(255,255,255,0.9)",
+                  fontWeight: 600,
+                  lineHeight: 1.55,
+                  mb: 2.25,
+                }}
+              >
+                {body}
+              </Typography>
+
+              {/* Hero-style Feature List (ported) */}
+              <motion.div
+                variants={listVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.35 }}
+              >
+                <FeatureList aria-label="Key benefits">
+                  {items.map((it, i) => (
+                    <FeatureItem key={i} variants={itemVariants}>
+                      <CheckBadge aria-hidden="true">
+                        <TaskAltRoundedIcon
+                          sx={{ fontSize: 18, color: "#e9f7ff" }}
+                        />
+                      </CheckBadge>
+                      <Box>
+                        <FeatureTitle variant="subtitle1">
+                          {it.title}
+                        </FeatureTitle>
+                        {it.body && (
+                          <FeatureBody variant="body2">{it.body}</FeatureBody>
+                        )}
+                      </Box>
+                    </FeatureItem>
+                  ))}
+                </FeatureList>
+              </motion.div>
+
+              {/* Desktop CTAs */}
+              {mdUp && (
+                <Box
+                  sx={{ display: "flex", gap: 1.5, flexWrap: "wrap", mt: 3 }}
+                >
+                  <CTAButton component="a" onClick={handleScrollTop}>
+                    {primaryText}
+                  </CTAButton>
+                  <CTAButton
+                    variant="outline"
+                    component="a"
+                    href="https://www.instagram.com/tinttekplus/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<OpenInNewIcon />}
+                  >
+                    View More On Instagram
+                  </CTAButton>
+                </Box>
+              )}
             </motion.div>
           </Grid>
 
-          {/* Local video (small) */}
+          {/* Left: Local video (phone mock) */}
           <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }}>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -296,6 +410,7 @@ export default function LocalVideoCTA({
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
+                {/* Ambient underglow */}
                 <Box
                   aria-hidden
                   sx={{
@@ -307,108 +422,128 @@ export default function LocalVideoCTA({
                     zIndex: 0,
                   }}
                 />
-                <GlowWrap>
-                <PhoneShell
-                  sx={{
-                    zIndex: 1,
-                    width: { xs: "100%", sm: "100%", md: phoneMaxWidthMd, lg: phoneMaxWidthLg },
-                    mx: { xs: "auto", md: 0 },
-                  }}
-                >
-                  <Controls>
-                    <Tooltip title={playing ? "Pause" : "Play"}>
-                      <IconButton
-                        size="small"
-                        onClick={togglePlay}
-                        sx={{
-                          color: "#fff",
-                          backgroundColor: "rgba(0,0,0,0.35)",
-                          "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
-                          border: "1px solid rgba(255,255,255,0.18)",
-                        }}
-                      >
-                        {playing ? <PauseIcon fontSize="small" /> : <PlayArrowIcon fontSize="small" />}
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title={muted ? "Unmute" : "Mute"}>
-                      <IconButton
-                        size="small"
-                        onClick={toggleMute}
-                        sx={{
-                          color: "#fff",
-                          backgroundColor: "rgba(0,0,0,0.35)",
-                          "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
-                          border: "1px solid rgba(255,255,255,0.18)",
-                        }}
-                      >
-                        {muted ? <VolumeOffIcon fontSize="small" /> : <VolumeUpIcon fontSize="small" />}
-                      </IconButton>
-                    </Tooltip>
-                  </Controls>
 
-                  {/* Loader */}
-                  {!loaded && (
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background:
-                          "linear-gradient(180deg, #0f0f0f 0%, #0c0c0c 100%)",
-                      }}
-                    >
+                <GlowWrap>
+                  <PhoneShell
+                    sx={{
+                      zIndex: 1,
+                      width: {
+                        xs: "100%",
+                        sm: "100%",
+                        md: phoneMaxWidthMd,
+                        lg: phoneMaxWidthLg,
+                      },
+                      mx: { xs: "auto", md: 0 },
+                    }}
+                  >
+                    {/* Video controls */}
+                    <Controls>
+                      <Tooltip title={playing ? "Pause" : "Play"}>
+                        <IconButton
+                          size="small"
+                          onClick={togglePlay}
+                          sx={{
+                            color: "#fff",
+                            backgroundColor: "rgba(0,0,0,0.35)",
+                            "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
+                            border: "1px solid rgba(255,255,255,0.18)",
+                          }}
+                        >
+                          {playing ? (
+                            <PauseIcon fontSize="small" />
+                          ) : (
+                            <PlayArrowIcon fontSize="small" />
+                          )}
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title={muted ? "Unmute" : "Mute"}>
+                        <IconButton
+                          size="small"
+                          onClick={toggleMute}
+                          sx={{
+                            color: "#fff",
+                            backgroundColor: "rgba(0,0,0,0.35)",
+                            "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
+                            border: "1px solid rgba(255,255,255,0.18)",
+                          }}
+                        >
+                          {muted ? (
+                            <VolumeOffIcon fontSize="small" />
+                          ) : (
+                            <VolumeUpIcon fontSize="small" />
+                          )}
+                        </IconButton>
+                      </Tooltip>
+                    </Controls>
+
+                    {/* Loader */}
+                    {!loaded && (
                       <Box
                         sx={{
-                          width: 52,
-                          height: 52,
-                          borderRadius: "50%",
-                          border: "3px solid rgba(255,255,255,0.18)",
-                          borderTopColor: "#2794d2",
-                          animation: "spin 1s linear infinite",
-                          "@keyframes spin": {
-                            "0%": { transform: "rotate(0deg)" },
-                            "100%": { transform: "rotate(360deg)" },
-                          },
+                          position: "absolute",
+                          inset: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background:
+                            "linear-gradient(180deg, #0f0f0f 0%, #0c0c0c 100%)",
                         }}
-                        aria-label="Loading video"
-                      />
-                    </Box>
-                  )}
+                      >
+                        <Box
+                          sx={{
+                            width: 52,
+                            height: 52,
+                            borderRadius: "50%",
+                            border: "3px solid rgba(255,255,255,0.18)",
+                            borderTopColor: "#2794d2",
+                            animation: "spin 1s linear infinite",
+                            "@keyframes spin": {
+                              "0%": { transform: "rotate(0deg)" },
+                              "100%": { transform: "rotate(360deg)" },
+                            },
+                          }}
+                          aria-label="Loading video"
+                        />
+                      </Box>
+                    )}
 
-                  <VideoEl
-                    ref={ref}
-                    src={videoSrc}
-                    poster={poster}
-                    playsInline
-                    muted={muted}
-                    autoPlay
-                    loop
-                    preload="metadata"
-                    onLoadedData={() => setLoaded(true)}
-                  >
-                    {/* Optional additional formats */}
-                    {/* <source src={videoWebm} type="video/webm" /> */}
-                    {/* <source src={videoMp4} type="video/mp4" /> */}
-                    Your browser does not support the video tag.
-                  </VideoEl>
-
-                </PhoneShell>
+                    <VideoEl
+                      ref={ref}
+                      src={videoSrc}
+                      poster={poster}
+                      playsInline
+                      muted={muted}
+                      autoPlay
+                      loop
+                      preload="metadata"
+                      onLoadedData={() => setLoaded(true)}
+                    >
+                      Your browser does not support the video tag.
+                    </VideoEl>
+                  </PhoneShell>
                 </GlowWrap>
               </Box>
             </motion.div>
 
-            {/* Mobile actions (below video) */}
+            {/* Mobile CTA under video */}
             {!mdUp && (
-              <Box sx={{ mt: 2.25, display: "flex", gap: 1.25, flexWrap: "wrap" }}>
+              <Box
+                sx={{ mt: 2.25, display: "flex", gap: 1.25, flexWrap: "wrap" }}
+              >
                 <CTAButton
                   variant="outline"
                   component="a"
-                  href={secondaryHref}
+                  href={primaryHref}
                   startIcon={<OpenInNewIcon />}
                 >
                   {secondaryText}
+                </CTAButton>
+                <CTAButton
+                  component="a"
+                  href={primaryHref}
+                  onClick={handleScrollTop}
+                >
+                  {primaryText}
                 </CTAButton>
               </Box>
             )}
