@@ -1,5 +1,5 @@
 // src/components/sections/VideoCTA.jsx
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import {
   Box,
   Grid,
@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
@@ -133,35 +134,75 @@ const GradientTitle = styled(Typography)(() => ({
   backgroundClip: "text",
 }));
 
-const CTAButton = styled(Button)(({ variant }) => ({
-  fontWeight: 800,
-  padding: variant === "large" ? "16px 30px" : "12px 28px",
-  borderRadius: 999,
-  fontSize: variant === "large" ? "1.05rem" : "1rem",
-  textTransform: "uppercase",
-  letterSpacing: "0.06em",
-  position: "relative",
-  overflow: "hidden",
-  transition: "all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-  boxShadow: "0 10px 34px rgba(39,148,210,0.35)",
-  background:
-    variant === "outline"
+/* === CTA buttons — match VideoCTA2 mobile styling === */
+const CTAButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== "variant",
+})(({ variant, theme }) => {
+  const isOutline = variant === "outline";
+  const isLarge = variant === "large";
+  return {
+    fontWeight: 800,
+    padding: isLarge ? "16px 30px" : "12px 28px",
+    borderRadius: 999,
+    fontSize: isLarge ? "1.05rem" : "1rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    position: "relative",
+    overflow: "hidden",
+    transition:
+      "transform .35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .35s",
+    boxShadow: isOutline ? "none" : "0 10px 34px rgba(39,148,210,0.35)",
+    background: isOutline
       ? "transparent"
       : "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)",
-  border: variant === "outline" ? "2px solid #2794d2" : "none",
-  color: variant === "outline" ? "#2794d2" : "#fff",
-  "&:hover": {
-    transform: "translateY(-3px)",
-    boxShadow: "0 16px 44px rgba(39,148,210,0.45)",
-    background:
-      variant === "outline"
+    border: isOutline ? "2px solid #2794d2" : "none",
+    color: isOutline ? "#2794d2" : "#fff",
+    "&:hover": {
+      transform: "translateY(-3px)",
+      boxShadow: isOutline
+        ? "0 16px 34px rgba(39,148,210,0.25)"
+        : "0 16px 44px rgba(39,148,210,0.45)",
+      background: isOutline
         ? "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)"
         : "linear-gradient(135deg, #4db8f0 0%, #2794d2 100%)",
-    color: "#fff",
-  },
-}));
+      color: "#fff",
+    },
 
-/* ----- Feature list (ported from Hero) ----- */
+    /* ---- Mobile polish to match VideoCTA2 ---- */
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      minHeight: 50,
+      borderRadius: 16,
+      textTransform: "none",
+      fontWeight: 700,
+      letterSpacing: 0,
+      padding: "14px 16px",
+      fontSize: "0.98rem",
+      justifyContent: "center",
+      gap: 8,
+      // Primary: softer gradient + subtle inner lift
+      ...(isOutline
+        ? {
+            background: "rgba(15, 17, 22, 0.45)",
+            backdropFilter: "blur(8px)",
+            border: "1.5px solid rgba(113, 191, 242, 0.7)",
+            color: "#e9f7ff",
+            boxShadow: "0 8px 18px rgba(12, 18, 24, .5)",
+            "&:hover": { background: "rgba(26, 32, 41, 0.55)" },
+          }
+        : {
+            background:
+              "linear-gradient(180deg, rgba(77,184,240,0.95), rgba(39,148,210,0.95))",
+            boxShadow:
+              "0 10px 24px rgba(39,148,210,.35), 0 1px 0 rgba(255,255,255,0.06) inset",
+          }),
+      "& .MuiButton-startIcon": { marginRight: 6, marginLeft: -2 },
+      "&:active": { transform: "translateY(0)" },
+    },
+  };
+});
+
+/* ----- Feature list ----- */
 const FeatureList = styled("ul")(() => ({
   listStyle: "none",
   padding: 0,
@@ -204,10 +245,51 @@ const FeatureBody = styled(Typography)(() => ({
 }));
 
 const handleScrollTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
+
+/* ---------- Custom Hook for Video Autoplay on Scroll ---------- */
+const useVideoAutoplay = (videoRef, options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const { threshold = 0.5, rootMargin = "0px", playOnce = false } = options;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsIntersecting(entry.isIntersecting),
+      { threshold, rootMargin }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [threshold, rootMargin]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isIntersecting) return;
+    if (playOnce && hasPlayed) return;
+
+    const attemptPlay = async () => {
+      try {
+        video.muted = true;
+        await video.play();
+        setHasPlayed(true);
+      } catch (e) {
+        // retry shortly
+        setTimeout(attemptPlay, 100);
+      }
+    };
+    const t = setTimeout(attemptPlay, 50);
+    return () => clearTimeout(t);
+  }, [isIntersecting, hasPlayed, playOnce]);
+
+  return { isIntersecting, hasPlayed };
+};
 
 /* ---------- Component ---------- */
 export default function VideoCTA({
@@ -215,11 +297,6 @@ export default function VideoCTA({
   poster = "/background.jpg",
   heading = "See the Difference in Minutes",
   subheading = "Premium Ceramic Tint • Faster, Cooler, Protected",
-  /**
-   * bullets can be:
-   * - string: "Title – Body" or "Title - Body" (smart split)
-   * - object: { title: string, body?: string }
-   */
   bullets = [
     "Stay Cooler Instantly – Blocks up to 89%+ of heat so you drive in comfort, not sweat.",
     "Protect What Matters Most – 99% UV rejection shields your skin, family, and interior from damage.",
@@ -228,46 +305,91 @@ export default function VideoCTA({
   ],
   primary = { label: "Get Free Quote", href: "/quote" },
   secondary = { label: "View Gallery", href: "/gallery" },
+  autoplayOptions = { threshold: 0.3, playOnce: false },
 }) {
+  const theme = useTheme();
+  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
+
   const videoRef = useRef(null);
-  const isNarrow = useMediaQuery("(max-width:900px)");
-  const [isPlaying, setIsPlaying] = useState(true);
+  const sectionRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isPortrait, setIsPortrait] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
-  const play = async () => {
+  const { isIntersecting } = useVideoAutoplay(videoRef, autoplayOptions);
+
+  const play = useCallback(async () => {
+    const video = videoRef.current;
+    if (!video || !isVideoReady) return;
     try {
-      await videoRef.current?.play();
+      video.muted = true;
+      await video.play();
       setIsPlaying(true);
-    } catch {}
-  };
-  const pause = () => {
-    videoRef.current?.pause();
-    setIsPlaying(false);
-  };
-  const togglePlay = () => (isPlaying ? pause() : play());
-  const toggleMute = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setIsMuted(v.muted);
-    if (!v.muted && v.paused) play();
-  };
-  const handleLoadedMetadata = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    setIsPortrait(v.videoHeight > v.videoWidth);
-  };
+    } catch {
+      setIsPlaying(false);
+    }
+  }, [isVideoReady]);
 
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-    v.loop = true;
-    play();
+  const pause = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    setIsPlaying(false);
   }, []);
 
-  // ---- Motion variants (for list) ----
+  const togglePlay = useCallback(() => {
+    if (isPlaying) pause();
+    else play();
+  }, [isPlaying, play, pause]);
+
+  const toggleMute = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+    if (!video.muted && video.paused) play();
+  }, [play]);
+
+  const handleLoadedMetadata = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    setIsPortrait(video.videoHeight > video.videoWidth);
+    setIsVideoReady(true);
+  }, []);
+
+  const handlePlay = useCallback(() => setIsPlaying(true), []);
+  const handlePause = useCallback(() => setIsPlaying(false), []);
+  const handleEnded = useCallback(() => setIsPlaying(false), []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("ended", handleEnded);
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+  }, [handlePlay, handlePause, handleEnded, handleLoadedMetadata]);
+
+  useEffect(() => {
+    const onVis = () => {
+      if (document.hidden && isPlaying) pause();
+      else if (!document.hidden && isIntersecting && !isPlaying) play();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, [isPlaying, isIntersecting, play, pause]);
+
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i = 0) => ({
@@ -277,20 +399,17 @@ export default function VideoCTA({
     }),
   };
 
-  // ---- Normalize bullets into {title, body} ----
   const normalize = (b) => {
     if (typeof b === "object" && b?.title) return b;
     if (typeof b === "string") {
-      // split by en dash OR hyphen surrounded by spaces
       const parts =
         b.split(" – ").length > 1
           ? b.split(" – ")
           : b.split(" — ").length > 1
           ? b.split(" — ")
           : b.split(" - ");
-      if (parts.length > 1) {
+      if (parts.length > 1)
         return { title: parts[0].trim(), body: parts.slice(1).join(" - ").trim() };
-      }
       return { title: b.trim() };
     }
     return { title: String(b) };
@@ -298,7 +417,7 @@ export default function VideoCTA({
   const items = bullets.map(normalize);
 
   return (
-    <SectionWrap sx={{ py: { xs: 6, md: 12 } }}>
+    <SectionWrap ref={sectionRef} sx={{ py: { xs: 6, md: 12 } }}>
       <Panel sx={{ p: { xs: 2.5, md: 4 } }}>
         <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
           {/* Left: Video */}
@@ -323,26 +442,24 @@ export default function VideoCTA({
                 {isPortrait && (
                   <PosterBackplate
                     aria-hidden
-                    sx={{
-                      background: `url(${poster}) center/cover no-repeat`,
-                    }}
+                    sx={{ background: `url(${poster}) center/cover no-repeat` }}
                   />
                 )}
                 <BGVideo
-                  autoPlay
+                  ref={videoRef}
+                  poster={poster}
                   muted
                   playsInline
                   loop
-                  preload="auto"
-                  ref={videoRef}
-                  poster={poster}
-                  onLoadedMetadata={handleLoadedMetadata}
+                  preload="metadata"
                   style={{
                     objectFit: isPortrait ? "contain" : "cover",
                     backgroundColor: "#000",
                   }}
                 >
                   <source src={videoSrc} type="video/mp4" />
+                  <source src={videoSrc.replace(".mp4", ".webm")} type="video/webm" />
+                  Your browser does not support the video tag.
                 </BGVideo>
 
                 <FloatingControls>
@@ -395,7 +512,7 @@ export default function VideoCTA({
                   {subheading}
                 </Typography>
 
-                {/* --- Ported Feature List --- */}
+                {/* Features */}
                 <FeatureList aria-label="Key benefits" style={{ marginBottom: 16 }}>
                   {items.map((it, i) => (
                     <FeatureItem
@@ -410,38 +527,62 @@ export default function VideoCTA({
                         <TaskAltRoundedIcon sx={{ fontSize: 18, color: "#e9f7ff" }} />
                       </CheckBadge>
                       <Box>
-                        <FeatureTitle variant="subtitle1">
-                          {it.title}
-                        </FeatureTitle>
-                        {it.body && (
-                          <FeatureBody variant="body2">{it.body}</FeatureBody>
-                        )}
+                        <FeatureTitle variant="subtitle1">{it.title}</FeatureTitle>
+                        {it.body && <FeatureBody variant="body2">{it.body}</FeatureBody>}
                       </Box>
                     </FeatureItem>
                   ))}
                 </FeatureList>
 
                 {/* CTAs */}
-                <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mt: 2 }}>
-                  {primary?.label && (
-                    <CTAButton
-                      variant="large"
-                      component="a"
-                      onClick={handleScrollTop}
-                    >
-                      {primary.label}
-                    </CTAButton>
-                  )}
-                  {secondary?.label && (
-                    <CTAButton
-                      variant="outline"
-                      component="a"
-                      href={secondary.href || "#"}
-                    >
-                      {secondary.label}
-                    </CTAButton>
-                  )}
-                </Box>
+                {isNarrow ? (
+                  // Mobile — stacked like VideoCTA2 (tight spacing)
+                  <Box
+                    sx={{
+                      mt: 2.5,
+                      display: "grid",
+                      gap: 2,
+                      gridTemplateColumns: "1fr",
+                      px: 0.5,
+                    }}
+                  >
+                    {primary?.label && (
+                      <CTAButton
+                        variant="large"
+                        component="a"
+                        href={primary.href || "#"}
+                        onClick={handleScrollTop}
+                        aria-label={primary.label}
+                      >
+                        {primary.label}
+                      </CTAButton>
+                    )}
+                    {secondary?.label && (
+                      <CTAButton
+                        variant="outline"
+                        component="a"
+                        href={secondary.href || "#"}
+                        aria-label={secondary.label}
+                      >
+                        {secondary.label}
+                      </CTAButton>
+                    )}
+                  </Box>
+                ) : (
+                  // Desktop — keep your original horizontal layout
+                  <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mt: 2 }}>
+                    {primary?.label && (
+                      <CTAButton variant="large" component="a" onClick={handleScrollTop}>
+                        {primary.label}
+                      </CTAButton>
+                    )}
+                    {secondary?.label && (
+                      <CTAButton variant="outline" component="a" href={secondary.href || "#"}>
+                        {secondary.label}
+                      </CTAButton>
+                    )}
+                  </Box>
+                )}
               </Box>
             </motion.div>
           </Grid>
