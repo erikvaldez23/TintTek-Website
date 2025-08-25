@@ -160,7 +160,7 @@ export default function Hero({
     <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
       <Box
         sx={{
-          py: { xs: 6, md: 10 }, // compact vertical space
+          py: { xs: 10, md: 10 }, // compact vertical space
           maxHeight: { md: "100vh" }, // cap hero height on desktop
         }}
       >

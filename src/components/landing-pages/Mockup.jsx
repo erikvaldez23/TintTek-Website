@@ -1,4 +1,3 @@
-// src/components/landing-pages/Mockup.jsx
 import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
