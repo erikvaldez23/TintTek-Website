@@ -30,7 +30,7 @@ import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 
 /** —— SITE / ROUTE SETTINGS —— */
 const SITE = "https://tinttekplus.com";
-const PATH = "/tint-landing-page"; // ← set to the route where this page is served
+const PATH = "/mockup"; // ← set to the route where this page is served
 
 // ——— Hero checkmark styles ———
 const FeatureList = styled("ul")(({ theme }) => ({
