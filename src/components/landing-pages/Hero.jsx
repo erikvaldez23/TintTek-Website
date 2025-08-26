@@ -150,11 +150,17 @@ const itemVariants = {
 export default function Hero({
   iframeSrc = "https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3",
 }) {
-  const handleScrollTo = (id) => {
-    const section = document.getElementById(id);
-    if (!section) return;
-    section.scrollIntoView({ behavior: "smooth" });
-  };
+ const handleScrollTo = (id) => {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const yOffset = -100; // adjust this value to move further up
+  const y =
+    section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
+
 
   return (
     <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
