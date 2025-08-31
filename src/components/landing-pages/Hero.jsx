@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import StarIcon from "@mui/icons-material/Star";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+import llumarBadge from "/llumar-tested.png"
 
 /* ---------- Local styles (scoped to Hero) ---------- */
 const FeatureList = styled("ul")({
@@ -211,26 +212,48 @@ export default function Hero({
                   </Box>
 
                   {/* Headline */}
-                  <Typography
-                    variant="h2"
-                    sx={{
-                      color: "#fff",
-                      fontWeight: 800,
-                      fontSize: { xs: "2.2rem", md: "3.1rem", lg: "3.4rem" },
-                      lineHeight: 1.12,
-                      mb: { xs: 2.5, md: 3 },
-                    }}
-                  >
-                    Block 88% Of Heat.
-                    <br />
-                    <Box component="span" sx={{ color: "#fff" }}>
-                      Drive Cooler In
-                    </Box>
-                    <br />
-                    <Box component="span" sx={{ color: "#fff" }}>
-                      3 Hours!
-                    </Box>
-                  </Typography>
+                  <Box
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: 2,
+    mb: { xs: 2.5, md: 3 },
+    flexWrap: "wrap", // lets image move under text on mobile
+  }}
+>
+  <Typography
+    variant="h2"
+    sx={{
+      color: "#fff",
+      fontWeight: 800,
+      fontSize: { xs: "1.8rem", md: "2.6rem", lg: "2.6rem" },
+      lineHeight: 1.12,
+    }}
+  >
+    Block 88% Of Heat.
+    <br />
+    <Box component="span" sx={{ color: "#fff" }}>
+      Drive Cooler In
+    </Box>
+    <br />
+    <Box component="span" sx={{ color: "#fff" }}>
+      3 Hours!
+    </Box>
+  </Typography>
+
+  {/* LLumar badge to the right */}
+  <Box
+    component="img"
+    src={llumarBadge}
+    alt="LLumar Certified – 3rd Party Tested"
+    sx={{
+      height: 145,
+      width: "auto",
+      flexShrink: 0,
+      filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.35))",
+    }}
+  />
+</Box>
 
                   {/* Feature list */}
                   <FeatureList aria-label="Key benefits" sx={{ mb: { xs: 2.5, md: 3 } }}>

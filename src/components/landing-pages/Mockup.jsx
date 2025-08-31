@@ -27,7 +27,6 @@ import VideoCTA2 from "./VideoCTA2";
 import Hero from "./Hero";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 
-
 /** —— SITE / ROUTE SETTINGS —— */
 const SITE = "https://tinttekplus.com";
 const PATH = "/mockup"; // ← set to the route where this page is served
@@ -300,10 +299,10 @@ const StyledFrame = styled("iframe")(({ theme }) => ({
 }));
 
 const handleScrollTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
 
 const Mockup = () => {
   // --- Animation variants ---
@@ -501,7 +500,7 @@ const Mockup = () => {
         />
 
         <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
-        <Hero />
+          <Hero />
 
           <Testimonials />
           <VideoCTA />
@@ -738,41 +737,41 @@ const Mockup = () => {
 
                     {/* Bullets */}
                     <FeatureList aria-label="Professional installation benefits">
-  {[
-    {
-      title: "Certified & experienced technicians",
-      body:
-        "Trained for precision installs using pro-grade tools and methods.",
-    },
-    {
-      title: "Dust-free, climate-controlled environment",
-      body:
-        "Clean room prep reduces contamination for a flawless finish.",
-    },
-    {
-      title: "Lifetime warranty on all services",
-      body:
-        "Backed by clear, written coverage for long-term peace of mind.",
-    },
-  ].map((f, i) => (
-    <FeatureItem
-      key={f.title}
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: i * 0.06 }}
-      viewport={{ once: true }}
-    >
-      <CheckBadge>
-        <TaskAltRoundedIcon sx={{ fontSize: 16, color: "#e9f7ff" }} />
-      </CheckBadge>
-      <Box>
-        <FeatureTitle variant="subtitle1">{f.title}</FeatureTitle>
-        <FeatureBody variant="body2">{f.body}</FeatureBody>
-      </Box>
-    </FeatureItem>
-  ))}
-</FeatureList>
-
+                      {[
+                        {
+                          title: "Certified & experienced technicians",
+                          body: "Trained for precision installs using pro-grade tools and methods.",
+                        },
+                        {
+                          title: "Dust-free, climate-controlled environment",
+                          body: "Clean room prep reduces contamination for a flawless finish.",
+                        },
+                        {
+                          title: "Lifetime warranty on all services",
+                          body: "Backed by clear, written coverage for long-term peace of mind.",
+                        },
+                      ].map((f, i) => (
+                        <FeatureItem
+                          key={f.title}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: i * 0.06 }}
+                          viewport={{ once: true }}
+                        >
+                          <CheckBadge>
+                            <TaskAltRoundedIcon
+                              sx={{ fontSize: 16, color: "#e9f7ff" }}
+                            />
+                          </CheckBadge>
+                          <Box>
+                            <FeatureTitle variant="subtitle1">
+                              {f.title}
+                            </FeatureTitle>
+                            <FeatureBody variant="body2">{f.body}</FeatureBody>
+                          </Box>
+                        </FeatureItem>
+                      ))}
+                    </FeatureList>
 
                     {/* CTA */}
                     <Button
@@ -830,249 +829,6 @@ const Mockup = () => {
               </Box>
             </motion.div>
           </Box>
-
-          {/* Advanced Technology Section */}
-          {/* <Box sx={{ py: { xs: 8, md: 12 } }}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Grid container spacing={6} alignItems="center">
-                <Grid item xs={12} md={6}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <ImageContainer>
-                      <StyledImage
-                        src="/background.jpg"
-                        alt="Advanced Tinting Technology"
-                        onError={(e) => {
-                          e.currentTarget.src =
-                            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMjc5NGQyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkFkdmFuY2VkIFRlY2hub2xvZ3k8L3RleHQ+Cjwvc3ZnPgo=";
-                        }}
-                      />
-                    </ImageContainer>
-                  </motion.div>
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    <Box sx={{ pl: { md: 4 } }}>
-                      <Typography
-                        variant="overline"
-                        sx={{
-                          color: "#2794d2",
-                          fontSize: "0.9rem",
-                          fontWeight: 600,
-                          letterSpacing: "0.1em",
-                          mb: 2,
-                          display: "block",
-                        }}
-                      >
-                        CUTTING-EDGE INNOVATION
-                      </Typography>
-                      <Typography
-                        variant="h3"
-                        sx={{
-                          fontWeight: 700,
-                          fontSize: { xs: "2rem", md: "2.75rem" },
-                          mb: 3,
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        Advanced Ceramic
-                        <br />
-                        <Box component="span" sx={{ color: "#2794d2" }}>
-                          Technology
-                        </Box>
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "rgba(255,255,255,0.8)",
-                          fontSize: "1.1rem",
-                          lineHeight: 1.7,
-                          mb: 4,
-                        }}
-                      >
-                        Our state-of-the-art ceramic window films utilize
-                        nano-ceramic particles to provide superior heat
-                        rejection without interference with electronic devices.
-                        Experience the perfect balance of performance and
-                        clarity with industry-leading technology that keeps your
-                        vehicle cooler and more comfortable year-round.
-                      </Typography>
-                      <Box sx={{ mb: 3 }}>
-                        {[
-                          "99% UV protection for enhanced safety",
-                          "Superior heat rejection up to 60%",
-                          "Signal-friendly, no interference",
-                        ].map((t, i) => (
-                          <Box
-                            key={i}
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: i < 2 ? 2 : 0,
-                            }}
-                          >
-                            <Box
-                              sx={{
-                                width: 8,
-                                height: 8,
-                                borderRadius: "50%",
-                                backgroundColor: "#2794d2",
-                                mr: 2,
-                              }}
-                            />
-                            <Typography sx={{ color: "rgba(255,255,255,0.9)" }}>
-                              {t}
-                            </Typography>
-                          </Box>
-                        ))}
-                      </Box>
-                      <CTAButton component="a" href="/book">
-                        Schedule Service
-                      </CTAButton>
-                    </Box>
-                  </motion.div>
-                </Grid>
-              </Grid>
-            </motion.div>
-          </Box>
-
-          <Box sx={{ py: { xs: 8, md: 12 } }}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Grid container spacing={6} alignItems="center">
-                <Grid item xs={12} md={6} sx={{ order: { xs: 2, md: 1 } }}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    <Box sx={{ pr: { md: 4 } }}>
-                      <Typography
-                        variant="overline"
-                        sx={{
-                          color: "#2794d2",
-                          fontSize: "0.9rem",
-                          fontWeight: 600,
-                          letterSpacing: "0.1em",
-                          mb: 2,
-                          display: "block",
-                        }}
-                      >
-                        EXPERT CRAFTSMANSHIP
-                      </Typography>
-                      <Typography
-                        variant="h3"
-                        sx={{
-                          fontWeight: 700,
-                          fontSize: { xs: "2rem", md: "2.75rem" },
-                          mb: 3,
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        Professional
-                        <br />
-                        <Box component="span" sx={{ color: "#2794d2" }}>
-                          Installation
-                        </Box>
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "rgba(255,255,255,0.8)",
-                          fontSize: "1.1rem",
-                          lineHeight: 1.7,
-                          mb: 4,
-                        }}
-                      >
-                        Our certified technicians bring years of expertise and
-                        precision to every installation. Using specialized tools
-                        and techniques, we ensure perfect application with no
-                        bubbles, wrinkles, or imperfections. Each project is
-                        backed by our comprehensive lifetime warranty for
-                        complete peace of mind.
-                      </Typography>
-                      <Box sx={{ mb: 3 }}>
-                        {[
-                          "Certified and experienced technicians",
-                          "Dust-free, climate-controlled environment",
-                          "Lifetime warranty on all services",
-                        ].map((t, i) => (
-                          <Box
-                            key={i}
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: i < 2 ? 2 : 0,
-                            }}
-                          >
-                            <Box
-                              sx={{
-                                width: 8,
-                                height: 8,
-                                borderRadius: "50%",
-                                backgroundColor: "#2794d2",
-                                mr: 2,
-                              }}
-                            />
-                            <Typography sx={{ color: "rgba(255,255,255,0.9)" }}>
-                              {t}
-                            </Typography>
-                          </Box>
-                        ))}
-                      </Box>
-                      <CTAButton component="a" href="/book">
-                        Schedule Service
-                      </CTAButton>
-                    </Box>
-                  </motion.div>
-                </Grid>
-
-                <Grid item xs={12} md={6} sx={{ order: { xs: 1, md: 2 } }}>
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <ImageContainer>
-                      <StyledImage
-                        src="/background.jpg"
-                        alt="Professional Installation Process"
-                        onError={(e) => {
-                          e.currentTarget.src =
-                            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMjc5NGQyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPlByb2Zlc3Npb25hbCBJbnN0YWxsYXRpb248L3RleHQ+Cjwvc3ZnPgo=";
-                        }}
-                      />
-                    </ImageContainer>
-                  </motion.div>
-                </Grid>
-              </Grid>
-            </motion.div>
-          </Box> */}
-
-          {/* <FAQ /> */}
         </Container>
       </Box>
       <Contact />
