@@ -52,8 +52,6 @@ const AvatarRing = styled(Box)(({ theme }) => ({
   height: 52,
   borderRadius: "50%",
   padding: 2,
-  background:
-    "conic-gradient(from 0deg, rgba(39,148,210,0.85), rgba(77,184,240,0.85))",
 }));
 
 const CTAButton = styled(Button, {
@@ -213,7 +211,7 @@ const Testimonials = () => {
                     <Avatar
                       src={t.avatar}
                       alt={t.name}
-                      sx={{ width: "100%", height: "100%" }}
+                      sx={{ width: "100%", height: "100%", background: "rgba(77,184,240)", }}
                     />
                   </AvatarRing>
                   <Box>

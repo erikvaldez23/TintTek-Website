@@ -49,29 +49,50 @@ const FeatureBody = styled(Typography)({
   marginTop: 2,
 });
 
-const Metric = styled(Box)(({ theme }) => ({
-  background: "rgba(255,255,255,0.06)",
-  border: "1px solid rgba(255,255,255,0.15)",
-  backdropFilter: "blur(12px) saturate(140%)",
-  WebkitBackdropFilter: "blur(12px) saturate(140%)",
-  borderRadius: 16,
-  padding: theme.spacing(2.25),
-  height: "100%",
+// Add these new styles near your other styled() items
+const Stat = styled(motion.div)(({ theme }) => ({
+  // transparent container
+  background: "transparent",
+  border: "none",
+  padding: theme.spacing(1.5),
   textAlign: "center",
-  boxShadow: "0 10px 28px rgba(0,0,0,0.32)",
   position: "relative",
-  overflow: "hidden",
+}));
+
+const StatValue = styled(Typography)(({ theme }) => ({
+  position: "relative",
+  fontWeight: 900,
+  lineHeight: 1,
+  // size up a touch for impact
+  fontSize: "clamp(1.6rem, 2.2vw, 2rem)",
+  color: "#eaf6ff",
+  // subtle white stroke so it pops on dark bg
+  WebkitTextStroke: "0.5px rgba(255,255,255,0.15)",
+  // blue glow
+  textShadow: `
+    0 0 10px rgba(77,184,240,.60),
+    0 0 24px rgba(39,148,210,.45),
+    0 0 48px rgba(39,148,210,.30)
+  `,
+  // radial glow pad behind the text
   "&::before": {
     content: '""',
     position: "absolute",
-    inset: 0,
+    inset: "-28% -34%",
     background:
-      "linear-gradient(135deg, rgba(39,148,210,0.12), rgba(77,184,240,0.04))",
+      "radial-gradient(60% 60% at 50% 50%, rgba(77,184,240,.35) 0%, rgba(39,148,210,.18) 35%, rgba(39,148,210,0) 70%)",
+    filter: "blur(18px)",
+    zIndex: -1,
     pointerEvents: "none",
-    zIndex: 0,
   },
-  "& > *": { position: "relative", zIndex: 1 },
 }));
+
+const StatLabel = styled(Typography)({
+  marginTop: 6,
+  color: "rgba(255,255,255,0.78)",
+  fontSize: "0.9rem",
+});
+
 
 const ImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -167,7 +188,7 @@ export default function Hero({
     <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
       <Box
         sx={{
-          py: { xs: 10, md: 10 }, // compact vertical space
+          py: { xs: 10, md: 12 }, // compact vertical space
           maxHeight: { md: "100vh" }, // cap hero height on desktop
         }}
       >
@@ -302,30 +323,82 @@ export default function Hero({
                   </Box>
 
                   {/* Stats / Metrics */}
-                  <Grid container spacing={2.25}>
-                    {[
-                      ["89%+", "Heat Rejection"],
-                      ["99%", "UV Protection"],
-                      ["Lifetime", "Warranty Included"],
-                    ].map(([val, label], i) => (
-                      <Grid item xs={12} sm={4} key={label}>
-                        <Metric
-                          initial={{ opacity: 0, y: 14 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.45, delay: i * 0.05 }}
-                          viewport={{ once: true }}
-                          component={motion.div}
-                        >
-                          <Typography variant="h5" sx={{ fontWeight: 800, lineHeight: 1, mb: 0.5 }}>
-                            {val}
-                          </Typography>
-                          <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
-                            {label}
-                          </Typography>
-                        </Metric>
-                      </Grid>
-                    ))}
-                  </Grid>
+        <Grid
+  container
+  spacing={{ xs: 0, sm: 2.25 }}       // no gaps on mobile; keep your desktop gaps
+  justifyContent={{ xs: "initial", sm: "space-between" }}
+>
+  {[
+    ["89%+", "Heat Rejection"],
+    ["99%", "UV Protection"],
+    ["Lifetime", "Warranty Included"],
+  ].map(([val, label], i, arr) => (
+    <Grid
+      item
+      xs={12}                         // 👈 full row on mobile
+      sm={4}                          // 👈 3-up on tablet/desktop (unchanged)
+      key={label}
+      sx={{
+        // equal padding to screen edges on mobile
+        px: { xs: 2, sm: 0 },
+        py: { xs: 1.25, sm: 0 },
+        // blue separator line only on mobile; hide for last item
+        borderBottom: {
+          xs: i < arr.length - 1 ? "1px solid rgba(77,184,240,0.18)" : "none",
+          sm: "none",
+        },
+      }}
+    >
+      <Stat
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: i * 0.05 }}
+        viewport={{ once: true }}
+      >
+        {/* --- Mobile (inline: VALUE + label) --- */}
+        <Box sx={{ display: { xs: "block", sm: "none" } }}>
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: 700,
+              fontSize: "1rem",
+              color: "#fff",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <Box
+              component="span"
+              sx={{
+                mr: 0.75,
+                fontWeight: 900,
+                WebkitTextStroke: "0.5px rgba(255,255,255,0.15)",
+                textShadow: `
+                  0 0 10px rgba(77,184,240,.60),
+                  0 0 24px rgba(39,148,210,.45),
+                  0 0 48px rgba(39,148,210,.30)
+                `,
+              }}
+            >
+              {val}
+            </Box>
+            <Box component="span" sx={{ opacity: 0.9 }}>
+              {label}
+            </Box>
+          </Typography>
+        </Box>
+
+        {/* --- Desktop (stacked, unchanged) --- */}
+        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <StatValue variant="h4">{val}</StatValue>     {/* glow on value */}
+          <StatLabel variant="body2">{label}</StatLabel> {/* no glow */}
+        </Box>
+      </Stat>
+    </Grid>
+  ))}
+</Grid>
+
+
+
                 </Box>
               </motion.div>
             </Grid>
