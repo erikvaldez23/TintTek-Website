@@ -147,7 +147,7 @@ export default function Chatbot({ open, onClose }) {
             sx={{ p: 1.5, borderBottom: "1px solid rgba(255,255,255,0.06)" }}
           >
             {[
-              "Pricing for Tesla Model 3",
+              "How much to tint Tesla Model 3?",
               "What are the benefits of window tinting?",
               "How long does install take?",
             ].map((s) => (
