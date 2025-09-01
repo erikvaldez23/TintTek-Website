@@ -5,8 +5,15 @@ import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import StarIcon from "@mui/icons-material/Star";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
-import llumarBadge from "/llumar-tested.png";
 import PhoneIcon from "@mui/icons-material/Phone";
+
+/** Assets (public folder paths start with /) */
+import llumarBadge from "/llumar-tested.png";
+/** If these PNGs live in /public/landing-page/... keep the leading slash.
+    If they live in src/assets/..., import with a relative path instead. */
+import heatIconUrl from "/landing-page/icon1.png";
+import uvIconUrl from "/landing-page/icon3.png";
+import warrantyIconUrl from "/landing-page/icon2.png";
 
 /* ---------- Local styles (scoped to Hero) ---------- */
 const FeatureList = styled("ul")({
@@ -56,6 +63,15 @@ const Stat = styled(motion.div)(({ theme }) => ({
   padding: theme.spacing(1.5),
   textAlign: "center",
   position: "relative",
+}));
+
+const StatIcon = styled(Box)(({ theme }) => ({
+  width: 70,
+  height: 70,
+  borderRadius: 12,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 const StatValue = styled(Typography)(({ theme }) => ({
@@ -150,7 +166,6 @@ const CTAButton = styled(Button, {
         : "0 16px 34px rgba(39,148,210,.45)",
     color: "#fff",
   },
-  /* --- Mobile polish (match LocalVideoCTA) --- */
   [theme.breakpoints.down("md")]: {
     width: "100%",
     minHeight: 50,
@@ -331,15 +346,18 @@ export default function Hero({
                     {[
                       {
                         title: "Superior Heat Rejection",
-                        body: "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
+                        body:
+                          "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
                       },
                       {
                         title: "Reduce Glare • Boost Safety",
-                        body: "Cut harsh glare for clearer vision and safer driving—day or night.",
+                        body:
+                          "Cut harsh glare for clearer vision and safer driving—day or night.",
                       },
                       {
                         title: "Privacy + Style Upgrade",
-                        body: "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
+                        body:
+                          "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
                       },
                     ].map((f, i) => (
                       <FeatureItem
@@ -364,7 +382,7 @@ export default function Hero({
                     ))}
                   </FeatureList>
 
-                  {/* Desktop (unchanged layout) */}
+                  {/* Desktop CTAs */}
                   <Box
                     sx={{
                       display: { xs: "none", md: "flex" },
@@ -376,22 +394,21 @@ export default function Hero({
                     <CTAButton
                       variant="large"
                       component="a"
-                      href="tel:+9723628468"
-                       startIcon={<PhoneIcon />} // ✅ adds the phone icon
+                      href="tel:+19723628468"
+                      startIcon={<PhoneIcon />}
                     >
                       Call Now
                     </CTAButton>
 
                     <CTAButton
                       variant="outline"
-                      component="a"
                       onClick={() => handleScrollTo("testimonials")}
                     >
                       Learn More
                     </CTAButton>
                   </Box>
 
-                  {/* Mobile (matches LocalVideoCTA style: full width, stacked) */}
+                  {/* Mobile CTAs */}
                   <Box
                     sx={{
                       display: { xs: "grid", md: "none" },
@@ -405,15 +422,14 @@ export default function Hero({
                     <CTAButton
                       variant="large"
                       component="a"
-                      href="tel:+9723628468"
-                      startIcon={<PhoneIcon />} // ✅ adds the phone icon
+                      href="tel:+19723628468"
+                      startIcon={<PhoneIcon />}
                     >
                       Call Now
                     </CTAButton>
 
                     <CTAButton
                       variant="outline"
-                      component="a"
                       onClick={() => handleScrollTo("testimonials")}
                       aria-label="Learn More"
                     >
@@ -422,81 +438,41 @@ export default function Hero({
                   </Box>
 
                   {/* Stats / Metrics */}
-                  <Grid
-                    container
-                    spacing={{ xs: 0, sm: 2.25 }}
-                    justifyContent={{ xs: "initial", sm: "space-between" }}
-                  >
-                    {[
-                      ["89%+", "Heat Rejection"],
-                      ["99%", "UV Protection"],
-                      ["Lifetime", "Warranty Included"],
-                    ].map(([val, label], i, arr) => (
-                      <Grid
-                        item
-                        xs={12}
-                        sm={4}
-                        key={label}
-                        sx={{
-                          px: { xs: 2, sm: 0 },
-                          py: { xs: 1.25, sm: 0 },
-                          borderBottom: {
-                            xs:
-                              i < arr.length - 1
-                                ? "1px solid rgba(77,184,240,0.18)"
-                                : "none",
-                            sm: "none",
-                          },
-                        }}
-                      >
-                        <Stat
-                          initial={{ opacity: 0, y: 12 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.45, delay: i * 0.05 }}
-                          viewport={{ once: true }}
-                        >
-                          {/* Mobile inline: VALUE + label */}
-                          <Box sx={{ display: { xs: "block", sm: "none" } }}>
-                            <Typography
-                              variant="body1"
-                              sx={{
-                                fontWeight: 700,
-                                fontSize: "1rem",
-                                color: "#fff",
-                                whiteSpace: "nowrap",
-                              }}
-                            >
-                              <Box
-                                component="span"
-                                sx={{
-                                  mr: 0.75,
-                                  fontWeight: 900,
-                                  WebkitTextStroke:
-                                    "0.5px rgba(255,255,255,0.15)",
-                                  textShadow: `
-                                    0 0 10px rgba(77,184,240,.60),
-                                    0 0 24px rgba(39,148,210,.45),
-                                    0 0 48px rgba(39,148,210,.30)
-                                  `,
-                                }}
-                              >
-                                {val}
-                              </Box>
-                              <Box component="span" sx={{ opacity: 0.9 }}>
-                                {label}
-                              </Box>
-                            </Typography>
-                          </Box>
+                {/* Stats / Metrics (icons only now) */}
+<Grid
+  container
+  spacing={{ xs: 0, sm: 2.25 }}
+  justifyContent={{ xs: "center", sm: "space-between" }}
+>
+  {[heatIconUrl, uvIconUrl, warrantyIconUrl].map((iconUrl, i) => (
+    <Grid
+      item
+      xs={4}
+      sm={4}
+      key={i}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        px: { xs: 2, sm: 0 },
+        py: { xs: 1.25, sm: 0 },
+      }}
+    >
+      <Box
+        component="img"
+        src={iconUrl}
+        alt={`Stat Icon ${i + 1}`}
+        sx={{
+          width: 100,
+          height: 100,
+          display: "block",
+          filter: "drop-shadow(0 0 14px rgba(77,184,240,0.55))",
+        }}
+      />
+    </Grid>
+  ))}
+</Grid>
 
-                          {/* Desktop stacked */}
-                          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                            <StatValue variant="h4">{val}</StatValue>
-                            <StatLabel variant="body2">{label}</StatLabel>
-                          </Box>
-                        </Stat>
-                      </Grid>
-                    ))}
-                  </Grid>
                 </Box>
               </motion.div>
             </Grid>
