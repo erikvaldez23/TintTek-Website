@@ -22,18 +22,20 @@ const TestimonialsWrapper = styled(Box)({
 const TestimonialCard = styled(motion.div)(({ theme }) => ({
   position: "relative",
   height: "100%",
+  display: "flex",
+  flexDirection: "column",
   borderRadius: 16,
-  padding: theme.spacing(2), // was 3
+  padding: theme.spacing(2),
   background: "#fff",
   border: "1px solid rgba(255,255,255,0.12)",
   backdropFilter: "blur(10px)",
-  boxShadow: "0 14px 36px rgba(0,0,0,0.28)", // lighter
+  boxShadow: "0 14px 36px rgba(0,0,0,0.28)",
   color: "#000",
 }));
 
 const QuoteBadge = styled(Box)({
   position: "absolute",
-  top: -12, // was -16
+  top: -12,
   right: 12,
   width: 36,
   height: 36,
@@ -46,7 +48,7 @@ const QuoteBadge = styled(Box)({
 });
 
 const AvatarRing = styled(Box)(({ theme }) => ({
-  width: 52, // was 64
+  width: 52,
   height: 52,
   borderRadius: "50%",
   padding: 2,
@@ -60,7 +62,7 @@ const CTAButton = styled(Button, {
   const { $style, $size } = ownerState || {};
   return {
     fontWeight: 700,
-    padding: $size === "large" ? "12px 26px" : "10px 22px", // smaller
+    padding: $size === "large" ? "12px 26px" : "10px 22px",
     borderRadius: 40,
     fontSize: $size === "large" ? "1rem" : "0.95rem",
     transition: "all 0.25s ease",
@@ -83,11 +85,36 @@ const CTAButton = styled(Button, {
   };
 });
 
+/** Scrollable area for long quotes */
+const ScrollArea = styled("div")(({ theme }) => ({
+  marginTop: theme.spacing(1),
+  maxHeight: 140, // adjust per your desired card height
+  [theme.breakpoints.up("sm")]: { maxHeight: 150 },
+  [theme.breakpoints.up("md")]: { maxHeight: 160 },
+  overflowY: "auto",
+  paddingRight: 4,
+  WebkitOverflowScrolling: "touch",
+  // subtle scrollbar
+  "&::-webkit-scrollbar": { width: 6 },
+  "&::-webkit-scrollbar-track": { background: "transparent" },
+  "&::-webkit-scrollbar-thumb": {
+    background: "rgba(0,0,0,0.25)",
+    borderRadius: 999,
+  },
+  "&:hover::-webkit-scrollbar-thumb": {
+    background: "rgba(0,0,0,0.45)",
+  },
+  // gentle bottom fade; OK if unsupported
+  position: "relative",
+  maskImage:
+    "linear-gradient(to bottom, black 85%, rgba(0,0,0,0.85) 95%, transparent 100%)",
+}));
+
 const handleScrollTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
 
 const Testimonials = () => {
   const testimonials = [
@@ -118,9 +145,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <TestimonialsWrapper sx={{ pt: { xs: 5, md: 12 }, pb: { xs: 5, md: 10} }}> {/* was 8/12 */}
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}> {/* narrower */}
-        {/* Header: tighter spacing & font sizes */}
+    <TestimonialsWrapper sx={{ pt: { xs: 5, md: 12 }, pb: { xs: 5, md: 10 } }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        {/* Header */}
         <Box sx={{ textAlign: "center", mb: 4 }} id="testimonials">
           <Typography
             variant="overline"
@@ -139,7 +166,7 @@ const Testimonials = () => {
               fontWeight: 800,
               mt: 0.5,
               mb: 0.5,
-              fontSize: { xs: "1.7rem", md: "2rem" }, // smaller
+              fontSize: { xs: "1.7rem", md: "2rem" },
               lineHeight: 1.2,
             }}
           >
@@ -158,7 +185,7 @@ const Testimonials = () => {
           </Typography>
         </Box>
 
-        {/* Cards: smaller gaps */}
+        {/* Cards */}
         <Grid container spacing={{ xs: 2.5, md: 3 }}>
           {testimonials.map((t, i) => (
             <Grid item xs={12} sm={6} md={4} key={i}>
@@ -211,37 +238,33 @@ const Testimonials = () => {
                   precision={0.5}
                   readOnly
                   sx={{ mb: 0.75 }}
+                  aria-label={`${t.rating} star rating`}
                 />
 
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "#000",
-                    lineHeight: 1.6,
-                    display: "-webkit-box",
-                    WebkitLineClamp: { xs: 6, md: 5 }, // clamp to keep height consistent
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
-                  {t.quote}
-                </Typography>
+                {/* Scrollable quote */}
+                <ScrollArea role="region" aria-label={`${t.name} review`}>
+                  <Typography variant="body2" sx={{ color: "#000", lineHeight: 1.6 }}>
+                    {t.quote}
+                  </Typography>
+                </ScrollArea>
               </TestimonialCard>
             </Grid>
           ))}
         </Grid>
 
-        {/* Compact CTAs: closer to content & smaller */}
+        {/* CTAs */}
         <Box
           sx={{
-            mt: { xs: 4, md: 5 }, // was 6/8
+            mt: { xs: 4, md: 5 },
             display: "flex",
             justifyContent: "center",
             gap: 1.5,
             flexWrap: "wrap",
           }}
         >
-          <CTAButton ownerState={{ $size: "large" }} onClick={handleScrollTop}>Get Free Quote</CTAButton>
+          <CTAButton ownerState={{ $size: "large" }} onClick={handleScrollTop}>
+            Get Free Quote
+          </CTAButton>
           {/* <CTAButton ownerState={{ $style: "outline" }}>See Pricing</CTAButton> */}
         </Box>
       </Container>

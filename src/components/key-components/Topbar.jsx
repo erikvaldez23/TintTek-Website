@@ -172,7 +172,7 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <Box display="flex" gap={4} alignItems="center">
+              <Box display="flex" gap={2} alignItems="center">
                 {/* Wrap the Services button and Menu in a container */}
                 <Box
                   onMouseEnter={handleServicesMouseEnter}
@@ -184,7 +184,7 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "5px",
+                      gap: "2px",
                       fontSize: "27px",
                       fontWeight: 600,
                       letterSpacing: "1.5px",
