@@ -293,7 +293,6 @@ const handleScrollTop = () => {
 
 export default function LocalVideoCTA({
   videoSrc = "/testimonial-videos/testimonial1.mov",
-  poster,
   eyebrow = "REAL RESULTS",
   title = "See It In Action",
   body = "Watch a quick before/after and how our nano-ceramic film cuts glare and heat on real vehicles.",
@@ -592,7 +591,6 @@ export default function LocalVideoCTA({
                     <VideoEl
                       ref={videoRef}
                       src={videoSrc}
-                      poster={poster}
                       playsInline
                       muted={muted}
                       loop

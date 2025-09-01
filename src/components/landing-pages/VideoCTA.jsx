@@ -81,15 +81,6 @@ const BGVideo = styled("video")(() => ({
   height: "100%",
 }));
 
-const PosterBackplate = styled(Box)(() => ({
-  position: "absolute",
-  inset: 0,
-  filter: "blur(28px) saturate(120%)",
-  transform: "scale(1.12)",
-  opacity: 0.45,
-  zIndex: 0,
-}));
-
 const FloatingControls = styled(Box)(() => ({
   position: "absolute",
   left: "50%",
@@ -294,7 +285,6 @@ const useVideoAutoplay = (videoRef, options = {}) => {
 /* ---------- Component ---------- */
 export default function VideoCTA({
   videoSrc = "/videos/tesla-video.mov",
-  poster = "/background.jpg",
   heading = "See the Difference in Minutes",
   subheading = "Premium Ceramic Tint • Faster, Cooler, Protected",
   bullets = [
@@ -439,15 +429,8 @@ export default function VideoCTA({
               >
                 <EdgeStroke />
                 <BottomGradient />
-                {isPortrait && (
-                  <PosterBackplate
-                    aria-hidden
-                    sx={{ background: `url(${poster}) center/cover no-repeat` }}
-                  />
-                )}
                 <BGVideo
                   ref={videoRef}
-                  poster={poster}
                   muted
                   playsInline
                   loop

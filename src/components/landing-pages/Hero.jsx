@@ -5,7 +5,8 @@ import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import StarIcon from "@mui/icons-material/Star";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
-import llumarBadge from "/llumar-tested.png"
+import llumarBadge from "/llumar-tested.png";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 /* ---------- Local styles (scoped to Hero) ---------- */
 const FeatureList = styled("ul")({
@@ -49,9 +50,7 @@ const FeatureBody = styled(Typography)({
   marginTop: 2,
 });
 
-// Add these new styles near your other styled() items
 const Stat = styled(motion.div)(({ theme }) => ({
-  // transparent container
   background: "transparent",
   border: "none",
   padding: theme.spacing(1.5),
@@ -63,18 +62,14 @@ const StatValue = styled(Typography)(({ theme }) => ({
   position: "relative",
   fontWeight: 900,
   lineHeight: 1,
-  // size up a touch for impact
   fontSize: "clamp(1.6rem, 2.2vw, 2rem)",
   color: "#eaf6ff",
-  // subtle white stroke so it pops on dark bg
   WebkitTextStroke: "0.5px rgba(255,255,255,0.15)",
-  // blue glow
   textShadow: `
     0 0 10px rgba(77,184,240,.60),
     0 0 24px rgba(39,148,210,.45),
     0 0 48px rgba(39,148,210,.30)
   `,
-  // radial glow pad behind the text
   "&::before": {
     content: '""',
     position: "absolute",
@@ -92,7 +87,6 @@ const StatLabel = styled(Typography)({
   color: "rgba(255,255,255,0.78)",
   fontSize: "0.9rem",
 });
-
 
 const ImageContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -112,7 +106,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
 
 const StyledFrame = styled("iframe")(({ theme }) => ({
   width: "100%",
-  height: 440, // shorter on mobile
+  height: 440,
   border: "1px solid rgba(39, 148, 210, 0.2)",
   borderRadius: "18px",
   boxShadow: "0 18px 56px rgba(0,0,0,0.5)",
@@ -123,16 +117,21 @@ const StyledFrame = styled("iframe")(({ theme }) => ({
   [theme.breakpoints.up("md")]: { height: 600 },
 }));
 
-const CTAButton = styled(Button)(({ variant }) => ({
+/* ---- CTA Button (desktop unchanged, mobile matches LocalVideoCTA) ---- */
+const CTAButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== "variant",
+})(({ variant, theme }) => ({
   fontWeight: 700,
-  padding: variant === "large" ? "14px 32px" : "10px 26px",
+  padding: "10px 26px",
   borderRadius: "40px",
-  fontSize: variant === "large" ? "1rem" : "0.95rem",
+  fontSize: "0.95rem",
   textTransform: "none",
   position: "relative",
   overflow: "hidden",
-  transition: "all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)",
-  boxShadow: "0 8px 28px rgba(39, 148, 210, 0.28)",
+  transition:
+    "transform .28s cubic-bezier(.175,.885,.32,1.275), box-shadow .28s",
+  boxShadow:
+    variant === "outline" ? "none" : "0 10px 26px rgba(39,148,210,.35)",
   background:
     variant === "outline"
       ? "transparent"
@@ -141,12 +140,44 @@ const CTAButton = styled(Button)(({ variant }) => ({
   color: variant === "outline" ? "#2794d2" : "#fff",
   "&:hover": {
     transform: "translateY(-2px)",
-    boxShadow: "0 12px 36px rgba(39, 148, 210, 0.38)",
     background:
       variant === "outline"
-        ? "linear-gradient(135deg, #2794d2 0%, #4db8f0 100%)"
+        ? "linear-gradient(135deg, rgba(39,148,210,.2), rgba(77,184,240,.2))"
         : "linear-gradient(135deg, #4db8f0 0%, #2794d2 100%)",
+    boxShadow:
+      variant === "outline"
+        ? "0 16px 34px rgba(39,148,210,.25)"
+        : "0 16px 34px rgba(39,148,210,.45)",
     color: "#fff",
+  },
+  /* --- Mobile polish (match LocalVideoCTA) --- */
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    minHeight: 50,
+    borderRadius: 16,
+    textTransform: "none",
+    fontWeight: 700,
+    letterSpacing: 0,
+    padding: "14px 16px",
+    fontSize: "0.98rem",
+    justifyContent: "center",
+    gap: 8,
+    ...(variant !== "outline" && {
+      background:
+        "linear-gradient(180deg, rgba(77,184,240,0.95), rgba(39,148,210,0.95))",
+      boxShadow:
+        "0 10px 24px rgba(39,148,210,.35), 0 1px 0 rgba(255,255,255,0.06) inset",
+    }),
+    ...(variant === "outline" && {
+      background: "rgba(15, 17, 22, 0.45)",
+      backdropFilter: "blur(8px)",
+      border: "1.5px solid rgba(113, 191, 242, 0.7)",
+      color: "#e9f7ff",
+      boxShadow: "0 8px 18px rgba(12, 18, 24, .5)",
+      "&:hover": { background: "rgba(26, 32, 41, 0.55)" },
+    }),
+    "& .MuiButton-startIcon": { marginRight: 6, marginLeft: -2 },
+    "&:active": { transform: "translateY(0)" },
   },
 }));
 
@@ -172,31 +203,37 @@ const itemVariants = {
 export default function Hero({
   iframeSrc = "https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3",
 }) {
- const handleScrollTo = (id) => {
-  const section = document.getElementById(id);
-  if (!section) return;
-
-  const yOffset = -100; // adjust this value to move further up
-  const y =
-    section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-  window.scrollTo({ top: y, behavior: "smooth" });
-};
-
+  const handleScrollTo = (id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const yOffset = -100;
+    const y =
+      section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   return (
     <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
       <Box
         sx={{
-          py: { xs: 10, md: 12 }, // compact vertical space
-          maxHeight: { md: "100vh" }, // cap hero height on desktop
+          py: { xs: 10, md: 12 },
+          mb: { xs: -10 },
+          maxHeight: { md: "100vh" },
         }}
       >
-        <motion.div variants={containerVariants} initial="hidden" animate="visible">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
             {/* Iframe FIRST on mobile, SECOND on desktop */}
             <Grid item xs={12} lg={6} order={{ xs: 1, lg: 2 }}>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.01 }} transition={{ duration: 0.35 }}>
+              <motion.div
+                variants={itemVariants}
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.35 }}
+              >
                 <ImageContainer>
                   <StyledFrame
                     src={iframeSrc}
@@ -214,9 +251,19 @@ export default function Hero({
               <motion.div variants={itemVariants}>
                 <Box sx={{ mb: { xs: 2, md: 3 } }}>
                   {/* Stars + review count */}
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1.5 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                      mb: 1.5,
+                    }}
+                  >
                     {[...Array(5)].map((_, i) => (
-                      <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 22 }} />
+                      <StarIcon
+                        key={i}
+                        sx={{ color: "#FFD700", fontSize: 22 }}
+                      />
                     ))}
                     <Typography
                       variant="overline"
@@ -232,57 +279,59 @@ export default function Hero({
                     </Typography>
                   </Box>
 
-                  {/* Headline */}
+                  {/* Headline + Badge */}
                   <Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: 2,
-    mb: { xs: 2.5, md: 3 },
-    flexWrap: "wrap", // lets image move under text on mobile
-  }}
->
-  <Typography
-    variant="h2"
-    sx={{
-      color: "#fff",
-      fontWeight: 800,
-      fontSize: { xs: "1.8rem", md: "2.6rem", lg: "2.6rem" },
-      lineHeight: 1.12,
-    }}
-  >
-    Block 88% Of Heat.
-    <br />
-    <Box component="span" sx={{ color: "#fff" }}>
-      Drive Cooler In
-    </Box>
-    <br />
-    <Box component="span" sx={{ color: "#fff" }}>
-      3 Hours!
-    </Box>
-  </Typography>
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                      mb: { xs: 2.5, md: 3 },
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <Typography
+                      variant="h2"
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 800,
+                        fontSize: { xs: "1.8rem", md: "2.6rem", lg: "2.6rem" },
+                        lineHeight: 1.12,
+                      }}
+                    >
+                      Block 88% Of Heat.
+                      <br />
+                      <Box component="span" sx={{ color: "#fff" }}>
+                        Drive Cooler In
+                      </Box>
+                      <br />
+                      <Box component="span" sx={{ color: "#fff" }}>
+                        3 Hours!
+                      </Box>
+                    </Typography>
 
-  {/* LLumar badge to the right */}
-  <Box
-    component="img"
-    src={llumarBadge}
-    alt="LLumar Certified – 3rd Party Tested"
-    sx={{
-      height: 145,
-      width: "auto",
-      flexShrink: 0,
-      filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.35))",
-    }}
-  />
-</Box>
+                    {/* LLumar badge to the right */}
+                    <Box
+                      component="img"
+                      src={llumarBadge}
+                      alt="LLumar Certified – 3rd Party Tested"
+                      sx={{
+                        height: 145,
+                        width: "auto",
+                        flexShrink: 0,
+                        filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.35))",
+                      }}
+                    />
+                  </Box>
 
                   {/* Feature list */}
-                  <FeatureList aria-label="Key benefits" sx={{ mb: { xs: 2.5, md: 3 } }}>
+                  <FeatureList
+                    aria-label="Key benefits"
+                    sx={{ mb: { xs: 2.5, md: 3 } }}
+                  >
                     {[
                       {
                         title: "Superior Heat Rejection",
-                        body:
-                          "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
+                        body: "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
                       },
                       {
                         title: "Reduce Glare • Boost Safety",
@@ -290,8 +339,7 @@ export default function Hero({
                       },
                       {
                         title: "Privacy + Style Upgrade",
-                        body:
-                          "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
+                        body: "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
                       },
                     ].map((f, i) => (
                       <FeatureItem
@@ -302,103 +350,153 @@ export default function Hero({
                         viewport={{ once: true }}
                       >
                         <CheckBadge>
-                          <TaskAltRoundedIcon sx={{ fontSize: 16, color: "#e9f7ff" }} />
+                          <TaskAltRoundedIcon
+                            sx={{ fontSize: 16, color: "#e9f7ff" }}
+                          />
                         </CheckBadge>
                         <Box>
-                          <FeatureTitle variant="subtitle1">{f.title}</FeatureTitle>
+                          <FeatureTitle variant="subtitle1">
+                            {f.title}
+                          </FeatureTitle>
                           <FeatureBody variant="body2">{f.body}</FeatureBody>
                         </Box>
                       </FeatureItem>
                     ))}
                   </FeatureList>
 
-                  {/* CTAs */}
-                  <Box sx={{ display: "flex", gap: 1.5, flexWrap: "wrap", mb: { xs: 2.5, md: 3 } }}>
-                    <CTAButton variant="large" onClick={() => handleScrollTo("testimonials")}>
+                  {/* Desktop (unchanged layout) */}
+                  <Box
+                    sx={{
+                      display: { xs: "none", md: "flex" },
+                      gap: 1.5,
+                      flexWrap: "wrap",
+                      mb: { xs: 2.5, md: 3 },
+                    }}
+                  >
+                    <CTAButton
+                      variant="large"
+                      component="a"
+                      href="tel:+9723628468"
+                       startIcon={<PhoneIcon />} // ✅ adds the phone icon
+                    >
+                      Call Now
+                    </CTAButton>
+
+                    <CTAButton
+                      variant="outline"
+                      component="a"
+                      onClick={() => handleScrollTo("testimonials")}
+                    >
                       Learn More
                     </CTAButton>
-                    <CTAButton variant="outline" component="a" href="/gallery">
-                      View Gallery
+                  </Box>
+
+                  {/* Mobile (matches LocalVideoCTA style: full width, stacked) */}
+                  <Box
+                    sx={{
+                      display: { xs: "grid", md: "none" },
+                      mt: 2.5,
+                      gap: 2,
+                      gridTemplateColumns: "1fr",
+                      px: 0.5,
+                      mb: { xs: 2.5, md: 0 },
+                    }}
+                  >
+                    <CTAButton
+                      variant="large"
+                      component="a"
+                      href="tel:+9723628468"
+                      startIcon={<PhoneIcon />} // ✅ adds the phone icon
+                    >
+                      Call Now
+                    </CTAButton>
+
+                    <CTAButton
+                      variant="outline"
+                      component="a"
+                      onClick={() => handleScrollTo("testimonials")}
+                      aria-label="Learn More"
+                    >
+                      Learn More
                     </CTAButton>
                   </Box>
 
                   {/* Stats / Metrics */}
-        <Grid
-  container
-  spacing={{ xs: 0, sm: 2.25 }}       // no gaps on mobile; keep your desktop gaps
-  justifyContent={{ xs: "initial", sm: "space-between" }}
->
-  {[
-    ["89%+", "Heat Rejection"],
-    ["99%", "UV Protection"],
-    ["Lifetime", "Warranty Included"],
-  ].map(([val, label], i, arr) => (
-    <Grid
-      item
-      xs={12}                         // 👈 full row on mobile
-      sm={4}                          // 👈 3-up on tablet/desktop (unchanged)
-      key={label}
-      sx={{
-        // equal padding to screen edges on mobile
-        px: { xs: 2, sm: 0 },
-        py: { xs: 1.25, sm: 0 },
-        // blue separator line only on mobile; hide for last item
-        borderBottom: {
-          xs: i < arr.length - 1 ? "1px solid rgba(77,184,240,0.18)" : "none",
-          sm: "none",
-        },
-      }}
-    >
-      <Stat
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: i * 0.05 }}
-        viewport={{ once: true }}
-      >
-        {/* --- Mobile (inline: VALUE + label) --- */}
-        <Box sx={{ display: { xs: "block", sm: "none" } }}>
-          <Typography
-            variant="body1"
-            sx={{
-              fontWeight: 700,
-              fontSize: "1rem",
-              color: "#fff",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Box
-              component="span"
-              sx={{
-                mr: 0.75,
-                fontWeight: 900,
-                WebkitTextStroke: "0.5px rgba(255,255,255,0.15)",
-                textShadow: `
-                  0 0 10px rgba(77,184,240,.60),
-                  0 0 24px rgba(39,148,210,.45),
-                  0 0 48px rgba(39,148,210,.30)
-                `,
-              }}
-            >
-              {val}
-            </Box>
-            <Box component="span" sx={{ opacity: 0.9 }}>
-              {label}
-            </Box>
-          </Typography>
-        </Box>
+                  <Grid
+                    container
+                    spacing={{ xs: 0, sm: 2.25 }}
+                    justifyContent={{ xs: "initial", sm: "space-between" }}
+                  >
+                    {[
+                      ["89%+", "Heat Rejection"],
+                      ["99%", "UV Protection"],
+                      ["Lifetime", "Warranty Included"],
+                    ].map(([val, label], i, arr) => (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={4}
+                        key={label}
+                        sx={{
+                          px: { xs: 2, sm: 0 },
+                          py: { xs: 1.25, sm: 0 },
+                          borderBottom: {
+                            xs:
+                              i < arr.length - 1
+                                ? "1px solid rgba(77,184,240,0.18)"
+                                : "none",
+                            sm: "none",
+                          },
+                        }}
+                      >
+                        <Stat
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.45, delay: i * 0.05 }}
+                          viewport={{ once: true }}
+                        >
+                          {/* Mobile inline: VALUE + label */}
+                          <Box sx={{ display: { xs: "block", sm: "none" } }}>
+                            <Typography
+                              variant="body1"
+                              sx={{
+                                fontWeight: 700,
+                                fontSize: "1rem",
+                                color: "#fff",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              <Box
+                                component="span"
+                                sx={{
+                                  mr: 0.75,
+                                  fontWeight: 900,
+                                  WebkitTextStroke:
+                                    "0.5px rgba(255,255,255,0.15)",
+                                  textShadow: `
+                                    0 0 10px rgba(77,184,240,.60),
+                                    0 0 24px rgba(39,148,210,.45),
+                                    0 0 48px rgba(39,148,210,.30)
+                                  `,
+                                }}
+                              >
+                                {val}
+                              </Box>
+                              <Box component="span" sx={{ opacity: 0.9 }}>
+                                {label}
+                              </Box>
+                            </Typography>
+                          </Box>
 
-        {/* --- Desktop (stacked, unchanged) --- */}
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
-          <StatValue variant="h4">{val}</StatValue>     {/* glow on value */}
-          <StatLabel variant="body2">{label}</StatLabel> {/* no glow */}
-        </Box>
-      </Stat>
-    </Grid>
-  ))}
-</Grid>
-
-
-
+                          {/* Desktop stacked */}
+                          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                            <StatValue variant="h4">{val}</StatValue>
+                            <StatLabel variant="body2">{label}</StatLabel>
+                          </Box>
+                        </Stat>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </Box>
               </motion.div>
             </Grid>
