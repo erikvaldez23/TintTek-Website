@@ -313,7 +313,7 @@ export default function Hero({
                         lineHeight: 1.12,
                       }}
                     >
-                      Block 88% Of Heat.
+                      Block 89% Of Heat.
                       <br />
                       <Box component="span" sx={{ color: "#fff" }}>
                         Drive Cooler In
@@ -346,18 +346,15 @@ export default function Hero({
                     {[
                       {
                         title: "Superior Heat Rejection",
-                        body:
-                          "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
+                        body: "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
                       },
                       {
                         title: "Reduce Glare • Boost Safety",
-                        body:
-                          "Cut harsh glare for clearer vision and safer driving—day or night.",
+                        body: "Cut harsh glare for clearer vision and safer driving—day or night.",
                       },
                       {
                         title: "Privacy + Style Upgrade",
-                        body:
-                          "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
+                        body: "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
                       },
                     ].map((f, i) => (
                       <FeatureItem
@@ -438,41 +435,43 @@ export default function Hero({
                   </Box>
 
                   {/* Stats / Metrics */}
-                {/* Stats / Metrics (icons only now) */}
-<Grid
-  container
-  spacing={{ xs: 0, sm: 2.25 }}
-  justifyContent={{ xs: "center", sm: "space-between" }}
->
-  {[heatIconUrl, uvIconUrl, warrantyIconUrl].map((iconUrl, i) => (
-    <Grid
-      item
-      xs={4}
-      sm={4}
-      key={i}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        px: { xs: 2, sm: 0 },
-        py: { xs: 1.25, sm: 0 },
-      }}
-    >
-      <Box
-        component="img"
-        src={iconUrl}
-        alt={`Stat Icon ${i + 1}`}
-        sx={{
-          width: 100,
-          height: 100,
-          display: "block",
-          filter: "drop-shadow(0 0 14px rgba(77,184,240,0.55))",
-        }}
-      />
-    </Grid>
-  ))}
-</Grid>
-
+                  {/* Stats / Metrics (icons only now) */}
+                  <Grid
+                    container
+                    spacing={{ xs: 0, sm: 2.25 }}
+                    justifyContent={{ xs: "center", sm: "space-between" }}
+                  >
+                    {[heatIconUrl, uvIconUrl, warrantyIconUrl].map(
+                      (iconUrl, i) => (
+                        <Grid
+                          item
+                          xs={4}
+                          sm={4}
+                          key={i}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            px: { xs: 2, sm: 0 },
+                            py: { xs: 1.25, sm: 0 },
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={iconUrl}
+                            alt={`Stat Icon ${i + 1}`}
+                            sx={{
+                              width: 100,
+                              height: 100,
+                              display: "block",
+                              filter:
+                                "drop-shadow(0 0 14px rgba(77,184,240,0.55))",
+                            }}
+                          />
+                        </Grid>
+                      )
+                    )}
+                  </Grid>
                 </Box>
               </motion.div>
             </Grid>
