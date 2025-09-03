@@ -22,9 +22,40 @@
       })(window, document, "script", "dataLayer", "GTM-M93ZKCLX");
     </script>
     <!-- End Google Tag Manager -->
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "812013930998730");
+      fbq("track", "PageView");
+    </script>
+    <!-- End Meta Pixel Code -->
 
     <!-- Base title/description (route-specific ones will be set by react-helmet-async) -->
-    <title>Premium Window Tinting Services in Garland, TX | Tint Tek Plus</title>
+    <title>
+      Premium Window Tinting Services in Garland, TX | Tint Tek Plus
+    </title>
     <meta
       name="description"
       content="Tint Tek Plus offers high-quality auto, residential, and commercial window tinting services in Garland, TX. Protect your vehicle and home from heat and UV rays. Contact us today!"
@@ -68,7 +99,11 @@
     />
 
     <!-- Optional: preload a hero asset (swap to a commonly-seen image/video) -->
-    <link rel="preload" as="image" href="/v-window-tint/vehicle-window-tint.webp" />
+    <link
+      rel="preload"
+      as="image"
+      href="/v-window-tint/vehicle-window-tint.webp"
+    />
     <!-- <link rel="preload" as="video" href="/videos/v-window-tint2.mp4" /> -->
 
     <!-- Local Business JSON-LD (static baseline; per-route schema can be added via Helmet) -->
@@ -88,17 +123,30 @@
           "postalCode": "75040",
           "addressCountry": "US"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 32.9126, "longitude": -96.6389 },
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-          "opens": "09:00",
-          "closes": "18:00"
-        }],
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.9126,
+          "longitude": -96.6389
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
         "sameAs": ["https://www.tinttekplus.com/"]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-CnKbVCEA.js"></script>
+    <script type="module" crossorigin src="/assets/index-UFG2N6ky.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-7TxGtUih.css">
   </head>
 
@@ -114,6 +162,13 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=812013930998730&ev=PageView&noscript=1"
+    /></noscript>
     <div id="root"></div>
 
     <!-- Your app bundles -->
