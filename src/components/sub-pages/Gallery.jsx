@@ -118,7 +118,11 @@ const Gallery = () => {
   }, []);
 
   return (
-    <Box sx={{ backgroundColor: "#0a0a10", color: "#FFFFFF", minHeight: "100vh" }}>
+    <Box sx={{  background: `
+          radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+          radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+          linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
+        `, color: "#FFFFFF", minHeight: "100vh" }}>
       {/* HEAD */}
       <Helmet>
         <title>{title}</title>
@@ -137,26 +141,26 @@ const Gallery = () => {
 
       {/* Hero */}
       <Box
-        sx={{
+         sx={{
           position: "relative",
           width: "100%",
           height: { xs: "50vh", md: "60vh" },
           overflow: "hidden",
-          background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
+          background: "transparent",
         }}
         aria-label="Tint Tek Plus project gallery"
       >
         {/* Background Pattern */}
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             inset: 0,
             opacity: 0.1,
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
-        />
+        /> */}
         {/* Animated Gradient Overlay */}
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             inset: 0,
@@ -169,7 +173,7 @@ const Gallery = () => {
               "100%": { opacity: 0.4 },
             },
           }}
-        />
+        /> */}
 
         {/* Content */}
         <Container
@@ -218,6 +222,17 @@ const Gallery = () => {
             >
               Our Gallery
             </Typography>
+                 <Box
+                sx={{
+                  mt: 5,
+                  width: { xs: 120, sm: 120 },
+                  height: 5,
+                  borderRadius: 999,
+                  background:
+                    "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
+                  boxShadow: "0 0 16px rgba(39,148,210,0.35)",
+                }}
+              />
           </Box>
         </Container>
       </Box>

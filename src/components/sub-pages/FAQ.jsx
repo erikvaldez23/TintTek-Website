@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
   Typography,
@@ -13,9 +13,9 @@ import {
   Fade,
   Card,
   IconButton,
-  Chip,
   Divider
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -24,8 +24,9 @@ import Footer from "../key-components/Footer";
 import CallToAction from "../key-components/CallToAction";
 import Contact from "../key-components/Contact";
 import QuickLinks from "../key-components/QuickLinks";
+import { motion } from "framer-motion";
 
-
+/* --------------------------------- DATA --------------------------------- */
 const faqConfig = {
   "window-tint": [
     {
@@ -98,7 +99,8 @@ const faqConfig = {
   "paint-protection": [
     {
       question: "What is Paint Protection Film (PPF)?",
-      answer: "PPF is made from a durable, clear urethane material. This advanced polymer film is engineered to protect a vehicle’s paint from scratches, stone chips, UV damage, and contaminants. The film is designed to be both flexible and tough, allowing it to conform seamlessly to the contours of the vehicle. The key feature of STEk PPF is its self-healing technology, which allows light scratches or swirl marks to disappear when exposed to heat, either from sunlight or a warm surface. This unique ability helps maintain the film’s smooth, flawless appearance over time.",
+      answer:
+        "PPF is made from a durable, clear urethane material. This advanced polymer film is engineered to protect a vehicle’s paint from scratches, stone chips, UV damage, and contaminants. The film is designed to be both flexible and tough, allowing it to conform seamlessly to the contours of the vehicle. The key feature of STEk PPF is its self-healing technology, which allows light scratches or swirl marks to disappear when exposed to heat, either from sunlight or a warm surface. This unique ability helps maintain the film’s smooth, flawless appearance over time.",
     },
     {
       question: "How much coverage do I receive with Paint Protection Film?",
@@ -109,7 +111,8 @@ const faqConfig = {
     },
     {
       question: "Does PPF Damage Paint?",
-      answer: "Paint Protection Film (PPF)  should not cause damage to your vehicle's factory paint or repainted surfaces. However, if your paint is already chipped or the panels have been repainted, there’s a chance that the film may lift the paint or clear coat during installation or removal. Since we cannot control the condition or quality of your vehicle’s paint—whether it’s original or repainted—we are not liable for any peeling or damage that might occur during the process. We recommend ensuring that your paint is in good condition before applying PPF or vinyl wrap to avoid any potential issues.",
+      answer:
+        "Paint Protection Film (PPF)  should not cause damage to your vehicle's factory paint or repainted surfaces. However, if your paint is already chipped or the panels have been repainted, there’s a chance that the film may lift the paint or clear coat during installation or removal. Since we cannot control the condition or quality of your vehicle's paint—whether it’s original or repainted—we are not liable for any peeling or damage that might occur during the process. We recommend ensuring that your paint is in good condition before applying PPF or vinyl wrap to avoid any potential issues.",
     },
     {
       question: "Will Paint Protection Film (PPF) look perfect?",
@@ -121,7 +124,8 @@ const faqConfig = {
     },
     {
       question: "Do you remove any parts from my vehicle?",
-      answer: "In some cases, yes, it may be necessary to remove certain parts of your vehicle to ensure a clean and seamless installation. Parts like mirrors, badges, or trim pieces are sometimes taken off to achieve a perfect wrap or film application. This step helps us ensure that the film fits precisely and avoids any potential lifting or wrinkles. Our goal is to ensure your vehicle looks flawless, and part of that process can involve removing parts to provide a more thorough and professional finish",
+      answer:
+        "In some cases, yes, it may be necessary to remove certain parts of your vehicle to ensure a clean and seamless installation. Parts like mirrors, badges, or trim pieces are sometimes taken off to achieve a perfect wrap or film application. This step helps us ensure that the film fits precisely and avoids any potential lifting or wrinkles. Our goal is to ensure your vehicle looks flawless, and part of that process can involve removing parts to provide a more thorough and professional finish",
     },
     {
       question: "Do you do any corrections before installing PPF?",
@@ -132,7 +136,8 @@ const faqConfig = {
     },
     {
       question: "Do you check the PPF after installation?",
-      answer: "Yes, we schedule a post-installation check-up to ensure everything is perfect. After the PPF is applied, we carefully inspect the entire vehicle to make sure the film is properly adhered and that any bubbles, wrinkles, or imperfections are minimized. If any adjustments are needed, we take care of them promptly. We also provide guidance on proper care and maintenance, ensuring your PPF continues to protect and enhance your vehicle for years to come. Your satisfaction is our pr",
+      answer:
+        "Yes, we schedule a post-installation check-up to ensure everything is perfect. After the PPF is applied, we carefully inspect the entire vehicle to make sure the film is properly adhered and that any bubbles, wrinkles, or imperfections are minimized. If any adjustments are needed, we take care of them promptly. We also provide guidance on proper care and maintenance, ensuring your PPF continues to protect and enhance your vehicle for years to come. Your satisfaction is our pr",
     },
     {
       question: "Can I PPF my car after a collision or having it repainted? ",
@@ -351,7 +356,8 @@ const faqConfig = {
   "customer-satisfaction": [
     {
       question: "Customer Satisfaction",
-      answer: "At Tint Tek Plus, customer satisfaction is the cornerstone of our success. We strive to not only meet but exceed your expectations with every service. If any issue arises or something doesn’t meet your expectations, we ask that you reach out to us directly so we can address your concerns and resolve the situation. We believe most issues are simply misunderstandings that can be easily fixed. Please give us the opportunity to make things right before leaving feedback on platforms like Facebook, Google, Reddit, etc. We truly appreciate your understanding and the chance to resolve any concerns before negative comments are posted.",
+      answer:
+        "At Tint Tek Plus, customer satisfaction is the cornerstone of our success. We strive to not only meet but exceed your expectations with every service. If any issue arises or something doesn’t meet your expectations, we ask that you reach out to us directly so we can address your concerns and resolve the situation. We believe most issues are simply misunderstandings that can be easily fixed. Please give us the opportunity to make things right before leaving feedback on platforms like Facebook, Google, Reddit, etc. We truly appreciate your understanding and the chance to resolve any concerns before negative comments are posted.",
     },
   ],
 };
@@ -369,20 +375,27 @@ const faqSections = Object.entries(faqConfig).map(([key, questions]) => ({
   })),
 }));
 
+/* ---------------- Floating glow orbs (match Mockup) ---------------- */
+const FloatingElement = styled(motion.div)(({ theme }) => ({
+  position: "absolute",
+  borderRadius: "50%",
+  background:
+    "radial-gradient(circle, rgba(39, 148, 210, 0.10) 0%, transparent 70%)",
+  filter: "blur(1px)",
+  pointerEvents: "none",
+}));
+
+/* --------------------------------- UI --------------------------------- */
 const FAQ = () => {
   const [expanded, setExpanded] = useState(false);
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
-  const [activeSection, setActiveSection] = useState(0);
   const [animateIn, setAnimateIn] = useState(true);
-  
+
   const currentSection = faqSections[selectedServiceIndex];
   const isMobile = useMediaQuery("(max-width:768px)");
-  const isTablet = useMediaQuery("(max-width:1024px)");
 
   const handleServiceSelect = (index) => {
     setAnimateIn(false);
-    
-    // Add a small delay for the animation effect
     setTimeout(() => {
       setSelectedServiceIndex(index);
       setExpanded(false);
@@ -391,147 +404,167 @@ const FAQ = () => {
   };
 
   const navigateSection = (direction) => {
-    const newIndex = direction === 'next' 
-      ? (selectedServiceIndex + 1) % faqSections.length
-      : (selectedServiceIndex - 1 + faqSections.length) % faqSections.length;
-      
+    const newIndex =
+      direction === "next"
+        ? (selectedServiceIndex + 1) % faqSections.length
+        : (selectedServiceIndex - 1 + faqSections.length) % faqSections.length;
+
     handleServiceSelect(newIndex);
   };
 
   return (
     <Box
-    sx={{
-      backgroundColor: "#0a0a10",
-      color: "#FFFFFF",
-      minHeight: "100vh",
-    }}
-  >
-    {/* Hero Section with Parallax Effect */}
-    <Box
       sx={{
+        /* === MATCHES Mockup background === */
+        background: `
+          radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+          radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+          linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
+        `,
+        color: "#fff",
+        minHeight: "100vh",
         position: "relative",
-        width: "100%",
-        height: { xs: "50vh", md: "60vh" },
         overflow: "hidden",
-        background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
       }}
     >
-      {/* Background Pattern */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          opacity: 0.1,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
+      {/* Floating background accents (same feel as Mockup) */}
+      {/* <FloatingElement
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        style={{ top: "12%", right: "8%", width: 220, height: 220 }}
       />
+      <FloatingElement
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        style={{ bottom: "18%", left: "6%", width: 160, height: 160 }}
+      /> */}
 
-      {/* Animated Gradient Overlay */}
+      {/* Hero Section (background set to transparent so global bg shows) */}
       <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background:
-            "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
-          animation: "gradientShift 10s ease infinite",
-          "@keyframes gradientShift": {
-            "0%": { opacity: 0.4 },
-            "50%": { opacity: 0.7 },
-            "100%": { opacity: 0.4 },
-          },
-        }}
-      />
-
-      {/* Content Container */}
-      <Container
-        maxWidth="lg"
         sx={{
           position: "relative",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          zIndex: 2,
+          width: "100%",
+          height: { xs: "50vh", md: "60vh" },
+          overflow: "hidden",
+          background: "transparent",
         }}
       >
-        {/* Text Content */}
-        <Box
+        {/* Subtle pattern */}
+        {/* <Box
           sx={{
-            maxWidth: { xs: "100%", md: "70%" },
-            animation: "fadeInUp 1s ease-out",
-            "@keyframes fadeInUp": {
-              "0%": {
-                opacity: 0,
-                transform: "translateY(20px)",
-              },
-              "100%": {
-                opacity: 1,
-                transform: "translateY(0)",
-              },
+            position: "absolute",
+            inset: 0,
+            opacity: 0.1,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        /> */}
+
+        {/* Animated soft overlay (kept from your original hero) */}
+        {/* <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
+            animation: "gradientShift 10s ease infinite",
+            "@keyframes gradientShift": {
+              "0%": { opacity: 0.4 },
+              "50%": { opacity: 0.7 },
+              "100%": { opacity: 0.4 },
             },
           }}
-        >
-          <Typography
-            variant="overline"
-            sx={{
-              color: "#2794d2",
-              fontWeight: 600,
-              letterSpacing: 2,
-              mb: 1,
-              display: "block",
-            }}
-          >
-            TINT TEK + INSIGHTS
-          </Typography>
+        /> */}
 
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              color: "#fff",
-              mb: 2,
-              fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
-              lineHeight: 1.1,
-            }}
-          >
-            USER ESSENTIALS
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255,255,255,0.8)",
-              maxWidth: "600px",
-              mb: 4,
-              fontSize: { xs: "1rem", md: "1.1rem" },
-              fontWeight: 400,
-              lineHeight: 1.5,
-            }}
-          >
-            Everything you need to know about our services & warranties
-          </Typography>
-        </Box>
-      </Container>
-    </Box>
-
-      {/* Service Selector Section */}
-      <Container sx={{ 
-        py: { xs: 5, md: 8 }, 
-        maxWidth: "1400px", 
-        position: "relative"
-      }}>
-        <Box 
+        <Container
+          maxWidth="lg"
           sx={{
-            display: "flex", 
-            justifyContent: "space-between", 
+            position: "relative",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            zIndex: 2,
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: { xs: "100%", md: "70%" },
+              animation: "fadeInUp 1s ease-out",
+              "@keyframes fadeInUp": {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+            }}
+          >
+            <Typography
+              variant="overline"
+              sx={{
+                color: "#2794d2",
+                fontWeight: 600,
+                letterSpacing: 2,
+                mb: 1,
+                display: "block",
+              }}
+            >
+              TINT TEK + INSIGHTS
+            </Typography>
+
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
+                color: "#fff",
+                mb: 2,
+                fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
+                lineHeight: 1.1,
+              }}
+            >
+              USER ESSENTIALS
+            </Typography>
+
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255,255,255,0.8)",
+                maxWidth: "600px",
+                mb: 4,
+                fontSize: { xs: "1rem", md: "1.1rem" },
+                fontWeight: 400,
+                lineHeight: 1.5,
+              }}
+            >
+              Everything you need to know about our services & warranties
+            </Typography>
+                 <Box
+                sx={{
+                  mt: 5,
+                  width: { xs: 120, sm: 120 },
+                  height: 5,
+                  borderRadius: 999,
+                  background:
+                    "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
+                  boxShadow: "0 0 16px rgba(39,148,210,0.35)",
+                }}
+              />
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Service Selector */}
+      <Container
+        sx={{
+          py: { xs: 5, md: 8 },
+          maxWidth: "1400px",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
-            mb: 6
+            mb: 6,
           }}
         >
           <Typography
@@ -546,39 +579,35 @@ const FAQ = () => {
                 position: "absolute",
                 bottom: "-12px",
                 left: 0,
-                width: "290px",
+                width: { xs: 120, sm: 120 },
                 height: "4px",
                 background: "#2794d2",
-                borderRadius: "2px"
-              }
+                borderRadius: "2px",
+              },
             }}
           >
             Browse by Service
           </Typography>
-          
+
           {!isMobile && (
             <Box>
-              <IconButton 
-                onClick={() => navigateSection('prev')}
-                sx={{ 
-                  color: "#fff", 
+              <IconButton
+                onClick={() => navigateSection("prev")}
+                sx={{
+                  color: "#fff",
                   backgroundColor: "rgba(255,255,255,0.05)",
                   mr: 1,
-                  "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                  }
+                  "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
                 }}
               >
                 <ArrowBackIosNewIcon fontSize="small" />
               </IconButton>
-              <IconButton 
-                onClick={() => navigateSection('next')}
-                sx={{ 
-                  color: "#fff", 
+              <IconButton
+                onClick={() => navigateSection("next")}
+                sx={{
+                  color: "#fff",
                   backgroundColor: "rgba(255,255,255,0.05)",
-                  "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                  }
+                  "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
                 }}
               >
                 <ArrowForwardIosIcon fontSize="small" />
@@ -597,21 +626,13 @@ const FAQ = () => {
               backgroundColor: "rgba(255,255,255,0.06)",
               color: "#fff",
               borderRadius: 2,
-              fontWeight: "600",
+              fontWeight: 600,
               border: "1px solid rgba(255,255,255,0.1)",
               boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
-              "& .MuiSelect-select": {
-                p: 2,
-              },
-              "& .MuiOutlinedInput-notchedOutline": {
-                border: "none"
-              },
-              "& .MuiSelect-icon": {
-                color: "rgba(255,255,255,0.7)"
-              },
-              "&:hover": {
-                backgroundColor: "rgba(255,255,255,0.1)",
-              }
+              "& .MuiSelect-select": { p: 2 },
+              "& .MuiOutlinedInput-notchedOutline": { border: "none" },
+              "& .MuiSelect-icon": { color: "rgba(255,255,255,0.7)" },
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
             }}
           >
             {faqSections.map((section, index) => (
@@ -632,17 +653,20 @@ const FAQ = () => {
                     cursor: "pointer",
                     borderRadius: "8px",
                     fontWeight: 600,
-                    color: selectedServiceIndex === index ? "#fff" : "#fff",
-                    border: selectedServiceIndex === index 
-                      ? "1px solid #2794d2" 
-                      : "1px solid rgba(255,255,255,0.1)",
-                    backgroundColor: selectedServiceIndex === index 
-                      ? "rgba(58, 98, 242, 0.15)" 
-                      : "rgba(255,255,255,0.03)",
+                    color: "#fff",
+                    border:
+                      selectedServiceIndex === index
+                        ? "1px solid #2794d2"
+                        : "1px solid rgba(255,255,255,0.1)",
+                    backgroundColor:
+                      selectedServiceIndex === index
+                        ? "rgba(58, 98, 242, 0.15)"
+                        : "rgba(255,255,255,0.03)",
                     "&:hover": {
-                      backgroundColor: selectedServiceIndex === index 
-                        ? "rgba(58, 98, 242, 0.2)" 
-                        : "rgba(255,255,255,0.06)",
+                      backgroundColor:
+                        selectedServiceIndex === index
+                          ? "rgba(58, 98, 242, 0.2)"
+                          : "rgba(255,255,255,0.06)",
                       transform: "translateY(-2px)",
                     },
                     transition: "all 0.2s ease",
@@ -654,27 +678,10 @@ const FAQ = () => {
             ))}
           </Grid>
         )}
-        
-        {/* Current section display chip */}
-        {/* <Chip 
-          label={currentSection.title}
-          sx={{
-            backgroundColor: "rgba(58, 98, 242, 0.15)",
-            color: "#fff",
-            borderRadius: "4px",
-            fontWeight: 600,
-            fontSize: "0.9rem",
-            mb: 2
-          }}
-        /> */}
       </Container>
 
       {/* FAQ Accordion Section */}
-      <Box sx={{ 
-        backgroundColor: "#0f0f13", 
-        py: 8, 
-        position: "relative",
-      }}>
+      <Box sx={{ backgroundColor: "transparent", py: 8, position: "relative", zIndex: 1 }}>
         <Container sx={{ maxWidth: "1000px" }}>
           <Box sx={{ textAlign: "center", mb: 5 }}>
             <Typography
@@ -682,10 +689,7 @@ const FAQ = () => {
               fontWeight="700"
               mb={2}
               color="#fff"
-              sx={{
-                position: "relative",
-                display: "inline-block",
-              }}
+              sx={{ position: "relative", display: "inline-block" }}
             >
               Frequently Asked Questions
             </Typography>
@@ -694,7 +698,7 @@ const FAQ = () => {
               color="rgba(255,255,255,0.7)"
               sx={{ maxWidth: "700px", mx: "auto", fontSize: "1.1rem" }}
             >
-              Find answers to common questions about {currentSection.title.toLowerCase()}. 
+              Find answers to common questions about {currentSection.title.toLowerCase()}.{" "}
               Can't find what you're looking for? Contact our support team.
             </Typography>
           </Box>
@@ -703,26 +707,32 @@ const FAQ = () => {
             <Grid container spacing={3}>
               {currentSection.questions.map(({ id, question, answer }, index) => (
                 <Grid item xs={12} key={id}>
-                  <Fade in={true} style={{ transitionDelay: `${index * 100}ms` }}>
+                  <Fade in style={{ transitionDelay: `${index * 100}ms` }}>
                     <Card
                       elevation={expanded === id ? 4 : 0}
                       sx={{
                         borderRadius: "16px",
                         overflow: "hidden",
                         transition: "all 0.3s ease",
-                        backgroundColor: expanded === id ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.015)",
+                        backgroundColor:
+                          expanded === id
+                            ? "rgba(255,255,255,0.02)"
+                            : "rgba(255,255,255,0.015)",
                         backdropFilter: "blur(10px)",
-                        border: expanded === id 
-                          ? "1px solid #2794d2" 
-                          : "1px solid rgba(255,255,255,0.06)",
+                        border:
+                          expanded === id
+                            ? "1px solid #2794d2"
+                            : "1px solid rgba(255,255,255,0.06)",
                         "&:hover": {
-                          backgroundColor: expanded === id 
-                            ? "rgba(255,255,255,0.04)" 
-                            : "rgba(255,255,255,0.025)",
+                          backgroundColor:
+                            expanded === id
+                              ? "rgba(255,255,255,0.04)"
+                              : "rgba(255,255,255,0.025)",
                           transform: expanded === id ? "translateY(-2px)" : "none",
-                          boxShadow: expanded === id 
-                            ? "0 8px 25px rgba(0,0,0,0.15)" 
-                            : "0 4px 15px rgba(0,0,0,0.05)",
+                          boxShadow:
+                            expanded === id
+                              ? "0 8px 25px rgba(0,0,0,0.15)"
+                              : "0 4px 15px rgba(0,0,0,0.05)",
                         },
                       }}
                     >
@@ -733,16 +743,15 @@ const FAQ = () => {
                         elevation={0}
                         sx={{
                           backgroundColor: "transparent",
-                          "&:before": {
-                            display: "none",
-                          },
+                          "&:before": { display: "none" },
                         }}
                       >
                         <AccordionSummary
                           expandIcon={
                             <ExpandMoreIcon
-                              sx={{ 
-                                color: expanded === id ? "#3a62f2" : "rgba(255,255,255,0.7)",
+                              sx={{
+                                color:
+                                  expanded === id ? "#3a62f2" : "rgba(255,255,255,0.7)",
                                 transition: "transform 0.3s ease",
                                 transform: expanded === id ? "rotate(180deg)" : "rotate(0deg)",
                               }}
@@ -778,11 +787,13 @@ const FAQ = () => {
                         </AccordionSummary>
 
                         <AccordionDetails sx={{ p: 3, pt: 0, pb: 4 }}>
-                          <Divider sx={{ 
-                            mb: 3, 
-                            backgroundColor: "rgba(255,255,255,0.1)",
-                            opacity: 0.6
-                          }} />
+                          <Divider
+                            sx={{
+                              mb: 3,
+                              backgroundColor: "rgba(255,255,255,0.1)",
+                              opacity: 0.6,
+                            }}
+                          />
                           <Box
                             sx={{
                               borderLeft: "3px solid #2794d2",
@@ -797,8 +808,8 @@ const FAQ = () => {
                                 width: 3,
                                 height: "100%",
                                 background: "#2794d2",
-                                borderRadius: "3px"
-                              }
+                                borderRadius: "3px",
+                              },
                             }}
                           >
                             <Typography
@@ -809,14 +820,9 @@ const FAQ = () => {
                                 fontSize: "1rem",
                                 "& ul": {
                                   pl: 2,
-                                  "& li": {
-                                    mb: 1.5,
-                                  },
+                                  "& li": { mb: 1.5 },
                                 },
-                                "& strong": {
-                                  color: "#fff",
-                                  fontWeight: 600,
-                                },
+                                "& strong": { color: "#fff", fontWeight: 600 },
                               }}
                               dangerouslySetInnerHTML={{ __html: answer }}
                             />

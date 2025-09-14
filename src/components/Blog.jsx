@@ -157,7 +157,11 @@ const Blog = () => {
   }, []);
 
   return (
-    <Box sx={{ backgroundColor: "#0a0a10", color: "#FFFFFF", minHeight: "100vh" }}>
+    <Box sx={{      background: `
+          radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+          radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+          linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
+        `, color: "#FFFFFF", minHeight: "100vh" }}>
       {/* HEAD */}
       <Helmet>
         <title>{title}</title>
@@ -174,16 +178,16 @@ const Blog = () => {
 
       {/* Hero Section */}
       <Box
-        sx={{
+         sx={{
           position: "relative",
           width: "100%",
           height: { xs: "50vh", md: "60vh" },
           overflow: "hidden",
-          background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
+          background: "transparent",
         }}
       >
         {/* Background Pattern */}
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             top: 0,
@@ -193,9 +197,9 @@ const Blog = () => {
             opacity: 0.1,
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
-        />
+        /> */}
         {/* Animated Gradient Overlay */}
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             top: 0,
@@ -211,7 +215,7 @@ const Blog = () => {
               "100%": { opacity: 0.4 },
             },
           }}
-        />
+        /> */}
         {/* Content */}
         <Container
           maxWidth="lg"
@@ -275,56 +279,76 @@ const Blog = () => {
               Stay updated with the latest trends in window tinting, paint
               protection, and automotive care from our expert team.
             </Typography>
+                 <Box
+                sx={{
+                  mt: 5,
+                  width: { xs: 120, sm: 120 },
+                  height: 5,
+                  borderRadius: 999,
+                  background:
+                    "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
+                  boxShadow: "0 0 16px rgba(39,148,210,0.35)",
+                }}
+              />
           </Box>
         </Container>
       </Box>
 
-      {/* Category Tabs */}
-      <Container maxWidth="lg" sx={{ mt: 2, position: "relative", zIndex: 10 }}>
-        <Box
-          sx={{
-            backgroundColor: "rgba(10, 10, 16, 0.9)",
-            borderRadius: "12px",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            padding: { xs: 2, md: 3 },
-            overflowX: "auto",
-            "&::-webkit-scrollbar": { height: "4px" },
-            "&::-webkit-scrollbar-track": { backgroundColor: "rgba(255,255,255,0.05)" },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "rgba(39, 148, 210, 0.5)",
-              borderRadius: "4px",
-            },
-          }}
-        >
-          <Tabs
-            value={activeTab}
-            onChange={handleTabChange}
-            variant="scrollable"
-            scrollButtons="auto"
-            sx={{
-              minHeight: "48px",
-              "& .MuiTabs-indicator": { backgroundColor: "#2794d2" },
-              "& .MuiTab-root": {
-                minWidth: "auto",
-                minHeight: "48px",
-                color: "rgba(255,255,255,0.6)",
-                fontWeight: 500,
-                fontSize: "0.9rem",
-                textTransform: "capitalize",
-                mr: 1,
-                "&.Mui-selected": { color: "#fff", fontWeight: 600 },
-              },
-            }}
-          >
-            <Tab value="all" label="All Posts" />
-            {allCategories.map((category) => (
-              <Tab key={category} value={category} label={category} />
-            ))}
-          </Tabs>
-        </Box>
-      </Container>
+{/* Category Filter — simple dark glass with blue active */}
+<Container maxWidth="lg" sx={{ mt: { xs: 2, md: 4 }, position: "relative", zIndex: 10 }}>
+  <Box
+    sx={{
+      p: 1,
+      borderRadius: 12,
+      background: "rgba(8, 8, 10, 0.6)",
+      border: "1px solid rgba(255,255,255,0.06)",
+      boxShadow: "0 6px 24px rgba(0,0,0,0.4)",
+      backdropFilter: "blur(10px)",
+      WebkitBackdropFilter: "blur(10px)",
+    }}
+  >
+    <Tabs
+      value={activeTab}
+      onChange={handleTabChange}
+      variant="scrollable"
+      scrollButtons="auto"
+      aria-label="Filter by category"
+      sx={{
+        minHeight: 0,
+        "& .MuiTabs-indicator": { display: "none" },
+        "& .MuiTab-root": {
+          minHeight: 36,
+          px: 1.6,
+          borderRadius: 9999,
+          textTransform: "none",
+          fontWeight: 600,
+          fontSize: 14,
+          color: "rgba(255,255,255,0.72)",
+          transition: "background-color .2s ease, color .2s ease",
+          "&:hover": { backgroundColor: "rgba(255,255,255,0.06)" },
+          "&.Mui-selected": {
+            color: "#fff",
+            backgroundColor: "#2794d2",        // ← company blue
+          },
+          "&.Mui-selected:hover": {
+            backgroundColor: "#1a7bb0",        // slight darken on hover (optional)
+          },
+          "&.Mui-focusVisible": {
+            boxShadow: "0 0 0 2px rgba(39,148,210,0.35)",
+          },
+        },
+      }}
+    >
+      <Tab disableRipple value="all" label="All Posts" />
+      {allCategories.map((category) => (
+        <Tab disableRipple key={category} value={category} label={category} />
+      ))}
+    </Tabs>
+  </Box>
+</Container>
+
+
+
 
       {/* Featured Post (kept as fully clickable card) */}
       {featuredPost && (

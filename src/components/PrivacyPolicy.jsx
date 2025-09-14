@@ -128,40 +128,118 @@ const PrivacyPolicy = () => {
       sx={{
         width: "100vw",
         minHeight: "100vh",
-        backgroundColor: "#0f0f13", // Black background
+          background: `
+          radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+          radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+          linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
+        `,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         color: "white", // White text throughout
       }}
     >
-      {/* Hero Section */}
-      <Box
-        sx={{
-          width: "100%",
-          height: { xs: "40vh", md: "40vh" },
-          background: "linear-gradient(135deg, #111118 0%, #2794d2 50%, #1a1a25 100%)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "40px 20px",
-        }}
-      >
-        <Typography
-          variant="h2"
-          sx={{ fontWeight: "bold", textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
-        >
-          Privacy Policy
-        </Typography>
-      </Box>
+       {/* Hero */}
+           <Box
+              sx={{
+               position: "relative",
+               width: "100%",
+               height: { xs: "50vh", md: "60vh" },
+               overflow: "hidden",
+               background: "transparent",
+             }}
+             aria-label="Tint Tek Plus project gallery"
+           >
+             {/* Background Pattern */}
+             {/* <Box
+               sx={{
+                 position: "absolute",
+                 inset: 0,
+                 opacity: 0.1,
+                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+               }}
+             /> */}
+             {/* Animated Gradient Overlay */}
+             {/* <Box
+               sx={{
+                 position: "absolute",
+                 inset: 0,
+                 background:
+                   "linear-gradient(135deg, rgba(39, 148, 210, 0.2) 0%, rgba(35, 10, 89, 0.2) 100%)",
+                 animation: "gradientShift 10s ease infinite",
+                 "@keyframes gradientShift": {
+                   "0%": { opacity: 0.4 },
+                   "50%": { opacity: 0.7 },
+                   "100%": { opacity: 0.4 },
+                 },
+               }}
+             /> */}
+     
+             {/* Content */}
+             <Container
+               maxWidth="lg"
+               sx={{
+                 position: "relative",
+                 height: "100%",
+                 display: "flex",
+                 flexDirection: "column",
+                 justifyContent: "center",
+                 zIndex: 2,
+               }}
+             >
+               <Box
+                 sx={{
+                   maxWidth: { xs: "100%", md: "70%" },
+                   animation: "fadeInUp 1s ease-out",
+                   "@keyframes fadeInUp": {
+                     "0%": { opacity: 0, transform: "translateY(20px)" },
+                     "100%": { opacity: 1, transform: "translateY(0)" },
+                   },
+                 }}
+               >
+                 <Typography
+                   variant="overline"
+                   sx={{
+                     color: "#2794d2",
+                     fontWeight: 600,
+                     letterSpacing: 2,
+                     mb: 1,
+                     display: "block",
+                   }}
+                 >
+                   TINT TEK + PRIVACY
+                 </Typography>
+     
+                 <Typography
+                   variant="h2"
+                   sx={{
+                     fontWeight: 800,
+                     color: "#fff",
+                     mb: 2,
+                     fontSize: { xs: "2.2rem", sm: "2.5rem", md: "3.5rem" },
+                     lineHeight: 1.1,
+                   }}
+                 >
+                   Privacy Policy
+                 </Typography>
+                      <Box
+                     sx={{
+                       mt: 5,
+                       width: { xs: 120, sm: 120 },
+                       height: 5,
+                       borderRadius: 999,
+                       background:
+                         "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
+                       boxShadow: "0 0 16px rgba(39,148,210,0.35)",
+                     }}
+                   />
+               </Box>
+             </Container>
+           </Box>
 
       {/* Main Content */}
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         sx={{
           flexGrow: 1,
           display: "flex",
