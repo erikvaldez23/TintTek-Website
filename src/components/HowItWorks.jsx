@@ -8,17 +8,13 @@ import {
   useTheme,
   Button,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
   Divider,
   IconButton,
-  alpha,
 } from "@mui/material";
-import Slider from "react-slick";
+import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import BuildIcon from "@mui/icons-material/Build";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
@@ -30,13 +26,11 @@ import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import CloseIcon from "@mui/icons-material/Close";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { SupportAgent } from "@mui/icons-material";
-
 
 const CustomIcons = {
   paintCorrection1: (
@@ -292,7 +286,7 @@ const serviceSteps = {
           "Compounding eliminates the top layer of damaged paint to reveal a smooth, more uniform surface.",
         detailedDescription:
           "Using a machine polisher and a specially formulated cutting compound, we remove deeper imperfections such as swirl marks, scratches, and oxidation by gently leveling the surface of the paint.",
-          icon: CustomIcons.paintCorrection2,
+        icon: CustomIcons.paintCorrection2,
       },
       {
         title: "Polishing",
@@ -300,7 +294,7 @@ const serviceSteps = {
           "Polishing restores the glossy, high-shine finish your car deserves, bringing out the richness and vibrancy of the paint.",
         detailedDescription:
           "After compounding, we use a finer polishing compound with a softer pad to refine the finish. This step removes any haze left behind from the compounding process and enhances the clarity and depth of the paint.",
-          icon: CustomIcons.paintCorrection3,
+        icon: CustomIcons.paintCorrection3,
       },
       {
         title: "Finishing",
@@ -308,7 +302,7 @@ const serviceSteps = {
           "This process gives the paint a deep, rich gloss, ensuring your car looks like it just rolled off the showroom floor.",
         detailedDescription:
           "For the ultimate shine, we apply a finishing polish with a soft pad. This step refines the paint even further, creating a mirror-like, flawless finish.",
-          icon: CustomIcons.paintCorrection4,
+        icon: CustomIcons.paintCorrection4,
       },
     ],
     finalDescription:
@@ -341,7 +335,9 @@ const serviceSteps = {
         description:
           "Carefully apply the chosen STEK LPF, ensuring a smooth and bubble-free finish.",
         detailedDescription: "tbd",
-        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: (
+          <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />
+        ),
       },
       {
         title: "Curing",
@@ -381,7 +377,9 @@ const serviceSteps = {
         description:
           "We conduct a meticulous inspection to ensure every inch of the film is perfectly applied and the protection is flawless.",
         detailedDescription: "TBD",
-        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: (
+          <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />
+        ),
       },
       {
         title: "Curing",
@@ -472,7 +470,9 @@ const serviceSteps = {
         description:
           "Our team of installers ensures precise application of ExoShield GT3, tailored to fit your vehicle's specific windshield curvature.",
         detailedDescription: "TBD",
-        icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
+        icon: (
+          <PrecisionManufacturingIcon sx={{ fontSize: 40, color: "#2794d2" }} />
+        ),
       },
       {
         title: "Comprehensive Warranty",
@@ -499,12 +499,10 @@ const serviceSteps = {
   },
 };
 
-
-
 const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [openModal, setOpenModal] = useState(false);
   const [selectedStep, setSelectedStep] = useState(null);
@@ -513,7 +511,6 @@ const HowItWorks = ({ serviceId }) => {
     setSelectedStep(step);
     setOpenModal(true);
   };
-
   const handleCloseModal = () => {
     setOpenModal(false);
     setSelectedStep(null);
@@ -521,301 +518,251 @@ const HowItWorks = ({ serviceId }) => {
 
   if (!service) {
     return (
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h4" textAlign="center" sx={{ color: "#fff" }}>
         Service not found
       </Typography>
     );
   }
 
-  // Slick carousel settings for mobile (Steps)
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: false,
-    appendDots: (dots) => (
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div
-        style={{
-          width: "10px",
-          height: "10px",
-          backgroundColor: "#888",
-          borderRadius: "50%",
-          display: "inline-block",
-          margin: "0 5px",
-        }}
-      />
-    ),
-  };
-
-  // Slick carousel settings for images (Mobile)
-  const imageSliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-  };
-
   return (
     <Box
+      component={motion.section}
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
       sx={{
-        py: isMobile ? 4 : 6,
-        px: isMobile ? 2 : 4,
-        backgroundColor: "#EEEEFF",
+        position: "relative",
+        py: { xs: 6, md: 10 },
+        px: { xs: 2, md: 4 },
         width: "100vw",
+        overflow: "hidden",
+        // no background color here — let page gradient show through
       }}
     >
-      <Typography
-        variant={isMobile ? "h4" : "h2"}
+      {/* subtle radial accents behind the grid */}
+      <Box
         sx={{
-          mb: isMobile ? 1.5 : 2,
-          fontWeight: "bold",
-          color: "#000",
+          pointerEvents: "none",
+          position: "absolute",
+          inset: 0,
+          "&::before, &::after": {
+            content: '""',
+            position: "absolute",
+            width: 540,
+            height: 540,
+            borderRadius: "50%",
+            filter: "blur(80px)",
+            opacity: 0.25,
+          },
+          "&::before": {
+            top: -120,
+            left: -120,
+            background:
+              "radial-gradient(closest-side, rgba(39,148,210,.35), transparent 70%)",
+          },
+          "&::after": {
+            bottom: -140,
+            right: -140,
+            background:
+              "radial-gradient(closest-side, rgba(77,184,240,.28), transparent 70%)",
+          },
+        }}
+      />
+
+      {/* Heading */}
+      <Box
+        sx={{
+          maxWidth: 1200,
+          mx: "auto",
           textAlign: "center",
+          mb: { xs: 4, md: 6 },
         }}
       >
-        How It Works
-      </Typography>
-
-      {/* Service Unique Description */}
-      {service.finalDescription && (
         <Typography
-          variant={isMobile ? "body2" : "body1"}
-          textAlign="center"
+          variant={isMobile ? "h4" : "h2"}
           sx={{
-            mt: isMobile ? 2 : 0,
-            color: "#000",
-            fontSize: isMobile ? "1.1rem" : "1.5rem",
-            maxWidth: "1200px",
-            mx: "auto",
-            pt: isMobile ? 1 : 0,
+            fontWeight: 800,
+            letterSpacing: 0.2,
+            color: "#fff",
+            mb: 1,
           }}
         >
-          {service.finalDescription}
+          How It Works
         </Typography>
-      )}
 
-      {/* Steps Section */}
-      {isMobile ? (
-        <Box
-          sx={{
-            display: "flex",
-            overflowX: "auto",
-            gap: 2,
-            mt: 4,
-            pl: 1,
-            pr: 1,
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
-          {service.steps.map((step, index) => (
-            <Box
-              key={index}
+        {service.finalDescription && (
+          <Typography
+            variant="body1"
+            sx={{
+              color: "rgba(255,255,255,0.85)",
+              fontSize: { xs: "1.05rem", md: "1.25rem" },
+              maxWidth: 900,
+              mx: "auto",
+              position: "relative",
+              display: "inline-block",
+              // small blue underline using ::after
+              "&::after": {
+                content: '""',
+                display: "block",
+                width: "80px",
+                height: "5px",
+                margin: "10px auto 0",
+                borderRadius: 2,
+                backgroundColor: "#2794d2",
+                mt: 4,
+                boxShadow:
+                  "0 0 8px rgba(39,148,210,.7), 0 0 16px rgba(39,148,210,.5)",
+              },
+            }}
+          >
+            {service.finalDescription}
+          </Typography>
+        )}
+      </Box>
+
+      {/* Cards Grid */}
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        sx={{
+          maxWidth: service.steps.length > 4 ? 1100 : 1200,
+          mx: "auto",
+        }}
+      >
+        {service.steps.map((step, i) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={service.steps.length > 4 ? 4 : 4} // 3x2 at desktop like screenshot
+            key={i}
+            sx={{ display: "flex" }}
+          >
+            <Paper
+              component={motion.article}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20 }}
+              elevation={0}
               sx={{
-                flex: "0 0 90%",
-                scrollSnapAlign: "start",
-                minWidth: "90%",
-                maxWidth: "90%",
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                p: { xs: 3, md: 4 },
+                borderRadius: 3,
+                background:
+                  "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow:
+                  "0 8px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
+                color: "#fff",
+                transition: "box-shadow .25s ease, border-color .25s ease",
+                "&:hover": {
+                  borderColor: "rgba(39,148,210,0.35)",
+                  boxShadow:
+                    "0 10px 30px rgba(0,0,0,0.55), 0 0 24px rgba(39,148,210,0.25)",
+                },
               }}
             >
-              <Paper
-                elevation={3}
+              {/* Icon chip */}
+              <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  textAlign: "center",
-                  p: 3,
-                  height: "100%",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  borderRadius: 2,
+                  width: 56,
+                  height: 56,
+                  mb: 2,
+                  borderRadius: "50%",
+                  display: "grid",
+                  placeItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(39,148,210,.25), rgba(77,184,240,.25))",
+                  boxShadow:
+                    "inset 0 0 10px rgba(255,255,255,.08), 0 0 18px rgba(39,148,210,.25)",
+                  border: "1px solid rgba(255,255,255,0.1)",
                 }}
               >
                 {step.icon}
-                <Typography variant="h6" fontWeight="bold" sx={{ mt: 1.5 }}>
-                  {step.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {step.description}
-                </Typography>
-                <Box sx={{ flexGrow: 1 }} />
-                <Button
-                  component={motion.a}
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  sx={{
-                    mt: 3,
-                    backgroundColor: "#2794d2",
-                    color: "#000",
-                    fontWeight: "bold",
-                    px: 3,
-                    py: 1.2,
-                    borderRadius: "30px",
-                    textTransform: "uppercase",
-                    fontSize: "1rem",
-                  }}
-                  onClick={() => handleLearnMoreClick(step)}
-                >
-                  Learn More
-                </Button>
-              </Paper>
-            </Box>
-          ))}
-        </Box>
-      ) : (
-        <Grid
-          container
-          spacing={3}
-          justifyContent="center"
-          sx={{
-            maxWidth: service.steps.length > 4 ? "1000px" : "1200px",
-            mx: "auto",
-          }}
-        >
-          {service.steps.map((step, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={service.steps.length > 4 ? 4 : 3} // 👈 Dynamic md value
-              key={index}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <Paper
-                elevation={3}
+              </Box>
+
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 800, letterSpacing: 0.2, mb: 1 }}
+              >
+                {step.title}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "rgba(255,255,255,0.82)", mb: 2 }}
+              >
+                {step.description}
+              </Typography>
+
+              <Box sx={{ flexGrow: 1 }} />
+
+              <Button
+                size="small"
+                onClick={() => handleLearnMoreClick(step)}
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  textAlign: "center",
-                  p: 3,
-                  borderRadius: 2,
-                  marginTop: "20px",
-                  height: "100%",
-                  maxWidth: "300px",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  transition: "all 0.3s ease-in-out",
+                  mt: 1,
+                  px: 2.5,
+                  py: 1,
+                  borderRadius: 999,
+                  fontWeight: 700,
+                  textTransform: "none",
+                  backgroundColor: "rgba(39,148,210,0.18)",
+                  color: "#eaf6ff",
+                  border: "1px solid rgba(39,148,210,0.35)",
+                  backdropFilter: "blur(4px)",
+                  boxShadow: "0 0 12px rgba(39,148,210,0.25)",
                   "&:hover": {
-                    boxShadow: "0px 0px 15px #2794d2",
-                    backgroundColor: "#333",
+                    backgroundColor: "rgba(39,148,210,0.28)",
+                    boxShadow: "0 0 16px rgba(39,148,210,0.35)",
                   },
                 }}
               >
-                {step.icon}
-                <Typography variant="h5" fontWeight="bold" sx={{ mt: 1.5 }}>
-                  {step.title}
-                </Typography>
-                <Typography variant="body1" sx={{ mt: 1 }}>
-                  {step.description}
-                </Typography>
-
-                <Box sx={{ flexGrow: 1 }} />
-                {/* <Button
-                  component={motion.a}
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  sx={{
-                    mt: 3,
-                    backgroundColor: "#2794d2",
-                    color: "#000",
-                    fontWeight: "bold",
-                    px: isMobile ? 3 : 4,
-                    py: isMobile ? 1.2 : 1,
-                    borderRadius: "30px",
-                    textTransform: "uppercase",
-                    fontSize: isMobile ? "1rem" : "1.2rem",
-                    width: isMobile ? "100%" : "auto",
-                  }}
-                  onClick={() => handleLearnMoreClick(step)}
-                >
-                  Learn More
-                </Button> */}
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      )}
-
-      {/* Images Section */}
-      {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-protection" && serviceId !== "ceramic-coating" && (
-      <Box
-        sx={{
-          maxWidth: "1200px", // Limit width
-          width: "100%", // Ensure responsiveness
-          margin: "0 auto", // Center the container
-          paddingTop: isMobile ? 4 : 8,
-        }}
-      >
-        {isMobile ? (
-          <Slider {...imageSliderSettings}>
-            {service.images.map((image, index) => (
-              <Box key={index} sx={{ px: 1 }}>
-                <Paper
-                  elevation={3}
-                  sx={{ borderRadius: 2, overflow: "hidden" }}
-                >
-                  <img
-                    src={image}
-                    alt="Tinting Process"
-                    style={{
-                      width: "100%",
-                      height: "300px", // Fixed height for all images
-                      objectFit: "cover", // Ensures the image fills the container while maintaining aspect ratio
-                      display: "block",
-                    }}
-                  />
-                </Paper>
-              </Box>
-            ))}
-          </Slider>
-        ) : (
-          <Grid container spacing={3} justifyContent="center">
-            {service.images.map((image, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Paper
-                  elevation={3}
-                  sx={{ borderRadius: 2, overflow: "hidden" }}
-                >
-                  <img
-                    src={image}
-                    alt="Tinting Process"
-                    style={{
-                      width: "100%",
-                      height: "300px", // Fixed height for all images
-                      objectFit: "cover", // Ensures the image fills the container while maintaining aspect ratio
-                      display: "block",
-                    }}
-                  />
-                </Paper>
-              </Grid>
-            ))}
+                Learn More
+              </Button>
+            </Paper>
           </Grid>
-        )}
-      </Box>
-      )}
+        ))}
+      </Grid>
 
-      {/* Modal Dialog for Learn More */}
+      {/* Optional Images Row (kept, but modernized spacing) */}
+      {serviceId !== "vehicle-paint-correction" &&
+        serviceId !== "vehicle-paint-protection" &&
+        serviceId !== "ceramic-coating" && (
+          <Box sx={{ maxWidth: 1200, mx: "auto", pt: { xs: 5, md: 8 } }}>
+            <Grid container spacing={3} justifyContent="center">
+              {service.images.map((image, index) => (
+                <Grid item xs={12} sm={4} key={index}>
+                  <Paper
+                    elevation={0}
+                    sx={{
+                      borderRadius: 3,
+                      overflow: "hidden",
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    <img
+                      src={image}
+                      alt="Process"
+                      style={{
+                        width: "100%",
+                        height: 300,
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        )}
+
+      {/* Modal */}
       <Dialog
         open={openModal}
         onClose={handleCloseModal}
@@ -823,46 +770,36 @@ const HowItWorks = ({ serviceId }) => {
         PaperProps={{
           sx: {
             borderRadius: 4,
-            padding: 3,
-            backgroundColor: "#f5f5f5",
+            p: 1,
+            background:
+              "linear-gradient(180deg, rgba(20,20,20,0.95), rgba(15,15,15,0.95))",
+            border: "1px solid rgba(255,255,255,0.08)",
+            color: "#fff",
+            boxShadow:
+              "0 10px 40px rgba(0,0,0,0.6), 0 0 24px rgba(39,148,210,0.25)",
+            backdropFilter: "blur(8px)",
           },
         }}
       >
-        <DialogTitle
-          sx={{
-            textAlign: "center",
-            color: "#000",
-            m: 0,
-            p: 1,
-            fontSize: "1.5rem",
-            position: "relative", // Ensure the title is positioned relatively
-          }}
-        >
-          {selectedStep?.title}
+        <DialogTitle sx={{ textAlign: "center", position: "relative", pb: 1 }}>
+          <Typography variant="h6" sx={{ fontWeight: 800 }}>
+            {selectedStep?.title}
+          </Typography>
           <IconButton
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
-              top: 8,
               right: 8,
-              color: "#000",
+              top: 8,
+              color: "rgba(255,255,255,0.8)",
             }}
           >
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <Divider sx={{ mb: 2 }} />
-        <DialogContent
-          sx={{
-            textAlign: "center",
-            color: "#000",
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Typography variant="body1">
+        <Divider sx={{ borderColor: "rgba(255,255,255,0.08)" }} />
+        <DialogContent sx={{ textAlign: "center", pt: 2 }}>
+          <Typography sx={{ color: "rgba(255,255,255,0.85)" }}>
             {selectedStep?.detailedDescription}
           </Typography>
         </DialogContent>

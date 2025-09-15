@@ -118,6 +118,18 @@ const Gallery = () => {
   }, []);
 
   return (
+    <Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    background: `
+      radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+      linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
+    `,
+  }}
+>
     <Box sx={{  background: `
           radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
           radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
@@ -396,6 +408,7 @@ const Gallery = () => {
           </IconButton>
         </Box>
       </Dialog>
+    </Box>
     </Box>
   );
 };

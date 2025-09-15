@@ -8,22 +8,23 @@ import {
   Typography,
   Button,
   useMediaQuery,
+  GlobalStyles,
 } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 
 import PricingComponent from "./Pricing";
-import Contact from "./key-components/Contact";
+import Contact from "./SubContact";
 import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
 import HowItWorks from "./HowItWorks";
 import ServicesOffered from "./ServicesOffered";
-import CallToAction from "./key-components/CallToAction";
+import CallToAction from "./SubCTA";
 import TintingSimulator from "./TintingSimulator";
 import PPFSelector from "./PPFSelector";
 import FAQSection from "./FAQSection";
 import TintPackages from "./TintPackages";
 import TeslaTintingSimulator from "./TeslaTintingSimulator";
-import QuickLinks from "./key-components/QuickLinks";
+import QuickLinks from "./SubQuickLinks";
 import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
 import ImageCTA from "./ImageCTA";
@@ -37,12 +38,10 @@ import BusinessInfo from "./hero/BusinessInfo";
 import F1Banner from "./f1-banner"; // (commented below in your JSX)
 
 // ---- SITE SETTINGS ----
-// Use your live custom domain; keep it absolute for canonical tags.
 const SITE = "https://tinttekplus.com";
-// Adjust if your router path differs (e.g., "/services").
 const SERVICES_BASE = "/services";
 
-// Define service details for each page (display copy)
+// Service copy
 const serviceDetails = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting",
@@ -91,7 +90,7 @@ const serviceDetails = {
   },
 };
 
-// Optional: SEO meta overrides per service (title/description for <head>)
+// Meta overrides
 const metaByService = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting | Tint Tek Plus",
@@ -140,6 +139,10 @@ const metaByService = {
   },
 };
 
+const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+   radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+   linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
+
 const ServicePage = () => {
   const { serviceId } = useParams();
   const location = useLocation();
@@ -150,12 +153,12 @@ const ServicePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Build SEO meta once per render (title, description, canonical, robots, JSON-LD)
+  // SEO
   const { title, description, canonical, robots, jsonLd } = useMemo(() => {
-    // Normalize path like /services/:serviceId
-    const path =
-      serviceId ? `${SERVICES_BASE}/${serviceId}` : location.pathname;
-    const url = `${SITE}${path}`.replace(/\/+$/, ""); // no trailing slash
+    const path = serviceId
+      ? `${SERVICES_BASE}/${serviceId}`
+      : location.pathname;
+    const url = `${SITE}${path}`.replace(/\/+$/, "");
 
     if (!service) {
       return {
@@ -196,17 +199,27 @@ const ServicePage = () => {
     };
   }, [serviceId, service, location.pathname]);
 
-  // ----- NOT FOUND (404-like) -----
+  // ---------- 404 ----------
   if (!service) {
     return (
       <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          backgroundColor: "#f9f9f9",
-        }}
+        className="ServicePageRoot"
+        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
+        <GlobalStyles
+          styles={{
+            ".ServicePageRoot *": {
+              backgroundColor: "transparent !important",
+              backgroundImage: "none !important",
+            },
+            /* Opt-out: anything with .bg-keep restores its own background */
+            ".ServicePageRoot .bg-keep, .ServicePageRoot .bg-keep *": {
+              backgroundColor: "unset !important",
+              backgroundImage: "unset !important",
+            },
+          }}
+        />
+
         <Helmet>
           <title>{title}</title>
           <meta name="description" content={description} />
@@ -227,7 +240,6 @@ const ServicePage = () => {
             justifyContent: "center",
             alignItems: "center",
             flexGrow: 1,
-            backgroundColor: "#b6c0c2",
             padding: { xs: 4, md: 8 },
             mt: { xs: "56px", md: "64px" },
           }}
@@ -256,10 +268,16 @@ const ServicePage = () => {
               >
                 404
               </Typography>
-              <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+              <Typography
+                variant="h3"
+                sx={{ fontWeight: "bold", mb: 2, color: "#fff" }}
+              >
                 Oops! I may have chewed up the power cord.
               </Typography>
-              <Typography variant="body1" sx={{ mb: 4, color: "#555" }}>
+              <Typography
+                variant="body1"
+                sx={{ mb: 4, color: "rgba(255,255,255,0.8)" }}
+              >
                 Go back to our main page to continue your visit.
               </Typography>
 
@@ -295,7 +313,7 @@ const ServicePage = () => {
         </Box>
 
         <CallToAction />
-        <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
+        <Box>
           <Contact />
         </Box>
         <Footer />
@@ -303,7 +321,7 @@ const ServicePage = () => {
     );
   }
 
-  // ----- NORMAL SERVICE PAGE -----
+  // ---------- NORMAL PAGE ----------
   return (
     <>
       <Helmet>
@@ -311,29 +329,45 @@ const ServicePage = () => {
         <meta name="description" content={description} />
         <meta name="robots" content={robots} />
         <link rel="canonical" href={canonical} />
-        {/* Social cards */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        {/* <meta property="og:image" content="https://tinttekplus.com/og.jpg" /> */}
         <meta name="twitter:card" content="summary_large_image" />
         {jsonLd && (
-          <script type="application/ld+json">
-            {JSON.stringify(jsonLd)}
-          </script>
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         )}
       </Helmet>
 
-      {/* === Your existing UI, unchanged === */}
+      {/* 1) Route-scoped wrapper with gradient + global background overrides */}
       <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          backgroundColor: "#f9f9f9",
-        }}
+        className="ServicePageRoot"
+        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
+        <GlobalStyles
+          styles={{
+            ".ServicePageRoot": {
+              background: GRADIENT,
+              backgroundAttachment: "fixed",
+            },
+            // Force ALL descendants inside this page to be transparent
+            ".ServicePageRoot *": {
+              backgroundColor: "transparent !important",
+              backgroundImage: "none !important",
+            },
+            ".ServicePageRoot img, .ServicePageRoot video": {
+              backgroundColor: "transparent !important",
+            },
+            // OPTIONAL: add subtle section "card" look using a translucent overlay utility
+            ".glass-section": {
+              backgroundColor: "rgba(255,255,255,0.06) !important",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "16px",
+              backdropFilter: "blur(6px)",
+            },
+          }}
+        />
+
         {/* Hero */}
         <Box
           sx={{
@@ -341,9 +375,7 @@ const ServicePage = () => {
             width: "100vw",
             paddingTop: 5,
             height: { xs: "40vh", md: "40vh" },
-            backgroundColor: "#000",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            // background removed: we want the gradient to show through
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -372,9 +404,23 @@ const ServicePage = () => {
             sx={{
               mb: 2,
               fontWeight: "bold",
-              color: "#fff",
+              color: "rgba(255,255,255,0.9)",
               textAlign: "center",
               fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
+              position: "relative",
+              display: "inline-block",
+              "&::after": {
+                content: '""',
+                display: "block",
+                width: "80px",
+                height: "5px",
+                backgroundColor: "#2794d2",
+                margin: "6px auto 0",
+                borderRadius: "2px",
+                boxShadow:
+                  "0 0 8px rgba(39,148,210,0.7), 0 0 16px rgba(39,148,210,0.6)",
+                mt: 4,
+              },
             }}
           >
             {service.description}
@@ -391,9 +437,10 @@ const ServicePage = () => {
           serviceId === "residential-window-tinting" ||
           serviceId === "vehicle-window-tinting") && <TeslaCTA />}
 
-        {(serviceId === "vehicle-paint-correction") && <ImageCTA />}
-
-        {serviceId === "vehicle-paint-correction" && <PaintCorrectionServices />}
+        {serviceId === "vehicle-paint-correction" && <ImageCTA />}
+        {serviceId === "vehicle-paint-correction" && (
+          <PaintCorrectionServices />
+        )}
 
         {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
         {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
@@ -431,7 +478,9 @@ const ServicePage = () => {
             <HowItWorks serviceId={serviceId} />
           )}
 
-        {serviceId === "paint-correction-services" && <PaintCorrectionServices />}
+        {serviceId === "paint-correction-services" && (
+          <PaintCorrectionServices />
+        )}
 
         {(serviceId === "vehicle-window-tinting" ||
           serviceId === "tesla-window-tinting" ||
@@ -446,7 +495,8 @@ const ServicePage = () => {
         <FAQSection />
         <CallToAction />
 
-        <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
+        {/* Remove solid backgrounds from these wrappers so gradient shows */}
+        <Box>
           <Contact />
         </Box>
 

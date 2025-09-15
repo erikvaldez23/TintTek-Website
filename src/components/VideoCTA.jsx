@@ -119,7 +119,7 @@ export default function VideoCTA() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
         <Box
@@ -146,17 +146,23 @@ export default function VideoCTA() {
               p: 2,
             }}
           >
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                borderRadius: "20px",
-                overflow: "hidden",
-                background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)", 
-                boxShadow:
-                  "0 10px 25px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.1)",
-              }}
-            >
+          <Box
+  sx={{
+    position: "relative",
+    width: "100%",
+    borderRadius: "20px",
+    overflow: "hidden",
+    background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)",
+    boxShadow: `
+      0 0 20px rgba(39,148,210,0.7),
+      0 0 40px rgba(39,148,210,0.5),
+      0 0 60px rgba(39,148,210,0.3),
+      0 10px 25px rgba(0,0,0,0.6),
+      inset 0 0 10px rgba(255,255,255,0.1)
+    `,
+  }}
+>
+
               <video
                 ref={videoRef}
                 src={content.video}
@@ -211,7 +217,7 @@ export default function VideoCTA() {
           <Box
             sx={{
               width: isMobile ? "100%" : "75%",
-              color: "#000",
+              color: "#fff",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -257,8 +263,8 @@ export default function VideoCTA() {
               transition={{ type: "spring", stiffness: 300 }}
               sx={{
                 mt: 3,
-                backgroundColor: "#000",
-                color: "#fff",
+                    backgroundColor: "#2794d2 !important",
+                color: "#000",
                 fontWeight: "bold",
                 px: isMobile ? 3 : 4,
                 py: isMobile ? 1.2 : 1.5,
