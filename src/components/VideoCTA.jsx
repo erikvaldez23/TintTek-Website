@@ -52,7 +52,7 @@ const videoContent = {
   "ceramic-coating": {
     title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
     description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,
-    video: "/videos/ceramic-coating.mov",
+    video: "/videos/ceramic.mov",
   },
   "windshield-protection-film": {
     title: "Drive Texas Roads with Confidence: Experience Superior Protection, Clarity, and Durability.",

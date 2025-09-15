@@ -17,13 +17,13 @@ const tintOptions = {
     image: "/tesla-tint-model/tesla-5.webp",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
-  "20%": {
-    name: "20% Tint",
+  "15%": {
+    name: "15% Tint",
     image: "/tesla-tint-model/tesla-20.webp",
     description: "Provides a balance of privacy and visibility.",
   },
-  "35%": {
-    name: "35% Tint",
+  "30%": {
+    name: "30% Tint",
     image: "/tesla-tint-model/tesla-35.webp",
     description: "A medium tint that maintains a sleek, stylish look.",
   },
@@ -32,8 +32,8 @@ const tintOptions = {
     image: "/tesla-tint-model/tesla-50.webp",
     description: "Allows more visibility while still reducing glare and heat.",
   },
-  "70%": {
-    name: "70% Tint",
+  "80%": {
+    name: "80% Tint",
     image: "/tesla-tint-model/tesla-70.webp",
     description: "A light tint for UV protection with high visibility.",
   },

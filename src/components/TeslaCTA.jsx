@@ -34,6 +34,11 @@ const callToActionData = {
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     video: "/videos/ppf.mov",
   },
+    "residential-window-tinting": {
+    title: "TRANSFORM YOUR HOME WITH TINT TEK PLUS AND LLUMAR® WINDOW FILM",
+    description: `If you're feeling uncomfortable or dissatisfied with your home, start with your windows. Tint Tek Plus offers smart residential window film solutions using LLumar American Made products to address what may be bothering you—whether it’s the hot spots in a room, high cooling costs, or even the afternoon glare on your TV. Our team has over 10+ years of experience and provides a variety of window films that are quickly and professionally installed, delivering lasting lifestyle benefits without breaking the bank.`,
+    video: "/videos/residential-page.mov",
+  },
 };
 
 const TeslaCTA = () => {

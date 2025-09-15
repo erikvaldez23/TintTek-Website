@@ -48,14 +48,14 @@ const serviceOptions = {
     ],
     filmTypes: [
       {
-        name: "Llumar CTX",
+        name: "FormulaOne Classic Series",
         description:
-          "CTX film combines advanced ceramic technology with excellent heat and UV protection. It blocks up to 60% of infrared heat while maintaining a clear, non-reflective appearance. Perfect for those seeking superior comfort and privacy without darkening windows too much, CTX is ideal for moderate climates where effective heat rejection and UV protection are key.",
+          "FormulaOne Classic is a premium dyed film that delivers a sleek, factory-tinted charcoal appearance—perfect for drivers who want style, privacy, and essential UV protection without breaking the bank. It reduces glare and helps keep your interior cooler, all while preserving the clean, understated look many drivers love.",
       },
       {
-        name: "Llumar IRX",
+        name: "FormulaOne Pinnacle Series",
         description:
-          "Maximum heat rejection, LLumar IRX is the premium choice. With up to 97% infrared heat blocking, it offers superior comfort by keeping your interior cooler, even in extreme sun. The IRX film maintains a neutral, clear appearance and provides exceptional UV protection, making it perfect for hot climates where optimal performance is required without sacrificing visibility or style.",
+          "FormulaOne Pinnacle takes things further with advanced nano-ceramic technology. Unlike dyed films, it offers excellent infrared heat rejection—helping to keep your vehicle cooler, even on the hottest days. Pinnacle also significantly reduces glare and provides the same 99%+ UV protection, protecting both your passengers and interior.",
       },
     ],
   },
