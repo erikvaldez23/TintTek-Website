@@ -223,6 +223,7 @@ export default function VideoCTA() {
               alignItems: "center",
               textAlign: "center",
               px: { xs: 1, sm: 2, md: 3 },
+              py: isMobile ? 5 : 0
             }}
           >
             <Typography

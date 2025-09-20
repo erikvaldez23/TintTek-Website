@@ -116,6 +116,7 @@ const TeslaTintingSimulator = () => {
             alignItems: "center",
             justifyContent: "center",
             padding: "20px",
+            mt: 8
           }}
         >
           <Box sx={{ width: "90%", mx: "auto" }}>

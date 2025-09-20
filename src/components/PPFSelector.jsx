@@ -7,6 +7,7 @@ import {
   MenuItem,
   useMediaQuery,
   useTheme,
+  FormControl,
 } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -26,13 +27,6 @@ const ppfOptions = {
       "Covers additional areas for enhanced protection and longevity.",
     price: "$2500",
   },
-  // "track-package": {
-  //   name: "Track Package PPF",
-  //   image: "/track-package1.png",
-  //   description:
-  //     "Designed for track performance with maximum coverage and durability.",
-  //   price: "$$$",
-  // },
   "full-car": {
     name: "Full Car PPF",
     image: "/ppf-model/ppf-full.webp",
@@ -42,26 +36,21 @@ const ppfOptions = {
 };
 
 const PPFSelector = () => {
-  const [selectedPPF, setSelectedPPF] = useState("front-end"); // Default selection
-
+  const [selectedPPF, setSelectedPPF] = useState("front-end");
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Handle PPF Selection
-  const handleSelection = (ppfKey) => {
-    setSelectedPPF(ppfKey);
-  };
+  const handleSelection = (ppfKey) => setSelectedPPF(ppfKey);
 
   return (
     <Box
       sx={{
         textAlign: "center",
-        width: "100vw",
+        width: "100%", // avoid 100vw overflow
         overflowX: "hidden",
-        backgroundColor: "#2e2e2e",
       }}
     >
-      {/* Navigation Tabs for Larger Screens */}
+      {/* Desktop buttons — styled to match TintingSimulator */}
       {!isMobile ? (
         <Box
           sx={{
@@ -69,7 +58,7 @@ const PPFSelector = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            background: "#2e2e2e",
+            mt: 15,
           }}
         >
           {Object.entries(ppfOptions).map(([key, option]) => (
@@ -77,19 +66,32 @@ const PPFSelector = () => {
               key={key}
               onClick={() => handleSelection(key)}
               sx={{
-                backgroundColor: selectedPPF === key ? "#2794d2" : "#fff",
-                color: selectedPPF === key ? "#000" : "#000",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                backgroundColor:
+                  selectedPPF === key
+                    ? "rgba(39,148,210,0.25)"
+                    : "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "#fff",
                 borderRadius: "20px",
                 fontWeight: "bold",
                 px: 3,
                 py: 1,
                 fontSize: "1rem",
                 textTransform: "uppercase",
-                transition: "0.3s ease",
+                boxShadow:
+                  selectedPPF === key
+                    ? "0 0 0 2px rgba(39,148,210,0.25) inset"
+                    : "none",
                 "&:hover": {
-                  backgroundColor: "#000",
-                  color: "#fff",
+                  backgroundColor:
+                    selectedPPF === key
+                      ? "rgba(39,148,210,0.35)"
+                      : "rgba(255,255,255,0.12)",
+                  borderColor: "rgba(255,255,255,0.25)",
                 },
+                "&:active": { transform: "translateY(1px)" },
               }}
             >
               {option.name}
@@ -97,69 +99,86 @@ const PPFSelector = () => {
           ))}
         </Box>
       ) : (
-        // Dropdown for Mobile Screens
-        <Box sx={{ width: "90%", mx: "auto", my: 2 }}>
-          <Select
-            value={selectedPPF}
-            onChange={(e) => handleSelection(e.target.value)}
-            fullWidth
-            displayEmpty
-            sx={{
-              background: "rgba(255, 255, 255, 0.1)", // Glassmorphism effect
-              backdropFilter: "blur(12px)", // Frosted background
-              border: "1px solid rgba(255, 255, 255, 0.2)", // Soft white border
-              borderRadius: "12px",
-              color: "#fff", // White text for contrast
-              fontWeight: "500",
-              fontSize: "16px",
-              textTransform: "uppercase",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
-              },
-              "& .MuiSelect-icon": {
-                color: "#2794d2", // Custom dropdown arrow color
-              },
-              "& .MuiSelect-select": {
-                padding: "14px 18px",
-                display: "flex",
-                alignItems: "center",
-              },
-            }}
-          >
-            {Object.entries(ppfOptions).map(([key, option]) => (
-              <MenuItem
-                key={key}
-                value={key}
+        // Mobile dropdown — true full-bleed and full width
+        <Box
+          sx={{
+            width: "100vw",
+            ml: "calc(50% - 50vw)",
+            mr: "calc(50% - 50vw)",
+            pl: "max(16px, env(safe-area-inset-left))",
+            pr: "max(16px, env(safe-area-inset-right))",
+            py: 2,
+            mt: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#111",
+          }}
+        >
+          <Box sx={{ width: "100%", maxWidth: 1200, mx: "auto" }}>
+            <FormControl fullWidth>
+              <Select
+                value={selectedPPF}
+                onChange={(e) => handleSelection(e.target.value)}
+                displayEmpty
                 sx={{
-                  fontSize: "15px",
-                  fontWeight: "500",
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "12px",
-                  borderRadius: "8px",
+                  width: "100%",
+                  background: "#000",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid #ccc",
+                  borderRadius: "30px",
+                  color: "#fff",
+                  fontWeight: 500,
+                  fontSize: "16px",
+                  textTransform: "uppercase",
                   transition: "all 0.3s ease",
-                  "&:hover": {
-                    background: "linear-gradient(90deg, #2794d2, #1a78c2)",
-                    color: "#fff",
-                    transform: "scale(1.03)",
+                  "&:hover": { background: "rgba(255, 255, 255, 0.2)" },
+                  "& .MuiSelect-icon": { color: "#2794d2" },
+                  "& .MuiSelect-select": {
+                    padding: "14px 18px",
+                    display: "flex",
+                    alignItems: "center",
+                  },
+                }}
+                MenuProps={{
+                  PaperProps: {
+                    sx: { backgroundColor: "#444", color: "#fff" },
                   },
                 }}
               >
-                {option.name}
-              </MenuItem>
-            ))}
-          </Select>
+                {Object.entries(ppfOptions).map(([key, option]) => (
+                  <MenuItem
+                    key={key}
+                    value={key}
+                    sx={{
+                      fontSize: "15px",
+                      fontWeight: 500,
+                      display: "flex",
+                      alignItems: "center",
+                      p: "12px",
+                      borderRadius: "8px",
+                      transition: "all 0.3s ease",
+                      backgroundColor: "#444",
+                      color: "#fff",
+                      "&:hover": {
+                        background:
+                          "linear-gradient(90deg, #2794d2, #1a78c2)",
+                        color: "#fff",
+                        transform: "scale(1.03)",
+                      },
+                    }}
+                  >
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
         </Box>
       )}
 
-      {/* Text Section - Placed Above the Image */}
-      <Box
-        sx={{
-          py: 2,
-          color: "#fff",
-        }}
-      >
+      {/* Text Section */}
+      <Box sx={{ py: 2, color: "#fff" }}>
         <Typography variant={isMobile ? "h4" : "h3"} fontWeight="bold">
           {ppfOptions[selectedPPF].name}
         </Typography>
@@ -176,7 +195,7 @@ const PPFSelector = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isMobile ? "40vh" : "40vh",
+          height: "40vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

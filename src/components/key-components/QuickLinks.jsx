@@ -24,6 +24,7 @@ const quickLinksData = [
       { text: "Vehicle Paint Correction", to: "/services/vehicle-paint-correction" },
       { text: "Vehicle Paint Protection", to: "/services/vehicle-paint-protection" },
       { text: "Headlight & Tailight Services", to: "/services/headlight-services" },
+      { text: "Ceramic Coating", to: "/services/ceramic-coating" },
       { text: "Windshield Protection Film", to: "/services/windshield-protection-film" },
     ],
   },
@@ -38,6 +39,7 @@ const quickLinksData = [
       { text: "Paint Protection Film Viewer", to: "/simulators/vehicle-paint-protection" },
       { text: "Commercial Window Film Viewer", to: "/simulators/commercial-window-tinting" },
       { text: "Residential Window Film Viewer", to: "/simulators/residential-window-tinting" },
+      { text: "Privacy Policy", to: "/privacy-policy" },
     ],
   },
 ];

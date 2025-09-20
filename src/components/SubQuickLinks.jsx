@@ -24,6 +24,7 @@ const quickLinksData = [
       { text: "Vehicle Paint Correction", to: "/services/vehicle-paint-correction" },
       { text: "Vehicle Paint Protection", to: "/services/vehicle-paint-protection" },
       { text: "Headlight & Tailight Services", to: "/services/headlight-services" },
+      { text: "Ceramic Coating", to: "/services/ceramic-coating" },
       { text: "Windshield Protection Film", to: "/services/windshield-protection-film" },
     ],
   },
@@ -38,6 +39,7 @@ const quickLinksData = [
       { text: "Paint Protection Film Viewer", to: "/simulators/vehicle-paint-protection" },
       { text: "Commercial Window Film Viewer", to: "/simulators/commercial-window-tinting" },
       { text: "Residential Window Film Viewer", to: "/simulators/residential-window-tinting" },
+      { text: "Home", to: "/" },
     ],
   },
 ];
@@ -70,8 +72,6 @@ const QuickLinks = () => {
         display: "flex",              // ✅ center the whole block
         justifyContent: "center",     // ✅
         color: "#fff !important",
-        background:
-          "radial-gradient(1200px 600px at 50% -200px, rgba(39,148,210,0.18), transparent 60%), #0b0b0c",
         py: { xs: 4, md: 8 },
         px: { xs: 2, md: 3 },
         position: "relative",
@@ -89,8 +89,6 @@ const QuickLinks = () => {
               fontWeight: 800,
               letterSpacing: 0.4,
               lineHeight: 1.15,
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.6))",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               color: "#fff",
