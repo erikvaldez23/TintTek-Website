@@ -172,7 +172,6 @@ const ImageCTA = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          backgroundColor: "#2794d2",
           color: "#000",
           overflow: "hidden",
         }}
@@ -243,6 +242,7 @@ const ImageCTA = () => {
                 fontWeight: "bold",
                 letterSpacing: "1px",
                 textTransform: "uppercase",
+                color: "#fff"
               }}
             >
               {title}
@@ -259,6 +259,7 @@ const ImageCTA = () => {
                 fontSize: isMobile ? "1rem" : "1.2rem",
                 lineHeight: "1.6",
                 opacity: 0.9,
+                color: "#fff"
               }}
             >
               {description}
@@ -273,7 +274,7 @@ const ImageCTA = () => {
               transition={{ type: "spring", stiffness: 300 }}
               sx={{
                 mt: 3,
-                backgroundColor: "#000",
+                backgroundColor: "#2794d2 !important",
                 color: "#fff",
                 fontWeight: "bold",
                 px: isMobile ? 3 : 4,

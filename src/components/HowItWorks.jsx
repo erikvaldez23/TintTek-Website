@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Divider,
   IconButton,
+  GlobalStyles,     // ✅ added
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
@@ -28,9 +29,6 @@ import FactCheckIcon from "@mui/icons-material/FactCheck";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { SupportAgent } from "@mui/icons-material";
 
 const CustomIcons = {
   paintCorrection1: (
@@ -533,12 +531,39 @@ const HowItWorks = ({ serviceId }) => {
       sx={{
         position: "relative",
         py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 4 },
-        width: "100vw",
+        px: { xs: 1, md: 4 },
+        width: "100%",   // ✅ keep 100%, not 100vw
         overflow: "hidden",
-        // no background color here — let page gradient show through
       }}
     >
+      {/* 🔒 Force-centering CSS (mobile) */}
+      <GlobalStyles
+        styles={{
+          /* Target <=600px (MUI xs) */
+          "@media (max-width:600px)": {
+            /* Kill container's negative margins & ensure full width */
+            ".howitworks-grid.MuiGrid-container": {
+              marginLeft: "0 !important",
+              width: "100% !important",
+            },
+            /* Center the item’s contents (the Paper) */
+            ".howitworks-grid.MuiGrid-container > .MuiGrid-item": {
+              display: "flex !important",
+              justifyContent: "center !important",
+              paddingLeft: "16px !important",   // mirrors default spacing
+              paddingRight: "16px !important",
+            },
+            /* Constrain & center each card */
+            ".howitworks-card": {
+              maxWidth: "420px !important",
+              width: "100% !important",
+              marginLeft: "auto !important",
+              marginRight: "auto !important",
+            },
+          },
+        }}
+      />
+
       {/* subtle radial accents behind the grid */}
       <Box
         sx={{
@@ -553,18 +578,6 @@ const HowItWorks = ({ serviceId }) => {
             borderRadius: "50%",
             filter: "blur(80px)",
             opacity: 0.25,
-          },
-          "&::before": {
-            top: -120,
-            left: -120,
-            background:
-              "radial-gradient(closest-side, rgba(39,148,210,.35), transparent 70%)",
-          },
-          "&::after": {
-            bottom: -140,
-            right: -140,
-            background:
-              "radial-gradient(closest-side, rgba(77,184,240,.28), transparent 70%)",
           },
         }}
       />
@@ -600,19 +613,6 @@ const HowItWorks = ({ serviceId }) => {
               mx: "auto",
               position: "relative",
               display: "inline-block",
-              // small blue underline using ::after
-              "&::after": {
-                content: '""',
-                display: "block",
-                width: "80px",
-                height: "5px",
-                margin: "10px auto 0",
-                borderRadius: 2,
-                backgroundColor: "#2794d2",
-                mt: 4,
-                boxShadow:
-                  "0 0 8px rgba(39,148,210,.7), 0 0 16px rgba(39,148,210,.5)",
-              },
             }}
           >
             {service.finalDescription}
@@ -625,6 +625,7 @@ const HowItWorks = ({ serviceId }) => {
         container
         spacing={3}
         justifyContent="center"
+        className="howitworks-grid"   // ✅ scoped for CSS above
         sx={{
           maxWidth: service.steps.length > 4 ? 1100 : 1200,
           mx: "auto",
@@ -635,25 +636,30 @@ const HowItWorks = ({ serviceId }) => {
             item
             xs={12}
             sm={6}
-            md={service.steps.length > 4 ? 4 : 4} // 3x2 at desktop like screenshot
+            md={service.steps.length > 4 ? 4 : 4}
             key={i}
-            sx={{ display: "flex" }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <Paper
               component={motion.article}
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 250, damping: 20 }}
               elevation={0}
+              className="howitworks-card"      // ✅ scoped for CSS above
               sx={{
                 flex: 1,
+                width: "100%",
+                maxWidth: { xs: 420, sm: "unset" },
+                mx: "auto",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
                 p: { xs: 3, md: 4 },
                 borderRadius: 3,
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
                 border: "1px solid rgba(255,255,255,0.08)",
                 boxShadow:
                   "0 8px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
@@ -675,8 +681,6 @@ const HowItWorks = ({ serviceId }) => {
                   borderRadius: "50%",
                   display: "grid",
                   placeItems: "center",
-                  background:
-                    "linear-gradient(135deg, rgba(39,148,210,.25), rgba(77,184,240,.25))",
                   boxShadow:
                     "inset 0 0 10px rgba(255,255,255,.08), 0 0 18px rgba(39,148,210,.25)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -710,7 +714,7 @@ const HowItWorks = ({ serviceId }) => {
                   borderRadius: 999,
                   fontWeight: 700,
                   textTransform: "none",
-                  backgroundColor: "rgba(39,148,210,0.18)",
+                  backgroundColor: "#2794d2 !important",
                   color: "#eaf6ff",
                   border: "1px solid rgba(39,148,210,0.35)",
                   backdropFilter: "blur(4px)",
@@ -728,21 +732,28 @@ const HowItWorks = ({ serviceId }) => {
         ))}
       </Grid>
 
-      {/* Optional Images Row (kept, but modernized spacing) */}
+      {/* Optional Images Row */}
       {serviceId !== "vehicle-paint-correction" &&
         serviceId !== "vehicle-paint-protection" &&
         serviceId !== "ceramic-coating" && (
           <Box sx={{ maxWidth: 1200, mx: "auto", pt: { xs: 5, md: 8 } }}>
             <Grid container spacing={3} justifyContent="center">
               {service.images.map((image, index) => (
-                <Grid item xs={12} sm={4} key={index}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  key={index}
+                  sx={{ display: "flex", justifyContent: "center" }}
+                >
                   <Paper
                     elevation={0}
                     sx={{
                       borderRadius: 3,
                       overflow: "hidden",
-                      background: "rgba(255,255,255,0.04)",
                       border: "1px solid rgba(255,255,255,0.08)",
+                      width: "100%",
+                      maxWidth: { xs: 420, sm: "unset" },
                     }}
                   >
                     <img
@@ -771,8 +782,6 @@ const HowItWorks = ({ serviceId }) => {
           sx: {
             borderRadius: 4,
             p: 1,
-            background:
-              "linear-gradient(180deg, rgba(20,20,20,0.95), rgba(15,15,15,0.95))",
             border: "1px solid rgba(255,255,255,0.08)",
             color: "#fff",
             boxShadow:

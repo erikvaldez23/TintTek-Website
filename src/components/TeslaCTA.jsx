@@ -1,3 +1,4 @@
+// src/components/TeslaCTA.jsx
 import React, { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -9,7 +10,6 @@ import {
   IconButton,
   Dialog,
 } from "@mui/material";
-import { motion } from "framer-motion";
 import { PlayArrow, Pause, VolumeUp, VolumeOff } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -29,22 +29,21 @@ const callToActionData = {
     `,
     video: "/videos/v-window-tint2.mp4",
   },
-    "vehicle-paint-protection": {
+  "vehicle-paint-protection": {
     title: "ULTIMATE PROTECTION. UNMATCHED CLARITY. LONG-LASTING RESULTS.",
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     video: "/videos/ppf.mov",
   },
-    "residential-window-tinting": {
+  "residential-window-tinting": {
     title: "TRANSFORM YOUR HOME WITH TINT TEK PLUS AND LLUMAR® WINDOW FILM",
     description: `If you're feeling uncomfortable or dissatisfied with your home, start with your windows. Tint Tek Plus offers smart residential window film solutions using LLumar American Made products to address what may be bothering you—whether it’s the hot spots in a room, high cooling costs, or even the afternoon glare on your TV. Our team has over 10+ years of experience and provides a variety of window films that are quickly and professionally installed, delivering lasting lifestyle benefits without breaking the bank.`,
     video: "/videos/residential-page.mov",
   },
 };
 
-const TeslaCTA = () => {
+export default function TeslaCTA() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [openModal, setOpenModal] = useState(false);
   const { serviceId } = useParams();
   const currentData =
     callToActionData[serviceId] || callToActionData["tesla-window-tinting"];
@@ -54,236 +53,162 @@ const TeslaCTA = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleToggleVideo = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) {
-      video.play();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
       setIsPlaying(true);
     } else {
-      video.pause();
+      v.pause();
       setIsPlaying(false);
     }
   };
 
   const handleToggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
-  };
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const fadeSlideVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
-      variants={containerVariants}
+    <Box
+      component="section"
+      sx={{
+        position: "relative",
+        py: 5,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        overflow: "hidden",
+      }}
     >
-      <Box
-        sx={{
-          position: "relative",
-          py: 5,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          backgroundColor: "#2794d2",
-          color: "#000",
-          overflow: "hidden",
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1 }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 1,
-          }}
-        />
+      <Box sx={{ position: "relative", maxWidth: "1100px", width: "100%" }}>
+        {/* Video */}
+        <Box sx={{ mb: 4, position: "relative" }}>
+          <video
+            ref={videoRef}
+            src={video}
+            muted={isMuted}
+            loop
+            playsInline
+            preload="metadata"      // ✅ lighter initial load
+            poster="/gallery/Tint Tek-108.jpg"
+            onEnded={() => setIsPlaying(false)}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            style={{
+              width: "100%",
+              minHeight: isMobile ? "200px" : "400px",
+              maxHeight: isMobile ? "300px" : "400px",
+              objectFit: "cover",
+              borderRadius: "24px",
+              // ✅ No transitions/shadows to avoid extra paints
+              backgroundColor: "transparent",
+            }}
+          />
 
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 2,
-            maxWidth: "1100px",
-            width: "100%",
-          }}
-        >
-          {/* Video with Controls */}
-          <Box sx={{ mb: 4, position: "relative" }}>
-            <video
-              ref={videoRef}
-              src={video}
-              muted={isMuted}
-              loop
-              playsInline
-              poster="/gallery/Tint Tek-108.jpg"
-              onEnded={() => setIsPlaying(false)}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              style={{
-                width: "100%",
-                minHeight: isMobile ? "200px" : "400px",
-                maxHeight: isMobile ? "300px" : "400px",
-                objectFit: "cover",
-                borderRadius: "24px",
-                transition: "all 0.4s ease",
-                boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-              }}
-            />
+          {/* Controls (no bg paints) */}
+          <IconButton
+            onClick={handleToggleVideo}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+            sx={{
+              position: "absolute",
+              bottom: 16,
+              left: 16,
+            }}
+          >
+            {isPlaying ? <Pause /> : <PlayArrow />}
+          </IconButton>
 
-            {/* Play/Pause Button */}
-            <IconButton
-              onClick={handleToggleVideo}
-              sx={{
-                position: "absolute",
-                bottom: 16,
-                left: 16,
-                backgroundColor: "#000",
-                color: "#2794d2",
-                "&:hover": { backgroundColor: "#2794d2", color: "#000" },
-              }}
-            >
-              {isPlaying ? <Pause /> : <PlayArrow />}
-            </IconButton>
+          <IconButton
+            onClick={handleToggleMute}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            sx={{
+              position: "absolute",
+              bottom: 16,
+              left: 64,
+            }}
+          >
+            {isMuted ? <VolumeOff /> : <VolumeUp />}
+          </IconButton>
+        </Box>
 
-            {/* Mute/Unmute Button */}
-            <IconButton
-              onClick={handleToggleMute}
-              sx={{
-                position: "absolute",
-                bottom: 16,
-                left: 64,
-                backgroundColor: "#000",
-                color: "#2794d2",
-                "&:hover": { backgroundColor: "#2794d2", color: "#000" },
-              }}
-            >
-              {isMuted ? <VolumeOff /> : <VolumeUp />}
-            </IconButton>
-          </Box>
+        {/* Text */}
+        <Box sx={{ px: { xs: 1, sm: 2, md: 3, color: "#fff" } }}>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            sx={{
+              fontWeight: "bold",
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+            }}
+          >
+            {title}
+          </Typography>
 
-          <Box sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
-            <Typography
-              variant={isMobile ? "h4" : "h2"}
-              component={motion.h3}
-              variants={fadeSlideVariant}
-              sx={{
-                fontWeight: "bold",
-                letterSpacing: "1px",
-                textTransform: "uppercase",
-              }}
-            >
-              {title}
-            </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 2,
+              px: { xs: 2, sm: 2, md: 3 },
+              fontSize: isMobile ? "1rem" : "1.2rem",
+              lineHeight: 1.6,
+              opacity: 0.9,
+            }}
+          >
+            {description}
+          </Typography>
 
-            <Typography
-              variant="body1"
-              component={motion.p}
-              variants={fadeSlideVariant}
-              transition={{ delay: 0.3 }}
-              sx={{
-                mt: 2,
-                px: { xs: 2, sm: 2, md: 3 },
-                fontSize: isMobile ? "1rem" : "1.2rem",
-                lineHeight: "1.6",
-                opacity: 0.9,
-              }}
-            >
-              {description}
-            </Typography>
+          <Button
+            sx={{
+              background: "#2794d2 !important",
+              mt: 3,
+              // ✅ no custom background; uses theme defaults
+              fontWeight: "bold",
+              px: isMobile ? 3 : 4,
+              py: isMobile ? 1.2 : 1.5,
+              borderRadius: "30px",
+              textTransform: "uppercase",
+              fontSize: isMobile ? "1rem" : "1.1rem",
+              width: isMobile ? "100%" : "auto",
+            }}
+            onClick={() => setOpenModal(true)}
+            variant="contained"   // Keep for usability; remove if parent overrides Paper/Buttons
+          >
+            Get a Free Quote
+          </Button>
 
-            <Button
-              component={motion.button}
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              sx={{
-                mt: 3,
-                backgroundColor: "#000",
-                color: "#fff",
-                fontWeight: "bold",
-                px: isMobile ? 3 : 4,
-                py: isMobile ? 1.2 : 1.5,
-                borderRadius: "30px",
-                textTransform: "uppercase",
-                fontSize: isMobile ? "1rem" : "1.1rem",
-                width: isMobile ? "100%" : "auto",
-              }}
-              onClick={handleOpenModal}
-            >
-              Get a Free Quote
-            </Button>
-            <Dialog
-              open={openModal}
-              onClose={handleCloseModal}
-              fullWidth
-              maxWidth="lg"
-            >
-              <Box sx={{ position: "relative" }}>
-                {/* Close Button */}
-                <IconButton
-                  onClick={handleCloseModal}
-                  sx={{
-                    position: "absolute",
-                    top: 8,
-                    right: 8,
-                    color: "#fff",
-                    backgroundColor: "rgba(0,0,0,0.5)",
-                    zIndex: 1,
-                    "&:hover": {
-                      backgroundColor: "rgba(0,0,0,0.7)",
-                    },
-                  }}
-                >
-                  <CloseIcon />
-                </IconButton>
-                <iframe
-                  src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
-                  width="100%"
-                  height="800px"
-                  style={{ border: "none" }}
-                  title="Fast Quote"
-                ></iframe>
-              </Box>
-            </Dialog>
-          </Box>
+          <Dialog
+            open={openModal}
+            onClose={() => setOpenModal(false)}
+            fullWidth
+            maxWidth="lg"
+          >
+            <Box sx={{ position: "relative" }}>
+              <IconButton
+                onClick={() => setOpenModal(false)}
+                aria-label="Close quote dialog"
+                sx={{ position: "absolute", top: 8, right: 8, zIndex: 1 }}
+              >
+                <CloseIcon />
+              </IconButton>
+              <iframe
+                src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                width="100%"
+                height="800"
+                style={{ border: "none" }}
+                title="Fast Quote"
+                loading="lazy"
+              />
+            </Box>
+          </Dialog>
         </Box>
       </Box>
-    </motion.div>
+    </Box>
   );
-};
-
-export default TeslaCTA;
+}

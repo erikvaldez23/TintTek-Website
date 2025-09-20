@@ -373,9 +373,8 @@ const ServicePage = () => {
           sx={{
             position: "relative",
             width: "100vw",
-            paddingTop: 5,
+            paddingTop: 10,
             height: { xs: "40vh", md: "40vh" },
-            // background removed: we want the gradient to show through
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

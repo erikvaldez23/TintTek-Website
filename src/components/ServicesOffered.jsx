@@ -557,7 +557,6 @@ const ServicesOffered = ({ serviceId }) => {
               sx={{
                 mt: 3,
                 textAlign: "center",
-                background: "linear-gradient(135deg, #121212 0%, #1a1a1a 100%)",
                 py: 5,
                 px: 3,
                 borderRadius: 4,
@@ -567,20 +566,6 @@ const ServicesOffered = ({ serviceId }) => {
                 border: "1px solid rgba(255,255,255,0.05)",
               }}
             >
-              {/* Abstract shape for visual interest */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: -30,
-                  right: -30,
-                  width: 150,
-                  height: 150,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle, rgba(39,148,210,0.2) 0%, rgba(39,148,210,0) 70%)",
-                  zIndex: 0,
-                }}
-              />
               <Box
                 sx={{
                   position: "absolute",

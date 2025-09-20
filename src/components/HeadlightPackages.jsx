@@ -53,14 +53,14 @@ const HeadlightPackages = () => {
   };
 
   return (
-    <Box sx={{ py: 6, px: 2, backgroundColor: "#EEEEFF" }}>
+    <Box sx={{ py: 6, px: 2 }}>
       {/* Section Title */}
       <Typography
         variant={isMobile ? "h4" : "h2"}
         align="center"
         sx={{
-          color: "#000",
-          mb: 1,
+          color: "#fff",
+          mb: 5,
           fontWeight: "bold",
           textTransform: "uppercase",
         }}
@@ -75,7 +75,6 @@ const HeadlightPackages = () => {
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
                 sx={{
-                  backgroundColor: "#111",
                   color: "#fff",
                   borderRadius: 2,
                   boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
@@ -141,8 +140,8 @@ const HeadlightPackages = () => {
                     transition={{ type: "spring", stiffness: 300 }}
                     sx={{
                       mt: 3,
-                      backgroundColor: "#2794d2",
-                      color: "#000",
+                      backgroundColor: "#2794d2 !important",
+                      color: "#fff",
                       fontWeight: "bold",
                       px: isMobile ? 3 : 4,
                       py: isMobile ? 1.2 : 1.5,

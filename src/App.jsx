@@ -70,9 +70,6 @@ function AppContent() {
   const handleCloseChatbot = () => setChatbotOpen(false);
   const handleClosePopup = () => setShowPopup(false);
 
-  // IMPORTANT: Do NOT restore deep links here.
-  // We handle ?redirect=... in index.html before React mounts.
-
   return (
     <>
       <Topbar handleOpenChatbot={handleOpenChatbot} />

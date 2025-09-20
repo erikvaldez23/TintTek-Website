@@ -37,7 +37,6 @@ const BenefitsSection = ({ benefits }) => {
       sx={{
         py: isMobile ? 4 : 6,
         px: isMobile ? 2 : 2,
-        backgroundColor: "#EEEEFF",
         width: "100vw",
         display: "flex",
         justifyContent: "center",

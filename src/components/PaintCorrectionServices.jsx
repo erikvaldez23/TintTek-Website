@@ -15,20 +15,17 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Button,
-  Paper,
-  Divider,
   IconButton,
+  Container,
+  Paper,
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
-import StarIcon from "@mui/icons-material/Star";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-
 
 const stages = [
   {
@@ -91,50 +88,86 @@ export default function PaintCorrectionTabs() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
-    // Animation on load
     setIsVisible(true);
   }, []);
 
   const handleStageChange = (event, newValue) => {
     if (typeof newValue === "number") {
       setCurrentStage(newValue);
-    } else if (event.target && typeof event.target.value === "number") {
-      // For select dropdown
+    } else if (event?.target && typeof event.target.value === "number") {
       setCurrentStage(event.target.value);
     }
   };
 
-  // Custom tab styling
-  const tabSx = (index) => ({
-    color: currentStage === index ? "#fff" : "rgba(255, 255, 255, 0.6)",
+const tabSx = (index) => ({
+  position: "relative",
+  color: currentStage === index ? "#fff" : "rgba(255, 255, 255, 0.6)",
+  // 🔒 Force the background (and image) on the active tab
+  background:
+    currentStage === index
+      ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+      : "transparent !important",
+  backgroundImage:
+    currentStage === index
+      ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+      : "none !important",
+  backgroundColor:
+    currentStage === index ? "transparent !important" : "transparent !important",
+
+  borderRadius: "8px",
+  mx: 0.5,
+  my: 1,
+  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+  fontWeight: "bold",
+  textTransform: "none",
+  minHeight: "48px",
+  transition: "color 200ms ease, background 200ms ease",
+  "& .MuiSvgIcon-root": { mr: 1 },
+
+  // Ensure selected state also has the forced bg
+  "&.Mui-selected": {
     background:
-      currentStage === index ? stages[index].gradientColor : "transparent",
-    borderRadius: "8px",
-    mx: 0.5,
-    my: 1,
-    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-    fontWeight: "bold",
-    textTransform: "none",
-    transition: "all 0.3s ease",
-    "&:hover": {
-      color: "#fff",
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
-      transform: "scale(1.05)",
-    },
-    "& .MuiSvgIcon-root": {
-      mr: 1,
-    },
-    minHeight: "48px",
-    ...(currentStage === index && {
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)",
-      transform: "scale(1.05)",
-    }),
-  });
+      "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
+    backgroundImage:
+      "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
+  },
+
+  // 🔹 Underline accent (also forced)
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 12,
+    right: 12,
+    bottom: -6,
+    height: 3,
+    borderRadius: 2,
+    background:
+      currentStage === index
+        ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+        : "transparent !important",
+    boxShadow:
+      currentStage === index ? "0 0 10px rgba(39,148,210,0.5)" : "none",
+    opacity: currentStage === index ? 1 : 0,
+    transform: currentStage === index ? "scaleX(1)" : "scaleX(0.6)",
+    transformOrigin: "center",
+    transition: "opacity 220ms ease, transform 220ms ease",
+    pointerEvents: "none",
+  },
+
+  // Hover state (still forced so it shows through nukes)
+  "&:hover": {
+    color: "#fff",
+    background:
+      currentStage === index
+        ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+        : "rgba(255,255,255,0.1) !important",
+  },
+});
+
 
   return (
     <Box
       sx={{
-        background: "linear-gradient(180deg, #0a0a0a 0%, #121212 100%)",
         py: { xs: 4, sm: 6 },
         px: { xs: 2, sm: 4 },
         opacity: isVisible ? 1 : 0,
@@ -148,35 +181,33 @@ export default function PaintCorrectionTabs() {
             fontWeight="bold"
             variant={isMobile ? "h4" : "h2"}
             color="#fff"
-            sx={{
-              position: "relative",
-              display: "inline-block",
-              pb: 1,
-              // "&::after": {
-              //   content: '""',
-              //   position: "absolute",
-              //   bottom: 0,
-              //   left: 0,
-              //   width: "100%",
-              //   height: "4px",
-              //   background: "linear-gradient(90deg, #1976d2 0%, #2794d2 100%)",
-              //   borderRadius: "2px",
-              // },
-            }}
+            sx={{ position: "relative", display: "inline-block", pb: 1 }}
           >
             Paint Correction Stages
           </Typography>
-          {/* <Typography
-            variant="h6"
-            color="rgba(255, 255, 255, 0.8)"
-            sx={{ mt: 2 }}
-          >
-            Choose the right level of treatment for your vehicle
-          </Typography> */}
         </Box>
 
         {isMobile ? (
-          <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
+          <FormControl
+            fullWidth
+            variant="outlined"
+            sx={{
+              mb: 3,
+              position: "relative",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                left: 8,
+                right: 8,
+                bottom: -6,
+                height: 3,
+                borderRadius: 2,
+                background: `linear-gradient(90deg, ${stages[currentStage].color} 0%, #2794d2 100%)`,
+                boxShadow: "0 0 10px rgba(39,148,210,0.5)",
+                pointerEvents: "none",
+              },
+            }}
+          >
             <InputLabel
               id="stage-select-label"
               sx={{
@@ -195,9 +226,7 @@ export default function PaintCorrectionTabs() {
                 color: "#fff",
                 fontSize: { xs: "1.2rem", sm: "1.4rem" },
                 backgroundColor: "rgba(255, 255, 255, 0.05)",
-                "& .MuiSelect-icon": {
-                  color: "#fff",
-                },
+                "& .MuiSelect-icon": { color: "#fff" },
                 "& .MuiOutlinedInput-notchedOutline": {
                   borderColor: "rgba(255, 255, 255, 0.2)",
                 },
@@ -231,19 +260,17 @@ export default function PaintCorrectionTabs() {
               borderRadius: "16px",
               p: 1,
               mb: 3,
+              pb: 2, // space for underline drop
             }}
           >
             <Tabs
               value={currentStage}
               onChange={handleStageChange}
               variant="fullWidth"
-              indicatorColor="primary"
               TabIndicatorProps={{ style: { display: "none" } }}
               sx={{
                 width: "100%",
-                "& .MuiTabs-flexContainer": {
-                  gap: 1,
-                },
+                "& .MuiTabs-flexContainer": { gap: 1 },
               }}
             >
               {stages.map((stage, index) => (
@@ -252,14 +279,14 @@ export default function PaintCorrectionTabs() {
                   label={
                     <span
                       style={{
-                        color: currentStage === index ? "#fff" : "rgba(255,255,255,0.6)",
+                        color:
+                          currentStage === index ? "#fff" : "rgba(255,255,255,0.6)",
                         fontWeight: "bold",
                       }}
                     >
                       {stage.label}
                     </span>
                   }
-                  
                   icon={React.cloneElement(stage.icon, {
                     sx: {
                       color: currentStage === index ? "#fff" : "#2794d2",
@@ -289,8 +316,6 @@ export default function PaintCorrectionTabs() {
                   sx={{
                     p: { xs: 3, md: 4 },
                     bgcolor: "rgba(10, 10, 10, 0.95)",
-                    backgroundImage:
-                      "linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%)",
                     color: "#fff",
                     border: "2px solid rgba(255, 255, 255, 0.1)",
                     borderRadius: "16px",
@@ -300,11 +325,7 @@ export default function PaintCorrectionTabs() {
                 >
                   <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                     <AutoFixHighIcon sx={{ mr: 1, color: stage.color }} />
-                    <Typography
-                      variant="h5"
-                      fontWeight="bold"
-                      sx={{ color: "#fff" }}
-                    >
+                    <Typography variant="h5" fontWeight="bold" sx={{ color: "#fff" }}>
                       {stage.label}
                     </Typography>
                   </Box>
@@ -338,21 +359,14 @@ export default function PaintCorrectionTabs() {
                         <ListItem key={i} sx={{ py: 1 }}>
                           <ListItemIcon sx={{ minWidth: 40 }}>
                             <CheckCircleIcon
-                              sx={{
-                                color: "#2794d2",
-                                fontSize: { xs: "1.5rem", sm: "1.7rem" },
-                              }}
+                              sx={{ color: "#2794d2", fontSize: { xs: "1.5rem", sm: "1.7rem" } }}
                             />
                           </ListItemIcon>
                           <ListItemText
                             primary={item}
                             primaryTypographyProps={{
                               variant: "body1",
-                              fontSize: {
-                                xs: "1rem",
-                                sm: "1.1rem",
-                                md: "1.2rem",
-                              },
+                              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
                               color: "rgba(255, 255, 255, 0.9)",
                             }}
                           />
@@ -370,7 +384,6 @@ export default function PaintCorrectionTabs() {
                         pl: 2,
                         borderLeft: `4px solid ${stage.color}`,
                         fontSize: { xs: "1.2rem", sm: "1.3rem", md: "1.4rem" },
-                        // Use a contrasting color for second heading
                         borderColor: "#2794d2",
                       }}
                     >
@@ -381,22 +394,14 @@ export default function PaintCorrectionTabs() {
                         <ListItem key={i} sx={{ py: 1 }}>
                           <ListItemIcon sx={{ minWidth: 40 }}>
                             <CheckCircleIcon
-                              sx={{
-                                // Use a contrasting color for second list
-                                color: "#2794d2",
-                                fontSize: { xs: "1.5rem", sm: "1.7rem" },
-                              }}
+                              sx={{ color: "#2794d2", fontSize: { xs: "1.5rem", sm: "1.7rem" } }}
                             />
                           </ListItemIcon>
                           <ListItemText
                             primary={item}
                             primaryTypographyProps={{
                               variant: "body1",
-                              fontSize: {
-                                xs: "1rem",
-                                sm: "1.1rem",
-                                md: "1.2rem",
-                              },
+                              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
                               color: "rgba(255, 255, 255, 0.9)",
                             }}
                           />
@@ -418,9 +423,7 @@ export default function PaintCorrectionTabs() {
             sx={{
               bgcolor: "rgba(255, 255, 255, 0.05)",
               color: currentStage === 0 ? "rgba(255, 255, 255, 0.3)" : "#fff",
-              "&:hover": {
-                bgcolor: "rgba(255, 255, 255, 0.1)",
-              },
+              "&:hover": { bgcolor: "rgba(255, 255, 255, 0.1)" },
             }}
           >
             <ArrowBackIcon />
@@ -437,9 +440,7 @@ export default function PaintCorrectionTabs() {
                 currentStage === stages.length - 1
                   ? "rgba(255, 255, 255, 0.3)"
                   : "#fff",
-              "&:hover": {
-                bgcolor: "rgba(255, 255, 255, 0.1)",
-              },
+              "&:hover": { bgcolor: "rgba(255, 255, 255, 0.1)" },
             }}
           >
             <ArrowForwardIcon />

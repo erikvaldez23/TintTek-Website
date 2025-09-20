@@ -19,8 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const videoContent = {
   "vehicle-window-tinting": {
-    title:
-      "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
+    title: "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
     description: `At Tint Tek Plus, we specialize in transforming your vehicle’s appearance and functionality with high-quality LLumar® window films. Whether you’re looking to improve privacy, reduce interior heat, block harmful UV rays, or simply enhance the look of your car, our professional vehicle window tinting services will provide the perfect solution. Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.`,
     video: "/videos/v-window-tint.mp4",
   },
@@ -45,7 +44,8 @@ const videoContent = {
   //   video: "/videos/paint-correction.mov",
   // },
   "headlight-services": {
-    title: "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
+    title:
+      "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     video: "/videos/headlight.mov",
   },
@@ -55,7 +55,8 @@ const videoContent = {
     video: "/videos/ceramic.mov",
   },
   "windshield-protection-film": {
-    title: "Drive Texas Roads with Confidence: Experience Superior Protection, Clarity, and Durability.",
+    title:
+      "Drive Texas Roads with Confidence: Experience Superior Protection, Clarity, and Durability.",
     description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
     video: "/videos/Windshield-Film.mov",
   },
@@ -115,7 +116,7 @@ export default function VideoCTA() {
   };
 
   return (
-    <Box sx={{ background: "#2794d2" }}>
+    <Box>
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -124,7 +125,6 @@ export default function VideoCTA() {
       >
         <Box
           sx={{
-            backgroundColor: "#2794d2",
             width: "100%",
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
@@ -146,23 +146,22 @@ export default function VideoCTA() {
               p: 2,
             }}
           >
-          <Box
-  sx={{
-    position: "relative",
-    width: "100%",
-    borderRadius: "20px",
-    overflow: "hidden",
-    background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)",
-    boxShadow: `
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                borderRadius: "20px",
+                overflow: "hidden",
+                background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)",
+                boxShadow: `
       0 0 20px rgba(39,148,210,0.7),
       0 0 40px rgba(39,148,210,0.5),
       0 0 60px rgba(39,148,210,0.3),
       0 10px 25px rgba(0,0,0,0.6),
       inset 0 0 10px rgba(255,255,255,0.1)
     `,
-  }}
->
-
+              }}
+            >
               <video
                 ref={videoRef}
                 src={content.video}
@@ -172,7 +171,7 @@ export default function VideoCTA() {
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                poster="/gallery/Tint Tek-107-2.jpg" 
+                poster="/gallery/Tint Tek-107-2.jpg"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -263,7 +262,7 @@ export default function VideoCTA() {
               transition={{ type: "spring", stiffness: 300 }}
               sx={{
                 mt: 3,
-                    backgroundColor: "#2794d2 !important",
+                backgroundColor: "#2794d2 !important",
                 color: "#000",
                 fontWeight: "bold",
                 px: isMobile ? 3 : 4,

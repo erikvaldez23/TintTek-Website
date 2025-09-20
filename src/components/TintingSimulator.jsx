@@ -60,7 +60,7 @@ const TintingSimulator = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            background: "#111",
+            mt: 15
           }}
         >
           {Object.entries(tintOptions).map(([key, option]) => (
@@ -68,18 +68,38 @@ const TintingSimulator = () => {
               key={key}
               onClick={() => handleSelection(key)}
               sx={{
-                backgroundColor: selectedTint === key ? "#2794d2" : "#fff",
-                color: selectedTint === key ? "#000" : "#000",
+                // glassy base
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                backgroundColor:
+                  selectedTint === key
+                    ? "rgba(39,148,210,0.25)"
+                    : "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "#fff",
+
                 borderRadius: "20px",
                 fontWeight: "bold",
                 px: 3,
                 py: 1,
                 fontSize: "1rem",
                 textTransform: "uppercase",
-                transition: "0.3s ease",
+
+                // subtle state styles
+                boxShadow:
+                  selectedTint === key
+                    ? "0 0 0 2px rgba(39,148,210,0.25) inset"
+                    : "none",
+
                 "&:hover": {
-                  backgroundColor: "#000",
-                  color: "#fff",
+                  backgroundColor:
+                    selectedTint === key
+                      ? "rgba(39,148,210,0.35)"
+                      : "rgba(255,255,255,0.12)",
+                  borderColor: "rgba(255,255,255,0.25)",
+                },
+                "&:active": {
+                  transform: "translateY(1px)",
                 },
               }}
             >
@@ -96,6 +116,7 @@ const TintingSimulator = () => {
             alignItems: "center",
             justifyContent: "center",
             padding: "20px",
+            mt: 8,
           }}
         >
           <Box sx={{ width: "90%", mx: "auto" }}>
@@ -150,8 +171,7 @@ const TintingSimulator = () => {
                     backgroundColor: "#444",
                     color: "#fff",
                     "&:hover": {
-                      background:
-                        "linear-gradient(90deg, #2794d2, #1a78c2)",
+                      background: "linear-gradient(90deg, #2794d2, #1a78c2)",
                       color: "#fff",
                       transform: "scale(1.03)",
                     },

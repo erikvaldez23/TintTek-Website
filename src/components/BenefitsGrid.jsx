@@ -356,7 +356,6 @@ const colorSchemes = {
     secondary: "#134d6b",
     cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    bgColor: "#000",
     accentColor: "#43a7e0"
   },
   "tesla-window-tinting": {
@@ -364,23 +363,20 @@ const colorSchemes = {
     secondary: "#134d6b",
     cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    bgColor: "#000",
     accentColor: "#ff4b50"
   },
   "commercial-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
     cardBg: "#fff",
-    textColor: "#000",
-    bgColor: "#EEEEFF",
+    textColor: "#fff",
     accentColor: "#43a7e0"
   },
   "residential-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
     cardBg: "#fff",
-    textColor: "#000",
-    bgColor: "#EEEEFF",
+    textColor: "#fff",
     accentColor: "#43a7e0"
   },
   "windshield-protection-film": {
@@ -388,7 +384,6 @@ const colorSchemes = {
     secondary: "#134d6b",
     cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    bgColor: "#000",
     accentColor: "#43a7e0"
   },
   "vehicle-paint-correction": {
@@ -396,7 +391,6 @@ const colorSchemes = {
     secondary: "#134d6b",
     cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    bgColor: "#000",
     accentColor: "#43a7e0"
   },
   "headlight-services": {
@@ -404,7 +398,6 @@ const colorSchemes = {
     secondary: "#134d6b",
     cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    bgColor: "#000",
     accentColor: "#ffdc7a"
   },
 };
@@ -458,7 +451,6 @@ const BenefitsGrid = () => {
         <Card
           sx={{
             height: "100%",
-            backgroundColor: colors.cardBg,
             borderRadius: "16px",
             backdropFilter: "blur(10px)",
             boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
@@ -489,7 +481,6 @@ const BenefitsGrid = () => {
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
               <Avatar
                 sx={{
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                   width: 56,
                   height: 56,
                   boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
@@ -505,7 +496,7 @@ const BenefitsGrid = () => {
                 sx={{
                   fontWeight: "bold",
                   ml: 2,
-                  color: colors.textColor,
+                  color: "#fff",
                   fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
                 }}
               >
@@ -516,13 +507,12 @@ const BenefitsGrid = () => {
             <Divider sx={{ 
               my: 2, 
               opacity: 0.2, 
-              backgroundImage: `linear-gradient(to right, transparent, ${colors.accentColor}, transparent)` 
             }} />
             
             <Typography 
               variant="body2" 
               sx={{ 
-                color: colors.textColor,
+                color: "#fff",
                 opacity: 0.85,
                 fontSize: { xs: "0.875rem", md: "0.95rem" },
                 flexGrow: 1,

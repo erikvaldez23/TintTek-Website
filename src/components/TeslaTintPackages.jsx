@@ -71,7 +71,6 @@ const TeslaTintPackages = () => {
       sx={{
         py: 6,
         px: 1,
-        backgroundColor: "#EEEEFF", // Dark background
       }}
     >
       {/* Section Title */}
@@ -79,13 +78,13 @@ const TeslaTintPackages = () => {
         variant={isMobile ? "h4" : "h2"}
         align="center"
         sx={{
-          color: "#000",
-          mb: 4,
+          color: "#fff",
+          mb: 5,
           fontWeight: "bold",
           textTransform: "uppercase",
         }}
       >
-        Additional Services We Offer
+        Additional Services
       </Typography>
 
       {/* Card Grid */}
@@ -171,8 +170,8 @@ const TeslaTintPackages = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                       sx={{
                         mt: 3,
-                        backgroundColor: "#2794d2",
-                        color: "#000",
+                        backgroundColor: "#2794d2 !important",
+                        color: "#fff",
                         fontWeight: "bold",
                         px: 3,
                         py: 1.2,
@@ -199,7 +198,7 @@ const TeslaTintPackages = () => {
                   sx={{
                     backgroundColor: "#111",
                     color: "#fff",
-                    borderRadius: 2,
+                    borderRadius: 10,
                     boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
                     display: "flex",
                     flexDirection: "column",
@@ -254,8 +253,8 @@ const TeslaTintPackages = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                       sx={{
                         mt: 3,
-                        backgroundColor: "#2794d2",
-                        color: "#000",
+                        backgroundColor: "#2794d2 !important",
+                        color: "#fff",
                         fontWeight: "bold",
                         px: 3,
                         py: 1.2,

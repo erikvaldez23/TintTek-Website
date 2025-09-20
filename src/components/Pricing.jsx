@@ -11,7 +11,7 @@ import {
   Select,
 } from "@mui/material";
 import { FaCarSide, FaSun, FaShieldAlt } from "react-icons/fa";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
 // Pricing Data Configuration
 const pricingConfig = {
@@ -52,7 +52,7 @@ const pricingConfig = {
       "MODEL Y": { CTX: "$389.00", PINNACLE: "$589.00" },
       "CYBER TRUCK": { CTX: "$485.00", PINNACLE: "$685.00" },
     },
-    pricingOptions: ["MODEL S", "MODEL 3","MODEL X", "MODEL Y", "CYBER TRUCK"],
+    pricingOptions: ["MODEL S", "MODEL 3", "MODEL X", "MODEL Y", "CYBER TRUCK"],
     descriptions: {
       CTX: [
         "Mid-range ceramic tint",
@@ -164,8 +164,11 @@ const PricingComponent = () => {
   const location = useLocation();
   const path = location.pathname.split("/").pop();
 
-  const service = pricingConfig[path] || pricingConfig["vehicle-window-tinting"];
-  const [selectedOption, setSelectedOption] = useState(service.pricingOptions[0]);
+  const service =
+    pricingConfig[path] || pricingConfig["vehicle-window-tinting"];
+  const [selectedOption, setSelectedOption] = useState(
+    service.pricingOptions[0]
+  );
   const [fadeIn, setFadeIn] = useState(true);
   const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
 
@@ -185,9 +188,8 @@ const PricingComponent = () => {
     <Box
       id="pricing"
       sx={{
-        py: 8,
+        py: 15,
         textAlign: "center",
-        backgroundColor: "#000",
         color: "#fff",
         minHeight: "20vh",
         display: "flex",
@@ -196,94 +198,95 @@ const PricingComponent = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant={isMobile ? "h4" : "h2"} sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}>
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
+          sx={{ mb: 2, fontWeight: "bold", color: "#fff" }}
+        >
           {service.title}
         </Typography>
-             <Typography
-                variant={isMobile ? "body1" : "h5"}
-                align="center"
-                sx={{
-                  color: "#ccc",
-                  mb: 4,
-                  fontWeight: "bold",
-                }}
-              >
-                **All Side Windows and Back Glass are Included in Standard Package**
-              </Typography>
+        <Typography
+          variant={isMobile ? "body1" : "h5"}
+          align="center"
+          sx={{
+            color: "#ccc",
+            mb: 4,
+            fontWeight: "bold",
+          }}
+        >
+          **All Side Windows and Back Glass are Included in Standard Package**
+        </Typography>
 
         {/* ✅ Show Tabs on Desktop | Show Dropdown on Mobile */}
         {isMobile ? (
-         <Select
-         value={selectedOption}
-         onChange={(e) => handleOptionChange(e.target.value)}
-         fullWidth
-         displayEmpty
-         MenuProps={{
-           PaperProps: {
-             sx: {
-               backgroundColor: "#444", // Grey background for dropdown menu
-               color: "#fff", // White text inside dropdown
-             },
-           },
-         }}
-         sx={{
-           background: "#000", // Black background for the select field itself
-           backdropFilter: "blur(12px)", // Frosted effect
-           border: "1px solid #ccc", // Light border for visibility
-           borderRadius: "30px", // Same rounded shape
-           color: "#fff", // White text for contrast
-           fontWeight: "500",
-           fontSize: "16px",
-           textTransform: "uppercase",
-           transition: "all 0.3s ease",
-           "&:hover": {
-             background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
-           },
-           "& .MuiSelect-icon": {
-             color: "#2794d2", // Custom dropdown arrow color
-           },
-           "& .MuiSelect-select": {
-             padding: "14px 18px",
-             display: "flex",
-             alignItems: "center",
-           },
-         }}
-       >
-         {service.pricingOptions.map((option) => (
-           <MenuItem
-             key={option}
-             value={option}
-             sx={{
-               fontSize: "15px",
-               fontWeight: "500",
-               display: "flex",
-               alignItems: "center",
-               padding: "12px",
-               borderRadius: "8px",
-               transition: "all 0.3s ease",
-               backgroundColor: "#444", // Grey background to mCLASSICh first dropdown
-               color: "#fff", // White text for contrast
-               "&:hover": {
-                 background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
-                 color: "#fff",
-                 transform: "scale(1.03)", // Subtle scale effect
-               },
-               "&.Mui-selected": {
-                 backgroundColor: "#555 !important", // Darker grey for selected item
-                 color: "#fff",
-               },
-               "&.Mui-selected:hover": {
-                 backgroundColor: "#2794d2 !important", // Blue hover effect for selected item
-                 color: "#fff",
-               },
-             }}
-           >
-             {option}
-           </MenuItem>
-         ))}
-       </Select>
-       
-        
+          <Select
+            value={selectedOption}
+            onChange={(e) => handleOptionChange(e.target.value)}
+            fullWidth
+            displayEmpty
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  backgroundColor: "#444", // Grey background for dropdown menu
+                  color: "#fff", // White text inside dropdown
+                },
+              },
+            }}
+            sx={{
+              background: "#000", // Black background for the select field itself
+              backdropFilter: "blur(12px)", // Frosted effect
+              border: "1px solid #ccc", // Light border for visibility
+              borderRadius: "30px", // Same rounded shape
+              color: "#fff", // White text for contrast
+              fontWeight: "500",
+              fontSize: "16px",
+              textTransform: "uppercase",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
+              },
+              "& .MuiSelect-icon": {
+                color: "#2794d2", // Custom dropdown arrow color
+              },
+              "& .MuiSelect-select": {
+                padding: "14px 18px",
+                display: "flex",
+                alignItems: "center",
+              },
+            }}
+          >
+            {service.pricingOptions.map((option) => (
+              <MenuItem
+                key={option}
+                value={option}
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "500",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "12px",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  backgroundColor: "#444", // Grey background to mCLASSICh first dropdown
+                  color: "#fff", // White text for contrast
+                  "&:hover": {
+                    background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
+                    color: "#fff",
+                    transform: "scale(1.03)", // Subtle scale effect
+                  },
+                  "&.Mui-selected": {
+                    backgroundColor: "#555 !important", // Darker grey for selected item
+                    color: "#fff",
+                  },
+                  "&.Mui-selected:hover": {
+                    backgroundColor: "#2794d2 !important", // Blue hover effect for selected item
+                    color: "#fff",
+                  },
+                }}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Select>
         ) : (
           <Grid container spacing={0} sx={{ borderBottom: "2px solid #555" }}>
             {service.pricingOptions.map((option) => (
@@ -297,11 +300,17 @@ const PricingComponent = () => {
                   fontWeight: "bold",
                   textTransform: "uppercase",
                   cursor: "pointer",
-                  borderBottom: selectedOption === option ? "4px solid #2794d2" : "none",
-                  backgroundColor: selectedOption === option ? "#2794d2" : "transparent",
+                  borderBottom:
+                    selectedOption === option ? "4px solid #2794d2" : "none",
+                  backgroundColor:
+                    selectedOption === option ? "#2794d2" : "transparent",
                   color: selectedOption === option ? "white" : "#ddd",
                   transition: "all 0.3s ease-in-out",
-                  "&:hover": { backgroundColor: selectedOption === option ? "#2794d2" : "#222", color: "white" },
+                  "&:hover": {
+                    backgroundColor:
+                      selectedOption === option ? "#2794d2" : "#222",
+                    color: "white",
+                  },
                 }}
                 onClick={() => handleOptionChange(option)}
               >
@@ -337,11 +346,17 @@ const PricingComponent = () => {
                   background: "rgba(255,255,255,0.1)",
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: "bold", color: "#2794d2" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", color: "#2794d2" }}
+                >
                   {tier}
                 </Typography>
 
-                <Typography variant="h4" sx={{ fontWeight: "bold", color: "#00FF99" }}>
+                <Typography
+                  variant="h4"
+                  sx={{ fontWeight: "bold", color: "#00FF99" }}
+                >
                   {service.pricingData[selectedOption]?.[tier] || "N/A"}
                 </Typography>
 
@@ -359,9 +374,13 @@ const PricingComponent = () => {
                           justifyContent: "center",
                         }}
                       >
-                        {i === 0 && <FaCarSide style={{ marginRight: "5px" }} />}
+                        {i === 0 && (
+                          <FaCarSide style={{ marginRight: "5px" }} />
+                        )}
                         {i === 1 && <FaSun style={{ marginRight: "5px" }} />}
-                        {i === 2 && <FaShieldAlt style={{ marginRight: "5px" }} />}
+                        {i === 2 && (
+                          <FaShieldAlt style={{ marginRight: "5px" }} />
+                        )}
                         {feature}
                       </Typography>
                     </Tooltip>

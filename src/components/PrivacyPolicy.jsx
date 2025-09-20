@@ -3,6 +3,7 @@ import { Container, Typography, Divider, Box } from "@mui/material";
 import Footer from "./key-components/Footer";
 import CallToAction from "./key-components/CallToAction";
 import Contact from "./key-components/Contact";
+import QuickLinks from "./SubQuickLinks";
 
 const PrivacyPolicy = () => {
   // ✅ Updated Privacy Policy Data Structure
@@ -299,6 +300,7 @@ const PrivacyPolicy = () => {
       </Box>
 
       <Contact />
+      <QuickLinks />
 
       <Box sx={{ width: "100%" }}>
         <Footer />

@@ -64,7 +64,6 @@ const TintPackages = () => {
       sx={{
         py: 6,
         px: 1,
-        backgroundColor: "#EEEEFF", // Dark background
       }}
     >
       {/* Section Title */}
@@ -72,13 +71,13 @@ const TintPackages = () => {
         variant={isMobile ? "h4" : "h2"}
         align="center"
         sx={{
-          color: "#000",
+          color: "#fff",
           mb: 4,
           fontWeight: "bold",
           textTransform: "uppercase",
         }}
       >
-        Additional Services We Offer
+        Additional Services
       </Typography>
 
       {/* Card Grid */}
@@ -106,7 +105,6 @@ const TintPackages = () => {
               >
                 <Card
                   sx={{
-                    backgroundColor: "#111",
                     color: "#fff",
                     borderRadius: 2,
                     boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
@@ -163,8 +161,8 @@ const TintPackages = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                       sx={{
                         mt: 3,
-                        backgroundColor: "#2794d2",
-                        color: "#000",
+                        backgroundColor: "#2794d2 !important",
+                        color: "#fff",
                         fontWeight: "bold",
                         px: 3,
                         py: 1.2,
@@ -246,8 +244,8 @@ const TintPackages = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                       sx={{
                         mt: 3,
-                        backgroundColor: "#2794d2",
-                        color: "#000",
+                        backgroundColor: "#2794d2 !important",
+                        color: "#fff",
                         fontWeight: "bold",
                         px: 3,
                         py: 1.2,
