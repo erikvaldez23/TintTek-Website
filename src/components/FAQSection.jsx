@@ -12,7 +12,23 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useLocation } from "react-router-dom";
 
-// FAQ Data Configuration
+/* ------------------------------ Accent Map ------------------------------ */
+const ACCENT_PRIMARY = "#2794d2";
+const ACCENT_SECONDARY = "#134d6b";
+
+const colorSchemes = {
+  "vehicle-window-tinting": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "tesla-window-tinting": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "commercial-window-tinting": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "residential-window-tinting": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "vehicle-paint-protection": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "vehicle-paint-correction": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "windshield-protection-film": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "headlight-services": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+  "ceramic-coating": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
+};
+
+/* ------------------------------ FAQ CONFIG ------------------------------ */
 const faqConfig = {
   "vehicle-window-tinting": [
     {
@@ -37,8 +53,7 @@ const faqConfig = {
         "While window tinting reduces glare and improves comfort, darker tints can make it harder to see at night. We offer a range of tint options to ensure a balance between privacy, UV protection, and clear visibility, even in low-light conditions.",
     },
     {
-      question:
-        "Why is Llumar superior to other film manufacturers?",
+      question: "Why is Llumar superior to other film manufacturers?",
       answer:
         "Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.",
     },
@@ -60,8 +75,7 @@ const faqConfig = {
         "Yes, window tinting can help improve your Tesla’s energy efficiency by reducing the amount of heat that enters the cabin. This lowers the need for air conditioning, especially during hot days, which can help conserve battery life and improve overall energy use.",
     },
     {
-      question:
-        "Why is Llumar superior to other film manufacturers?",
+      question: "Why is Llumar superior to other film manufacturers?",
       answer:
         "Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.",
     },
@@ -174,8 +188,7 @@ const faqConfig = {
     },
     {
       question: "How long does Paint Protection Film last?",
-      answer:
-        "Stek PPF offers a 10-year warranty, covering defects like cracking, yellowing, and bubbling. ",
+      answer: "Stek PPF offers a 10-year warranty, covering defects like cracking, yellowing, and bubbling. ",
     },
     {
       question: "Can I add Paint Protection Film if my car has been painted? ",
@@ -226,18 +239,6 @@ const faqConfig = {
     },
   ],
   "windshield-protection-film": [
-    // {
-    //   question: "Why Choose ExoShield GT3 for Your Windshield?",
-    //   answer: `Installation duration varies based on the selected coverage:
-    //   <ul>
-    //     <li><strong>Exceptional Impact Resistance: </strong>ExoShield GT3 is engineered to deliver superior abrasion resistance, durability, and weatherability. It boasts a thickness of five mils—about 2.5 times that of a human hair—providing robust protection against chips and cracks caused by road debris. Designed to give you 6X more impact protection, GT3+ is truly made to save your glass.</li>
-    //     <li><strong>Advanced Nanocoating Technology: </strong>Incorporating second-generation Endurance Class nanocoatings, ExoShield GT3 ensures a strong bond between layers, preventing delamination and extending the film's lifespan. </li>
-    //     <li><strong>Unmatched Optical Clarity: </strong>As one of the most optically clear films on the market, ExoShield GT3 is virtually invisible once installed, maintaining the natural appearance of your vehicle while providing robust protection. </li>
-    //     <li><strong>Comprehensive UV and Heat Rejection: </strong>The film blocks up to 99% of harmful UV rays, reducing interior heat buildup and protecting your vehicle's interior from sun damage.</li>
-    //     <li><strong>Long-Term Durability: </strong>Designed to withstand various driving conditions, ExoShield GT3 is weather-resistant and maintains its protective qualities over time, ensuring lasting windshield protection.</li>
-    //     <li><strong>Proudly made in the USA: </strong>Your windshield protection film is only as good as the materials it's made with. We use the highest quality PET (Polyethylene Terephthalate) combined with our own proprietary coatings tech to deliver you the best quality.</li>
-    //   </ul>`,
-    // },
     {
       question: "Does ExoShield GT3 protect against all types of damage?",
       answer:
@@ -288,99 +289,118 @@ const faqConfig = {
 };
 
 const FAQSection = () => {
-  // Get the current page slug from the URL
   const location = useLocation();
   const path = location.pathname.split("/").pop();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Select FAQs based on the current service; if not found, show an empty array or default FAQs.
   const faqs = faqConfig[path] || [];
+  const colors = colorSchemes[path] || { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY };
 
   return (
-    <Box sx={{ py: 10, backgroundColor: "#0f0f13" }}>
-      <Container maxWidth="lg">
+    <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <Container maxWidth="xl">
         <Typography
           variant={isMobile ? "h4" : "h2"}
-          fontWeight="bold"
+          fontWeight={900}
           textAlign="center"
           gutterBottom
-          sx={{ color: "#fff" }}
+          sx={{
+            color: "#fff",
+            letterSpacing: 1.2,
+          }}
         >
           Frequently Asked Questions
         </Typography>
+
         {faqs.length > 0 ? (
           faqs.map((faq, index) => (
             <Accordion
-  key={index}
-  sx={{
-    borderRadius: "12px",
-    background: "linear-gradient(135deg, #1e1e1e 0%, #2e2e2e 100%)",
-    color: "#fff",
-    border: "1px solid rgba(255, 255, 255, 0.1)",
-    boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",
-    backdropFilter: "blur(4px)",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-    my: 2,
-    "&:hover": {
-      transform: "scale(1.02)",
-      boxShadow: "0px 12px 30px rgba(0,0,0,0.3)",
-    },
-    "&::before": {
-      display: "none",
-    },
-  }}
->
+              key={index}
+              disableGutters
+              square={false}
+              sx={{
+                my: 2.25,
+                position: "relative",
+                borderRadius: "14px",
+                overflow: "hidden",
+                // ===== Glassmorphism =====
+                background: "rgba(255,255,255,0.06)",
+                backdropFilter: "saturate(180%) blur(12px)",
+                WebkitBackdropFilter: "saturate(180%) blur(12px)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                boxShadow: "0 10px 26px rgba(0,0,0,0.28)",
+                transition: "border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
+                "&:hover": {
+                  borderColor: "rgba(255,255,255,0.36)",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 14px 36px rgba(0,0,0,0.36)",
+                },
+                "&::before": { display: "none" }, // remove default MUI divider line
+                // Top accent bar (to match benefits cards)
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "4px",
+                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{ color: "#fff", fontSize: "1.75rem" }} />}
+                sx={{
+                  px: { xs: 2, sm: 2.5, md: 3 },
+                  py: { xs: 1.5, md: 2 },
+                  "& .MuiAccordionSummary-content": {
+                    alignItems: "center",
+                    gap: 1,
+                    my: 0,
+                  },
+                  "& .MuiAccordionSummary-content.Mui-expanded": {
+                    my: 0,
+                  },
+                }}
+              >
+                <Typography
+                  variant={isMobile ? "body1" : "h5"}
+                  fontWeight={800}
+                  sx={{
+                    color: "#fff",
+                    fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.35rem" },
+                    letterSpacing: 0.2,
+                  }}
+                >
+                  {faq.question}
+                </Typography>
+              </AccordionSummary>
 
-<AccordionSummary
-  expandIcon={
-    <ExpandMoreIcon sx={{ color: "#00BFFF", fontSize: "1.8rem" }} />
-  }
-  sx={{
-    "& .MuiAccordionSummary-content": {
-      alignItems: "center",
-      gap: 1,
-    },
-    "& .Mui-expanded": {
-      margin: 0,
-    },
-  }}
->
-  <Typography
-    variant={isMobile ? "body1" : "h5"}
-    fontWeight="bold"
-    sx={{
-      color: "#fff",
-      fontSize: { xs: "1rem", sm: "1.25rem", md: "1.4rem" },
-    }}
-  >
-    {faq.question}
-  </Typography>
-</AccordionSummary>
-<AccordionDetails
-  sx={{
-    borderRadius: "8px",
-    mt: 1,
-    px: 2,
-    py: 1.5,
-  }}
->
-  <Typography
-    variant="body1"
-    component="div"
-    sx={{
-      color: "rgba(255, 255, 255, 0.85)",
-      fontSize: { xs: "0.95rem", sm: "1.05rem" },
-      lineHeight: 1.7,
-    }}
-    dangerouslySetInnerHTML={{ __html: faq.answer }}
-  />
-</AccordionDetails>
-
+              <AccordionDetails
+                sx={{
+                  px: { xs: 2, sm: 2.5, md: 3 },
+                  pb: { xs: 2, md: 2.5 },
+                  pt: { xs: 0, md: 0.25 },
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  component="div"
+                  sx={{
+                    color: "rgba(255,255,255,0.92)",
+                    fontSize: { xs: "0.97rem", sm: "1.05rem" },
+                    lineHeight: 1.7,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
+              </AccordionDetails>
             </Accordion>
           ))
         ) : (
-          <Typography>No FAQs available for this service.</Typography>
+          <Typography sx={{ color: "rgba(255,255,255,0.8)", textAlign: "center", mt: 4 }}>
+            No FAQs available for this service.
+          </Typography>
         )}
       </Container>
     </Box>

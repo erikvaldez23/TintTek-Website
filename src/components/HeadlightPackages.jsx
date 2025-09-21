@@ -76,6 +76,9 @@ const HeadlightPackages = () => {
               <Card
                 sx={{
                   color: "#fff",
+                  background: "rgba(255,255,255,0.01)", // very light tint so text stays legible
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
                   borderRadius: 2,
                   boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
                   transition: "transform 0.3s ease",
@@ -116,10 +119,7 @@ const HeadlightPackages = () => {
                     >
                       {pkg.title}
                     </Typography>
-                    <Typography
-                      variant="h6"
-                      sx={{ color: "#00FF99", mb: 1 }}
-                    >
+                    <Typography variant="h6" sx={{ color: "#00FF99", mb: 1 }}>
                       {pkg.price}
                     </Typography>
                     {/* <Typography

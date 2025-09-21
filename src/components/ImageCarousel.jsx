@@ -146,7 +146,6 @@ const ImageCarousel = () => {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          backgroundColor: "#000",
           color: "#000",
           overflow: "hidden",
         }}

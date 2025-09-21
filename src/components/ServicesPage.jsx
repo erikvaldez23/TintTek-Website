@@ -1,7 +1,7 @@
 // src/components/ServicePage.jsx
 // NOTE: Wrap your app once with <HelmetProvider> in main.jsx/App.jsx.
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, lazy, Suspense, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import {
   Box,
@@ -12,34 +12,64 @@ import {
 } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 
-import PricingComponent from "./Pricing";
-import Contact from "./SubContact";
+// Keep light, above-the-fold pieces eagerly loaded
 import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
-import HowItWorks from "./HowItWorks";
-import ServicesOffered from "./ServicesOffered";
-import CallToAction from "./SubCTA";
-import TintingSimulator from "./TintingSimulator";
-import PPFSelector from "./PPFSelector";
-import FAQSection from "./FAQSection";
-import TintPackages from "./TintPackages";
-import TeslaTintingSimulator from "./TeslaTintingSimulator";
-import QuickLinks from "./SubQuickLinks";
-import TeslaTintPackages from "./TeslaTintPackages";
-import BenefitsGrid from "./BenefitsGrid";
-import ImageCTA from "./ImageCTA";
-import PaintCorrectionServices from "./PaintCorrectionServices";
-import VideoCTA from "./VideoCTA";
-import HeadlightPackages from "./HeadlightPackages";
-import PPFVision from "./PPF-Vision"; // (unused here but keep if used elsewhere)
-import ImageCarousel from "./ImageCarousel";
-import TeslaCTA from "./TeslaCTA";
 import BusinessInfo from "./hero/BusinessInfo";
-import F1Banner from "./f1-banner"; // (commented below in your JSX)
+
+// Lazy-load heavier blocks
+const PricingComponent = lazy(() => import("./Pricing"));
+const Contact = lazy(() => import("./SubContact"));
+const HowItWorks = lazy(() => import("./HowItWorks"));
+const ServicesOffered = lazy(() => import("./ServicesOffered"));
+const CallToAction = lazy(() => import("./SubCTA"));
+const TintingSimulator = lazy(() => import("./TintingSimulator"));
+const PPFSelector = lazy(() => import("./PPFSelector"));
+const FAQSection = lazy(() => import("./FAQSection"));
+const TintPackages = lazy(() => import("./TintPackages"));
+const TeslaTintingSimulator = lazy(() => import("./TeslaTintingSimulator"));
+const QuickLinks = lazy(() => import("./SubQuickLinks"));
+const TeslaTintPackages = lazy(() => import("./TeslaTintPackages"));
+const BenefitsGrid = lazy(() => import("./BenefitsGrid"));
+const ImageCTA = lazy(() => import("./ImageCTA"));
+const PaintCorrectionServices = lazy(() => import("./PaintCorrectionServices"));
+const VideoCTA = lazy(() => import("./VideoCTA"));
+const HeadlightPackages = lazy(() => import("./HeadlightPackages"));
+const PPFVision = lazy(() => import("./PPF-Vision")); // (if used elsewhere)
+const ImageCarousel = lazy(() => import("./ImageCarousel"));
+const TeslaCTA = lazy(() => import("./TeslaCTA"));
+const F1Banner = lazy(() => import("./f1-banner"));
 
 // ---- SITE SETTINGS ----
 const SITE = "https://tinttekplus.com";
 const SERVICES_BASE = "/services";
+
+// Small, reusable lazy fallback
+const Fallback = <Box sx={{ minHeight: 120 }} />;
+
+// In-view gate to defer mounting until scrolled near
+function InViewMount({ children, rootMargin = "200px" }) {
+  const ref = useRef(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setReady(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [rootMargin]);
+
+  return <div ref={ref}>{ready ? children : null}</div>;
+}
 
 // Service copy
 const serviceDetails = {
@@ -175,7 +205,7 @@ const ServicePage = () => {
       description: service.description,
     };
 
-    const jsonLd = {
+    const jsonLdObj = {
       "@context": "https://schema.org",
       "@type": "Service",
       name: service.title,
@@ -195,7 +225,7 @@ const ServicePage = () => {
       description: meta.description,
       canonical: url,
       robots: "index, follow",
-      jsonLd,
+      jsonLd: jsonLdObj,
     };
   }, [serviceId, service, location.pathname]);
 
@@ -206,16 +236,22 @@ const ServicePage = () => {
         className="ServicePageRoot"
         sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
+        {/* Lightweight background layer */}
         <GlobalStyles
           styles={{
-            ".ServicePageRoot *": {
-              backgroundColor: "transparent !important",
-              backgroundImage: "none !important",
+            ".ServicePageRoot": { position: "relative" },
+            ".ServicePageRoot::before": {
+              content: '""',
+              position: "fixed",
+              inset: 0,
+              zIndex: -1,
+              background: GRADIENT,
             },
-            /* Opt-out: anything with .bg-keep restores its own background */
-            ".ServicePageRoot .bg-keep, .ServicePageRoot .bg-keep *": {
-              backgroundColor: "unset !important",
-              backgroundImage: "unset !important",
+            ".glass-section": {
+              backgroundColor: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "16px",
+              backdropFilter: "blur(6px)",
             },
           }}
         />
@@ -307,16 +343,20 @@ const ServicePage = () => {
                   height: "auto",
                   objectFit: "contain",
                 }}
+                loading="lazy"
+                decoding="async"
               />
             </Box>
           </Box>
         </Box>
 
-        <CallToAction />
-        <Box>
-          <Contact />
-        </Box>
-        <Footer />
+        <Suspense fallback={Fallback}>
+          <CallToAction />
+          <Box>
+            <Contact />
+          </Box>
+          <Footer />
+        </Suspense>
       </Box>
     );
   }
@@ -339,31 +379,36 @@ const ServicePage = () => {
         )}
       </Helmet>
 
-      {/* 1) Route-scoped wrapper with gradient + global background overrides */}
+      {/* Route-scoped wrapper with a fixed, GPU-friendly gradient layer */}
       <Box
         className="ServicePageRoot"
         sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
         <GlobalStyles
           styles={{
-            ".ServicePageRoot": {
+            ".ServicePageRoot": { position: "relative" },
+            ".ServicePageRoot::before": {
+              content: '""',
+              position: "fixed",
+              inset: 0,
+              zIndex: -1,
               background: GRADIENT,
-              backgroundAttachment: "fixed",
             },
-            // Force ALL descendants inside this page to be transparent
-            ".ServicePageRoot *": {
-              backgroundColor: "transparent !important",
-              backgroundImage: "none !important",
-            },
-            ".ServicePageRoot img, .ServicePageRoot video": {
-              backgroundColor: "transparent !important",
-            },
-            // OPTIONAL: add subtle section "card" look using a translucent overlay utility
             ".glass-section": {
-              backgroundColor: "rgba(255,255,255,0.06) !important",
+              backgroundColor: "rgba(255,255,255,0.06)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "16px",
               backdropFilter: "blur(6px)",
+            },
+            ".bg-clear, .bg-clear *": {
+              background: "transparent !important",
+              backgroundImage: "none !important",
+            },
+            ".ServicePageRoot img, .ServicePageRoot video": {
+              backgroundColor: "transparent",
+            },
+            "@media (max-width:900px)": {
+              ".glass-section": { backdropFilter: "none" },
             },
           }}
         />
@@ -372,8 +417,8 @@ const ServicePage = () => {
         <Box
           sx={{
             position: "relative",
-            width: "100vw",
-            paddingTop: 10,
+            width: "100%", // avoid 100vw layout jank
+            pt: 10,
             height: { xs: "40vh", md: "40vh" },
             display: "flex",
             flexDirection: "column",
@@ -381,7 +426,6 @@ const ServicePage = () => {
             justifyContent: "center",
             color: "white",
             textAlign: "center",
-            textShadow: "2px 2px 10px rgba(0, 0, 0, 0.7)",
             px: { xs: 1, sm: 2, md: 2 },
           }}
         >
@@ -426,81 +470,147 @@ const ServicePage = () => {
           </Typography>
         </Box>
 
-        {(serviceId === "commercial-window-tinting" ||
-          serviceId === "ceramic-coating" ||
-          serviceId === "headlight-services" ||
-          serviceId === "windshield-protection-film") && <VideoCTA />}
+        {/* Above-the-fold CTA variants */}
+        <Suspense fallback={Fallback}>
+          {(serviceId === "commercial-window-tinting" ||
+            serviceId === "ceramic-coating" ||
+            serviceId === "headlight-services" ||
+            serviceId === "windshield-protection-film") && <VideoCTA />}
 
-        {(serviceId === "tesla-window-tinting" ||
-          serviceId === "vehicle-paint-protection" ||
-          serviceId === "residential-window-tinting" ||
-          serviceId === "vehicle-window-tinting") && <TeslaCTA />}
+          {(serviceId === "tesla-window-tinting" ||
+            serviceId === "vehicle-paint-protection" ||
+            serviceId === "residential-window-tinting" ||
+            serviceId === "vehicle-window-tinting") && <TeslaCTA />}
+        </Suspense>
 
-        {serviceId === "vehicle-paint-correction" && <ImageCTA />}
-        {serviceId === "vehicle-paint-correction" && (
-          <PaintCorrectionServices />
-        )}
+        {/* Per-service specialty sections (lazy + often below the fold) */}
+        <Suspense fallback={Fallback}>
+          {serviceId === "vehicle-paint-correction" && <ImageCTA />}
+          {serviceId === "vehicle-paint-correction" && (
+            <InViewMount>
+              <PaintCorrectionServices />
+            </InViewMount>
+          )}
 
-        {serviceId === "tesla-window-tinting" && <TeslaTintingSimulator />}
-        {serviceId === "vehicle-window-tinting" && <TintingSimulator />}
-        {serviceId === "vehicle-paint-protection" && <PPFSelector />}
+          {serviceId === "tesla-window-tinting" && (
+            <InViewMount>
+              <TeslaTintingSimulator />
+            </InViewMount>
+          )}
+          {serviceId === "vehicle-window-tinting" && (
+            <InViewMount>
+              <TintingSimulator />
+            </InViewMount>
+          )}
+          {serviceId === "vehicle-paint-protection" && (
+            <InViewMount>
+              <PPFSelector />
+            </InViewMount>
+          )}
+        </Suspense>
 
         {/* Pricing (exclude certain services) */}
-        {serviceId !== "vehicle-paint-correction" &&
-          serviceId !== "commercial-window-tinting" &&
-          serviceId !== "residential-window-tinting" &&
-          serviceId !== "windshield-protection-film" &&
-          serviceId !== "ceramic-coating" &&
-          serviceId !== "headlight-services" &&
-          serviceId !== "vehicle-paint-protection" && (
-            <Box sx={{ width: "100vw" }}>
-              <PricingComponent />
-            </Box>
+        <Suspense fallback={Fallback}>
+          {serviceId !== "vehicle-paint-correction" &&
+            serviceId !== "commercial-window-tinting" &&
+            serviceId !== "residential-window-tinting" &&
+            serviceId !== "windshield-protection-film" &&
+            serviceId !== "ceramic-coating" &&
+            serviceId !== "headlight-services" &&
+            serviceId !== "vehicle-paint-protection" && (
+              <Box sx={{ width: "100%" }}>
+                <InViewMount>
+                  <PricingComponent />
+                </InViewMount>
+              </Box>
+            )}
+        </Suspense>
+
+        <Suspense fallback={Fallback}>
+          {serviceId === "vehicle-window-tinting" && (
+            <InViewMount>
+              <TintPackages />
+            </InViewMount>
           )}
-
-        {serviceId === "vehicle-window-tinting" && <TintPackages />}
-        {serviceId === "tesla-window-tinting" && <TeslaTintPackages />}
-        {serviceId === "headlight-services" && <HeadlightPackages />}
-
-        {/* <F1Banner /> */}
-
-        {serviceId !== "vehicle-paint-correction" &&
-          serviceId !== "ceramic-coating" && (
-            <ServicesOffered serviceId={serviceId} />
+          {serviceId === "tesla-window-tinting" && (
+            <InViewMount>
+              <TeslaTintPackages />
+            </InViewMount>
           )}
-
-        {serviceId === "commercial-window-tinting" ||
-          (serviceId === "tesla-window-tinting" && <ImageCarousel />)}
-
-        {serviceId !== "commercial-window-tinting" &&
-          serviceId !== "residential-window-tinting" && (
-            <HowItWorks serviceId={serviceId} />
+          {serviceId === "headlight-services" && (
+            <InViewMount>
+              <HeadlightPackages />
+            </InViewMount>
           )}
+        </Suspense>
 
-        {serviceId === "paint-correction-services" && (
-          <PaintCorrectionServices />
-        )}
+        {/* Optional banner */}
+        {/* <Suspense fallback={null}><F1Banner /></Suspense> */}
 
-        {(serviceId === "vehicle-window-tinting" ||
-          serviceId === "tesla-window-tinting" ||
-          serviceId === "commercial-window-tinting" ||
-          serviceId === "windshield-protection-film" ||
-          serviceId === "vehicle-paint-correction" ||
-          serviceId === "vehicle-paint-protection" ||
-          serviceId === "ceramic-coating" ||
-          serviceId === "headlight-services" ||
-          serviceId === "residential-window-tinting") && <BenefitsGrid />}
+        <Suspense fallback={Fallback}>
+          {serviceId !== "vehicle-paint-correction" &&
+            serviceId !== "ceramic-coating" && (
+              <InViewMount>
+                <ServicesOffered serviceId={serviceId} />
+              </InViewMount>
+            )}
+        </Suspense>
 
-        <FAQSection />
-        <CallToAction />
+        <Suspense fallback={Fallback}>
+          {(serviceId === "commercial-window-tinting" ||
+            serviceId === "tesla-window-tinting") && (
+            <InViewMount>
+              <ImageCarousel />
+            </InViewMount>
+          )}
+        </Suspense>
 
-        {/* Remove solid backgrounds from these wrappers so gradient shows */}
-        <Box>
-          <Contact />
-        </Box>
+        <Suspense fallback={Fallback}>
+          {serviceId !== "commercial-window-tinting" &&
+            serviceId !== "residential-window-tinting" && (
+              <InViewMount>
+                <HowItWorks serviceId={serviceId} />
+              </InViewMount>
+            )}
+        </Suspense>
 
-        <QuickLinks />
-        <Footer />
+        <Suspense fallback={Fallback}>
+          {(serviceId === "vehicle-window-tinting" ||
+            serviceId === "tesla-window-tinting" ||
+            serviceId === "commercial-window-tinting" ||
+            serviceId === "windshield-protection-film" ||
+            serviceId === "vehicle-paint-correction" ||
+            serviceId === "vehicle-paint-protection" ||
+            serviceId === "ceramic-coating" ||
+            serviceId === "headlight-services" ||
+            serviceId === "residential-window-tinting") && (
+            <InViewMount>
+              <BenefitsGrid />
+            </InViewMount>
+          )}
+        </Suspense>
+
+        <Suspense fallback={Fallback}>
+          <InViewMount>
+            <FAQSection />
+          </InViewMount>
+          <InViewMount>
+            <CallToAction />
+          </InViewMount>
+        </Suspense>
+
+        <Suspense fallback={Fallback}>
+          {/* Keep wrappers minimal to let the gradient show through */}
+          <Box>
+            <InViewMount>
+              <Contact />
+            </InViewMount>
+          </Box>
+          <InViewMount>
+            <QuickLinks />
+          </InViewMount>
+          <Footer />
+        </Suspense>
       </Box>
     </>
   );

@@ -12,7 +12,7 @@ import {
   DialogTitle,
   Divider,
   IconButton,
-  GlobalStyles,     // ✅ added
+  GlobalStyles,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
@@ -122,13 +122,6 @@ const serviceSteps = {
           "Once the curing process is complete, enjoy enhanced comfort, privacy, and protection with your newly tinted windows. With long-lasting results, your vehicle will remain cooler, more comfortable, and better protected from harmful UV rays and heat.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
-      // {
-      //   title: "Liftime Warranty & Nationwide Coverage",
-      //   description: "The tint is allowed to dry for long-lasting adhesion.",
-      //   detailedDescription:
-      //     "We stand behind the quality of our work with a lifetime warranty on all our tint installations. Plus, our services come with nationwide coverage, so you can trust that you’re protected wherever you go!",
-      //   icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
-      // },
     ],
     finalDescription:
       "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
@@ -160,7 +153,7 @@ const serviceSteps = {
       {
         title: "Precision Application",
         description:
-          " We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
+          "We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
         detailedDescription:
           "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
@@ -168,7 +161,7 @@ const serviceSteps = {
       {
         title: "Drying and Setting",
         description:
-          "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window..",
+          "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window.",
         detailedDescription:
           "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
@@ -475,7 +468,7 @@ const serviceSteps = {
       {
         title: "Comprehensive Warranty",
         description:
-          "We stand behind the quality of our products and services. ExoShield GT3 comes with a 3-year transferable warranty, providing you with peace of mind and assurance of long-term protection. ",
+          "We stand behind the quality of our products and services. ExoShield GT3 comes with a 3-year transferable warranty, providing you with peace of mind and assurance of long-term protection.",
         detailedDescription: "TBD",
         icon: <GppGoodIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
@@ -501,6 +494,9 @@ const HowItWorks = ({ serviceId }) => {
   const service = serviceSteps[serviceId];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // right under const service = serviceSteps[serviceId];
+const isFourSteps = service?.steps?.length === 4;
+
 
   const [openModal, setOpenModal] = useState(false);
   const [selectedStep, setSelectedStep] = useState(null);
@@ -532,28 +528,26 @@ const HowItWorks = ({ serviceId }) => {
         position: "relative",
         py: { xs: 6, md: 10 },
         px: { xs: 1, md: 4 },
-        width: "100%",   // ✅ keep 100%, not 100vw
+        width: "100%",
         overflow: "hidden",
+        backgroundColor: "transparent",
+        backgroundImage: "none",
       }}
     >
-      {/* 🔒 Force-centering CSS (mobile) */}
+      {/* Force-centering + transparent defaults on mobile */}
       <GlobalStyles
         styles={{
-          /* Target <=600px (MUI xs) */
           "@media (max-width:600px)": {
-            /* Kill container's negative margins & ensure full width */
             ".howitworks-grid.MuiGrid-container": {
               marginLeft: "0 !important",
               width: "100% !important",
             },
-            /* Center the item’s contents (the Paper) */
             ".howitworks-grid.MuiGrid-container > .MuiGrid-item": {
               display: "flex !important",
               justifyContent: "center !important",
-              paddingLeft: "16px !important",   // mirrors default spacing
+              paddingLeft: "16px !important",
               paddingRight: "16px !important",
             },
-            /* Constrain & center each card */
             ".howitworks-card": {
               maxWidth: "420px !important",
               width: "100% !important",
@@ -561,34 +555,23 @@ const HowItWorks = ({ serviceId }) => {
               marginRight: "auto !important",
             },
           },
-        }}
-      />
-
-      {/* subtle radial accents behind the grid */}
-      <Box
-        sx={{
-          pointerEvents: "none",
-          position: "absolute",
-          inset: 0,
-          "&::before, &::after": {
-            content: '""',
-            position: "absolute",
-            width: 540,
-            height: 540,
-            borderRadius: "50%",
-            filter: "blur(80px)",
-            opacity: 0.25,
+          // Hard reset for any accidental backgrounds in this subtree
+          ".howitworks-root, .howitworks-root *": {
+            backgroundColor: "transparent !important",
+            backgroundImage: "none !important",
           },
         }}
       />
 
       {/* Heading */}
       <Box
+        className="howitworks-root"
         sx={{
           maxWidth: 1200,
           mx: "auto",
           textAlign: "center",
           mb: { xs: 4, md: 6 },
+          backgroundColor: "transparent",
         }}
       >
         <Typography
@@ -621,34 +604,29 @@ const HowItWorks = ({ serviceId }) => {
       </Box>
 
       {/* Cards Grid */}
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        className="howitworks-grid"   // ✅ scoped for CSS above
-        sx={{
-          maxWidth: service.steps.length > 4 ? 1100 : 1200,
-          mx: "auto",
-        }}
-      >
-        {service.steps.map((step, i) => (
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={service.steps.length > 4 ? 4 : 4}
-            key={i}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+    <Grid
+  container
+  spacing={3}
+  justifyContent="center"
+  className="howitworks-grid"
+  sx={{ maxWidth: isFourSteps ? 1000 : service.steps.length > 4 ? 1100 : 1200, mx: "auto" }}
+>
+  {service.steps.map((step, i) => (
+    <Grid
+      item
+      xs={12}
+      sm={6}                           // 2 per row on small screens
+      md={isFourSteps ? 6 : 4}         // 2×2 if 4 steps, otherwise 3 per row on md+
+      lg={isFourSteps ? 6 : 4}         // keep it 2×2 for 4-step case on large too
+      key={i}
+      sx={{ display: "flex", justifyContent: "center" }}
+    >
             <Paper
               component={motion.article}
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 250, damping: 20 }}
               elevation={0}
-              className="howitworks-card"      // ✅ scoped for CSS above
+              className="howitworks-card"
               sx={{
                 flex: 1,
                 width: "100%",
@@ -660,9 +638,9 @@ const HowItWorks = ({ serviceId }) => {
                 textAlign: "center",
                 p: { xs: 3, md: 4 },
                 borderRadius: 3,
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow:
-                  "0 8px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
+                background: "rgba(255,255,255,0.01)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
                 color: "#fff",
                 transition: "box-shadow .25s ease, border-color .25s ease",
                 "&:hover": {
@@ -672,7 +650,6 @@ const HowItWorks = ({ serviceId }) => {
                 },
               }}
             >
-              {/* Icon chip */}
               <Box
                 sx={{
                   width: 56,
@@ -681,9 +658,10 @@ const HowItWorks = ({ serviceId }) => {
                   borderRadius: "50%",
                   display: "grid",
                   placeItems: "center",
+                  border: "1px solid rgba(255,255,255,0.1)",
                   boxShadow:
                     "inset 0 0 10px rgba(255,255,255,.08), 0 0 18px rgba(39,148,210,.25)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  backgroundColor: "transparent",
                 }}
               >
                 {step.icon}
@@ -714,13 +692,13 @@ const HowItWorks = ({ serviceId }) => {
                   borderRadius: 999,
                   fontWeight: 700,
                   textTransform: "none",
-                  backgroundColor: "#2794d2 !important",
+                  backgroundColor: "rgba(39,148,210,0.22)",
                   color: "#eaf6ff",
                   border: "1px solid rgba(39,148,210,0.35)",
                   backdropFilter: "blur(4px)",
                   boxShadow: "0 0 12px rgba(39,148,210,0.25)",
                   "&:hover": {
-                    backgroundColor: "rgba(39,148,210,0.28)",
+                    backgroundColor: "rgba(39,148,210,0.3)",
                     boxShadow: "0 0 16px rgba(39,148,210,0.35)",
                   },
                 }}
@@ -737,14 +715,14 @@ const HowItWorks = ({ serviceId }) => {
         serviceId !== "vehicle-paint-protection" &&
         serviceId !== "ceramic-coating" && (
           <Box sx={{ maxWidth: 1200, mx: "auto", pt: { xs: 5, md: 8 } }}>
-            <Grid container spacing={3} justifyContent="center">
+            <Grid container spacing={3} justifyContent="center" sx={{ background: "transparent" }}>
               {service.images.map((image, index) => (
                 <Grid
                   item
                   xs={12}
                   sm={4}
                   key={index}
-                  sx={{ display: "flex", justifyContent: "center" }}
+                  sx={{ display: "flex", justifyContent: "center", backgroundColor: "transparent" }}
                 >
                   <Paper
                     elevation={0}
@@ -754,6 +732,8 @@ const HowItWorks = ({ serviceId }) => {
                       border: "1px solid rgba(255,255,255,0.08)",
                       width: "100%",
                       maxWidth: { xs: 420, sm: "unset" },
+                      backgroundColor: "transparent",
+                      backgroundImage: "none",
                     }}
                   >
                     <img
@@ -764,6 +744,7 @@ const HowItWorks = ({ serviceId }) => {
                         height: 300,
                         objectFit: "cover",
                         display: "block",
+                        background: "transparent",
                       }}
                     />
                   </Paper>
@@ -782,6 +763,8 @@ const HowItWorks = ({ serviceId }) => {
           sx: {
             borderRadius: 4,
             p: 1,
+            backgroundColor: "transparent",
+            backgroundImage: "none",
             border: "1px solid rgba(255,255,255,0.08)",
             color: "#fff",
             boxShadow:
@@ -790,7 +773,14 @@ const HowItWorks = ({ serviceId }) => {
           },
         }}
       >
-        <DialogTitle sx={{ textAlign: "center", position: "relative", pb: 1 }}>
+        <DialogTitle
+          sx={{
+            textAlign: "center",
+            position: "relative",
+            pb: 1,
+            backgroundColor: "transparent",
+          }}
+        >
           <Typography variant="h6" sx={{ fontWeight: 800 }}>
             {selectedStep?.title}
           </Typography>
@@ -807,7 +797,7 @@ const HowItWorks = ({ serviceId }) => {
           </IconButton>
         </DialogTitle>
         <Divider sx={{ borderColor: "rgba(255,255,255,0.08)" }} />
-        <DialogContent sx={{ textAlign: "center", pt: 2 }}>
+        <DialogContent sx={{ textAlign: "center", pt: 2, backgroundColor: "transparent" }}>
           <Typography sx={{ color: "rgba(255,255,255,0.85)" }}>
             {selectedStep?.detailedDescription}
           </Typography>

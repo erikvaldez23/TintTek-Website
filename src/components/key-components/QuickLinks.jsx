@@ -73,7 +73,7 @@ const QuickLinks = () => {
         justifyContent: "center",     // ✅
         color: "#fff",
         background:
-          "radial-gradient(1200px 600px at 50% -200px, rgba(39,148,210,0.18), transparent 60%), #0b0b0c",
+          "#000",
         py: { xs: 4, md: 8 },
         px: { xs: 2, md: 3 },
         position: "relative",

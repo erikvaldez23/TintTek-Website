@@ -29,8 +29,7 @@ import ShieldIcon from "@mui/icons-material/Shield";
 import ScienceIcon from "@mui/icons-material/Science";
 import PaletteIcon from "@mui/icons-material/Palette";
 
-
-// Data for benefits per service
+/* -------------------------------- Data --------------------------------- */
 const benefitsData = {
   "vehicle-window-tinting": [
     {
@@ -254,22 +253,26 @@ const benefitsData = {
       icon: <ScienceIcon fontSize="large" />,
       description:
         "Stek PPF features advanced self-healing properties. Light scratches and swirl marks disappear when exposed to heat, keeping your car looking as fresh as the day it was protected.",
-    },    {
+    },
+    {
       title: "Hydrophobic Properties",
       icon: <WbSunnyIcon fontSize="large" />,
       description:
         "Stek PPF is designed to repel water, dirt, and contaminants. This makes cleaning easier and reduces the frequency of washes, helping to maintain your vehicle's pristine appearance longer.",
-    },    {
+    },
+    {
       title: "Invisible Shield",
       icon: <ShieldIcon fontSize="large" />,
       description:
         "The film is nearly invisible and doesn’t alter your car’s color or finish. You get all the protection with none of the visual compromise, maintaining that flawless, high-gloss or matte finish.",
-    },    {
+    },
+    {
       title: "UV Protection",
       icon: <WbSunnyIcon fontSize="large" />,
       description:
         "Stek PPF shields your vehicle’s paint from harmful UV rays, which helps prevent fading and oxidation, ensuring that your car’s color stays vibrant for years.",
-    },    {
+    },
+    {
       title: "Scratch & Impact Protection",
       icon: <SecurityIcon fontSize="large" />,
       description:
@@ -336,7 +339,7 @@ const benefitsData = {
   ],
 };
 
-// Titles for each service benefits section
+/* ---------------------------- Titles / Colors ---------------------------- */
 const titles = {
   "vehicle-window-tinting": "Benefits of Vehicle Window Tinting",
   "tesla-window-tinting": "Benefits of Tesla Window Tinting",
@@ -344,61 +347,53 @@ const titles = {
   "residential-window-tinting": "Why Choose LLumar® Window Films?",
   "windshield-protection-film": "Why Choose ExoShield GT3?",
   "ceramic-coating": "Why Choose Ceramic Coating?",
-  "vehicle-paint-correction": "Top Benefits",  
-  "vehicle-paint-protection": "Why Choose Stek PPF? ", 
+  "vehicle-paint-correction": "Top Benefits",
+  "vehicle-paint-protection": "Why Choose Stek PPF? ",
   "headlight-services": "Benefits of STEK Light Protection Film",
 };
 
-// Add custom color schemes per service
 const colorSchemes = {
   "vehicle-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    accentColor: "#43a7e0"
+    accentColor: "#43a7e0",
   },
   "tesla-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    accentColor: "#ff4b50"
+    accentColor: "#ff4b50",
   },
   "commercial-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "#fff",
     textColor: "#fff",
-    accentColor: "#43a7e0"
+    accentColor: "#43a7e0",
   },
   "residential-window-tinting": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "#fff",
     textColor: "#fff",
-    accentColor: "#43a7e0"
+    accentColor: "#43a7e0",
   },
   "windshield-protection-film": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    accentColor: "#43a7e0"
+    accentColor: "#43a7e0",
   },
   "vehicle-paint-correction": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    accentColor: "#43a7e0"
+    accentColor: "#43a7e0",
   },
   "headlight-services": {
     primary: "#2794d2",
     secondary: "#134d6b",
-    cardBg: "rgba(25, 25, 25, 0.9)",
     textColor: "#fff",
-    accentColor: "#ffdc7a"
+    accentColor: "#ffdc7a",
   },
 };
 
@@ -410,160 +405,82 @@ const BenefitsGrid = () => {
 
   const benefits = benefitsData[serviceId] || [];
   const title = titles[serviceId] || "Our Benefits";
-  
-  // Get color scheme for this service, default to vehicle window tinting colors
   const colors = colorSchemes[serviceId] || colorSchemes["vehicle-window-tinting"];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.7, ease: "easeOut" } 
-    },
-  };
-
-  const renderBenefitCard = (benefit, index) => {
-    return (
-      <motion.div
-        variants={cardVariants}
-        whileHover={{ 
-          y: -10,
-          boxShadow: `0 10px 25px rgba(${colors.primary.replace('#', '').match(/../g).map(x => parseInt(x, 16)).join(',')}, 0.2)` 
-        }}
-        style={{ height: "100%" }}
-      >
-        <Card
-          sx={{
-            height: "100%",
-            borderRadius: "16px",
-            backdropFilter: "blur(10px)",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-            overflow: "hidden",
-            position: "relative",
-            border: `1px solid ${colors.primary}25`, // 25 = 15% opacity in hex
-            transition: "all 0.3s ease",
-            "&:hover": {
-              borderColor: `${colors.primary}`,
-            },
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "4px",
-              background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-            },
-          }}
-        >
-          <CardContent sx={{ 
-            display: "flex", 
-            flexDirection: "column", 
-            height: "100%", 
-            p: 3 
-          }}>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <Avatar
-                sx={{
-                  width: 56,
-                  height: 56,
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-                }}
-              >
-                {React.isValidElement(benefit.icon) &&
-                  React.cloneElement(benefit.icon, {
-                    sx: { color: "#fff", fontSize: 28 },
-                  })}
-              </Avatar>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: "bold",
-                  ml: 2,
-                  color: "#fff",
-                  fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
-                }}
-              >
-                {benefit.title}
-              </Typography>
-            </Box>
-            
-            <Divider sx={{ 
-              my: 2, 
-              opacity: 0.2, 
-            }} />
-            
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                color: "#fff",
-                opacity: 0.85,
-                fontSize: { xs: "0.875rem", md: "0.95rem" },
-                flexGrow: 1,
-              }}
-            >
-              {benefit.description}
-            </Typography>
-          </CardContent>
-        </Card>
-      </motion.div>
-    );
-  };
-
-  return (
-    <Box
+  const renderBenefitCard = (benefit, idx) => (
+    <Card
+      key={`${benefit.title}-${idx}`}
       sx={{
-        backgroundColor: colors.bgColor,
-        backgroundImage: colors.bgColor === "#000" 
-          ? "radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.5) 0%, rgba(10, 10, 10, 0.5) 90%)"
-          : "radial-gradient(circle at 10% 20%, rgba(220, 220, 220, 0.5) 0%, rgba(240, 240, 240, 0.5) 90%)",
-        position: "relative",
+        height: "100%",
+        borderRadius: "16px",
         overflow: "hidden",
+        position: "relative",
+        // Glass look (transparent + blur)
+        background: "rgba(255, 255, 255, 0.02)",
+        backdropFilter: "saturate(160%) blur(10px)",
+        WebkitBackdropFilter: "saturate(160%) blur(10px)",
+        border: "1px solid rgba(255, 255, 255, 0.18)",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.30)",
+        // Top gradient bar
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: 4,
+          background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+        },
       }}
     >
-      {/* Background elements for visual interest */}
-      <Box
-        sx={{
-          position: "absolute",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: `radial-gradient(circle, ${colors.primary}30 0%, transparent 70%)`,
-          top: "-150px",
-          left: "-150px",
-          zIndex: 0,
-        }}
-      />
-      
-      <Box
-        sx={{
-          position: "absolute",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background: `radial-gradient(circle, ${colors.secondary}20 0%, transparent 70%)`,
-          bottom: "-200px",
-          right: "-200px",
-          zIndex: 0,
-        }}
-      />
+      <CardContent sx={{ display: "flex", flexDirection: "column", height: "100%", p: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+          <Avatar
+            sx={{
+              width: 56,
+              height: 56,
+              boxShadow: "0 6px 16px rgba(0,0,0,0.4)",
+              background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+              border: "1px solid rgba(255,255,255,0.35)",
+            }}
+          >
+            {React.isValidElement(benefit.icon)
+              ? React.cloneElement(benefit.icon, { sx: { color: "#fff", fontSize: 28 } })
+              : null}
+          </Avatar>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 800,
+              ml: 2,
+              color: "#fff",
+              letterSpacing: 0.2,
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+            }}
+          >
+            {benefit.title}
+          </Typography>
+        </Box>
 
+        <Divider sx={{ my: 2, borderColor: "rgba(255,255,255,0.18)" }} />
+
+        <Typography
+          variant="body2"
+          sx={{
+            color: "rgba(255,255,255,0.92)",
+            fontSize: { xs: "0.9rem", md: "0.98rem" },
+            lineHeight: 1.55,
+            flexGrow: 1,
+          }}
+        >
+          {benefit.description}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+
+  return (
+    <Box sx={{ position: "relative", overflow: "hidden" }}>
       <Box
         sx={{
           py: { xs: 4, md: 6 },
@@ -574,88 +491,59 @@ const BenefitsGrid = () => {
           maxWidth: "1500px",
         }}
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
+          align="center"
+          sx={{
+            fontWeight: 900,
+            mb: { xs: 4, md: 5 },
+            letterSpacing: 1.5,
+            color: "#fff",
+          }}
         >
-          <motion.div variants={titleVariants}>
-            <Typography
-              variant={isMobile ? "h4" : "h2"}
-              align="center"
-              sx={{
-                fontWeight: "800",
-                mb: { xs: 4, md: 5 },
-                letterSpacing: 1.5,
-                color: colors.textColor,
-                position: "relative",
-                display: "inline-block",
-                left: "50%",
-                transform: "translateX(-50%)",
-                // "&::after": {
-                //   content: '""',
-                //   position: "absolute",
-                //   bottom: "-10px",
-                //   left: "50%",
-                //   transform: "translateX(-50%)",
-                //   width: "80px",
-                //   height: "4px",
-                //   background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-                //   borderRadius: "2px",
-                // },
-              }}
-            >
-              {title}
-            </Typography>
-          </motion.div>
+          {title}
+        </Typography>
 
-          {isMobile ? (
-            <Box
-              sx={{
-                display: "flex",
-                overflowX: "auto",
-                gap: 3,
-                pb: 3,
-                scrollSnapType: "x mandatory",
-                "&::-webkit-scrollbar": { display: "none" },
-                msOverflowStyle: "none",
-                scrollbarWidth: "none",
-              }}
-            >
-              {benefits.map((benefit, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    flex: "0 0 85%",
-                    minWidth: "85%",
-                    scrollSnapAlign: "center",
-                    pr: index === benefits.length - 1 ? 3 : 0,
-                  }}
-                >
-                  {renderBenefitCard(benefit, index)}
-                </Box>
-              ))}
-            </Box>
-          ) : (
-            <Grid 
-              container 
-              spacing={4} 
-              justifyContent="center"
-            >
-              {benefits.map((benefit, index) => (
-                <Grid 
-                  item 
-                  xs={12} 
-                  sm={isMedium ? 6 : 4} 
-                  key={index}
-                >
-                  {renderBenefitCard(benefit, index)}
-                </Grid>
-              ))}
-            </Grid>
-          )}
-        </motion.div>
+        {benefits.length === 0 ? (
+          <Typography align="center" sx={{ color: "rgba(255,255,255,0.8)" }}>
+            No benefits available.
+          </Typography>
+        ) : isMobile ? (
+          <Box
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              gap: 3,
+              pb: 3,
+              scrollSnapType: "x mandatory",
+              "&::-webkit-scrollbar": { display: "none" },
+              msOverflowStyle: "none",
+              scrollbarWidth: "none",
+            }}
+          >
+            {benefits.map((b, i) => (
+              <Box
+                key={`${b.title}-${i}`}
+                sx={{
+                  flex: "0 0 85%",
+                  minWidth: "85%",
+                  scrollSnapAlign: "center",
+                  pr: i === benefits.length - 1 ? 3 : 0,
+                }}
+              >
+                {renderBenefitCard(b, i)}
+              </Box>
+            ))}
+          </Box>
+        ) : (
+          <Grid container spacing={4} justifyContent="center">
+            {benefits.map((b, i) => (
+              <Grid item xs={12} sm={isMedium ? 6 : 4} key={`${b.title}-${i}`}>
+                {renderBenefitCard(b, i)}
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </Box>
   );

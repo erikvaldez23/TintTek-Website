@@ -256,11 +256,11 @@ const tabSx = (index) => ({
             sx={{
               display: "flex",
               justifyContent: "center",
-              bgcolor: "rgba(255, 255, 255, 0.05)",
+              bgcolor: "rgba(255, 255, 255, 0.02)",
+              border: "2px solid rgba(255, 255, 255, 0.1)",
               borderRadius: "16px",
               p: 1,
-              mb: 3,
-              pb: 2, // space for underline drop
+              mb: 1
             }}
           >
             <Tabs
@@ -315,7 +315,7 @@ const tabSx = (index) => ({
                   elevation={8}
                   sx={{
                     p: { xs: 3, md: 4 },
-                    bgcolor: "rgba(10, 10, 10, 0.95)",
+                    bgcolor: "rgba(255, 255, 255, 0.01)",
                     color: "#fff",
                     border: "2px solid rgba(255, 255, 255, 0.1)",
                     borderRadius: "16px",

@@ -223,30 +223,51 @@ const PricingComponent = () => {
             onChange={(e) => handleOptionChange(e.target.value)}
             fullWidth
             displayEmpty
+            // the menu lives in a portal → style it here
             MenuProps={{
+              disableScrollLock: true,
               PaperProps: {
                 sx: {
-                  backgroundColor: "#444", // Grey background for dropdown menu
-                  color: "#fff", // White text inside dropdown
+                  backgroundColor: "transparent",
+                  backgroundImage: "none",
+                  backdropFilter: "blur(0px)", // set to 'blur(8px)' if you want frosted look
+                  WebkitBackdropFilter: "blur(0px)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
+                },
+                elevation: 0,
+              },
+              MenuListProps: {
+                sx: {
+                  backgroundColor: "#111",
+                  "& .MuiMenuItem-root": {
+                    backgroundColor: "transparent !important",
+                    color: "#fff",
+                    "&:hover": {
+                      backgroundColor: "rgba(255,255,255,0.06) !important",
+                    },
+                    "&.Mui-selected, &.Mui-selected:hover": {
+                      backgroundColor: "rgba(39,148,210,0.18) !important",
+                    },
+                  },
                 },
               },
             }}
             sx={{
-              background: "#000", // Black background for the select field itself
-              backdropFilter: "blur(12px)", // Frosted effect
-              border: "1px solid #ccc", // Light border for visibility
-              borderRadius: "30px", // Same rounded shape
-              color: "#fff", // White text for contrast
-              fontWeight: "500",
+              // trigger looks transparent
+              backgroundColor: "transparent",
+              backgroundImage: "none",
+              backdropFilter: "none",
+              border: "1px solid rgba(255,255,255,0.35)",
+              borderRadius: "30px",
+              color: "#fff",
+              fontWeight: 500,
               fontSize: "16px",
               textTransform: "uppercase",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                background: "rgba(255, 255, 255, 0.2)", // Slight brightness increase
+              "& .MuiOutlinedInput-notchedOutline": {
+                border: "none", // we’re already drawing a custom border above
               },
-              "& .MuiSelect-icon": {
-                color: "#2794d2", // Custom dropdown arrow color
-              },
+              "& .MuiSelect-icon": { color: "#2794d2" },
               "& .MuiSelect-select": {
                 padding: "14px 18px",
                 display: "flex",
@@ -255,34 +276,7 @@ const PricingComponent = () => {
             }}
           >
             {service.pricingOptions.map((option) => (
-              <MenuItem
-                key={option}
-                value={option}
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: "500",
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "12px",
-                  borderRadius: "8px",
-                  transition: "all 0.3s ease",
-                  backgroundColor: "#444", // Grey background to mCLASSICh first dropdown
-                  color: "#fff", // White text for contrast
-                  "&:hover": {
-                    background: "linear-gradient(90deg, #2794d2, #1a78c2)", // Gradient hover effect
-                    color: "#fff",
-                    transform: "scale(1.03)", // Subtle scale effect
-                  },
-                  "&.Mui-selected": {
-                    backgroundColor: "#555 !important", // Darker grey for selected item
-                    color: "#fff",
-                  },
-                  "&.Mui-selected:hover": {
-                    backgroundColor: "#2794d2 !important", // Blue hover effect for selected item
-                    color: "#fff",
-                  },
-                }}
-              >
+              <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>
             ))}
@@ -343,7 +337,7 @@ const PricingComponent = () => {
                   p: 3,
                   border: "2px solid #444",
                   borderRadius: 4,
-                  background: "rgba(255,255,255,0.1)",
+                  background: "rgba(255,255,255,0.04)",
                 }}
               >
                 <Typography

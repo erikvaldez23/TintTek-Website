@@ -21,9 +21,9 @@ import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlin
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Footer from "../key-components/Footer";
-import CallToAction from "../key-components/CallToAction";
-import Contact from "../key-components/Contact";
-import QuickLinks from "../key-components/QuickLinks";
+import CallToAction from "../SubCTA";
+import Contact from "../SubContact";
+import QuickLinks from "../SubQuickLinks";
 import { motion } from "framer-motion";
 
 /* --------------------------------- DATA --------------------------------- */

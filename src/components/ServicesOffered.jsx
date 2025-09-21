@@ -231,34 +231,30 @@ const serviceOptions = {
   },
 };
 
-// Helper function to split an array into chunks of a specific size
+// Helper to chunk arrays
 const chunkArray = (arr, chunkSize) => {
   const chunks = [];
-  for (let i = 0; i < arr.length; i += chunkSize) {
+  for (let i = 0; i < arr.length; i += chunkSize)
     chunks.push(arr.slice(i, i + chunkSize));
-  }
   return chunks;
 };
 
 const LOGOS = {
   llumar: "/llumar-logo.png",
-  formulaOne: "/f1-3.png", // <-- add this asset
+  formulaOne: "/f1-3.png",
   stek: "/stek-logo.png",
   exo: "/windshield/exo.png",
 };
 
 const getFilmLogo = (serviceId, filmName) => {
-  // Product families that always use a single brand
   if (serviceId === "windshield-protection-film") return LOGOS.exo;
   if (
     serviceId === "vehicle-paint-protection" ||
     serviceId === "headlight-services"
   )
     return LOGOS.stek;
-
-  // Window tinting families (vehicle/tesla/commercial/residential)
-  if (/formulaone/i.test(filmName)) return LOGOS.formulaOne; // Classic / Pinnacle
-  return LOGOS.llumar; // CTX, IRX, etc.
+  if (/formulaone/i.test(filmName)) return LOGOS.formulaOne;
+  return LOGOS.llumar;
 };
 
 const ServicesOffered = ({ serviceId }) => {
@@ -267,7 +263,7 @@ const ServicesOffered = ({ serviceId }) => {
 
   if (!service) {
     return (
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h4" textAlign="center" sx={{ color: "#fff" }}>
         Services not found
       </Typography>
     );
@@ -283,17 +279,19 @@ const ServicesOffered = ({ serviceId }) => {
         key={index}
         sx={{
           position: "relative",
-          backgroundColor: "#000",
+          backgroundColor: "transparent", // transparent card
+          backgroundImage: "none",
           color: "#fff",
           borderRadius: 5,
-          boxShadow: 3,
           height: "100%",
-          transition: "all 0.3s ease-in-out",
-          border: "3px solid #fff",
+          transition:
+            "transform .25s ease, box-shadow .25s ease, border-color .25s ease",
+          border: "1px solid rgba(255,255,255,0.18)",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
           "&:hover": {
-            transform: "scale(1.05)",
-            boxShadow: "0px 0px 15px #2794d2",
-            backgroundColor: "#333",
+            transform: "translateY(-2px)",
+            boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+            borderColor: "rgba(39,148,210,0.45)",
           },
         }}
       >
@@ -307,11 +305,11 @@ const ServicesOffered = ({ serviceId }) => {
             top: 8,
             right: 8,
             width:
-              getFilmLogo(serviceId, film.name) === LOGOS.formulaOne ? 130 : 80, // width stays the same
+              getFilmLogo(serviceId, film.name) === LOGOS.formulaOne ? 130 : 80,
             height:
               getFilmLogo(serviceId, film.name) === LOGOS.formulaOne
                 ? 40
-                : "auto", // taller for F1
+                : "auto",
             objectFit: "contain",
             filter: [LOGOS.stek].includes(getFilmLogo(serviceId, film.name))
               ? "invert(1)"
@@ -321,19 +319,24 @@ const ServicesOffered = ({ serviceId }) => {
 
         <CardContent
           sx={{
+            background: "transparent",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
             justifyContent: "space-between",
-            height: "100%", // Ensures card takes up full height
+            height: "100%",
+            p: 3,
           }}
         >
           <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
           <Typography variant="h6" fontWeight="bold">
             {film.name}
           </Typography>
-          <Typography variant="body1" sx={{ mt: 1 }}>
+          <Typography
+            variant="body1"
+            sx={{ mt: 1, color: "rgba(255,255,255,0.9)" }}
+          >
             {film.description}
           </Typography>
 
@@ -423,7 +426,8 @@ const ServicesOffered = ({ serviceId }) => {
       sx={{
         py: 6,
         px: isMobile ? 1.2 : 4,
-        backgroundColor: "#000",
+        backgroundColor: "transparent", // transparent root
+        backgroundImage: "none",
         color: "#fff",
         width: "100vw",
       }}
@@ -448,6 +452,7 @@ const ServicesOffered = ({ serviceId }) => {
           serviceId === "residential-window-tinting") && (
           <List
             sx={{
+              backgroundColor: "transparent",
               display: "flex",
               flexWrap: "wrap",
               gap: 2,
@@ -463,6 +468,7 @@ const ServicesOffered = ({ serviceId }) => {
                   alignItems: "center",
                   m: 0,
                   p: 0,
+                  backgroundColor: "transparent",
                 }}
               >
                 <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
@@ -486,7 +492,7 @@ const ServicesOffered = ({ serviceId }) => {
           The <strong>main types of film</strong> we use:
         </Typography>
 
-        {/* Responsive Layout: Carousel on mobile, grid on desktop */}
+        {/* Mobile carousel */}
         {isMobile ? (
           <Box
             sx={{
@@ -496,6 +502,7 @@ const ServicesOffered = ({ serviceId }) => {
               py: 2,
               scrollSnapType: "x mandatory",
               "&::-webkit-scrollbar": { display: "none" },
+              backgroundColor: "transparent",
             }}
           >
             {service.filmTypes.map((film, index) => (
@@ -505,6 +512,7 @@ const ServicesOffered = ({ serviceId }) => {
                   flex: "0 0 85%",
                   minWidth: "85%",
                   scrollSnapAlign: "center",
+                  backgroundColor: "transparent",
                 }}
               >
                 {renderFilmCard(film, index)}
@@ -512,45 +520,47 @@ const ServicesOffered = ({ serviceId }) => {
             ))}
           </Box>
         ) : (
-          // For desktop, chunk the filmTypes into rows of 3 and center the last row if incomplete
-          chunkArray(service.filmTypes, 3).map((filmRow, rowIndex, allRows) => (
-            <Grid
-              container
-              spacing={3}
-              key={rowIndex}
-              justifyContent={
-                filmRow.length < 3 && rowIndex === allRows.length - 1
-                  ? "center"
-                  : "flex-start"
-              }
-              sx={{ mb: rowIndex !== allRows.length - 1 ? 3 : 0 }}
-            >
-              {filmRow.map((film, index) => {
-                const isColorChangePPF =
-                  serviceId === "vehicle-paint-protection" &&
-                  film.name === "Color Change PPF";
-                const isSingleCard = service.filmTypes.length === 1;
+          /* Desktop grid (fills full width to match CTA) */
+          (() => {
+            const count = service.filmTypes.length;
+            // choose column span that fills the 12-col grid completely
+            const mdSpan = count <= 1 ? 12 : count === 2 ? 6 : 4; // 1 => 12, 2 => 6, 3+ => 4
+            return (
+              <Grid
+                container
+                spacing={3}
+                justifyContent="center"
+                sx={{ mb: 0 }}
+              >
+                {service.filmTypes.map((film, index) => {
+                  const isColorChangePPF =
+                    serviceId === "vehicle-paint-protection" &&
+                    film.name === "Color Change PPF";
+                  // If you still want Color Change PPF to take full width,
+                  // you can override mdSpan here; otherwise remove this override.
+                  const span = isColorChangePPF ? 12 : mdSpan;
 
-                return (
-                  <Grid
-                    item
-                    key={index}
-                    xs={12}
-                    sm={isSingleCard || isColorChangePPF ? 12 : 6}
-                    md={isSingleCard || isColorChangePPF ? 12 : 4}
-                    sx={{ display: "flex" }}
-                  >
-                    <Box sx={{ position: "relative", width: "100%" }}>
-                      {renderFilmCard(film, index)}
-                    </Box>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          ))
+                  return (
+                    <Grid
+                      item
+                      key={index}
+                      xs={12}
+                      sm={span === 12 ? 12 : 6}
+                      md={span}
+                      sx={{ display: "flex" }}
+                    >
+                      <Box sx={{ position: "relative", width: "100%" }}>
+                        {renderFilmCard(film, index)}
+                      </Box>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            );
+          })()
         )}
 
-        {/* Call to Action - Tint/PPF Viewer */}
+        {/* CTA block (transparent wrapper; keeps gradient button) */}
         {serviceId !== "headlight-services" &&
           serviceId !== "windshield-protection-film" && (
             <Box
@@ -560,26 +570,21 @@ const ServicesOffered = ({ serviceId }) => {
                 py: 5,
                 px: 3,
                 borderRadius: 4,
-                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
                 position: "relative",
                 overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.05)",
+                backgroundColor: "transparent",
+                backgroundImage: "none",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
               }}
             >
               <Box
                 sx={{
-                  position: "absolute",
-                  bottom: -40,
-                  left: -40,
-                  width: 200,
-                  height: 200,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle, rgba(39,148,210,0.1) 0%, rgba(39,148,210,0) 70%)",
-                  zIndex: 0,
+                  position: "relative",
+                  zIndex: 1,
+                  backgroundColor: "transparent",
                 }}
-              />
-              <Box sx={{ position: "relative", zIndex: 1 }}>
+              >
                 <Typography
                   variant="h5"
                   fontWeight="bold"

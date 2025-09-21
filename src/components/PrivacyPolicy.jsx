@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Typography, Divider, Box } from "@mui/material";
 import Footer from "./key-components/Footer";
-import CallToAction from "./key-components/CallToAction";
-import Contact from "./key-components/Contact";
+import Contact from "./SubContact";
+import CallToAction from "./SubCTA";
 import QuickLinks from "./SubQuickLinks";
 
 const PrivacyPolicy = () => {

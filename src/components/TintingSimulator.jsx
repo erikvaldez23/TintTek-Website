@@ -10,7 +10,9 @@ import {
 } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Define Tint Options with Images
+// Stable ordered options
+const TINT_KEYS = ["5%", "20%", "35%", "50%", "70%"];
+
 const tintOptions = {
   "5%": {
     name: "5% Tint",
@@ -41,18 +43,14 @@ const tintOptions = {
 
 const TintingSimulator = () => {
   const [selectedTint, setSelectedTint] = useState("5%"); // Default tint selection
-
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Handle Tint Selection with animation trigger
-  const handleSelection = (tintKey) => {
-    setSelectedTint(tintKey);
-  };
+  const handleSelection = (tintKey) => setSelectedTint(tintKey);
 
   return (
     <Box>
-      {/* Navigation Tabs for Larger Screens */}
+      {/* Desktop buttons */}
       {!isMobile ? (
         <Box
           sx={{
@@ -60,15 +58,14 @@ const TintingSimulator = () => {
             justifyContent: "center",
             gap: 2,
             py: 2,
-            mt: 15
+            mt: 15,
           }}
         >
-          {Object.entries(tintOptions).map(([key, option]) => (
+          {TINT_KEYS.map((key) => (
             <Button
               key={key}
               onClick={() => handleSelection(key)}
               sx={{
-                // glassy base
                 backdropFilter: "blur(10px)",
                 WebkitBackdropFilter: "blur(10px)",
                 backgroundColor:
@@ -77,20 +74,16 @@ const TintingSimulator = () => {
                     : "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.15)",
                 color: "#fff",
-
                 borderRadius: "20px",
                 fontWeight: "bold",
                 px: 3,
                 py: 1,
                 fontSize: "1rem",
                 textTransform: "uppercase",
-
-                // subtle state styles
                 boxShadow:
                   selectedTint === key
                     ? "0 0 0 2px rgba(39,148,210,0.25) inset"
                     : "none",
-
                 "&:hover": {
                   backgroundColor:
                     selectedTint === key
@@ -98,9 +91,7 @@ const TintingSimulator = () => {
                       : "rgba(255,255,255,0.12)",
                   borderColor: "rgba(255,255,255,0.25)",
                 },
-                "&:active": {
-                  transform: "translateY(1px)",
-                },
+                "&:active": { transform: "translateY(1px)" },
               }}
             >
               {key} Tint
@@ -108,96 +99,89 @@ const TintingSimulator = () => {
           ))}
         </Box>
       ) : (
-        // Dropdown for Mobile Screens
-        <Box
-          sx={{
-            backgroundColor: "#111",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-            mt: 8,
-          }}
-        >
-          <Box sx={{ width: "90%", mx: "auto" }}>
-            <Select
-              value={selectedTint}
-              onChange={(e) => handleSelection(e.target.value)}
-              fullWidth
-              displayEmpty
-              MenuProps={{
-                PaperProps: {
-                  sx: {
-                    backgroundColor: "#444",
+        // Mobile dropdown (transparent trigger, #111 menu)
+        <Box sx={{ width: "100%", px: 2, mt: 8, mb: 5 }}>
+          <Select
+            value={selectedTint}
+            onChange={(e) => handleSelection(e.target.value)}
+            fullWidth
+            displayEmpty
+            renderValue={(val) => (val ? `${val} Tint` : "Select Tint")}
+            // Trigger (input) styles
+            sx={{
+              backgroundColor: "transparent",
+              backdropFilter: "none",
+              WebkitBackdropFilter: "none",
+              color: "#fff",
+              borderRadius: "30px",
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "rgba(255,255,255,0.35)",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "rgba(255,255,255,0.5)",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#2794d2",
+              },
+              "& .MuiSelect-select": {
+                backgroundColor: "transparent",
+                padding: "14px 18px",
+                display: "flex",
+                alignItems: "center",
+              },
+              "& .MuiSelect-icon": { color: "#2794d2" },
+            }}
+            // Menu (portal) styles
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  bgcolor: "#111",
+                  backgroundImage: "none",
+                  color: "#fff",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: "12px",
+                },
+              },
+              MenuListProps: { sx: { bgcolor: "#111" } },
+            }}
+          >
+            {TINT_KEYS.map((key) => (
+              <MenuItem
+                key={key}
+                value={key}
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  color: "#fff",
+                  // don't set a base bgcolor here; let the Paper control the background
+                  "&:hover": {
+                    background:
+                      "linear-gradient(90deg, #2794d2 0%, #1a78c2 100%)",
                     color: "#fff",
                   },
-                },
-              }}
-              sx={{
-                background: "#000",
-                backdropFilter: "blur(12px)",
-                border: "1px solid #ccc",
-                borderRadius: "30px",
-                color: "#fff",
-                fontWeight: "500",
-                fontSize: "16px",
-                textTransform: "uppercase",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  background: "rgba(255, 255, 255, 0.2)",
-                },
-                "& .MuiSelect-icon": {
-                  color: "#2794d2",
-                },
-                "& .MuiSelect-select": {
-                  padding: "14px 18px",
-                  display: "flex",
-                  alignItems: "center",
-                },
-              }}
-            >
-              {Object.entries(tintOptions).map(([key, option]) => (
-                <MenuItem
-                  key={key}
-                  value={key}
-                  sx={{
-                    fontSize: "15px",
-                    fontWeight: "500",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "12px",
-                    borderRadius: "8px",
-                    transition: "all 0.3s ease",
-                    backgroundColor: "#444",
+                  "&.Mui-selected": {
+                    backgroundColor: "#222 !important",
                     color: "#fff",
-                    "&:hover": {
-                      background: "linear-gradient(90deg, #2794d2, #1a78c2)",
-                      color: "#fff",
-                      transform: "scale(1.03)",
-                    },
-                  }}
-                >
-                  {key} Tint
-                </MenuItem>
-              ))}
-            </Select>
-          </Box>
+                  },
+                  "&.Mui-selected:hover": {
+                    backgroundColor: "#2794d2 !important",
+                    color: "#000",
+                  },
+                }}
+              >
+                {key} Tint
+              </MenuItem>
+            ))}
+          </Select>
         </Box>
       )}
 
-      {/* Large Background Section */}
+      {/* Viewer */}
       <Box
         sx={{
           position: "relative",
           width: "100%",
-          height: {
-            xs: "50vh", // Extra-small screens (mobile)
-            sm: "60vh", // Small screens
-            md: "60vh", // Medium desktop screens
-            lg: "60vh", // Large desktop screens
-            xl: "60vh", // Extra-large screens
-          },
-          background: "#111",
+          height: { xs: "50vh", sm: "60vh", md: "60vh", lg: "60vh", xl: "60vh" },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -205,7 +189,7 @@ const TintingSimulator = () => {
           px: isMobile ? 2 : 5,
         }}
       >
-        {/* Tint Name and Description */}
+        {/* Title + description */}
         <Box
           sx={{
             position: "absolute",
@@ -234,7 +218,7 @@ const TintingSimulator = () => {
           </Typography>
         </Box>
 
-        {/* Animated Image Transition */}
+        {/* Image */}
         <AnimatePresence mode="wait">
           <motion.img
             key={selectedTint}

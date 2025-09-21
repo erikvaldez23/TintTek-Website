@@ -16,10 +16,10 @@ import {
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CallToAction from "./key-components/CallToAction";
-import Contact from "./key-components/Contact";
 import Footer from "./key-components/Footer";
-import QuickLinks from "./key-components/QuickLinks";
+import Contact from "./SubContact";
+import CallToAction from "./SubCTA";
+import QuickLinks from "./SubQuickLinks";
 import { Helmet } from "react-helmet-async";
 
 // ---- SITE SETTINGS ----
@@ -716,9 +716,7 @@ const Blog = () => {
 
       {/* Call to Action & Footer */}
       <CallToAction />
-      <Box sx={{ color: "#000" }}>
         <Contact />
-      </Box>
       <QuickLinks />
       <Footer />
     </Box>
