@@ -87,9 +87,9 @@ export default function TeslaCTA() {
         overflow: "hidden",
       }}
     >
-      <Box sx={{ position: "relative", maxWidth: "1100px", width: "100%" }}>
+      <Box sx={{ position: "relative", maxWidth: "1100px", width: "100%",  }}>
         {/* Video */}
-        <Box sx={{ mb: 4, position: "relative" }}>
+        <Box sx={{ mb: 4, position: "relative",  }}>
           <video
             ref={videoRef}
             src={video}
@@ -102,6 +102,13 @@ export default function TeslaCTA() {
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             style={{
+              boxShadow: `
+      0 0 20px rgba(39,148,210,0.7),
+      0 0 40px rgba(39,148,210,0.5),
+      0 0 60px rgba(39,148,210,0.3),
+      0 10px 25px rgba(0,0,0,0.6),
+      inset 0 0 10px rgba(255,255,255,0.1)
+    `,
               width: "100%",
               minHeight: isMobile ? "200px" : "400px",
               maxHeight: isMobile ? "300px" : "400px",

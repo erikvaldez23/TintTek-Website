@@ -32,14 +32,8 @@ const colorSchemes = {
 const faqConfig = {
   "vehicle-window-tinting": [
     {
-      question: "Is window tinting legal in Texas?",
-      answer: `Yes, but it must meet specific regulations:
-      <ul>
-        <li><strong>Windshield:</strong> Tinting allowed only on the top 5 inches.</li>
-        <li><strong>Front Side Windows:</strong> Must allow at least 25% of visible light to pass through.</li>
-        <li><strong>Back Side and Rear Windows:</strong> Can be tinted to any darkness.</li>
-        <li><strong>Prohibited Colors:</strong> Red, amber, and blue tints are not permitted.</li>
-      </ul>`,
+      question: "Is window tint legal in Dallas and the greater DFW area?",
+      answer: `Yes — Texas law allows certain shades depending on the window. We’ll walk you through legal options that maximize heat rejection while keeping you street-legal in Dallas and all of DFW.`,
     },
     {
       question: "How long does window tinting last?",
@@ -56,6 +50,11 @@ const faqConfig = {
       question: "Why is Llumar superior to other film manufacturers?",
       answer:
         "Unlike many competitors, LLumar films are rigorously third-party tested to ensure they meet the highest standards in heat rejection, UV protection, and durability. Many companies claim high-performance numbers, but without proper third-party validation, those claims can’t be trusted. With LLumar, you get verified, proven results backed by independent testing.",
+    },
+    {
+      question: "How hot does it really get inside a car in Dallas without tint?",
+      answer:
+        "In the Dallas sun, interiors can reach 140°+ in minutes. Our Llumar FormulaOne nano-ceramic films block infrared heat and UV rays, keeping your ride cool and protecting your leather, dash, and electronics.",
     },
   ],
   "tesla-window-tinting": [
@@ -87,6 +86,11 @@ const faqConfig = {
         "All of our commercial window tinting comes with a 15 years manufactory warranty. We offer warranties for added peace of mind, ensuring that your investment is protected for years to come.",
     },
     {
+      question: "Why do businesses across DFW install commercial window tint?",
+      answer:
+        "Offices, storefronts, and dealerships in Dallas use our tint to reduce glare on computer screens, protect merchandise from fading, and cut overhead cooling costs.",
+    },
+    {
       question:
         "How can commercial window tinting help my business save on energy costs?",
       answer:
@@ -99,6 +103,11 @@ const faqConfig = {
     },
   ],
   "residential-window-tinting": [
+    {
+      question: "Why are so many Dallas homeowners adding tint to their windows?",
+      answer:
+        "In DFW, high energy bills and harsh sun exposure are constant battles. Our residential window films cut glare, reduce fading on furniture, and can save up to 30% on cooling costs in Texas summers.",
+    },
     {
       question: "Will window tinting make my home dark?",
       answer:
@@ -119,6 +128,11 @@ const faqConfig = {
         "Does window film increase privacy at night if interior lights are on?",
       answer:
         "No, window tinting or window film generally does not provide increased privacy at night if your interior lights are on. At night, when it's darker outside than inside, light from your home can make it easier for people to see inside. However, darker or more reflective films may offer some degree of privacy during the day. For maximum nighttime privacy, we recommend using dual-reflective films or privacy films that are designed to reduce visibility both day and night.",
+    },
+    {
+      question: "Does tint really help with privacy in Dallas homes?",
+      answer:
+        "Absolutely. Many DFW customers love how tint gives them daytime privacy without losing natural light — perfect for neighborhoods with close neighbors.",
     },
     {
       question: "Do you charge for quotes or estimates?",
@@ -147,6 +161,11 @@ const faqConfig = {
       question: "How often should I get paint correction done?",
       answer:
         "Paint correction is typically done when the vehicle’s paint shows significant imperfections that can't be corrected by regular washing or detailing. It’s not something that needs to be done regularly, but it can be a good idea if you notice defects in your paint or want to maintain the overall appearance of your vehicle.",
+    },
+    {
+      question: "Is paint correction worth it before tint or ceramic coating in DFW?",
+      answer:
+        "Yes. If you’re protecting your vehicle with a ceramic coating or PPF, it’s best to correct the paint first so you’re not locking in imperfections. Many Dallas customers see it as a one-time investment to bring their car back to showroom condition.",
     },
   ],
   "vehicle-paint-protection": [
@@ -284,6 +303,16 @@ const faqConfig = {
       question: "How long does ceramic coating last?",
       answer:
         "The longevity of ceramic coatings depends on the product and maintenance. Most high-quality coatings last anywhere from 2 to 5 years. Proper care and regular maintenance can extend the protection significantly.",
+    },
+    {
+      question: "Does ceramic coating replace PPF in Dallas traffic?",
+      answer:
+        "No — ceramic coating protects against environmental damage and makes cleaning easy, but it doesn’t stop rock chips or heavy scratches. Most of our DFW customers choose PPF for impact protection and ceramic coating on top for the best of both worlds.",
+    },
+    {
+      question: "Why choose Gtechniq ceramic coating over others in DFW?",
+      answer:
+        "Gtechniq is one of the most advanced coatings in the world, trusted by car enthusiasts and professionals worldwide. With options like Crystal Serum and EXO top coat for extreme gloss and slickness, Dallas customers love the deep shine and durability. ",
     },
   ],
 };

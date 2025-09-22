@@ -12,12 +12,12 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import QuickLinks from "../key-components/QuickLinks";
+import QuickLinks from "../SubQuickLinks";
 import Footer from "../key-components/Footer";
-import CallToAction from "../key-components/CallToAction";
+import CallToAction from "../SubCTA";
 import Testimonials from "../landing-pages/Testimonials";
 import FAQ from "../landing-pages/FAQ";
-import Contact from "../key-components/Contact";
+import Contact from "../SubContact";
 import { Helmet } from "react-helmet-async";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -673,214 +673,228 @@ const Mockup = () => {
           </Box>
 
           {/* CTA Section */}
-         <Box
-  sx={{
-    // Center nicely while keeping some room at the top/bottom on mobile
-    py: { xs: 4, md: 10 },
-  }}
->
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true, amount: 0.3 }} // trigger a bit later on mobile for smoother entry
-  >
-    <Box
-      sx={{
-        background: "#1ea9ff",
-        borderRadius: { xs: 3, md: 6 },
-        p: { xs: 2.5, md: 6 }, // tighter padding on phones
-        boxShadow: {
-          xs: "0 14px 36px rgba(0,0,0,0.28)", // lighter shadow on phones for performance
-          md: "0 30px 80px rgba(0,0,0,0.35)",
-        },
-      }}
-    >
-      <Grid
-        container
-        spacing={{ xs: 2.5, md: 6 }}
-        alignItems="center"
-      >
-        {/* Image FIRST on mobile for faster visual context */}
-        <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }}>
           <Box
             sx={{
-              borderRadius: { xs: 2.5, md: 4 },
-              border: {
-                xs: "4px solid rgba(255,255,255,0.9)",
-                md: "8px solid rgba(255,255,255,0.9)",
-              },
-              outline: {
-                xs: "6px solid #12a8ff",
-                md: "10px solid #12a8ff",
-              },
-              overflow: "hidden",
-              boxShadow: {
-                xs: "0 16px 48px rgba(0,0,0,0.35)",
-                md: "0 25px 80px rgba(0,0,0,0.45)",
-              },
+              // Center nicely while keeping some room at the top/bottom on mobile
+              py: { xs: 4, md: 10 },
             }}
           >
-            {/* Keep layout stable with a fixed aspect ratio on mobile */}
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: { xs: "16 / 10", sm: "16 / 9" }, // prevents CLS
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.3 }} // trigger a bit later on mobile for smoother entry
             >
               <Box
-                component="img"
-                src="/gallery/Tint Tek-85.jpeg"
-                alt="Technician performing professional window tint installation"
-                loading="lazy"
-                decoding="async"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
+                sx={{
+                  background: "#1ea9ff",
+                  borderRadius: { xs: 3, md: 6 },
+                  p: { xs: 2.5, md: 6 }, // tighter padding on phones
+                  boxShadow: {
+                    xs: "0 14px 36px rgba(0,0,0,0.28)", // lighter shadow on phones for performance
+                    md: "0 30px 80px rgba(0,0,0,0.35)",
+                  },
                 }}
-                onError={(e) => {
-                  e.currentTarget.src =
-                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkltYWdlPC90ZXh0Pgo8L3N2Zz4=";
-                }}
-              />
-            </Box>
-          </Box>
-        </Grid>
-
-        {/* Text SECOND on mobile, FIRST on desktop */}
-        <Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
-          <Typography
-            variant="overline"
-            sx={{
-              color: "#e9f7ff",
-              fontWeight: 800,
-              letterSpacing: "0.12em",
-              mb: { xs: 1, md: 1.5 },
-              display: "block",
-              fontSize: { xs: "0.7rem", md: "0.8rem" }, // scale down on phones
-            }}
-          >
-            EXPERT CRAFTSMANSHIP
-          </Typography>
-
-          <Typography
-            component="h2"
-            sx={{
-              color: "#fff",
-              fontWeight: 900,
-              textTransform: "uppercase",
-              // fluid size: readable on phones, bold on desktop
-              fontSize: { xs: "clamp(1.5rem, 4vw, 2.25rem)", md: "3rem" },
-              mb: { xs: 2, md: 3 },
-              lineHeight: { xs: 1.15, md: 1.1 },
-            }}
-          >
-            Professional Installation
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255,255,255,0.95)",
-              lineHeight: { xs: 1.7, md: 1.8 },
-              fontWeight: 400,
-              mb: { xs: 2.25, md: 3 },
-              // Don’t let text span too wide; improve readability
-              maxWidth: { xs: "100%", sm: 680, md: 900 },
-              fontSize: { xs: "1rem", md: "1.125rem" },
-            }}
-          >
-            Our certified technicians bring years of expertise and precision to every
-            installation. Using specialized tools and techniques, we ensure perfect
-            application with no bubbles, wrinkles, or imperfections. Each project
-            is backed by our comprehensive lifetime warranty for complete peace of
-            mind.
-          </Typography>
-
-          {/* Bullets */}
-          <FeatureList aria-label="Professional installation benefits" style={{ gap: 8 }}>
-            {[
-              {
-                title: "Certified & experienced technicians",
-                body: "Trained for precision installs using pro-grade tools and methods.",
-              },
-              {
-                title: "Dust-free, climate-controlled environment",
-                body: "Clean room prep reduces contamination for a flawless finish.",
-              },
-              {
-                title: "Lifetime warranty on all services",
-                body: "Backed by clear, written coverage for long-term peace of mind.",
-              },
-            ].map((f, i) => (
-              <FeatureItem
-                key={f.title}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: i * 0.05 }}
-                viewport={{ once: true }}
               >
-                <CheckBadge>
-                  <TaskAltRoundedIcon sx={{ fontSize: 16, color: "#e9f7ff" }} />
-                </CheckBadge>
-                <Box>
-                  <FeatureTitle
-                    variant="subtitle1"
-                    sx={{ fontSize: { xs: "0.975rem", md: "1rem" } }}
-                  >
-                    {f.title}
-                  </FeatureTitle>
-                  <FeatureBody
-                    variant="body2"
-                    sx={{ fontSize: { xs: "0.9rem", md: "0.95rem" } }}
-                  >
-                    {f.body}
-                  </FeatureBody>
-                </Box>
-              </FeatureItem>
-            ))}
-          </FeatureList>
+                <Grid
+                  container
+                  spacing={{ xs: 2.5, md: 6 }}
+                  alignItems="center"
+                >
+                  {/* Image FIRST on mobile for faster visual context */}
+                  <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }}>
+                    <Box
+                      sx={{
+                        borderRadius: { xs: 2.5, md: 4 },
+                        border: {
+                          xs: "4px solid rgba(255,255,255,0.9)",
+                          md: "8px solid rgba(255,255,255,0.9)",
+                        },
+                        outline: {
+                          xs: "6px solid #12a8ff",
+                          md: "10px solid #12a8ff",
+                        },
+                        overflow: "hidden",
+                        boxShadow: {
+                          xs: "0 16px 48px rgba(0,0,0,0.35)",
+                          md: "0 25px 80px rgba(0,0,0,0.45)",
+                        },
+                      }}
+                    >
+                      {/* Keep layout stable with a fixed aspect ratio on mobile */}
+                      <Box
+                        sx={{
+                          position: "relative",
+                          width: "100%",
+                          aspectRatio: { xs: "16 / 10", sm: "16 / 9" }, // prevents CLS
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src="/gallery/Tint Tek-85.jpeg"
+                          alt="Technician performing professional window tint installation"
+                          loading="lazy"
+                          decoding="async"
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                          onError={(e) => {
+                            e.currentTarget.src =
+                              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTExMTExIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkltYWdlPC90ZXh0Pgo8L3N2Zz4=";
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </Grid>
 
-          {/* CTA */}
-          <Button
-            variant="outlined"
-            fullWidth={isMobile}
-            sx={{
-              mt: { xs: 3, md: 4 },
-              px: { xs: 2.5, md: 4 },
-              py: { xs: 1.1, md: 1.25 },
-              borderRadius: 999,
-              borderWidth: 2,
-              color: "#fff",
-              borderColor: "#fff",
-              textTransform: "uppercase",
-              fontWeight: 800,
-              fontSize: { xs: "0.95rem", md: "1rem" },
-              "&:hover": {
-                borderColor: "#fff",
-                backgroundColor: "rgba(255,255,255,0.12)",
-              },
-            }}
-            onClick={handleScrollTop}
-          >
-            Get Free Quote
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
-  </motion.div>
-</Box>
+                  {/* Text SECOND on mobile, FIRST on desktop */}
+                  <Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
+                    <Typography
+                      variant="overline"
+                      sx={{
+                        color: "#e9f7ff",
+                        fontWeight: 800,
+                        letterSpacing: "0.12em",
+                        mb: { xs: 1, md: 1.5 },
+                        display: "block",
+                        fontSize: { xs: "0.7rem", md: "0.8rem" }, // scale down on phones
+                      }}
+                    >
+                      EXPERT CRAFTSMANSHIP
+                    </Typography>
+
+                    <Typography
+                      component="h2"
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 900,
+                        textTransform: "uppercase",
+                        // fluid size: readable on phones, bold on desktop
+                        fontSize: {
+                          xs: "clamp(1.5rem, 4vw, 2.25rem)",
+                          md: "3rem",
+                        },
+                        mb: { xs: 2, md: 3 },
+                        lineHeight: { xs: 1.15, md: 1.1 },
+                      }}
+                    >
+                      Professional Installation
+                    </Typography>
+
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: "rgba(255,255,255,0.95)",
+                        lineHeight: { xs: 1.7, md: 1.8 },
+                        fontWeight: 400,
+                        mb: { xs: 2.25, md: 3 },
+                        // Don’t let text span too wide; improve readability
+                        maxWidth: { xs: "100%", sm: 680, md: 900 },
+                        fontSize: { xs: "1rem", md: "1.125rem" },
+                      }}
+                    >
+                      Our certified technicians bring years of expertise and
+                      precision to every installation. Using specialized tools
+                      and techniques, we ensure perfect application with no
+                      bubbles, wrinkles, or imperfections. Each project is
+                      backed by our comprehensive lifetime warranty for complete
+                      peace of mind.
+                    </Typography>
+
+                    {/* Bullets */}
+                    <FeatureList
+                      aria-label="Professional installation benefits"
+                      style={{ gap: 8 }}
+                    >
+                      {[
+                        {
+                          title: "Certified & experienced technicians",
+                          body: "Trained for precision installs using pro-grade tools and methods.",
+                        },
+                        {
+                          title: "Dust-free, climate-controlled environment",
+                          body: "Clean room prep reduces contamination for a flawless finish.",
+                        },
+                        {
+                          title: "Lifetime warranty on all services",
+                          body: "Backed by clear, written coverage for long-term peace of mind.",
+                        },
+                      ].map((f, i) => (
+                        <FeatureItem
+                          key={f.title}
+                          initial={{ opacity: 0, y: 8 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.35, delay: i * 0.05 }}
+                          viewport={{ once: true }}
+                        >
+                          <CheckBadge>
+                            <TaskAltRoundedIcon
+                              sx={{ fontSize: 16, color: "#e9f7ff" }}
+                            />
+                          </CheckBadge>
+                          <Box>
+                            <FeatureTitle
+                              variant="subtitle1"
+                              sx={{ fontSize: { xs: "0.975rem", md: "1rem" } }}
+                            >
+                              {f.title}
+                            </FeatureTitle>
+                            <FeatureBody
+                              variant="body2"
+                              sx={{ fontSize: { xs: "0.9rem", md: "0.95rem" } }}
+                            >
+                              {f.body}
+                            </FeatureBody>
+                          </Box>
+                        </FeatureItem>
+                      ))}
+                    </FeatureList>
+
+                    {/* CTA */}
+                    <Button
+                      variant="outlined"
+                      fullWidth={isMobile}
+                      sx={{
+                        mt: { xs: 3, md: 4 },
+                        px: { xs: 2.5, md: 4 },
+                        py: { xs: 1.1, md: 1.25 },
+                        borderRadius: 999,
+                        borderWidth: 2,
+                        color: "#fff",
+                        borderColor: "#fff",
+                        textTransform: "uppercase",
+                        fontWeight: 800,
+                        fontSize: { xs: "0.95rem", md: "1rem" },
+                        "&:hover": {
+                          borderColor: "#fff",
+                          backgroundColor: "rgba(255,255,255,0.12)",
+                        },
+                      }}
+                      onClick={handleScrollTop}
+                    >
+                      Get Free Quote
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </motion.div>
+          </Box>
+
+
+          <Contact />
+
 
         </Container>
+        <CallToAction />
+          <QuickLinks />
+
       </Box>
-      <Contact />
-      <CallToAction />
-      <QuickLinks />
+
       <Footer />
     </>
   );
