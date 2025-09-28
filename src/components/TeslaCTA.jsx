@@ -100,7 +100,7 @@ export default function TeslaCTA() {
       component="section"
       sx={{
         position: "relative",
-        py: 5,
+        py: isMobile ? 0 : 5,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

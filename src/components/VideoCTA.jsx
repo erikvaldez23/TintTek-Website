@@ -133,7 +133,7 @@ export default function VideoCTA() {
             maxWidth: "1500px",
             mx: "auto",
             px: { xs: 1, sm: 2, md: 2 },
-            py: 4,
+            py: isMobile ? 0 : 4,
           }}
         >
           {/* Left: Video */}
