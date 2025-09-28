@@ -188,7 +188,7 @@ const PricingComponent = () => {
     <Box
       id="pricing"
       sx={{
-        py: 15,
+        py: isMobile ? 2 : 15,
         textAlign: "center",
         color: "#fff",
         minHeight: "20vh",

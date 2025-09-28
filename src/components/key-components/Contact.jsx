@@ -223,7 +223,7 @@ const Contact = () => {
             >
               <iframe
                 title="TintWiz Contact Form"
-                src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                src="https://app.tintwiz.com/web/ce/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
                 style={{
                   width: "100%",
                   height: isMobile ? "650px" : "650px",

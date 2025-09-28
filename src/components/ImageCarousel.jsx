@@ -31,9 +31,10 @@ const callToActionData = {
   },
   "residential-window-tinting": {
     images: [
-      "/residential/residential-1.png",
-      "/residential/residential-2.png",
-      "/residential/residential-4.png",
+      "/residential/residential2.jpg",
+      "/residential/residential3.jpg",
+      "/residential/residential4.jpg",
+      "/residential/residential5.jpg",
     ],
   },
   "commercial-window-tinting": {

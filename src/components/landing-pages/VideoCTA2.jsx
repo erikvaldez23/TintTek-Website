@@ -9,6 +9,7 @@ import {
   Tooltip,
   useMediaQuery,
   useTheme,
+  Container, // 👈 added
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useInView } from "framer-motion";
@@ -295,7 +296,7 @@ export default function LocalVideoCTA({
   videoSrc = "/testimonial-videos/testimonial1.mov",
   eyebrow = "REAL RESULTS",
   title = "See It In Action",
-  body = "Watch a quick before/after and how our nano-ceramic film cuts glare and heat on real vehicles.",
+  body = "A customer shares the service, communication, and care that sealed the deal.",
   bullets = [
     "Llumar Certified Installers — Professionally trained and accredited for flawless results every time.",
     "Customer Satisfaction Guaranteed — We stand behind every tint job with a no-hassle guarantee.",
@@ -317,63 +318,32 @@ export default function LocalVideoCTA({
   const [loaded, setLoaded] = useState(false);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
-  const [canAutoplay, setCanAutoplay] = useState(true);
-
-  // NEW: remember if the user manually paused (suppresses autoplay)
-  const [userPaused, setUserPaused] = useState(false);
 
   const videoRef = useRef(null);
   const containerRef = useRef(null);
+
+  // In-view is used only to PAUSE when out of view (no autoplay)
   const isInView = useInView(containerRef, {
     threshold: 0.3,
     margin: "-10% 0px -10% 0px",
   });
 
-  // Handle autoplay when component comes into view
-  const handleAutoplay = useCallback(async () => {
-    if (!videoRef.current || !loaded || !canAutoplay || userPaused) return;
-
-    try {
-      const video = videoRef.current;
-      video.muted = false;
-      await video.play();
-      setMuted(false);
-      setPlaying(true);
-    } catch {
-      try {
-        const video = videoRef.current;
-        video.muted = true;
-        await video.play();
-        setMuted(true);
-        setPlaying(true);
-      } catch (mutedError) {
-        console.warn("Autoplay failed:", mutedError);
-        setCanAutoplay(false);
-        setPlaying(false);
-      }
-    }
-  }, [loaded, canAutoplay, userPaused]);
-
-  // Effect to handle autoplay when in view
+  // Pause when out of view
   useEffect(() => {
-    if (isInView && loaded) {
-      const t = setTimeout(() => handleAutoplay(), 200);
-      return () => clearTimeout(t);
-    } else if (!isInView && playing) {
+    if (!isInView && playing) {
       videoRef.current?.pause();
       setPlaying(false);
-      // do NOT reset userPaused here — respect user's choice
     }
-  }, [isInView, loaded, playing, handleAutoplay]);
+  }, [isInView, playing]);
 
-  // Intersection observer to preload
+  // Preload when near viewport
   useEffect(() => {
     if (!containerRef.current) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (videoRef.current && !loaded) videoRef.current.load();
+          if (entry.isIntersecting && videoRef.current && !loaded) {
+            videoRef.current.load();
           }
         });
       },
@@ -390,11 +360,9 @@ export default function LocalVideoCTA({
       if (video.paused) {
         await video.play();
         setPlaying(true);
-        setUserPaused(false); // user wants it playing now
       } else {
         video.pause();
         setPlaying(false);
-        setUserPaused(true); // suppress future autoplay while in view
       }
     } catch (error) {
       console.warn("Play/pause failed:", error);
@@ -408,18 +376,12 @@ export default function LocalVideoCTA({
     setMuted(video.muted);
   }, []);
 
-  // Handle video events
-  const handleVideoLoad = useCallback(() => {
-    setLoaded(true);
-    if (!canAutoplay) setCanAutoplay(true);
-  }, [canAutoplay]);
-
+  const handleVideoLoad = useCallback(() => setLoaded(true), []);
   const handleVideoError = useCallback((error) => {
     console.error("Video loading error:", error);
-    setCanAutoplay(false);
   }, []);
 
-  // Normalize bullets into { title, body } format
+  // Normalize bullets into { title, body }
   const normalize = (b) => {
     if (typeof b === "object" && b) {
       const title = b.title ?? "";
@@ -447,7 +409,8 @@ export default function LocalVideoCTA({
       ref={containerRef}
       sx={{ py: { xs: 6, sm: 8, md: 12 }, px: { xs: 1, sm: 2 }, ...sx }}
     >
-      <Box sx={{ maxWidth: 1280, mx: "auto", px: { xs: 2, sm: 2.5, md: 4 } }}>
+      {/* 👇 Wrapped inner content in a Container with maxWidth="xl" */}
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 2.5, md: 4 } }}>
         <Grid container spacing={{ xs: 4, sm: 5, md: 6 }} alignItems="center">
           {/* Content Section */}
           <Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
@@ -523,10 +486,8 @@ export default function LocalVideoCTA({
               transition={{ duration: 0.6, delay: 0.05 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <Box sx={{ position: "relative", display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
-                {/* Ambient underglow */}
+              <Box sx={{ position: "relative", display: "flex", justifyContent: { xs: "center", md: "flex-end" }, mr: 4 }}>
                 <Box
-                  aria-hidden
                   sx={{
                     position: "absolute",
                     inset: { xs: "-6% -8% -10% -8%", md: "-8% -10% -14% -10%" },
@@ -597,8 +558,8 @@ export default function LocalVideoCTA({
                       preload="metadata"
                       onLoadedData={handleVideoLoad}
                       onError={handleVideoError}
-                      onPlay={() => { setPlaying(true); setUserPaused(false); }}
-                      onPause={() => { setPlaying(false); setUserPaused(true); }}
+                      onPlay={() => setPlaying(true)}
+                      onPause={() => setPlaying(false)}
                     >
                       Your browser does not support the video tag.
                     </VideoEl>
@@ -611,9 +572,9 @@ export default function LocalVideoCTA({
             {!mdUp && (
               <Box
                 sx={{
-                  mt: 2.5,               // tighter top margin
+                  mt: 2.5,
                   display: "grid",
-                  gap: 2,                // minimal spacing between buttons
+                  gap: 2,
                   gridTemplateColumns: "1fr",
                   px: 0.5,
                 }}
@@ -636,7 +597,7 @@ export default function LocalVideoCTA({
             )}
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     </Wrapper>
   );
 }

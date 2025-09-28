@@ -1,7 +1,14 @@
 // src/components/ServicePage.jsx
 // NOTE: Wrap your app once with <HelmetProvider> in main.jsx/App.jsx.
 
-import React, { useEffect, useMemo, lazy, Suspense, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  lazy,
+  Suspense,
+  useRef,
+  useState,
+} from "react";
 import { useParams, useLocation } from "react-router-dom";
 import {
   Box,
@@ -558,7 +565,8 @@ const ServicePage = () => {
 
         <Suspense fallback={Fallback}>
           {(serviceId === "commercial-window-tinting" ||
-            serviceId === "tesla-window-tinting") && (
+            serviceId === "tesla-window-tinting" ||
+            serviceId === "residential-window-tinting") && (
             <InViewMount>
               <ImageCarousel />
             </InViewMount>

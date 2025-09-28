@@ -1,4 +1,5 @@
-import React from "react";
+// src/components/ImageCTA.jsx
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   Box,
@@ -6,7 +7,11 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Dialog,
+  DialogContent,
+  IconButton,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -14,100 +19,19 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Dynamic content for different services
 const callToActionData = {
-  "vehicle-window-tinting": {
-    title: "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
-    description: `
-      At Tint Tek Plus, we specialize in transforming your vehicle’s appearance and functionality with high-quality LLumar® window films. Whether you’re looking to improve privacy, reduce interior heat, block harmful UV rays, or simply enhance the look of your car, our professional vehicle window tinting services will provide the perfect solution.
-      Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.
-      `,
-    images: [
-      "/v-window-tint/Tint Tek-63.jpeg",
-      "/v-window-tint/Tint Tek-4.jpeg",
-      "/v-window-tint/Tint Tek-66.jpeg",
-      "/v-window-tint/Tint Tek-37.jpeg",
-      "/v-window-tint/Tint Tek-105.jpeg",
-    ],
-  },
-  "tesla-window-tinting": {
-    title: "UNLOCK YOUR TESLA'S FULL POTENTIAL WITH EXPERT WINDOW TINTING",
-    description: `
-      Imagine driving your Tesla with enhanced privacy, a cooler interior, and a sleek, customized look—all while protecting your vehicle from harmful UV rays. At Tint Tek Plus, we specialize in premium LLumar® window films tailored specifically for Tesla models. Our expert installation ensures your vehicle not only looks great but also offers superior comfort and protection.
-      Reduce heat, minimize glare, and preserve your interior—all while enhancing your Tesla’s style and performance.
-    `,
-    images: [
-      "/tesla/tesla test.jpg",
-      "/tesla/Tint Tek-165.jpg",
-      "/tesla/Tint Tek-166.jpg",
-      "/tesla/Tint Tek-170.jpg",
-      "/tesla/Tint Tek-181.jpg",
-      "/tesla/Tint Tek-190.jpg",
-      "/tesla/Tint Tek-195.jpg",
-    ],
-  },
-  "residential-window-tinting": {
-    title: "Transform Your Home with Tint Tek Plus and LLumar® Window Film",
-    description: `If you're feeling uncomfortable or dissatisfied with your home,
-    start with your windows. Tint Tek Plus offers smart residential
-    window film solutions using LLumar American Made products to address
-    what may be bothering you—whether it’s the hot spots in a room, high
-    cooling costs, or even the afternoon glare on your TV. Our team has
-    over 10+ years of experience and provides a variety of window films
-    that are quickly and professionally installed, delivering lasting
-    lifestyle benefits without breaking the bank.`,
-    images: [
-      // "/residential/residential1.jpg",
-      "/residential/residential2.jpg",
-      "/residential/residential3.jpg",
-      "/residential/residential4.jpg",
-      "/residential/residential5.jpg",
-    ],
-  },
   "vehicle-paint-correction": {
     title: "Restore Your Vehicle's Shine with Professional Paint Correction",
     description: `At Tint Tek Plus, we specialize in restoring and enhancing your vehicle’s paint, bringing back its original shine and clarity. Whether you’re dealing with swirl marks, scratches, oxidation, or just want to boost the appearance of your car, our professional paint correction services will restore your vehicle’s exterior to a showroom-quality finish..
     Our commercial films are smart, sleek, and built to last. Perfect for offices, retail spaces, and buildings looking to improve energy efficiency.`,
     images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
-  "vehicle-paint-protection": {
-    title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
-    description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
-    images: [
-      "/",
+      "/", // replace with real assets
       "/",
       "/",
       "/",
       "/",
     ],
-  },
-  "headlight-services": {
-    title:
-      "Transform Your Vehicle With STEK Darkened Headlight & Taillight PPF",
-    description: `Enhancing your vehicle's aesthetics while providing protection to your headlights and taillights is a specialty at Tint Tek Plus. We offer professional installation of STEK Light Protection Films (LPF), a premium Paint Protection Film (PPF) designed to safeguard and customize your automotive lights.
-`,
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
-  "windshield-protection-film": {
-    title: "Ultimate Protection. Unmatched Clarity. Long-Lasting Results.",
-    description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
+    // ✅ per-service form URL
+    formUrl: "https://app.tintwiz.com/web/ce/ossbvx1pgf73ldzcej0iw4iryailzpad",
   },
 };
 
@@ -115,20 +39,22 @@ const ImageCTA = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { serviceId } = useParams();
-  const currentData =
-    callToActionData[serviceId] ||
-    callToActionData["residential-window-tinting"];
 
-  const { title, description, images } = currentData;
+  // Safe fallback to a known key in the map
+  const currentData =
+    callToActionData[serviceId] || callToActionData["vehicle-paint-correction"];
+
+  const { title, description, images = [], formUrl } = currentData;
+
+  // Modal state for the iframe form
+  const [openForm, setOpenForm] = useState(false);
+  const handleOpenForm = () => setOpenForm(true);
+  const handleCloseForm = () => setOpenForm(false);
 
   // Framer Motion animation variants
   const containerVariants = {
     hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { transition: { staggerChildren: 0.2 } },
   };
 
   const fadeSlideVariant = {
@@ -148,13 +74,15 @@ const ImageCTA = () => {
     responsive: [
       {
         breakpoint: 960,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "40px",
-        },
+        settings: { slidesToShow: 1, centerPadding: "40px" },
       },
     ],
   };
+
+  // Universal default if a service lacks a formUrl
+  const defaultFormUrl =
+    "https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t?service=default";
+  const effectiveFormUrl = formUrl || defaultFormUrl;
 
   return (
     <motion.div
@@ -176,6 +104,7 @@ const ImageCTA = () => {
           overflow: "hidden",
         }}
       >
+        {/* Background dim (if any) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
@@ -198,42 +127,66 @@ const ImageCTA = () => {
             width: "100%",
           }}
         >
-          {/* Image Carousel */}
-          {serviceId !== "vehicle-paint-correction" && serviceId !== "vehicle-paint-protection" && (
-            <Box sx={{ mb: 4 }}>
-              <Slider {...sliderSettings}>
-                {images.map((src, index) => (
-                  <Box key={index} sx={{ px: 2 }} className="carousel-slide">
-                    <Box
-                      component="img"
-                      src={src}
-                      alt={`Slide ${index + 1}`}
-                      className="carousel-img"
-                      sx={{
-                        width: "100%",
-                        minHeight: isMobile ? "200px" : "300px",
-                        maxHeight: isMobile ? "300px" : "350px",
-                        objectFit: "cover",
-                        borderRadius: "24px",
-                        transition: "all 0.4s ease",
-                        boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-                        "&:hover": {
-                          cursor: "pointer",
-                          transform: "scale(1.02)",
-                        },
-                      }}
-                    />
-                  </Box>
-                ))}
-              </Slider>
-            </Box>
-          )}
-
+          {/* ✅ Mobile-only CTA at the very top */}
           <Box
             sx={{
-              px: { xs: 1, sm: 2, md: 3 },
+              display: { xs: "block", sm: "none" },
+              width: "90%",
+              mx: "auto",
+              mb: 3,
             }}
           >
+            <Button
+              onClick={handleOpenForm}
+              variant="contained"
+              aria-label="Open quote form"
+              sx={{
+                backgroundColor: "#2794d2 !important",
+                color: "#fff",
+                fontWeight: "bold",
+                py: 1.2,
+                borderRadius: "30px",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
+            >
+              Get a Free Quote
+            </Button>
+          </Box>
+
+          {/* Image Carousel (hide for specific services if desired) */}
+          {serviceId !== "vehicle-paint-correction" &&
+            serviceId !== "vehicle-paint-protection" && (
+              <Box sx={{ mb: 4 }}>
+                <Slider {...sliderSettings}>
+                  {images.map((src, index) => (
+                    <Box key={index} sx={{ px: 2 }} className="carousel-slide">
+                      <Box
+                        component="img"
+                        src={src}
+                        alt={`Slide ${index + 1}`}
+                        className="carousel-img"
+                        sx={{
+                          width: "100%",
+                          minHeight: isMobile ? "200px" : "300px",
+                          maxHeight: isMobile ? "300px" : "350px",
+                          objectFit: "cover",
+                          borderRadius: "24px",
+                          transition: "all 0.4s ease",
+                          boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                          "&:hover": {
+                            cursor: "pointer",
+                            transform: "scale(1.02)",
+                          },
+                        }}
+                      />
+                    </Box>
+                  ))}
+                </Slider>
+              </Box>
+            )}
+
+          <Box sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
             <Typography
               variant={isMobile ? "h4" : "h2"}
               component={motion.h3}
@@ -242,7 +195,7 @@ const ImageCTA = () => {
                 fontWeight: "bold",
                 letterSpacing: "1px",
                 textTransform: "uppercase",
-                color: "#fff"
+                color: "#fff",
               }}
             >
               {title}
@@ -259,12 +212,13 @@ const ImageCTA = () => {
                 fontSize: isMobile ? "1rem" : "1.2rem",
                 lineHeight: "1.6",
                 opacity: 0.9,
-                color: "#fff"
+                color: "#fff",
               }}
             >
               {description}
             </Typography>
 
+            {/* Existing CTA — hidden on mobile to avoid duplicate */}
             <Button
               component={motion.button}
               initial={{ scale: 0.9 }}
@@ -273,23 +227,65 @@ const ImageCTA = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
               sx={{
+                display: { xs: "none", sm: "inline-flex" },
                 mt: 3,
                 backgroundColor: "#2794d2 !important",
                 color: "#fff",
                 fontWeight: "bold",
-                px: isMobile ? 3 : 4,
-                py: isMobile ? 1.2 : 1.5,
+                px: 4,
+                py: 1.5,
                 borderRadius: "30px",
                 textTransform: "uppercase",
-                fontSize: isMobile ? "1rem" : "1.1rem",
-                width: isMobile ? "100%" : "auto",
+                fontSize: "1.1rem",
               }}
-              href="/quote"
+              onClick={handleOpenForm}
+              aria-label="Open quote form"
             >
               Get a Free Quote
             </Button>
           </Box>
         </Box>
+
+        {/* Dialog with per-service form (same pattern as TeslaCTA) */}
+        <Dialog
+          open={openForm}
+          onClose={handleCloseForm}
+          fullWidth
+          maxWidth="lg"
+          BackdropProps={{
+            sx: {
+              backdropFilter: "blur(6px)",
+              backgroundColor: "rgba(0,0,0,0.45)",
+            },
+          }}
+        >
+          <DialogContent sx={{ position: "relative", p: 0 }}>
+            <IconButton
+              onClick={handleCloseForm}
+              sx={{
+                position: "absolute",
+                top: 8,
+                right: 8,
+                zIndex: 1,
+                color: "#fff",
+                backgroundColor: "rgba(0,0,0,0.5)",
+                "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
+              }}
+              aria-label="Close quote dialog"
+            >
+              <CloseIcon />
+            </IconButton>
+
+            <iframe
+              src={effectiveFormUrl}
+              width="100%"
+              height="800"
+              style={{ border: "none" }}
+              title={`${title} – Quote Form`}
+              loading="lazy"
+            />
+          </DialogContent>
+        </Dialog>
       </Box>
     </motion.div>
   );

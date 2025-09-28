@@ -38,6 +38,7 @@ import PPFpage from "./components/simulators/PPFpage";
 import FullPageChatbot from "./components/FullPageChatbot";
 import ChatbotPopup from "./components/ChatbotPopup";
 import Mockup from "./components/landing-pages/Mockup";
+import VideoCTA2 from "./components/landing-pages/VideoCTA2";
 
 // ---- Theme ----
 const theme = createTheme({
@@ -83,6 +84,9 @@ function AppContent() {
               <Services />
               <WhyChooseUs />
               <Testimonials />
+              <Box sx={{background: "#000 !important"}}>
+                <VideoCTA2 />
+              </Box>
               <Vision />
               <CallToAction />
               <Contact />

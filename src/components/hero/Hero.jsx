@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import React, { useState, lazy, Suspense } from "react";
 import "./css/Hero.css";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
@@ -16,47 +17,62 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {/* Business Info Overlay */}
-      <Suspense fallback={<div />}>
-        <BusinessInfo />
-      </Suspense>
+      {/* Wrap everything you want to blur */}
+      <div className={`hero-blur-wrapper ${open ? "blurred" : ""}`}>
+        {/* Business Info Overlay */}
+        <Suspense fallback={<div />}>
+          <BusinessInfo />
+        </Suspense>
 
-      {/* Video Background */}
-      <video
-        className="hero-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-      >
-        <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+        {/* Video Background */}
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+        >
+          <source src={video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* Dark Overlay */}
-      <div className="overlay" />
+        {/* Dark Overlay */}
+        <div className="overlay" />
 
-      {/* Hero Content */}
-      <div className="hero-content">
-        <h1>
-          Enhance your Ride, Home or Business with <br />
-          Precision Tinting and Protection
-        </h1>
-        <button className="learn-more-btn" onClick={handleOpen}>
-          MESSAGE FOR A FAST QUOTE
-        </button>
+        {/* Hero Content */}
+        <div className="hero-content">
+          <h1>
+            Enhance your Ride, Home or Business with <br />
+            Precision Tinting and Protection
+          </h1>
+          <button className="learn-more-btn" onClick={handleOpen}>
+            MESSAGE FOR A FAST QUOTE
+          </button>
+        </div>
+
+        {/* Sub Icons */}
+        <Suspense fallback={<div />}>
+          <SubIcons />
+        </Suspense>
       </div>
-
-      {/* Sub Icons */}
-      <Suspense fallback={<div />}>
-        <SubIcons />
-      </Suspense>
 
       {/* Quote Form Modal */}
       {open && (
-        <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-          <DialogContent sx={{ position: "relative", padding: 0 }}>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          maxWidth="md"
+          fullWidth
+          // nice frosted backdrop behind the dialog itself
+          BackdropProps={{
+            sx: {
+              backdropFilter: "blur(6px)",
+              backgroundColor: "rgba(0,0,0,0.45)",
+            },
+          }}
+        >
+          <DialogContent sx={{ position: "relative", p: 0 }}>
             <IconButton
               onClick={handleClose}
               sx={{
@@ -65,13 +81,15 @@ const Hero = () => {
                 right: 10,
                 backgroundColor: "white",
                 "&:hover": { backgroundColor: "lightgray" },
+                zIndex: 1,
               }}
+              aria-label="Close quote form"
             >
               <FaTimes />
             </IconButton>
 
             <iframe
-              src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+              src="https://app.tintwiz.com/web/ce/odwixqbcaouefcrhe9kdlkairoqenp7e"
               width="100%"
               height="800px"
               style={{ border: "none" }}

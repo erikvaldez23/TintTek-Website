@@ -26,6 +26,15 @@ import QuickLinks from "../SubQuickLinks";
 const SITE = "https://tinttekplus.com";
 
 const images = [
+  "/gallery/gallery1-output.jpg",
+  "/gallery/gallery3-output.jpg",
+  "/gallery/gallery4-output.jpg",
+  "/gallery/gallery5-output.jpg",
+  "/gallery/gallery6-output.jpg",
+  "/gallery/gallery7-output.jpg",
+  "/gallery/gallery8-output.jpg",
+  "/gallery/gallery9-output.jpg",
+  "/gallery/gallery10-output.jpg",
   "/gallery/Tint Tek-2.jpeg",
   "/gallery/Tint Tek-4.jpeg",
   "/gallery/Tint Tek-6.jpeg",

@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+// src/components/VideoCTA.jsx
+import React, { useRef, useState, useMemo } from "react";
 import Slider from "react-slick";
 import { useParams } from "react-router-dom";
 import {
@@ -10,7 +11,6 @@ import {
   useTheme,
   Dialog,
 } from "@mui/material";
-
 import { PlayArrow, Pause, VolumeUp, VolumeOff } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
@@ -22,43 +22,44 @@ const videoContent = {
     title: "ENHANCE YOUR VEHICLE WITH PROFESSIONAL WINDOW TINTING",
     description: `At Tint Tek Plus, we specialize in transforming your vehicle’s appearance and functionality with high-quality LLumar® window films. Whether you’re looking to improve privacy, reduce interior heat, block harmful UV rays, or simply enhance the look of your car, our professional vehicle window tinting services will provide the perfect solution. Our premium window films are designed for durability, offering both style and performance. They not only enhance the aesthetic of your car but also protect you and your passengers from glare, heat, and UV damage — keeping your interior cool and your vehicle looking sleek.`,
     video: "/videos/v-window-tint.mp4",
+    formUrl:
+      "https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t?service=vehicle",
   },
-  // "tesla-window-tinting": {
-  //   title: "Elevate Your Tesla with Premium Window Film",
-  //   description: `Your Tesla deserves the best — and so do you. At Tint Tek Plus, we specialize in Tesla window tinting using precision-cut LLumar® films that perfectly match your vehicle’s design. Our tints offer advanced heat rejection, UV protection, enhanced privacy, and a refined look that complements Tesla’s futuristic aesthetic. Enjoy a cooler cabin, reduced glare, and preserved interior — all without sacrificing signal performance or style. (SUBJECT TO CHANGE!!!!!!!!!!!!!!)`,
-  //   video: "/",
-  // },
   "residential-window-tinting": {
     title: "Superior Protection for Texas Roads. Clarity. Durability. Safety.",
     description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
     video: "/videos/Windshield-Film.mov",
+    formUrl:
+      "https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t?service=residential",
   },
   "commercial-window-tinting": {
     title: "Transform Your Business with LLumar® Commercial Films",
     description: `The glass in your office, retail, or residential building should be an asset, not a source of discomfort or excessive cost. At Tint Tek Plus, we offer high-quality LLumar® window films, designed to solve a wide range of glass-related issues: high energy costs, tenant complaints, glare, fading furnishings, privacy concerns, security risks, and more. Whether you're improving an existing property or designing a new one, LLumar® provides the perfect solution to meet your needs.`,
     video: "/videos/commercial-video1.mov",
+    formUrl:
+      "https://app.tintwiz.com/web/ce/6h71onostv4h3om1krrjcvqrds187kpy",
   },
-  // "vehicle-paint-correction": {
-  //   title: "Restore Your Vehicle’s Shine with Professional Paint Correction",
-  //   description: `Eliminate scratches, swirls, and oxidation to bring back that showroom finish. Our multi-stage correction process ensures a mirror-like gloss.`,
-  //   video: "/videos/paint-correction.mov",
-  // },
   "headlight-services": {
-    title:
-      "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
+    title: "TRANSFORM YOUR VEHICLE WITH STEK DARKENED HEADLIGHT & TAILLIGHT PPF",
     description: `At Tint Tek Plus, we are committed to providing the highest level of protection for your vehicle, and that's why we offer Stek Paint Protection Film (PPF). This advanced, clear film acts as a shield for your car’s paint, protecting it from scratches, rock chips, road debris, and environmental contaminants. Stek PPF delivers an invisible, self-healing layer that keeps your car’s paint looking flawless, day after day.`,
     video: "/videos/headlight.mov",
+    formUrl:
+      "https://app.tintwiz.com/web/ce/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t",
   },
   "ceramic-coating": {
     title: "Unmatched Protection. Brilliant Shine. Lasting Durability.",
     description: `At Tint Tek Plus, we believe in offering the highest level of protection for your vehicle. That’s why we specialize in advanced ceramic and graphene coatings. These coatings create a durable, hydrophobic barrier that repels water, dirt, and contaminants while enhancing your car’s appearance with a glossy, showroom-like finish.`,
     video: "/videos/ceramic.mov",
+    formUrl:
+      "https://app.tintwiz.com/web/ce/ossbvx1pgf73ldzcej0iw4iryailzpad",
   },
   "windshield-protection-film": {
     title:
       "Drive Texas Roads with Confidence: Experience Superior Protection, Clarity, and Durability.",
     description: `At Tint Tek Plus, we specialize in providing superior windshield protection services using ExoShield GT3, a cutting-edge film designed to offer exceptional durability, clarity, and protection against environmental hazards. Whether you're navigating through the bustling city or driving on Texas' rugged highways, ExoShield GT3 provides an invisible yet robust layer of defense for your windshield.`,
     video: "/videos/Windshield-Film.mov",
+    formUrl:
+      "https://app.tintwiz.com/web/ce/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t",
   },
 };
 
@@ -74,40 +75,39 @@ export default function VideoCTA() {
   const content =
     videoContent[serviceId] || videoContent["residential-window-tinting"];
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
+  // Safe default fallback form
+  const defaultFormUrl =
+    "https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t?service=default";
+  const formUrl = useMemo(
+    () => (content.formUrl ? content.formUrl : defaultFormUrl),
+    [content.formUrl]
+  );
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   const handleToggleVideo = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) {
-      video.play();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
       setIsPlaying(true);
     } else {
-      video.pause();
+      v.pause();
       setIsPlaying(false);
     }
   };
 
   const handleToggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
   };
 
   const containerVariants = {
     hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { transition: { staggerChildren: 0.2 } },
   };
 
   const fadeSlideVariant = {
@@ -136,6 +136,7 @@ export default function VideoCTA() {
             py: 4,
           }}
         >
+          {/* Left: Video */}
           <Box
             sx={{
               width: isMobile ? "90%" : "25%",
@@ -154,12 +155,12 @@ export default function VideoCTA() {
                 overflow: "hidden",
                 background: "linear-gradient(145deg, #1b1b1b, #3a3a3a)",
                 boxShadow: `
-      0 0 20px rgba(39,148,210,0.7),
-      0 0 40px rgba(39,148,210,0.5),
-      0 0 60px rgba(39,148,210,0.3),
-      0 10px 25px rgba(0,0,0,0.6),
-      inset 0 0 10px rgba(255,255,255,0.1)
-    `,
+                  0 0 20px rgba(39,148,210,0.7),
+                  0 0 40px rgba(39,148,210,0.5),
+                  0 0 60px rgba(39,148,210,0.3),
+                  0 10px 25px rgba(0,0,0,0.6),
+                  inset 0 0 10px rgba(255,255,255,0.1)
+                `,
               }}
             >
               <video
@@ -180,7 +181,7 @@ export default function VideoCTA() {
                 }}
               />
 
-              {/* Play/Pause Button */}
+              {/* Play/Pause */}
               <IconButton
                 onClick={handleToggleVideo}
                 sx={{
@@ -191,11 +192,12 @@ export default function VideoCTA() {
                   color: "#2794d2",
                   "&:hover": { backgroundColor: "#2794d2", color: "#000" },
                 }}
+                aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? <Pause /> : <PlayArrow />}
               </IconButton>
 
-              {/* Mute Button */}
+              {/* Mute/Unmute */}
               <IconButton
                 onClick={handleToggleMute}
                 sx={{
@@ -206,13 +208,42 @@ export default function VideoCTA() {
                   color: "#2794d2",
                   "&:hover": { backgroundColor: "#2794d2", color: "#000" },
                 }}
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
               >
                 {isMuted ? <VolumeOff /> : <VolumeUp />}
               </IconButton>
             </Box>
           </Box>
 
-          {/* Right Column: Call to Action (3/4 width) */}
+          {/* ✅ Mobile-only CTA directly below the video */}
+          <Box
+            sx={{
+              display: { xs: "block", sm: "none" },
+              width: "90%",
+              mx: "auto",
+              mt: 2,
+              mb: 3,
+            }}
+          >
+            <Button
+              onClick={handleOpenModal}
+              variant="contained"
+              aria-label="Open quote form"
+              sx={{
+                backgroundColor: "#2794d2 !important",
+                color: "#000",
+                fontWeight: "bold",
+                py: 1.2,
+                borderRadius: "30px",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
+            >
+              Get a Free Quote
+            </Button>
+          </Box>
+
+          {/* Right: Text + Desktop/Tablet CTA */}
           <Box
             sx={{
               width: isMobile ? "100%" : "75%",
@@ -223,7 +254,7 @@ export default function VideoCTA() {
               alignItems: "center",
               textAlign: "center",
               px: { xs: 1, sm: 2, md: 3 },
-              py: isMobile ? 5 : 0
+              py: isMobile ? 5 : 0,
             }}
           >
             <Typography
@@ -254,6 +285,7 @@ export default function VideoCTA() {
               {content.description}
             </Typography>
 
+            {/* Desktop/Tablet CTA (hidden on mobile) */}
             <Button
               component={motion.button}
               initial={{ scale: 0.9 }}
@@ -262,52 +294,25 @@ export default function VideoCTA() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
               sx={{
+                display: { xs: "none", sm: "inline-flex" },
                 mt: 3,
                 backgroundColor: "#2794d2 !important",
                 color: "#000",
                 fontWeight: "bold",
-                px: isMobile ? 3 : 4,
-                py: isMobile ? 1.2 : 1.5,
+                px: 4,
+                py: 1.5,
                 borderRadius: "30px",
                 textTransform: "uppercase",
-                fontSize: isMobile ? "1rem" : "1.1rem",
-                width: isMobile ? "100%" : "auto",
+                fontSize: "1.1rem",
               }}
               onClick={handleOpenModal}
             >
               Get a Free Quote
             </Button>
 
-            {/* Image carousel - logic kept, commented out for future use */}
-            {/**
-          <Box sx={{ width: "100%", maxWidth: 600, mt: 4 }}>
-            <Slider {...sliderSettings}>
-              {images.map((src, index) => (
-                <Box key={index} sx={{ display: "flex", justifyContent: "center" }}>
-                  <img
-                    src={src}
-                    alt={`Project ${index + 1}`}
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      borderRadius: "12px",
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
-                    }}
-                  />
-                </Box>
-              ))}
-            </Slider>
-          </Box>
-          */}
-            {/* Modal Dialog with the Iframe */}
-            <Dialog
-              open={openModal}
-              onClose={handleCloseModal}
-              fullWidth
-              maxWidth="lg"
-            >
+            {/* Modal with per-service form */}
+            <Dialog open={openModal} onClose={handleCloseModal} fullWidth maxWidth="lg">
               <Box sx={{ position: "relative" }}>
-                {/* Close Button */}
                 <IconButton
                   onClick={handleCloseModal}
                   sx={{
@@ -317,20 +322,20 @@ export default function VideoCTA() {
                     color: "#fff",
                     backgroundColor: "rgba(0,0,0,0.5)",
                     zIndex: 1,
-                    "&:hover": {
-                      backgroundColor: "rgba(0,0,0,0.7)",
-                    },
+                    "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
                   }}
+                  aria-label="Close quote dialog"
                 >
                   <CloseIcon />
                 </IconButton>
                 <iframe
-                  src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                  src={formUrl}
                   width="100%"
                   height="800px"
                   style={{ border: "none" }}
                   title="Fast Quote"
-                ></iframe>
+                  loading="lazy"
+                />
               </Box>
             </Dialog>
           </Box>
