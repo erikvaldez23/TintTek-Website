@@ -1,12 +1,13 @@
 import { Box, Typography, Grid, Paper, Collapse, useMediaQuery, useTheme } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState } from "react";
-// import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null); // <-- JS, no generic
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const ACCENT = "#2794d2";
 
   const features = [
     { text: "UV Protection", details: "Our top-quality window films block up to 99% of harmful UV rays, providing crucial protection against skin damage and reducing the risk of skin cancer. Not only does this safeguard you and your passengers, but it also helps preserve your car's interior by preventing fading, cracking, and deterioration." },
@@ -17,19 +18,15 @@ export default function WhyChooseUs() {
     { text: "Privacy & Security", details: "Tinting your windows adds an extra layer of privacy and security, blocking prying eyes and protecting your valuables. Our films also help strengthen your glass, providing additional protection against break-ins and enhancing your overall safety." },
   ];
 
-  // const containerVariants = {
-  //   hidden: {},
-  //   visible: {
-  //     transition: {
-  //       staggerChildren: 0.2,
-  //     },
-  //   },
-  // };
-
-  // const cardVariants = {
-  //   hidden: { opacity: 0, y: 50 },
-  //   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  // };
+  const glassSX = (active) => ({
+    backgroundColor: active ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)",
+    border: `1px solid ${active ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.16)"}`,
+    backdropFilter: "blur(14px) saturate(120%)",
+    WebkitBackdropFilter: "blur(14px) saturate(120%)",
+    boxShadow: active ? "0 14px 40px rgba(0,0,0,0.45)" : "0 10px 28px rgba(0,0,0,0.35)",
+    transition: "transform .3s ease, box-shadow .3s ease, background-color .3s ease, border-color .3s ease",
+    color: "#fff",
+  });
 
   return (
     <Box
@@ -37,114 +34,78 @@ export default function WhyChooseUs() {
       sx={{
         p: isMobile ? 2 : 4,
         textAlign: "center",
-        background: "#EEEEFF",
+        background: "transparent",
         color: "white",
+        isolation: "isolate",
       }}
     >
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "auto",
-          width: "100%",
-          py: isMobile ? 5 : 7,
-        }}
-      >
-        {/* <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-        > */}
-          <Typography
-            variant={isMobile ? "h4" : "h2"}
-            fontWeight="bold"
-            gutterBottom
-            sx={{ color: "#000" }}
-          >
-            Why Choose Us?
-          </Typography>
-        {/* </motion.div> */}
+      <Box sx={{ maxWidth: 1200, m: "auto", width: "100%", py: isMobile ? 5 : 7 }}>
+        <Typography variant={isMobile ? "h4" : "h2"} fontWeight="bold" gutterBottom sx={{ color: "#fff" }}>
+          Why Choose Us?
+        </Typography>
 
-        {/* Description Animation */}
-        {/* <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        > */}
-          <Typography
-            variant={isMobile ? "body1" : "h6"}
-            sx={{
-              maxWidth: "1200px",
-              margin: "auto",
-              color: "#000",
-              lineHeight: 1.6,
-              fontSize: isMobile ? "1rem" : "1.2rem",
-            }}
-          >
+        <Typography
+          variant={isMobile ? "body1" : "h6"}
+          sx={{ maxWidth: 1200, m: "auto", color: "#fff", lineHeight: 1.6, fontSize: isMobile ? "1rem" : "1.2rem" }}
+        >
           At Tint Tek Plus, we are committed to offering premium window tinting that combines style, comfort, and superior protection. 
           Our expert-grade films are designed to block 99% of harmful UV rays, reduce glare, and keep your car cooler, ensuring an unmatched driving experience. 
           With certified technicians and a lifetime warranty, we promise top-tier quality and service every time, giving you peace of mind and confidence on the road.
-          </Typography>
-        {/* </motion.div> */}
+        </Typography>
 
-        {/* Features Grid with Staggered Animations */}
-        {/* <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        > */}
-          <Grid container spacing={isMobile ? 2 : 3} sx={{ mt: 4, justifyContent: "center" }}>
-            {features.map((feature, index) => (
+        <Grid container spacing={isMobile ? 2 : 3} sx={{ mt: 4, justifyContent: "center" }}>
+          {features.map((feature, index) => {
+            const active = hoveredIndex === index;
+            return (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                {/* <motion.div variants={cardVariants}> */}
-                  <Paper
-                    elevation={6}
-                    onMouseEnter={() => !isMobile && setHoveredIndex(index)}
-                    onMouseLeave={() => !isMobile && setHoveredIndex(null)}
-                    onClick={() => isMobile && setHoveredIndex(hoveredIndex === index ? null : index)}
-                    sx={{
-                      p: isMobile ? 2 : 3,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 1,
-                      backgroundColor: hoveredIndex === index ? "#EEEEFF" : "#000",
-                      color: hoveredIndex === index ? "black" : "white",
-                      borderRadius: "10px",
-                      transition: "all 0.3s ease-in-out",
-                      cursor: "pointer",
-                      "&:hover": { transform: isMobile ? "none" : "scale(1.05)", border: "5px solid #000" },
-                    }}
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      <CheckCircleIcon sx={{ fontSize: 32, color: hoveredIndex === index ? "black" : "#2794d2" }} />
-                      <Typography variant="h6" fontWeight="bold">
-                        {feature.text}
-                      </Typography>
-                    </Box>
+                <Paper
+                  elevation={0}
+                  onMouseEnter={() => !isMobile && setHoveredIndex(index)}
+                  onMouseLeave={() => !isMobile && setHoveredIndex(null)}
+                  onClick={() => isMobile && setHoveredIndex(active ? null : index)}
+                  sx={{
+                    ...glassSX(active),
+                    p: isMobile ? 2.25 : 3,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 1,
+                    borderRadius: "14px",
+                    cursor: "pointer",
+                    transform: active && !isMobile ? "scale(1.04)" : "none",
+                    outline: "none",
+                    "&:focus-visible": {
+                      boxShadow: `0 0 0 2px rgba(255,255,255,0.25), 0 0 0 5px ${ACCENT}55`,
+                    },
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <CheckCircleIcon
+                      sx={{
+                        fontSize: 32,
+                        color: ACCENT,
+                        filter: active ? "drop-shadow(0 0 6px rgba(39,148,210,0.6))" : "none",
+                        transition: "filter .3s ease",
+                      }}
+                    />
+                    <Typography variant="h6" fontWeight="bold">
+                      {feature.text}
+                    </Typography>
+                  </Box>
 
-                    {/* Expandable Details */}
-                    <Collapse in={hoveredIndex === index}>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          mt: 1,
-                          textAlign: "center",
-                          fontSize: isMobile ? "0.9rem" : "1rem",
-                        }}
-                      >
-                        {feature.details}
-                      </Typography>
-                    </Collapse>
-                    
-                  </Paper>
-                {/* </motion.div> */}
+                  <Collapse in={active} unmountOnExit>
+                    <Typography
+                      variant="body2"
+                      sx={{ mt: 1, textAlign: "center", fontSize: isMobile ? "0.95rem" : "1rem", color: "rgba(255,255,255,0.85)" }}
+                    >
+                      {feature.details}
+                    </Typography>
+                  </Collapse>
+                </Paper>
               </Grid>
-            ))}
-          </Grid>
-        {/* </motion.div> */}
+            );
+          })}
+        </Grid>
       </Box>
     </Box>
   );

@@ -89,7 +89,6 @@ const Services = () => {
           cursor: "pointer",
           backgroundColor: isMobile ? "#1C1C1E" : "black",
           margin: isMobile ? "0 auto" : "inherit",
-          border: isMobile ? "none" : "5px solid transparent",
           transition: "all 0.3s ease",
           "&:hover": {
             border: isMobile ? "none" : "5px solid #2794d2",
@@ -172,7 +171,7 @@ const Services = () => {
       sx={{
         py: 6,
         textAlign: "center",
-        backgroundColor: "#000",
+        backgroundColor: "transparent",
         color: "#EEEEFF",
         paddingBottom: "80px",
       }}

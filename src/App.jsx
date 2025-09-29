@@ -15,7 +15,6 @@ import Topbar from "./components/key-components/Topbar";
 import Hero from "./components/hero/Hero";
 import Testimonials from "./components/landing/Testimonials";
 import Services from "./components/landing/Services";
-import Contact from "./components/key-components/Contact";
 import Vision from "./components/landing/Vision";
 import Footer from "./components/key-components/Footer";
 import ServicesPage from "./components/ServicesPage";
@@ -25,7 +24,6 @@ import Gallery from "./components/sub-pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import NotFound from "./components/NotFound";
-import CallToAction from "./components/key-components/CallToAction";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
 import FAQ from "./components/sub-pages/FAQ";
@@ -39,6 +37,9 @@ import FullPageChatbot from "./components/FullPageChatbot";
 import ChatbotPopup from "./components/ChatbotPopup";
 import Mockup from "./components/landing-pages/Mockup";
 import VideoCTA2 from "./components/landing-pages/VideoCTA2";
+import SubCTA from "./components/SubCTA";
+import SubContact from "./components/SubContact";
+import SubQuickLinks from "./components/SubQuickLinks";
 
 // ---- Theme ----
 const theme = createTheme({
@@ -81,17 +82,26 @@ function AppContent() {
           element={
             <>
               <Hero />
-              <Services />
-              <WhyChooseUs />
-              <Testimonials />
-              <Box sx={{background: "#000 !important"}}>
+              <Box
+                sx={{
+                  background: `
+      linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
+      radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 52%),
+      linear-gradient(180deg, #000 0%, #0f0f0f 100%)
+    `,
+                }}
+              >
+                <Services />
+                <WhyChooseUs />
+                <Testimonials />
                 <VideoCTA2 />
+                <Vision />
+                <SubCTA />
+                <SubContact />
+                <SubQuickLinks />
+                <Footer />
               </Box>
-              <Vision />
-              <CallToAction />
-              <Contact />
-              <QuickLinks />
-              <Footer />
             </>
           }
         />

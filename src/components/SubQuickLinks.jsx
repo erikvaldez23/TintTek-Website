@@ -155,7 +155,6 @@ const QuickLinks = () => {
                     border: "1px solid rgba(255,255,255,0.08)",
                     background:
                       "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
-                    backdropFilter: "blur(10px)",
                     overflow: "hidden",
                   }}
                 >

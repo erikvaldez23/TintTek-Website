@@ -16,6 +16,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
+/* --------------------------------- Data --------------------------------- */
 const visionPoints = [
   {
     id: 1,
@@ -34,8 +35,7 @@ const visionPoints = [
   {
     id: 3,
     title: "Customer Satisfaction",
-    description:
-      "Ensuring every client receives exceptional value and service.",
+    description: "Ensuring every client receives exceptional value and service.",
     icon: <FaCar size={50} />,
   },
   {
@@ -46,34 +46,44 @@ const visionPoints = [
   },
 ];
 
-// Variants for parent container to stagger children on desktop
+/* ------------------------ Framer Motion Variants ------------------------ */
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
-// Variant for each card
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+/* ------------------------------ Glass Styles ------------------------------ */
+const glassSX = {
+  backgroundColor: "rgba(255,255,255,0.02)", // transparent to let backdrop-filter show
+  border: "1px solid rgba(255,255,255,0.16)",
+  backdropFilter: "blur(14px) saturate(120%)",
+  WebkitBackdropFilter: "blur(14px) saturate(120%)", // Safari
+  boxShadow: "0 12px 28px rgba(0,0,0,0.35)",
+};
+
+/* -------------------------------- Component ------------------------------- */
 const Vision = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box sx={{ py: isMobile ? 6 : 8, background: "#EEEEFF" }}>
+    <Box
+      sx={{
+        position: "relative",
+        py: isMobile ? 6 : 8,
+        // Subtle textured backdrop so the blur is visible
+        background: "transparent"
+      }}
+    >
       <Container maxWidth="md">
-        {/* Title with on-scroll animation */}
+        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +95,7 @@ const Vision = () => {
             sx={{
               mb: 3,
               fontWeight: "bold",
-              color: "#000",
+              color: "#fff",
               textAlign: "center",
               width: "100%",
             }}
@@ -94,7 +104,7 @@ const Vision = () => {
           </Typography>
         </motion.div>
 
-        {/* Description with on-scroll animation */}
+        {/* Description */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -106,31 +116,31 @@ const Vision = () => {
             sx={{
               mb: 5,
               fontSize: isMobile ? "1rem" : "1.4rem",
-              color: "#000",
+              color: "#fff",
               lineHeight: 1.6,
-              maxWidth: "900px",
+              maxWidth: 900,
               mx: "auto",
               textAlign: "center",
             }}
           >
             At TintTek+, our vision is to be the leading choice for high-quality
-            window tinting services, delivering craftsmanship and exceptional
-            value. We are dedicated to enhancing the comfort, style, and privacy
-            of every vehicle and building we serve, ensuring customer satisfaction
-            through precision, professionalism, and affordable pricing.
+            window tinting services, delivering craftsmanship and exceptional value.
+            We are dedicated to enhancing the comfort, style, and privacy of every
+            vehicle and building we serve, ensuring customer satisfaction through
+            precision, professionalism, and affordable pricing.
           </Typography>
         </motion.div>
 
-        {/* Mobile Carousel */}
+        {/* Mobile: Carousel */}
         {isMobile ? (
           <Swiper
             modules={[Pagination]}
             spaceBetween={20}
-            slidesPerView={"auto"} // Automatically sizes slides based on content
-            centeredSlides={true} // Ensures the active slide is centered
+            slidesPerView={"auto"}
+            centeredSlides
             pagination={{ clickable: true }}
             style={{
-              paddingBottom: "40px",
+              paddingBottom: 40,
               display: "flex",
               justifyContent: "center",
             }}
@@ -140,34 +150,34 @@ const Vision = () => {
                 key={point.id}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                  <Card
-                    sx={{
-                      textAlign: "center",
-                      py: 4,
-                      px: 2,
-                      borderRadius: 3,
-                      minHeight: "220px",
-                      background: "#121212",
-                      color: "#fff",
-                      width: "80vw", // Ensures card takes up 80% of viewport width
-                      maxWidth: "350px", // Prevents it from becoming too large on bigger mobile screens
-                    }}
-                  >
-                    <CardContent>
-                      <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                        {point.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
-                        {point.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                <Card
+                  sx={{
+                    ...glassSX,
+                    textAlign: "center",
+                    py: 4,
+                    px: 2,
+                    borderRadius: 3,
+                    minHeight: 220,
+                    color: "#fff",
+                    width: "80vw",
+                    maxWidth: 350,
+                  }}
+                >
+                  <CardContent>
+                    <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      {point.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
+                      {point.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
               </SwiperSlide>
             ))}
           </Swiper>
         ) : (
-          /* Desktop Grid with staggered on-scroll animations */
+          // Desktop: Grid with staggered animations
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -175,21 +185,21 @@ const Vision = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <Grid container spacing={4} justifyContent="center">
-              {visionPoints.map((point, index) => (
+              {visionPoints.map((point) => (
                 <Grid item xs={12} sm={6} key={point.id}>
                   <motion.div variants={cardVariants}>
                     <Card
                       sx={{
+                        ...glassSX,
                         textAlign: "center",
                         py: 4,
                         px: 2,
                         borderRadius: 3,
-                        height: "250px",
-                        background: "#121212",
+                        height: 250,
                         color: "#fff",
                         width: "100%",
                         transition:
-                          "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                          "transform .3s ease-in-out, box-shadow .3s ease-in-out",
                         "&:hover": {
                           transform: "scale(1.05)",
                           boxShadow: "0px 4px 30px #2794d2",
