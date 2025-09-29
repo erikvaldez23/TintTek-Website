@@ -87,7 +87,7 @@ function AppContent() {
                   background: `
       linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
       radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
-      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 52%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
       linear-gradient(180deg, #000 0%, #0f0f0f 100%)
     `,
                 }}
