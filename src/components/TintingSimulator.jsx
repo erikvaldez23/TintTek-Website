@@ -11,7 +11,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 
 // Stable ordered options
-const TINT_KEYS = ["5%", "20%", "35%", "50%", "70%"];
+const TINT_KEYS = ["5%", "15%", "30%", "50%", "80%"];
 
 const tintOptions = {
   "5%": {
@@ -19,13 +19,13 @@ const tintOptions = {
     image: "/tint-viewer/5-tint.webp",
     description: "Extremely dark tint for maximum privacy and UV protection.",
   },
-  "20%": {
-    name: "20% Tint",
+  "15%": {
+    name: "15% Tint",
     image: "/tint-viewer/20-tint.webp",
     description: "Provides a balance of privacy and visibility.",
   },
-  "35%": {
-    name: "35% Tint",
+  "30%": {
+    name: "30% Tint",
     image: "/tint-viewer/35-tint.webp",
     description: "A medium tint that maintains a sleek, stylish look.",
   },
@@ -34,8 +34,8 @@ const tintOptions = {
     image: "/tint-viewer/50-tint.webp",
     description: "Allows more visibility while still reducing glare and heat.",
   },
-  "70%": {
-    name: "70% Tint",
+  "80%": {
+    name: "80% Tint",
     image: "/tint-viewer/70-tint.webp",
     description: "A light tint for UV protection with high visibility.",
   },

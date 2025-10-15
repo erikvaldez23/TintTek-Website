@@ -181,7 +181,7 @@ const Services = () => {
         sx={{
           mb: 4,
           fontWeight: "bold",
-          color: "#fff",
+          color: "linear-gradient(135deg, #ffffff 0%, #53b4eb 100%)",
         }}
       >
         Services
