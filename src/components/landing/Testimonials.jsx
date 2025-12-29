@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Box,
   Card,
@@ -19,39 +20,42 @@ import "slick-carousel/slick/slick-theme.css";
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9";
 const GOOGLE_LOGO = "/google-logo.png";
 
-const reviews = [
-  {
-    author_name: "Andrew Pham",
-    profile_photo_url: "https://via.placeholder.com/40",
-    rating: 5,
-    time: new Date().setDate(new Date().getDate() - 7) / 1000,
-    text: "I had a fantastic experience with this tint company! Their timing was spot on, and they communicated with me every step of the way. They offer great prices on a variety of tint options, making it easy to find exactly what I needed.",
-  },
-  {
-    author_name: "Josue Chavez",
-    profile_photo_url: "https://via.placeholder.com/40",
-    rating: 5,
-    time: new Date().setDate(new Date().getDate() - 30) / 1000,
-    text: "Left my Tesla looking great! No problems whatsoever! Definitely recommend you bring your car here! Their customer service is top notch. I’ve never had a customer experience as good as this one!",
-  },
-  {
-    author_name: "Richanda Bryant",
-    profile_photo_url: "https://via.placeholder.com/40",
-    rating: 5,
-    time: new Date().setDate(new Date().getDate() - 21) / 1000,
-    text: "I had a great experience at Tint Tek Plus! This is the first car I've had to purchase tint for as previous vehicles had it from the factory. I was very impressed with Ryan and team!",
-  },
-  {
-    author_name: "Giovanni Romero",
-    profile_photo_url: "https://via.placeholder.com/40",
-    rating: 5,
-    time: new Date().setDate(new Date().getDate() - 60) / 1000,
-    text: "I recently had the pleasure of working with Tint Tek Plus, and I couldn't be more satisfied with the entire experience! From the moment I contacted them, their customer service was outstanding. They were knowledgeable, friendly, and took care of everything!",
-  },
-];
+
 
 const Testimonials = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        // const response = await axios.get("http://localhost:5001/api/google-reviews");
+        const response = await axios.get("https://tinttek-website.onrender.com/api/google-reviews");
+        const formattedReviews = response.data.map((review) => ({
+          author_name: review.author_name,
+          profile_photo_url: review.profile_photo_url,
+          rating: review.rating,
+          time: review.time, // Google returns unix timestamp
+          text: review.text,
+        }));
+        // If we get reviews, use them. Otherwise fallback or keep empty.
+        // We'll just slice to take the top 5 most useful or recent if needed, 
+        // but Google API usually returns 5 most helpful.
+        if (formattedReviews.length > 0) {
+          setReviews(formattedReviews);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Google reviews:", error);
+        // Fallback to hardcoded reviews if API fails? 
+        // For now, let's just keep the state empty or maybe initialize with hardcoded?
+        // Let's initialize with hardcoded reviews as fallback implicitly if we don't set state.
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
+
 
   const sliderSettings = {
     dots: true,
@@ -111,135 +115,33 @@ const Testimonials = () => {
       id="reviews"
       sx={{ py: isMobile ? 4 : 8, textAlign: "center", backgroundColor: "transparent" }}
     >
-      <Container maxWidth="xl">
-        <Typography
-          variant={isMobile ? "h4" : "h2"}
-          sx={{ mb: 4, fontWeight: "bold", color: "#fff" }}
-        >
-          User Reviews
-        </Typography>
-
-        {isMobile ? (
-          // Mobile View - Carousel remains the same
-          <Slider {...sliderSettings}>
-            {reviews.map((review, index) => (
-              <Box key={index} sx={{ px: 2 }}>
-                <Card
-                  sx={{
-                    width: "100%",
-                    maxWidth: 400,
-                    height: 350,
-                    margin: "0 auto",
-                    p: 2,
-                    borderRadius: 3,
-                    textAlign: "left",
-                    display: "flex",
-                    flexDirection: "column",
-                    position: "relative",
-                    mb: 2,
-                  }}
-                >
-                  <CardContent
-                    sx={{
-                      flex: "1 1 auto",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      overflow: "scroll",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 10,
-                        right: 10,
-                        width: 25,
-                        height: 25,
-                      }}
-                    >
-                      <img src={GOOGLE_LOGO} alt="Google" width="100%" />
-                    </Box>
-
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                      <Avatar
-                        sx={{ width: 40, height: 40, mr: 2 }}
-                        src={review.profile_photo_url}
-                        alt={review.author_name}
-                      />
-                      <Box>
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
-                        >
-                          {review.author_name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {new Date(review.time * 1000).toLocaleDateString()}
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Rating
-                      value={review.rating}
-                      precision={0.5}
-                      readOnly
-                      sx={{ mb: 1 }}
-                    />
-
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        display: "-webkit-box",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        overflowY: "auto",
-                        fontStyle: "italic",
-                        fontSize: "0.9rem",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      "{review.text}"
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Slider>
-        ) : (
-          // Desktop View - Grid Layout with staggered animations
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+      {reviews.length > 0 && (
+        <Container maxWidth="xl">
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            sx={{ mb: 4, fontWeight: "bold", color: "#fff" }}
           >
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: 2,
-                justifyContent: "center",
-                alignItems: "stretch",
-              }}
-            >
+            User Reviews
+          </Typography>
+
+          {isMobile ? (
+            // Mobile View - Carousel remains the same
+            <Slider {...sliderSettings}>
               {reviews.map((review, index) => (
-                <motion.div key={index} variants={cardVariants}>
+                <Box key={index} sx={{ px: 2 }}>
                   <Card
                     sx={{
-                      p: 3,
-                      borderRadius: 6,
-                      boxShadow: 3,
+                      width: "100%",
+                      maxWidth: 400,
+                      height: 350,
+                      margin: "0 auto",
+                      p: 2,
+                      borderRadius: 3,
                       textAlign: "left",
-                      minHeight: 350,
                       display: "flex",
                       flexDirection: "column",
                       position: "relative",
-                      backgroundColor: "#EEEEFF",
-                      transition: "transform 0.3s, box-shadow 0.3s",
-                      "&:hover": {
-                        transform: "translateY(-10px) scale(1.03)",
-                        boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                      },
+                      mb: 2,
                     }}
                   >
                     <CardContent
@@ -247,6 +149,8 @@ const Testimonials = () => {
                         flex: "1 1 auto",
                         display: "flex",
                         flexDirection: "column",
+                        justifyContent: "space-between",
+                        overflow: "scroll",
                       }}
                     >
                       <Box
@@ -261,9 +165,7 @@ const Testimonials = () => {
                         <img src={GOOGLE_LOGO} alt="Google" width="100%" />
                       </Box>
 
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
-                      >
+                      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                         <Avatar
                           sx={{ width: 40, height: 40, mr: 2 }}
                           src={review.profile_photo_url}
@@ -292,47 +194,178 @@ const Testimonials = () => {
                       <Typography
                         variant="body2"
                         sx={{
+                          display: "-webkit-box",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          overflowY: "auto",
                           fontStyle: "italic",
                           fontSize: "0.9rem",
                           lineHeight: 1.5,
-                          flexGrow: 1,
                         }}
                       >
                         "{review.text}"
                       </Typography>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </Box>
               ))}
-            </Box>
-          </motion.div>
-        )}
-        <Button
-          component={motion.a}
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          sx={{
-            mt: 5,
-            backgroundColor: "#2794d2",
-            color: "#000",
-            fontWeight: "bold",
-            px: isMobile ? 3 : 4,
-            py: isMobile ? 1.2 : 1.5,
-            borderRadius: "30px",
-            textTransform: "uppercase",
-            fontSize: isMobile ? "1rem" : "1.1rem",
-            width: isMobile ? "80%" : "auto",
-          }}
-          href={GOOGLE_REVIEWS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          VIEW MORE REVIEWS
-        </Button>
-      </Container>
+            </Slider>
+          ) : (
+            // Desktop View - Grid Layout with staggered animations
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, 1fr)",
+                  gap: 2,
+                  justifyContent: "center",
+                  alignItems: "stretch",
+                }}
+              >
+                {reviews.map((review, index) => (
+                  <motion.div key={index} variants={cardVariants}>
+                    <Card
+                      sx={{
+                        p: 3,
+                        borderRadius: 6,
+                        boxShadow: 3,
+                        textAlign: "left",
+                        height: 350, // Fixed height
+                        maxHeight: 350, // Ensure it doesn't grow
+                        display: "flex",
+                        flexDirection: "column",
+                        position: "relative",
+                        backgroundColor: "#EEEEFF",
+                        transition: "transform 0.3s, box-shadow 0.3s",
+                        "&:hover": {
+                          transform: "translateY(-10px) scale(1.03)",
+                          boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                        },
+                      }}
+                    >
+                      <CardContent
+                        sx={{
+                          flex: "1 1 auto",
+                          display: "flex",
+                          flexDirection: "column",
+                          pb: "24px !important", // Increase bottom padding
+                          overflow: "hidden", // Constrain content
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            width: 25,
+                            height: 25,
+                          }}
+                        >
+                          <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                        </Box>
+
+                        <Box
+                          sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                        >
+                          <Avatar
+                            sx={{ width: 40, height: 40, mr: 2 }}
+                            src={review.profile_photo_url}
+                            alt={review.author_name}
+                          />
+                          <Box>
+                            <Typography
+                              variant="h6"
+                              sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                            >
+                              {review.author_name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {new Date(review.time * 1000).toLocaleDateString()}
+                            </Typography>
+                          </Box>
+                        </Box>
+
+                        <Rating
+                          value={review.rating}
+                          precision={0.5}
+                          readOnly
+                          sx={{ mb: 1 }}
+                        />
+
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontStyle: "italic",
+                            fontSize: "0.9rem",
+                            lineHeight: 1.5,
+                            flex: 1, // Take remaining space
+                            minHeight: 0, // Allow shrinking for scroll
+                            overflowY: "auto",
+                            pr: 1,
+                            "&::-webkit-scrollbar": {
+                              width: "6px",
+                            },
+                            "&::-webkit-scrollbar-track": {
+                              background: "#f1f1f1",
+                              borderRadius: "10px",
+                            },
+                            "&::-webkit-scrollbar-thumb": {
+                              background: "#888",
+                              borderRadius: "10px",
+                            },
+                            "&::-webkit-scrollbar-thumb:hover": {
+                              background: "#555",
+                            },
+                          }}
+                        >
+                          "{review.text}"
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </Box>
+            </motion.div>
+          )}
+          <Button
+            component={motion.a}
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            sx={{
+              mt: 5,
+              backgroundColor: "#2794d2",
+              color: "#000",
+              fontWeight: "bold",
+              px: isMobile ? 3 : 4,
+              py: isMobile ? 1.2 : 1.5,
+              borderRadius: "30px",
+              textTransform: "uppercase",
+              fontSize: isMobile ? "1rem" : "1.1rem",
+              width: isMobile ? "80%" : "auto",
+            }}
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            VIEW MORE REVIEWS
+          </Button>
+        </Container>
+      )}
+      {reviews.length === 0 && (
+        <Container maxWidth="xl">
+          <Typography variant="body1" sx={{ color: "white" }}>
+            Loading reviews...
+          </Typography>
+        </Container>
+      )}
     </Box>
   );
 };

@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 const express = require("express");
 const cors = require("cors");
+const axios = require("axios");
 const fs = require("fs");
 const mongoose = require("mongoose");
 const { OpenAI } = require("openai");
@@ -325,6 +326,42 @@ loadFAQData();
 
 preloadEmbeddings().then(() => {
   app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+});
+
+// ✅ Google Reviews Endpoint
+app.get("/api/google-reviews", async (req, res) => {
+  try {
+    const { GOOGLE_PLACE_ID, GOOGLE_PLACES_API_KEY } = process.env;
+
+    if (!GOOGLE_PLACE_ID || !GOOGLE_PLACES_API_KEY) {
+      return res.status(500).json({ error: "Missing Google Places configuration" });
+    }
+
+    const response = await axios.get(
+      `https://maps.googleapis.com/maps/api/place/details/json`,
+      {
+        params: {
+          place_id: GOOGLE_PLACE_ID,
+          fields: "reviews",
+          key: GOOGLE_PLACES_API_KEY,
+        },
+      }
+    );
+
+    if (!response.data || !response.data.result || !response.data.result.reviews) {
+      return res.status(404).json({ error: "No reviews found" });
+    }
+
+    // Sort by time (most recent first) and take top 4
+    const reviews = response.data.result.reviews
+      .sort((a, b) => b.time - a.time)
+      .slice(0, 4);
+
+    res.json(reviews);
+  } catch (error) {
+    console.error("❌ Error fetching Google reviews:", error);
+    res.status(500).json({ error: "Failed to fetch reviews" });
+  }
 });
 
 // ✅ Chat Endpoint
