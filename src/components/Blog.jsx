@@ -58,8 +58,19 @@ const blogPosts = [
     estimate: "4-5 Minute",
     date: "August 24, 2025",
     category: ["Residential Tinting"],
-    featured: true,
+    featured: false,
   },
+  {
+    id: 4,
+    title: "Paint Protection Film Dallas TX | PPF Installation & Clear Bra",
+    summary:
+      "Protect your car from rock chips, heat & scratches with premium Paint Protection Film in Dallas. STEK PPF, self-healing & warranty backed.",
+    image: "/ppf-installation.JPEG",
+    estimate: "4-5 Minute",
+    date: "January 14, 2026",
+    category: ["Automotive Tinting"],
+    featured: true,
+  }
 ];
 
 // Extract all unique categories
@@ -157,11 +168,13 @@ const Blog = () => {
   }, []);
 
   return (
-    <Box sx={{      background: `
+    <Box sx={{
+      background: `
           radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
           radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
           linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
-        `, color: "#FFFFFF", minHeight: "100vh" }}>
+        `, color: "#FFFFFF", minHeight: "100vh"
+    }}>
       {/* HEAD */}
       <Helmet>
         <title>{title}</title>
@@ -178,7 +191,7 @@ const Blog = () => {
 
       {/* Hero Section */}
       <Box
-         sx={{
+        sx={{
           position: "relative",
           width: "100%",
           height: { xs: "50vh", md: "60vh" },
@@ -279,73 +292,73 @@ const Blog = () => {
               Stay updated with the latest trends in window tinting, paint
               protection, and automotive care from our expert team.
             </Typography>
-                 <Box
-                sx={{
-                  mt: 5,
-                  width: { xs: 120, sm: 120 },
-                  height: 5,
-                  borderRadius: 999,
-                  background:
-                    "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
-                  boxShadow: "0 0 16px rgba(39,148,210,0.35)",
-                }}
-              />
+            <Box
+              sx={{
+                mt: 5,
+                width: { xs: 120, sm: 120 },
+                height: 5,
+                borderRadius: 999,
+                background:
+                  "linear-gradient(90deg, #1e90ff 0%, #2794d2 50%, #1e90ff 100%)",
+                boxShadow: "0 0 16px rgba(39,148,210,0.35)",
+              }}
+            />
           </Box>
         </Container>
       </Box>
 
-{/* Category Filter — simple dark glass with blue active */}
-<Container maxWidth="lg" sx={{ mt: { xs: 2, md: 4 }, position: "relative", zIndex: 10 }}>
-  <Box
-    sx={{
-      p: 1,
-      borderRadius: 12,
-      background: "rgba(8, 8, 10, 0.6)",
-      border: "1px solid rgba(255,255,255,0.06)",
-      boxShadow: "0 6px 24px rgba(0,0,0,0.4)",
-      backdropFilter: "blur(10px)",
-      WebkitBackdropFilter: "blur(10px)",
-    }}
-  >
-    <Tabs
-      value={activeTab}
-      onChange={handleTabChange}
-      variant="scrollable"
-      scrollButtons="auto"
-      aria-label="Filter by category"
-      sx={{
-        minHeight: 0,
-        "& .MuiTabs-indicator": { display: "none" },
-        "& .MuiTab-root": {
-          minHeight: 36,
-          px: 1.6,
-          borderRadius: 9999,
-          textTransform: "none",
-          fontWeight: 600,
-          fontSize: 14,
-          color: "rgba(255,255,255,0.72)",
-          transition: "background-color .2s ease, color .2s ease",
-          "&:hover": { backgroundColor: "rgba(255,255,255,0.06)" },
-          "&.Mui-selected": {
-            color: "#fff",
-            backgroundColor: "#2794d2",        // ← company blue
-          },
-          "&.Mui-selected:hover": {
-            backgroundColor: "#1a7bb0",        // slight darken on hover (optional)
-          },
-          "&.Mui-focusVisible": {
-            boxShadow: "0 0 0 2px rgba(39,148,210,0.35)",
-          },
-        },
-      }}
-    >
-      <Tab disableRipple value="all" label="All Posts" />
-      {allCategories.map((category) => (
-        <Tab disableRipple key={category} value={category} label={category} />
-      ))}
-    </Tabs>
-  </Box>
-</Container>
+      {/* Category Filter — simple dark glass with blue active */}
+      <Container maxWidth="lg" sx={{ mt: { xs: 2, md: 4 }, position: "relative", zIndex: 10 }}>
+        <Box
+          sx={{
+            p: 1,
+            borderRadius: 12,
+            background: "rgba(8, 8, 10, 0.6)",
+            border: "1px solid rgba(255,255,255,0.06)",
+            boxShadow: "0 6px 24px rgba(0,0,0,0.4)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+          }}
+        >
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="Filter by category"
+            sx={{
+              minHeight: 0,
+              "& .MuiTabs-indicator": { display: "none" },
+              "& .MuiTab-root": {
+                minHeight: 36,
+                px: 1.6,
+                borderRadius: 9999,
+                textTransform: "none",
+                fontWeight: 600,
+                fontSize: 14,
+                color: "rgba(255,255,255,0.72)",
+                transition: "background-color .2s ease, color .2s ease",
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.06)" },
+                "&.Mui-selected": {
+                  color: "#fff",
+                  backgroundColor: "#2794d2",        // ← company blue
+                },
+                "&.Mui-selected:hover": {
+                  backgroundColor: "#1a7bb0",        // slight darken on hover (optional)
+                },
+                "&.Mui-focusVisible": {
+                  boxShadow: "0 0 0 2px rgba(39,148,210,0.35)",
+                },
+              },
+            }}
+          >
+            <Tab disableRipple value="all" label="All Posts" />
+            {allCategories.map((category) => (
+              <Tab disableRipple key={category} value={category} label={category} />
+            ))}
+          </Tabs>
+        </Box>
+      </Container>
 
 
 
@@ -716,7 +729,7 @@ const Blog = () => {
 
       {/* Call to Action & Footer */}
       <CallToAction />
-        <Contact />
+      <Contact />
       <QuickLinks />
       <Footer />
     </Box>

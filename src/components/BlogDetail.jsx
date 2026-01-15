@@ -9,12 +9,17 @@ import {
   Box,
   Chip,
   Divider,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CategoryIcon from "@mui/icons-material/Category";
 import ShareIcon from "@mui/icons-material/Share";
-import CallToAction from "./key-components/CallToAction";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SubCTA from "./SubCTA";
+import SubContact from "./SubContact";
 import Footer from "./key-components/Footer";
 import Contact from "./key-components/Contact";
 
@@ -230,96 +235,96 @@ const blogPosts = [
     category: "Car Tinting in Texas",
   },
   {
-  id: 3,
-  title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
-  summary:
-    "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
-  content: (
-    <>
-      <Typography className="blog-paragraph">
-        If you’re a homeowner in <strong>Dallas–Fort Worth (DFW)</strong>, you already know how intense the Texas sun can be. Blazing heat, high energy bills, and faded furniture are part of everyday life — but there’s a smarter way to protect your home: <strong>residential window tinting</strong>.
-      </Typography>
-      <Typography className="blog-paragraph">
-        At <strong>Tint Tek Plus</strong>, we specialize in installing <strong>LLumar Vista™ Window Films</strong> — premium residential window tints designed to maximize comfort, reduce energy costs, and add privacy while maintaining beautiful natural light.
-      </Typography>
+    id: 3,
+    title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
+    summary:
+      "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          If you’re a homeowner in <strong>Dallas–Fort Worth (DFW)</strong>, you already know how intense the Texas sun can be. Blazing heat, high energy bills, and faded furniture are part of everyday life — but there’s a smarter way to protect your home: <strong>residential window tinting</strong>.
+        </Typography>
+        <Typography className="blog-paragraph">
+          At <strong>Tint Tek Plus</strong>, we specialize in installing <strong>LLumar Vista™ Window Films</strong> — premium residential window tints designed to maximize comfort, reduce energy costs, and add privacy while maintaining beautiful natural light.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        1. Lower Energy Bills 💡
-      </Typography>
-      <Typography className="blog-paragraph">
-        LLumar Vista films can block up to <strong>79% of solar heat</strong>, reducing your A/C usage and helping cut energy costs by <strong>15–30% each month</strong>. Over time, that means big savings on utility bills.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          1. Lower Energy Bills 💡
+        </Typography>
+        <Typography className="blog-paragraph">
+          LLumar Vista films can block up to <strong>79% of solar heat</strong>, reducing your A/C usage and helping cut energy costs by <strong>15–30% each month</strong>. Over time, that means big savings on utility bills.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        2. UV Protection for Your Family & Furniture ☀️
-      </Typography>
-      <Typography className="blog-paragraph">
-        LLumar Vista films block <strong>99% of harmful UV rays</strong>, protecting your skin while preventing hardwood floors, furniture, artwork, and curtains from fading. Think of it as invisible sunscreen for your home.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          2. UV Protection for Your Family & Furniture ☀️
+        </Typography>
+        <Typography className="blog-paragraph">
+          LLumar Vista films block <strong>99% of harmful UV rays</strong>, protecting your skin while preventing hardwood floors, furniture, artwork, and curtains from fading. Think of it as invisible sunscreen for your home.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        3. Increased Privacy Without Sacrificing Natural Light 🪟
-      </Typography>
-      <Typography className="blog-paragraph">
-        Our residential films give you <strong>daytime privacy</strong> from neighbors and passersby, all while keeping your home bright and welcoming. No more heavy blinds or sacrificing sunlight.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          3. Increased Privacy Without Sacrificing Natural Light 🪟
+        </Typography>
+        <Typography className="blog-paragraph">
+          Our residential films give you <strong>daytime privacy</strong> from neighbors and passersby, all while keeping your home bright and welcoming. No more heavy blinds or sacrificing sunlight.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        4. Glare Reduction for Screens & Comfort 📺💻
-      </Typography>
-      <Typography className="blog-paragraph">
-        Whether you’re working from home or watching a movie, LLumar Vista tints cut glare so you can enjoy every room without squinting or straining your eyes.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          4. Glare Reduction for Screens & Comfort 📺💻
+        </Typography>
+        <Typography className="blog-paragraph">
+          Whether you’re working from home or watching a movie, LLumar Vista tints cut glare so you can enjoy every room without squinting or straining your eyes.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        5. Added Safety & Security 🔒
-      </Typography>
-      <Typography className="blog-paragraph">
-        Specialty films help <strong>hold glass together</strong> in case of breakage, making windows harder to shatter from accidents, severe weather, or break-ins.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          5. Added Safety & Security 🔒
+        </Typography>
+        <Typography className="blog-paragraph">
+          Specialty films help <strong>hold glass together</strong> in case of breakage, making windows harder to shatter from accidents, severe weather, or break-ins.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        6. Modern Look & Curb Appeal 🏡
-      </Typography>
-      <Typography className="blog-paragraph">
-        LLumar Vista films come in a range of subtle shades and finishes to match your home’s style. They instantly enhance curb appeal without the cost of replacing windows.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          6. Modern Look & Curb Appeal 🏡
+        </Typography>
+        <Typography className="blog-paragraph">
+          LLumar Vista films come in a range of subtle shades and finishes to match your home’s style. They instantly enhance curb appeal without the cost of replacing windows.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        7. Year-Round Comfort 🌡️
-      </Typography>
-      <Typography className="blog-paragraph">
-        From blocking heat in the summer to adding insulation during the winter, LLumar Vista films help stabilize indoor temperatures and keep your home more comfortable.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          7. Year-Round Comfort 🌡️
+        </Typography>
+        <Typography className="blog-paragraph">
+          From blocking heat in the summer to adding insulation during the winter, LLumar Vista films help stabilize indoor temperatures and keep your home more comfortable.
+        </Typography>
 
-      <Typography variant="h5" className="blog-section-title">
-        Why Choose Tint Tek Plus?
-      </Typography>
-      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-        <li>✔️ Professional installation backed by <strong>lifetime residential warranties</strong></li>
-        <li>✔️ Premium <strong>LLumar Vista™ films</strong> built for Texas heat</li>
-        <li>✔️ Custom shading and privacy levels for every home</li>
-        <li>✔️ Local DFW experts with 15+ years of combined experience</li>
-        <li>✔️ Friendly service and fast installation</li>
-      </Box>
+        <Typography variant="h5" className="blog-section-title">
+          Why Choose Tint Tek Plus?
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>✔️ Professional installation backed by <strong>lifetime residential warranties</strong></li>
+          <li>✔️ Premium <strong>LLumar Vista™ films</strong> built for Texas heat</li>
+          <li>✔️ Custom shading and privacy levels for every home</li>
+          <li>✔️ Local DFW experts with 15+ years of combined experience</li>
+          <li>✔️ Friendly service and fast installation</li>
+        </Box>
 
-      <Typography variant="h5" className="blog-section-title">
-        About LLumar Vista™ Window Films
-      </Typography>
-      <Typography className="blog-paragraph">
-        <strong>Vista by LLumar</strong> is one of the most advanced home window film brands in the world. Known for clarity, performance, and durability, Vista films are engineered to:
-      </Typography>
-      <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-        <li>🌞 Reject up to 79% of solar heat</li>
-        <li>🛡️ Block 99% of UV rays</li>
-        <li>🌎 Reduce energy consumption and your carbon footprint</li>
-        <li>🏠 Maintain natural light with virtually invisible films</li>
-      </Box>
-      <Typography className="blog-paragraph">
-        Vista films are so effective they’ve been <strong>recommended by the Skin Cancer Foundation</strong> for UV protection — making them a smart investment in your family’s health and your home’s long-term value.
-      </Typography>
+        <Typography variant="h5" className="blog-section-title">
+          About LLumar Vista™ Window Films
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Vista by LLumar</strong> is one of the most advanced home window film brands in the world. Known for clarity, performance, and durability, Vista films are engineered to:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>🌞 Reject up to 79% of solar heat</li>
+          <li>🛡️ Block 99% of UV rays</li>
+          <li>🌎 Reduce energy consumption and your carbon footprint</li>
+          <li>🏠 Maintain natural light with virtually invisible films</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Vista films are so effective they’ve been <strong>recommended by the Skin Cancer Foundation</strong> for UV protection — making them a smart investment in your family’s health and your home’s long-term value.
+        </Typography>
 
-         <Typography variant="h5" className="blog-section-title">
+        <Typography variant="h5" className="blog-section-title">
           📍 Come See Us
         </Typography>
         <Typography className="blog-paragraph">
@@ -328,12 +333,238 @@ const blogPosts = [
           📞 Call/Text: <strong>972-362-8468</strong><br />
           🌐 <a href="https://www.tinttekplus.com" target="_blank" rel="noopener noreferrer">www.tinttekplus.com</a>
         </Typography>
-    </>
-  ),
-  image: "/residential-blog.jpg",
-  date: "August 24, 2025",
-  category: "Residential Window Tinting",
-}
+      </>
+    ),
+    image: "/residential-blog.jpg",
+    date: "August 24, 2025",
+    category: "Residential Window Tinting",
+  },
+  {
+    id: 4,
+    title: "Why Paint Protection Film (PPF) Is a MUST in Dallas, Texas",
+    summary:
+      "Dallas roads, construction zones, and brutal Texas UV can destroy your paint fast. PPF stops rock chips, scratches, and fading with premium self-healing protection.",
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          If you drive in <strong>Dallas, Texas</strong>, your car is under attack every single day.
+          Between brutal heat, flying gravel on <strong>US-75 (Central Expressway)</strong>, construction zones on
+          <strong> I-635</strong>, and tight parking lots across DFW, paint damage isn’t a matter of <em>if</em> — it’s
+          <em> when</em>.
+        </Typography>
+
+        <Typography className="blog-paragraph">
+          That’s exactly why <strong>Paint Protection Film (PPF)</strong> has become one of the fastest-growing automotive
+          upgrades in North Texas. It’s no longer a “luxury add-on” — in Dallas, <strong>PPF is a necessity</strong>.
+        </Typography>
+
+        <Typography variant="h5" className="blog-section-title">
+          What Is Paint Protection Film (PPF)?
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Paint Protection Film</strong> is a virtually invisible, self-healing urethane film applied to painted
+          surfaces. Think of it as a durable, sacrificial barrier that absorbs damage so your factory paint doesn’t.
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          PPF protects your vehicle from:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Rock chips & flying highway debris</li>
+          <li>Scratches, swirl marks, and light scuffs</li>
+          <li>Bug splatter & bird droppings (etching prevention)</li>
+          <li>UV fading, oxidation, and clear-coat wear</li>
+          <li> Minor parking lot dings and impact zones</li>
+        </Box>
+
+        <Typography className="blog-paragraph">
+          Premium films like <strong>STEK DynoShield</strong> and <strong>STEK DynoMatte</strong> can even
+          <strong> self-heal</strong> when exposed to heat — meaning light scratches can disappear over time in Texas sun.
+        </Typography>
+
+        <Typography variant="h5" className="blog-section-title">
+          Why Dallas Is One of the HARDEST Places on Vehicle Paint
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          1. Constant Construction Zones
+        </Typography>
+        <Typography className="blog-paragraph">
+          Highways like <strong>US-75, I-635, I-30, and SH-121</strong> are nonstop construction corridors. Loose gravel and
+          debris create rock chips daily — especially on your front bumper, hood, and fenders.
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          2. Extreme Heat & UV Exposure
+        </Typography>
+        <Typography className="blog-paragraph">
+          Texas sun can accelerate clear-coat breakdown. Once clear coat fails, paint permanently fades, oxidizes, and can
+          peel — which kills resale value.
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          3. High-Speed Commuting
+        </Typography>
+        <Typography className="blog-paragraph">
+          Long commutes at <strong>70–85 MPH</strong> mean your front end is constantly being “sandblasted” by road debris.
+          PPF is the only solution that physically blocks this impact.
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          4. Tight Parking Lots
+        </Typography>
+        <Typography className="blog-paragraph">
+          From Plano to Uptown Dallas, door dings and random scuffs happen fast. PPF helps prevent permanent paint damage in
+          high-contact areas.
+        </Typography>
+
+        <Typography variant="h5" className="blog-section-title">
+          What Areas Should You Protect With PPF?
+        </Typography>
+
+        <Typography variant="h6" className="blog-section-title">
+          Full Front End Package
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Front bumper</li>
+          <li>Full hood</li>
+          <li>Full fenders</li>
+          <li>Headlights</li>
+          <li>Mirror caps</li>
+        </Box>
+
+        <Typography variant="h6" className="blog-section-title">
+          Track / Performance Package 🏁
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Rocker panels</li>
+          <li>Rear bumper impact zones</li>
+          <li>Rear fender flares</li>
+        </Box>
+
+        <Typography variant="h6" className="blog-section-title">
+          Full Body PPF
+        </Typography>
+        <Typography className="blog-paragraph">
+          Ultimate protection for exotic, luxury, and brand-new vehicles — perfect for keeping paint in showroom condition.
+        </Typography>
+
+        <Typography variant="h5" className="blog-section-title">
+          Why Choose Tint Tek Plus for PPF in Dallas?
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Tint Tek Plus</strong> is trusted by drivers across <strong>Plano, Garland, Frisco, Richardson, McKinney,
+            and Dallas</strong> for one reason: we protect vehicles the right way.
+        </Typography>
+
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>✔ Premium <strong>STEK PPF</strong> (DynoShield & DynoMatte)</li>
+          <li>✔ Self-healing technology</li>
+          <li>✔ Computer-cut precision patterns</li>
+          <li>✔ Wrapped edges for a seamless finish</li>
+          <li>✔ Warranty-backed installations</li>
+          <li>✔ Trusted on Tesla, BMW, Porsche, Corvette, G-Wagon, and more</li>
+        </Box>
+
+        <Typography variant="h5" className="blog-section-title">
+          PPF vs Ceramic Coating — What’s the Difference?
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Ceramic coating protects shine.</strong> <strong>PPF protects paint.</strong> If you want real impact
+          protection from Dallas roads, you need PPF.
+        </Typography>
+
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li><strong>Stops rock chips:</strong> PPF ✅ | Ceramic ❌</li>
+          <li><strong>Scratch resistance:</strong> PPF ✅ | Ceramic ❌</li>
+          <li><strong>Self-healing:</strong> PPF ✅ | Ceramic ❌</li>
+          <li><strong>UV protection:</strong> PPF ✅ | Ceramic ✅</li>
+          <li><strong>Easier cleaning:</strong> PPF ✅ | Ceramic ✅</li>
+        </Box>
+
+        <Typography variant="h5" className="blog-section-title">
+          Is Paint Protection Film Worth It in Dallas?
+        </Typography>
+        <Typography className="blog-paragraph">
+          Absolutely. Between construction debris, high speeds, and intense UV, unprotected paint loses value quickly. PPF
+          preserves your finish, helps protect resale value, and can save thousands in repainting and correction costs.
+        </Typography>
+
+
+        <Typography variant="h5" className="blog-section-title">
+          📍 Come See Us
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Tint Tek Plus – Dallas, TX</strong>
+          <br />
+          📍 2518 W. Kingsley Rd, Garland, TX (Serving all of Dallas)
+          <br />
+          📞 Call/Text: <strong>972-362-8468</strong>
+          <br />
+          🌐{" "}
+          <a href="https://www.tinttekplus.com" target="_blank" rel="noopener noreferrer">
+            www.tinttekplus.com
+          </a>
+        </Typography>
+      </>
+    ),
+    image: "/ppf-installation.JPEG",
+    date: "August 30, 2025",
+    category: "Paint Protection Film",
+    faqs: [
+      {
+        question: "Is PPF worth it in Dallas, Texas?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes — Dallas highways, construction zones, and Texas sun make PPF one of the smartest upgrades for preventing
+            rock chips, scratches, and UV damage.
+          </Typography>
+        ),
+      },
+      {
+        question: "How long does PPF last?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            High-quality films typically last <strong>7–10 years</strong> with proper installation and care.
+          </Typography>
+        ),
+      },
+      {
+        question: "Will PPF damage factory paint?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            No — when professionally installed and removed, PPF is designed to protect factory paint, not harm it.
+          </Typography>
+        ),
+      },
+      {
+        question: "Does self-healing PPF really work?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes — premium films can self-heal light swirls and fine scratches when warmed by sunlight or heat.
+          </Typography>
+        ),
+      },
+      {
+        question: "What’s the most popular PPF package?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            The <strong>Full Front End Package</strong> is the top choice because it protects the highest-impact zones on
+            Dallas highways.
+          </Typography>
+        ),
+      },
+      {
+        question: "Is PPF better than ceramic coating?",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            They do different jobs: PPF stops physical damage (chips/scratches), ceramic boosts gloss and ease of cleaning.
+            For Dallas roads, PPF is the foundation.
+          </Typography>
+        ),
+      },
+    ],
+  }
 ];
 
 const BlogDetail = () => {
@@ -472,7 +703,14 @@ const BlogDetail = () => {
   }
 
   return (
-    <Box component="article" sx={{ bgcolor: "#0a0a10" }}>
+    <Box component="article" sx={{
+      background: `
+      linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
+      radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
+      linear-gradient(180deg, #000 0%, #0f0f0f 100%)
+    `,
+    }}>
       <Helmet>
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
@@ -528,7 +766,7 @@ const BlogDetail = () => {
           }}
         />
         <Container
-          maxWidth="lg"
+          maxWidth="xl"
           sx={{
             position: "relative",
             height: "100%",
@@ -596,7 +834,7 @@ const BlogDetail = () => {
       </Box>
 
       {/* Blog Content */}
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Box
           sx={{
             py: { xs: 4, md: 8 },
@@ -692,6 +930,42 @@ const BlogDetail = () => {
             }}
           >
             {post.content}
+
+            {post.faqs && (
+              <Box sx={{ mt: 6 }}>
+                <Typography variant="h5" className="blog-section-title">
+                  Frequently Asked Questions (FAQ)
+                </Typography>
+                <Box sx={{ mt: 3 }}>
+                  {post.faqs.map((faq, index) => (
+                    <Accordion
+                      key={index}
+                      sx={{
+                        bgcolor: "rgba(255,255,255,0.03)",
+                        color: "#fff",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        mb: 2,
+                        "&:before": { display: "none" },
+                        borderRadius: "8px !important",
+                      }}
+                    >
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon sx={{ color: "#2794d2" }} />}
+                        aria-controls={`panel${index}-content`}
+                        id={`panel${index}-header`}
+                      >
+                        <Typography sx={{ fontWeight: 600, fontSize: "1.1rem" }}>
+                          {faq.question}
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        {faq.answer}
+                      </AccordionDetails>
+                    </Accordion>
+                  ))}
+                </Box>
+              </Box>
+            )}
           </Box>
 
           {/* Share / Back */}
@@ -707,7 +981,7 @@ const BlogDetail = () => {
             }}
           >
             <Button
-              onClick={() => navigate("/blog")}
+              onClick={() => navigate("/blogs")}
               startIcon={<ArrowBackIcon />}
               variant="outlined"
               sx={{
@@ -738,8 +1012,8 @@ const BlogDetail = () => {
       </Container>
 
       {/* CTA & Footer */}
-      <CallToAction />
-      <Contact />
+      <SubCTA />
+      <SubContact />
       <Footer />
     </Box>
   );
