@@ -165,7 +165,7 @@ const Vision = () => {
                 >
                   <CardContent>
                     <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    <Typography variant="h6" component="h3" sx={{ fontWeight: "bold" }}>
                       {point.title}
                     </Typography>
                     <Typography variant="body2" sx={{ color: "#ccc", mt: 1 }}>
@@ -208,7 +208,7 @@ const Vision = () => {
                     >
                       <CardContent>
                         <Box sx={{ mb: 2, color: "#2794d2" }}>{point.icon}</Box>
-                        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                        <Typography variant="h5" component="h3" sx={{ fontWeight: "bold" }}>
                           {point.title}
                         </Typography>
                         <Typography variant="body1" sx={{ color: "#ccc", mt: 1 }}>

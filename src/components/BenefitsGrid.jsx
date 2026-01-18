@@ -449,7 +449,7 @@ const BenefitsGrid = () => {
               : null}
           </Avatar>
           <Typography
-            variant="h6"
+            variant="h3"
             sx={{
               fontWeight: 800,
               ml: 2,

@@ -130,49 +130,49 @@ const serviceDetails = {
 // Meta overrides
 const metaByService = {
   "vehicle-window-tinting": {
-    title: "Vehicle Window Tinting | Tint Tek Plus",
+    title: "Vehicle Window Tinting Services | Car & Auto Tinting Dallas",
     description:
-      "Enhance privacy, reduce glare, and protect your interior with professional vehicle window tinting. Premium films, lifetime warranty.",
+      "Get professional auto tinting and vehicle window tinting in Dallas, Texas. Our car window tinting service ensures quality and style. Book now!",
   },
   "tesla-window-tinting": {
-    title: "Tesla Window Tinting | Heat Rejection & Clarity",
+    title: "Tesla Window Tinting Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Specialized Tesla tinting with ceramic films for top heat rejection and signal-friendly clarity. Model 3/Y/S/X experts.",
+      "Professional Tesla window tinting in Dallas, Texas for heat reduction, UV protection & sleek style. Expert EV tint services at Tint Tek Plus. Book now!",
   },
   "commercial-window-tinting": {
-    title: "Commercial Window Tinting | Energy & UV Protection",
+    title: "Commercial Window Tinting Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Lower energy bills, reduce glare, and protect interiors with commercial window tinting for offices and buildings.",
+      "Professional commercial window tinting in Dallas, Texas to improve energy efficiency, privacy & comfort for office and storefronts.Trusted service at Tint Tek Plus.",
   },
   "residential-window-tinting": {
-    title: "Residential Window Tinting | Comfort & UV Blocking",
+    title: "Residential Window Tinting Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Keep your home cooler, protect furnishings from UV, and add privacy with residential window tinting.",
+      "Top residential window tinting in Dallas, Texas to reduce heat, glare & UV while enhancing privacy and comfort. Trusted home tint experts at Tint Tek Plus.",
   },
   "vehicle-paint-correction": {
-    title: "Paint Correction | Swirl & Scratch Removal",
+    title: "Vehicle Paint Correction Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Restore gloss and remove swirls with multi-stage machine polishing performed by trained specialists.",
+      "Professional vehicle paint correction services in Dallas, Texas. Restore shine, remove swirls & protect your car’s paint. Book Tint Tek Plus experts today!",
   },
   "vehicle-paint-protection": {
-    title: "Paint Protection Film (PPF) | Rock Chip Defense",
+    title: "Vehicle Paint Protection Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Self-healing PPF installed by certified techs to protect high-impact areas or full body wraps.",
+      "Protect your vehicle's paint with professional services from Tint Tek Plus. Keep your car looking brand new with our high-quality paint protection solutions.",
   },
   "headlight-services": {
-    title: "Headlight & Taillight Services | Restorations & Tints",
+    title: "Tinted Headlights & Taillights Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Headlight restoration and light tint services for a refreshed look and improved visibility.",
+      "Get premium tinted headlights in Dallas, Texas for style and protection. Quality headlight & taillight tint services at Tint Tek Plus. Book your appointment today!",
   },
   "windshield-protection-film": {
-    title: "Windshield Protection Film | Crack & Pit Resistance",
+    title: "Windshield Protection Film Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Optically clear windshield protection film to reduce pitting and cracks from road debris.",
+      "Protect your car with windshield protection film in Dallas, Texas. Tint Tek Plus offers premium film to prevent cracks, chips & UV damage. Book today!",
   },
   "ceramic-coating": {
-    title: "Ceramic Coating | Long-Term Gloss & Protection",
+    title: "Ceramic Coating Services in Dallas, TX | Tint Tek Plus",
     description:
-      "Professional ceramic coatings for long-lasting gloss, easier washing, and chemical resistance.",
+      "Get professional ceramic coating in Dallas, Texas for long-lasting paint protection and deep shine. Trusted experts at Tint Tek Plus.",
   },
 };
 
@@ -438,7 +438,7 @@ const ServicePage = () => {
         >
           <BusinessInfo />
           <Typography
-            variant="h2"
+            variant="h1"
             sx={{
               mb: 2,
               fontWeight: "bold",
@@ -567,10 +567,10 @@ const ServicePage = () => {
           {(serviceId === "commercial-window-tinting" ||
             serviceId === "tesla-window-tinting" ||
             serviceId === "residential-window-tinting") && (
-            <InViewMount>
-              <ImageCarousel />
-            </InViewMount>
-          )}
+              <InViewMount>
+                <ImageCarousel />
+              </InViewMount>
+            )}
         </Suspense>
 
         <Suspense fallback={Fallback}>
@@ -592,10 +592,10 @@ const ServicePage = () => {
             serviceId === "ceramic-coating" ||
             serviceId === "headlight-services" ||
             serviceId === "residential-window-tinting") && (
-            <InViewMount>
-              <BenefitsGrid />
-            </InViewMount>
-          )}
+              <InViewMount>
+                <BenefitsGrid />
+              </InViewMount>
+            )}
         </Suspense>
 
         <Suspense fallback={Fallback}>

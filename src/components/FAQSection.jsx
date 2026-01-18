@@ -394,7 +394,7 @@ const FAQSection = () => {
                 }}
               >
                 <Typography
-                  variant={isMobile ? "body1" : "h5"}
+                  variant={isMobile ? "h4" : "h4"}
                   fontWeight={800}
                   sx={{
                     color: "#fff",

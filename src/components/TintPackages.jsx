@@ -54,24 +54,24 @@ const TintPackages = () => {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
 
-const cardSx = {
-  position: "relative",
-  overflow: "hidden",
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.18)",
-  boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
-  borderRadius: 5,
-  color: "#fff",
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  transition: "transform .25s ease, box-shadow .25s ease, border-color .25s ease",
-  "&:hover": {
-    transform: "translateY(-2px)",
-    boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
-    borderColor: "rgba(255,255,255,0.30)",
-  },
-};
+  const cardSx = {
+    position: "relative",
+    overflow: "hidden",
+    background: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(255,255,255,0.18)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
+    borderRadius: 5,
+    color: "#fff",
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    transition: "transform .25s ease, box-shadow .25s ease, border-color .25s ease",
+    "&:hover": {
+      transform: "translateY(-2px)",
+      boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+      borderColor: "rgba(255,255,255,0.30)",
+    },
+  };
 
 
   return (
@@ -130,7 +130,7 @@ const cardSx = {
                   >
                     <Box sx={{ background: "transparent" }}>
                       <Typography
-                        variant="h6"
+                        variant="h3"
                         sx={{
                           fontWeight: "bold",
                           mb: 1,

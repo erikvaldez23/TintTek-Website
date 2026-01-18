@@ -174,6 +174,7 @@ const Testimonials = () => {
                         <Box>
                           <Typography
                             variant="h6"
+                            component="h3"
                             sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
                           >
                             {review.author_name}
@@ -280,6 +281,7 @@ const Testimonials = () => {
                           <Box>
                             <Typography
                               variant="h6"
+                              component="h3"
                               sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
                             >
                               {review.author_name}

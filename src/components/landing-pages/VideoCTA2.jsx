@@ -393,8 +393,8 @@ export default function LocalVideoCTA({
         b.split(" – ").length > 1
           ? b.split(" – ")
           : b.split(" — ").length > 1
-          ? b.split(" — ")
-          : b.split(" - ");
+            ? b.split(" — ")
+            : b.split(" - ");
       if (parts.length > 1) {
         return { title: parts[0].trim(), body: parts.slice(1).join(" - ").trim() };
       }
@@ -431,6 +431,7 @@ export default function LocalVideoCTA({
 
               <Typography
                 variant="h6"
+                component="p"
                 sx={{
                   color: "rgba(255,255,255,0.9)",
                   fontWeight: 600,
@@ -451,7 +452,7 @@ export default function LocalVideoCTA({
                         <TaskAltRoundedIcon sx={{ fontSize: { xs: 16, sm: 18 }, color: "#e9f7ff" }} />
                       </CheckBadge>
                       <Box>
-                        <FeatureTitle variant="subtitle1">{item.title}</FeatureTitle>
+                        <FeatureTitle variant="subtitle1" component="h3">{item.title}</FeatureTitle>
                         {item.body && <FeatureBody variant="body2">{item.body}</FeatureBody>}
                       </Box>
                     </FeatureItem>

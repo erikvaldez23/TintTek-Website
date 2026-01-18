@@ -452,53 +452,54 @@ const ServicesOffered = ({ serviceId }) => {
           {serviceId === "commercial-window-tinting"
             ? "Commercial Window Tinting Services"
             : serviceId === "residential-window-tinting"
-            ? "Residential Window Tinting Services"
-            : serviceId === "vehicle-paint-protection"
-            ? "Stek PPF Options"
-            : serviceId === "headlight-services"
-            ? "Available Tones:"
-            : "Film Types"}
+              ? "Residential Window Tinting Services"
+              : serviceId === "vehicle-paint-protection"
+                ? "Stek PPF Options"
+                : serviceId === "headlight-services"
+                  ? "Available Tones:"
+                  : "Film Types"}
         </Typography>
 
         {(serviceId === "commercial-window-tinting" ||
           serviceId === "residential-window-tinting") && (
-          <List
-            sx={{
-              backgroundColor: "transparent",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 2,
-              justifyContent: { xs: "flex-start", sm: "center" },
-            }}
-          >
-            {service.list.map((item, index) => (
-              <ListItem
-                key={index}
-                sx={{
-                  width: "auto",
-                  display: "flex",
-                  alignItems: "center",
-                  m: 0,
-                  p: 0,
-                  backgroundColor: "transparent",
-                }}
-              >
-                <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
-                  <CheckCircleIcon sx={{ color: "#2794d2" }} />
-                </ListItemIcon>
-                <ListItemText primary={item} sx={{ m: 0 }} />
-              </ListItem>
-            ))}
-          </List>
-        )}
+            <List
+              sx={{
+                backgroundColor: "transparent",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                justifyContent: { xs: "flex-start", sm: "center" },
+              }}
+            >
+              {service.list.map((item, index) => (
+                <ListItem
+                  key={index}
+                  sx={{
+                    width: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                    m: 0,
+                    p: 0,
+                    backgroundColor: "transparent",
+                  }}
+                >
+                  <ListItemIcon sx={{ minWidth: "auto", mr: 0.5 }}>
+                    <CheckCircleIcon sx={{ color: "#2794d2" }} />
+                  </ListItemIcon>
+                  <ListItemText primary={item} sx={{ m: 0 }} />
+                </ListItem>
+              ))}
+            </List>
+          )}
 
         <Typography
-          variant="h5"
+          variant="h3"
           fontWeight="bold"
           sx={{
             mt: 4,
             mb: 2,
             textAlign: serviceId === "tesla-window-tinting" ? "center" : "left",
+            fontSize: "1.5rem",
           }}
         >
           The <strong>main types of film</strong> we use:

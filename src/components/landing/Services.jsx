@@ -79,90 +79,90 @@ const Services = () => {
   };
 
   const ServiceCard = React.memo(({ service }) => (
-      <Card
+    <Card
+      sx={{
+        width: isMobile ? "80vw" : "100%",
+        height: 400,
+        borderRadius: 5,
+        overflow: "hidden",
+        position: "relative",
+        cursor: "pointer",
+        backgroundColor: isMobile ? "#1C1C1E" : "black",
+        margin: isMobile ? "0 auto" : "inherit",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          border: isMobile ? "none" : "5px solid #2794d2",
+          boxShadow: isMobile ? "none" : "0 10px 20px rgba(0, 0, 0, 0.3)",
+          transform: isMobile ? "none" : "scale(1.05)",
+        },
+      }}
+      onClick={() => handleServiceClick(service.id)}
+    >
+      <CardMedia
+        component="img"
+        image={service.image}
+        alt={service.title}
+        width="350"
+        height="400"
+        loading="lazy"
         sx={{
-          width: isMobile ? "80vw" : "100%",
-          height: 400,
-          borderRadius: 5,
-          overflow: "hidden",
-          position: "relative",
-          cursor: "pointer",
-          backgroundColor: isMobile ? "#1C1C1E" : "black",
-          margin: isMobile ? "0 auto" : "inherit",
-          transition: "all 0.3s ease",
+          objectFit: "cover",
+          transition: "transform 0.3s ease",
           "&:hover": {
-            border: isMobile ? "none" : "5px solid #2794d2",
-            boxShadow: isMobile ? "none" : "0 10px 20px rgba(0, 0, 0, 0.3)",
             transform: isMobile ? "none" : "scale(1.05)",
           },
         }}
-        onClick={() => handleServiceClick(service.id)}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: isMobile ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
+          color: "#fff",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: isMobile ? "flex-end" : "center",
+          textAlign: "center",
+          padding: 0,
+          "&:hover": {
+            background: isMobile ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.1)",
+          }
+        }}
       >
-        <CardMedia
-          component="img"
-          image={service.image}
-          alt={service.title}
-          width="350"
-          height="400"
-          loading="lazy"
-          sx={{
-            objectFit: "cover",
-            transition: "transform 0.3s ease",
-            "&:hover": {
-              transform: isMobile ? "none" : "scale(1.05)",
-            },
-          }}
-        />
         <Box
           sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: isMobile ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-            color: "#fff",
+            width: "100%",
+            padding: 2,
             display: "flex",
             flexDirection: "column",
-            justifyContent: isMobile ? "flex-end" : "center",
-            textAlign: "center",
-            padding: 0,
-            "&:hover":{
-              background: isMobile ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.1)",
-            }
+            alignItems: "center",
+            background: "transparent",
           }}
         >
-          <Box
-            sx={{
-              width: "100%",
-              padding: 2,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              background: "transparent",
-            }}
-          >
-            <Typography variant={isMobile ? "h6" : "h5"} fontWeight="bold">
-              {service.title}
-            </Typography>
-            <Typography variant="body1">{service.description}</Typography>
-            {isMobile && (
-              <Button
-                variant="contained"
-                sx={{
-                  mt: 2,
-                  backgroundColor: "rgba(255,255,255,0.2)",
-                  color: "#fff",
-                  width: "90%",
-                  borderRadius: 50,
-                }}
-              >
-                See Details
-              </Button>
-            )}
-          </Box>
+          <Typography variant={isMobile ? "h6" : "h5"} component="h3" fontWeight="bold">
+            {service.title}
+          </Typography>
+          <Typography variant="body1">{service.description}</Typography>
+          {isMobile && (
+            <Button
+              variant="contained"
+              sx={{
+                mt: 2,
+                backgroundColor: "rgba(255,255,255,0.2)",
+                color: "#fff",
+                width: "90%",
+                borderRadius: 50,
+              }}
+            >
+              See Details
+            </Button>
+          )}
         </Box>
-      </Card>
+      </Box>
+    </Card>
   ));
 
   return (
@@ -212,13 +212,13 @@ const Services = () => {
         </Box>
       ) : (
         <Container maxWidth="lg">
-            <Grid container spacing={2} justifyContent="center">
-              {servicesData.map((service) => (
-                <Grid item key={service.id} xs={12} sm={6} md={4}>
-                  <ServiceCard service={service} />
-                </Grid>
-              ))}
-            </Grid>
+          <Grid container spacing={2} justifyContent="center">
+            {servicesData.map((service) => (
+              <Grid item key={service.id} xs={12} sm={6} md={4}>
+                <ServiceCard service={service} />
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       )}
     </Box>

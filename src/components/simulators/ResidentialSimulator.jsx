@@ -1,26 +1,44 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
-import CallToAction from "../key-components/CallToAction";
-import Contact from "../key-components/Contact";
-import QuickLinks from "../key-components/QuickLinks";
+import { Helmet } from "react-helmet-async";
+import SubCallToAction from "../SubCTA";
+import SubContact from "../SubContact";
+import SubQuickLinks from "../SubQuickLinks";
 import Footer from "../key-components/Footer";
 
 const CommercialSimulator = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#0a0a10",
+        background: `
+      linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
+      radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
+      linear-gradient(180deg, #000 0%, #0f0f0f 100%)
+    `,
         color: "#FFFFFF",
         minHeight: "100vh",
       }}
     >
+      <Helmet>
+        <title>Residential Window Tinting Simulator | Tint Tek Plus</title>
+        <meta
+          name="description"
+          content="Use our residential window tinting simulator to choose the right window tint for your home before installation."
+        />
+      </Helmet>
       <Box
         sx={{
           position: "relative",
           width: "100%",
           height: { xs: "50vh", md: "60vh" },
           overflow: "hidden",
-          background: "linear-gradient(135deg, #1a1a2e 0%, #0f0f1f 100%)",
+          background: `
+      linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
+      radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
+      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
+      linear-gradient(180deg, #000 0%, #0f0f0f 100%)
+    `,
         }}
       >
         <Box
@@ -97,6 +115,7 @@ const CommercialSimulator = () => {
 
             <Typography
               variant="h2"
+              component="h1"
               sx={{
                 fontWeight: 800,
                 color: "#fff",
@@ -110,6 +129,7 @@ const CommercialSimulator = () => {
 
             <Typography
               variant="h6"
+              component="p"
               sx={{
                 color: "rgba(255,255,255,0.8)",
                 maxWidth: "600px",
@@ -135,9 +155,9 @@ const CommercialSimulator = () => {
         />
       </Box>
 
-      <CallToAction />
-      <Contact />
-      <QuickLinks />
+      <SubCallToAction />
+      <SubContact />
+      <SubQuickLinks />
       <Footer />
     </Box>
   );

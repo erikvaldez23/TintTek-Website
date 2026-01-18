@@ -46,10 +46,11 @@ export default function WhyChooseUs() {
 
         <Typography
           variant={isMobile ? "body1" : "h6"}
+          component="p"
           sx={{ maxWidth: 1200, m: "auto", color: "#fff", lineHeight: 1.6, fontSize: isMobile ? "1rem" : "1.2rem" }}
         >
-          At Tint Tek Plus, we are committed to offering premium window tinting that combines style, comfort, and superior protection. 
-          Our expert-grade films are designed to block 99% of harmful UV rays, reduce glare, and keep your car cooler, ensuring an unmatched driving experience. 
+          At Tint Tek Plus, we are committed to offering premium window tinting that combines style, comfort, and superior protection.
+          Our expert-grade films are designed to block 99% of harmful UV rays, reduce glare, and keep your car cooler, ensuring an unmatched driving experience.
           With certified technicians and a lifetime warranty, we promise top-tier quality and service every time, giving you peace of mind and confidence on the road.
         </Typography>
 
@@ -88,7 +89,7 @@ export default function WhyChooseUs() {
                         transition: "filter .3s ease",
                       }}
                     />
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" component="h3" fontWeight="bold">
                       {feature.text}
                     </Typography>
                   </Box>

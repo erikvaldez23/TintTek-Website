@@ -745,7 +745,7 @@ const HowItWorks = ({ serviceId }) => {
         }}
       >
         <DialogTitle sx={{ textAlign: "center", position: "relative", pb: 1, backgroundColor: "transparent" }}>
-          <Typography variant="h6" sx={{ fontWeight: 800 }}>
+          <Typography variant="h3" sx={{ fontWeight: 800 }}>
             {selectedStep?.title}
           </Typography>
           <IconButton onClick={handleCloseModal} sx={{ position: "absolute", right: 8, top: 8, color: "rgba(255,255,255,0.8)" }}>
