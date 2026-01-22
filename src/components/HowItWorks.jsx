@@ -475,7 +475,7 @@ const HowItWorks = ({ serviceId }) => {
         {step.icon}
       </Box>
 
-      <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 0.2, mb: 1 }}>
+      <Typography variant="h3" sx={{ fontWeight: 800, letterSpacing: 0.2, mb: 1, fontSize: "1.5rem" }}>
         {step.title}
       </Typography>
 

@@ -136,6 +136,7 @@ const TintPackages = () => {
                           mb: 1,
                           textTransform: "uppercase",
                           background: "transparent",
+                          fontSize: "1.5rem"
                         }}
                       >
                         {pkg.title}
@@ -206,12 +207,13 @@ const TintPackages = () => {
                   >
                     <Box sx={{ background: "transparent" }}>
                       <Typography
-                        variant="h6"
+                        variant="h3"
                         sx={{
                           fontWeight: "bold",
                           mb: 1,
                           textTransform: "uppercase",
                           background: "transparent",
+                          fontSize: "1.5rem",
                         }}
                       >
                         {pkg.title}

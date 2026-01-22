@@ -450,7 +450,7 @@ const ServicePage = () => {
             {service.title}
           </Typography>
           <Typography
-            variant="h6"
+            variant="p"
             sx={{
               mb: 2,
               fontWeight: "bold",

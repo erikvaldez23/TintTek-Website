@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 /* ------------------------------ Accent Map ------------------------------ */
 const ACCENT_PRIMARY = "#2794d2";
@@ -326,8 +327,24 @@ const FAQSection = () => {
   const faqs = faqConfig[path] || [];
   const colors = colorSchemes[path] || { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <Container maxWidth="xl">
         <Typography
           variant={isMobile ? "h4" : "h2"}

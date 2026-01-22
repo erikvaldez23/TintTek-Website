@@ -343,7 +343,11 @@ const ServicesOffered = ({ serviceId }) => {
           }}
         >
           <LayersIcon sx={{ fontSize: 40, color: "#2794d2", mb: 1 }} />
-          <Typography variant="h6" fontWeight="bold">
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            sx={{ fontSize: { xs: "1.5rem", md: "1.5rem" } }}
+          >
             {film.name}
           </Typography>
           <Typography
@@ -599,7 +603,7 @@ const ServicesOffered = ({ serviceId }) => {
                 }}
               >
                 <Typography
-                  variant="h5"
+                  variant="h3"
                   fontWeight="bold"
                   sx={{
                     mb: 1,

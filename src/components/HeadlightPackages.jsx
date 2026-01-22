@@ -110,16 +110,17 @@ const HeadlightPackages = () => {
                 >
                   <Box>
                     <Typography
-                      variant="h6"
+                      variant="h3"
                       sx={{
                         fontWeight: "bold",
                         mb: 1,
                         textTransform: "uppercase",
+                        fontSize: "1.5rem",
                       }}
                     >
                       {pkg.title}
                     </Typography>
-                    <Typography variant="h6" sx={{ color: "#00FF99", mb: 1 }}>
+                    <Typography variant="h3" sx={{ color: "#00FF99", mb: 1, fontSize: "1.5rem" }}>
                       {pkg.price}
                     </Typography>
                     {/* <Typography

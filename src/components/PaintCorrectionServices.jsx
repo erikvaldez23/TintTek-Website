@@ -99,70 +99,70 @@ export default function PaintCorrectionTabs() {
     }
   };
 
-const tabSx = (index) => ({
-  position: "relative",
-  color: currentStage === index ? "#fff" : "rgba(255, 255, 255, 0.6)",
-  // 🔒 Force the background (and image) on the active tab
-  background:
-    currentStage === index
-      ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
-      : "transparent !important",
-  backgroundImage:
-    currentStage === index
-      ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
-      : "none !important",
-  backgroundColor:
-    currentStage === index ? "transparent !important" : "transparent !important",
-
-  borderRadius: "8px",
-  mx: 0.5,
-  my: 1,
-  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-  fontWeight: "bold",
-  textTransform: "none",
-  minHeight: "48px",
-  transition: "color 200ms ease, background 200ms ease",
-  "& .MuiSvgIcon-root": { mr: 1 },
-
-  // Ensure selected state also has the forced bg
-  "&.Mui-selected": {
-    background:
-      "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
-    backgroundImage:
-      "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
-  },
-
-  // 🔹 Underline accent (also forced)
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: 12,
-    right: 12,
-    bottom: -6,
-    height: 3,
-    borderRadius: 2,
+  const tabSx = (index) => ({
+    position: "relative",
+    color: currentStage === index ? "#fff" : "rgba(255, 255, 255, 0.6)",
+    // 🔒 Force the background (and image) on the active tab
     background:
       currentStage === index
         ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
         : "transparent !important",
-    boxShadow:
-      currentStage === index ? "0 0 10px rgba(39,148,210,0.5)" : "none",
-    opacity: currentStage === index ? 1 : 0,
-    transform: currentStage === index ? "scaleX(1)" : "scaleX(0.6)",
-    transformOrigin: "center",
-    transition: "opacity 220ms ease, transform 220ms ease",
-    pointerEvents: "none",
-  },
-
-  // Hover state (still forced so it shows through nukes)
-  "&:hover": {
-    color: "#fff",
-    background:
+    backgroundImage:
       currentStage === index
         ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
-        : "rgba(255,255,255,0.1) !important",
-  },
-});
+        : "none !important",
+    backgroundColor:
+      currentStage === index ? "transparent !important" : "transparent !important",
+
+    borderRadius: "8px",
+    mx: 0.5,
+    my: 1,
+    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+    fontWeight: "bold",
+    textTransform: "none",
+    minHeight: "48px",
+    transition: "color 200ms ease, background 200ms ease",
+    "& .MuiSvgIcon-root": { mr: 1 },
+
+    // Ensure selected state also has the forced bg
+    "&.Mui-selected": {
+      background:
+        "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
+      backgroundImage:
+        "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important",
+    },
+
+    // 🔹 Underline accent (also forced)
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      left: 12,
+      right: 12,
+      bottom: -6,
+      height: 3,
+      borderRadius: 2,
+      background:
+        currentStage === index
+          ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+          : "transparent !important",
+      boxShadow:
+        currentStage === index ? "0 0 10px rgba(39,148,210,0.5)" : "none",
+      opacity: currentStage === index ? 1 : 0,
+      transform: currentStage === index ? "scaleX(1)" : "scaleX(0.6)",
+      transformOrigin: "center",
+      transition: "opacity 220ms ease, transform 220ms ease",
+      pointerEvents: "none",
+    },
+
+    // Hover state (still forced so it shows through nukes)
+    "&:hover": {
+      color: "#fff",
+      background:
+        currentStage === index
+          ? "linear-gradient(90deg, #1976d2 0%, #2794d2 100%) !important"
+          : "rgba(255,255,255,0.1) !important",
+    },
+  });
 
 
   return (

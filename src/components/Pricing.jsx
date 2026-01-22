@@ -205,12 +205,13 @@ const PricingComponent = () => {
           {service.title}
         </Typography>
         <Typography
-          variant={isMobile ? "body1" : "h5"}
+          variant={isMobile ? "h3" : "h3"}
           align="center"
           sx={{
             color: "#ccc",
             mb: 4,
             fontWeight: "bold",
+            fontSize: "1rem",
           }}
         >
           **All Side Windows and Back Glass are Included in Standard Package**
@@ -341,15 +342,15 @@ const PricingComponent = () => {
                 }}
               >
                 <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", color: "#2794d2" }}
+                  variant="h4"
+                  sx={{ fontWeight: "bold", color: "#2794d2", fontSize: "1.5rem" }}
                 >
                   {tier}
                 </Typography>
 
                 <Typography
-                  variant="h4"
-                  sx={{ fontWeight: "bold", color: "#00FF99" }}
+                  variant="h3"
+                  sx={{ fontWeight: "bold", color: "#00FF99", fontSize: "2rem" }}
                 >
                   {service.pricingData[selectedOption]?.[tier] || "N/A"}
                 </Typography>
