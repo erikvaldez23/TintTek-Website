@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 import SubCallToAction from "../SubCTA";
 import SubContact from "../SubContact";
 import SubQuickLinks from "../SubQuickLinks";
@@ -20,13 +20,11 @@ const CommercialSimulator = () => {
         minHeight: "100vh",
       }}
     >
-      <Helmet>
-        <title>Residential Window Tinting Simulator | Tint Tek Plus</title>
-        <meta
-          name="description"
-          content="Use our residential window tinting simulator to choose the right window tint for your home before installation."
-        />
-      </Helmet>
+      <SEO
+        title="Residential Window Tinting Simulator | Tint Tek Plus"
+        description="Use our residential window tinting simulator to choose the right window tint for your home before installation."
+        type="website"
+      />
       <Box
         sx={{
           position: "relative",

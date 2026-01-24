@@ -20,7 +20,7 @@ import Footer from "./key-components/Footer";
 import Contact from "./SubContact";
 import CallToAction from "./SubCTA";
 import QuickLinks from "./SubQuickLinks";
-import { Helmet } from "react-helmet-async";
+import SEO from "./SEO";
 
 // ---- SITE SETTINGS ----
 const SITE = "https://tinttekplus.com"; // use your live domain
@@ -176,18 +176,13 @@ const Blog = () => {
         `, color: "#FFFFFF", minHeight: "100vh"
     }}>
       {/* HEAD */}
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={canonical} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">{JSON.stringify(blogLd)}</script>
-      </Helmet>
+      <SEO
+        title={title}
+        description={description}
+        canonical={canonical}
+        jsonLd={blogLd}
+        type="website"
+      />
 
       {/* Hero Section */}
       <Box

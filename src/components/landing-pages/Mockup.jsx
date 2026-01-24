@@ -18,7 +18,7 @@ import CallToAction from "../SubCTA";
 import Testimonials from "../landing-pages/Testimonials";
 import FAQ from "../landing-pages/FAQ";
 import Contact from "../SubContact";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
@@ -341,7 +341,7 @@ const Mockup = () => {
     try {
       await videoRef.current?.play();
       setIsPlaying(true);
-    } catch {}
+    } catch { }
   };
   const pause = () => {
     videoRef.current?.pause();
@@ -452,26 +452,15 @@ const Mockup = () => {
   return (
     <>
       {/* HEAD */}
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index, follow" />
-        {/* Social cards */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <meta property="og:url" content={canonical} />
-        <meta name="twitter:card" content="summary_large_image" />
-        {/* Preload hero video (helps LCP on fast connections) */}
+      <SEO
+        title={pageTitle}
+        description={pageDesc}
+        canonical={canonical}
+        jsonLd={[webPageLd, videoLd, breadcrumbsLd]}
+        type="website"
+      >
         <link rel="preload" as="video" href="/videos/v-window-tint2.mp4" />
-        {/* JSON-LD */}
-        <script type="application/ld+json">{JSON.stringify(webPageLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(videoLd)}</script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbsLd)}
-        </script>
-      </Helmet>
+      </SEO>
 
       {/* ===== Landing content ===== */}
       <Box
@@ -891,7 +880,7 @@ const Mockup = () => {
 
         </Container>
         <CallToAction />
-          <QuickLinks />
+        <QuickLinks />
 
       </Box>
 

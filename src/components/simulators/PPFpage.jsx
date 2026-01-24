@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 import SubCallToAction from "../SubCTA";
 import SubContact from "../SubContact";
 import SubQuickLinks from "../SubQuickLinks";
@@ -20,13 +20,11 @@ const PPFSimulator = () => {
         minHeight: "100vh",
       }}
     >
-      <Helmet>
-        <title>Paint Protection Film Simulator | Tint Tek Plus</title>
-        <meta
-          name="description"
-          content="Use our Paint Protection Film Simulator in Dallas to preview coverage on your vehicle and choose the right paint protection film before installation."
-        />
-      </Helmet>
+      <SEO
+        title="Paint Protection Film Simulator | Tint Tek Plus"
+        description="Use our Paint Protection Film Simulator in Dallas to preview coverage on your vehicle and choose the right paint protection film before installation."
+        type="website"
+      />
       <Box
         sx={{
           position: "relative",

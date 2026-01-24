@@ -17,7 +17,8 @@ import {
   useMediaQuery,
   GlobalStyles,
 } from "@mui/material";
-import { Helmet } from "react-helmet-async";
+import Link from "@mui/material/Link";
+import SEO from "./SEO";
 
 // Keep light, above-the-fold pieces eagerly loaded
 import Topbar from "./key-components/Topbar";
@@ -263,17 +264,12 @@ const ServicePage = () => {
           }}
         />
 
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={description} />
-          <meta name="robots" content={robots} />
-          <link rel="canonical" href={canonical} />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={description} />
-          <meta property="og:url" content={canonical} />
-          <meta name="twitter:card" content="summary_large_image" />
-        </Helmet>
+        <SEO
+          title={title}
+          description={description}
+          canonical={canonical}
+          type="website"
+        />
 
         <Topbar notFound />
 
@@ -371,20 +367,13 @@ const ServicePage = () => {
   // ---------- NORMAL PAGE ----------
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="robots" content={robots} />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={canonical} />
-        <meta name="twitter:card" content="summary_large_image" />
-        {jsonLd && (
-          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        )}
-      </Helmet>
+      <SEO
+        title={title}
+        description={description}
+        canonical={canonical}
+        jsonLd={jsonLd}
+        type="website"
+      />
 
       {/* Route-scoped wrapper with a fixed, GPU-friendly gradient layer */}
       <Box

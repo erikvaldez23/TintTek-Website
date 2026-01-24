@@ -1,7 +1,7 @@
 // src/components/BlogDetail.jsx
 import React, { useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import SEO from "./SEO";
 import {
   Typography,
   Button,
@@ -678,12 +678,12 @@ const BlogDetail = () => {
   if (!post) {
     return (
       <>
-        <Helmet>
-          <title>{seo.title}</title>
-          <meta name="description" content={seo.description} />
-          <meta name="robots" content={seo.robots} />
-          <link rel="canonical" href={seo.canonical} />
-        </Helmet>
+        <SEO
+          title={seo.title}
+          description={seo.description}
+          canonical={seo.canonical}
+          robots={seo.robots}
+        />
 
         <Container maxWidth="md" sx={{ textAlign: "center", my: 8 }}>
           <Typography variant="h4" color="error">
@@ -711,28 +711,15 @@ const BlogDetail = () => {
       linear-gradient(180deg, #000 0%, #0f0f0f 100%)
     `,
     }}>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="robots" content={seo.robots} />
-        <link rel="canonical" href={seo.canonical} />
-        {/* Social cards */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:url" content={seo.canonical} />
-        {seo.imageAbs && <meta property="og:image" content={seo.imageAbs} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        {/* JSON-LD */}
-        {seo.ldJson && (
-          <script type="application/ld+json">{JSON.stringify(seo.ldJson)}</script>
-        )}
-        {seo.breadcrumbsLd && (
-          <script type="application/ld+json">
-            {JSON.stringify(seo.breadcrumbsLd)}
-          </script>
-        )}
-      </Helmet>
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        canonical={seo.canonical}
+        robots={seo.robots}
+        type="article"
+        image={seo.imageAbs}
+        jsonLd={[seo.ldJson, seo.breadcrumbsLd]}
+      />
 
       {/* Hero Section */}
       <Box

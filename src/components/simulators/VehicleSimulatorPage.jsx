@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 import SubCallToAction from "../SubCTA";
 import SubContact from "../SubContact";
 import SubQuickLinks from "../SubQuickLinks";
@@ -20,13 +20,11 @@ const TintingSimulator = () => {
         minHeight: "100vh",
       }}
     >
-      <Helmet>
-        <title>Car Window Tint Simulator in Dallas, TX | Tint Tek Plus</title>
-        <meta
-          name="description"
-          content="Use our vehicle window tint simulator to preview different tint shades on your car. Tint Tek Plus offers professional auto tinting in Dallas, Texas."
-        />
-      </Helmet>
+      <SEO
+        title="Car Window Tint Simulator in Dallas, TX | Tint Tek Plus"
+        description="Use our vehicle window tint simulator to preview different tint shades on your car. Tint Tek Plus offers professional auto tinting in Dallas, Texas."
+        type="website"
+      />
       <Box
         sx={{
           position: "relative",

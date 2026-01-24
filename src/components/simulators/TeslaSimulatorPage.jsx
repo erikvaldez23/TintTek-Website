@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 import SubCallToAction from "../SubCTA";
 import SubContact from "../SubContact";
 import SubQuickLinks from "../SubQuickLinks";
@@ -20,13 +20,11 @@ const TintingSimulator = () => {
         minHeight: "100vh",
       }}
     >
-      <Helmet>
-        <title>Tesla Window Tint Simulator | Tint Tek Plus</title>
-        <meta
-          name="description"
-          content="Use our Tesla Window Tint Simulator to tint shades, heat and UV protection tailored for Tesla glass. See how different tints look before installation!"
-        />
-      </Helmet>
+      <SEO
+        title="Tesla Window Tint Simulator | Tint Tek Plus"
+        description="Use our Tesla Window Tint Simulator to tint shades, heat and UV protection tailored for Tesla glass. See how different tints look before installation!"
+        type="website"
+      />
       <Box
         sx={{
           position: "relative",

@@ -15,7 +15,7 @@ import {
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useSwipeable } from "react-swipeable";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import SEO from "../SEO";
 
 import Footer from "../key-components/Footer";
 import Contact from "../SubContact";
@@ -157,20 +157,13 @@ const Gallery = () => {
         }}
       >
         {/* HEAD */}
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={description} />
-          <link rel="canonical" href={canonical} />
-          <meta name="robots" content="index, follow" />
-          {/* Social */}
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={description} />
-          <meta property="og:url" content={canonical} />
-          <meta name="twitter:card" content="summary_large_image" />
-          {/* JSON-LD */}
-          <script type="application/ld+json">{JSON.stringify(ldJson)}</script>
-        </Helmet>
+        <SEO
+          title={title}
+          description={description}
+          canonical={canonical}
+          jsonLd={ldJson}
+          type="website"
+        />
 
         {/* Hero */}
         <Box
