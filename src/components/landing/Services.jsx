@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Card,
@@ -71,16 +71,16 @@ const servicesData = [
 
 
 const Services = () => {
-  const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width:768px)");
-
-  const handleServiceClick = (serviceId) => {
-    navigate(`/services/${serviceId}`);
-  };
 
   const ServiceCard = React.memo(({ service }) => (
     <Card
+      component={RouterLink}
+      to={`/services/${service.id}`}
+      title={`View ${service.title} services`}
       sx={{
+        textDecoration: "none",
+        display: "block",
         width: isMobile ? "80vw" : "100%",
         height: 400,
         borderRadius: 5,
@@ -96,7 +96,6 @@ const Services = () => {
           transform: isMobile ? "none" : "scale(1.05)",
         },
       }}
-      onClick={() => handleServiceClick(service.id)}
     >
       <CardMedia
         component="img"
@@ -167,6 +166,8 @@ const Services = () => {
 
   return (
     <Box
+      component="section"
+      aria-label="Our Services"
       id="services"
       sx={{
         py: 6,

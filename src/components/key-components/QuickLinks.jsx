@@ -127,6 +127,7 @@ const QuickLinks = () => {
                 {/* Title */}
                 <Box sx={{ mb: 1.5, px: { xs: 0.5, md: 0 } }}>
                   <Typography
+                    component="h3"
                     variant="h6"
                     sx={{
                       fontWeight: 700,
@@ -154,6 +155,8 @@ const QuickLinks = () => {
 
                 {/* Glassy group (not a card) */}
                 <Box
+                  component="nav"
+                  aria-label={`${column.title} Navigation`}
                   sx={{
                     borderRadius: 2.5,
                     border: "1px solid rgba(255,255,255,0.08)",
@@ -163,106 +166,109 @@ const QuickLinks = () => {
                     overflow: "hidden",
                   }}
                 >
-                  {column.links.map((link, linkIndex) => {
-                    const last = linkIndex === column.links.length - 1;
-                    return (
-                      <Box key={linkIndex}>
-                        <motion.div
-                          variants={rowVariants}
-                          initial="initial"
-                          whileHover="hover"
-                        >
-                          <Link
-                            component={RouterLink}
-                            to={link.to}
-                            underline="none"
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                              gap: 2,
-                              px: { xs: 1.5, md: 2 },
-                              py: { xs: 1.25, md: 1.5 },
-                              fontSize: { xs: "0.975rem", md: "1.025rem" },
-                              fontWeight: 500,
-                              color: "rgba(255,255,255,0.88)",
-                              lineHeight: 1.4,
-                              transition:
-                                "color 220ms ease, background 220ms ease, transform 220ms ease",
-                              position: "relative",
-                              "&:focus-visible": {
-                                outline: "none",
-                                boxShadow:
-                                  "0 0 0 3px rgba(39,148,210,0.35), inset 0 0 0 1px rgba(255,255,255,0.12)",
-                                borderRadius: 10,
-                                background: "rgba(255,255,255,0.04)",
-                              },
-                              "&:hover": {
-                                color: "#fff",
-                                background:
-                                  "linear-gradient(90deg, rgba(39,148,210,0.10), transparent)",
-                              },
-                            }}
+                  <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
+                    {column.links.map((link, linkIndex) => {
+                      const last = linkIndex === column.links.length - 1;
+                      return (
+                        <Box component="li" key={linkIndex}>
+                          <motion.div
+                            variants={rowVariants}
+                            initial="initial"
+                            whileHover="hover"
                           >
-                            <Box
+                            <Link
+                              component={RouterLink}
+                              to={link.to}
+                              title={`Navigate to ${link.text}`}
+                              underline="none"
                               sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 1,
-                                minWidth: 0,
+                                justifyContent: "space-between",
+                                gap: 2,
+                                px: { xs: 1.5, md: 2 },
+                                py: { xs: 1.25, md: 1.5 },
+                                fontSize: { xs: "0.975rem", md: "1.025rem" },
+                                fontWeight: 500,
+                                color: "rgba(255,255,255,0.88)",
+                                lineHeight: 1.4,
+                                transition:
+                                  "color 220ms ease, background 220ms ease, transform 220ms ease",
+                                position: "relative",
+                                "&:focus-visible": {
+                                  outline: "none",
+                                  boxShadow:
+                                    "0 0 0 3px rgba(39,148,210,0.35), inset 0 0 0 1px rgba(255,255,255,0.12)",
+                                  borderRadius: 10,
+                                  background: "rgba(255,255,255,0.04)",
+                                },
+                                "&:hover": {
+                                  color: "#fff",
+                                  background:
+                                    "linear-gradient(90deg, rgba(39,148,210,0.10), transparent)",
+                                },
                               }}
                             >
                               <Box
                                 sx={{
-                                  width: 6,
-                                  height: 6,
-                                  borderRadius: 999,
-                                  background:
-                                    "linear-gradient(180deg, #2794d2, #1f79ab)",
-                                  boxShadow:
-                                    "0 0 14px rgba(39,148,210,0.55), 0 0 2px rgba(39,148,210,0.9)",
-                                  flexShrink: 0,
-                                }}
-                              />
-                              <Typography
-                                component="span"
-                                sx={{
-                                  whiteSpace: "nowrap",
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: 1,
+                                  minWidth: 0,
                                 }}
                               >
-                                {link.text}
-                              </Typography>
-                            </Box>
-
-                            <ArrowRightAltIcon
-                              fontSize="small"
+                                <Box
+                                  sx={{
+                                    width: 6,
+                                    height: 6,
+                                    borderRadius: 999,
+                                    background:
+                                      "linear-gradient(180deg, #2794d2, #1f79ab)",
+                                    boxShadow:
+                                      "0 0 14px rgba(39,148,210,0.55), 0 0 2px rgba(39,148,210,0.9)",
+                                    flexShrink: 0,
+                                  }}
+                                />
+                                <Typography
+                                  component="span"
+                                  sx={{
+                                    whiteSpace: "nowrap",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                  }}
+                                >
+                                  {link.text}
+                                </Typography>
+                              </Box>
+  
+                              <ArrowRightAltIcon
+                                fontSize="small"
+                                sx={{
+                                  opacity: 0.9,
+                                  transform: "translateX(0)",
+                                  transition:
+                                    "transform 220ms cubic-bezier(0.22,1,0.36,1)",
+                                  ".MuiLink-root:hover &": {
+                                    transform: "translateX(4px)",
+                                  },
+                                }}
+                              />
+                            </Link>
+                          </motion.div>
+  
+                          {!last && (
+                            <Divider
+                              component="div"
                               sx={{
-                                opacity: 0.9,
-                                transform: "translateX(0)",
-                                transition:
-                                  "transform 220ms cubic-bezier(0.22,1,0.36,1)",
-                                ".MuiLink-root:hover &": {
-                                  transform: "translateX(4px)",
-                                },
+                                mx: { xs: 1.5, md: 2 },
+                                borderColor: "rgba(255,255,255,0.08)",
                               }}
                             />
-                          </Link>
-                        </motion.div>
-
-                        {!last && (
-                          <Divider
-                            component="div"
-                            sx={{
-                              mx: { xs: 1.5, md: 2 },
-                              borderColor: "rgba(255,255,255,0.08)",
-                            }}
-                          />
-                        )}
-                      </Box>
-                    );
-                  })}
+                          )}
+                        </Box>
+                      );
+                    })}
+                  </Box>
                 </Box>
               </motion.div>
             </Grid>
