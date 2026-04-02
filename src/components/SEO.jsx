@@ -6,6 +6,7 @@ const SEO = ({
     title,
     description,
     canonical,
+    robots,
     type = 'website',
     image,
     jsonLd
@@ -22,7 +23,7 @@ const SEO = ({
             <title>{title}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={currentUrl} />
-            <meta name="robots" content="index, follow" />
+            <meta name="robots" content={robots || "index, follow"} />
 
             {/* Open Graph */}
             <meta property="og:type" content={type} />

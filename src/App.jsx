@@ -42,13 +42,13 @@ import SubContact from "./components/SubContact";
 import SubQuickLinks from "./components/SubQuickLinks";
 
 // ---- Theme ----
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     primary: { main: "#2794d2" },
   },
 });
 
-function AppContent() {
+export function AppContent() {
   const location = useLocation();
   const [chatbotOpen, setChatbotOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);

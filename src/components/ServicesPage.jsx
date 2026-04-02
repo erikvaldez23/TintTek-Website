@@ -483,9 +483,7 @@ const ServicePage = () => {
         <Suspense fallback={Fallback}>
           {serviceId === "vehicle-paint-correction" && <ImageCTA />}
           {serviceId === "vehicle-paint-correction" && (
-            <InViewMount>
               <PaintCorrectionServices />
-            </InViewMount>
           )}
 
           {serviceId === "tesla-window-tinting" && (
@@ -515,28 +513,20 @@ const ServicePage = () => {
             serviceId !== "headlight-services" &&
             serviceId !== "vehicle-paint-protection" && (
               <Box sx={{ width: "100%" }}>
-                <InViewMount>
                   <PricingComponent />
-                </InViewMount>
               </Box>
             )}
         </Suspense>
 
         <Suspense fallback={Fallback}>
           {serviceId === "vehicle-window-tinting" && (
-            <InViewMount>
               <TintPackages />
-            </InViewMount>
           )}
           {serviceId === "tesla-window-tinting" && (
-            <InViewMount>
               <TeslaTintPackages />
-            </InViewMount>
           )}
           {serviceId === "headlight-services" && (
-            <InViewMount>
               <HeadlightPackages />
-            </InViewMount>
           )}
         </Suspense>
 
@@ -546,9 +536,7 @@ const ServicePage = () => {
         <Suspense fallback={Fallback}>
           {serviceId !== "vehicle-paint-correction" &&
             serviceId !== "ceramic-coating" && (
-              <InViewMount>
                 <ServicesOffered serviceId={serviceId} />
-              </InViewMount>
             )}
         </Suspense>
 
@@ -565,9 +553,7 @@ const ServicePage = () => {
         <Suspense fallback={Fallback}>
           {serviceId !== "commercial-window-tinting" &&
             serviceId !== "residential-window-tinting" && (
-              <InViewMount>
                 <HowItWorks serviceId={serviceId} />
-              </InViewMount>
             )}
         </Suspense>
 
@@ -581,31 +567,21 @@ const ServicePage = () => {
             serviceId === "ceramic-coating" ||
             serviceId === "headlight-services" ||
             serviceId === "residential-window-tinting") && (
-              <InViewMount>
                 <BenefitsGrid />
-              </InViewMount>
             )}
         </Suspense>
 
         <Suspense fallback={Fallback}>
-          <InViewMount>
             <FAQSection />
-          </InViewMount>
-          <InViewMount>
             <CallToAction />
-          </InViewMount>
         </Suspense>
 
         <Suspense fallback={Fallback}>
           {/* Keep wrappers minimal to let the gradient show through */}
           <Box>
-            <InViewMount>
               <Contact />
-            </InViewMount>
           </Box>
-          <InViewMount>
             <QuickLinks />
-          </InViewMount>
           <Footer />
         </Suspense>
       </Box>
