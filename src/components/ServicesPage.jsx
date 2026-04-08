@@ -26,23 +26,23 @@ import Footer from "./key-components/Footer";
 import BusinessInfo from "./hero/BusinessInfo";
 
 // Lazy-load heavier blocks
-const PricingComponent = lazy(() => import("./Pricing"));
+import PricingComponent from "./Pricing";
 const Contact = lazy(() => import("./SubContact"));
-const HowItWorks = lazy(() => import("./HowItWorks"));
-const ServicesOffered = lazy(() => import("./ServicesOffered"));
+import HowItWorks from "./HowItWorks";
+import ServicesOffered from "./ServicesOffered";
 const CallToAction = lazy(() => import("./SubCTA"));
 const TintingSimulator = lazy(() => import("./TintingSimulator"));
 const PPFSelector = lazy(() => import("./PPFSelector"));
-const FAQSection = lazy(() => import("./FAQSection"));
-const TintPackages = lazy(() => import("./TintPackages"));
+import FAQSection from "./FAQSection";
+import TintPackages from "./TintPackages";
 const TeslaTintingSimulator = lazy(() => import("./TeslaTintingSimulator"));
 const QuickLinks = lazy(() => import("./SubQuickLinks"));
-const TeslaTintPackages = lazy(() => import("./TeslaTintPackages"));
-const BenefitsGrid = lazy(() => import("./BenefitsGrid"));
+import TeslaTintPackages from "./TeslaTintPackages";
+import BenefitsGrid from "./BenefitsGrid";
 const ImageCTA = lazy(() => import("./ImageCTA"));
-const PaintCorrectionServices = lazy(() => import("./PaintCorrectionServices"));
+import PaintCorrectionServices from "./PaintCorrectionServices";
 const VideoCTA = lazy(() => import("./VideoCTA"));
-const HeadlightPackages = lazy(() => import("./HeadlightPackages"));
+import HeadlightPackages from "./HeadlightPackages";
 const PPFVision = lazy(() => import("./PPF-Vision")); // (if used elsewhere)
 const ImageCarousel = lazy(() => import("./ImageCarousel"));
 const TeslaCTA = lazy(() => import("./TeslaCTA"));
