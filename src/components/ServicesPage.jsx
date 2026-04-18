@@ -43,6 +43,7 @@ const ImageCTA = lazy(() => import("./ImageCTA"));
 import PaintCorrectionServices from "./PaintCorrectionServices";
 const VideoCTA = lazy(() => import("./VideoCTA"));
 import HeadlightPackages from "./HeadlightPackages";
+const BlogCTA = lazy(() => import("./BlogCTA"));
 const PPFVision = lazy(() => import("./PPF-Vision")); // (if used elsewhere)
 const ImageCarousel = lazy(() => import("./ImageCarousel"));
 const TeslaCTA = lazy(() => import("./TeslaCTA"));
@@ -569,6 +570,10 @@ const ServicePage = () => {
             serviceId === "residential-window-tinting") && (
                 <BenefitsGrid />
             )}
+        </Suspense>
+
+        <Suspense fallback={Fallback}>
+          <BlogCTA />
         </Suspense>
 
         <Suspense fallback={Fallback}>
