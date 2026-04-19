@@ -132,49 +132,58 @@ const serviceDetails = {
 // Meta overrides
 const metaByService = {
   "vehicle-window-tinting": {
-    title: "Vehicle Window Tinting Services | Car & Auto Tinting Dallas",
+    title: "Vehicle Window Tinting Services | Window Tinting Garland, TX",
     description:
-      "Get professional auto tinting and vehicle window tinting in Dallas, Texas. Our car window tinting service ensures quality and style. Book now!",
+      "Searching for window tinting Garland? We provide professional auto tinting and vehicle window tinting in Garland and Dallas, TX. Book your car window tinting today!",
+    keywords: "window tinting garland, window tint garland tx, auto tinting garland, car window tint garland, vehicle window tinting Garland, automotive window tint Dallas, car tint near me"
   },
   "tesla-window-tinting": {
-    title: "Tesla Window Tinting Services in Dallas, TX | Tint Tek Plus",
+    title: "Tesla Window Tinting Garland, TX | Tint Tek Plus",
     description:
-      "Professional Tesla window tinting in Dallas, Texas for heat reduction, UV protection & sleek style. Expert EV tint services at Tint Tek Plus. Book now!",
+      "Searching for Tesla window tinting Garland? Get professional heat reduction, UV protection, and sleek EV tint services at Tint Tek Plus. Book your Tesla tint today!",
+    keywords: "tesla window tinting garland, window tinting garland, Model 3 window tint Garland, Model Y window tint Garland, Tesla heat rejection tint TX, EV window tinting Garland"
   },
   "commercial-window-tinting": {
-    title: "Commercial Window Tinting Services in Dallas, TX | Tint Tek Plus",
+    title: "Commercial Window Tinting Garland, TX | Tint Tek Plus",
     description:
-      "Professional commercial window tinting in Dallas, Texas to improve energy efficiency, privacy & comfort for office and storefronts.Trusted service at Tint Tek Plus.",
+      "Professional commercial window tinting in Garland, Texas to improve energy efficiency, privacy & comfort for offices and storefronts. Trusted service at Tint Tek Plus.",
+    keywords: "commercial window tinting garland, window tinting garland, office window tint garland, storefront window tinting TX, commercial building tinting Garland, privacy window film Garland"
   },
   "residential-window-tinting": {
-    title: "Residential Window Tinting Services in Dallas, TX | Tint Tek Plus",
+    title: "Residential Window Tinting Garland, TX | Tint Tek Plus",
     description:
-      "Top residential window tinting in Dallas, Texas to reduce heat, glare & UV while enhancing privacy and comfort. Trusted home tint experts at Tint Tek Plus.",
+      "Top residential window tinting in Garland, Texas to reduce heat, glare & UV while enhancing privacy and comfort. Trusted home tint experts at Tint Tek Plus.",
+    keywords: "residential window tinting garland, window tinting garland, home window tint garland, house window tinting TX, privacy tint for homes Garland, residential UV window film"
   },
   "vehicle-paint-correction": {
     title: "Vehicle Paint Correction Services in Dallas, TX | Tint Tek Plus",
     description:
       "Professional vehicle paint correction services in Dallas, Texas. Restore shine, remove swirls & protect your car’s paint. Book Tint Tek Plus experts today!",
+    keywords: "vehicle paint correction Dallas, car paint correction TX, auto paint restoration, swirl mark removal, scratch removal auto paint, professional paint correction DFW, car polish and buff Dallas"
   },
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection Services in Dallas, TX | Tint Tek Plus",
     description:
       "Protect your vehicle's paint with professional services from Tint Tek Plus. Keep your car looking brand new with our high-quality paint protection solutions.",
+    keywords: "vehicle paint protection Dallas, PPF installation TX, paint protection film DFW, clear bra Dallas, auto paint protection, protect car paint, car wrap protection Dallas"
   },
   "headlight-services": {
     title: "Tinted Headlights & Taillights Services in Dallas, TX | Tint Tek Plus",
     description:
       "Get premium tinted headlights in Dallas, Texas for style and protection. Quality headlight & taillight tint services at Tint Tek Plus. Book your appointment today!",
+    keywords: "tinted headlights Dallas, taillight tinting TX, custom headlight tint, auto light tinting DFW, smoked headlights Dallas, smoked taillights, light tint shop near me"
   },
   "windshield-protection-film": {
     title: "Windshield Protection Film Services in Dallas, TX | Tint Tek Plus",
     description:
       "Protect your car with windshield protection film in Dallas, Texas. Tint Tek Plus offers premium film to prevent cracks, chips & UV damage. Book today!",
+    keywords: "windshield protection film Dallas, windshield rock chip protection, clear windshield film TX, auto windshield tint, safety windshield film DFW, exact fit windshield protection"
   },
   "ceramic-coating": {
     title: "Ceramic Coating Services in Dallas, TX | Tint Tek Plus",
     description:
       "Get professional ceramic coating in Dallas, Texas for long-lasting paint protection and deep shine. Trusted experts at Tint Tek Plus.",
+    keywords: "ceramic coating Dallas, ceramic car coating TX, auto ceramic coating DFW, best ceramic coating near me, ceramic paint protection, long lasting ceramic coat Dallas, permanent car shine"
   },
 };
 
@@ -232,6 +241,7 @@ const ServicePage = () => {
     return {
       title: meta.title,
       description: meta.description,
+      keywords: meta.keywords,
       canonical: url,
       robots: "index, follow",
       jsonLd: jsonLdObj,
@@ -371,6 +381,7 @@ const ServicePage = () => {
       <SEO
         title={title}
         description={description}
+        keywords={keywords}
         canonical={canonical}
         jsonLd={jsonLd}
         type="website"

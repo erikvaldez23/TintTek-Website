@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 const SEO = ({
     title,
     description,
+    keywords,
     canonical,
     robots,
     type = 'website',
@@ -22,6 +23,7 @@ const SEO = ({
             {/* Basic Meta Tags */}
             <title>{title}</title>
             <meta name="description" content={description} />
+            {keywords && <meta name="keywords" content={keywords} />}
             <link rel="canonical" href={currentUrl} />
             <meta name="robots" content={robots || "index, follow"} />
 
