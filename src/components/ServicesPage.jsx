@@ -202,7 +202,7 @@ const ServicePage = () => {
   }, []);
 
   // SEO
-  const { title, description, canonical, robots, jsonLd } = useMemo(() => {
+  const { title, description, keywords, canonical, robots, jsonLd } = useMemo(() => {
     const path = serviceId
       ? `${SERVICES_BASE}/${serviceId}`
       : location.pathname;
