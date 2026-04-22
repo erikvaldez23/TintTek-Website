@@ -1,1 +1,19 @@
+# 301 redirects for old-style URLs → new service routes
+/commercial-window-tinting-garland-tx   /services/commercial-window-tinting   301
+/vehicle-window-tinting-garland-tx      /services/vehicle-window-tinting      301
+/tesla-window-tinting-garland-tx        /services/tesla-window-tinting        301
+/residential-window-tinting-garland-tx  /services/residential-window-tinting  301
+/vehicle-paint-protection-garland-tx    /services/vehicle-paint-protection    301
+/vehicle-paint-correction-garland-tx    /services/vehicle-paint-correction    301
+/ceramic-coating-garland-tx             /services/ceramic-coating             301
+/headlight-services-garland-tx          /services/headlight-services          301
+/windshield-protection-film-garland-tx  /services/windshield-protection-film  301
+/window-tinting-garland-tx              /services/vehicle-window-tinting      301
+/window-tinting-dallas-tx               /services/vehicle-window-tinting      301
+/auto-window-tinting-garland-tx         /services/vehicle-window-tinting      301
+/commercial-window-tinting              /services/commercial-window-tinting   301
+/residential-window-tinting             /services/residential-window-tinting  301
+/ceramic-coating                        /services/ceramic-coating             301
+
+# SPA catch-all (must be last)
 /*  /index.html  200
