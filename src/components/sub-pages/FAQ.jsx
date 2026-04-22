@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   Box,
   Typography,
@@ -386,12 +387,29 @@ const FloatingElement = styled(motion.div)(({ theme }) => ({
 }));
 
 /* --------------------------------- UI --------------------------------- */
+const SITE = "https://tinttekplus.com";
+
 const FAQ = () => {
   const [expanded, setExpanded] = useState(false);
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
   const [animateIn, setAnimateIn] = useState(true);
 
   const currentSection = faqSections[selectedServiceIndex];
+
+  const faqPageLd = useMemo(() => {
+    const allQA = faqSections.flatMap((section) =>
+      section.questions.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      }))
+    );
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: allQA,
+    };
+  }, []);
   const isMobile = useMediaQuery("(max-width:768px)");
 
   const handleServiceSelect = (index) => {
@@ -413,6 +431,23 @@ const FAQ = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Window Tinting FAQ – Garland &amp; Dallas, TX | Tint Tek Plus</title>
+        <meta
+          name="description"
+          content="Get answers to your window tinting, paint correction, ceramic coating, and PPF questions. Tint Tek Plus serves Garland, Dallas, and all of DFW."
+        />
+        <link rel="canonical" href={`${SITE}/support`} />
+        <meta property="og:title" content="Window Tinting FAQ – Garland &amp; Dallas, TX | Tint Tek Plus" />
+        <meta property="og:description" content="Get answers to your window tinting, paint correction, ceramic coating, and PPF questions. Tint Tek Plus serves Garland, Dallas, and all of DFW." />
+        <meta property="og:url" content={`${SITE}/support`} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Window Tinting FAQ | Tint Tek Plus" />
+        <meta name="twitter:description" content="Answers to common questions about window tinting, PPF, ceramic coating, and more." />
+        <script type="application/ld+json">{JSON.stringify(faqPageLd)}</script>
+      </Helmet>
     <Box
       sx={{
         /* === MATCHES Mockup background === */
@@ -843,6 +878,7 @@ const FAQ = () => {
       <QuickLinks />
       <Footer />
     </Box>
+    </>
   );
 };
 

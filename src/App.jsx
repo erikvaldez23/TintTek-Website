@@ -40,6 +40,7 @@ import VideoCTA2 from "./components/landing-pages/VideoCTA2";
 import SubCTA from "./components/SubCTA";
 import SubContact from "./components/SubContact";
 import SubQuickLinks from "./components/SubQuickLinks";
+import SEO from "./components/SEO";
 
 // ---- Theme ----
 export const theme = createTheme({
@@ -81,6 +82,24 @@ export function AppContent() {
           path="/"
           element={
             <>
+              <SEO
+                title="Window Tinting Garland & Dallas, TX | Tint Tek Plus"
+                description="Searching for window tinting Garland? Tint Tek Plus is the top-rated tint shop for auto, Tesla, home, and commercial window tinting in Garland and Dallas, TX. Experience premium ceramic tint, heat rejection, and UV protection."
+                canonical="https://tinttekplus.com/"
+                image="https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp"
+                type="website"
+                jsonLd={{
+                  "@context": "https://schema.org",
+                  "@type": "WebPage",
+                  name: "Tint Tek Plus – Window Tinting Garland & Dallas, TX",
+                  url: "https://tinttekplus.com/",
+                  description: "Top-rated window tinting for auto, Tesla, home, and commercial in Garland and Dallas, TX.",
+                  breadcrumb: {
+                    "@type": "BreadcrumbList",
+                    itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://tinttekplus.com/" }],
+                  },
+                }}
+              />
               <Hero />
               <Box
                 sx={{

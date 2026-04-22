@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
@@ -40,12 +39,12 @@ const SEO = ({
             <meta name="twitter:description" content={description} />
             {image && <meta name="twitter:image" content={image} />}
 
-            {/* Structured Data */}
-            {jsonLd && (
-                <script type="application/ld+json">
-                    {JSON.stringify(jsonLd)}
+            {/* Structured Data — supports single object or array of schemas */}
+            {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((schema, i) => (
+                <script key={i} type="application/ld+json">
+                    {JSON.stringify(schema)}
                 </script>
-            )}
+            ))}
         </Helmet>
     );
 };

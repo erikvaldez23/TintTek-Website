@@ -52,10 +52,11 @@
     </script>
     <!-- End Meta Pixel Code -->
 
-    <!-- Base title/description (route-specific ones will be set by react-helmet-async) -->
-    <title>
-      Window Tinting Garland & Dallas, TX | Tint Tek Plus
-    </title>
+    <!-- SSR: per-route head tags (title, meta, canonical, JSON-LD) injected here -->
+    <!--app-head-->
+
+    <!-- Base title/description (overridden per-route by SSR head injection) -->
+    <title>Window Tinting Garland &amp; Dallas, TX | Tint Tek Plus</title>
     <meta
       name="description"
       content="Searching for window tinting Garland? Tint Tek Plus is the top-rated tint shop for auto, Tesla, home, and commercial window tinting in Garland and Dallas, TX. Experience premium ceramic tint, heat rejection, and UV protection."
@@ -65,22 +66,37 @@
       content="window tinting garland, window tinting garland tx, best window tinting garland, garland window tinting, auto tinting garland, window tinting, auto window tint, residential window tint, commercial window tint, Garland TX, Dallas TX, DFW window tinting, UV protection, car tint, heat rejection tint, ceramic window tint, carbon window tint, Tesla window tinting, mobile window tinting Dallas, auto glass tinting, privacy window film, window tinting near me, best window tint Dallas, tint shop Garland TX, home window tinting cost, office window tinting DFW, glare reduction tint, safety and security window film, professional window tint installation, architectural window film, nanoceramic tint, IR blocking tint, dyed window tint, custom vehicle tint, Tint Tek Plus, affordable window tinting near me, window tinting prices near me, best window ting near me, car tint dallas, car tint garland, llumar, car tint garland"
     />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="Tint Tek Plus" />
+    <meta name="geo.region" content="US-TX" />
+    <meta name="geo.placename" content="Garland, Texas" />
+    <meta name="geo.position" content="32.9126;-96.6389" />
+    <meta name="ICBM" content="32.9126, -96.6389" />
 
     <!-- Open Graph -->
     <meta
       property="og:title"
-      content="Professional Window Tinting in Dallas & Garland, TX | Tint Tek Plus"
+      content="Professional Window Tinting in Dallas &amp; Garland, TX | Tint Tek Plus"
     />
     <meta
       property="og:description"
       content="Get expert window tinting services for cars, homes, and businesses in Dallas and Garland, TX. Reduce heat, UV rays, and glare with our premium ceramic and carbon tint solutions. Best window tinting prices and professional installation near you."
     />
     <meta property="og:image" content="https://tinttekplus.com/favicon.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://tinttekplus.com" />
     <meta property="og:type" content="business.business" />
+    <meta property="og:site_name" content="Tint Tek Plus" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Canonical (react-helmet can override per-route if needed) -->
-    <!-- Canonical handled dynamically via React Helmet -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Professional Window Tinting in Dallas &amp; Garland, TX | Tint Tek Plus" />
+    <meta name="twitter:description" content="Top-rated window tinting for auto, Tesla, home &amp; commercial in Garland and Dallas, TX. Premium ceramic tint, heat rejection, UV protection." />
+    <meta name="twitter:image" content="https://tinttekplus.com/favicon.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://tinttekplus.com/" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.jpg" />
@@ -98,23 +114,48 @@
       rel="stylesheet"
     />
 
-    <!-- Optional: preload a hero asset (swap to a commonly-seen image/video) -->
+    <!-- Preload hero asset -->
     <link
       rel="preload"
       as="image"
       href="/v-window-tint/vehicle-window-tint.webp"
     />
-    <!-- <link rel="preload" as="video" href="/videos/v-window-tint2.mp4" /> -->
 
-    <!-- Local Business JSON-LD (static baseline; per-route schema can be added via Helmet) -->
+    <!-- WebSite schema with SearchAction -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "WebSite",
         "name": "Tint Tek Plus",
-        "image": "https://tinttekplus.com/logo.png",
+        "url": "https://tinttekplus.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://tinttekplus.com/support?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- LocalBusiness schema (comprehensive) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "AutoRepair"],
+        "name": "Tint Tek Plus",
+        "image": [
+          "https://tinttekplus.com/logo.png",
+          "https://tinttekplus.com/favicon.jpg",
+          "https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp"
+        ],
         "url": "https://tinttekplus.com",
         "telephone": "+1-972-362-8468",
+        "email": "info@tinttekplus.com",
+        "priceRange": "$$",
+        "currenciesAccepted": "USD",
+        "paymentAccepted": "Cash, Credit Card, Debit Card",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "2518 West Kingsley Rd",
@@ -128,22 +169,46 @@
           "latitude": 32.9126,
           "longitude": -96.6389
         },
+        "areaServed": [
+          { "@type": "City", "name": "Garland", "sameAs": "https://en.wikipedia.org/wiki/Garland,_Texas" },
+          { "@type": "City", "name": "Dallas", "sameAs": "https://en.wikipedia.org/wiki/Dallas" },
+          { "@type": "City", "name": "Plano" },
+          { "@type": "City", "name": "Richardson" },
+          { "@type": "City", "name": "Mesquite" },
+          { "@type": "City", "name": "Rowlett" },
+          { "@type": "City", "name": "Sachse" },
+          { "@type": "City", "name": "Wylie" }
+        ],
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
+              "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
             ],
             "opens": "09:00",
             "closes": "18:00"
           }
         ],
-        "sameAs": ["https://www.tinttekplus.com/"]
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Window Tinting & Protection Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vehicle Window Tinting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tesla Window Tinting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Window Tinting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Window Tinting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paint Protection Film" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ceramic Coating" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paint Correction" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Headlight & Taillight Tinting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Windshield Protection Film" } }
+          ]
+        },
+        "sameAs": [
+          "https://www.tinttekplus.com/",
+          "https://www.facebook.com/tinttekplus",
+          "https://www.instagram.com/tinttekplus"
+        ]
       }
     </script>
   </head>
@@ -167,9 +232,8 @@
         style="display: none"
         src="https://www.facebook.com/tr?id=812013930998730&ev=PageView&noscript=1"
     /></noscript>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
 
-    <!-- Your app bundles -->
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/entry-client.jsx"></script>
   </body>
 </html>

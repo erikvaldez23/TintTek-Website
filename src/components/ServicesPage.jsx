@@ -223,20 +223,67 @@ const ServicePage = () => {
       description: service.description,
     };
 
-    const jsonLdObj = {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: service.title,
-      description: meta.description,
-      url,
-      areaServed: { "@type": "Place", name: "Dallas–Fort Worth, TX" },
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Tint Tek Plus",
-        url: SITE,
-        telephone: "+1-972-362-8468",
+    const jsonLdObj = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: service.title,
+        description: meta.description,
+        url,
+        areaServed: [
+          { "@type": "City", name: "Garland" },
+          { "@type": "City", name: "Dallas" },
+          { "@type": "AdministrativeArea", name: "Dallas–Fort Worth, TX" },
+        ],
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Tint Tek Plus",
+          url: SITE,
+          telephone: "+1-972-362-8468",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "2518 West Kingsley Rd",
+            addressLocality: "Garland",
+            addressRegion: "TX",
+            postalCode: "75040",
+            addressCountry: "US",
+          },
+        },
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          areaServed: "Dallas–Fort Worth, TX",
+          seller: {
+            "@type": "LocalBusiness",
+            name: "Tint Tek Plus",
+          },
+        },
       },
-    };
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: `${SITE}/services`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: service.title,
+            item: url,
+          },
+        ],
+      },
+    ];
 
     return {
       title: meta.title,
