@@ -59,9 +59,12 @@ const Fallback = <Box sx={{ minHeight: 120 }} />;
 // In-view gate to defer mounting until scrolled near
 function InViewMount({ children, rootMargin = "200px" }) {
   const ref = useRef(null);
-  const [ready, setReady] = useState(false);
+  // SSR: no window → render immediately so crawlers see content.
+  // Client: start false, let IntersectionObserver activate rendering.
+  const [ready, setReady] = useState(typeof window === "undefined");
 
   useEffect(() => {
+    if (ready) return;
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
@@ -75,9 +78,9 @@ function InViewMount({ children, rootMargin = "200px" }) {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [rootMargin]);
+  }, [rootMargin, ready]);
 
-  return <div ref={ref}>{ready ? children : null}</div>;
+  return <div ref={ref} suppressHydrationWarning>{ready ? children : null}</div>;
 }
 
 // Service copy
@@ -619,7 +622,6 @@ const ServicePage = () => {
             serviceId === "vehicle-window-tinting") && <TeslaCTA />}
         </Suspense>
 
-        {/* Service body copy — unique 300-500 word section for on-page SEO */}
         {/* {serviceBodyContent[serviceId] && (
           <Box
             sx={{
