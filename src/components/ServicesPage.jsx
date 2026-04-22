@@ -622,24 +622,23 @@ const ServicePage = () => {
             serviceId === "vehicle-window-tinting") && <TeslaCTA />}
         </Suspense>
 
-        {/* {serviceBodyContent[serviceId] && (
+        {serviceBodyContent[serviceId] && (
           <Box
+            aria-hidden="true"
             sx={{
-              maxWidth: "900px",
-              mx: "auto",
-              px: { xs: 3, md: 6 },
-              py: { xs: 5, md: 8 },
-              "& p": {
-                color: "rgba(255,255,255,0.82)",
-                fontSize: { xs: "1rem", md: "1.08rem" },
-                lineHeight: 1.9,
-                mb: 3,
-              },
-              "& p:last-child": { mb: 0 },
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              padding: 0,
+              margin: "-1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+              whiteSpace: "nowrap",
+              border: 0,
             }}
             dangerouslySetInnerHTML={{ __html: serviceBodyContent[serviceId] }}
           />
-        )} */}
+        )}
 
         {/* Per-service specialty sections (lazy + often below the fold) */}
         <Suspense fallback={Fallback}>

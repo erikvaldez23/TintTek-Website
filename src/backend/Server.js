@@ -9,9 +9,15 @@ const mongoose = require("mongoose");
 const { OpenAI } = require("openai");
 const Message = require("./models/Message"); // Message model
 
+const path = require("path");
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve prerendered static files from dist/
+const distDir = path.resolve(__dirname, "../../dist");
+app.use(express.static(distDir));
 
 const PORT = process.env.PORT || 5001;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -390,4 +396,10 @@ app.post("/chat", async (req, res) => {
       reply: "Oops! Something went wrong. Please contact us at (972) 362-8468.",
     });
   }
+});
+
+// SPA catch-all: for any route without a prerendered file, fall back to index.html
+// so React Router can handle it client-side.
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(distDir, "index.html"));
 });
