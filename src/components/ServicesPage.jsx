@@ -135,10 +135,10 @@ const serviceDetails = {
 // Meta overrides
 const metaByService = {
   "vehicle-window-tinting": {
-    title: "Vehicle Window Tinting Services | Window Tinting Garland, TX",
+    title: "Vehicle Window Tinting Garland & Dallas, TX | Tint Tek Plus",
     description:
-      "Searching for window tinting Garland? We provide professional auto tinting and vehicle window tinting in Garland and Dallas, TX. Book your car window tinting today!",
-    keywords: "window tinting garland, window tint garland tx, auto tinting garland, car window tint garland, vehicle window tinting Garland, automotive window tint Dallas, car tint near me"
+      "Professional vehicle window tinting in Garland & Dallas, TX. Tint Tek Plus installs LLumar nano-ceramic films for superior heat rejection, UV protection, and privacy. Book today!",
+    keywords: "vehicle window tinting garland, window tinting garland, window tint garland tx, car window tinting garland, auto tinting dallas, car window tint near me, ceramic window tint garland"
   },
   "tesla-window-tinting": {
     title: "Tesla Window Tinting Garland, TX | Tint Tek Plus",
