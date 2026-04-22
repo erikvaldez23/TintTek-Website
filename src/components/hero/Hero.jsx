@@ -43,8 +43,9 @@ const Hero = () => {
         {/* Hero Content */}
         <div className="hero-content">
           <h1>
-            Enhance your Ride, Home or Business with <br />
-            Precision Tinting and Protection
+            Window Tinting in Garland &amp; Dallas, TX —{" "}
+            <br />
+            Auto, Tesla, Home &amp; Commercial
           </h1>
           <button className="learn-more-btn" onClick={handleOpen}>
             MESSAGE FOR A FAST QUOTE

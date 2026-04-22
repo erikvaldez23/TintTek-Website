@@ -8,33 +8,40 @@ const path = require('path');
  */
 
 const BASE_URL = 'https://tinttekplus.com';
+
 const ROUTES = [
-  '/',
-  '/services/vehicle-window-tinting',
-  '/services/tesla-window-tinting',
-  '/services/commercial-window-tinting',
-  '/services/residential-window-tinting',
-  '/services/vehicle-paint-correction',
-  '/services/vehicle-paint-protection',
-  '/services/headlight-services',
-  '/services/ceramic-coating',
-  '/services/windshield-protection-film',
-  '/gallery',
-  '/support',
-  '/blogs',
-  '/privacy-policy',
+  { path: '/', priority: '1.0', changefreq: 'monthly' },
+  { path: '/services/vehicle-window-tinting', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/tesla-window-tinting', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/commercial-window-tinting', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/residential-window-tinting', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/vehicle-paint-correction', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/vehicle-paint-protection', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/headlight-services', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/ceramic-coating', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services/windshield-protection-film', priority: '0.8', changefreq: 'monthly' },
+  { path: '/gallery', priority: '0.8', changefreq: 'monthly' },
+  { path: '/support', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blogs', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/1', priority: '0.6', changefreq: 'yearly', lastmod: '2025-05-02' },
+  { path: '/blog/2', priority: '0.6', changefreq: 'yearly', lastmod: '2025-06-22' },
+  { path: '/blog/3', priority: '0.6', changefreq: 'yearly', lastmod: '2025-08-24' },
+  { path: '/blog/4', priority: '0.6', changefreq: 'yearly', lastmod: '2026-01-14' },
+  { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
 ];
+
+const TODAY = new Date().toISOString().split('T')[0];
 
 function generateSitemap() {
   console.log('🚀 Generating sitemap.xml...');
 
-  const sitemapEntries = ROUTES.map((route) => {
-    const url = `${BASE_URL}${route === '/' ? '' : route}`;
+  const sitemapEntries = ROUTES.map(({ path, priority, changefreq, lastmod }) => {
+    const url = `${BASE_URL}${path === '/' ? '' : path}`;
     return `  <url>
     <loc>${url}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
+    <lastmod>${lastmod || TODAY}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
   </url>`;
   }).join('\n');
 

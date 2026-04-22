@@ -187,6 +187,18 @@ const metaByService = {
   },
 };
 
+const serviceOgImages = {
+  "vehicle-window-tinting": "https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp",
+  "tesla-window-tinting": "https://tinttekplus.com/tesla-tint-model/tesla-20.webp",
+  "commercial-window-tinting": "https://tinttekplus.com/commercial/Tint%20Tek-116.jpg",
+  "residential-window-tinting": "https://tinttekplus.com/residential/residential-service.png",
+  "vehicle-paint-correction": "https://tinttekplus.com/paint-correction/paint-correction1.jpg",
+  "vehicle-paint-protection": "https://tinttekplus.com/ppf/ppf-service.jpg",
+  "headlight-services": "https://tinttekplus.com/headlight/headlight.webp",
+  "windshield-protection-film": "https://tinttekplus.com/windshield/windshield-protection.jpg",
+  "ceramic-coating": "https://tinttekplus.com/ceramic/Tint%20Tek-111.jpg",
+};
+
 const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
    radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
    linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
@@ -202,7 +214,7 @@ const ServicePage = () => {
   }, []);
 
   // SEO
-  const { title, description, keywords, canonical, robots, jsonLd } = useMemo(() => {
+  const { title, description, keywords, canonical, robots, jsonLd, image } = useMemo(() => {
     const path = serviceId
       ? `${SERVICES_BASE}/${serviceId}`
       : location.pathname;
@@ -292,6 +304,7 @@ const ServicePage = () => {
       canonical: url,
       robots: "index, follow",
       jsonLd: jsonLdObj,
+      image: serviceOgImages[serviceId] || null,
     };
   }, [serviceId, service, location.pathname]);
 
@@ -431,6 +444,7 @@ const ServicePage = () => {
         keywords={keywords}
         canonical={canonical}
         jsonLd={jsonLd}
+        image={image}
         type="website"
       />
 

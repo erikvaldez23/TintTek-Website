@@ -35,6 +35,10 @@ const ROUTES = [
   '/gallery',
   '/support',
   '/blogs',
+  '/blog/1',
+  '/blog/2',
+  '/blog/3',
+  '/blog/4',
   '/privacy-policy',
 ];
 

@@ -394,9 +394,6 @@ const Blog = () => {
               border: "1px solid rgba(255, 255, 255, 0.05)",
               boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              opacity: 0,
-              transform: "translateY(20px)",
-              "&.appear": { opacity: 1, transform: "translateY(0)" },
               "&:hover": {
                 transform: "translateY(-5px)",
                 boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
@@ -580,10 +577,6 @@ const Blog = () => {
                       border: "1px solid rgba(255, 255, 255, 0.05)",
                       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
                       transition: "all 0.3s ease",
-                      opacity: 0,
-                      transform: "translateY(20px)",
-                      transitionDelay: `${index * 0.1}s`,
-                      "&.appear": { opacity: 1, transform: "translateY(0)" },
                       "&:hover": { transform: "translateY(-5px)", boxShadow: "0 15px 40px rgba(0, 0, 0, 0.3)" },
                     }}
                   >
