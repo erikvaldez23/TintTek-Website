@@ -1,3 +1,6 @@
+# Canonicalize www → non-www (must be first, force flag overrides other rules)
+https://www.tinttekplus.com/* https://tinttekplus.com/:splat 301!
+
 # 301 redirects for old-style URLs → new service routes
 /commercial-window-tinting-garland-tx   /services/commercial-window-tinting   301
 /vehicle-window-tinting-garland-tx      /services/vehicle-window-tinting      301

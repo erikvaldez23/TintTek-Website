@@ -620,7 +620,7 @@ const ServicePage = () => {
         </Suspense>
 
         {/* Service body copy — unique 300-500 word section for on-page SEO */}
-        {serviceBodyContent[serviceId] && (
+        {/* {serviceBodyContent[serviceId] && (
           <Box
             sx={{
               maxWidth: "900px",
@@ -637,13 +637,13 @@ const ServicePage = () => {
             }}
             dangerouslySetInnerHTML={{ __html: serviceBodyContent[serviceId] }}
           />
-        )}
+        )} */}
 
         {/* Per-service specialty sections (lazy + often below the fold) */}
         <Suspense fallback={Fallback}>
           {serviceId === "vehicle-paint-correction" && <ImageCTA />}
           {serviceId === "vehicle-paint-correction" && (
-              <PaintCorrectionServices />
+            <PaintCorrectionServices />
           )}
 
           {serviceId === "tesla-window-tinting" && (
@@ -673,20 +673,20 @@ const ServicePage = () => {
             serviceId !== "headlight-services" &&
             serviceId !== "vehicle-paint-protection" && (
               <Box sx={{ width: "100%" }}>
-                  <PricingComponent />
+                <PricingComponent />
               </Box>
             )}
         </Suspense>
 
         <Suspense fallback={Fallback}>
           {serviceId === "vehicle-window-tinting" && (
-              <TintPackages />
+            <TintPackages />
           )}
           {serviceId === "tesla-window-tinting" && (
-              <TeslaTintPackages />
+            <TeslaTintPackages />
           )}
           {serviceId === "headlight-services" && (
-              <HeadlightPackages />
+            <HeadlightPackages />
           )}
         </Suspense>
 
@@ -696,7 +696,7 @@ const ServicePage = () => {
         <Suspense fallback={Fallback}>
           {serviceId !== "vehicle-paint-correction" &&
             serviceId !== "ceramic-coating" && (
-                <ServicesOffered serviceId={serviceId} />
+              <ServicesOffered serviceId={serviceId} />
             )}
         </Suspense>
 
@@ -713,7 +713,7 @@ const ServicePage = () => {
         <Suspense fallback={Fallback}>
           {serviceId !== "commercial-window-tinting" &&
             serviceId !== "residential-window-tinting" && (
-                <HowItWorks serviceId={serviceId} />
+              <HowItWorks serviceId={serviceId} />
             )}
         </Suspense>
 
@@ -727,7 +727,7 @@ const ServicePage = () => {
             serviceId === "ceramic-coating" ||
             serviceId === "headlight-services" ||
             serviceId === "residential-window-tinting") && (
-                <BenefitsGrid />
+              <BenefitsGrid />
             )}
         </Suspense>
 
@@ -736,16 +736,16 @@ const ServicePage = () => {
         </Suspense>
 
         <Suspense fallback={Fallback}>
-            <FAQSection />
-            <CallToAction />
+          <FAQSection />
+          <CallToAction />
         </Suspense>
 
         <Suspense fallback={Fallback}>
           {/* Keep wrappers minimal to let the gradient show through */}
           <Box>
-              <Contact />
+            <Contact />
           </Box>
-            <QuickLinks />
+          <QuickLinks />
           <Footer />
         </Suspense>
       </Box>
