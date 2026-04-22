@@ -85,7 +85,7 @@ async function prerender() {
   for (const route of ROUTES) {
     try {
       console.log(`  Rendering ${route} ...`);
-      const { html, emotionStyles, helmet } = render(route);
+      const { html, emotionStyles, helmet } = await render(route);
 
       // Collect per-route head tags from react-helmet-async
       // Filter out empty tags (e.g. <title data-rh="true"></title>)
