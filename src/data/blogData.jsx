@@ -97,7 +97,8 @@ export const blogPosts = [
     image: "/llumar-logo.png",
     date: "May 2, 2025",
     dateIso: "2025-05-02",
-    estimate: "5 min read",
+    readTime: "5 min read",
+    category: "Window Tint Comparison",
     categories: ["Automotive Tinting", "Window Tint Comparison"],
     featured: false,
     keywords:
@@ -263,6 +264,35 @@ export const blogPosts = [
         </Typography>
       </>
     ),
+    faqs: [
+      {
+        question: "Is LLumar better than XPEL?",
+        answerText: "LLumar is often preferred for its third-party verified performance data (NFRC) and its long-standing reputation for durability and clarity.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            LLumar is often preferred for its third-party verified performance data (<strong>NFRC</strong>) and its long-standing reputation for durability, clarity, and value.
+          </Typography>
+        ),
+      },
+      {
+        question: "Does LLumar window tint have a warranty?",
+        answerText: "Yes, LLumar offers a nationwide, transferable lifetime warranty against bubbling, fading, and peeling when installed by certified pros.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, LLumar offers a <strong>nationwide, transferable lifetime warranty</strong> against bubbling, fading, and peeling when installed by certified professionals like Tint Tek Plus.
+          </Typography>
+        ),
+      },
+      {
+        question: "How does LLumar handle the Texas heat?",
+        answerText: "LLumar ceramic films like CTX and IRX can block up to 63% of total solar energy and 88% of infrared heat, making them ideal for Dallas summers.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            LLumar ceramic films like <strong>CTX</strong> and <strong>IRX</strong> can block up to 63% of total solar energy and 88% of infrared heat, making them ideal for the brutal Dallas summer heat.
+          </Typography>
+        ),
+      },
+    ],
   },
   {
     id: 2,
@@ -273,7 +303,8 @@ export const blogPosts = [
     image: "/blog2-min.png",
     date: "June 22, 2025",
     dateIso: "2025-06-22",
-    estimate: "4 min read",
+    readTime: "4 min read",
+    category: "Car Tinting in Texas",
     categories: ["Automotive Tinting", "Car Tinting in Texas"],
     featured: false,
     keywords:
@@ -398,6 +429,35 @@ export const blogPosts = [
         </Typography>
       </>
     ),
+    faqs: [
+      {
+        question: "What are the benefits of car window tinting in Dallas?",
+        answerText: "Benefits include heat reduction, 99% UV protection, increased privacy, reduced glare on highways, and enhanced vehicle aesthetics.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Benefits include significant <strong>heat reduction</strong>, 99% UV protection, increased privacy, reduced glare on highways like I-75, and enhanced vehicle aesthetics.
+          </Typography>
+        ),
+      },
+      {
+        question: "Is window tinting legal in Texas?",
+        answerText: "Yes, but Texas law requires at least 25% light transmission on front side windows. We ensure all our installs are compliant with Texas tint laws.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, but Texas law requires at least <strong>25% light transmission</strong> on front side windows. We ensure all our installs are compliant with Texas tint laws so you can pass inspection without issues.
+          </Typography>
+        ),
+      },
+      {
+        question: "How long does it take to tint a car?",
+        answerText: "A standard full vehicle tint typically takes 2 to 4 hours depending on the vehicle size and the number of windows being tinted.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            A standard full vehicle tint typically takes <strong>2 to 4 hours</strong> depending on the vehicle size and the complexity of the install.
+          </Typography>
+        ),
+      },
+    ],
   },
   {
     id: 3,
@@ -408,7 +468,8 @@ export const blogPosts = [
     image: "/residential-blog.jpg",
     date: "August 24, 2025",
     dateIso: "2025-08-24",
-    estimate: "5 min read",
+    readTime: "5 min read",
+    category: "Residential Window Tinting",
     categories: ["Residential Tinting", "Home Improvement"],
     featured: false,
     keywords:
@@ -540,6 +601,35 @@ export const blogPosts = [
         </Typography>
       </>
     ),
+    faqs: [
+      {
+        question: "Can residential window tinting lower my energy bills?",
+        answerText: "Yes, by blocking up to 79% of solar heat, residential window film can reduce cooling costs by 15-30% each month in Texas.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, by blocking up to <strong>79% of solar heat</strong>, residential window film can reduce cooling costs by 15-30% each month, providing a significant ROI for DFW homeowners.
+          </Typography>
+        ),
+      },
+      {
+        question: "Does home window tinting block UV rays?",
+        answerText: "Yes, premium films like LLumar Vista block 99% of harmful UV rays, protecting your family and preventing furniture and floors from fading.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, premium films like <strong>LLumar Vista</strong> block 99% of harmful UV rays, protecting your family and preventing furniture, hardwood floors, and artwork from fading.
+          </Typography>
+        ),
+      },
+      {
+        question: "Will window film make my house too dark?",
+        answerText: "No, modern residential films are designed to be virtually invisible while still providing maximum heat and UV protection.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            No, modern residential films are designed to be <strong>virtually invisible</strong> or lightly shaded, allowing you to enjoy natural light without the heat and glare.
+          </Typography>
+        ),
+      },
+    ],
   },
   {
     id: 4,
@@ -550,7 +640,8 @@ export const blogPosts = [
     image: "/ppf-installation.JPEG",
     date: "August 30, 2025",
     dateIso: "2025-08-30",
-    estimate: "6 min read",
+    readTime: "6 min read",
+    category: "Paint Protection Film",
     categories: ["Paint Protection", "Car Care"],
     featured: true,
     keywords:

@@ -22,6 +22,7 @@ import Contact from "./SubContact";
 import CallToAction from "./SubCTA";
 import QuickLinks from "./SubQuickLinks";
 import SEO from "./SEO";
+import { blogPosts } from "../data/blogData";
 
 // ---- SITE SETTINGS ----
 const SITE = "https://tinttekplus.com"; // use your live domain
@@ -30,61 +31,11 @@ const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), tra
    radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
    linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
 
-// Sample blog posts data
-const blogPosts = [
-  {
-    id: 1,
-    slug: "llumar-vs-xpel-window-tint-dallas",
-    title: "LLumar vs. XPEL Window Tint: Why LLumar Comes Out Ahead",
-    summary:
-      "Comparing LLumar and XPEL window tint? Discover why LLumar's third-party tested performance, long-term durability, and value make it the smart choice in Dallas, TX.",
-    image: "/llumar-logo.png",
-    estimate: "5 Minute",
-    date: "May 2, 2025",
-    category: ["Automotive Tinting"],
-    featured: false,
-  },
-  {
-    id: 2,
-    slug: "5-reasons-tint-car-windows-dallas-tx",
-    title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
-    summary:
-      "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
-    image: "/blog2-min.png",
-    estimate: "4 Minute",
-    date: "June 22, 2025",
-    category: ["Automotive Tinting"],
-    featured: false,
-  },
-  {
-    id: 3,
-    slug: "residential-window-tinting-benefits-dfw",
-    title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
-    summary:
-      "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
-    image: "/residential-blog.jpg",
-    estimate: "5 Minute",
-    date: "August 24, 2025",
-    category: ["Residential Tinting"],
-    featured: false,
-  },
-  {
-    id: 4,
-    slug: "paint-protection-film-dallas-texas",
-    title: "Why Paint Protection Film (PPF) Is a MUST in Dallas, Texas",
-    summary:
-      "Dallas roads, construction zones, and brutal Texas UV can destroy your paint fast. PPF stops rock chips, scratches, and fading with premium self-healing protection.",
-    image: "/ppf-installation.JPEG",
-    estimate: "6 Minute",
-    date: "August 30, 2025",
-    category: ["Paint Protection"],
-    featured: true,
-  },
-];
+
 
 // Extract all unique categories
 const allCategories = Array.from(
-  new Set(blogPosts.flatMap((post) => post.category))
+  new Set(blogPosts.flatMap((post) => post.categories || []))
 );
 
 const Blog = () => {
@@ -110,12 +61,14 @@ const Blog = () => {
         (post) =>
           post.title.toLowerCase().includes(query) ||
           post.summary.toLowerCase().includes(query) ||
-          post.category.some((cat) => cat.toLowerCase().includes(query))
+          (post.categories || []).some((cat) => cat.toLowerCase().includes(query))
       );
     }
+    /*
     if (activeTab !== "all") {
-      filtered = filtered.filter((post) => post.category.includes(activeTab));
+      filtered = filtered.filter((post) => (post.categories || []).includes(activeTab));
     }
+    */
     return filtered;
   }, [searchTerm, activeTab]);
 
@@ -320,7 +273,7 @@ const Blog = () => {
         </Container>
       </Box>
 
-      {/* Category Filter — simple dark glass with blue active */}
+      {/* Category Filter — simple dark glass with blue active (Commented out)
       <Container maxWidth="lg" sx={{ mt: { xs: 2, md: 4 }, position: "relative", zIndex: 10 }}>
         <Box
           sx={{
@@ -372,6 +325,7 @@ const Blog = () => {
           </Tabs>
         </Box>
       </Container>
+      */}
 
 
 
@@ -473,7 +427,7 @@ const Blog = () => {
               <Box sx={{ width: { xs: "100%", md: "50%" }, p: 4, display: "flex", flexDirection: "column" }}>
                 {/* Categories */}
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
-                  {featuredPost.category.map((cat) => (
+                  {(featuredPost.categories || []).map((cat) => (
                     <Chip
                       key={cat}
                       label={cat}
@@ -619,9 +573,9 @@ const Blog = () => {
                             transition: "transform 0.5s ease-in-out",
                           }}
                         />
-                        {post.category && post.category[0] && (
+                        {post.categories && post.categories[0] && (
                           <Chip
-                            label={post.category[0]}
+                            label={post.categories[0]}
                             size="small"
                             sx={{
                               position: "absolute",
