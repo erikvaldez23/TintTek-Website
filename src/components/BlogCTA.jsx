@@ -7,21 +7,21 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // ─── Sample teasers ──────────────────────────────────────────────────────────
 const TEASERS = [
   {
-    id: 1,
+    slug: "llumar-vs-xpel-window-tint-dallas",
     label: "Tinting",
-    title: "XPEL vs. LLumar: Which Window Tint Is Right for You?",
+    title: "LLumar vs. XPEL: Why LLumar Comes Out Ahead",
     image: "/llumar-logo.png",
   },
   {
-    id: 2,
+    slug: "5-reasons-tint-car-windows-dallas-tx",
     label: "Tinting",
     title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
     image: "/blog2-min.png",
   },
   {
-    id: 4,
+    slug: "paint-protection-film-dallas-texas",
     label: "Paint Protection",
-    title: "PPF Installation & Clear Bra in Dallas TX",
+    title: "Why PPF Is a MUST in Dallas, Texas",
     image: "/ppf-installation.JPEG",
   },
 ];
@@ -175,7 +175,7 @@ const BlogCTA = () => {
             variants={rise}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
             style={{ cursor: "pointer", height: "100%" }}
-            onClick={() => navigate(`/blog/${post.id}`)}
+            onClick={() => navigate(`/blog/${post.slug}`)}
           >
             <Box
               sx={{

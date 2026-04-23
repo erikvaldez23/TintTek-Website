@@ -35,10 +35,10 @@ const ROUTES = [
   '/gallery',
   '/support',
   '/blogs',
-  '/blog/1',
-  '/blog/2',
-  '/blog/3',
-  '/blog/4',
+  '/blog/llumar-vs-xpel-window-tint-dallas',
+  '/blog/5-reasons-tint-car-windows-dallas-tx',
+  '/blog/residential-window-tinting-benefits-dfw',
+  '/blog/paint-protection-film-dallas-texas',
   '/privacy-policy',
 ];
 

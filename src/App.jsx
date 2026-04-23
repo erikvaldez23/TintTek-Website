@@ -128,9 +128,9 @@ export function AppContent() {
         {/* Service detail pages */}
         <Route path="/services/:serviceId" element={<ServicesPage />} />
 
-        {/* Blog list + detail (list at /blog) */}
+        {/* Blog list + detail */}
         <Route path="/blogs" element={<Blog />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
 
         {/* Other pages */}
         <Route path="/gallery" element={<Gallery />} />

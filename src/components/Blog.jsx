@@ -12,6 +12,7 @@ import {
   useMediaQuery,
   useTheme,
   CardActionArea,
+  GlobalStyles,
 } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -25,52 +26,60 @@ import SEO from "./SEO";
 // ---- SITE SETTINGS ----
 const SITE = "https://tinttekplus.com"; // use your live domain
 
+const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+   radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+   linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
+
 // Sample blog posts data
 const blogPosts = [
   {
     id: 1,
-    title: "XPEL vs. LLumar: Which Window Tint is Right for Your Vehicle?",
+    slug: "llumar-vs-xpel-window-tint-dallas",
+    title: "LLumar vs. XPEL Window Tint: Why LLumar Comes Out Ahead",
     summary:
-      "Trying to choose between XPEL and LLumar window tint? We compare durability, heat rejection, UV protection, and cost to help you make the right decision in Dallas, TX.",
+      "Comparing LLumar and XPEL window tint? Discover why LLumar's third-party tested performance, long-term durability, and value make it the smart choice in Dallas, TX.",
     image: "/llumar-logo.png",
-    estimate: "4-5 Minute",
+    estimate: "5 Minute",
     date: "May 2, 2025",
     category: ["Automotive Tinting"],
     featured: false,
   },
   {
     id: 2,
+    slug: "5-reasons-tint-car-windows-dallas-tx",
     title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
     summary:
       "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
     image: "/blog2-min.png",
-    estimate: "4-5 Minute",
+    estimate: "4 Minute",
     date: "June 22, 2025",
     category: ["Automotive Tinting"],
     featured: false,
   },
   {
     id: 3,
+    slug: "residential-window-tinting-benefits-dfw",
     title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
     summary:
       "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
     image: "/residential-blog.jpg",
-    estimate: "4-5 Minute",
+    estimate: "5 Minute",
     date: "August 24, 2025",
     category: ["Residential Tinting"],
     featured: false,
   },
   {
     id: 4,
-    title: "Paint Protection Film Dallas TX | PPF Installation & Clear Bra",
+    slug: "paint-protection-film-dallas-texas",
+    title: "Why Paint Protection Film (PPF) Is a MUST in Dallas, Texas",
     summary:
-      "Protect your car from rock chips, heat & scratches with premium Paint Protection Film in Dallas. STEK PPF, self-healing & warranty backed.",
+      "Dallas roads, construction zones, and brutal Texas UV can destroy your paint fast. PPF stops rock chips, scratches, and fading with premium self-healing protection.",
     image: "/ppf-installation.JPEG",
-    estimate: "4-5 Minute",
-    date: "January 14, 2026",
-    category: ["Automotive Tinting"],
+    estimate: "6 Minute",
+    date: "August 30, 2025",
+    category: ["Paint Protection"],
     featured: true,
-  }
+  },
 ];
 
 // Extract all unique categories
@@ -132,7 +141,7 @@ const Blog = () => {
 
   // -------- Helmet (SEO) --------
   const { title, description, canonical, blogLd } = useMemo(() => {
-    const url = `${SITE}/blog`;
+    const url = `${SITE}/blogs`;
     const metaTitle = "Blog | Window Tinting Tips & PPF Guides | Tint Tek Plus";
     const metaDesc =
       "Expert articles on window tinting, paint protection film (PPF), ceramic coatings, and automotive care—written by the Tint Tek Plus team in Dallas–Fort Worth.";
@@ -142,7 +151,7 @@ const Blog = () => {
       description: p.summary,
       image: `${SITE}${p.image.startsWith("/") ? p.image : `/${p.image}`}`,
       datePublished: p.date,
-      url: `${SITE}/blog/${p.id}`,
+      url: `${SITE}/blog/${p.slug}`,
     }));
     const ld = {
       "@context": "https://schema.org",
@@ -168,13 +177,22 @@ const Blog = () => {
   }, []);
 
   return (
-    <Box sx={{
-      background: `
-          radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
-          radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
-          linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)
-        `, color: "#FFFFFF", minHeight: "100vh"
-    }}>
+    <Box 
+      className="BlogPageRoot"
+      sx={{ background: "transparent", color: "#FFFFFF", minHeight: "100vh", position: "relative" }}
+    >
+      <GlobalStyles
+        styles={{
+          ".BlogPageRoot": { position: "relative" },
+          ".BlogPageRoot::before": {
+            content: '""',
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            background: GRADIENT,
+          },
+        }}
+      />
       {/* HEAD */}
       <SEO
         title={title}
@@ -403,7 +421,7 @@ const Blog = () => {
           >
             <CardActionArea
               component={Link}
-              to={`/blog/${featuredPost.id}`}
+              to={`/blog/${featuredPost.slug}`}
               aria-label={`Read article: ${featuredPost.title}`}
               sx={{
                 display: "flex",
@@ -582,7 +600,7 @@ const Blog = () => {
                   >
                     <CardActionArea
                       component={Link}
-                      to={`/blog/${post.id}`}
+                      to={`/blog/${post.slug}`}
                       aria-label={`Read article: ${post.title}`}
                       sx={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "stretch" }}
                     >
@@ -696,7 +714,7 @@ const Blog = () => {
             </Typography>
             <Box
               component={Link}
-              to="/blog"
+              to="/blogs"
               sx={{
                 display: "inline-block",
                 px: 3,

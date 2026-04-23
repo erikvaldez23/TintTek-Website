@@ -23,10 +23,10 @@ const ROUTES = [
   { path: '/gallery', priority: '0.8', changefreq: 'monthly' },
   { path: '/support', priority: '0.8', changefreq: 'monthly' },
   { path: '/blogs', priority: '0.8', changefreq: 'monthly' },
-  { path: '/blog/1', priority: '0.6', changefreq: 'yearly', lastmod: '2025-05-02' },
-  { path: '/blog/2', priority: '0.6', changefreq: 'yearly', lastmod: '2025-06-22' },
-  { path: '/blog/3', priority: '0.6', changefreq: 'yearly', lastmod: '2025-08-24' },
-  { path: '/blog/4', priority: '0.6', changefreq: 'yearly', lastmod: '2026-01-14' },
+  { path: '/blog/llumar-vs-xpel-window-tint-dallas', priority: '0.7', changefreq: 'yearly', lastmod: '2025-05-02' },
+  { path: '/blog/5-reasons-tint-car-windows-dallas-tx', priority: '0.7', changefreq: 'yearly', lastmod: '2025-06-22' },
+  { path: '/blog/residential-window-tinting-benefits-dfw', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-24' },
+  { path: '/blog/paint-protection-film-dallas-texas', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-30' },
   { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
 ];
 
