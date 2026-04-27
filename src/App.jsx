@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Box, IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import "./App.css";
@@ -16,8 +16,10 @@ import Topbar from "./components/key-components/Topbar";
 import ScrollToTop from "./components/ScrollToTop";
 import SEO from "./components/SEO";
 
+// Hero must be eager: it is the LCP element on the home page and hydrates first
+import Hero from "./components/hero/Hero";
+
 // Route-level components — each lands in its own chunk
-const Hero = lazy(() => import("./components/hero/Hero"));
 const Testimonials = lazy(() => import("./components/landing/Testimonials"));
 const Services = lazy(() => import("./components/landing/Services"));
 const Vision = lazy(() => import("./components/landing/Vision"));
@@ -46,6 +48,27 @@ const SubQuickLinks = lazy(() => import("./components/SubQuickLinks"));
 const Chatbot = lazy(() => import("./ChatBot"));
 const ChatbotPopup = lazy(() => import("./components/ChatbotPopup"));
 
+// Defers mounting children until they scroll near the viewport.
+// SSR: starts ready so crawlers see content; client: waits for IntersectionObserver.
+function InViewMount({ children, rootMargin = "200px" }) {
+  const ref = useRef(null);
+  const [ready, setReady] = useState(typeof window === "undefined");
+  useEffect(() => {
+    if (ready) return;
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { setReady(true); io.disconnect(); }
+      },
+      { rootMargin }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [rootMargin, ready]);
+  return <div ref={ref} suppressHydrationWarning>{ready ? children : null}</div>;
+}
+
 // ---- Theme ----
 export const theme = createTheme({
   palette: {
@@ -61,11 +84,11 @@ export function AppContent() {
   const isHomePage = location.pathname === "/";
   const isChatPage = location.pathname === "/chat";
 
-  // Show chatbot teaser on home after a short delay
+  // Delay chatbot teaser past the TBT-critical window (first ~4s of interaction)
   useEffect(() => {
     let popupTimer;
     if (isHomePage) {
-      popupTimer = setTimeout(() => setShowPopup(true), 1500);
+      popupTimer = setTimeout(() => setShowPopup(true), 6000);
     }
     return () => clearTimeout(popupTimer);
   }, [isHomePage]);
@@ -105,6 +128,7 @@ export function AppContent() {
                     },
                   }}
                 />
+                {/* Hero is eagerly imported — renders without waiting for any chunk */}
                 <Hero />
                 <Box
                   sx={{
@@ -116,15 +140,27 @@ export function AppContent() {
       `,
                   }}
                 >
-                  <Services />
-                  <WhyChooseUs />
-                  <Testimonials />
-                  <VideoCTA2 />
-                  <Vision />
-                  <SubCTA />
-                  <SubContact />
-                  <SubQuickLinks />
-                  <Footer />
+                  {/* Near-fold: own Suspense so these hydrate independently */}
+                  <Suspense fallback={null}>
+                    <Services />
+                    <WhyChooseUs />
+                  </Suspense>
+                  {/* Below-fold: deferred until scrolled near + own Suspense */}
+                  <InViewMount>
+                    <Suspense fallback={null}>
+                      <Testimonials />
+                      <VideoCTA2 />
+                    </Suspense>
+                  </InViewMount>
+                  <InViewMount>
+                    <Suspense fallback={null}>
+                      <Vision />
+                      <SubCTA />
+                      <SubContact />
+                      <SubQuickLinks />
+                      <Footer />
+                    </Suspense>
+                  </InViewMount>
                 </Box>
               </>
             }
