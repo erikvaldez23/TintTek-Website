@@ -23,9 +23,11 @@ const Contact = () => {
 
   return (
     <Box
+      id="contact"
       sx={{
         width: "100%",
         py: 3,
+        scrollMarginTop: "90px",
       }}
     >
       <Box
@@ -34,7 +36,6 @@ const Contact = () => {
           maxWidth: "1200px",
           margin: "auto",
         }}
-        id="contact"
       >
         {/* Contact Header */}
         <Typography

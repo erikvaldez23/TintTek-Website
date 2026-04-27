@@ -183,6 +183,7 @@ const ImageCarousel = () => {
                     src={src}
                     alt={`Slide ${index + 1}`}
                     className="carousel-img"
+                    loading="lazy"
                     sx={{
                       width: "100%",
                       maxHeight: isMobile ? "300px" : "450px",

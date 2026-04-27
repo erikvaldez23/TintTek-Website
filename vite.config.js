@@ -17,6 +17,13 @@ export default defineConfig({
   base: '/',
   plugins: [react()],
   build: {
+    // Merge all CSS into the single entry stylesheet so SSR-prerendered markup
+    // is never briefly unstyled — component CSS files would otherwise only load
+    // when their lazy JS chunk fires, causing a FOUC.
+    cssCodeSplit: false,
+    // Target ES2020 — removes legacy polyfills (~12 KiB) while still covering
+    // all browsers that support native ES modules (Chrome 80+, Safari 14+).
+    target: 'es2020',
     rollupOptions: {
       output: {
         manualChunks: {

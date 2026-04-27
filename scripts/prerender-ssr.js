@@ -71,6 +71,15 @@ async function prerender() {
 
   const template = fs.readFileSync(templateSource, 'utf-8');
 
+  // Extract the hashed CSS filename Vite injected so we can preload it early.
+  // Vite places the <link rel="stylesheet"> near the end of <head>, but a
+  // <link rel="preload" as="style"> at the very top of <head> tells the browser
+  // to fetch the stylesheet immediately while still parsing the rest of the document.
+  const cssMatch = template.match(/<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/);
+  const cssPreloadTag = cssMatch
+    ? `<link rel="preload" as="style" crossorigin href="${cssMatch[1]}">`
+    : '';
+
   // Import the SSR bundle built by Vite
   const ssrEntry = path.join(serverDist, 'entry-server.js');
   if (!fs.existsSync(ssrEntry)) {
@@ -105,7 +114,10 @@ async function prerender() {
       // Combine helmet tags + emotion critical CSS
       const injectedHead = `${helmetHead}\n    ${emotionStyles}`;
 
+      // Inject CSS preload immediately after <head> so the browser starts
+      // fetching the stylesheet before parsing the rest of the document.
       const pageHtml = template
+        .replace('<head>', `<head>\n    ${cssPreloadTag}`)
         .replace('<!--app-head-->', injectedHead)
         .replace('<!--app-html-->', html);
 

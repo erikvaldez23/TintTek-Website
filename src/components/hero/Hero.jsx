@@ -31,10 +31,10 @@ const Hero = () => {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster="/v-window-tint/vehicle-window-tint.webp"
         >
           <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
         {/* Dark Overlay */}

@@ -28,6 +28,25 @@ app.use((req, res, next) => {
   next();
 });
 
+// Cache-Control tiers for static assets
+app.use((req, res, next) => {
+  const p = req.path;
+  if (/^\/assets\//.test(p)) {
+    // Hashed filenames — safe to cache forever
+    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+  } else if (/\.(webp|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|otf)$/i.test(p)) {
+    // Images and fonts — 30 days
+    res.setHeader("Cache-Control", "public, max-age=2592000");
+  } else if (/\.(mp4|webm|mov)$/i.test(p)) {
+    // Videos — 7 days
+    res.setHeader("Cache-Control", "public, max-age=604800");
+  } else if (/\.html$/i.test(p) || p === "/" || !p.includes(".")) {
+    // HTML and SPA routes — 1 hour, must revalidate
+    res.setHeader("Cache-Control", "public, max-age=3600, must-revalidate");
+  }
+  next();
+});
+
 // Serve prerendered static files from dist/
 const distDir = path.resolve(__dirname, "../../dist");
 app.use(express.static(distDir));

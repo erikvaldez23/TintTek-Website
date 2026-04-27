@@ -166,6 +166,7 @@ const ImageCTA = () => {
                         src={src}
                         alt={`Slide ${index + 1}`}
                         className="carousel-img"
+                        loading="lazy"
                         sx={{
                           width: "100%",
                           minHeight: isMobile ? "200px" : "300px",
