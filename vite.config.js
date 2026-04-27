@@ -41,8 +41,8 @@ export default defineConfig({
           'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
           // Animation
           'vendor-motion': ['framer-motion'],
-          // Carousel / slider libs
-          'vendor-carousel': ['react-slick', 'slick-carousel', 'swiper'],
+          // Carousel / slider lib
+          'vendor-carousel': ['swiper'],
           // Icon packs
           'vendor-icons': ['react-icons', 'lucide-react'],
         },

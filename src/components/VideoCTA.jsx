@@ -1,6 +1,5 @@
 // src/components/VideoCTA.jsx
 import React, { useRef, useState, useMemo } from "react";
-import Slider from "react-slick";
 import { useParams } from "react-router-dom";
 import {
   Box,
@@ -13,8 +12,6 @@ import {
 } from "@mui/material";
 import { PlayArrow, Pause, VolumeUp, VolumeOff } from "@mui/icons-material";
 import { motion } from "framer-motion";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import CloseIcon from "@mui/icons-material/Close";
 
 const videoContent = {

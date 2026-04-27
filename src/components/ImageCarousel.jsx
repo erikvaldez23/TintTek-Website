@@ -1,16 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import {
-  Box,
-  Typography,
-  Button,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const callToActionData = {
   "vehicle-window-tinting": {
@@ -49,212 +43,58 @@ const callToActionData = {
       "/commercial/Tint Tek-152.webp",
     ],
   },
-  "vehicle-paint-correction": {
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
-  "vehicle-paint-protection": {
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
-  "headlight-services": {
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
-  "windshield-protection-film": {
-    images: [
-      "/",
-      "/",
-      "/",
-      "/",
-      "/",
-    ],
-  },
+  "vehicle-paint-correction": { images: [] },
+  "vehicle-paint-protection": { images: [] },
+  "headlight-services": { images: [] },
+  "windshield-protection-film": { images: [] },
 };
 
 const ImageCarousel = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { serviceId } = useParams();
-  const currentData =
-    callToActionData[serviceId] ||
-    callToActionData["commercial-window-tinting"];
+  const { images } = callToActionData[serviceId] || callToActionData["commercial-window-tinting"];
 
-  const { title, description, images } = currentData;
-
-  // Framer Motion animation variants
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const fadeSlideVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
-  const sliderSettings = {
-    centerMode: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    infinite: true,
-    speed: 500,
-    arrows: true,
-    autoplay: false,
-    responsive: [
-      {
-        breakpoint: 960,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "40px",
-        },
-      },
-    ],
-  };
+  if (!images.length) return null;
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={containerVariants}
-    >
-      <Box
-        sx={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          color: "#000",
-          overflow: "hidden",
+    <Box sx={{ py: 3, overflow: "hidden" }}>
+      <Swiper
+        modules={[Navigation]}
+        centeredSlides={true}
+        navigation={true}
+        loop={images.length > 1}
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 16 },
+          960: { slidesPerView: 3, spaceBetween: 24 },
         }}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1 }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 1,
-          }}
-        />
-
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 2,
-            maxWidth: "1200px",
-            width: "100%",
-          }}
-        >
-          {/* Image Carousel */}
-          <Box sx={{py: 3 }}>
-            <Slider {...sliderSettings}>
-              {images.map((src, index) => (
-                <Box key={index} sx={{ px: 2 }} className="carousel-slide">
-                  <Box
-                    component="img"
-                    src={src}
-                    alt={`Slide ${index + 1}`}
-                    className="carousel-img"
-                    loading="lazy"
-                    sx={{
-                      width: "100%",
-                      height: isMobile ? "300px" : "450px",
-                      objectFit: "cover",
-                      borderRadius: "24px",
-                      transition: "all 0.4s ease",
-                      boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-                      "&:hover": {
-                        cursor: "pointer",
-                        transform: "scale(1.02)",
-                      },
-                    }}
-                  />
-                </Box>
-              ))}
-            </Slider>
-          </Box>
-{/* 
-          <Typography
-            variant={isMobile ? "h4" : "h2"}
-            component={motion.h3}
-            variants={fadeSlideVariant}
-            sx={{
-              fontWeight: "bold",
-              letterSpacing: "1px",
-              textTransform: "uppercase",
-            }}
-          >
-            {title}
-          </Typography>
-
-          <Typography
-            variant="body1"
-            component={motion.p}
-            variants={fadeSlideVariant}
-            transition={{ delay: 0.3 }}
-            sx={{
-              mt: 2,
-              fontSize: isMobile ? "1rem" : "1.2rem",
-              lineHeight: "1.6",
-              opacity: 0.9,
-            }}
-          >
-            {description}
-          </Typography> */}
-
-          {/* <Button
-            component={motion.button}
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            sx={{
-              mt: 3,
-              backgroundColor: "#000",
-              color: "#fff",
-              fontWeight: "bold",
-              px: isMobile ? 3 : 4,
-              py: isMobile ? 1.2 : 1.5,
-              borderRadius: "30px",
-              textTransform: "uppercase",
-              fontSize: isMobile ? "1rem" : "1.1rem",
-              width: isMobile ? "100%" : "auto",
-            }}
-            href="/quote"
-          >
-            Get a Free Quote
-          </Button> */}
-        </Box>
-      </Box>
-    </motion.div>
+        {images.map((src, index) => (
+          <SwiperSlide key={index}>
+            <Box sx={{ px: 1 }}>
+              <Box
+                component="img"
+                src={src}
+                alt={`Slide ${index + 1}`}
+                loading="lazy"
+                sx={{
+                  width: "100%",
+                  height: isMobile ? "300px" : "450px",
+                  objectFit: "cover",
+                  borderRadius: "24px",
+                  transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                  "&:hover": {
+                    cursor: "pointer",
+                    transform: "scale(1.02)",
+                  },
+                }}
+              />
+            </Box>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Box>
   );
 };
 

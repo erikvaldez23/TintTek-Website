@@ -12,9 +12,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 // Google Reviews URL and logo
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9";
@@ -57,38 +58,6 @@ const Testimonials = () => {
 
 
 
-  const sliderSettings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    centerMode: true,
-    centerPadding: "8%",
-    adaptiveHeight: true,
-    appendDots: (dots) => (
-      <Box sx={{ textAlign: "center", mt: 2 }}>
-        <ul style={{ margin: "0px", padding: "0px" }}> {dots} </ul>
-      </Box>
-    ),
-    customPaging: (i) => (
-      <Box
-        component="div"
-        sx={{
-          width: "10px",
-          height: "10px",
-          backgroundColor: "#888",
-          borderRadius: "50%",
-          display: "inline-block",
-          margin: "0 5px",
-          transition: "background-color 0.3s ease",
-          py: "5",
-        }}
-        className={`custom-dot-${i}`}
-      />
-    ),
-  };
 
   // Parent container variant to stagger children animations
   const containerVariants = {
@@ -125,23 +94,32 @@ const Testimonials = () => {
           </Typography>
 
           {isMobile ? (
-            // Mobile View - Carousel remains the same
-            <Slider {...sliderSettings}>
+            // Mobile View - Swiper carousel
+            <Swiper
+              modules={[Pagination]}
+              slidesPerView={1.1}
+              centeredSlides={true}
+              spaceBetween={16}
+              pagination={{ clickable: true }}
+              grabCursor={true}
+              loop={false}
+              style={{
+                paddingBottom: "44px",
+                "--swiper-pagination-color": "#2794d2",
+                "--swiper-pagination-bullet-inactive-color": "rgba(255,255,255,0.35)",
+                "--swiper-pagination-bullet-inactive-opacity": "1",
+              }}
+            >
               {reviews.map((review, index) => (
-                <Box key={index} sx={{ px: 2 }}>
+                <SwiperSlide key={index} style={{ height: "auto" }}>
                   <Card
                     sx={{
-                      width: "100%",
-                      maxWidth: 400,
-                      height: 350,
-                      margin: "0 auto",
                       p: 2,
                       borderRadius: 3,
                       textAlign: "left",
                       display: "flex",
                       flexDirection: "column",
                       position: "relative",
-                      mb: 2,
                     }}
                   >
                     <CardContent
@@ -149,8 +127,8 @@ const Testimonials = () => {
                         flex: "1 1 auto",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
-                        overflow: "scroll",
+                        gap: 1.5,
+                        "&:last-child": { pb: 2 },
                       }}
                     >
                       <Box
@@ -158,16 +136,16 @@ const Testimonials = () => {
                           position: "absolute",
                           top: 10,
                           right: 10,
-                          width: 25,
-                          height: 25,
+                          width: 22,
+                          height: 22,
                         }}
                       >
                         <img src={GOOGLE_LOGO} alt="Google" width="100%" loading="lazy" />
                       </Box>
 
-                      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                         <Avatar
-                          sx={{ width: 40, height: 40, mr: 2 }}
+                          sx={{ width: 40, height: 40, flexShrink: 0 }}
                           src={review.profile_photo_url}
                           alt={review.author_name}
                           imgProps={{ loading: "lazy" }}
@@ -176,42 +154,37 @@ const Testimonials = () => {
                           <Typography
                             variant="h6"
                             component="h3"
-                            sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
+                            sx={{ fontWeight: "bold", fontSize: "0.9rem", lineHeight: 1.2 }}
                           >
                             {review.author_name}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary" sx={{ fontSize: "0.75rem" }}>
                             {new Date(review.time * 1000).toLocaleDateString()}
                           </Typography>
                         </Box>
                       </Box>
 
-                      <Rating
-                        value={review.rating}
-                        precision={0.5}
-                        readOnly
-                        sx={{ mb: 1 }}
-                      />
+                      <Rating value={review.rating} precision={0.5} readOnly size="small" />
 
                       <Typography
                         variant="body2"
                         sx={{
-                          display: "-webkit-box",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          overflowY: "auto",
                           fontStyle: "italic",
-                          fontSize: "0.9rem",
-                          lineHeight: 1.5,
+                          fontSize: "0.88rem",
+                          lineHeight: 1.6,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 7,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
                         }}
                       >
                         "{review.text}"
                       </Typography>
                     </CardContent>
                   </Card>
-                </Box>
+                </SwiperSlide>
               ))}
-            </Slider>
+            </Swiper>
           ) : (
             // Desktop View - Grid Layout with staggered animations
             <motion.div
