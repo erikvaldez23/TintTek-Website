@@ -318,7 +318,6 @@ const Gallery = () => {
               component={motion.a}
               href="https://www.instagram.com/tinttekplus"
               target="_blank" rel="noopener noreferrer"
-              rel="noopener noreferrer"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}

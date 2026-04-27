@@ -400,7 +400,6 @@ const ServicesOffered = ({ serviceId }) => {
             <Link
               to={film.warrantyUrl}
               target="_blank" rel="noopener noreferrer"
-              rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
               <Box

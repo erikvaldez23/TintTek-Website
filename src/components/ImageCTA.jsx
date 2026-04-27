@@ -69,8 +69,7 @@ const ImageCTA = () => {
     infinite: true,
     speed: 500,
     arrows: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 960,
@@ -88,7 +87,7 @@ const ImageCTA = () => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
     >
       <Box
@@ -169,8 +168,7 @@ const ImageCTA = () => {
                         loading="lazy"
                         sx={{
                           width: "100%",
-                          minHeight: isMobile ? "200px" : "300px",
-                          maxHeight: isMobile ? "300px" : "350px",
+                          height: isMobile ? "250px" : "350px",
                           objectFit: "cover",
                           borderRadius: "24px",
                           transition: "all 0.4s ease",

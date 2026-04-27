@@ -357,7 +357,6 @@ const Testimonials = () => {
             }}
             href={GOOGLE_REVIEWS_URL}
             target="_blank" rel="noopener noreferrer"
-            rel="noopener noreferrer"
           >
             VIEW MORE REVIEWS
           </Button>

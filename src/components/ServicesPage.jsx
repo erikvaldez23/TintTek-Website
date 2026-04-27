@@ -25,7 +25,11 @@ import Topbar from "./key-components/Topbar";
 import Footer from "./key-components/Footer";
 import BusinessInfo from "./hero/BusinessInfo";
 
-// Lazy-load heavier blocks
+// Above-the-fold CTAs — must be eager to avoid LCP delay and above-fold CLS
+import TeslaCTA from "./TeslaCTA";
+import VideoCTA from "./VideoCTA";
+
+// Lazy-load heavier below-fold blocks
 import PricingComponent from "./Pricing";
 const Contact = lazy(() => import("./SubContact"));
 import HowItWorks from "./HowItWorks";
@@ -41,20 +45,19 @@ import TeslaTintPackages from "./TeslaTintPackages";
 import BenefitsGrid from "./BenefitsGrid";
 const ImageCTA = lazy(() => import("./ImageCTA"));
 import PaintCorrectionServices from "./PaintCorrectionServices";
-const VideoCTA = lazy(() => import("./VideoCTA"));
 import HeadlightPackages from "./HeadlightPackages";
 const BlogCTA = lazy(() => import("./BlogCTA"));
-const PPFVision = lazy(() => import("./PPF-Vision")); // (if used elsewhere)
+const PPFVision = lazy(() => import("./PPF-Vision"));
 const ImageCarousel = lazy(() => import("./ImageCarousel"));
-const TeslaCTA = lazy(() => import("./TeslaCTA"));
 const F1Banner = lazy(() => import("./f1-banner"));
 
 // ---- SITE SETTINGS ----
 const SITE = "https://tinttekplus.com";
 const SERVICES_BASE = "/services";
 
-// Small, reusable lazy fallback
-const Fallback = <Box sx={{ minHeight: 120 }} />;
+// Null fallback for below-fold lazy components — a height placeholder causes
+// CLS when real content is a different size; null avoids the mismatch.
+const Fallback = null;
 
 // In-view gate to defer mounting until scrolled near
 function InViewMount({ children, rootMargin = "200px" }) {
@@ -609,18 +612,16 @@ const ServicePage = () => {
           </Typography>
         </Box>
 
-        {/* Above-the-fold CTA variants */}
-        <Suspense fallback={Fallback}>
-          {(serviceId === "commercial-window-tinting" ||
-            serviceId === "ceramic-coating" ||
-            serviceId === "headlight-services" ||
-            serviceId === "windshield-protection-film") && <VideoCTA />}
+        {/* Above-the-fold CTA variants — eagerly imported, no Suspense needed */}
+        {(serviceId === "commercial-window-tinting" ||
+          serviceId === "ceramic-coating" ||
+          serviceId === "headlight-services" ||
+          serviceId === "windshield-protection-film") && <VideoCTA />}
 
-          {(serviceId === "tesla-window-tinting" ||
-            serviceId === "vehicle-paint-protection" ||
-            serviceId === "residential-window-tinting" ||
-            serviceId === "vehicle-window-tinting") && <TeslaCTA />}
-        </Suspense>
+        {(serviceId === "tesla-window-tinting" ||
+          serviceId === "vehicle-paint-protection" ||
+          serviceId === "residential-window-tinting" ||
+          serviceId === "vehicle-window-tinting") && <TeslaCTA />}
 
         {serviceBodyContent[serviceId] && (
           <Box
