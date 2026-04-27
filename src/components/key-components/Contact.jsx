@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, Grid, useMediaQuery } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import ObfuscatedEmail from "../ObfuscatedEmail";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -174,7 +175,9 @@ const Contact = () => {
                     </Box>
                     <Box>
                       <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>Email Us</Typography>
-                      <Typography variant="body2" onClick={handleEmailClick} sx={{ color: "#5a6a85", "&:hover": { cursor: 'pointer', textDecoration: "underline" } }}>info@tinttekplus.com</Typography>
+                      <Typography variant="body2" component="div" sx={{ color: "#5a6a85", "&:hover": { cursor: 'pointer', textDecoration: "underline" } }}>
+                        <ObfuscatedEmail style={{ color: "inherit" }} />
+                      </Typography>
                     </Box>
                   </Box>
                 </Box>

@@ -26,14 +26,14 @@ const tintPackages = [
   {
     title: "Taillight Tint (2 Pair)",
     price: "$175",
-    image: "/headlight/taillight.jpg",
+    image: "/headlight/taillight.webp",
     // description:
     //   "Match the front windows to the factory tint of the rear windows.",
   },
   {
     title: "Reflectors (2 Pair)",
     price: "$75",
-    image: "/headlight/reflector.jpg",
+    image: "/headlight/reflector.webp",
     // description:
     //   "A full-tint windshield package for optimal UV and heat rejection.",
   },
@@ -92,10 +92,10 @@ const HeadlightPackages = () => {
               >
                 <CardMedia
                   component="img"
-                  height="250"
                   image={pkg.image}
                   alt={pkg.title}
                   sx={{
+                    height: 250,
                     objectFit: "cover",
                   }}
                 />

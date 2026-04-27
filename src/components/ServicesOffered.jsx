@@ -249,10 +249,10 @@ const chunkArray = (arr, chunkSize) => {
 };
 
 const LOGOS = {
-  llumar: "/llumar-logo.png",
-  formulaOne: "/f1-3.png",
-  stek: "/stek-logo.png",
-  exo: "/windshield/exo.png",
+  llumar: "/llumar-logo.webp",
+  formulaOne: "/f1-3.webp",
+  stek: "/stek-logo.webp",
+  exo: "/windshield/exo.webp",
 };
 
 const getFilmLogo = (serviceId, filmName) => {
@@ -399,7 +399,7 @@ const ServicesOffered = ({ serviceId }) => {
           {film.warrantyUrl && (
             <Link
               to={film.warrantyUrl}
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >

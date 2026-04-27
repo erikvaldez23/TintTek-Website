@@ -15,38 +15,38 @@ import "slick-carousel/slick/slick-theme.css";
 const callToActionData = {
   "vehicle-window-tinting": {
     images: [
-      "/v-window-tint/Tint Tek-63.jpeg",
+      "/v-window-tint/Tint Tek-63.webp",
     ],
   },
   "tesla-window-tinting": {
     images: [
-      "/tesla/Tint Tek-165.jpg",
-      "/tesla/Tint Tek-166.jpg",
-      "/tesla/Tint Tek-170.jpg",
-      "/tesla/Tint Tek-181.jpg",
-      "/tesla/Tint Tek-190.jpg",
-      "/tesla/Tint Tek-195.jpg",
-      "/tesla/tesla test.jpg",
+      "/tesla/Tint Tek-165.webp",
+      "/tesla/Tint Tek-166.webp",
+      "/tesla/Tint Tek-170.webp",
+      "/tesla/Tint Tek-181.webp",
+      "/tesla/Tint Tek-190.webp",
+      "/tesla/Tint Tek-195.webp",
+      "/tesla/tesla test.webp",
     ],
   },
   "residential-window-tinting": {
     images: [
-      "/residential/residential2.jpg",
-      "/residential/residential3.jpg",
-      "/residential/residential4.jpg",
-      "/residential/residential5.jpg",
+      "/residential/residential2.webp",
+      "/residential/residential3.webp",
+      "/residential/residential4.webp",
+      "/residential/residential5.webp",
     ],
   },
   "commercial-window-tinting": {
     images: [
-      "/commercial/Tint Tek-116.jpg",
-      "/commercial/Tint Tek-121.jpg",
-      "/commercial/Tint Tek-125.jpg",
-      "/commercial/Tint Tek-128.jpg",
-      "/commercial/Tint Tek-138.jpg",
-      "/commercial/Tint Tek-139.jpg",
-      "/commercial/Tint Tek-146.jpg",
-      "/commercial/Tint Tek-152.jpg",
+      "/commercial/Tint Tek-116.webp",
+      "/commercial/Tint Tek-121.webp",
+      "/commercial/Tint Tek-125.webp",
+      "/commercial/Tint Tek-128.webp",
+      "/commercial/Tint Tek-138.webp",
+      "/commercial/Tint Tek-139.webp",
+      "/commercial/Tint Tek-146.webp",
+      "/commercial/Tint Tek-152.webp",
     ],
   },
   "vehicle-paint-correction": {

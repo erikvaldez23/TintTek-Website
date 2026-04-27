@@ -172,7 +172,7 @@ export default function VideoCTA() {
                 onEnded={() => setIsPlaying(false)}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                poster="/gallery/Tint Tek-107-2.jpg"
+                poster="/gallery/Tint Tek-107-2.webp"
                 style={{
                   width: "100%",
                   height: "100%",

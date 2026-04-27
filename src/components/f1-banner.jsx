@@ -137,7 +137,7 @@ const F1Banner = () => {
               muted={isMuted}
               loop
               playsInline
-              poster="/gallery/Tint Tek-108.jpg"
+              poster="/gallery/Tint Tek-108.webp"
               onEnded={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}

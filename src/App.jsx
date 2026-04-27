@@ -6,41 +6,45 @@ import {
   useLocation,
 } from "react-router-dom";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Box, IconButton } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import "./App.css";
 
+// Eagerly loaded — needed on every page before any route resolves
 import Topbar from "./components/key-components/Topbar";
-import Hero from "./components/hero/Hero";
-import Testimonials from "./components/landing/Testimonials";
-import Services from "./components/landing/Services";
-import Vision from "./components/landing/Vision";
-import Footer from "./components/key-components/Footer";
-import ServicesPage from "./components/ServicesPage";
-import Chatbot from "./ChatBot";
-import WhyChooseUs from "./components/landing/WhyChooseUs";
-import Gallery from "./components/sub-pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import NotFound from "./components/NotFound";
-import Blog from "./components/Blog";
-import BlogDetail from "./components/BlogDetail";
-import FAQ from "./components/sub-pages/FAQ";
-import QuickLinks from "./components/key-components/QuickLinks";
-import CommercialSimulator from "./components/simulators/CommercialSimulator";
-import ResidentialSimulator from "./components/simulators/ResidentialSimulator";
-import TeslaTintingPage from "./components/simulators/TeslaSimulatorPage";
-import VehicleTintingPage from "./components/simulators/VehicleSimulatorPage";
-import PPFpage from "./components/simulators/PPFpage";
-import FullPageChatbot from "./components/FullPageChatbot";
-import ChatbotPopup from "./components/ChatbotPopup";
-import Mockup from "./components/landing-pages/Mockup";
-import VideoCTA2 from "./components/landing-pages/VideoCTA2";
-import SubCTA from "./components/SubCTA";
-import SubContact from "./components/SubContact";
-import SubQuickLinks from "./components/SubQuickLinks";
 import SEO from "./components/SEO";
+
+// Route-level components — each lands in its own chunk
+const Hero = lazy(() => import("./components/hero/Hero"));
+const Testimonials = lazy(() => import("./components/landing/Testimonials"));
+const Services = lazy(() => import("./components/landing/Services"));
+const Vision = lazy(() => import("./components/landing/Vision"));
+const Footer = lazy(() => import("./components/key-components/Footer"));
+const ServicesPage = lazy(() => import("./components/ServicesPage"));
+const WhyChooseUs = lazy(() => import("./components/landing/WhyChooseUs"));
+const Gallery = lazy(() => import("./components/sub-pages/Gallery"));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
+const NotFound = lazy(() => import("./components/NotFound"));
+const Blog = lazy(() => import("./components/Blog"));
+const BlogDetail = lazy(() => import("./components/BlogDetail"));
+const FAQ = lazy(() => import("./components/sub-pages/FAQ"));
+const CommercialSimulator = lazy(() => import("./components/simulators/CommercialSimulator"));
+const ResidentialSimulator = lazy(() => import("./components/simulators/ResidentialSimulator"));
+const TeslaTintingPage = lazy(() => import("./components/simulators/TeslaSimulatorPage"));
+const VehicleTintingPage = lazy(() => import("./components/simulators/VehicleSimulatorPage"));
+const PPFpage = lazy(() => import("./components/simulators/PPFpage"));
+const FullPageChatbot = lazy(() => import("./components/FullPageChatbot"));
+const Mockup = lazy(() => import("./components/landing-pages/Mockup"));
+const VideoCTA2 = lazy(() => import("./components/landing-pages/VideoCTA2"));
+const SubCTA = lazy(() => import("./components/SubCTA"));
+const SubContact = lazy(() => import("./components/SubContact"));
+const SubQuickLinks = lazy(() => import("./components/SubQuickLinks"));
+
+// Interaction-gated — only downloaded when the user triggers them
+const Chatbot = lazy(() => import("./ChatBot"));
+const ChatbotPopup = lazy(() => import("./components/ChatbotPopup"));
 
 // ---- Theme ----
 export const theme = createTheme({
@@ -77,96 +81,100 @@ export function AppContent() {
     <>
       <Topbar handleOpenChatbot={handleOpenChatbot} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <SEO
-                title="Window Tinting Garland & Dallas, TX | Tint Tek Plus"
-                description="Searching for window tinting Garland? Tint Tek Plus is the top-rated tint shop for auto, Tesla, home, and commercial window tinting in Garland and Dallas, TX. Experience premium ceramic tint, heat rejection, and UV protection."
-                canonical="https://tinttekplus.com/"
-                image="https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp"
-                type="website"
-                jsonLd={{
-                  "@context": "https://schema.org",
-                  "@type": "WebPage",
-                  name: "Tint Tek Plus – Window Tinting Garland & Dallas, TX",
-                  url: "https://tinttekplus.com/",
-                  description: "Top-rated window tinting for auto, Tesla, home, and commercial in Garland and Dallas, TX.",
-                  breadcrumb: {
-                    "@type": "BreadcrumbList",
-                    itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://tinttekplus.com/" }],
-                  },
-                }}
-              />
-              <Hero />
-              <Box
-                sx={{
-                  background: `
-      linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
-      radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
-      radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
-      linear-gradient(180deg, #000 0%, #0f0f0f 100%)
-    `,
-                }}
-              >
-                <Services />
-                <WhyChooseUs />
-                <Testimonials />
-                <VideoCTA2 />
-                <Vision />
-                <SubCTA />
-                <SubContact />
-                <SubQuickLinks />
-                <Footer />
-              </Box>
-            </>
-          }
-        />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <SEO
+                  title="Window Tinting Garland & Dallas, TX | Tint Tek Plus"
+                  description="Searching for window tinting Garland? Tint Tek Plus is the top-rated tint shop for auto, Tesla, home, and commercial window tinting in Garland and Dallas, TX. Experience premium ceramic tint, heat rejection, and UV protection."
+                  canonical="https://tinttekplus.com/"
+                  image="https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp"
+                  type="website"
+                  jsonLd={{
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    name: "Tint Tek Plus – Window Tinting Garland & Dallas, TX",
+                    url: "https://tinttekplus.com/",
+                    description: "Top-rated window tinting for auto, Tesla, home, and commercial in Garland and Dallas, TX.",
+                    breadcrumb: {
+                      "@type": "BreadcrumbList",
+                      itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://tinttekplus.com/" }],
+                    },
+                  }}
+                />
+                <Hero />
+                <Box
+                  sx={{
+                    background: `
+        linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 14%, rgba(0,0,0,0.0) 46%),
+        radial-gradient(circle at top left, rgba(39,148,210,0.1), transparent 88%),
+        radial-gradient(circle at bottom right, rgba(77,184,240,0.12), transparent 90%),
+        linear-gradient(180deg, #000 0%, #0f0f0f 100%)
+      `,
+                  }}
+                >
+                  <Services />
+                  <WhyChooseUs />
+                  <Testimonials />
+                  <VideoCTA2 />
+                  <Vision />
+                  <SubCTA />
+                  <SubContact />
+                  <SubQuickLinks />
+                  <Footer />
+                </Box>
+              </>
+            }
+          />
 
-        {/* Service detail pages */}
-        <Route path="/services/:serviceId" element={<ServicesPage />} />
+          {/* Service detail pages */}
+          <Route path="/services/:serviceId" element={<ServicesPage />} />
 
-        {/* Blog list + detail */}
-        <Route path="/blogs" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogDetail />} />
+          {/* Blog list + detail */}
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
 
-        {/* Other pages */}
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/support" element={<FAQ />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/chat" element={<FullPageChatbot />} />
-        <Route path="/mockup" element={<Mockup />} />
+          {/* Other pages */}
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/support" element={<FAQ />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/chat" element={<FullPageChatbot />} />
+          <Route path="/mockup" element={<Mockup />} />
 
-        {/* Simulators */}
-        <Route
-          path="/simulators/commercial-window-tinting"
-          element={<CommercialSimulator />}
-        />
-        <Route
-          path="/simulators/residential-window-tinting"
-          element={<ResidentialSimulator />}
-        />
-        <Route
-          path="/simulators/tesla-window-tinting"
-          element={<TeslaTintingPage />}
-        />
-        <Route
-          path="/simulators/vehicle-window-tinting"
-          element={<VehicleTintingPage />}
-        />
-        <Route
-          path="/simulators/vehicle-paint-protection"
-          element={<PPFpage />}
-        />
+          {/* Simulators */}
+          <Route
+            path="/simulators/commercial-window-tinting"
+            element={<CommercialSimulator />}
+          />
+          <Route
+            path="/simulators/residential-window-tinting"
+            element={<ResidentialSimulator />}
+          />
+          <Route
+            path="/simulators/tesla-window-tinting"
+            element={<TeslaTintingPage />}
+          />
+          <Route
+            path="/simulators/vehicle-window-tinting"
+            element={<VehicleTintingPage />}
+          />
+          <Route
+            path="/simulators/vehicle-paint-protection"
+            element={<PPFpage />}
+          />
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
 
       {/* Chatbot drawer */}
-      <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
+      <Suspense fallback={null}>
+        <Chatbot open={chatbotOpen} onClose={handleCloseChatbot} />
+      </Suspense>
 
       {/* Floating chat button (not on /chat) */}
       {!chatbotOpen && !isChatPage && (
@@ -196,10 +204,12 @@ export function AppContent() {
 
       {/* Homepage chatbot teaser */}
       {showPopup && isHomePage && !chatbotOpen && (
-        <ChatbotPopup
-          onClose={handleClosePopup}
-          onOpenChatbot={handleOpenChatbot}
-        />
+        <Suspense fallback={null}>
+          <ChatbotPopup
+            onClose={handleClosePopup}
+            onOpenChatbot={handleOpenChatbot}
+          />
+        </Suspense>
       )}
     </>
   );

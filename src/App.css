@@ -1,6 +1,3 @@
-/* Import Poppins Font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
 /* Global Font Styling */
 * {
   font-family: "Poppins", sans-serif !important;
@@ -24,14 +21,15 @@ body {
   src: url("/src/assets/fonts/NoizeSport.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
-
 
 @font-face {
   font-family: "Redob";
   src: url("/src/assets/fonts/RedobRegularSlant.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -39,6 +37,7 @@ body {
   src: url("/src/assets/fonts/Modera.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -46,6 +45,7 @@ body {
   src: url("/src/assets/fonts/vibrant.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -53,6 +53,7 @@ body {
   src: url("/src/assets/fonts/orbitron.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 

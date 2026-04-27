@@ -121,10 +121,9 @@ const TeslaTintPackages = () => {
                 <Card sx={cardSx}>
                   <CardMedia
                     component="img"
-                    height="200"
                     image={pkg.image}
                     alt={pkg.title}
-                    sx={{ objectFit: "contain", background: "transparent" }}
+                    sx={{ height: 200, objectFit: "contain", background: "transparent" }}
                   />
                   <CardContent
                     sx={{
@@ -197,10 +196,9 @@ const TeslaTintPackages = () => {
                 <Card sx={cardSx}>
                   <CardMedia
                     component="img"
-                    height="250"
                     image={pkg.image}
                     alt={pkg.title}
-                    sx={{ objectFit: "contain", background: "transparent" }}
+                    sx={{ height: 250, objectFit: "contain", background: "transparent" }}
                   />
                   <CardContent
                     sx={{

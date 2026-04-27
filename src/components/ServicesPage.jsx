@@ -193,13 +193,13 @@ const metaByService = {
 const serviceOgImages = {
   "vehicle-window-tinting": "https://tinttekplus.com/v-window-tint/vehicle-window-tint.webp",
   "tesla-window-tinting": "https://tinttekplus.com/tesla-tint-model/tesla-20.webp",
-  "commercial-window-tinting": "https://tinttekplus.com/commercial/Tint%20Tek-116.jpg",
-  "residential-window-tinting": "https://tinttekplus.com/residential/residential-service.png",
-  "vehicle-paint-correction": "https://tinttekplus.com/paint-correction/paint-correction1.jpg",
-  "vehicle-paint-protection": "https://tinttekplus.com/ppf/ppf-service.jpg",
+  "commercial-window-tinting": "https://tinttekplus.com/commercial/Tint%20Tek-116.webp",
+  "residential-window-tinting": "https://tinttekplus.com/residential/residential-service.webp",
+  "vehicle-paint-correction": "https://tinttekplus.com/paint-correction/paint-correction1.webp",
+  "vehicle-paint-protection": "https://tinttekplus.com/ppf/ppf-service.webp",
   "headlight-services": "https://tinttekplus.com/headlight/headlight.webp",
-  "windshield-protection-film": "https://tinttekplus.com/windshield/windshield-protection.jpg",
-  "ceramic-coating": "https://tinttekplus.com/ceramic/Tint%20Tek-111.jpg",
+  "windshield-protection-film": "https://tinttekplus.com/windshield/windshield-protection.webp",
+  "ceramic-coating": "https://tinttekplus.com/ceramic/Tint%20Tek-111.webp",
 };
 
 // 300-500 word unique body copy per service for on-page SEO
@@ -480,7 +480,7 @@ const ServicePage = () => {
 
             <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
               <img
-                src="/dog.jpeg"
+                src="/dog.webp"
                 alt="Dog"
                 style={{
                   maxWidth: "100%",

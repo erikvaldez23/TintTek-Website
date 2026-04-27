@@ -94,7 +94,7 @@ export const blogPosts = [
     title: "LLumar vs. XPEL Window Tint: Why LLumar Comes Out Ahead",
     summary:
       "Comparing LLumar and XPEL window tint? Discover why LLumar's third-party tested performance, long-term durability, and value make it the smart choice in Dallas, TX.",
-    image: "/llumar-logo.png",
+    image: "/llumar-logo.webp",
     date: "May 2, 2025",
     dateIso: "2025-05-02",
     readTime: "5 min read",
@@ -300,7 +300,7 @@ export const blogPosts = [
     title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
     summary:
       "Living in Dallas means heat, sun, and traffic. Here are 5 powerful reasons why window tinting at Tint Tek Plus is a smart upgrade for any vehicle.",
-    image: "/blog2-min.png",
+    image: "/blog2-min.webp",
     date: "June 22, 2025",
     dateIso: "2025-06-22",
     readTime: "4 min read",
@@ -465,7 +465,7 @@ export const blogPosts = [
     title: "Top 7 Benefits of Residential Window Tinting in Dallas–Fort Worth",
     summary:
       "Lower energy bills, block 99% of UV rays, reduce glare, add privacy, and boost curb appeal—LLumar Vista™ residential window films keep DFW homes cooler and more comfortable year-round.",
-    image: "/residential-blog.jpg",
+    image: "/residential-blog.webp",
     date: "August 24, 2025",
     dateIso: "2025-08-24",
     readTime: "5 min read",
@@ -637,7 +637,7 @@ export const blogPosts = [
     title: "Why Paint Protection Film (PPF) Is a MUST in Dallas, Texas",
     summary:
       "Dallas roads, construction zones, and brutal Texas UV can destroy your paint fast. PPF stops rock chips, scratches, and fading with premium self-healing protection.",
-    image: "/ppf-installation.JPEG",
+    image: "/ppf-installation.webp",
     date: "August 30, 2025",
     dateIso: "2025-08-30",
     readTime: "6 min read",

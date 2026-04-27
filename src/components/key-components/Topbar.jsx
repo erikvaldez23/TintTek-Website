@@ -25,7 +25,8 @@ import {
 } from "react-icons/fa"; // ✅ Import Icons
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
-import logo from "../../../public/tinttek-logo1.png"; // Ensure correct path
+import logo from "../../../public/tinttek-logo1.webp";
+import logoSm from "../../../public/tinttek-logo1-400.webp";
 import { Collapse } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
@@ -161,6 +162,8 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
             >
               <img
                 src={logo}
+                srcSet={`${logoSm} 400w, ${logo} 1200w`}
+                sizes="200px"
                 alt="Logo"
                 style={{
                   height: "50px",
@@ -679,6 +682,7 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
             src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
             width="100%"
             height="800px"
+            loading="lazy"
             style={{ border: "none" }}
             title="Fast Quote"
           ></iframe>

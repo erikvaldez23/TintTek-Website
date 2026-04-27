@@ -26,39 +26,39 @@ import QuickLinks from "../SubQuickLinks";
 const SITE = "https://tinttekplus.com";
 
 const images = [
-  "/gallery/gallery1-output.jpg",
-  "/gallery/gallery3-output.jpg",
-  "/gallery/gallery4-output.jpg",
-  "/gallery/gallery5-output.jpg",
-  "/gallery/gallery6-output.jpg",
-  "/gallery/gallery7-output.jpg",
-  "/gallery/gallery8-output.jpg",
-  "/gallery/gallery9-output.jpg",
-  "/gallery/gallery10-output.jpg",
-  "/gallery/Tint Tek-2.jpeg",
-  "/gallery/Tint Tek-4.jpeg",
-  "/gallery/Tint Tek-6.jpeg",
-  "/gallery/Tint Tek-25.jpeg",
-  "/gallery/Tint Tek-28.jpeg",
-  "/gallery/Tint Tek-32.jpeg",
-  "/gallery/Tint Tek-33.jpeg",
-  "/gallery/Tint Tek-37.jpeg",
-  "/gallery/Tint Tek-42.jpeg",
-  "/gallery/Tint Tek-46.jpeg",
-  "/gallery/Tint Tek-63.jpeg",
-  "/gallery/Tint Tek-64.jpeg",
-  "/gallery/Tint Tek-69.jpeg",
-  "/gallery/Tint Tek-72.jpeg",
-  "/gallery/Tint Tek-80.jpeg",
-  "/gallery/Tint Tek-82.jpeg",
-  "/gallery/Tint Tek-85.jpeg",
-  "/gallery/Tint Tek-87.jpeg",
-  "/gallery/Tint Tek-92.jpeg",
-  "/gallery/Tint Tek-97.jpeg",
-  "/gallery/Tint Tek-99.jpeg",
-  "/gallery/Tint Tek-102.jpeg",
-  "/gallery/Tint Tek-103.jpeg",
-  "/gallery/Tint Tek-104.jpeg",
+  "/gallery/gallery1-output.webp",
+  "/gallery/gallery3-output.webp",
+  "/gallery/gallery4-output.webp",
+  "/gallery/gallery5-output.webp",
+  "/gallery/gallery6-output.webp",
+  "/gallery/gallery7-output.webp",
+  "/gallery/gallery8-output.webp",
+  "/gallery/gallery9-output.webp",
+  "/gallery/gallery10-output.webp",
+  "/gallery/Tint Tek-2.webp",
+  "/gallery/Tint Tek-4.webp",
+  "/gallery/Tint Tek-6.webp",
+  "/gallery/Tint Tek-25.webp",
+  "/gallery/Tint Tek-28.webp",
+  "/gallery/Tint Tek-32.webp",
+  "/gallery/Tint Tek-33.webp",
+  "/gallery/Tint Tek-37.webp",
+  "/gallery/Tint Tek-42.webp",
+  "/gallery/Tint Tek-46.webp",
+  "/gallery/Tint Tek-63.webp",
+  "/gallery/Tint Tek-64.webp",
+  "/gallery/Tint Tek-69.webp",
+  "/gallery/Tint Tek-72.webp",
+  "/gallery/Tint Tek-80.webp",
+  "/gallery/Tint Tek-82.webp",
+  "/gallery/Tint Tek-85.webp",
+  "/gallery/Tint Tek-87.webp",
+  "/gallery/Tint Tek-92.webp",
+  "/gallery/Tint Tek-97.webp",
+  "/gallery/Tint Tek-99.webp",
+  "/gallery/Tint Tek-102.webp",
+  "/gallery/Tint Tek-103.webp",
+  "/gallery/Tint Tek-104.webp",
 ];
 
 const Gallery = () => {
@@ -317,7 +317,7 @@ const Gallery = () => {
             <Button
               component={motion.a}
               href="https://www.instagram.com/tinttekplus"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               rel="noopener noreferrer"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}

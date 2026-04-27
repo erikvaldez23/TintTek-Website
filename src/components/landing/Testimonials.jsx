@@ -18,7 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Google Reviews URL and logo
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/oUyTRQm7dfdzJmvy9";
-const GOOGLE_LOGO = "/google-logo.png";
+const GOOGLE_LOGO = "/google-logo.webp";
 
 
 
@@ -162,7 +162,7 @@ const Testimonials = () => {
                           height: 25,
                         }}
                       >
-                        <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                        <img src={GOOGLE_LOGO} alt="Google" width="100%" loading="lazy" />
                       </Box>
 
                       <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
@@ -170,6 +170,7 @@ const Testimonials = () => {
                           sx={{ width: 40, height: 40, mr: 2 }}
                           src={review.profile_photo_url}
                           alt={review.author_name}
+                          imgProps={{ loading: "lazy" }}
                         />
                         <Box>
                           <Typography
@@ -267,7 +268,7 @@ const Testimonials = () => {
                             height: 25,
                           }}
                         >
-                          <img src={GOOGLE_LOGO} alt="Google" width="100%" />
+                          <img src={GOOGLE_LOGO} alt="Google" width="100%" loading="lazy" />
                         </Box>
 
                         <Box
@@ -277,6 +278,7 @@ const Testimonials = () => {
                             sx={{ width: 40, height: 40, mr: 2 }}
                             src={review.profile_photo_url}
                             alt={review.author_name}
+                            imgProps={{ loading: "lazy" }}
                           />
                           <Box>
                             <Typography
@@ -354,7 +356,7 @@ const Testimonials = () => {
               width: isMobile ? "80%" : "auto",
             }}
             href={GOOGLE_REVIEWS_URL}
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             rel="noopener noreferrer"
           >
             VIEW MORE REVIEWS

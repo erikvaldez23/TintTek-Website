@@ -118,7 +118,7 @@ export default function TeslaCTA() {
             loop
             playsInline
             preload="metadata"
-            poster="/gallery/Tint Tek-108.jpg"
+            poster="/gallery/Tint Tek-108.webp"
             onEnded={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}

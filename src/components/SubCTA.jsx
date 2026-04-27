@@ -201,6 +201,7 @@ const CallToAction = () => {
                     src="https://app.tintwiz.com/web/cs/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
                     width="100%"
                     height="800px"
+                    loading="lazy"
                     style={{ border: "none" }}
                     title="Fast Quote"
                   ></iframe>

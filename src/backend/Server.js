@@ -15,6 +15,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Security headers
+app.use((req, res, next) => {
+  // Force HTTPS for 1 year, include subdomains, allow preload list submission
+  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  // Prevent MIME-type sniffing
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  // Block clickjacking
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  // Control referrer information
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  next();
+});
+
 // Serve prerendered static files from dist/
 const distDir = path.resolve(__dirname, "../../dist");
 app.use(express.static(distDir));
@@ -398,8 +411,29 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// SPA catch-all: for any route without a prerendered file, fall back to index.html
-// so React Router can handle it client-side.
-app.get("*", (_req, res) => {
+// Known SPA routes — anything not in this list gets a 404 status (but still serves
+// index.html so React Router can render the custom NotFound component client-side).
+const knownRoutes = [
+  /^\/$/,
+  /^\/services\/[^/]+$/,
+  /^\/blogs$/,
+  /^\/blog\/[^/]+$/,
+  /^\/gallery$/,
+  /^\/support$/,
+  /^\/privacy-policy$/,
+  /^\/chat$/,
+  /^\/mockup$/,
+  /^\/simulators\/commercial-window-tinting$/,
+  /^\/simulators\/residential-window-tinting$/,
+  /^\/simulators\/tesla-window-tinting$/,
+  /^\/simulators\/vehicle-window-tinting$/,
+  /^\/simulators\/vehicle-paint-protection$/,
+];
+
+app.get("*", (req, res) => {
+  const isKnownRoute = knownRoutes.some((pattern) => pattern.test(req.path));
+  if (!isKnownRoute) {
+    return res.status(404).sendFile(path.join(distDir, "index.html"));
+  }
   res.sendFile(path.join(distDir, "index.html"));
 });

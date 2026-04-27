@@ -468,7 +468,7 @@ export default function LocalVideoCTA({
                     variant="outline"
                     component="a"
                     href="https://www.instagram.com/tinttekplus/"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                     rel="noopener noreferrer"
                     startIcon={<OpenInNewIcon />}
                   >
@@ -587,7 +587,7 @@ export default function LocalVideoCTA({
                   variant="outline"
                   component="a"
                   href="https://www.instagram.com/tinttekplus/"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                   rel="noopener noreferrer"
                   startIcon={<OpenInNewIcon />}
                   aria-label={secondaryText}

@@ -20,7 +20,8 @@ const servicesData = [
     displayTitle: "VEHICLE WINDOW TINTING",
     description:
       "Professional car window tinting in Dallas, TX — heat rejection, UV protection & privacy film.",
-    image: "/v-window-tint/vehicle-window-tint.jpg",
+    image: "/v-window-tint/vehicle-window-tint.webp",
+    imageSm: "/v-window-tint/vehicle-window-tint-480.webp",
     alt: "Vehicle window tinting service in Dallas TX by Tint Tek Plus",
   },
   {
@@ -29,7 +30,8 @@ const servicesData = [
     displayTitle: "TESLA WINDOW TINTING",
     description:
       "Specialized Tesla window tint — extend battery life, reduce cabin heat, and enhance privacy.",
-    image: "/gallery/Tint Tek-181-2.jpg",
+    image: "/gallery/Tint Tek-181-2.webp",
+    imageSm: "/gallery/Tint Tek-181-2-480.webp",
     alt: "Tesla window tinting service Dallas TX — Tint Tek Plus",
   },
   {
@@ -38,7 +40,8 @@ const servicesData = [
     displayTitle: "COMMERCIAL WINDOW TINTING",
     description:
       "LLumar commercial window film for offices & storefronts — energy savings, glare control & security.",
-    image: "/gallery/Tint Tek-146-2.jpg",
+    image: "/gallery/Tint Tek-146-2.webp",
+    imageSm: "/gallery/Tint Tek-146-2-480.webp",
     alt: "Commercial window tinting for offices and businesses in Dallas TX",
   },
   {
@@ -47,7 +50,8 @@ const servicesData = [
     displayTitle: "RESIDENTIAL WINDOW TINTING",
     description:
       "Home window tinting in DFW — lower energy costs, block 99% UV, add privacy and security.",
-    image: "/residential/residential-house.jpeg",
+    image: "/residential/residential-house.webp",
+    imageSm: "/residential/residential-house-480.webp",
     alt: "Residential window tinting Dallas Fort Worth — Tint Tek Plus",
   },
   {
@@ -56,7 +60,8 @@ const servicesData = [
     displayTitle: "VEHICLE PAINT CORRECTION",
     description:
       "Paint correction services in Dallas TX — remove swirls, scratches & restore showroom shine.",
-    image: "/paint-correction/paint-correction1.jpg",
+    image: "/paint-correction/paint-correction1.webp",
+    imageSm: "/paint-correction/paint-correction1-480.webp",
     alt: "Vehicle paint correction service Dallas TX by Tint Tek Plus",
   },
   {
@@ -65,7 +70,8 @@ const servicesData = [
     displayTitle: "VEHICLE PAINT PROTECTION",
     description:
       "STEK Paint Protection Film installation — self-healing clear bra shields from chips & UV damage.",
-    image: "/ppf/ppf-service.jpg",
+    image: "/ppf/ppf-service.webp",
+    imageSm: "/ppf/ppf-service-480.webp",
     alt: "Paint protection film PPF installation Dallas TX — Tint Tek Plus",
   },
   {
@@ -74,7 +80,8 @@ const servicesData = [
     displayTitle: "HEADLIGHT & TAILLIGHT SERVICES",
     description:
       "Tinted headlights & taillights in Dallas TX — STEK film for style and light protection.",
-    image: "/headlight/taillight1.jpg",
+    image: "/headlight/taillight1.webp",
+    imageSm: "/headlight/taillight1-480.webp",
     alt: "Headlight and taillight tinting service Dallas TX — Tint Tek Plus",
   },
   {
@@ -83,7 +90,8 @@ const servicesData = [
     displayTitle: "WINDSHIELD PROTECTION FILM",
     description:
       "ExoShield GT3 windshield film — protect glass from rock chips, cracks & road debris in Dallas TX.",
-    image: "/windshield/windshield-service.jpg",
+    image: "/windshield/windshield-service.webp",
+    imageSm: "/windshield/windshield-service-480.webp",
     alt: "Windshield protection film installation Dallas TX — Tint Tek Plus",
   },
   {
@@ -92,7 +100,8 @@ const servicesData = [
     displayTitle: "CERAMIC COATING",
     description:
       "Professional ceramic & graphene coating in Dallas TX — long-lasting paint protection and deep gloss.",
-    image: "/ceramic/Tint Tek-111.jpg",
+    image: "/ceramic/Tint Tek-111.webp",
+    imageSm: "/ceramic/Tint Tek-111-480.webp",
     alt: "Ceramic coating service Dallas TX by Tint Tek Plus",
   },
 ];
@@ -139,16 +148,17 @@ const ServiceCard = React.memo(({ service, isMobile }) => (
       },
     }}
   >
-    {/* Explicit width/height + fetchpriority help Core Web Vitals */}
     <CardMedia
       component="img"
       image={service.image}
+      srcSet={`${service.imageSm} 480w, ${service.image} 1200w`}
+      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 33vw, 400px"
       alt={service.alt}
-      width="350"
-      height="400"
       loading="lazy"
       decoding="async"
       sx={{
+        height: "100%",
+        width: "100%",
         objectFit: "cover",
         transition: "transform 0.3s ease",
         "&:hover": {

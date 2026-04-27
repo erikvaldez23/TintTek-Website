@@ -1,21 +1,42 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, GlobalStyles } from "@mui/material";
 import Topbar from "./key-components/Topbar";
-import Contact from "./key-components/Contact";
-import Footer from "./key-components/Footer";
 import CallToAction from "./key-components/CallToAction";
+import Footer from "./key-components/Footer";
 import QuickLinks from "./key-components/QuickLinks";
+
+import SubCTA from "./SubCTA";
+import SubContact from "./SubContact";
+import SubQuickLinks from "./SubQuickLinks";
+
+const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), transparent 50%),
+   radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
+   linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
 
 const NotFound = () => {
   return (
     <Box
+      className="NotFoundPageRoot"
       sx={{
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "transparent",
+        color: "#fff",
       }}
     >
+      <GlobalStyles
+        styles={{
+          ".NotFoundPageRoot": { position: "relative" },
+          ".NotFoundPageRoot::before": {
+            content: '""',
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            background: GRADIENT,
+          },
+        }}
+      />
       <Topbar notFound={true} />
 
       {/* Main 404 Section */}
@@ -25,7 +46,7 @@ const NotFound = () => {
           justifyContent: "center",
           alignItems: "center",
           flexGrow: 1,
-          backgroundColor: "#b6c0c2",
+          // backgroundColor: "transparent",
           padding: { xs: 4, md: 8 },
           mt: { xs: "56px", md: "64px" },
         }}
@@ -51,28 +72,28 @@ const NotFound = () => {
           >
             <Typography
               variant="h4"
-              sx={{ color: "#FF6F61", fontWeight: "bold", mb: 1 }}
+              sx={{ color: "#2794d2", fontWeight: "bold", mb: 1 }}
             >
               404
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+            <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2, color: "#fff" }}>
               Oops! I may have chewed up the power cord.
             </Typography>
-            <Typography variant="body1" sx={{ mb: 4, color: "#555" }}>
+            <Typography variant="body1" sx={{ mb: 4, color: "rgba(255,255,255,0.7)" }}>
               Go back to our main page to continue your visit.
             </Typography>
 
             <Button
               variant="contained"
               sx={{
-                backgroundColor: "#000",
+                backgroundColor: "#2794d2",
                 color: "#fff",
                 fontWeight: "bold",
                 borderRadius: "25px",
                 px: 4,
                 py: 1.5,
                 "&:hover": {
-                  backgroundColor: "#333",
+                  backgroundColor: "#1a7bb0",
                 },
               }}
               href="/"
@@ -84,12 +105,13 @@ const NotFound = () => {
           {/* Image Section */}
           <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
             <img
-              src="/dog.jpeg"
+              src="/dog.png"
               alt="Funny Dog"
               style={{
                 maxWidth: "100%",
                 height: "auto",
                 objectFit: "contain",
+                filter: "drop-shadow(0 0 20px rgba(0,0,0,0.5))",
               }}
             />
           </Box>
@@ -98,14 +120,12 @@ const NotFound = () => {
 
 
       <Box>
-        <CallToAction />
+        <SubCTA />
       </Box>
       {/* Contact Section */}
-      <Box sx={{ backgroundColor: "#f9f9f9", width: "100vw" }}>
-        <Contact />
-      </Box>
+      <SubContact />
 
-      <QuickLinks />
+      <SubQuickLinks />
 
       <Footer />
     </Box>

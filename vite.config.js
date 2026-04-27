@@ -16,6 +16,32 @@ const SSR_EXTERNAL = [
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Core React runtime — tiny, cached aggressively
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // MUI + Emotion — large, but shared across all pages
+          'vendor-mui': [
+            '@mui/material',
+            '@mui/icons-material',
+            '@emotion/react',
+            '@emotion/styled',
+            '@emotion/cache',
+          ],
+          // Three.js ecosystem — only loaded on simulator pages
+          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
+          // Animation
+          'vendor-motion': ['framer-motion'],
+          // Carousel / slider libs
+          'vendor-carousel': ['react-slick', 'slick-carousel', 'swiper'],
+          // Icon packs
+          'vendor-icons': ['react-icons', 'lucide-react'],
+        },
+      },
+    },
+  },
   ssr: {
     // Bundle all frontend npm packages so CJS/ESM named-export issues
     // and directory imports are resolved by Vite rather than Node.js.

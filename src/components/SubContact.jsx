@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, Grid, useMediaQuery } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import ObfuscatedEmail from "./ObfuscatedEmail";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -218,7 +219,7 @@ const Contact = () => {
                       </Typography>
                       <Typography
                         variant="body2"
-                        onClick={handleEmailClick}
+                        component="div"
                         sx={{
                           color: "#fff",
                           "&:hover": {
@@ -227,7 +228,7 @@ const Contact = () => {
                           },
                         }}
                       >
-                        info@tinttekplus.com
+                        <ObfuscatedEmail style={{ color: "inherit" }} />
                       </Typography>
                     </Box>
                   </Box>
@@ -278,6 +279,7 @@ const Contact = () => {
               <iframe
                 title="TintWiz Contact Form"
                 src="https://app.tintwiz.com/web/ce/gwnvrcfde7mplcffmgqi7sfqo8pcyt1t"
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: isMobile ? "650px" : "650px",

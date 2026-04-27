@@ -407,7 +407,7 @@ const Mockup = () => {
     "Professional ceramic window tinting in Dallas–Fort Worth. Up to 60% heat rejection, 99% UV protection, lifetime warranty. Get a free quote today.";
   const canonical = `${SITE}${PATH}`;
   const videoUrl = `${SITE}/videos/v-window-tint2.mp4`;
-  const videoThumb = `${SITE}/background.jpg`; // swap to a real poster image if you have one
+  const videoThumb = `${SITE}/background.webp`; // swap to a real poster image if you have one
 
   const webPageLd = {
     "@context": "https://schema.org",
@@ -431,7 +431,7 @@ const Mockup = () => {
     publisher: {
       "@type": "Organization",
       name: "Tint Tek Plus",
-      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
+      logo: { "@type": "ImageObject", url: `${SITE}/logo.webp` },
     },
   };
 
@@ -720,7 +720,7 @@ const Mockup = () => {
                       >
                         <Box
                           component="img"
-                          src="/gallery/Tint Tek-85.jpeg"
+                          src="/gallery/Tint Tek-85.webp"
                           alt="Technician performing professional window tint installation"
                           loading="lazy"
                           decoding="async"

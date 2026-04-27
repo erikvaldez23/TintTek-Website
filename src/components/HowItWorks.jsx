@@ -33,25 +33,25 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 /* ------------------------------ Custom PNG icons ------------------------------ */
 const CustomIcons = {
   paintCorrection1: (
-    <Box component="img" src="/paint-correction/decontamination.png" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/paint-correction/decontamination.webp" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
   ),
   paintCorrection2: (
-    <Box component="img" src="/paint-correction/compounding.png" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/paint-correction/compounding.webp" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
   ),
   paintCorrection3: (
-    <Box component="img" src="/paint-correction/polishing.png" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/paint-correction/polishing.webp" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
   ),
   paintCorrection4: (
-    <Box component="img" src="/paint-correction/finishing.png" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/paint-correction/finishing.webp" alt="Paint Correction" sx={{ width: 40, height: 40 }} />
   ),
   ceramicCoating1: (
-    <Box component="img" src="/ceramic/application.png" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/ceramic/application.webp" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
   ),
   ceramicCoating2: (
-    <Box component="img" src="/ceramic/check.png" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/ceramic/check.webp" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
   ),
   ceramicCoating3: (
-    <Box component="img" src="/ceramic/prep.png" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
+    <Box component="img" src="/ceramic/prep.webp" alt="Ceramic Coating" sx={{ width: 40, height: 40 }} />
   ),
 };
 
@@ -91,7 +91,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "Car window tinting provides many positive benefits such as protecting you from the sun, increasing privacy, and improving the look and style of your vehicle. So how exactly does car window tint get applied? There are four main steps we follow:",
-    images: ["/gallery/Tint Tek-6.jpeg", "/gallery/Tint Tek-46.jpeg", "/gallery/Tint Tek-102.jpeg"],
+    images: ["/gallery/Tint Tek-6.webp", "/gallery/Tint Tek-46.webp", "/gallery/Tint Tek-102.webp"],
   },
   "tesla-window-tinting": {
     title: "Tesla Window Tinting",
@@ -127,7 +127,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "Tinting your entire Tesla is essential to shield yourself from harmful UV rays, including applying a clear film to the windshield. Car window tinting offers numerous benefits, such as sun protection, enhanced privacy, and an improved aesthetic for your vehicle. But how is car window tint applied to your Tesla? Here are the four main steps we follow:",
-    images: ["/tesla/tesla3.webp", "/gallery/Tint Tek-170-2.jpg", "/tesla/tesla2.webp"],
+    images: ["/tesla/tesla3.webp", "/gallery/Tint Tek-170-2.webp", "/tesla/tesla2.webp"],
   },
   "commercial-window-tinting": {
     title: "Commercial Window Tinting",
@@ -162,7 +162,7 @@ const serviceSteps = {
       },
     ],
     finalDescription: "",
-    images: ["/commercial-tint1.jpeg", "/commercial-tint2.jpeg", "/commercial-tint3.jpeg"],
+    images: ["/commercial-tint1.webp", "/commercial-tint2.webp", "/commercial-tint3.webp"],
   },
   "residential-window-tinting": {
     title: "Residential Window Tinting",
@@ -197,7 +197,7 @@ const serviceSteps = {
       },
     ],
     finalDescription: "",
-    images: ["/residential-tint1.jpeg", "/residential-tint2.jpeg", "/residential-tint3.jpeg"],
+    images: ["/residential-tint1.webp", "/residential-tint2.webp", "/residential-tint3.webp"],
   },
   "vehicle-paint-correction": {
     title: "Vehicle Paint Correction",
@@ -237,7 +237,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "Vehicle paint correction is a process used to restore and enhance the appearance of your cars paint to restore it to looking brand new. There are 4 major steps involved:",
-    images: ["/paint-correction1.jpeg", "/paint-correction2.jpeg", "/paint-correction3.jpeg"],
+    images: ["/paint-correction1.webp", "/paint-correction2.webp", "/paint-correction3.webp"],
   },
   "headlight-services": {
     title: "Headlight Services",
@@ -269,7 +269,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
-    images: ["/headlight/headlight1.jpg", "/headlight/headlight2.jpg", "/headlight/headlight3.jpg"],
+    images: ["/headlight/headlight1.webp", "/headlight/headlight2.webp", "/headlight/headlight3.webp"],
   },
   "vehicle-paint-protection": {
     title: "Vehicle Paint Protection",
@@ -319,7 +319,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "The PPF application process at TintTekPlus is thorough and precise to ensure optimal protection for your vehicle. Here’s how we do it:",
-    images: ["/paint-protection1.jpeg", "/paint-protection2.jpeg", "/paint-protection3.jpeg"],
+    images: ["/paint-protection1.webp", "/paint-protection2.webp", "/paint-protection3.webp"],
   },
   "ceramic-coating": {
     steps: [
@@ -367,7 +367,7 @@ const serviceSteps = {
       },
     ],
     finalDescription: "Our Ceramic & Graphene Coating Process:",
-    images: ["/paint-protection1.jpeg", "/paint-protection2.jpeg", "/paint-protection3.jpeg"],
+    images: ["/paint-protection1.webp", "/paint-protection2.webp", "/paint-protection3.webp"],
   },
   "windshield-protection-film": {
     steps: [
@@ -395,7 +395,7 @@ const serviceSteps = {
     ],
     finalDescription:
       "At Tint Tek Plus, we are committed to delivering exceptional value and peace of mind to our customers. In addition to our top-quality windshield protection services, we offer a $1,000 insurance coverage for your windshield protection film...",
-    images: ["/windshield/windshield1.png", "/windshield/windshield2.jpg", "/windshield/windshield3.jpg"],
+    images: ["/windshield/windshield1.webp", "/windshield/windshield2.webp", "/windshield/windshield3.webp"],
   },
 };
 

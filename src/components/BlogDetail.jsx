@@ -197,7 +197,7 @@ const BlogDetail = () => {
         articleSection: post.category,
         inLanguage: "en-US",
         author: { "@type": "Organization", name: "Tint Tek Plus", url: SITE },
-        publisher: { "@type": "Organization", name: "Tint Tek Plus", logo: { "@type": "ImageObject", url: `${SITE}/logo.png` } },
+        publisher: { "@type": "Organization", name: "Tint Tek Plus", logo: { "@type": "ImageObject", url: `${SITE}/logo.webp` } },
       },
       {
         "@context": "https://schema.org",

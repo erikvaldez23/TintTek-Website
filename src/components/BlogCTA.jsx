@@ -10,19 +10,19 @@ const TEASERS = [
     slug: "llumar-vs-xpel-window-tint-dallas",
     label: "Tinting",
     title: "LLumar vs. XPEL: Why LLumar Comes Out Ahead",
-    image: "/llumar-logo.png",
+    image: "/llumar-logo.webp",
   },
   {
     slug: "5-reasons-tint-car-windows-dallas-tx",
     label: "Tinting",
     title: "5 Reasons to Tint Your Car Windows in Dallas, TX",
-    image: "/blog2-min.png",
+    image: "/blog2-min.webp",
   },
   {
     slug: "paint-protection-film-dallas-texas",
     label: "Paint Protection",
     title: "Why PPF Is a MUST in Dallas, Texas",
-    image: "/ppf-installation.JPEG",
+    image: "/ppf-installation.webp",
   },
 ];
 

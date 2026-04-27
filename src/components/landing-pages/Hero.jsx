@@ -8,12 +8,12 @@ import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 /** Assets (public folder paths start with /) */
-import llumarBadge from "/llumar-tested.png";
+import llumarBadge from "/llumar-tested.webp";
 /** If these PNGs live in /public/landing-page/... keep the leading slash.
     If they live in src/assets/..., import with a relative path instead. */
-import heatIconUrl from "/landing-page/icon1.png";
-import uvIconUrl from "/landing-page/icon3.png";
-import warrantyIconUrl from "/landing-page/icon2.png";
+import heatIconUrl from "/landing-page/icon1.webp";
+import uvIconUrl from "/landing-page/icon3.webp";
+import warrantyIconUrl from "/landing-page/icon2.webp";
 
 /* ---------- Local styles (scoped to Hero) ---------- */
 const FeatureList = styled("ul")({

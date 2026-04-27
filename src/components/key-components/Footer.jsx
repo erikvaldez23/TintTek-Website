@@ -10,7 +10,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok } from "react-icons/fa";
-import logo from "../../../public/tinttek-logo1.png"; // Ensure correct path
+import logo from "../../../public/tinttek-logo1.webp";
+import logoSm from "../../../public/tinttek-logo1-400.webp";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
@@ -61,7 +62,14 @@ const Footer = () => {
             }}
             onClick={handleLogoClick} // ✅ Click to Navigate or Scroll
           >
-            <img src={logo} alt="Company Logo" style={{ height: isMobile ? "40px" : "50px" }} />
+            <img
+              src={logo}
+              srcSet={`${logoSm} 400w, ${logo} 1200w`}
+              sizes="200px"
+              alt="Company Logo"
+              loading="lazy"
+              style={{ height: isMobile ? "40px" : "50px" }}
+            />
           </Box>
 
           {/* Social Media Icons */}
@@ -79,7 +87,7 @@ const Footer = () => {
                 "&:hover": { color: "#2794d2" }, // Blue color on hover
               }}
               href="https://www.facebook.com/people/Tinttekplus/61561991193951/"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaFacebook size={isMobile ? 22 : 24} />
             </IconButton>
@@ -91,7 +99,7 @@ const Footer = () => {
                 "&:hover": { color: "#2794d2" },
               }}
               href="https://www.instagram.com/tinttekplus/"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaInstagram size={isMobile ? 22 : 24} />
             </IconButton>
@@ -103,7 +111,7 @@ const Footer = () => {
                 "&:hover": { color: "#2794d2" },
               }}
               href="https://www.tiktok.com/@tinttekplus"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaTiktok size={isMobile ? 22 : 24} />
             </IconButton>
@@ -115,7 +123,7 @@ const Footer = () => {
                 "&:hover": { color: "#007bff" },
               }}
               href="https://twitter.com"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
             >
               <FaTwitter size={isMobile ? 22 : 24} />
             </IconButton> */}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Modal, Button } from "@mui/material";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import "./css/BusinessInfo.css"; // Import styles
+import ObfuscatedEmail from "../ObfuscatedEmail";
 
 const BusinessInfo = () => {
   const [openHoursModal, setOpenHoursModal] = useState(false);
@@ -53,7 +54,7 @@ const BusinessInfo = () => {
         >
           <FaEnvelope className="business-icon" />
           <Typography variant="p" className="business-text" sx={{ fontSize: "1rem" }}>
-            info@tinttekplus.com
+            <ObfuscatedEmail />
           </Typography>
         </Box>
         <Box
