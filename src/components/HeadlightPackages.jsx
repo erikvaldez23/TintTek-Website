@@ -65,7 +65,7 @@ const HeadlightPackages = () => {
           textTransform: "uppercase",
         }}
       >
-        Services & Pricing
+        Headlight Services & Pricing
       </Typography>
 
       {/* Card Grid */}

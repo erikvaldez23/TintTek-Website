@@ -107,21 +107,21 @@ const serviceSteps = {
         title: "Custom Cutting",
         description: "We then measure and cut the tint film to match the size and shape of each window.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "Using precision plotter templates, we accurately measure and computer-cut the ceramic tint film specifically for your Tesla model's unique glass dimensions, ensuring a seamless fit without blade contact on your vehicle.",
         icon: <ContentCutIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Precision Application",
         description: "We apply the film to the inside of the window, using a squeegee to smooth out any bubbles or wrinkles.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "We carefully apply the cut film to the interior surface of the glass. Using specialized squeegees, our technicians meticulously extract the mounting solution to eliminate any air bubbles and guarantee a flush, uniform installation.",
         icon: <LayersIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
       {
         title: "Drying and Setting",
         description: "Then we allow the film to dry and set, ensuring a secure and long-lasting bond to the window.",
         detailedDescription:
-          "We start by cleaning the windows thoroughly to remove any dirt, dust, or debris that could interfere with the tinting process. This ensures a clean surface for the film to adhere to.",
+          "The newly applied film is allowed to cure and set. We wipe down the interior and perform a final quality inspection to ensure the tint perfectly adheres to the glass edges before handing the keys back to you.",
         icon: <CheckCircleIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
       },
     ],
@@ -243,7 +243,7 @@ const serviceSteps = {
     title: "Headlight Services",
     steps: [
       {
-        title: "Consulation",
+        title: "Consultation",
         description: "Discuss your desired tint tone and assess your vehicle's lighting.",
         detailedDescription: "tbd",
         icon: <SupportAgentIcon sx={{ fontSize: 40, color: "#2794d2" }} />,
@@ -566,7 +566,7 @@ const HowItWorks = ({ serviceId }) => {
       {/* Heading */}
       <Box className="howitworks-root" sx={{ maxWidth: 1200, mx: "auto", textAlign: "center", mb: { xs: 4, md: 6 } }}>
         <Typography variant={isMobile ? "h4" : "h2"} sx={{ fontWeight: 800, letterSpacing: 0.2, color: "#fff", mb: 1 }}>
-          How It Works
+          How {service.title ? service.title : "It"} Works
         </Typography>
 
         {service.finalDescription && (
@@ -678,7 +678,7 @@ const HowItWorks = ({ serviceId }) => {
                     >
                       <img
                         src={image}
-                        alt="Process"
+                        alt={`${service.title || "Service"} Process Step ${index + 1}`}
                         style={{
                           width: "100%",
                           height: "100%",
@@ -715,7 +715,7 @@ const HowItWorks = ({ serviceId }) => {
                     >
                       <img
                         src={image}
-                        alt="Process"
+                        alt={`${service.title || "Service"} Process Step ${index + 1}`}
                         style={{ width: "100%", height: 300, objectFit: "cover", display: "block", background: "transparent" }}
                       />
                     </Paper>

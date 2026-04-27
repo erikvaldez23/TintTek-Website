@@ -84,11 +84,10 @@ const TintPackages = () => {
           color: "#fff",
           mb: 4,
           fontWeight: "bold",
-          textTransform: "uppercase",
           background: "transparent",
         }}
       >
-        Additional Services
+        Additional Vehicle Window Tinting Services
       </Typography>
 
       {/* Content wrapper (transparent) */}

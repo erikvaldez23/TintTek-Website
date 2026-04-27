@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import Link from "@mui/material/Link";
 import SEO from "./SEO";
+import { motion } from "framer-motion";
 
 // Keep light, above-the-fold pieces eagerly loaded
 import Topbar from "./key-components/Topbar";
@@ -208,67 +209,49 @@ const serviceOgImages = {
 // 300-500 word unique body copy per service for on-page SEO
 const serviceBodyContent = {
   "vehicle-window-tinting": `
-    <p>Professional vehicle window tinting in Garland and Dallas is more than a cosmetic upgrade — it's one of the most effective ways to protect yourself, your passengers, and your car's interior from Texas's relentless sun. At Tint Tek Plus, we install LLumar FormulaOne nano-ceramic films that block up to 99% of UV rays and reject substantial solar heat, keeping your cabin comfortable even when temperatures climb past 100°F on Dallas highways.</p>
-    <p>Our certified installers fit every window precisely, whether you drive a sedan, SUV, truck, or exotic. We offer a full range of shades and technologies — from entry-level dyed films to advanced ceramic films that deliver top-tier heat rejection without interfering with GPS, radar detectors, or toll tags. Every installation comes with a lifetime warranty on both materials and labor.</p>
-    <p>Beyond comfort, window tinting preserves your vehicle's resale value by preventing UV-induced cracking, fading, and discoloration of dashboards, seats, and door panels. Leather and premium upholstery last years longer when shielded from direct sunlight. Glare reduction also improves driving safety, particularly during the low-angle morning and evening sun that Dallas drivers face on I-30 and the Dallas North Tollway.</p>
-    <p>Texas law specifies that front side windows must transmit at least 25% of light while rear windows have more flexibility. Our team knows every state and local regulation and will guide you to shades that maximize comfort while keeping you fully street-legal in Garland and across the DFW Metroplex.</p>
-    <p>Ready to beat the Texas heat? Stop by our shop at 2518 West Kingsley Road in Garland, book online, or call us at (972) 362-8468. Same-day appointments are often available, and most vehicle tint jobs are completed in just a few hours.</p>
+    <p>Protect yourself, your passengers, and your vehicle's interior from the relentless Texas sun. Our premium LLumar nano-ceramic films block up to 99% of harmful UV rays and reject substantial solar heat, ensuring your cabin stays cool even on the hottest Dallas days.</p>
+    <p>Beyond superior comfort, window tinting preserves your vehicle's resale value by preventing cracked dashboards and faded upholstery. It also significantly reduces glare, improving visibility and safety during low-angle morning and evening drives.</p>
+    <p>Our certified installers provide precise, seamless applications tailored to your specific vehicle. Backed by a lifetime warranty, our advanced ceramic films will not interfere with your GPS or toll tags while keeping you fully street-legal in Texas.</p>
   `,
   "tesla-window-tinting": `
-    <p>Tesla's panoramic glass roofs and oversized windshields are engineering achievements — but they admit enormous amounts of solar heat and UV radiation. In the Garland and Dallas climate, this means the cabin can overheat faster than a traditional vehicle, forcing the climate system to work harder and draining battery range. Professional Tesla window tinting from Tint Tek Plus is one of the highest-impact upgrades you can make for both comfort and efficiency.</p>
-    <p>We exclusively use non-metallic ceramic films — specifically LLumar FormulaOne Pinnacle — for all Tesla installations. Unlike older metallic films, ceramic tint does not interfere with Autopilot cameras, GPS, key-fob signals, or the built-in cellular connection that powers over-the-air updates. You get maximum heat rejection and UV blockage while every sensor and antenna works exactly as Tesla engineered it.</p>
-    <p>The massive glass roofs on Model Y and Model 3 present a unique challenge: the glass area is so large that even a few percentage points of IR rejection translate to dramatically lower cabin temperatures. Our installers are trained on Tesla-specific cut patterns that avoid seams on visible panels and deliver a factory-clean look. We tint front windshields (to legal limits), rear hatch glass, and all door windows.</p>
-    <p>Every Tesla tint job we complete comes with a lifetime warranty on the film and installation. Our reviews from Model 3, Model Y, Model S, and Model X owners across DFW speak for themselves — check our Google listing and see why Tesla owners in Garland and Dallas trust us specifically for their vehicles.</p>
-    <p>Booking is easy. Visit our Garland shop at 2518 West Kingsley Road, schedule online, or call (972) 362-8468. We'll help you choose the ideal shade and film for your Tesla based on your battery range goals and how much Dallas heat you want to eliminate.</p>
+    <p>Tesla's massive panoramic glass roofs admit enormous amounts of solar heat, forcing your climate control to work harder and draining battery range. Our specialized ceramic tinting dramatically reduces this heat transfer, maximizing both comfort and EV efficiency.</p>
+    <p>We exclusively use non-metallic ceramic films for all Tesla installations. This ensures zero interference with Autopilot cameras, GPS, key-fob signals, or over-the-air cellular updates, preserving your vehicle's advanced technology.</p>
+    <p>Our installers are specifically trained on Tesla's unique glass dimensions, ensuring seamless, factory-clean coverage even on the oversized Model 3 and Model Y rear windows. Every installation comes with a comprehensive lifetime warranty.</p>
   `,
   "commercial-window-tinting": `
-    <p>Commercial buildings across Garland and Dallas spend significantly more on cooling than they need to — and one of the most cost-effective corrections is professional commercial window tinting. At Tint Tek Plus, we install high-performance solar control films on storefronts, office complexes, medical buildings, and retail spaces throughout the DFW Metroplex. Our films reject solar heat before it enters your building, reducing HVAC load, lowering energy bills, and improving the working environment for employees and customers.</p>
-    <p>Excessive glare is a major productivity killer in modern offices. Computer screens become unreadable, meetings grow uncomfortable, and employees constantly fight blinds that block views entirely. Our spectrally selective window films cut glare dramatically while preserving natural light — a key factor in employee satisfaction and workplace mood. At the same time, the films block UV rays that fade merchandise, flooring, artwork, and furniture, protecting your interior investment for years to come.</p>
-    <p>Privacy and security are equally important in commercial settings. Tinted windows make it significantly harder for passersby to see into your building during the day, reducing theft opportunity and protecting proprietary operations from casual observation. We offer a range of opacity levels — from light neutral films that barely change the exterior aesthetic to one-way mirror films that provide full daytime privacy while maintaining outward visibility for your team.</p>
-    <p>All commercial window tinting installations from Tint Tek Plus come with a 15-year manufacturer warranty. Our crew works around your operating hours to minimize business disruption, and we offer phased installation schedules for large buildings. Free site visits and no-obligation estimates are available — reach out and we'll measure your space and recommend the optimal film for your energy goals, privacy needs, and budget.</p>
-    <p>We serve businesses throughout Garland, Dallas, Plano, Richardson, Mesquite, and the entire DFW area. Contact us at (972) 362-8468 or book a commercial estimate at tinttekplus.com to get started.</p>
+    <p>Reduce your building's HVAC load and lower energy bills with professional commercial window tinting. Our high-performance solar control films reject heat before it enters your space, improving the working environment for employees and clients alike.</p>
+    <p>Excessive glare makes screens unreadable and meetings uncomfortable. Our spectrally selective films dramatically cut glare and block 99% of UV rays, preserving natural light while protecting your furniture, flooring, and merchandise from fading.</p>
+    <p>Enhance privacy and security with our range of tinted and reflective films. Whether you need subtle daytime privacy or mirrored security films, our installations minimize disruption to your business and are backed by a 15-year manufacturer warranty.</p>
   `,
   "residential-window-tinting": `
-    <p>Texas summers are relentless, and Garland and Dallas homeowners feel it year-round. The sun pours through windows, driving up air conditioning costs, bleaching furniture, and making certain rooms nearly unusable in the afternoon. Residential window tinting from Tint Tek Plus is a smart, permanent solution that works with your existing windows — no glass replacement required.</p>
-    <p>Our home window films block up to 99% of UV rays and reject significant solar heat. In practical terms, rooms that were too bright or too hot become comfortable again without blocking your view or making your home feel dark. Natural light flows through beautifully — it's the infrared heat energy that the film intercepts. Many of our Garland and Dallas customers report meaningful reductions in summer electric bills within the first season after installation.</p>
-    <p>UV rejection protects your furniture, hardwood floors, carpeting, artwork, and window treatments from the fading and discoloration that direct sun exposure causes over time. A professional tint installation can extend the life of your interior furnishings by years — a worthwhile return even before factoring in energy savings.</p>
-    <p>Privacy is another reason DFW homeowners love window tinting. During the day, reflective and neutral films make it very difficult for people outside to see into your home while you retain a clear view outward. This is particularly popular in neighborhoods with closely-spaced homes or rooms that face busy streets and community areas.</p>
-    <p>All residential window tinting from Tint Tek Plus carries a lifetime warranty. We use premium LLumar films engineered to resist peeling, bubbling, and color shifting — common problems with cheaper films from hardware stores. To schedule a free in-home consultation, call (972) 362-8468 or book online. We serve homes throughout Garland, Dallas, Richardson, Plano, Mesquite, Rowlett, and the surrounding DFW area.</p>
+    <p>Texas summers are relentless, driving up home air conditioning costs and making certain rooms unusable. Our premium residential window films intercept infrared heat energy, making your home significantly more comfortable and energy-efficient without requiring glass replacement.</p>
+    <p>Protect your interior investments. By blocking up to 99% of destructive UV rays, our tint prevents the fading and discoloration of your hardwood floors, carpeting, artwork, and furniture, extending their lifespan by years.</p>
+    <p>Enjoy the view while maintaining your privacy. Our residential films make it difficult for outsiders to see into your home during the day without blocking your outward visibility, providing peace of mind for you and your family.</p>
   `,
   "vehicle-paint-correction": `
-    <p>Over time, every vehicle accumulates paint defects — fine swirl marks from improper washing, light scratches from parking lot contact, water spots baked in by the Texas sun, and oxidation that leaves the finish looking dull and hazy. Vehicle paint correction from Tint Tek Plus is a professional multi-step polishing process that removes these imperfections from the clear coat, restoring the paint to a level of gloss and depth that matches or exceeds the original showroom finish.</p>
-    <p>Paint correction is not a standard wash and wax. It involves machine polishing with progressively finer compounds and polishes, targeting real defects in the clear coat layer rather than filling or masking them. Our technicians in Garland use professional dual-action and rotary polishers paired with Gtechniq compounds — a combination that removes genuine defects without burning through the clear coat or introducing new marring.</p>
-    <p>We offer multiple correction levels depending on your paint's condition. A single-stage polish dramatically improves moderately swirled finishes, while a two- or three-stage correction can fully restore severely oxidized or scratched paint. We inspect under professional lighting before and after each stage so you can see exactly how much has been corrected.</p>
-    <p>Paint correction is particularly valuable before applying ceramic coating or Paint Protection Film. Sealing existing imperfections under a ceramic coat or PPF locks them in permanently. By correcting first, you're protecting a surface that's genuinely in excellent condition. Many Garland and Dallas customers combine a full paint correction with a ceramic coating application for the ultimate paint protection package.</p>
-    <p>If your car no longer has the deep, mirror-like finish it had when new, paint correction is the solution. Stop by our shop at 2518 West Kingsley Road in Garland, call (972) 362-8468, or book online to schedule a paint assessment and personalized correction plan.</p>
+    <p>Over time, your vehicle accumulates fine swirl marks, light scratches, water spots, and oxidation that dull the finish. Our professional multi-step paint correction process permanently removes these defects, restoring a deep, mirror-like gloss.</p>
+    <p>This is not a temporary wax or filler. We use professional dual-action polishers and advanced compounds to safely level the clear coat, targeting genuine imperfections without compromising your paint's integrity.</p>
+    <p>Paint correction is the essential first step before applying a ceramic coating or Paint Protection Film. By removing defects first, we ensure you are sealing and protecting a surface that is in absolute peak condition.</p>
   `,
   "vehicle-paint-protection": `
-    <p>Paint Protection Film — commonly called PPF or "clear bra" — is the gold standard for protecting your vehicle's paint from physical damage. Unlike ceramic coatings, which address environmental contamination, PPF is a thick, optically clear thermoplastic urethane film that physically absorbs impacts from road debris, rock chips, bug strikes, and minor abrasions. At Tint Tek Plus in Garland, we install Stek DYNOshield PPF — one of the most advanced protection films available on the market today.</p>
-    <p>Stek DYNOshield features self-healing technology: light surface scratches disappear on their own when exposed to heat, whether from the sun or warm water. The film also carries hydrophobic properties, meaning water, dirt, and contaminants bead off the surface, making the car easier to clean and reducing wash frequency. All of this protection is delivered in a film that's nearly invisible — your paint color and finish remain exactly as the manufacturer intended.</p>
-    <p>Dallas and Garland roads present real hazards to paint. Highway driving at speed means constant exposure to road debris, and Texas construction zones scatter gravel and aggregate across travel lanes. Front fascias, hoods, fenders, and mirrors take the most impact. Our partial-front packages protect these high-impact zones at an accessible price point, while full-front and full-vehicle coverage is available for new vehicles, exotics, and customers who want comprehensive protection.</p>
-    <p>Stek PPF carries a 10-year manufacturer warranty covering defects including cracking, yellowing, and bubbling. Our installation team uses computer-cut patterns for each vehicle make and model, ensuring seamless coverage with clean edge alignment and minimal visible seams. We also recommend a paint correction prior to any PPF installation to ensure you're protecting a surface that's already in peak condition.</p>
-    <p>Call (972) 362-8468 or visit our Garland shop at 2518 West Kingsley Road to schedule your PPF consultation and receive a personalized quote based on your vehicle and preferred coverage level.</p>
+    <p>Paint Protection Film (PPF) is the ultimate defense against physical road damage. This virtually invisible thermoplastic urethane film physically absorbs impacts from rock chips, bug strikes, and road debris, keeping your factory paint pristine.</p>
+    <p>We install advanced Stek DYNOshield PPF, which features self-healing technology. Light surface scratches disappear entirely when exposed to heat or sun, while its hydrophobic properties make your vehicle incredibly easy to wash and maintain.</p>
+    <p>With precise computer-cut patterns tailored to your exact make and model, we ensure seamless coverage for high-impact zones like the front fascia and hood. Every installation is backed by a 10-year manufacturer warranty.</p>
   `,
   "headlight-services": `
-    <p>Your vehicle's headlights and taillights are among its most visible design elements — and they're exposed to everything the road throws at them. UV rays cloud headlight lenses over time, rock chips and debris damage the housing, and road grime dulls what should be crisp, clear lenses. At Tint Tek Plus in Garland, we offer professional headlight and taillight services including protective film application and custom tinting that enhance both the appearance and longevity of your lights.</p>
-    <p>Our headlight protection film uses Stek Light Protection Film — the same high-performance thermoplastic urethane technology as our vehicle PPF. Applied to the headlight lens surface, it creates a durable, self-healing barrier against stone chips and road debris that would otherwise crack or chip the polycarbonate housing. The film also blocks UV rays that cause the clouding and yellowing that makes older headlights look faded and reduces their light output significantly. Preventative installation is always more cost-effective than headlight lens replacement.</p>
-    <p>For drivers who want to customize their vehicle's appearance, we offer professional headlight and taillight tinting with high-quality vinyl film. Smoked headlights and taillights create a stealthy, blacked-out aesthetic that's popular across a wide range of vehicles — from sport compacts to luxury SUVs and trucks. We use premium vinyl materials that are significantly more durable than cheaper alternatives; our application process eliminates the air bubbles and edge lifting that are common with DIY kits.</p>
-    <p>Professional application ensures even coverage, clean edges, and a finish that won't peel or bubble within a season. Our technicians prep the lens surface before application, removing any contamination that would cause adhesion failures. All work is done in a controlled environment to prevent dust and debris from becoming trapped under the film.</p>
-    <p>Whether you need protective film for a daily driver, custom tinting for a show car, or both combined, our Garland team can recommend the right approach for your goals. Call (972) 362-8468, stop by 2518 West Kingsley Road, or book your appointment online today.</p>
+    <p>Your vehicle's headlights are constantly exposed to rock chips and UV radiation, which causes them to cloud, yellow, and lose illumination power over time. Our Stek Light Protection Film provides a self-healing barrier that prevents physical damage and UV degradation.</p>
+    <p>For drivers looking to customize their vehicle’s appearance, we offer premium headlight and taillight tinting. A smoked, blacked-out aesthetic gives any vehicle a stealthy, aggressive look while maintaining proper light output.</p>
+    <p>Our professional technicians ensure a bubble-free, seamless application using high-quality vinyl films that will not peel or lift. Protect your expensive headlight housings from costly replacements while achieving the exact look you desire.</p>
   `,
   "windshield-protection-film": `
-    <p>Your windshield takes the full force of highway debris — rocks, gravel, insects, and road waste constantly impact the glass at speed. In Texas, where highways stretch through miles of construction zones and open terrain, chips and cracks are a constant risk. Windshield Protection Film from Tint Tek Plus is a proactive solution that dramatically reduces the frequency of chips and the likelihood that a chip will propagate into a full crack requiring costly replacement.</p>
-    <p>We install ExoShield GT3, an optically clear urethane film specifically engineered for windshields. Unlike standard PPF designed for painted surfaces, ExoShield GT3 is optimized for glass — it maintains the optical clarity required for safe driving, creates no distortion or hazing at highway speed, and is formulated to resist the vibration and flexing that windshields experience during normal driving. The film's impact-absorbing properties dissipate energy from rock strikes that would otherwise chip bare glass.</p>
-    <p>ExoShield GT3 also features hydrophobic properties that cause water to bead and sheet off the glass more aggressively than an untreated windshield, improving visibility in rain. The coating functions like a permanent rain repellent, reducing wiper usage at highway speeds and extending wiper blade life.</p>
-    <p>The financial case for windshield protection film is compelling in Texas. A windshield replacement for a modern vehicle equipped with ADAS (Advanced Driver Assistance Systems) can cost anywhere from $500 to over $2,000, including sensor recalibration. A single ExoShield installation costs a fraction of that — and can prevent multiple replacement events over its service life, making it one of the most cost-effective protective investments available.</p>
-    <p>Installation takes approximately 2 to 3 hours. The film is trimmed to your exact windshield dimensions, and our technicians ensure zero bubbles or optical imperfections. Protect your windshield before the first chip — call (972) 362-8468, visit us at 2518 West Kingsley Road in Garland, or schedule your appointment online.</p>
+    <p>Your windshield takes the full force of highway debris, and in Texas, chips and cracks are a constant risk. ExoShield GT3 windshield protection film absorbs impact energy, drastically reducing the likelihood of costly glass replacement.</p>
+    <p>Unlike standard paint films, ExoShield is optically clear and specifically engineered for glass. It maintains perfect visibility at highway speeds with zero distortion, ensuring your driving safety is never compromised.</p>
+    <p>With modern windshields featuring expensive built-in ADAS sensors, a single replacement can cost over a thousand dollars. Windshield film is a highly cost-effective, preventative investment that pays for itself the very first time a rock strikes.</p>
   `,
   "ceramic-coating": `
-    <p>Ceramic coating is the most advanced paint protection technology available for road vehicles today. Unlike traditional wax or paint sealant, which sit on top of the clear coat and wear away within weeks or months, a professional ceramic coating chemically bonds to the paint surface and creates a semi-permanent layer of protection that lasts for years. At Tint Tek Plus in Garland, we install Gtechniq ceramic coatings — among the most technically sophisticated products in the professional detailing industry.</p>
-    <p>Gtechniq's Crystal Serum Ultra is our flagship coating for maximum protection. Once cured, it creates an extremely hard, slick surface that resists light scratches, chemical contamination, bird droppings, tree sap, road tar, and brake dust. The coating's hydrophobic properties cause water to bead aggressively off the paint — along with most dirt and contamination. In practical terms, your vehicle stays cleaner between washes, and washes themselves take significantly less effort and time.</p>
-    <p>The gloss enhancement from a Gtechniq ceramic coating transforms the appearance of your vehicle's paint. Colors appear deeper and more saturated; the surface carries a mirror-like wet look that wax simply cannot replicate. This effect is particularly dramatic on dark-colored vehicles, where Crystal Serum creates a depth that draws attention under any lighting condition.</p>
-    <p>In the Dallas and Garland climate, ceramic coatings provide critical protection against UV oxidation — the process by which intense Texas sun slowly fades and dulls paint over time. A well-maintained ceramic coating blocks UV rays from reaching the clear coat, preserving your vehicle's color and finish for the full life of the coating.</p>
-    <p>Gtechniq backs its professional-grade products with a 9-year warranty when installed by a certified applicator. Our shop is a certified Gtechniq installation center, meaning our technicians are fully trained and qualified. For ultimate protection, combine ceramic coating with Stek PPF — PPF handles physical impact while ceramic coating delivers environmental protection and maximum gloss. Call (972) 362-8468 or visit 2518 West Kingsley Road in Garland to book your consultation.</p>
+    <p>Ceramic coating is the most advanced environmental protection available for your vehicle. Unlike traditional waxes that wash away in weeks, our professional Gtechniq coatings chemically bond to your paint, providing a semi-permanent layer of protection that lasts for years.</p>
+    <p>Once cured, the extremely hard, slick surface resists chemical contamination, bird droppings, tree sap, and UV oxidation. Its intense hydrophobic properties cause water and dirt to bead off effortlessly, slashing the time it takes to wash your car.</p>
+    <p>Beyond unmatched protection, ceramic coating elevates your paint to a stunning, mirror-like wet gloss. Backed by a 9-year warranty when installed by our certified technicians, it ensures your vehicle looks showroom-ready every single day.</p>
   `,
 };
 
@@ -276,11 +259,140 @@ const GRADIENT = `radial-gradient(circle at top left, rgba(39,148,210,0.15), tra
    radial-gradient(circle at bottom right, rgba(77,184,240,0.15), transparent 50%),
    linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%)`;
 
+const parseParagraphs = (htmlStr) => {
+  if (!htmlStr) return [];
+  return htmlStr
+    .split(/<\/?p>/)
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0);
+};
+
+const SEOContentSection = ({ paragraphs, service }) => {
+  if (!paragraphs || paragraphs.length === 0 || !service) return null;
+
+  return (
+    <Box sx={{ width: "100%", py: { xs: 8, md: 12 }, px: { xs: 2, md: 4 } }}>
+      <Box
+        sx={{
+          maxWidth: "1100px",
+          mx: "auto",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: { xs: 6, md: 8 }
+        }}
+      >
+        {/* Left Column: Sticky Header */}
+        <Box sx={{ flex: { md: "0 0 35%" }, position: "relative" }}>
+          <Box sx={{ position: "sticky", top: "140px" }}>
+            <Typography
+              component={motion.h3}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              sx={{
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: { xs: "2rem", md: "3rem" },
+                lineHeight: 1.2,
+                letterSpacing: "-0.5px",
+                mb: 2
+              }}
+            >
+              About <br sx={{ display: { xs: "none", md: "block" } }} />
+              <Box component="span" sx={{ color: "#2794d2" }}>{service.title}</Box>
+            </Typography>
+            <Typography sx={{ color: "rgba(255,255,255,0.6)", fontSize: "1.1rem", mb: 4 }}>
+              Everything you need to know about this service before booking your appointment.
+            </Typography>
+
+            <Box
+              component={motion.div}
+              initial={{ width: 0 }}
+              whileInView={{ width: "80px" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              sx={{
+                height: "4px",
+                background: "linear-gradient(90deg, #2794d2, transparent)",
+                borderRadius: "2px",
+                mb: { xs: 4, md: 0 }
+              }}
+            />
+          </Box>
+        </Box>
+
+        {/* Right Column: Numbered Glass Cards */}
+        <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
+          {paragraphs.map((text, index) => {
+            const num = (index + 1).toString().padStart(2, '0');
+            return (
+              <Box
+                key={index}
+                component={motion.div}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
+                sx={{
+                  position: "relative",
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: { xs: 2, sm: 4 },
+                  background: "rgba(255, 255, 255, 0.03)",
+                  backdropFilter: "saturate(180%) blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  borderRadius: "20px",
+                  p: { xs: 3, md: 4 },
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+                  transition: "transform 0.3s ease, background 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-4px)",
+                    background: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(39, 148, 210, 0.3)",
+                  }
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontWeight: 900,
+                    fontSize: { xs: "2.5rem", md: "3.5rem" },
+                    lineHeight: { xs: 1, md: 0.8 },
+                    color: "rgba(39, 148, 210, 0.25)",
+                    fontFamily: "monospace",
+                    flexShrink: 0
+                  }}
+                >
+                  {num}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: { xs: "1.05rem", md: "1.15rem" },
+                    lineHeight: 1.7,
+                    fontWeight: 300,
+                  }}
+                >
+                  {text}
+                </Typography>
+              </Box>
+            )
+          })}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
 const ServicePage = () => {
   const { serviceId } = useParams();
   const location = useLocation();
   const service = serviceDetails[serviceId];
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const seoParagraphs = useMemo(() => {
+    return parseParagraphs(serviceBodyContent[serviceId]);
+  }, [serviceId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -585,7 +697,7 @@ const ServicePage = () => {
             {service.title}
           </Typography>
           <Typography
-            variant="p"
+            variant="body1"
             sx={{
               mb: 2,
               fontWeight: "bold",
@@ -623,23 +735,6 @@ const ServicePage = () => {
           serviceId === "residential-window-tinting" ||
           serviceId === "vehicle-window-tinting") && <TeslaCTA />}
 
-        {serviceBodyContent[serviceId] && (
-          <Box
-            aria-hidden="true"
-            sx={{
-              position: "absolute",
-              width: "1px",
-              height: "1px",
-              padding: 0,
-              margin: "-1px",
-              overflow: "hidden",
-              clip: "rect(0,0,0,0)",
-              whiteSpace: "nowrap",
-              border: 0,
-            }}
-            dangerouslySetInnerHTML={{ __html: serviceBodyContent[serviceId] }}
-          />
-        )}
 
         {/* Per-service specialty sections (lazy + often below the fold) */}
         <Suspense fallback={Fallback}>
@@ -647,6 +742,8 @@ const ServicePage = () => {
           {serviceId === "vehicle-paint-correction" && (
             <PaintCorrectionServices />
           )}
+
+          <SEOContentSection paragraphs={seoParagraphs} service={service} />
 
           {serviceId === "tesla-window-tinting" && (
             <InViewMount>
@@ -665,6 +762,8 @@ const ServicePage = () => {
           )}
         </Suspense>
 
+
+
         {/* Pricing (exclude certain services) */}
         <Suspense fallback={Fallback}>
           {serviceId !== "vehicle-paint-correction" &&
@@ -679,6 +778,8 @@ const ServicePage = () => {
               </Box>
             )}
         </Suspense>
+
+
 
         <Suspense fallback={Fallback}>
           {serviceId === "vehicle-window-tinting" && (
@@ -702,6 +803,8 @@ const ServicePage = () => {
             )}
         </Suspense>
 
+
+
         <Suspense fallback={Fallback}>
           {(serviceId === "commercial-window-tinting" ||
             serviceId === "tesla-window-tinting" ||
@@ -718,6 +821,8 @@ const ServicePage = () => {
               <HowItWorks serviceId={serviceId} />
             )}
         </Suspense>
+
+
 
         <Suspense fallback={Fallback}>
           {(serviceId === "vehicle-window-tinting" ||

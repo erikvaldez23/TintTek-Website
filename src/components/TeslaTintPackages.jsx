@@ -95,7 +95,7 @@ const TeslaTintPackages = () => {
           background: "transparent",
         }}
       >
-        Additional Services
+        Additional Tesla Window Tinting Services
       </Typography>
 
       {/* Content wrapper (transparent) */}

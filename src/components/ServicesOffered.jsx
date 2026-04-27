@@ -219,8 +219,8 @@ const serviceOptions = {
     ],
   },
   "windshield-protection-film": {
-    title: "Headlight Services", // (leaving as-is per your file)
-    list: ["Headlight Tint", "Taillight Tint", "Reflectors"],
+    title: "Windshield Protection Film Services",
+    list: ["Windshield Protection", "ExoShield GT3", "Stek DYNOtop"],
     filmTypes: [
       {
         name: "DYNOtop",
@@ -312,7 +312,7 @@ const ServicesOffered = ({ serviceId }) => {
         <Box
           component="img"
           src={getFilmLogo(serviceId, film.name)}
-          alt="Film Type Logo"
+          alt={`${film.name} film logo`}
           sx={{
             position: "absolute",
             top: 8,
@@ -453,14 +453,20 @@ const ServicesOffered = ({ serviceId }) => {
           sx={{ mb: 2, fontWeight: "bold", color: "#fff", textAlign: "center" }}
         >
           {serviceId === "commercial-window-tinting"
-            ? "Commercial Window Tinting Services"
+            ? "Commercial Window Tinting Options"
             : serviceId === "residential-window-tinting"
-              ? "Residential Window Tinting Services"
+              ? "Residential Window Tinting Options"
               : serviceId === "vehicle-paint-protection"
                 ? "Stek PPF Options"
                 : serviceId === "headlight-services"
-                  ? "Available Tones:"
-                  : "Film Types"}
+                  ? "Available Headlight Tint Tones"
+                  : serviceId === "vehicle-paint-correction"
+                    ? "Paint Correction Options"
+                    : serviceId === "windshield-protection-film"
+                      ? "Windshield Protection Film Options"
+                      : serviceId === "tesla-window-tinting"
+                        ? "Types of Tesla Window Tinting Film"
+                        : "Types of Vehicle Window Tinting Film"}
         </Typography>
 
         {(serviceId === "commercial-window-tinting" ||

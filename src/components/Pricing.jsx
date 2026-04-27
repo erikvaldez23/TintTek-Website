@@ -16,7 +16,7 @@ import { useLocation } from "react-router-dom";
 // Pricing Data Configuration
 const pricingConfig = {
   "vehicle-window-tinting": {
-    title: "PRICING",
+    title: "Vehicle Window Tinting Pricing",
     pricingData: {
       COUPE: { CLASSIC: "$189.00", CTX: "$289.00", PINNACLE: "$389.00" },
       SEDAN: { CLASSIC: "$199.00", CTX: "$329.00", PINNACLE: "$529.00" },
@@ -44,7 +44,7 @@ const pricingConfig = {
     },
   },
   "tesla-window-tinting": {
-    title: "PRICING",
+    title: "Tesla Window Tinting Pricing",
     pricingData: {
       "MODEL S": { CTX: "$329.00", PINNACLE: "$529.00" },
       "MODEL 3": { CTX: "$449.00", PINNACLE: "$589.00" },
@@ -67,7 +67,7 @@ const pricingConfig = {
     },
   },
   "commercial-window-tinting": {
-    title: "PRICING",
+    title: "Commercial Window Tinting Pricing",
     pricingData: {
       "SMALL OFFICE": { BASIC: "$299.00", PRO: "$399.00", ULTRA: "$499.00" },
       "LARGE BUILDING": { BASIC: "$499.00", PRO: "$699.00", ULTRA: "$899.00" },
@@ -92,7 +92,7 @@ const pricingConfig = {
     },
   },
   "residential-window-tinting": {
-    title: "PRICING",
+    title: "Residential Window Tinting Pricing",
     pricingData: {
       "1-5 WINDOWS": { BASIC: "$199.00", PRO: "$299.00", ULTRA: "$399.00" },
       "6+ WINDOWS": { BASIC: "$349.00", PRO: "$499.00", ULTRA: "$649.00" },
@@ -109,7 +109,7 @@ const pricingConfig = {
     },
   },
   "vehicle-paint-correction": {
-    title: "PRICING",
+    title: "Paint Correction Pricing",
     pricingData: {
       "STAGE 1": { BASIC: "$249.00", PRO: "$349.00", ULTRA: "$449.00" },
       "STAGE 2": { BASIC: "$349.00", PRO: "$449.00", ULTRA: "$549.00" },
@@ -134,7 +134,7 @@ const pricingConfig = {
     },
   },
   "vehicle-paint-protection": {
-    title: "PRICING",
+    title: "Paint Protection Pricing",
     pricingData: {
       HOOD: { BASIC: "$199.00", PRO: "$299.00", ULTRA: "$399.00" },
       "FULL BODY": { BASIC: "$999.00", PRO: "$1299.00", ULTRA: "$1599.00" },

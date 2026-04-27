@@ -29,6 +29,18 @@ const colorSchemes = {
   "ceramic-coating": { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY },
 };
 
+const serviceTitles = {
+  "vehicle-window-tinting": "Vehicle Window Tinting",
+  "tesla-window-tinting": "Tesla Window Tinting",
+  "commercial-window-tinting": "Commercial Window Tinting",
+  "residential-window-tinting": "Residential Window Tinting",
+  "vehicle-paint-protection": "Paint Protection Film",
+  "vehicle-paint-correction": "Paint Correction",
+  "windshield-protection-film": "Windshield Protection",
+  "headlight-services": "Headlight Tinting",
+  "ceramic-coating": "Ceramic Coating",
+};
+
 /* ------------------------------ FAQ CONFIG ------------------------------ */
 const faqConfig = {
   "vehicle-window-tinting": [
@@ -356,7 +368,7 @@ const FAQSection = () => {
             letterSpacing: 1.2,
           }}
         >
-          Frequently Asked Questions
+          Frequently Asked Questions {serviceTitles[path] ? `About ${serviceTitles[path]}` : ""}
         </Typography>
 
         {faqs.length > 0 ? (
