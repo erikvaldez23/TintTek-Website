@@ -19,12 +19,16 @@ import SEO from "./components/SEO";
 // Hero must be eager: it is the LCP element on the home page and hydrates first
 import Hero from "./components/hero/Hero";
 
+// ServicesPage is eagerly imported so its chunk is bundled into the main entry
+// and is available before hydration — prevents a Suspense flash that causes
+// Googlebot to screenshot an empty page (only the Topbar visible).
+import ServicesPage from "./components/ServicesPage";
+
 // Route-level components — each lands in its own chunk
 const Testimonials = lazy(() => import("./components/landing/Testimonials"));
 const Services = lazy(() => import("./components/landing/Services"));
 const Vision = lazy(() => import("./components/landing/Vision"));
 const Footer = lazy(() => import("./components/key-components/Footer"));
-const ServicesPage = lazy(() => import("./components/ServicesPage"));
 const WhyChooseUs = lazy(() => import("./components/landing/WhyChooseUs"));
 const Gallery = lazy(() => import("./components/sub-pages/Gallery"));
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
