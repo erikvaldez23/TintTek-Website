@@ -498,7 +498,7 @@ const ServicePage = () => {
     return (
       <Box
         className="ServicePageRoot"
-        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: GRADIENT }}
       >
         {/* Lightweight background layer */}
         <GlobalStyles
@@ -636,7 +636,7 @@ const ServicePage = () => {
       {/* Route-scoped wrapper with a fixed, GPU-friendly gradient layer */}
       <Box
         className="ServicePageRoot"
-        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: GRADIENT }}
       >
         <GlobalStyles
           styles={{
