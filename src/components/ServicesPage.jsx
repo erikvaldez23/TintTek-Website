@@ -669,16 +669,16 @@ const ServicePage = () => {
 
         {/* Hero */}
         <Box
+          style={{ color: "white" }}
           sx={{
             position: "relative",
             width: "100%", // avoid 100vw layout jank
             pt: 10,
-            height: { xs: "40vh", md: "40vh" },
+            minHeight: { xs: "40vh", md: "40vh" },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            color: "white",
             textAlign: "center",
             px: { xs: 1, sm: 2, md: 2 },
           }}
@@ -686,10 +686,10 @@ const ServicePage = () => {
           <BusinessInfo />
           <Typography
             variant="h1"
+            style={{ color: "#fff" }}
             sx={{
               mb: 2,
               fontWeight: "bold",
-              color: "#fff",
               textAlign: "center",
               fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "3.5rem" },
             }}
@@ -698,10 +698,10 @@ const ServicePage = () => {
           </Typography>
           <Typography
             variant="body1"
+            style={{ color: "rgba(255,255,255,0.9)" }}
             sx={{
               mb: 2,
               fontWeight: "bold",
-              color: "rgba(255,255,255,0.9)",
               textAlign: "center",
               fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
               position: "relative",
