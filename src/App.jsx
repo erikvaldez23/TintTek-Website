@@ -24,9 +24,12 @@ import Hero from "./components/hero/Hero";
 // Googlebot to screenshot an empty page (only the Topbar visible).
 import ServicesPage from "./components/ServicesPage";
 
+// Services is above-fold on the home page — eager import prevents a Suspense
+// suspension during hydration that would flash the white body background.
+import Services from "./components/landing/Services";
+
 // Route-level components — each lands in its own chunk
 const Testimonials = lazy(() => import("./components/landing/Testimonials"));
-const Services = lazy(() => import("./components/landing/Services"));
 const Vision = lazy(() => import("./components/landing/Vision"));
 const Footer = lazy(() => import("./components/key-components/Footer"));
 const WhyChooseUs = lazy(() => import("./components/landing/WhyChooseUs"));
@@ -144,9 +147,10 @@ export function AppContent() {
       `,
                   }}
                 >
-                  {/* Near-fold: own Suspense so these hydrate independently */}
+                  {/* Services is eagerly imported — no Suspense needed, no hydration flash */}
+                  <Services />
+                  {/* Near-fold: own Suspense so WhyChooseUs hydrates independently */}
                   <Suspense fallback={null}>
-                    <Services />
                     <WhyChooseUs />
                   </Suspense>
                   {/* Below-fold: deferred until scrolled near + own Suspense */}

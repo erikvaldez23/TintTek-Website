@@ -3,7 +3,7 @@ import React, { useState, lazy, Suspense } from "react";
 import "./css/Hero.css";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { FaTimes } from "react-icons/fa";
-import video from "../../../public/videos/hero-bg.mp4";
+import video from "../../../public/videos/compressed-output.mp4";
 
 // Lazy load less critical components
 const BusinessInfo = lazy(() => import("./BusinessInfo"));
