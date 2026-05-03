@@ -153,14 +153,17 @@ export function AppContent() {
                   <Suspense fallback={null}>
                     <WhyChooseUs />
                   </Suspense>
-                  {/* Below-fold: deferred until scrolled near + own Suspense */}
-                  <InViewMount>
+                  {/* Below-fold: deferred until scrolled near + own Suspense.
+                      rootMargin="800px" pre-loads content 800px before the
+                      user reaches it, preventing scroll from sticking at
+                      WhyChooseUs while IntersectionObserver catches up. */}
+                  <InViewMount rootMargin="800px">
                     <Suspense fallback={null}>
                       <Testimonials />
                       <VideoCTA2 />
                     </Suspense>
                   </InViewMount>
-                  <InViewMount>
+                  <InViewMount rootMargin="800px">
                     <Suspense fallback={null}>
                       <Vision />
                       <SubCTA />
