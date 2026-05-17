@@ -66,7 +66,7 @@ const Footer = () => {
               src={logo}
               srcSet={`${logoSm} 400w, ${logo} 1200w`}
               sizes="200px"
-              alt="Company Logo"
+              alt="Tint Tek Plus"
               loading="lazy"
               style={{ height: isMobile ? "40px" : "50px" }}
             />

@@ -164,7 +164,7 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
                 src={logo}
                 srcSet={`${logoSm} 400w, ${logo} 1200w`}
                 sizes="200px"
-                alt="Logo"
+                alt="Tint Tek Plus"
                 style={{
                   height: "50px",
                   marginRight: "10px",
