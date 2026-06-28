@@ -39,6 +39,7 @@ const ROUTES = [
   '/blog/5-reasons-tint-car-windows-dallas-tx',
   '/blog/residential-window-tinting-benefits-dfw',
   '/blog/paint-protection-film-dallas-texas',
+  '/blog/headlight-restoration-protection-film-garland-tx',
   '/privacy-policy',
 ];
 
