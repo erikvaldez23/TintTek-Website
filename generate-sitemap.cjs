@@ -27,6 +27,7 @@ const ROUTES = [
   { path: '/blog/5-reasons-tint-car-windows-dallas-tx', priority: '0.7', changefreq: 'yearly', lastmod: '2025-06-22' },
   { path: '/blog/residential-window-tinting-benefits-dfw', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-24' },
   { path: '/blog/paint-protection-film-dallas-texas', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-30' },
+  { path: '/blog/headlight-restoration-protection-film-garland-tx', priority: '0.7', changefreq: 'yearly', lastmod: '2026-06-28' },
   { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
 ];
 
