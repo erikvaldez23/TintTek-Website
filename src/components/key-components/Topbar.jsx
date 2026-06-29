@@ -229,29 +229,56 @@ const Topbar = ({ notFound, handleOpenChatbot }) => {
                     onClose={() => setAnchorEl(null)}
                     MenuListProps={{
                       onMouseLeave: () => setAnchorEl(null),
+                      sx: { py: 1 },
                     }}
+                    transitionDuration={150}
                     sx={{
                       "& .MuiPaper-root": {
-                        background: "#EEEEFF",
-                        borderRadius: "35px",
-                        minWidth: "220px",
-                        transition: "all 0.3s ease-in-out",
+                        background:
+                          "linear-gradient(180deg, rgba(20,20,22,0.98) 0%, rgba(10,10,11,0.98) 100%)",
+                        backdropFilter: "blur(16px)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        borderRadius: "16px",
+                        minWidth: "260px",
+                        mt: "10px",
+                        boxShadow:
+                          "0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(39,148,210,0.08)",
                       },
                       "& .MuiMenuItem-root": {
                         fontWeight: 500,
-                        fontSize: "16px",
-                        padding: "12px 20px",
-                        borderRadius: "6px",
-                        transition: "all 0.2s ease-in-out",
-                        color: "#333",
+                        fontSize: "14.5px",
+                        letterSpacing: "0.2px",
+                        padding: "11px 18px",
+                        margin: "1px 8px",
+                        borderRadius: "10px",
+                        color: "rgba(255,255,255,0.85)",
+                        transition: "background-color 0.18s ease, color 0.18s ease",
                         "&:hover": {
-                          background: "#2794d2",
-                          color: "white",
-                          transform: "scale(1.05)",
+                          background: "rgba(39,148,210,0.14)",
+                          color: "#5fb8ec",
                         },
                       },
                     }}
                   >
+                    <Box
+                      sx={{
+                        px: "22px",
+                        pt: "10px",
+                        pb: "8px",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          letterSpacing: "0.15em",
+                          textTransform: "uppercase",
+                          color: "#2794d2",
+                        }}
+                      >
+                        Our Services
+                      </Box>
+                    </Box>
                     <MenuItem
                       onClick={() =>
                         handleServiceSelect("vehicle-window-tinting")
