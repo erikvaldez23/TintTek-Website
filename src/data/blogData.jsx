@@ -911,4 +911,240 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    id: 5,
+    slug: "headlight-tinting-protection-plano-tx",
+    title: "Headlight Tinting in Plano, TX: STEK Protection Film vs. Smoked Vinyl Tint",
+    summary:
+      "Smoked headlight tint, STEK Light Protection Film, or both? Here’s how Plano, TX drivers can protect expensive LED headlight assemblies while staying Texas-legal.",
+    image: "/headlight/headlight2.webp",
+    date: "September 14, 2025",
+    dateIso: "2025-09-14",
+    readTime: "5 min read",
+    category: "Headlight & Taillight",
+    categories: ["Headlight & Taillight", "Car Care"],
+    featured: false,
+    keywords:
+      "headlight tint Plano TX, smoked headlights Plano, STEK light protection film, headlight protection film Dallas, taillight tint Plano TX, is headlight tint legal in Texas, headlight restoration Plano",
+    toc: [
+      { id: "what-is-headlight-tint", title: "What Is Headlight Tinting?" },
+      { id: "stek-protection-film", title: "STEK Light Protection Film" },
+      { id: "smoked-vinyl-style", title: "Smoked Vinyl Tint for Style" },
+      { id: "texas-legal", title: "Is It Legal in Texas?" },
+      { id: "plano-conditions", title: "Why Plano Drivers Need This" },
+      { id: "combining-both", title: "Combining Protection + Style" },
+      { id: "why-tint-tek", title: "Why Choose Tint Tek Plus" },
+    ],
+    relatedIds: [4, 2],
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          A new set of LED headlight assemblies can run{" "}
+          <strong>$800–$2,000 per side</strong> on many of today’s vehicles — and
+          they sit directly in the path of every rock chip, bug, and UV ray on
+          Plano’s roads. Whether you want a custom smoked look or simply want to
+          protect that investment,{" "}
+          <SvcLink to="/services/headlight-services">
+            headlight tinting and protection film
+          </SvcLink>{" "}
+          is one of the most overlooked upgrades for Plano drivers.
+        </Typography>
+
+        <Typography variant="h5" id="what-is-headlight-tint" className="blog-section-title">
+          What Is Headlight Tinting?
+        </Typography>
+        <Typography className="blog-paragraph">
+          “Headlight tinting” actually covers two very different products that
+          solve two different problems:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>STEK Light Protection Film</strong> — a clear, optically
+            engineered film built specifically for headlight and taillight
+            lenses, designed to protect rather than darken
+          </li>
+          <li>
+            <strong>Smoked vinyl tint</strong> — a tinted film applied for a
+            custom, blacked-out aesthetic
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Both are installed the same way our automotive films are: precision
+          cut, heat-formed to the lens curve, and finished with no lifting
+          edges or bubbles. Many Plano clients choose one, and plenty choose
+          both — clear protection film on the lens with a light smoked layer
+          on top.
+        </Typography>
+
+        <Typography variant="h5" id="stek-protection-film" className="blog-section-title">
+          STEK Light Protection Film: Function First
+        </Typography>
+        <Typography className="blog-paragraph">
+          Unlike standard{" "}
+          <SvcLink to="/services/vehicle-paint-protection">
+            paint protection film
+          </SvcLink>
+          , STEK’s Light Protection Film is built from the ground up for
+          polycarbonate lens surfaces. It uses an adhesive chemistry and
+          optical-clarity spec that automotive PPF doesn’t meet, plus a
+          UV-resistant topcoat that stops the cloudy, yellow haze most
+          unprotected headlights develop within 3–5 years.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Self-healing — light scuffs disappear with heat</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Virtually invisible, no change to beam pattern or output</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Stops the UV yellowing that ages a vehicle’s front end</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Shields against rock chips that crack expensive LED housings</Typography>
+          </Box>
+        </Box>
+        <Typography className="blog-paragraph">
+          Because it doesn’t reduce light output, STEK film is the right
+          starting point for anyone who wants protection without touching the
+          factory look of their headlights.
+        </Typography>
+
+        <Typography variant="h5" id="smoked-vinyl-style" className="blog-section-title">
+          Smoked Vinyl Tint for Style
+        </Typography>
+        <Typography className="blog-paragraph">
+          For drivers who want a custom, aggressive look, smoked headlight and
+          taillight tint remains one of our most requested upgrades — ranging
+          from a subtle charcoal layer to a near blackout finish. It instantly
+          changes the front and rear-end character of a vehicle, no
+          aftermarket housings required.
+        </Typography>
+        <Typography className="blog-paragraph">
+          Taillight tint carries a bonus benefit beyond looks: it adds a layer
+          of impact resistance against rock chips and minor debris that can
+          crack a taillight lens, which is often a surprisingly expensive
+          repair on newer vehicles.
+        </Typography>
+
+        <Typography variant="h5" id="texas-legal" className="blog-section-title">
+          Is Headlight Tint Legal in Texas?
+        </Typography>
+        <Typography className="blog-paragraph">
+          Yes — when it’s done correctly. Texas law requires headlights to
+          remain visible and effective from a specified distance at night, so
+          there’s a real difference between a stylish smoked layer and tint
+          applied so dark it kills your night visibility. Our installers won’t
+          apply a shade that compromises light output, regardless of how dark
+          a customer requests — it’s a safety line we don’t cross. STEK Light
+          Protection Film, being clear, has no legal restrictions at all.
+        </Typography>
+
+        <Typography variant="h5" id="plano-conditions" className="blog-section-title">
+          Why Plano Drivers Need This
+        </Typography>
+        <Typography className="blog-paragraph">
+          Plano’s <strong>Dallas North Tollway</strong> and{" "}
+          <strong>President George Bush Turnpike</strong> see heavy
+          construction traffic nearly year-round, kicking up the kind of
+          gravel and debris that pits headlight lenses daily. Add Plano’s
+          long, sun-drenched summers around Legacy West and Preston Road, and
+          unprotected headlights age fast — clouding over and yellowing well
+          before the rest of the car shows its age.
+        </Typography>
+        <Typography className="blog-paragraph">
+          If you’re already protecting your vehicle in{" "}
+          <SvcLink to="/locations/plano">Plano, TX</SvcLink>, headlights are
+          the one high-cost, high-exposure component that’s easy to forget —
+          until a $1,500 LED assembly needs replacing because the lens
+          cracked or oxidized beyond repair.
+        </Typography>
+
+        <ServiceCallout
+          title="Headlight & Taillight Services in Plano, TX"
+          description="STEK Light Protection Film and smoked vinyl tint installed at our Garland, TX shop — serving Plano, Frisco, Allen, and all of DFW."
+          linkTo="/services/headlight-services"
+          linkText="Explore Headlight Services"
+        />
+
+        <Typography variant="h5" id="combining-both" className="blog-section-title">
+          Combining Protection + Style
+        </Typography>
+        <Typography className="blog-paragraph">
+          Many Plano clients layer both products: STEK Light Protection Film
+          goes on first for UV resistance and impact protection, then a light
+          smoked layer is added on top for the aggressive look. The result is
+          a headlight that looks intentional today and still looks clear in
+          five years — instead of yellowed and pitted. It pairs naturally with{" "}
+          <SvcLink to="/services/vehicle-paint-protection">
+            front-end PPF
+          </SvcLink>{" "}
+          and{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> for
+          complete front-end protection.
+        </Typography>
+
+        <Typography variant="h5" id="why-tint-tek" className="blog-section-title">
+          Why Choose Tint Tek Plus
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Lens-specific film patterns cut for your exact make and model</li>
+          <li>
+            <SvcLink to="/brands/stek">STEK</SvcLink> authorized installer —
+            self-healing, UV-resistant Light Protection Film
+          </li>
+          <li>Texas-legal smoked tint that never sacrifices night visibility</li>
+          <li>Most headlight and taillight installs completed same day</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Located at 2518 W. Kingsley Rd, Garland, TX — serving Plano, Frisco,
+          Allen, McKinney, and all of DFW. Call or text{" "}
+          <strong>972-362-8468</strong> to book your headlight protection or
+          tint appointment.
+        </Typography>
+      </>
+    ),
+    faqs: [
+      {
+        question: "Does headlight tint reduce visibility at night?",
+        answerText: "Properly installed smoked tint maintains legal light output. We never apply a shade dark enough to compromise night visibility, and clear STEK Light Protection Film has zero impact on output.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Properly installed smoked tint maintains legal light output. We never apply a shade dark enough to compromise night visibility, and clear <strong>STEK Light Protection Film</strong> has zero impact on output since it’s optically transparent.
+          </Typography>
+        ),
+      },
+      {
+        question: "What does STEK Light Protection Film actually protect against?",
+        answerText: "STEK Light Protection Film guards headlight and taillight lenses against rock chips, minor scratches, and UV-caused yellowing, using a self-healing topcoat that repairs light surface scuffs with heat.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            It guards headlight and taillight lenses against <strong>rock chips, minor scratches, and UV-caused yellowing</strong>, using a self-healing topcoat that repairs light surface scuffs when warmed by sunlight.
+          </Typography>
+        ),
+      },
+      {
+        question: "Is headlight tinting legal in Plano, TX?",
+        answerText: "Yes, as long as the headlights remain visible from the legally required distance at night. Our installers apply shades that stay fully compliant with Texas law.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, as long as the headlights remain visible from the legally required distance at night. Our installers apply shades that stay fully compliant with <strong>Texas law</strong>.
+          </Typography>
+        ),
+      },
+      {
+        question: "Can I combine clear protection film with smoked tint?",
+        answerText: "Yes, this is one of our most popular combinations — STEK Light Protection Film underneath for UV and impact protection, with a smoked vinyl layer on top for a custom look.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, this is one of our most popular combinations — <strong>STEK Light Protection Film</strong> underneath for UV and impact protection, with a smoked vinyl layer on top for a custom look.
+          </Typography>
+        ),
+      },
+    ],
+  },
 ];
