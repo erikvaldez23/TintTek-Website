@@ -217,6 +217,21 @@ const itemVariants = {
 /* ---------- Component ---------- */
 export default function Hero({
   iframeSrc = "https://app.tintwiz.com/web/ce/mm78aa3rvkulrmu65oesvsa63ywubpq3",
+  cityName,
+  whyUsItems = [
+    {
+      title: "Superior Heat Rejection",
+      body: "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
+    },
+    {
+      title: "Reduce Glare • Boost Safety",
+      body: "Cut harsh glare for clearer vision and safer driving—day or night.",
+    },
+    {
+      title: "Privacy + Style Upgrade",
+      body: "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
+    },
+  ],
 }) {
   const handleScrollTo = (id) => {
     const section = document.getElementById(id);
@@ -265,6 +280,44 @@ export default function Hero({
             <Grid item xs={12} lg={6} order={{ xs: 2, lg: 1 }}>
               <motion.div variants={itemVariants}>
                 <Box sx={{ mb: { xs: 2, md: 3 } }}>
+                  {/* Location pill (city pages only) */}
+                  {cityName && (
+                    <Box
+                      sx={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 1,
+                        px: 2,
+                        py: 0.65,
+                        borderRadius: "100px",
+                        border: "1px solid rgba(39,148,210,0.4)",
+                        background: "rgba(39,148,210,0.08)",
+                        backdropFilter: "blur(10px)",
+                        mb: 1.5,
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 6,
+                          height: 6,
+                          borderRadius: "50%",
+                          background: "#2794d2",
+                        }}
+                      />
+                      <Typography
+                        sx={{
+                          color: "#2794d2",
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Serving {cityName}, TX
+                      </Typography>
+                    </Box>
+                  )}
+
                   {/* Stars + review count */}
                   <Box
                     sx={{
@@ -343,20 +396,7 @@ export default function Hero({
                     aria-label="Key benefits"
                     sx={{ mb: { xs: 2.5, md: 3 } }}
                   >
-                    {[
-                      {
-                        title: "Superior Heat Rejection",
-                        body: "Advanced nano-ceramic tech blocks up to 89% of heat so you stay cool and save your A/C.",
-                      },
-                      {
-                        title: "Reduce Glare • Boost Safety",
-                        body: "Cut harsh glare for clearer vision and safer driving—day or night.",
-                      },
-                      {
-                        title: "Privacy + Style Upgrade",
-                        body: "A sleek, modern look that keeps prying eyes out without sacrificing clarity.",
-                      },
-                    ].map((f, i) => (
+                    {whyUsItems.map((f, i) => (
                       <FeatureItem
                         key={f.title}
                         initial={{ opacity: 0, y: 10 }}

@@ -40,6 +40,32 @@ const ROUTES = [
   '/blog/residential-window-tinting-benefits-dfw',
   '/blog/paint-protection-film-dallas-texas',
   '/privacy-policy',
+  // City landing pages
+  '/locations/plano',
+  '/locations/frisco',
+  '/locations/richardson',
+  '/locations/mesquite',
+  '/locations/rowlett',
+  '/locations/sachse',
+  '/locations/wylie',
+  '/locations/murphy',
+  '/locations/allen',
+  '/locations/mckinney',
+  '/locations/carrollton',
+  '/locations/addison',
+  // Tesla model pages
+  '/tesla/model-3',
+  '/tesla/model-y',
+  '/tesla/model-s',
+  '/tesla/model-x',
+  '/tesla/cybertruck',
+  // Brand pages
+  '/brands/llumar',
+  '/brands/stek',
+  '/brands/gtechniq',
+  '/brands/exoshield',
+  // Texas tint laws
+  '/texas-window-tint-laws',
 ];
 
 async function prerender() {

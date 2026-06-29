@@ -15,6 +15,8 @@ import "./App.css";
 import Topbar from "./components/key-components/Topbar";
 import ScrollToTop from "./components/ScrollToTop";
 import SEO from "./components/SEO";
+import useRouteTracking from "./hooks/useRouteTracking";
+import { initAnalytics, trackEvent } from "./utils/analytics";
 
 // Hero must be eager: it is the LCP element on the home page and hydrates first
 import Hero from "./components/hero/Hero";
@@ -50,6 +52,11 @@ const VideoCTA2 = lazy(() => import("./components/landing-pages/VideoCTA2"));
 const SubCTA = lazy(() => import("./components/SubCTA"));
 const SubContact = lazy(() => import("./components/SubContact"));
 const SubQuickLinks = lazy(() => import("./components/SubQuickLinks"));
+const CityPage = lazy(() => import("./components/CityPage"));
+const TeslaModelPage = lazy(() => import("./components/TeslaModelPage"));
+const BrandPage = lazy(() => import("./components/BrandPage"));
+const TintLaws = lazy(() => import("./components/TintLaws"));
+const ThankYou = lazy(() => import("./components/ThankYou"));
 
 // Interaction-gated — only downloaded when the user triggers them
 const Chatbot = lazy(() => import("./ChatBot"));
@@ -91,6 +98,14 @@ export function AppContent() {
   const isHomePage = location.pathname === "/";
   const isChatPage = location.pathname === "/chat";
 
+  // Boots GA4 + Meta Pixel once on the client; no-ops during SSR.
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  // Sends a page_view/PageView on every route change, including the first.
+  useRouteTracking();
+
   // Delay chatbot teaser past the TBT-critical window (first ~4s of interaction)
   useEffect(() => {
     let popupTimer;
@@ -100,16 +115,17 @@ export function AppContent() {
     return () => clearTimeout(popupTimer);
   }, [isHomePage]);
 
-  const handleOpenChatbot = () => {
+  const handleOpenChatbot = (source = "floating_button") => {
     setShowPopup(false);
     setChatbotOpen(true);
+    trackEvent("chatbot_open", "Chatbot", source);
   };
   const handleCloseChatbot = () => setChatbotOpen(false);
   const handleClosePopup = () => setShowPopup(false);
 
   return (
     <>
-      <Topbar handleOpenChatbot={handleOpenChatbot} />
+      <Topbar handleOpenChatbot={() => handleOpenChatbot("topbar")} />
 
       <Suspense fallback={null}>
         <Routes>
@@ -213,6 +229,21 @@ export function AppContent() {
             element={<PPFpage />}
           />
 
+          {/* City landing pages */}
+          <Route path="/locations/:city" element={<CityPage />} />
+
+          {/* Tesla model-specific pages */}
+          <Route path="/tesla/:model" element={<TeslaModelPage />} />
+
+          {/* Brand pages */}
+          <Route path="/brands/:brand" element={<BrandPage />} />
+
+          {/* Texas Tint Laws */}
+          <Route path="/texas-window-tint-laws" element={<TintLaws />} />
+
+          {/* Lead form thank-you page */}
+          <Route path="/thank-you" element={<ThankYou />} />
+
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -234,7 +265,7 @@ export function AppContent() {
           }}
         >
           <IconButton
-            onClick={handleOpenChatbot}
+            onClick={() => handleOpenChatbot("floating_button")}
             sx={{
               backgroundColor: "#2794d2",
               color: "white",
@@ -254,7 +285,7 @@ export function AppContent() {
         <Suspense fallback={null}>
           <ChatbotPopup
             onClose={handleClosePopup}
-            onOpenChatbot={handleOpenChatbot}
+            onOpenChatbot={() => handleOpenChatbot("popup_teaser")}
           />
         </Suspense>
       )}

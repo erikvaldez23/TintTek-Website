@@ -2,15 +2,18 @@ import React from "react";
 import { Box, Typography, Card, Grid, useMediaQuery } from "@mui/material";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import ObfuscatedEmail from "./ObfuscatedEmail";
+import { trackEvent } from "../utils/analytics";
 
 const Contact = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handlePhoneClick = () => {
+    trackEvent("Contact", "Lead", "Phone Click");
     window.location.href = "tel:+19723628468";
   };
 
   const handleEmailClick = () => {
+    trackEvent("Contact", "Lead", "Email Click");
     window.location.href = "mailto:info@tinttekplus.com";
   };
 

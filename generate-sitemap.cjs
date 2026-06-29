@@ -28,6 +28,32 @@ const ROUTES = [
   { path: '/blog/residential-window-tinting-benefits-dfw', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-24' },
   { path: '/blog/paint-protection-film-dallas-texas', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-30' },
   { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
+  // City landing pages
+  { path: '/locations/plano', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/frisco', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/richardson', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/mesquite', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/rowlett', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/sachse', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/wylie', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/murphy', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/allen', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/mckinney', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/carrollton', priority: '0.9', changefreq: 'monthly' },
+  { path: '/locations/addison', priority: '0.9', changefreq: 'monthly' },
+  // Tesla model pages
+  { path: '/tesla/model-3', priority: '0.8', changefreq: 'monthly' },
+  { path: '/tesla/model-y', priority: '0.8', changefreq: 'monthly' },
+  { path: '/tesla/model-s', priority: '0.8', changefreq: 'monthly' },
+  { path: '/tesla/model-x', priority: '0.8', changefreq: 'monthly' },
+  { path: '/tesla/cybertruck', priority: '0.8', changefreq: 'monthly' },
+  // Brand pages
+  { path: '/brands/llumar', priority: '0.8', changefreq: 'monthly' },
+  { path: '/brands/stek', priority: '0.8', changefreq: 'monthly' },
+  { path: '/brands/pureppf', priority: '0.8', changefreq: 'monthly' },
+  { path: '/brands/exoshield', priority: '0.8', changefreq: 'monthly' },
+  // Texas tint laws
+  { path: '/texas-window-tint-laws', priority: '0.9', changefreq: 'yearly' },
 ];
 
 const TODAY = new Date().toISOString().split('T')[0];

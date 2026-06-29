@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, Container } from "@mui/material";
 import SEO from "../SEO";
 import SubCallToAction from "../SubCTA";
 import SubContact from "../SubContact";
 import SubQuickLinks from "../SubQuickLinks";
 import Footer from "../key-components/Footer";
+import { trackEvent } from "../../utils/analytics";
 
 const CommercialSimulator = () => {
+  useEffect(() => {
+    trackEvent("simulator_view", "Simulator", "Residential Window Tinting");
+  }, []);
+
   return (
     <Box
       sx={{

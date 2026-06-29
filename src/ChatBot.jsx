@@ -14,6 +14,7 @@ import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import { trackEvent } from "./utils/analytics";
 
 const BLUE = "#2794d2";
 
@@ -47,6 +48,7 @@ export default function Chatbot({ open, onClose }) {
     setMessages(newMessages);
     setInput("");
     setTyping(true);
+    trackEvent("chatbot_message_sent", "Chatbot", "User Message");
 
     try {
       const { data } = await axios.post(

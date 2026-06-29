@@ -8,50 +8,10 @@
     />
     <meta name="theme-color" content="#000000" />
 
-    <!-- Analytics: GTM + Meta Pixel loaded after page is interactive -->
-    <script>
-      window.addEventListener("load", function () {
-        // Google Tag Manager
-        (function (w, d, s, l, i) {
-          w[l] = w[l] || [];
-          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-          var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != "dataLayer" ? "&l=" + l : "";
-          j.async = true;
-          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-          f.parentNode.insertBefore(j, f);
-        })(window, document, "script", "dataLayer", "GTM-M93ZKCLX");
-
-        // Meta Pixel
-        !(function (f, b, e, v, n, t, s) {
-          if (f.fbq) return;
-          n = f.fbq = function () {
-            n.callMethod
-              ? n.callMethod.apply(n, arguments)
-              : n.queue.push(arguments);
-          };
-          if (!f._fbq) f._fbq = n;
-          n.push = n;
-          n.loaded = !0;
-          n.version = "2.0";
-          n.queue = [];
-          t = b.createElement(e);
-          t.async = !0;
-          t.src = v;
-          s = b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t, s);
-        })(
-          window,
-          document,
-          "script",
-          "https://connect.facebook.net/en_US/fbevents.js"
-        );
-        fbq("init", "812013930998730");
-        fbq("track", "PageView");
-      });
-    </script>
-    <!-- End Analytics -->
+    <!-- Analytics: GA4 + Meta Pixel are injected client-side by
+         src/utils/analytics.js (see initAnalytics) rather than hardcoded
+         here, so the scripts can be toggled per-environment via
+         VITE_GA_MEASUREMENT_ID / VITE_META_PIXEL_ID without a deploy. -->
 
     <!-- SSR: per-route head tags (title, meta, canonical, JSON-LD) injected here -->
     <!--app-head-->
@@ -147,12 +107,18 @@
         "areaServed": [
           { "@type": "City", "name": "Garland", "sameAs": "https://en.wikipedia.org/wiki/Garland,_Texas" },
           { "@type": "City", "name": "Dallas", "sameAs": "https://en.wikipedia.org/wiki/Dallas" },
-          { "@type": "City", "name": "Plano" },
-          { "@type": "City", "name": "Richardson" },
-          { "@type": "City", "name": "Mesquite" },
-          { "@type": "City", "name": "Rowlett" },
-          { "@type": "City", "name": "Sachse" },
-          { "@type": "City", "name": "Wylie" }
+          { "@type": "City", "name": "Plano", "sameAs": "https://en.wikipedia.org/wiki/Plano,_Texas" },
+          { "@type": "City", "name": "Frisco", "sameAs": "https://en.wikipedia.org/wiki/Frisco,_Texas" },
+          { "@type": "City", "name": "Richardson", "sameAs": "https://en.wikipedia.org/wiki/Richardson,_Texas" },
+          { "@type": "City", "name": "Mesquite", "sameAs": "https://en.wikipedia.org/wiki/Mesquite,_Texas" },
+          { "@type": "City", "name": "Rowlett", "sameAs": "https://en.wikipedia.org/wiki/Rowlett,_Texas" },
+          { "@type": "City", "name": "Sachse", "sameAs": "https://en.wikipedia.org/wiki/Sachse,_Texas" },
+          { "@type": "City", "name": "Wylie", "sameAs": "https://en.wikipedia.org/wiki/Wylie,_Texas" },
+          { "@type": "City", "name": "Murphy", "sameAs": "https://en.wikipedia.org/wiki/Murphy,_Texas" },
+          { "@type": "City", "name": "Allen", "sameAs": "https://en.wikipedia.org/wiki/Allen,_Texas" },
+          { "@type": "City", "name": "McKinney", "sameAs": "https://en.wikipedia.org/wiki/McKinney,_Texas" },
+          { "@type": "City", "name": "Carrollton", "sameAs": "https://en.wikipedia.org/wiki/Carrollton,_Texas" },
+          { "@type": "City", "name": "Addison", "sameAs": "https://en.wikipedia.org/wiki/Addison,_Texas" }
         ],
         "openingHoursSpecification": [
           {
@@ -189,24 +155,6 @@
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-M93ZKCLX"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=812013930998730&ev=PageView&noscript=1"
-    /></noscript>
     <div id="root"><!--app-html--></div>
 
     <script type="module" src="/src/entry-client.jsx"></script>
