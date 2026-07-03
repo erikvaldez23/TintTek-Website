@@ -881,10 +881,8 @@ const Mockup = () => {
         </Container>
         <CallToAction />
         <QuickLinks />
-
+        <Footer />
       </Box>
-
-      <Footer />
     </>
   );
 };

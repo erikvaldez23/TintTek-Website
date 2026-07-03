@@ -634,9 +634,8 @@ export default function CityPage() {
         </Container>
         <CallToAction />
         <QuickLinks />
+        <Footer />
       </Box>
-
-      <Footer />
     </>
   );
 }
