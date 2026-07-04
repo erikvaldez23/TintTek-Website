@@ -8,10 +8,23 @@
     />
     <meta name="theme-color" content="#000000" />
 
-    <!-- Analytics: GA4 + Meta Pixel are injected client-side by
-         src/utils/analytics.js (see initAnalytics) rather than hardcoded
-         here, so the scripts can be toggled per-environment via
-         VITE_GA_MEASUREMENT_ID / VITE_META_PIXEL_ID without a deploy. -->
+    <!-- Google tag (gtag.js) — hardcoded here (rather than relying solely on
+         VITE_GA_MEASUREMENT_ID at build time) so GA4 keeps working even if
+         the hosting provider's build environment is missing that env var.
+         send_page_view is disabled because useRouteTracking.js (see
+         src/hooks/useRouteTracking.js) sends page_view manually on every
+         route change, including the first — letting the automatic pageview
+         fire too would double-count the initial load. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4QT9CLD9T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4QT9CLD9T', { send_page_view: false });
+    </script>
+
+    <!-- Meta Pixel is still injected client-side by src/utils/analytics.js
+         (see initAnalytics), gated on VITE_META_PIXEL_ID. -->
 
     <!-- SSR: per-route head tags (title, meta, canonical, JSON-LD) injected here -->
     <!--app-head-->

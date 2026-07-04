@@ -1,8 +1,13 @@
 // Google Analytics (GA4) + Meta Pixel — loaded dynamically on the client only.
 // Nothing here runs during SSR/prerendering; every export no-ops when
 // `window` doesn't exist or the relevant ID isn't configured.
+//
+// GA4's gtag.js script + initial config is hardcoded in index.html (not
+// injected here) so it survives even if a hosting provider's build is
+// missing VITE_GA_MEASUREMENT_ID. GA_ID here still falls back to that same
+// literal ID so trackPageView/trackEvent keep sending gtag events.
 
-const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-N4QT9CLD9T";
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
 
 let initialized = false;
@@ -43,24 +48,16 @@ function injectScriptOnce(id, src) {
 }
 
 /**
- * Boots GA4 + Meta Pixel. Idempotent — safe to call on every render, only
- * does work once. Call this on the client after mount (e.g. from App.jsx).
+ * Boots Meta Pixel (GA4's script + config are hardcoded in index.html, not
+ * here — see the comment above GA_ID). Idempotent — safe to call on every
+ * render, only does work once. Call this on the client after mount (e.g.
+ * from App.jsx).
  */
 export function initAnalytics() {
   if (typeof window === "undefined" || initialized) return;
   initialized = true;
 
-  if (GA_ID) {
-    ensureGtagStub();
-    injectScriptOnce(
-      "ga4-gtag-js",
-      `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
-    );
-    window.gtag("js", new Date());
-    // send_page_view is disabled — useRouteTracking sends every page_view,
-    // including the first, so the initial load is never double-counted.
-    window.gtag("config", GA_ID, { send_page_view: false });
-  }
+  ensureGtagStub();
 
   if (PIXEL_ID) {
     ensureFbqStub();
