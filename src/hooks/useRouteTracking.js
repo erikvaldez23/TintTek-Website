@@ -14,7 +14,13 @@ export default function useRouteTracking() {
     trackPageView(window.location.pathname + window.location.search);
     // Recorded so the lead-form iframe's redirect to /thank-you can still
     // attribute the submission to the page it came from — see
-    // setLastPageVisited's doc comment in analytics.js.
-    setLastPageVisited(location.pathname);
+    // setLastPageVisited's doc comment in analytics.js. Skipped on
+    // /thank-you itself: that route is lazy-loaded, so this effect (in the
+    // eagerly-loaded AppContent) fires before ThankYou's chunk even
+    // downloads — writing here would clobber the referrer before ThankYou
+    // gets a chance to read it back.
+    if (location.pathname !== "/thank-you") {
+      setLastPageVisited(location.pathname);
+    }
   }, [location.pathname, location.search]);
 }
