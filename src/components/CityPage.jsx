@@ -1,5 +1,5 @@
 // src/components/CityPage.jsx
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useParams, Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -630,7 +630,7 @@ export default function CityPage() {
             </motion.div>
           </Box>
 
-          <Contact />
+          <Contact city={city} />
         </Container>
         <CallToAction />
         <QuickLinks />

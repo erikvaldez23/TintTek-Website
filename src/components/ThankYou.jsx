@@ -12,7 +12,12 @@ import StarIcon from "@mui/icons-material/Star";
 import SEO from "./SEO";
 import Footer from "./key-components/Footer";
 import SubQuickLinks from "./SubQuickLinks";
-import { trackEvent } from "../utils/analytics";
+import {
+  trackEvent,
+  getLastPageVisited,
+  getCityFromPath,
+  pushDataLayerEvent,
+} from "../utils/analytics";
 
 const steps = [
   {
@@ -45,11 +50,25 @@ const ThankYou = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
-    trackEvent("Form", "Lead", "Thank You Page View");
+    const sourcePage = getLastPageVisited();
+    const city = getCityFromPath(sourcePage);
+    pushDataLayerEvent("thank_you_page_view", {
+      source_page: sourcePage || "unknown",
+      city: city || "unknown",
+    });
+    trackEvent("Form", "Lead", "Thank You Page View", undefined, {
+      source_page: sourcePage || "unknown",
+      ...(city ? { city } : {}),
+    });
   }, []);
 
   const handlePhoneClick = () => {
-    trackEvent("Contact", "Lead", "Phone Click - Thank You Page");
+    const sourcePage = getLastPageVisited();
+    const city = getCityFromPath(sourcePage);
+    trackEvent("Contact", "Lead", "Phone Click - Thank You Page", undefined, {
+      source_page: sourcePage || "unknown",
+      ...(city ? { city } : {}),
+    });
     window.location.href = "tel:+19723628468";
   };
 

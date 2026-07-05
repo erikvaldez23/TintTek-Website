@@ -87,6 +87,54 @@ export function trackPageView(url) {
   }
 }
 
+const PAGE_STORAGE_KEY = "ttp_last_page";
+
+/**
+ * Records the path of the most recently visited page for this session.
+ * Needed because the lead form (embedded on nearly every page — see
+ * SubContact) is an external TintWiz iframe that redirects the whole page
+ * to /thank-you on submit — by then the original page's URL is gone, so
+ * ThankYou reads this back to attribute the lead to the page it was
+ * submitted from. Called from useRouteTracking on every route change.
+ */
+export function setLastPageVisited(path) {
+  if (typeof window === "undefined" || !path) return;
+  try {
+    window.sessionStorage.setItem(PAGE_STORAGE_KEY, path);
+  } catch {
+    // sessionStorage can throw in private browsing / disabled storage — ignore.
+  }
+}
+
+export function getLastPageVisited() {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.sessionStorage.getItem(PAGE_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+/** Extracts the city slug from a /locations/:city path, or null if it isn't one. */
+export function getCityFromPath(path) {
+  if (!path) return null;
+  const match = path.match(/^\/locations\/([^/?#]+)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Pushes a raw event object to window.dataLayer in the shape Google Tag
+ * Manager's Custom Event trigger matches against ({ event: name, ...params }).
+ * This is separate from gtag()/fbq() above — gtag also writes to
+ * dataLayer, but as an arguments array, which GTM Custom Event triggers
+ * don't match against.
+ */
+export function pushDataLayerEvent(eventName, params = {}) {
+  if (typeof window === "undefined" || !eventName) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...params });
+}
+
 // Meta's standard events — anything outside this list is sent as
 // trackCustom instead, since Meta only recognizes these for ad optimization.
 const META_STANDARD_EVENTS = new Set([

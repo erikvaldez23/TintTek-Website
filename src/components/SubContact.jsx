@@ -4,16 +4,16 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import ObfuscatedEmail from "./ObfuscatedEmail";
 import { trackEvent } from "../utils/analytics";
 
-const Contact = () => {
+const Contact = ({ city }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handlePhoneClick = () => {
-    trackEvent("Contact", "Lead", "Phone Click");
+    trackEvent("Contact", "Lead", "Phone Click", undefined, city ? { city: city.slug } : {});
     window.location.href = "tel:+19723628468";
   };
 
   const handleEmailClick = () => {
-    trackEvent("Contact", "Lead", "Email Click");
+    trackEvent("Contact", "Lead", "Email Click", undefined, city ? { city: city.slug } : {});
     window.location.href = "mailto:info@tinttekplus.com";
   };
 

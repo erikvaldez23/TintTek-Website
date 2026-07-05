@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { trackPageView } from "../utils/analytics";
+import { trackPageView, setLastPageVisited } from "../utils/analytics";
 
 // Fires once on mount (the initial page load) and again on every subsequent
 // route change. Because it's the single place page_view/PageView gets sent
@@ -12,5 +12,9 @@ export default function useRouteTracking() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     trackPageView(window.location.pathname + window.location.search);
+    // Recorded so the lead-form iframe's redirect to /thank-you can still
+    // attribute the submission to the page it came from — see
+    // setLastPageVisited's doc comment in analytics.js.
+    setLastPageVisited(location.pathname);
   }, [location.pathname, location.search]);
 }
