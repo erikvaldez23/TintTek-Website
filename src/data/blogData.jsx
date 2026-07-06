@@ -632,6 +632,410 @@ export const blogPosts = [
     ],
   },
   {
+    id: 5,
+    slug: "paint-correction-plano-tx",
+    title: "Paint Correction in Plano, TX: The Essential Step Before Ceramic Coating or PPF",
+    summary:
+      "Swirl marks, water spots, and oxidation quietly ruin your finish on Plano's roads. Professional paint correction at Tint Tek Plus removes defects permanently — the critical first step before ceramic coating or PPF.",
+    image: "/paint-correction/paint-correction1.webp",
+    date: "July 6, 2026",
+    dateIso: "2026-07-06",
+    readTime: "6 min read",
+    category: "Paint Correction",
+    categories: ["Paint Correction", "Car Care"],
+    featured: false,
+    keywords:
+      "paint correction Plano TX, paint correction Dallas TX, paint correction before ceramic coating, swirl mark removal DFW, machine polishing Plano, paint defect removal near me",
+    toc: [
+      { id: "what-is-paint-correction", title: "What Is Paint Correction?" },
+      { id: "common-defects-plano", title: "Common Defects in Plano Vehicles" },
+      { id: "correction-process", title: "The Correction Process" },
+      { id: "before-ceramic-ppf", title: "Why Correct Before Coating or PPF?" },
+      { id: "plano-roads-paint", title: "Plano's Environment & Your Paint" },
+      { id: "correction-cost", title: "How Much Does It Cost?" },
+      { id: "why-tint-tek-correction", title: "Why Tint Tek Plus" },
+    ],
+    relatedIds: [4, 2],
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          Under the direct Texas sun — in Legacy West's open parking lots, along Preston
+          Road, or sitting idle on US-75 — most vehicles reveal a secret their owners
+          never notice indoors: a clear coat riddled with swirl marks, water spots, and fine
+          scratches that quietly destroy the paint's depth and gloss. If you're considering{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> or{" "}
+          <SvcLink to="/services/vehicle-paint-protection">paint protection film</SvcLink>{" "}
+          for your vehicle, there is one non-negotiable first step:{" "}
+          <SvcLink to="/services/vehicle-paint-correction">paint correction</SvcLink>.
+        </Typography>
+        <Typography className="blog-paragraph">
+          At <strong>Tint Tek Plus</strong>, we serve Plano drivers with professional
+          multi-stage paint correction — the only service that actually removes surface
+          defects rather than masking them. Here's everything you need to know.
+        </Typography>
+
+        <Typography variant="h5" id="what-is-paint-correction" className="blog-section-title">
+          What Is Paint Correction?
+        </Typography>
+        <Typography className="blog-paragraph">
+          Paint correction is the process of removing surface defects from your vehicle's
+          clear coat using machine polishers, cutting compounds, and finishing polishes.
+          Unlike wax or detailing sprays that temporarily fill and hide imperfections,
+          paint correction <strong>physically removes a controlled layer of clear coat</strong>{" "}
+          to level the surface — eliminating defects permanently rather than concealing them.
+        </Typography>
+        <Typography className="blog-paragraph">
+          The most common defects paint correction addresses:
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Swirl marks from automated car washes and improper hand washing</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Fine scratches from brushes, keys, or light surface contact</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Water spots and mineral etching from hard North Texas water</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>UV oxidation and dullness from years of Texas sun exposure</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Buffer trails left by previous improper machine polishing</Typography>
+          </Box>
+        </Box>
+        <Typography className="blog-paragraph">
+          After a professional correction, your clear coat reflects light uniformly — creating
+          the depth, gloss, and mirror-like clarity that makes even a three-year-old vehicle
+          look freshly delivered from the factory floor.
+        </Typography>
+
+        <Typography variant="h5" id="common-defects-plano" className="blog-section-title">
+          Common Paint Defects in Plano Vehicles
+        </Typography>
+        <Typography className="blog-paragraph">
+          Plano's driving environment creates paint defects faster than most DFW cities.
+          Several local factors are directly responsible:
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Automated Car Washes on Preston &amp; Coit Roads
+        </Typography>
+        <Typography className="blog-paragraph">
+          Conveyor-style car washes throughout Plano are one of the leading causes of swirl
+          marks in the region. The rotary brushes trap road grit and drag it across your
+          clear coat thousands of times per cycle — every wash creates micro-scratches that
+          accumulate into a hazy, swirl-covered finish visible in direct sunlight.
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Hard Water from Plano's Municipal Supply
+        </Typography>
+        <Typography className="blog-paragraph">
+          North Texas water has high mineral content. When irrigation systems hit your car
+          or you rinse without immediately drying, minerals etch into the clear coat as
+          water evaporates — leaving permanent white spots that no hand wash will remove.
+          Only machine polishing can level the etched surface.
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Prolonged Parking Under Direct Texas Sun
+        </Typography>
+        <Typography className="blog-paragraph">
+          Plano's open lots along the Dallas North Tollway, Legacy Drive, and the Shops
+          at Legacy expose vehicles to intense UV radiation for hours at a time. Without
+          protective film or coating, UV breaks down the clear coat's molecular structure,
+          accelerating oxidation and turning a once-glossy finish flat and chalky.
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          US-75 and PGBT Construction Micro-Abrasion
+        </Typography>
+        <Typography className="blog-paragraph">
+          Daily highway commuting on US-75 and the President George Bush Turnpike through
+          Plano exposes your paint to airborne road dust, silica particles, and debris from
+          ongoing construction. Over thousands of miles this creates a fine, overall
+          abrasion that dims even a well-maintained finish.
+        </Typography>
+
+        <Typography variant="h5" id="correction-process" className="blog-section-title">
+          The Paint Correction Process at Tint Tek Plus
+        </Typography>
+        <Typography className="blog-paragraph">
+          Professional paint correction is a disciplined, multi-stage workflow. Rushing any
+          step produces poor results or damages the clear coat. Here's the exact process
+          our technicians follow:
+        </Typography>
+        <Box className="feature-box">
+          <Box className="feature-item">
+            <Typography variant="h6">Step 1</Typography>
+            <Typography variant="body2">Decontamination Wash</Typography>
+          </Box>
+          <Box className="feature-item">
+            <Typography variant="h6">Step 2</Typography>
+            <Typography variant="body2">Clay Bar Treatment</Typography>
+          </Box>
+          <Box className="feature-item">
+            <Typography variant="h6">Step 3</Typography>
+            <Typography variant="body2">Paint Thickness Check</Typography>
+          </Box>
+        </Box>
+        <Typography className="blog-paragraph">
+          We begin with a full decontamination wash to remove tar, iron particles, and
+          bonded fallout. Polishing over surface contamination creates new scratches, so
+          the surface must be chemically and mechanically clean before any machine work
+          begins. A clay bar then removes embedded particles that washing can't reach,
+          leaving a glass-smooth surface.
+        </Typography>
+        <Typography className="blog-paragraph">
+          Before any machine work, we measure clear coat depth at multiple panel points
+          using a digital paint gauge. This tells us exactly how much material is available
+          to safely remove — a critical step that prevents cutting through to the base coat.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">4</Box>
+            <Typography>
+              <strong>Machine compounding</strong> — orbital or rotary polisher with
+              cutting compound removes deeper scratches and heavy swirl marks
+            </Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">5</Box>
+            <Typography>
+              <strong>Machine finishing polish</strong> — finer polish and softer pad
+              refine the surface after compounding, removing any light haze
+            </Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">6</Box>
+            <Typography>
+              <strong>IPA panel wipe</strong> — all polish oils removed to reveal the
+              true correction result under inspection lighting
+            </Typography>
+          </Box>
+        </Box>
+        <Typography className="blog-paragraph">
+          Most vehicles achieve an{" "}
+          <span className="highlight">80–95% reduction in visible surface defects</span>{" "}
+          after a full two-stage correction. The result depends on the severity of
+          existing damage and the available clear coat depth.
+        </Typography>
+
+        <Typography variant="h5" id="before-ceramic-ppf" className="blog-section-title">
+          Why Paint Correction Is Essential Before Ceramic Coating or PPF
+        </Typography>
+        <Typography className="blog-paragraph">
+          This is the most important concept for Plano drivers considering long-term
+          paint protection — and it's the step most shops skip.
+        </Typography>
+        <Typography className="blog-highlight">
+          Ceramic coating permanently locks in whatever state your paint is in at the moment
+          of application.
+        </Typography>
+        <Typography className="blog-paragraph">
+          If your clear coat has swirl marks, water spots, or oxidation when the coating
+          goes on, those defects are preserved underneath — and because{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> dramatically
+          enhances gloss and optical clarity, it actually makes every remaining imperfection{" "}
+          <em>more visible</em>, not less. Clients who have ceramic applied over
+          uncorrected paint are often disappointed — the high gloss amplifies every swirl.
+        </Typography>
+        <Typography className="blog-paragraph">
+          The same principle applies to{" "}
+          <SvcLink to="/services/vehicle-paint-protection">paint protection film</SvcLink>.
+          PPF is semi-transparent — defects beneath the film remain visible through it. No
+          film, however thick or premium, makes scratches disappear.
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Paint correction first</strong> — removes all existing swirls,
+            scratches, and oxidation
+          </li>
+          <li>
+            <strong>Ceramic coating or PPF second</strong> — seals and protects the
+            now-perfect surface for years
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          This "correction + protection" sequence is the most popular combined service
+          for our Plano and Frisco clients. It's the only approach that guarantees a
+          perfect end result.
+        </Typography>
+
+        <ServiceCallout
+          title="Paint Correction in Garland — Serving All of Plano"
+          description="Professional multi-stage paint correction before your ceramic coating or PPF installation. We serve Plano, Frisco, Allen, Richardson, and all of DFW from our Garland, TX shop."
+          linkTo="/services/vehicle-paint-correction"
+          linkText="Explore Paint Correction"
+        />
+
+        <Typography variant="h5" id="plano-roads-paint" className="blog-section-title">
+          How Plano's Environment Accelerates Paint Defects
+        </Typography>
+        <Typography className="blog-paragraph">
+          Plano drivers face specific conditions that age paint faster than the DFW average:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Legacy West parking structures</strong> — close-quarters parking in
+            Plano's busiest retail district means door brushes, shopping cart contact, and
+            scuffs accumulate quickly on door edges and bumpers
+          </li>
+          <li>
+            <strong>US-75 daily micro-abrasion</strong> — one of DFW's busiest commuting
+            corridors generates constant airborne abrasion from construction and heavy
+            commercial traffic
+          </li>
+          <li>
+            <strong>Full-sun UV load</strong> — Plano's open landscape and elevated sun
+            exposure means clear coat oxidizes 30–40% faster than in northern climates;
+            oxidation that would take a decade up north can appear in 5–6 years here
+          </li>
+          <li>
+            <strong>Hard water irrigation</strong> — residential and commercial irrigation
+            in Plano leaves mineral deposits on paint overnight, etching into the clear
+            coat before most owners notice
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          The combination of UV, abrasion, and water etching means most Plano vehicles
+          over two years old have meaningful paint defects — even those that have been
+          "well cared for." A professional inspection under our shop lighting often
+          surprises owners who thought their paint was in good shape.
+        </Typography>
+
+        <Typography variant="h5" id="correction-cost" className="blog-section-title">
+          How Much Does Paint Correction Cost Near Plano?
+        </Typography>
+        <Typography className="blog-paragraph">
+          Paint correction pricing depends on vehicle size, defect severity, and the number
+          of correction stages required:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Single-stage polish</strong> (light swirl removal): approximately
+            $150–$300 for most sedans and crossovers
+          </li>
+          <li>
+            <strong>Two-stage correction</strong> (moderate swirls, water spots,
+            oxidation): approximately $300–$600
+          </li>
+          <li>
+            <strong>Multi-stage correction</strong> (heavy oxidation, deeper scratches,
+            buffer trails): $500–$900+
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          For Plano clients combining paint correction with{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> or{" "}
+          <SvcLink to="/services/vehicle-paint-protection">PPF</SvcLink>, we build
+          bundled packages that deliver the full correction + protection result at better
+          combined value than scheduling them separately. Call or text{" "}
+          <strong>(972) 362-8468</strong> for a free assessment and quote specific to
+          your vehicle.
+        </Typography>
+
+        <Typography variant="h5" id="why-tint-tek-correction" className="blog-section-title">
+          Why Plano Drivers Choose Tint Tek Plus for Paint Correction
+        </Typography>
+        <Typography className="blog-paragraph">
+          <strong>Tint Tek Plus</strong> is one of DFW's most trusted shops for paint
+          correction — not because we only do corrections, but because we understand that
+          correction is the foundation everything else is built on. Every ceramic coating
+          and PPF installation we do starts with a proper inspection of the paint, and
+          every correction we perform is calibrated for what comes next.
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Digital paint thickness measurement before every correction</li>
+          <li>Multi-stage compounding and finishing for true defect removal</li>
+          <li>
+            Correction paired seamlessly with{" "}
+            <SvcLink to="/services/ceramic-coating">Gtechniq ceramic coating</SvcLink>{" "}
+            or{" "}
+            <SvcLink to="/services/vehicle-paint-protection">STEK PPF</SvcLink>
+          </li>
+          <li>Serving Plano, Frisco, Allen, McKinney, Richardson, and all of DFW</li>
+          <li>600+ five-star reviews — owner Ryan personally oversees every job</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Located at 2518 W. Kingsley Rd, Garland, TX — just 15 miles from Plano via US-75.
+          Most correction jobs are completed same-day. Call or text{" "}
+          <strong>972-362-8468</strong> to book your inspection today.
+        </Typography>
+      </>
+    ),
+    faqs: [
+      {
+        question: "What is paint correction and do I need it?",
+        answerText:
+          "Paint correction is machine polishing that physically removes swirl marks, scratches, and oxidation from your clear coat. If your paint looks dull, hazy, or shows swirls in direct sunlight, you need it — especially before ceramic coating or PPF.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Paint correction is machine polishing that physically removes swirl marks,
+            scratches, and oxidation from your clear coat. If your paint looks dull, hazy,
+            or shows swirls in direct sunlight, correction is the right fix — and it's
+            essential before ceramic coating or PPF to ensure those products protect a
+            defect-free surface.
+          </Typography>
+        ),
+      },
+      {
+        question: "Do I need paint correction before ceramic coating?",
+        answerText:
+          "Yes — ceramic coating locks in the current state of your paint, including any existing defects. Coating over swirls or water spots makes them permanently visible under the high-gloss finish. Always correct first, then coat.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes — ceramic coating locks in the current state of your paint, defects
+            included. Coating over swirls or water spots makes them <strong>more visible</strong>,
+            not less, because ceramic dramatically increases gloss. Always correct first,
+            then coat for a flawless result.
+          </Typography>
+        ),
+      },
+      {
+        question: "How much does paint correction cost near Plano, TX?",
+        answerText:
+          "Single-stage polish runs $150–$300 for most vehicles. Full two-stage correction ranges $300–$600, and multi-stage work for heavy defects starts around $500. Call (972) 362-8468 for a free quote specific to your vehicle.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Single-stage polish runs $150–$300 for most vehicles. Full two-stage
+            correction ranges $300–$600, and multi-stage work for heavy defects starts
+            around $500. Bundled correction + ceramic coating or PPF packages are
+            available. Call <strong>(972) 362-8468</strong> for a free quote.
+          </Typography>
+        ),
+      },
+      {
+        question: "How long does paint correction take?",
+        answerText:
+          "A single-stage polish typically takes 3–5 hours. A full two-stage correction on a mid-size vehicle runs 5–8 hours. Multi-stage work on larger vehicles or heavily damaged paint can take a full day.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            A single-stage polish typically takes 3–5 hours. A full two-stage correction
+            on a mid-size vehicle runs 5–8 hours. Multi-stage work on larger vehicles or
+            heavily damaged paint can take a full day. We recommend an early drop-off for
+            correction jobs.
+          </Typography>
+        ),
+      },
+      {
+        question: "Can paint correction remove deep scratches?",
+        answerText:
+          "Paint correction can remove scratches that are confined to the clear coat layer. Scratches that have cut through to the color coat or primer cannot be polished out and require touch-up paint or panel respray.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Paint correction removes scratches confined to the clear coat — which covers
+            the vast majority of everyday swirls and fine scratches. Scratches that have
+            cut through to the color coat or primer cannot be polished out and require
+            touch-up paint or panel respray. We assess depth during our inspection.
+          </Typography>
+        ),
+      },
+    ],
+  },
+  {
     id: 4,
     slug: "paint-protection-film-dallas-texas",
     title: "Why Paint Protection Film (PPF) Is a MUST in Dallas, Texas",
