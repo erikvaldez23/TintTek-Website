@@ -27,6 +27,7 @@ const ROUTES = [
   { path: '/blog/5-reasons-tint-car-windows-dallas-tx', priority: '0.7', changefreq: 'yearly', lastmod: '2025-06-22' },
   { path: '/blog/residential-window-tinting-benefits-dfw', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-24' },
   { path: '/blog/paint-protection-film-dallas-texas', priority: '0.7', changefreq: 'yearly', lastmod: '2025-08-30' },
+  { path: '/blog/paint-correction-plano-tx', priority: '0.7', changefreq: 'yearly', lastmod: '2026-07-06' },
   { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
   // City landing pages
   { path: '/locations/plano', priority: '0.9', changefreq: 'monthly' },
