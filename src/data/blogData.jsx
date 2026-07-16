@@ -911,4 +911,216 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    id: 5,
+    slug: "headlight-restoration-protection-film-garland-tx",
+    title: "Headlight Restoration vs. Headlight Protection Film: What Garland, TX Drivers Need to Know",
+    summary:
+      "Foggy, yellowed headlights aren't just ugly — they're a safety issue. Learn why Texas UV destroys headlight lenses, how restoration brings back clarity, and how Stek protection film keeps them clear for good.",
+    image: "/headlight/headlight2.webp",
+    date: "September 14, 2025",
+    dateIso: "2025-09-14",
+    readTime: "5 min read",
+    category: "Headlight Restoration",
+    categories: ["Car Care", "Headlight Restoration"],
+    featured: false,
+    keywords:
+      "headlight restoration Garland TX, headlight protection film Dallas, foggy headlights fix Texas, Stek headlight film, yellow headlight restoration DFW, headlight tint Garland",
+    toc: [
+      { id: "headlight-problem", title: "Why Headlights Cloud in Texas" },
+      { id: "restoration-process", title: "The Restoration Process" },
+      { id: "protection-film", title: "Headlight Protection Film" },
+      { id: "restoration-vs-replacement", title: "Restoration vs. Replacement" },
+      { id: "combine-protection", title: "Combine Restoration + Protection" },
+      { id: "why-tint-tek", title: "Why Choose Tint Tek Plus" },
+    ],
+    relatedIds: [4, 2],
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          If your headlights have gone from crystal clear to cloudy yellow, you&apos;re not
+          imagining it — and you&apos;re definitely not alone. Across Garland, Dallas, Plano,
+          Frisco, and the rest of DFW, the same brutal sun that fades paint and cracks
+          dashboards is quietly destroying headlight lenses, too. The good news: it&apos;s
+          fixable, and with the right{" "}
+          <SvcLink to="/services/headlight-services">
+            headlight protection
+          </SvcLink>{" "}
+          it doesn&apos;t have to happen again.
+        </Typography>
+
+        <Typography variant="h5" id="headlight-problem" className="blog-section-title">
+          Why Headlights Cloud Up in Texas
+        </Typography>
+        <Typography className="blog-paragraph">
+          Modern headlight lenses aren&apos;t glass — they&apos;re{" "}
+          <strong>polycarbonate plastic</strong> with a thin protective UV coating. That
+          coating is no match for year-round Texas sun. Once it breaks down, the bare
+          plastic underneath starts to oxidize, turning that once-clear lens hazy, yellow,
+          and eventually chalky.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Intense UV exposure breaks down the factory coating</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Highway heat accelerates oxidation of the plastic lens</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Rock chips and road debris create micro-pitting that traps grime</Typography>
+          </Box>
+        </Box>
+        <Typography variant="body1" className="blog-highlight" sx={{ fontStyle: "italic" }}>
+          Beyond looking bad, oxidized lenses can scatter and dim your headlight output by
+          up to 80% — a real nighttime safety hazard on dark DFW backroads.
+        </Typography>
+
+        <Typography variant="h5" id="restoration-process" className="blog-section-title">
+          The Headlight Restoration Process
+        </Typography>
+        <Typography className="blog-paragraph">
+          A proper restoration isn&apos;t a quick wipe-down with a cheap drugstore kit — it&apos;s a
+          multi-step correction process similar to{" "}
+          <SvcLink to="/services/vehicle-paint-correction">paint correction</SvcLink> for
+          your car&apos;s body, applied to the lens itself.
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Wet-sanding to remove the oxidized, damaged outer layer</li>
+          <li>Progressive polishing to restore optical clarity</li>
+          <li>Compounding to eliminate fine haze and micro-scratches</li>
+          <li>A fresh UV-resistant sealant to lock in the clarity</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Done right, restoration brings cloudy, yellowed lenses back to near-factory
+          clarity — restoring both your headlight output and your vehicle&apos;s appearance.
+        </Typography>
+
+        <ServiceCallout
+          title="Headlight & Taillight Services in Garland, TX"
+          description="From restoration to Stek Light Protection Film and custom smoked tints, we cover every headlight need for drivers across Garland, Dallas, Plano, and Frisco."
+          linkTo="/services/headlight-services"
+          linkText="Explore Headlight Services"
+        />
+
+        <Typography variant="h5" id="protection-film" className="blog-section-title">
+          Headlight Protection Film: Permanent Prevention
+        </Typography>
+        <Typography className="blog-paragraph">
+          Restoration fixes the damage that&apos;s already there — but it won&apos;t stop the sun
+          from doing it again. That&apos;s where{" "}
+          <strong>Stek Light Protection Film</strong> comes in. It&apos;s a clear, self-healing
+          urethane film applied directly over the lens that blocks UV rays and absorbs
+          rock chips before they ever reach the plastic.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Blocks UV rays that cause yellowing and oxidation</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Self-healing surface shrugs off light scratches and swirls</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Virtually invisible — no change to light output or color</Typography>
+          </Box>
+        </Box>
+        <Typography className="blog-paragraph">
+          For drivers who want a custom look instead, we also install smoked and tinted
+          headlight and taillight films — popular on everything from daily commuters to
+          Tesla and exotic builds across DFW.
+        </Typography>
+
+        <Typography variant="h5" id="restoration-vs-replacement" className="blog-section-title">
+          Restoration vs. Headlight Replacement
+        </Typography>
+        <Typography className="blog-paragraph">
+          A new OEM headlight assembly can run anywhere from{" "}
+          <strong>$300 to over $1,200</strong> per side on newer vehicles with LED or
+          adaptive lighting — and that&apos;s before installation. Restoration plus protection
+          film typically costs a fraction of that, with results that look just as good.
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Cost:</strong> Restoration ✅ | Replacement ❌
+          </li>
+          <li>
+            <strong>Same-day turnaround:</strong> Restoration ✅ | Replacement ❌ (often back-ordered)
+          </li>
+          <li>
+            <strong>Prevents recurrence:</strong> Restoration + film ✅ | Replacement alone ❌
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Replacement only makes sense if the housing itself is cracked or the internal
+          reflector has failed. For oxidation and clouding — the vast majority of cases we
+          see in DFW — restoration is the smarter call.
+        </Typography>
+
+        <Typography variant="h5" id="combine-protection" className="blog-section-title">
+          Combine Restoration with Full-Vehicle Protection
+        </Typography>
+        <Typography className="blog-paragraph">
+          Headlights are just one part of the battle against Texas sun and road debris.
+          Many of our Garland and Dallas clients pair headlight restoration and protection
+          film with{" "}
+          <SvcLink to="/services/vehicle-paint-protection">
+            front-end Paint Protection Film
+          </SvcLink>{" "}
+          and{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> for complete,
+          long-term protection — keeping the whole front of the vehicle looking new for
+          years instead of months.
+        </Typography>
+
+        <Typography variant="h5" id="why-tint-tek" className="blog-section-title">
+          Why Choose Tint Tek Plus for Headlight Services?
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>Multi-step restoration that actually removes oxidation, not just masks it</li>
+          <li>Premium Stek Light Protection Film with self-healing technology</li>
+          <li>Custom smoked and tinted headlight/taillight options</li>
+          <li>Trusted by drivers across Garland, Dallas, Plano, Frisco, and Richardson</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Located at 2518 W. Kingsley Rd, Garland, TX. Call or text{" "}
+          <strong>972-362-8468</strong> to get your headlights restored and protected
+          before another Texas summer takes its toll.
+        </Typography>
+      </>
+    ),
+    faqs: [
+      {
+        question: "Why do headlights turn yellow in Texas?",
+        answerText: "Intense UV exposure breaks down the factory protective coating on polycarbonate headlight lenses, causing the plastic underneath to oxidize and turn yellow or hazy.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Intense <strong>UV exposure</strong> breaks down the factory protective coating on polycarbonate headlight lenses, causing the plastic underneath to oxidize and turn yellow or hazy — especially common after a few Texas summers.
+          </Typography>
+        ),
+      },
+      {
+        question: "Is headlight restoration permanent?",
+        answerText: "Restoration removes existing oxidation and restores clarity, but UV exposure will eventually cause it to return unless the lens is protected with a UV-blocking film.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Restoration removes existing oxidation and restores clarity, but UV exposure will eventually cause it to return — that&apos;s why we recommend pairing restoration with <strong>Stek Light Protection Film</strong> to block UV permanently.
+          </Typography>
+        ),
+      },
+      {
+        question: "Does headlight protection film affect brightness?",
+        answerText: "No, quality protection film like Stek is optically clear and virtually invisible, with no noticeable impact on light output or color.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            No — quality protection film like <strong>Stek</strong> is optically clear and virtually invisible, with no noticeable impact on light output or color temperature.
+          </Typography>
+        ),
+      },
+    ],
+  },
 ];
