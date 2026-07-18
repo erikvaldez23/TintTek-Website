@@ -1129,7 +1129,7 @@ export const blogPosts = [
     title: "Headlight Tinting in Plano, TX: STEK Protection Film vs. Smoked Vinyl Tint",
     summary:
       "Smoked headlight tint, STEK Light Protection Film, or both? Here’s how Plano, TX drivers can protect expensive LED headlight assemblies while staying Texas-legal.",
-    image: "/headlight/headlight2.webp",
+    image: "/headlight/taillight3.webp",
     date: "September 14, 2025",
     dateIso: "2025-09-14",
     readTime: "5 min read",
