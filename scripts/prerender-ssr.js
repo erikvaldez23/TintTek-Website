@@ -40,6 +40,7 @@ const ROUTES = [
   '/blog/residential-window-tinting-benefits-dfw',
   '/blog/paint-protection-film-dallas-texas',
   '/blog/headlight-restoration-protection-film-garland-tx',
+  '/blog/headlight-tinting-protection-plano-tx',
   '/privacy-policy',
   // City landing pages
   '/locations/plano',
