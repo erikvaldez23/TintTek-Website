@@ -1130,7 +1130,7 @@ export const blogPosts = [
     summary:
       "Smoked headlight tint, STEK Light Protection Film, or both? Here’s how Plano, TX drivers can protect expensive LED headlight assemblies while staying Texas-legal.",
     image: "/headlight/taillight3.webp",
-    date: "September 14, 2025",
+    date: "July 18, 2026",
     dateIso: "2025-09-14",
     readTime: "5 min read",
     category: "Headlight & Taillight",
