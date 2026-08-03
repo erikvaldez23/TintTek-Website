@@ -129,6 +129,12 @@ const handleScrollTop = () => {
   }
 };
 
+// Map lowercase city display name -> slug, derived from the cities data itself
+// so it stays correct as locations are added/removed.
+const nameToSlug = Object.fromEntries(
+  Object.values(cities).map((c) => [c.name.toLowerCase(), c.slug])
+);
+
 export default function CityPage() {
   const { city: citySlug } = useParams();
   const city = cities[citySlug];
@@ -629,6 +635,77 @@ export default function CityPage() {
               </Box>
             </motion.div>
           </Box>
+
+          {/* Nearby Areas — cross-links location pages to each other */}
+          {city.nearbyAreas?.length > 0 && (
+            <Box sx={{ py: { xs: 4, md: 6 }, textAlign: "center" }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "#2794d2",
+                  fontSize: "0.9rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  mb: 2,
+                  display: "block",
+                }}
+              >
+                ALSO SERVING NEARBY AREAS
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  gap: 1.5,
+                }}
+              >
+                {city.nearbyAreas.map((area) => {
+                  const slug = nameToSlug[area.toLowerCase()];
+                  return slug ? (
+                    <Button
+                      key={area}
+                      component={RouterLink}
+                      to={`/locations/${slug}`}
+                      onClick={handleScrollTop}
+                      sx={{
+                        color: "rgba(255,255,255,0.85)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        borderRadius: 999,
+                        px: 2.5,
+                        py: 0.75,
+                        textTransform: "none",
+                        fontWeight: 600,
+                        "&:hover": {
+                          borderColor: "#2794d2",
+                          color: "#2794d2",
+                          backgroundColor: "rgba(39,148,210,0.08)",
+                        },
+                      }}
+                    >
+                      Window Tinting in {area}, TX
+                    </Button>
+                  ) : (
+                    <Typography
+                      key={area}
+                      component="span"
+                      sx={{
+                        color: "rgba(255,255,255,0.5)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        borderRadius: 999,
+                        px: 2.5,
+                        py: 0.75,
+                        fontWeight: 600,
+                        fontSize: "0.95rem",
+                      }}
+                    >
+                      {area}, TX
+                    </Typography>
+                  );
+                })}
+              </Box>
+            </Box>
+          )}
 
           <Contact city={city} />
         </Container>
