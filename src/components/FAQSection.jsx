@@ -330,14 +330,17 @@ const faqConfig = {
   ],
 };
 
-const FAQSection = () => {
+const FAQSection = ({ faqsOverride, titleOverride, colorsOverride } = {}) => {
   const location = useLocation();
   const path = location.pathname.split("/").pop();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const faqs = faqConfig[path] || [];
-  const colors = colorSchemes[path] || { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY };
+  const faqs = faqsOverride || faqConfig[path] || [];
+  const colors =
+    colorsOverride || colorSchemes[path] || { primary: ACCENT_PRIMARY, secondary: ACCENT_SECONDARY };
+  const heading =
+    titleOverride || `Frequently Asked Questions ${serviceTitles[path] ? `About ${serviceTitles[path]}` : ""}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -368,7 +371,7 @@ const FAQSection = () => {
             letterSpacing: 1.2,
           }}
         >
-          Frequently Asked Questions {serviceTitles[path] ? `About ${serviceTitles[path]}` : ""}
+          {heading}
         </Typography>
 
         {faqs.length > 0 ? (

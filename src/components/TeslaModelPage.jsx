@@ -7,9 +7,6 @@ import {
   Container,
   Grid,
   Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   GlobalStyles,
   Table,
   TableBody,
@@ -21,11 +18,12 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { FaCarSide, FaSun, FaShieldAlt } from "react-icons/fa";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { motion } from "framer-motion";
 import SEO from "./SEO";
 import BusinessInfo from "./hero/BusinessInfo";
+import TeslaCTA from "./TeslaCTA";
+import FAQSection from "./FAQSection";
 import { teslaModels } from "../data/teslaModelData";
 
 const SubContact = lazy(() => import("./SubContact"));
@@ -144,47 +142,59 @@ export default function TeslaModelPage() {
       />
 
       <Box className="TeslaModelRoot" sx={{ minHeight: "100vh", background: GRADIENT }}>
-        {/* ── Hero ── */}
-        <Box sx={{ pt: { xs: 14, md: 18 }, pb: { xs: 6, md: 10 }, textAlign: "center", px: 2 }}>
+        {/* ── Hero (matches ServicesPage hero formatting) ── */}
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            pt: 10,
+            minHeight: { xs: "40vh", md: "40vh" },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            px: { xs: 1, sm: 2, md: 2 },
+          }}
+        >
           <BusinessInfo />
-          <Box
-            sx={{
-              display: "inline-block",
-              px: 2.5,
-              py: 0.75,
-              borderRadius: "100px",
-              border: "1px solid rgba(39,148,210,0.4)",
-              background: "rgba(39,148,210,0.08)",
-              mb: 3,
-            }}
-          >
-            <Typography sx={{ color: "#2794d2", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-              ⚡ {model.years} · Garland, TX · DFW
-            </Typography>
-          </Box>
-
           <Typography
+            variant="h1"
             component="h1"
             sx={{
-              color: "#fff",
-              fontWeight: 900,
-              fontSize: { xs: "2rem", sm: "2.8rem", md: "3.8rem" },
-              lineHeight: 1.15,
               mb: 2,
-              letterSpacing: "-0.5px",
+              fontWeight: "bold",
+              color: "#fff",
+              textAlign: "center",
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "3.5rem" },
             }}
           >
             {model.h1}
           </Typography>
-
           <Typography
+            variant="body1"
             sx={{
-              color: "rgba(255,255,255,0.7)",
-              fontSize: { xs: "1rem", md: "1.25rem" },
+              mb: 2,
+              fontWeight: "bold",
+              color: "rgba(255,255,255,0.9)",
+              textAlign: "center",
+              fontSize: { xs: "1rem", sm: "1rem", md: "1.3rem", lg: "1.5rem" },
+              position: "relative",
+              display: "inline-block",
               maxWidth: 700,
               mx: "auto",
-              mb: 5,
-              lineHeight: 1.6,
+              "&::after": {
+                content: '""',
+                display: "block",
+                width: "80px",
+                height: "5px",
+                backgroundColor: "#2794d2",
+                margin: "6px auto 0",
+                borderRadius: "2px",
+                boxShadow:
+                  "0 0 8px rgba(39,148,210,0.7), 0 0 16px rgba(39,148,210,0.6)",
+                mt: 4,
+              },
             }}
           >
             {model.heroSubtitle}
@@ -199,7 +209,7 @@ export default function TeslaModelPage() {
                 borderRadius: "100px",
                 background: "rgba(255,180,0,0.1)",
                 border: "1px solid rgba(255,180,0,0.3)",
-                mb: 4,
+                mt: 4,
               }}
             >
               <Typography sx={{ color: "#ffd700", fontWeight: 700, fontSize: "0.85rem" }}>
@@ -207,44 +217,10 @@ export default function TeslaModelPage() {
               </Typography>
             </Box>
           )}
-
-          <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
-            <Button
-              component="a"
-              href="tel:+19723628468"
-              variant="contained"
-              size="large"
-              sx={{
-                backgroundColor: "#2794d2",
-                color: "#fff",
-                fontWeight: 700,
-                borderRadius: "100px",
-                px: 4,
-                py: 1.5,
-                "&:hover": { backgroundColor: "#1a7bb0" },
-              }}
-            >
-              Call (972) 362-8468
-            </Button>
-            <Button
-              component={RouterLink}
-              to={model.relatedService}
-              variant="outlined"
-              size="large"
-              sx={{
-                borderColor: "rgba(255,255,255,0.3)",
-                color: "#fff",
-                fontWeight: 700,
-                borderRadius: "100px",
-                px: 4,
-                py: 1.5,
-                "&:hover": { borderColor: "#2794d2", color: "#2794d2" },
-              }}
-            >
-              View Tesla Tinting
-            </Button>
-          </Box>
         </Box>
+
+        {/* Above-the-fold CTA — matches how ServicesPage follows its hero with TeslaCTA */}
+        <TeslaCTA />
 
         {/* ── Intro ── */}
         <Container maxWidth="md" sx={{ pb: { xs: 6, md: 8 } }}>
@@ -619,46 +595,12 @@ export default function TeslaModelPage() {
           </Container>
         </InViewMount>
 
-        {/* ── FAQ ── */}
+        {/* ── FAQ (shared FAQSection component — matches ServicesPage FAQ formatting) ── */}
         <InViewMount>
-          <Box sx={{ background: "rgba(255,255,255,0.02)", py: { xs: 8, md: 12 } }}>
-            <Container maxWidth="lg">
-              <Typography
-                component="h2"
-                sx={{ color: "#fff", fontWeight: 800, fontSize: { xs: "1.8rem", md: "2.4rem" }, mb: 6, textAlign: "center" }}
-              >
-                {model.displayName} Tinting — FAQs
-              </Typography>
-              {model.faqs.map((faq, i) => (
-                <Accordion
-                  key={i}
-                  disableGutters
-                  square={false}
-                  sx={{
-                    my: 2,
-                    borderRadius: "14px !important",
-                    overflow: "hidden",
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    boxShadow: "none",
-                    "&::before": { display: "none" },
-                    "&:hover": { border: "1px solid rgba(39,148,210,0.3)" },
-                  }}
-                >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />} sx={{ px: 3, py: 1.5 }}>
-                    <Typography sx={{ color: "#fff", fontWeight: 700, fontSize: { xs: "1rem", md: "1.1rem" } }}>
-                      {faq.question}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails sx={{ px: 3, pb: 2.5 }}>
-                    <Typography sx={{ color: "rgba(255,255,255,0.8)", fontSize: "0.97rem", lineHeight: 1.75 }}>
-                      {faq.answer}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
-            </Container>
-          </Box>
+          <FAQSection
+            faqsOverride={model.faqs}
+            titleOverride={`${model.displayName} Tinting — Frequently Asked Questions`}
+          />
         </InViewMount>
 
         {/* ── Related Tesla Models ── */}
@@ -697,56 +639,7 @@ export default function TeslaModelPage() {
           </Box>
         </Container>
 
-        {/* ── Bottom CTA ── */}
-        <Box sx={{ py: { xs: 8, md: 10 }, textAlign: "center", background: "rgba(39,148,210,0.05)", borderTop: "1px solid rgba(39,148,210,0.1)" }}>
-          <Container maxWidth="sm">
-            <Typography sx={{ color: "#fff", fontWeight: 900, fontSize: { xs: "1.8rem", md: "2.5rem" }, mb: 2, lineHeight: 1.2 }}>
-              Book Your {model.name} Tint Today
-            </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.6)", mb: 4, fontSize: "1rem" }}>
-              2518 W Kingsley Rd, Garland, TX 75041 · Mon–Sat 9am–6pm
-            </Typography>
-            <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button
-                component="a"
-                href="tel:+19723628468"
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: "#2794d2",
-                  color: "#fff",
-                  fontWeight: 700,
-                  borderRadius: "100px",
-                  px: 5,
-                  py: 1.75,
-                  fontSize: "1.05rem",
-                  "&:hover": { backgroundColor: "#1a7bb0" },
-                }}
-              >
-                (972) 362-8468
-              </Button>
-              <Button
-                component={RouterLink}
-                to="/support"
-                variant="outlined"
-                size="large"
-                sx={{
-                  borderColor: "rgba(255,255,255,0.3)",
-                  color: "#fff",
-                  fontWeight: 700,
-                  borderRadius: "100px",
-                  px: 5,
-                  py: 1.75,
-                  fontSize: "1.05rem",
-                  "&:hover": { borderColor: "#2794d2", color: "#2794d2" },
-                }}
-              >
-                Get a Free Quote
-              </Button>
-            </Box>
-          </Container>
-        </Box>
-
+        {/* Final CTA + footer stack — matches ServicesPage's BlogCTA → CallToAction → Contact → QuickLinks → Footer order */}
         <Suspense fallback={null}>
           <BlogCTA />
           <SubCTA />
