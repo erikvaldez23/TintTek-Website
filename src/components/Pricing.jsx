@@ -18,11 +18,36 @@ const pricingConfig = {
   "vehicle-window-tinting": {
     title: "Vehicle Window Tinting Pricing",
     pricingData: {
-      COUPE: { CLASSIC: "$189.00", CTX: "$289.00", PINNACLE: "$389.00" },
-      SEDAN: { CLASSIC: "$199.00", CTX: "$329.00", PINNACLE: "$529.00" },
-      TRUCK: { CLASSIC: "$249.00", CTX: "$349.00", PINNACLE: "$549.00" },
-      "FULL SUV": { CLASSIC: "$289.00", CTX: "$389.00", PINNACLE: "$589.00" },
-      "2 WINDOWS": { CLASSIC: "$85.00", CTX: "$119.00", PINNACLE: "$149.00" },
+      COUPE: {
+        CLASSIC: "$199.00",
+        CTX: "$289.00",
+        PINNACLE: "$389.00",
+        STRATOS: "$689.00",
+      },
+      SEDAN: {
+        CLASSIC: "$229.00",
+        CTX: "$329.00",
+        PINNACLE: "$529.00",
+        STRATOS: "$729.00",
+      },
+      TRUCK: {
+        CLASSIC: "$249.00",
+        CTX: "$349.00",
+        PINNACLE: "$549.00",
+        STRATOS: "$769.00",
+      },
+      "FULL SUV": {
+        CLASSIC: "$289.00",
+        CTX: "$389.00",
+        PINNACLE: "$589.00",
+        STRATOS: "$849.00",
+      },
+      "2 WINDOWS": {
+        CLASSIC: "$85.00",
+        CTX: "$119.00",
+        PINNACLE: "$149.00",
+        STRATOS: "$199.00",
+      },
     },
     pricingOptions: ["COUPE", "SEDAN", "TRUCK", "FULL SUV", "2 WINDOWS"],
     descriptions: {
@@ -40,6 +65,11 @@ const pricingConfig = {
         "Nano-ceramic construction",
         "Best heat reduction",
         "Superior clarity & comfort",
+      ],
+      STRATOS: [
+        "Flagship nano-ceramic tint",
+        "Maximum heat & IR rejection",
+        "Darkest clarity-first finish",
       ],
     },
   },

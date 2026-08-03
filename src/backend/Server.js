@@ -185,31 +185,37 @@ const tintPricing = {
     classic: "$249",
     ctx: "$349",
     pinnacle: "$549",
+    stratos: "$769",
   },
   full_suv: {
     classic: "$289",
     ctx: "$389",
     pinnacle: "$589",
+    stratos: "$849",
   },
   mid_suv: {
     classic: "$249",
     ctx: "$349",
     pinnacle: "$549",
+    stratos: "$769",
   },
   sedan: {
-    classic: "$199",
+    classic: "$229",
     ctx: "$329",
     pinnacle: "$529",
+    stratos: "$729",
   },
   coupe: {
-    classic: "$189",
+    classic: "$199",
     ctx: "$289",
     pinnacle: "$389",
+    stratos: "$689",
   },
   two_windows: {
     classic: "$85",
     ctx: "$119",
     pinnacle: "$149",
+    stratos: "$199",
   },
 };
 
@@ -309,6 +315,7 @@ const generateAIResponse = async (userMessage, history = []) => {
 
           if (prices.ctx) lines.push(`• Llumar CTX: ${prices.ctx}`);
           if (prices.pinnacle) lines.push(`• F1 Pinnacle Series:: ${prices.pinnacle}`);
+          if (prices.stratos) lines.push(`• Llumar Stratos: ${prices.stratos}`);
 
           // If somehow nothing is available, fall back to a friendly note
           const body = lines.length
