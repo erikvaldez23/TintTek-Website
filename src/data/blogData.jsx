@@ -1124,430 +1124,11 @@ export const blogPosts = [
     ],
   },
   {
-    id: 7,
-    slug: "ceramic-coating-frisco-tx",
-    title: "Ceramic Coating in Frisco, TX: Is Gtechniq Crystal Serum Worth It?",
-    summary:
-      "Frisco's blazing summers and highway debris attack your car's finish every day. Discover why Gtechniq Crystal Serum ceramic coating is the smartest long-term paint protection upgrade for Frisco, TX drivers.",
-    image: "/ceramic/application.webp",
-    date: "September 14, 2026",
-    dateIso: "2026-09-14",
-    readTime: "6 min read",
-    category: "Ceramic Coating",
-    categories: ["Ceramic Coating", "Car Care"],
-    featured: false,
-    keywords:
-      "ceramic coating Frisco TX, Gtechniq Crystal Serum Frisco, ceramic coating Dallas, paint protection Frisco TX, car ceramic coating DFW, nano ceramic coating Frisco, best ceramic coating North Texas",
-    toc: [
-      { id: "what-is-ceramic-coating", title: "What Is Ceramic Coating?" },
-      { id: "frisco-paint-challenges", title: "Why Frisco Is Hard on Paint" },
-      { id: "gtechniq-crystal-serum", title: "Gtechniq Crystal Serum Ultra" },
-      { id: "paint-correction-first", title: "Paint Correction Before Coating" },
-      { id: "how-long-it-lasts", title: "How Long Does It Last?" },
-      { id: "ceramic-vs-wax-ppf", title: "Ceramic vs. Wax vs. PPF" },
-      { id: "is-it-worth-it", title: "Is Ceramic Coating Worth It?" },
-      { id: "why-tint-tek", title: "Why Choose Tint Tek Plus" },
-    ],
-    relatedIds: [4, 2],
-    content: (
-      <>
-        <Typography className="blog-paragraph">
-          If you drive in <strong>Frisco, Texas</strong>, your car's paint is under
-          constant assault. Between the relentless North Texas sun, construction
-          dust off the <strong>Dallas North Tollway</strong>, and bug splatter
-          from long stretches of SH-121, even a brand-new finish starts looking
-          dull within a season — unless it's properly protected.{" "}
-          <SvcLink to="/services/ceramic-coating">Ceramic coating</SvcLink> is
-          the solution serious car owners in Frisco are turning to, and Gtechniq
-          Crystal Serum Ultra is the product that puts the rest to shame.
-        </Typography>
-        <Typography className="blog-paragraph">
-          Here's everything you need to know about ceramic coating for your
-          vehicle in Frisco — how it works, what to expect, and why it's one of
-          the smartest investments you can make for your car's long-term value
-          and appearance.
-        </Typography>
-
-        <Typography variant="h5" id="what-is-ceramic-coating" className="blog-section-title">
-          What Is Ceramic Coating?
-        </Typography>
-        <Typography className="blog-paragraph">
-          Ceramic coating is a <strong>liquid polymer</strong> that chemically
-          bonds to your vehicle's clear coat, creating a semi-permanent,
-          ultra-hard protective layer. Unlike wax or sealant — which sit on top
-          of the paint and wash away over time — ceramic coating actually fuses
-          with the clear coat at a molecular level, becoming part of the surface
-          itself.
-        </Typography>
-        <Typography className="blog-paragraph">
-          The result is a surface that's significantly harder, more hydrophobic
-          (water-repelling), and more resistant to UV degradation, chemical
-          etching, and environmental contamination than bare paint alone. Think
-          of it as{" "}
-          <span className="highlight">
-            a permanent, invisible shield that makes your car easier to clean
-            and impossible to ignore
-          </span>
-          .
-        </Typography>
-        <Box className="benefit-list">
-          <Box className="benefit-item">
-            <Box className="benefit-icon">✓</Box>
-            <Typography>Chemical bond to clear coat — not a surface layer that washes off</Typography>
-          </Box>
-          <Box className="benefit-item">
-            <Box className="benefit-icon">✓</Box>
-            <Typography>Extreme hydrophobic surface — water beads and sheets off</Typography>
-          </Box>
-          <Box className="benefit-item">
-            <Box className="benefit-icon">✓</Box>
-            <Typography>UV protection that slows oxidation and color fade</Typography>
-          </Box>
-          <Box className="benefit-item">
-            <Box className="benefit-icon">✓</Box>
-            <Typography>Resistance to bird droppings, bug splatter, and road grime etching</Typography>
-          </Box>
-        </Box>
-
-        <Typography variant="h5" id="frisco-paint-challenges" className="blog-section-title">
-          Why Frisco, TX Is One of the Hardest Places on Vehicle Paint
-        </Typography>
-        <Typography className="blog-paragraph">
-          Frisco's explosive growth has made it one of the most road-construction-dense
-          cities in the entire country. That means your finish is constantly
-          exposed to hazards that most cities don't deal with at the same scale:
-        </Typography>
-        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
-          1. Year-Round UV Exposure
-        </Typography>
-        <Typography className="blog-paragraph">
-          Frisco averages over <strong>230 sunny days per year</strong>, and
-          summer temperatures routinely exceed 100°F. Without UV protection,
-          clear coat oxidizes, dulls, and eventually begins to peel — a process
-          ceramic coating dramatically slows by absorbing and reflecting UV
-          energy before it can penetrate the paint.
-        </Typography>
-        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
-          2. Construction Dust and Chemical Fallout
-        </Typography>
-        <Typography className="blog-paragraph">
-          The <strong>Dallas North Tollway, SH-121, and Preston Road</strong>{" "}
-          corridors in Frisco are nearly always under expansion. Construction
-          zones kick up concrete dust, metal shavings, and chemical overspray
-          that bond to unprotected paint — creating surface contamination that
-          even a thorough wash can't fully remove. Ceramic coating's hard
-          surface makes it far harder for these contaminants to stick.
-        </Typography>
-        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
-          3. Water Spots and Mineral Deposits
-        </Typography>
-        <Typography className="blog-paragraph">
-          Frisco's hard municipal water leaves mineral deposits every time water
-          evaporates on a hot panel. On bare paint or waxed paint, these etch
-          permanently over time. Ceramic coating's hydrophobic surface causes
-          water to sheet off before it can evaporate, massively reducing water
-          spot formation.
-        </Typography>
-
-        <Typography variant="h5" id="gtechniq-crystal-serum" className="blog-section-title">
-          Gtechniq Crystal Serum Ultra: The Professional Standard
-        </Typography>
-        <Typography className="blog-paragraph">
-          Not all ceramic coatings are created equal, and the professional-grade
-          market is dominated by a handful of truly elite products.{" "}
-          <strong>Gtechniq Crystal Serum Ultra</strong> sits at the top of that
-          list — a dual-layer system engineered for maximum hardness, clarity,
-          and longevity.
-        </Typography>
-        <Box className="feature-box">
-          <Box className="feature-item">
-            <Typography variant="h6">10H</Typography>
-            <Typography variant="body2">Surface Hardness</Typography>
-          </Box>
-          <Box className="feature-item">
-            <Typography variant="h6">9 yrs</Typography>
-            <Typography variant="body2">Warranty Backed</Typography>
-          </Box>
-          <Box className="feature-item">
-            <Typography variant="h6">110°</Typography>
-            <Typography variant="body2">Water Contact Angle</Typography>
-          </Box>
-        </Box>
-        <Typography className="blog-paragraph">
-          Crystal Serum Ultra uses a two-layer application: the base layer
-          penetrates deep into the clear coat pores, while the top layer creates
-          a slick, ultra-hard barrier that resists swirl marks, light scratches,
-          and chemical attack. It's the same system trusted by exotic car
-          dealerships, collector car owners, and professional detailers
-          worldwide.
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>
-            <strong>Exceptional scratch resistance</strong> — measurably harder
-            than standard ceramic coatings
-          </li>
-          <li>
-            <strong>Extreme hydrophobicity</strong> — contact angles above 110°
-            cause water to bead and slide off even at parking-lot speeds
-          </li>
-          <li>
-            <strong>Chemical resistance</strong> — tolerates pH extremes from
-            harsh cleaners, bird acid, and tree sap
-          </li>
-          <li>
-            <strong>9-year warranty</strong> when installed by an authorized
-            Gtechniq detailer like Tint Tek Plus
-          </li>
-        </Box>
-        <Typography variant="body1" className="blog-highlight" sx={{ fontStyle: "italic" }}>
-          Crystal Serum Ultra is not available to consumers for DIY application —
-          it must be installed by an authorized Gtechniq-certified professional
-          to qualify for the manufacturer warranty.
-        </Typography>
-
-        <ServiceCallout
-          title="Ceramic Coating in Frisco & DFW"
-          description="Gtechniq Crystal Serum Ultra applied by certified professionals at our Garland, TX location. Serving Frisco, Plano, Allen, McKinney, and all of DFW. 9-year warranty backed by Gtechniq."
-          linkTo="/services/ceramic-coating"
-          linkText="Explore Ceramic Coating"
-        />
-
-        <Typography variant="h5" id="paint-correction-first" className="blog-section-title">
-          Paint Correction Before Ceramic Coating — Non-Negotiable
-        </Typography>
-        <Typography className="blog-paragraph">
-          Here's what most shops won't tell you upfront: ceramic coating locks
-          in whatever's already on your paint. If your clear coat has swirl
-          marks from automated car washes, water spot etching from years of
-          Frisco summers, or light scratches from driving behind dump trucks on
-          SH-121 — the coating preserves all of that, permanently, under a
-          hard shell you can't easily sand out.
-        </Typography>
-        <Typography className="blog-paragraph">
-          That's why professional ceramic coating installations at Tint Tek Plus
-          always begin with a thorough{" "}
-          <SvcLink to="/services/vehicle-paint-correction">paint correction</SvcLink>{" "}
-          assessment. Depending on your paint's condition, we may recommend a
-          one-step enhancement polish or a multi-stage correction before
-          applying Crystal Serum Ultra — so the coating seals in a flawless
-          finish, not years of accumulated damage.
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>Paint decontamination (iron remover, clay bar)</li>
-          <li>Surface inspection under high-intensity lighting</li>
-          <li>Machine polishing to remove swirls, haze, and oxidation</li>
-          <li>IPA wipe-down to remove all polish oils before coating</li>
-        </Box>
-
-        <Typography variant="h5" id="how-long-it-lasts" className="blog-section-title">
-          How Long Does Ceramic Coating Last?
-        </Typography>
-        <Typography className="blog-paragraph">
-          Consumer-grade ceramic coatings sold in auto parts stores typically
-          last <strong>1–2 years</strong>, if that. Professional coatings like
-          Gtechniq Crystal Serum Ultra — applied by certified installers —
-          routinely last <strong>5–9+ years</strong> with proper maintenance.
-          The difference is coating thickness, product chemistry, and most
-          importantly, surface preparation.
-        </Typography>
-        <Typography className="blog-paragraph">
-          To maximize longevity in Frisco's climate, we recommend:
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>Hand washing with a pH-neutral soap and two-bucket method</li>
-          <li>Avoiding automated tunnel car washes with abrasive brushes</li>
-          <li>Annual inspection washes at a professional detailer</li>
-          <li>
-            Pairing the coating with{" "}
-            <SvcLink to="/services/vehicle-paint-protection">PPF</SvcLink> on
-            high-impact zones like the front bumper and hood for maximum
-            protection
-          </li>
-        </Box>
-
-        <Typography variant="h5" id="ceramic-vs-wax-ppf" className="blog-section-title">
-          Ceramic Coating vs. Wax vs. Paint Protection Film
-        </Typography>
-        <Typography className="blog-paragraph">
-          Frisco car owners often ask how ceramic coating compares to their
-          existing wax routine or to{" "}
-          <SvcLink to="/services/vehicle-paint-protection">
-            paint protection film (PPF)
-          </SvcLink>
-          . The short answer: they each do different things, and the best
-          setups combine them.
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>
-            <strong>Wax:</strong> Lasts weeks to months. Provides minor UV
-            protection and gloss. No chemical resistance, no impact protection.
-          </li>
-          <li>
-            <strong>Ceramic coating:</strong> Lasts years. Chemically bonds to
-            clear coat. Strong UV resistance, hydrophobicity, and chemical
-            resistance. Does{" "}
-            <em>not</em> stop rock chips or deep scratches.
-          </li>
-          <li>
-            <strong>PPF (Paint Protection Film):</strong> Physically absorbs
-            rock chips, road debris, and light impacts. Self-healing. Does not
-            add hydrophobic gloss on its own. Often paired with ceramic on top.
-          </li>
-        </Box>
-        <Typography variant="body1" className="blog-highlight" sx={{ fontStyle: "italic" }}>
-          Our most popular combo for Frisco drivers: STEK PPF on the front end
-          to stop rock chips, plus Gtechniq Crystal Serum Ultra over the full
-          vehicle for UV protection, gloss, and easy maintenance.
-        </Typography>
-
-        <Typography variant="h5" id="is-it-worth-it" className="blog-section-title">
-          Is Ceramic Coating Worth It in Frisco, TX?
-        </Typography>
-        <Typography className="blog-paragraph">
-          For most Frisco drivers — especially those with newer vehicles,
-          luxury or performance cars, or vehicles they plan to keep for more
-          than a few years — the answer is an emphatic yes. Here's why the
-          math works:
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>
-            <strong>Reduced detailing costs</strong> — a ceramic-coated car
-            stays cleaner longer and needs far less effort to wash; you spend
-            less time and money at the detailer every year
-          </li>
-          <li>
-            <strong>Protected resale value</strong> — paint in excellent
-            condition commands a measurably higher trade-in and private-party
-            price; Frisco's active luxury car market means that premium is real
-          </li>
-          <li>
-            <strong>Prevented damage costs</strong> — UV oxidation, chemical
-            etching, and water spot correction that could run hundreds or
-            thousands of dollars in paint correction are largely prevented
-          </li>
-          <li>
-            <strong>Years of protection in one appointment</strong> — instead
-            of waxing every season, one professional ceramic coating installation
-            protects your car for the better part of a decade
-          </li>
-        </Box>
-
-        <Typography variant="h5" id="why-tint-tek" className="blog-section-title">
-          Why Choose Tint Tek Plus for Ceramic Coating in Frisco?
-        </Typography>
-        <Typography className="blog-paragraph">
-          At <span className="highlight">Tint Tek Plus</span>, we've earned the
-          trust of drivers across{" "}
-          <SvcLink to="/locations/frisco">Frisco</SvcLink>, Plano, Allen,
-          McKinney, and all of DFW because we do things right — not fast.
-          Every ceramic coating appointment begins with a thorough paint
-          inspection and honest recommendation. We won't coat a car that needs
-          correction first without telling you, and we won't oversell a coating
-          level your car doesn't need.
-        </Typography>
-        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
-          <li>
-            <strong>Gtechniq-authorized installer</strong> — manufacturer
-            9-year warranty available on Crystal Serum Ultra
-          </li>
-          <li>Paint correction services available on-site before coating</li>
-          <li>
-            PPF and{" "}
-            <SvcLink to="/services/vehicle-window-tinting">
-              window tinting
-            </SvcLink>{" "}
-            available in the same appointment for complete protection
-          </li>
-          <li>
-            Trusted by BMW, Mercedes, Porsche, Tesla, and exotic car owners
-            across North Texas
-          </li>
-        </Box>
-        <Typography className="blog-paragraph">
-          Located at <strong>2518 W. Kingsley Rd, Garland, TX</strong> —
-          serving Frisco, Plano, Allen, McKinney, Richardson, and all of DFW.
-          Call or text <strong>972-362-8468</strong> to book your ceramic
-          coating consultation today.
-        </Typography>
-      </>
-    ),
-    faqs: [
-      {
-        question: "How much does ceramic coating cost in Frisco, TX?",
-        answerText:
-          "Professional ceramic coating in Frisco typically ranges from $800 to $2,500+ depending on vehicle size, paint condition, and the coating tier chosen. Gtechniq Crystal Serum Ultra is a premium product; pricing reflects the materials and the proper prep required.",
-        answer: (
-          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            Professional ceramic coating in Frisco typically ranges from{" "}
-            <strong>$800 to $2,500+</strong> depending on vehicle size, paint
-            condition, and the coating tier. Gtechniq Crystal Serum Ultra is a
-            premium product; the price reflects both the materials and the
-            proper surface preparation required for a long-lasting result.
-          </Typography>
-        ),
-      },
-      {
-        question: "Does ceramic coating prevent rock chips?",
-        answerText:
-          "No — ceramic coating adds hardness and chemical resistance but cannot absorb the physical impact of rock chips or flying debris. For rock chip protection, you need Paint Protection Film (PPF). Many clients combine both: PPF on the front end and ceramic coating over the full vehicle.",
-        answer: (
-          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            No — ceramic coating adds hardness and chemical resistance but
-            cannot absorb the physical impact of rock chips. For rock chip
-            protection you need{" "}
-            <strong>Paint Protection Film (PPF)</strong>. Many clients combine
-            both: PPF on the front end, ceramic coating over the full vehicle.
-          </Typography>
-        ),
-      },
-      {
-        question: "Can ceramic coating be applied to a new car?",
-        answerText:
-          "Yes — in fact, a new car is the ideal candidate. Even factory paint can have light swirls from dealer preparation, so a quick one-step polish followed by ceramic coating seals in a perfect finish from day one.",
-        answer: (
-          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            Yes — a new car is actually the ideal candidate. Even factory paint
-            can have light swirls from dealer prep, so a quick one-step polish
-            followed by ceramic coating seals in a{" "}
-            <strong>perfect finish from day one</strong>.
-          </Typography>
-        ),
-      },
-      {
-        question: "How long does Gtechniq Crystal Serum Ultra last?",
-        answerText:
-          "Gtechniq Crystal Serum Ultra is backed by a 9-year manufacturer warranty when installed by an authorized detailer. With proper maintenance — hand washing with pH-neutral soap and avoiding harsh tunnel washes — it routinely protects vehicles for the full warranty period.",
-        answer: (
-          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            Gtechniq Crystal Serum Ultra carries a{" "}
-            <strong>9-year manufacturer warranty</strong> when installed by an
-            authorized detailer like Tint Tek Plus. With proper maintenance it
-            routinely protects vehicles for the full warranty period.
-          </Typography>
-        ),
-      },
-      {
-        question: "Do I need paint correction before ceramic coating?",
-        answerText:
-          "It depends on your paint's current condition. Ceramic coating locks in the surface it's applied to, so existing swirl marks, oxidation, and etching will be preserved under the coating. We always inspect your paint first and recommend the appropriate prep before coating.",
-        answer: (
-          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            It depends on your paint's condition. Ceramic coating locks in
-            whatever's on the surface — including swirl marks, oxidation, and
-            etching. We always inspect your paint first and recommend the{" "}
-            <strong>appropriate correction</strong> before coating to ensure
-            the best result.
-          </Typography>
-        ),
-      },
-    ],
-  },
-  {
     id: 6,
     slug: "headlight-tinting-protection-plano-tx",
     title: "Headlight Tinting in Plano, TX: STEK Protection Film vs. Smoked Vinyl Tint",
     summary:
-      "Smoked headlight tint, STEK Light Protection Film, or both? Here’s how Plano, TX drivers can protect expensive LED headlight assemblies while staying Texas-legal.",
+      "Smoked headlight tint, STEK Light Protection Film, or both? Here's how Plano, TX drivers can protect expensive LED headlight assemblies while staying Texas-legal.",
     image: "/headlight/taillight3.webp",
     date: "July 18, 2026",
     dateIso: "2025-09-14",
@@ -1571,9 +1152,9 @@ export const blogPosts = [
       <>
         <Typography className="blog-paragraph">
           A new set of LED headlight assemblies can run{" "}
-          <strong>$800–$2,000 per side</strong> on many of today’s vehicles — and
+          <strong>$800–$2,000 per side</strong> on many of today's vehicles — and
           they sit directly in the path of every rock chip, bug, and UV ray on
-          Plano’s roads. Whether you want a custom smoked look or simply want to
+          Plano's roads. Whether you want a custom smoked look or simply want to
           protect that investment,{" "}
           <SvcLink to="/services/headlight-services">
             headlight tinting and protection film
@@ -1585,7 +1166,7 @@ export const blogPosts = [
           What Is Headlight Tinting?
         </Typography>
         <Typography className="blog-paragraph">
-          “Headlight tinting” actually covers two very different products that
+          "Headlight tinting" actually covers two very different products that
           solve two different problems:
         </Typography>
         <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
@@ -1615,9 +1196,9 @@ export const blogPosts = [
           <SvcLink to="/services/vehicle-paint-protection">
             paint protection film
           </SvcLink>
-          , STEK’s Light Protection Film is built from the ground up for
+          , STEK's Light Protection Film is built from the ground up for
           polycarbonate lens surfaces. It uses an adhesive chemistry and
-          optical-clarity spec that automotive PPF doesn’t meet, plus a
+          optical-clarity spec that automotive PPF doesn't meet, plus a
           UV-resistant topcoat that stops the cloudy, yellow haze most
           unprotected headlights develop within 3–5 years.
         </Typography>
@@ -1632,7 +1213,7 @@ export const blogPosts = [
           </Box>
           <Box className="benefit-item">
             <Box className="benefit-icon">✓</Box>
-            <Typography>Stops the UV yellowing that ages a vehicle’s front end</Typography>
+            <Typography>Stops the UV yellowing that ages a vehicle's front end</Typography>
           </Box>
           <Box className="benefit-item">
             <Box className="benefit-icon">✓</Box>
@@ -1640,7 +1221,7 @@ export const blogPosts = [
           </Box>
         </Box>
         <Typography className="blog-paragraph">
-          Because it doesn’t reduce light output, STEK film is the right
+          Because it doesn't reduce light output, STEK film is the right
           starting point for anyone who wants protection without touching the
           factory look of their headlights.
         </Typography>
@@ -1666,12 +1247,12 @@ export const blogPosts = [
           Is Headlight Tint Legal in Texas?
         </Typography>
         <Typography className="blog-paragraph">
-          Yes — when it’s done correctly. Texas law requires headlights to
+          Yes — when it's done correctly. Texas law requires headlights to
           remain visible and effective from a specified distance at night, so
-          there’s a real difference between a stylish smoked layer and tint
-          applied so dark it kills your night visibility. Our installers won’t
+          there's a real difference between a stylish smoked layer and tint
+          applied so dark it kills your night visibility. Our installers won't
           apply a shade that compromises light output, regardless of how dark
-          a customer requests — it’s a safety line we don’t cross. STEK Light
+          a customer requests — it's a safety line we don't cross. STEK Light
           Protection Film, being clear, has no legal restrictions at all.
         </Typography>
 
@@ -1679,18 +1260,18 @@ export const blogPosts = [
           Why Plano Drivers Need This
         </Typography>
         <Typography className="blog-paragraph">
-          Plano’s <strong>Dallas North Tollway</strong> and{" "}
+          Plano's <strong>Dallas North Tollway</strong> and{" "}
           <strong>President George Bush Turnpike</strong> see heavy
           construction traffic nearly year-round, kicking up the kind of
-          gravel and debris that pits headlight lenses daily. Add Plano’s
+          gravel and debris that pits headlight lenses daily. Add Plano's
           long, sun-drenched summers around Legacy West and Preston Road, and
           unprotected headlights age fast — clouding over and yellowing well
           before the rest of the car shows its age.
         </Typography>
         <Typography className="blog-paragraph">
-          If you’re already protecting your vehicle in{" "}
+          If you're already protecting your vehicle in{" "}
           <SvcLink to="/locations/plano">Plano, TX</SvcLink>, headlights are
-          the one high-cost, high-exposure component that’s easy to forget —
+          the one high-cost, high-exposure component that's easy to forget —
           until a $1,500 LED assembly needs replacing because the lens
           cracked or oxidized beyond repair.
         </Typography>
@@ -1745,7 +1326,7 @@ export const blogPosts = [
         answerText: "Properly installed smoked tint maintains legal light output. We never apply a shade dark enough to compromise night visibility, and clear STEK Light Protection Film has zero impact on output.",
         answer: (
           <Typography className="blog-paragraph" sx={{ mb: 0 }}>
-            Properly installed smoked tint maintains legal light output. We never apply a shade dark enough to compromise night visibility, and clear <strong>STEK Light Protection Film</strong> has zero impact on output since it’s optically transparent.
+            Properly installed smoked tint maintains legal light output. We never apply a shade dark enough to compromise night visibility, and clear <strong>STEK Light Protection Film</strong> has zero impact on output since it's optically transparent.
           </Typography>
         ),
       },
@@ -1773,6 +1354,368 @@ export const blogPosts = [
         answer: (
           <Typography className="blog-paragraph" sx={{ mb: 0 }}>
             Yes, this is one of our most popular combinations — <strong>STEK Light Protection Film</strong> underneath for UV and impact protection, with a smoked vinyl layer on top for a custom look.
+          </Typography>
+        ),
+      },
+    ],
+  },
+  {
+    id: 7,
+    slug: "ceramic-coating-frisco-tx",
+    title: "Ceramic Coating in Frisco, TX: 5 Things Every Car Owner Should Know Before Booking",
+    summary:
+      "Thinking about ceramic coating in Frisco, TX? From what it actually does to how long it lasts and when you need paint correction first, here's what every DFW car owner should know before booking.",
+    image: "/ceramic/Tint Tek-165.webp",
+    date: "September 28, 2026",
+    dateIso: "2026-09-28",
+    readTime: "6 min read",
+    category: "Ceramic Coating",
+    categories: ["Ceramic Coating", "Car Care"],
+    featured: false,
+    keywords:
+      "ceramic coating Frisco TX, ceramic coating Dallas, car ceramic coating DFW, best ceramic coating near me, ceramic coating cost Texas, paint protection Frisco TX, nano ceramic coating",
+    toc: [
+      { id: "what-is-ceramic-coating", title: "1. What Ceramic Coating Actually Is" },
+      { id: "what-it-protects", title: "2. What It Protects Against" },
+      { id: "paint-correction-first", title: "3. Paint Correction Must Come First" },
+      { id: "how-long-does-it-last", title: "4. How Long Does It Actually Last?" },
+      { id: "ceramic-vs-ppf", title: "5. Ceramic Coating vs. PPF" },
+      { id: "why-frisco", title: "Why Frisco Drivers Need Ceramic Coating" },
+      { id: "why-tint-tek", title: "Why Choose Tint Tek Plus" },
+    ],
+    relatedIds: [4, 2],
+    content: (
+      <>
+        <Typography className="blog-paragraph">
+          Frisco is one of the fastest-growing cities in the country — and one of the best
+          places to own a nice car. From the luxury lots around{" "}
+          <strong>Legacy West</strong> to the Tesla-heavy neighborhoods near{" "}
+          <strong>The Star</strong>, residents here care about how their vehicles look.
+          That's probably why{" "}
+          <SvcLink to="/services/ceramic-coating">ceramic coating</SvcLink> is one of the
+          most-searched car care services in the DFW area right now.
+        </Typography>
+        <Typography className="blog-paragraph">
+          The problem? Ceramic coating is also one of the most misunderstood. Walk into the
+          wrong shop with the wrong expectations and you'll either overpay for something
+          that doesn't hold up — or skip a step (paint correction) that makes the whole
+          investment pointless. Before you book, here are five things every Frisco car
+          owner should know.
+        </Typography>
+
+        <Typography variant="h5" id="what-is-ceramic-coating" className="blog-section-title">
+          1. What Ceramic Coating Actually Is
+        </Typography>
+        <Typography className="blog-paragraph">
+          Ceramic coating is a liquid nano-polymer that chemically bonds to your vehicle's
+          factory paint, forming a semi-permanent protective layer. Unlike a traditional wax
+          or paint sealant — which sits on top of the paint and wears off in weeks —
+          ceramic coating becomes part of the surface itself, lasting years rather than
+          months.
+        </Typography>
+        <Typography className="blog-paragraph">
+          The result is a{" "}
+          <strong>hydrophobic, UV-resistant, self-cleaning shell</strong> over your paint
+          that repels water, dirt, and contaminants at a molecular level. Once it cures,
+          water beads and sheets off the surface, making every wash faster and keeping
+          your paint looking sharper longer.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Bonds chemically to factory paint — not just a surface wax</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Creates an extremely hydrophobic surface that repels water and grime</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Adds a deep, high-gloss finish that makes paint appear richer and wetter</Typography>
+          </Box>
+        </Box>
+
+        <Typography variant="h5" id="what-it-protects" className="blog-section-title">
+          2. What Ceramic Coating Protects Against (and What It Doesn't)
+        </Typography>
+        <Typography className="blog-paragraph">
+          This is where a lot of car owners get tripped up. Ceramic coating is excellent
+          at protecting your paint from:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>UV oxidation</strong> — the Texas sun that fades and dulls paint over
+            time
+          </li>
+          <li>
+            <strong>Water spots &amp; mineral deposits</strong> — common in DFW's hard water
+          </li>
+          <li>
+            <strong>Chemical etching</strong> from bird droppings, tree sap, and bug
+            splatter
+          </li>
+          <li>
+            <strong>Light surface contamination</strong> — airborne fallout, brake dust, road
+            grime
+          </li>
+          <li>
+            <strong>Minor swirl marks</strong> from routine washing (with proper wash
+            technique)
+          </li>
+        </Box>
+        <Typography variant="body1" className="blog-highlight" sx={{ fontStyle: "italic" }}>
+          What ceramic coating does NOT do: stop rock chips, deep scratches, or physical
+          impact damage. For that, you need{" "}
+          <SvcLink to="/services/vehicle-paint-protection">
+            Paint Protection Film (PPF)
+          </SvcLink>{" "}
+          — and many Frisco clients combine both.
+        </Typography>
+
+        <Typography variant="h5" id="paint-correction-first" className="blog-section-title">
+          3. Paint Correction Must Come First
+        </Typography>
+        <Typography className="blog-paragraph">
+          This is the step most shops skip — and the one that matters most. Ceramic
+          coating doesn't hide imperfections. It{" "}
+          <strong>locks them in permanently</strong>. If your paint already has swirl
+          marks, fine scratches, water-spot etching, or oxidation, applying ceramic over
+          them means those defects are preserved under a semi-permanent layer that's hard
+          to remove.
+        </Typography>
+        <Typography className="blog-paragraph">
+          A proper ceramic coating installation always starts with a thorough paint
+          inspection, a full decontamination wash, and — if needed —{" "}
+          <SvcLink to="/services/vehicle-paint-correction">
+            paint correction
+          </SvcLink>{" "}
+          to remove existing defects before the coating goes on. At Tint Tek Plus, this
+          is non-negotiable. We won't coat paint that hasn't been properly corrected.
+        </Typography>
+        <Box className="benefit-list">
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Decontamination wash removes bonded surface contaminants</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Paint correction removes swirls, scratches, and oxidation before coating</Typography>
+          </Box>
+          <Box className="benefit-item">
+            <Box className="benefit-icon">✓</Box>
+            <Typography>Only clean, corrected paint gets a flawless coating result</Typography>
+          </Box>
+        </Box>
+
+        <ServiceCallout
+          title="Ceramic Coating &amp; Paint Correction in Frisco, TX"
+          description="We serve Frisco, Plano, McKinney, Allen, and all of DFW. Every ceramic coating install starts with a full paint inspection — correction included when needed."
+          linkTo="/services/ceramic-coating"
+          linkText="Explore Ceramic Coating"
+        />
+
+        <Typography variant="h5" id="how-long-does-it-last" className="blog-section-title">
+          4. How Long Does Ceramic Coating Actually Last?
+        </Typography>
+        <Typography className="blog-paragraph">
+          Longevity depends heavily on the product grade and how the vehicle is maintained.
+          Here's a realistic breakdown:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Consumer/DIY-grade coatings:</strong> 1–2 years with ideal maintenance
+          </li>
+          <li>
+            <strong>Professional entry-level coatings:</strong> 2–4 years
+          </li>
+          <li>
+            <strong>Professional premium coatings (our standard):</strong> 4–7 years with
+            proper maintenance washes
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Two things accelerate degradation in Frisco specifically: hard water from DFW's
+          municipal supply (mineral deposits etch coatings over time) and the intense UV
+          load from Texas sun. That's why maintenance matters — annual decontamination
+          washes and using pH-neutral soaps dramatically extend coating life. The cars
+          we've coated in Frisco and Plano that have held up longest are the ones whose
+          owners treat them to a maintenance detail once or twice a year.
+        </Typography>
+
+        <Typography variant="h5" id="ceramic-vs-ppf" className="blog-section-title">
+          5. Ceramic Coating vs. Paint Protection Film — Which Do You Need?
+        </Typography>
+        <Typography className="blog-paragraph">
+          These two products are often compared, but they solve completely different
+          problems. Understanding the difference saves money and avoids gaps in your
+          protection:
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            <strong>Stops rock chips &amp; deep scratches:</strong> PPF ✅ | Ceramic ❌
+          </li>
+          <li>
+            <strong>UV protection &amp; paint preservation:</strong> PPF ✅ | Ceramic ✅
+          </li>
+          <li>
+            <strong>Hydrophobic / self-cleaning surface:</strong> Ceramic ✅ | PPF ✅ (with coating on top)
+          </li>
+          <li>
+            <strong>Adds wet-look gloss &amp; depth:</strong> Ceramic ✅ | PPF ❌
+          </li>
+          <li>
+            <strong>Self-healing from light impacts:</strong> PPF ✅ | Ceramic ❌
+          </li>
+        </Box>
+        <Typography className="blog-paragraph">
+          The ideal setup for Frisco drivers — especially on the{" "}
+          <strong>Dallas North Tollway</strong> and{" "}
+          <strong>SH-121</strong> construction corridors — is{" "}
+          <SvcLink to="/services/vehicle-paint-protection">
+            front-end PPF
+          </SvcLink>{" "}
+          for the hood, bumper, and fenders combined with a full-body ceramic coating on
+          top. You get physical impact protection where debris hits hardest, plus
+          hydrophobic gloss protection everywhere else.
+        </Typography>
+
+        <Typography variant="h5" id="why-frisco" className="blog-section-title">
+          Why Frisco Drivers Need Ceramic Coating More Than Most
+        </Typography>
+        <Typography className="blog-paragraph">
+          Frisco sits at the convergence of some of North Texas's most relentless paint
+          hazards:
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Year-Round UV Exposure
+        </Typography>
+        <Typography className="blog-paragraph">
+          Frisco averages over <strong>230 sunny days per year</strong>. UV radiation
+          breaks down clear coat at the molecular level — gradually fading and oxidizing
+          paint over time, no matter how new the car is. Ceramic coating's UV resistance
+          acts like SPF 50 for your paint, year-round.
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Hard Water &amp; Sprinkler Damage
+        </Typography>
+        <Typography className="blog-paragraph">
+          DFW water is notoriously hard. Irrigation systems and even rain after a dry
+          spell leave mineral deposits that etch into unprotected clear coat over time.
+          Ceramic coating's hydrophobic surface causes water to bead and roll off instead
+          of sitting and etching — a significant advantage for vehicles parked outdoors
+          in Frisco neighborhoods.
+        </Typography>
+        <Typography variant="h6" className="blog-section-title" sx={{ mt: 3 }}>
+          Construction &amp; High-Speed Commutes
+        </Typography>
+        <Typography className="blog-paragraph">
+          The ongoing expansion along <strong>SH-121</strong>,{" "}
+          <strong>Preston Road</strong>, and the{" "}
+          <strong>Dallas North Tollway</strong> keeps loose debris on Frisco roads
+          year-round. Pair that with 70–80 MPH tollway speeds and your front end takes a
+          beating. Ceramic coating on the rear and sides — combined with front-end PPF —
+          creates a complete protection system for Frisco commuters.
+        </Typography>
+        <Typography className="blog-paragraph">
+          If you drive a Tesla Model Y, BMW 5-Series, or any other higher-end vehicle in
+          Frisco — protecting that paint investment with ceramic coating isn't a luxury,
+          it's just smart ownership. Visit our{" "}
+          <SvcLink to="/locations/frisco">Frisco service page</SvcLink> to see the full
+          range of protection options available.
+        </Typography>
+
+        <Typography variant="h5" id="why-tint-tek" className="blog-section-title">
+          Why Choose Tint Tek Plus for Ceramic Coating in Frisco?
+        </Typography>
+        <Box component="ul" className="blog-paragraph" sx={{ pl: 4 }}>
+          <li>
+            Full paint inspection before every install — we never coat over defects
+          </li>
+          <li>
+            <SvcLink to="/services/vehicle-paint-correction">Paint correction</SvcLink>{" "}
+            available in-house before coating, so you don't have to go elsewhere
+          </li>
+          <li>
+            Professional-grade coatings rated for 4–7 years with proper maintenance
+          </li>
+          <li>
+            Trusted on Tesla, Porsche, BMW, Corvette, G-Wagon, and exotic vehicles across
+            DFW
+          </li>
+          <li>Serving Frisco, Plano, McKinney, Allen, Carrollton, and all of DFW</li>
+        </Box>
+        <Typography className="blog-paragraph">
+          Located at <strong>2518 W. Kingsley Rd, Garland, TX</strong> — an easy drive
+          from Frisco via DNT or US-75. Call or text{" "}
+          <strong>972-362-8468</strong> to book your ceramic coating consultation. Not
+          sure if your paint needs correction first? We'll tell you honestly during the
+          inspection — no upsell pressure.
+        </Typography>
+      </>
+    ),
+    faqs: [
+      {
+        question: "How much does ceramic coating cost in Frisco, TX?",
+        answerText:
+          "Professional ceramic coating in the DFW area typically ranges from $500 to $2,000+ depending on vehicle size, paint condition, whether paint correction is needed, and the coating tier selected.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Professional ceramic coating in the DFW area typically ranges from{" "}
+            <strong>$500 to $2,000+</strong> depending on vehicle size, paint condition,
+            whether paint correction is needed beforehand, and the coating tier selected.
+            Contact us for a personalized quote.
+          </Typography>
+        ),
+      },
+      {
+        question: "Do I need paint correction before ceramic coating?",
+        answerText:
+          "Yes, if your paint has swirl marks, scratches, or water spot etching. Ceramic coating locks in whatever is on the surface — so defects must be corrected first or they'll be preserved permanently under the coating.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes, if your paint has swirl marks, scratches, or water spot etching. Ceramic
+            coating <strong>locks in surface defects</strong> — so they must be corrected
+            first. We include a thorough paint inspection with every booking and offer
+            in-house correction when needed.
+          </Typography>
+        ),
+      },
+      {
+        question: "How long does ceramic coating last in Texas heat?",
+        answerText:
+          "Professional-grade ceramic coatings installed by certified applicators typically last 4 to 7 years in Texas with proper maintenance — including annual decontamination washes and pH-neutral soap for routine cleaning.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Professional-grade coatings typically last <strong>4–7 years</strong> in
+            Texas with proper care — annual decontamination washes and pH-neutral soap
+            for routine cleaning go a long way toward maximizing the coating's lifespan
+            in DFW's harsh UV environment.
+          </Typography>
+        ),
+      },
+      {
+        question: "Is ceramic coating worth it for daily drivers in Frisco?",
+        answerText:
+          "Yes. Frisco's UV exposure, hard water, and construction-heavy roads make ceramic coating one of the highest-ROI upgrades for daily drivers — it reduces wash frequency, prevents UV fading, and keeps paint looking newer longer.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            Yes. Frisco's UV exposure, hard water, and construction debris make ceramic
+            coating one of the best-value upgrades for daily drivers — it cuts wash
+            frequency, <strong>prevents UV fading</strong>, and keeps paint looking newer
+            longer than any wax or sealant on the market.
+          </Typography>
+        ),
+      },
+      {
+        question: "Should I get PPF or ceramic coating?",
+        answerText:
+          "They do different jobs. PPF stops rock chips and physical impact damage; ceramic coating provides UV protection, hydrophobic gloss, and chemical resistance. Many Frisco clients combine front-end PPF with full-body ceramic for complete protection.",
+        answer: (
+          <Typography className="blog-paragraph" sx={{ mb: 0 }}>
+            They do different jobs — PPF stops rock chips and physical impact damage,
+            while ceramic provides UV protection, hydrophobic gloss, and chemical
+            resistance. For Frisco's highways, the best approach is{" "}
+            <strong>front-end PPF + full-body ceramic</strong> for total coverage.
           </Typography>
         ),
       },
